@@ -25,7 +25,7 @@ Column {
 
         id: edge_list
         width: parent.width
-        height: Math.min(contentHeight, 400)
+        height: Math.min(contentHeight, 380)
         spacing: 10
         clip: true
 

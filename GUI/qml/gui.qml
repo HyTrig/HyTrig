@@ -11,11 +11,11 @@ ApplicationWindow {
 
     visible: true
     width: 1920
-    minimumWidth: 1920
-    maximumWidth: 1920
+    minimumWidth: 1000
+    maximumWidth: 3000
     height: 1080
-    minimumHeight: 1080
-    maximumHeight: 1080
+    minimumHeight: 800
+    maximumHeight: 2000
 
     function has_name(name) {
         for (var i = 0; i < agents.agent_model.count; i++) {

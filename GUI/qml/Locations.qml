@@ -34,7 +34,7 @@ Column {
 
         id: location_list
         width: parent.width
-        height: Math.min(contentHeight, 400)
+        height: Math.min(contentHeight, 380)
         spacing: 10
         clip: true
 

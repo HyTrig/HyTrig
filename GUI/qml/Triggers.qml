@@ -18,7 +18,7 @@ Column {
 
         id: trigger_list
         width: parent.width
-        height: Math.min(contentHeight, 300)
+        height: Math.min(contentHeight, 200)
         clip: true
 
         model: agents.agent_model
@@ -60,8 +60,9 @@ Column {
 
                 id: agent_trigger_list
                 width: parent.width
-                height: Math.min(contentHeight, 100)
+                height: content.height
                 clip: true
+                interactive: false
 
                 model: ListModel {
 
