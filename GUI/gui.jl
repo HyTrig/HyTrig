@@ -52,7 +52,7 @@ end
 
 @qmlfunction is_valid_expression is_valid_constraint is_valid_state
 
-qml_file = joinpath(dirname(@__FILE__), "gui.qml")
+qml_file = joinpath(dirname(@__FILE__), "qml", "gui.qml")
 
 loadqml(qml_file, guiproperties = JuliaPropertyMap())
 
