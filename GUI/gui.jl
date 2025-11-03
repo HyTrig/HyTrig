@@ -32,7 +32,25 @@ function is_valid_constraint(constr, vars)
     end
 end
 
-@qmlfunction is_valid_expression is_valid_constraint
+function is_valid_state(state_formula, vars, locs)
+    state_formula = String(state_formula)
+    variables = Vector{String}()
+    for i in eachindex(vars)
+        push!(variables, vars[i])
+    end
+    locations = Vector{String}()
+    for i in eachindex(locs)
+        push!(locations, locs[i])
+    end
+    try
+        parse(state_formula, Bindings(Set(), Set(locations), Set(variables)), state)
+        return true
+    catch
+        return false
+    end
+end
+
+@qmlfunction is_valid_expression is_valid_constraint is_valid_state
 
 qml_file = joinpath(dirname(@__FILE__), "gui.qml")
 

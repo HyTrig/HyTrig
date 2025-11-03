@@ -48,6 +48,16 @@ ApplicationWindow {
         }
         return variables
     }
+
+    function get_locations() {
+        var locations = []
+        for (var i = 0; i < location_model.count; i++) {
+            if (location_model.get(i).name != "") {
+                locations.push(location_model.get(i).name)
+            }
+        }
+        return locations
+    }
             
     ListModel {
 
@@ -305,7 +315,7 @@ ApplicationWindow {
 
                 function add_variable(variable, value) {
                     var name_regex = /^[A-Za-z]\w*$/;
-                    var value_regex = /(^[1-9]\d*(\.\d+)?$)|(^0(\.\d+)?$)/;
+                    var value_regex = /(^-?(([1-9]\d*(\.\d+)?$)|(0\.\d*[1-9])$))|(^0$)/;
                     if (name_regex.test(variable) && !has_name(variable)) {
                         if (value_regex.test(value)) {
                             variable_model.append({name: variable, value: value});
@@ -564,6 +574,116 @@ ApplicationWindow {
 
             }
 
+            Rectangle {
+                width: parent.width
+                height: 5
+                radius: 4
+                color: "black"
+            }
+
+            // termination conditions
+            Column {
+
+                id: termination
+                width: parent.width
+                spacing: 10
+
+                Text {
+                    width: parent.width
+                    text: "Termination conditions"
+                }
+
+                Row {
+
+                    width: parent.width
+                    spacing: 10
+
+                    Text {
+                        width: state_formula_text.width
+                        height: parent.height
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignVCenter
+                        text: "Time bound"
+                    }
+
+                    TextField {
+                        id: time_bound_text_field
+                        width: (
+                            parent.width - 3 * parent.spacing - 2 * state_formula_text.width
+                        ) / 2
+                        placeholderText: "Enter time bound"
+                        onAccepted: {
+                            var regex = /^(([1-9]\d*(\.\d+)?$)|(0\.\d*[1-9])$)/;
+                            if (regex.test(text)) {
+                                placeholderText = "";
+                                focus = false;
+                            } else {
+                                text = "";
+                                placeholderText = "Invalid time bound";
+                            }
+                        }
+                    }
+
+                    Text {
+                        width: state_formula_text.width
+                        height: parent.height
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignVCenter
+                        text: "Max steps"
+                    }
+
+                    TextField {
+                        id: max_steps_text_field
+                        width: (
+                            parent.width - 3 * parent.spacing - 2 * state_formula_text.width
+                        ) / 2
+                        placeholderText: "Enter max steps"
+                        onAccepted: {
+                            var regex = /^[1-9]\d*$/;
+                            if (regex.test(text)) {
+                                placeholderText = "";
+                                focus = false;
+                            } else {
+                                text = "";
+                                placeholderText = "Invalid max steps";
+                            }
+                        }
+                    }
+
+                }
+
+                Row {
+
+                    width: parent.width
+                    spacing: 10
+
+                    Text {
+                        id: state_formula_text
+                        height: parent.height
+                        horizontalAlignment: Text.AlignLeft
+                        verticalAlignment: Text.AlignVCenter
+                        text: "State formula"
+                    }
+
+                    TextField {
+                        id: state_formula_text_field
+                        width: parent.width - parent.spacing - state_formula_text.width
+                        placeholderText: "Enter state formula"
+                        onAccepted: {
+                            if (Julia.is_valid_state(text, get_variables(), get_locations())) {
+                                placeholderText = "";
+                                focus = false;
+                            } else {
+                                text: ""
+                                placeholderText = "Invalid state formula";
+                            }
+                        }
+                    }
+
+                }
+
+            }
+
         }
 
         Rectangle {
@@ -658,15 +778,15 @@ ApplicationWindow {
                                 placeholderText: "Enter name"
                                 onAccepted: {
                                     var regex = /^[A-Za-z]\w*$/;
-                                    if (regex.test(location_name_text_field.text) && !has_name(location_name_text_field.text)) {
-                                        model.name = location_name_text_field.text;
+                                    if (regex.test(text) && !has_name(text)) {
+                                        model.name = text;
                                         placeholderText = "";
+                                        focus = false;
                                     } else {
                                         model.name = "";
-                                        location_name_text_field.text = "";
+                                        text = "";
                                         placeholderText = "Invalid name";
                                     }
-                                    focus = false;
                                 }
                             }
 
@@ -689,12 +809,12 @@ ApplicationWindow {
                                     if (Julia.is_valid_constraint(text, get_variables())) {
                                         model.inv = text;
                                         placeholderText = "";
+                                        focus = false;
                                     } else {
                                         model.inv = "";
                                         text = "";
                                         placeholderText = "Invalid invariant";
                                     }
-                                    focus = false;
                                 }
                             }
 
@@ -756,11 +876,11 @@ ApplicationWindow {
                                     onAccepted: {
                                         if (Julia.is_valid_expression(text, get_variables())) {
                                             placeholderText = "";
+                                            focus = false;
                                         } else {
                                             text = "";
                                             placeholderText = "Invalid expression";
                                         }
-                                        focus = false;
                                     }
                                 }
 
@@ -877,12 +997,12 @@ ApplicationWindow {
                                     if (regex.test(text) && !has_name(text)) {
                                         model.name = text;
                                         placeholderText = "";
+                                        focus = false;
                                     } else {
                                         model.name = "";
                                         text = "";
                                         placeholderText = "Invalid name";
                                     }
-                                    focus = false;
                                 }
                             }
 
@@ -944,12 +1064,12 @@ ApplicationWindow {
                                     if (Julia.is_valid_constraint(text, get_variables())) {
                                         model.guard = text;
                                         placeholderText = "";
+                                        focus = false;
                                     } else {
                                         model.guard = "";
                                         text = "";
                                         placeholderText = "Invalid guard";
                                     }
-                                    focus = false;
                                 }
                             }
 
@@ -1042,11 +1162,11 @@ ApplicationWindow {
                                     onAccepted: {
                                         if (Julia.is_valid_expression(text, get_variables())) {
                                             placeholderText = "";
+                                            focus = false;
                                         } else {
                                             text = "";
                                             placeholderText = "Invalid expression";
                                         }
-                                        focus = false;
                                     }
                                 }
 
