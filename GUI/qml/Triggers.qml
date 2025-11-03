@@ -60,7 +60,7 @@ Column {
 
                 id: agent_trigger_list
                 width: parent.width
-                height: content.height
+                height: contentHeight
                 clip: true
                 interactive: false
 

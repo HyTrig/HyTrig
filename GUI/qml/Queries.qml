@@ -8,50 +8,50 @@ import org.julialang
 Column {
 
     spacing: 10
-    property alias agent_model: agent_model
+    property alias query_model: query_model
 
     ListModel {
 
-        id: agent_model
+        id: query_model
 
     }
 
-    function add_agent(agent)
+    function add_query(query)
     {
-        var regex = /^[A-Za-z]\w*$/;
-        if (regex.test(agent) && !has_name(agent))
+        if (Julia.is_valid_strategy(query, get_variables(), get_locations(), get_agents()))
         {
-            agent_model.append({name: agent});
-            agent_text_field.placeholderText = "Enter name";
-            agent_text_field.text = "";
+            query_model.append({name: query});
+            query_text_field.placeholderText = "Enter strategy formula";
+            query_text_field.text = "";
         }
         else {
-            agent_text_field.placeholderText = "Invalid name";
-            agent_text_field.text = "";
+            query_text_field.placeholderText = "Invalid strategy formula";
+            query_text_field.text = "";
         }
     }
 
     Text {
         width: parent.width
-        text: "Agents"
+        text: "Queries"
     }
 
     ListView {
 
-        id: agent_list
+        id: query_list
         width: parent.width
         height: Math.min(contentHeight, 100)
+        spacing: 10
         clip: true
 
-        model: agent_model
+        model: query_model
         delegate: Row {
 
-            width: agent_list.width
+            width: query_list.width
             spacing: 10
 
             Text {
 
-                width: parent.width - parent.spacing - agent_button.width
+                width: parent.width - parent.spacing - query_button.width
                 text: model.name
                 color: "blue"
 
@@ -61,15 +61,10 @@ Column {
                 text: "-"
                 height: parent.height
                 onClicked: {
-                    agent_model.remove(index, 1);
+                    query_model.remove(index, 1);
                 }
             }
 
-        }
-
-        ScrollBar.vertical: ScrollBar {
-            active: true
-            policy: ScrollBar.AsNeeded
         }
 
     }
@@ -80,25 +75,25 @@ Column {
         spacing: 10
 
         TextField {
-            id: agent_text_field
-            width: parent.width - parent.spacing - agent_button.width
-            placeholderText: "Enter name"
+            id: query_text_field
+            width: parent.width - parent.spacing - query_button.width
+            placeholderText: "Enter strategy formula"
             onAccepted: {
-                agents.add_agent(agent_text_field.text);
+                queries.add_query(text);
             }
             onActiveFocusChanged: {
-                placeholderText = "Enter name";
+                placeholderText = "Enter strategy formula";
             }
         }
 
         Button {
-            id: agent_button
+            id: query_button
             Layout.fillHeight: false
             Material.foreground: "white"
             Material.background: Material.DeepOrange
             text: "+"
             onClicked: {
-                agents.add_agent(agent_text_field.text);
+                queries.add_query(query_text_field.text)
             }
         }
 

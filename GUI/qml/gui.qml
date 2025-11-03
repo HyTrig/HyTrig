@@ -42,21 +42,31 @@ ApplicationWindow {
     }
 
     function get_variables() {
-        var variables = []
+        var vars = []
         for (var i = 0; i < variables.variable_model.count; i++) {
-            variables.push(variables.variable_model.get(i).name)
+            vars.push(variables.variable_model.get(i).name)
         }
-        return variables
+        return vars
     }
 
     function get_locations() {
-        var locations = []
+        var locs = []
         for (var i = 0; i < locations.location_model.count; i++) {
             if (locations.location_model.get(i).name != "") {
-                locations.push(locations.location_model.get(i).name)
+                locs.push(locations.location_model.get(i).name)
             }
         }
-        return locations
+        return locs
+    }
+
+    function get_agents() {
+        var agns = []
+        for (var i = 0; i < agents.agent_model.count; i++) {
+            if (agents.agent_model.get(i).name != "") {
+                agns.push(agents.agent_model.get(i).name)
+            }
+        }
+        return agns
     }
 
     Row {
@@ -132,6 +142,11 @@ ApplicationWindow {
                 height: 5
                 radius: 4
                 color: "black"
+            }
+
+            Queries {
+                id: queries
+                width: parent.width
             }
 
         }
