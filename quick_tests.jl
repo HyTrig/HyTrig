@@ -26,3 +26,17 @@ end
 p = Point(1.0, 2.0)
 move_point!(p, 3.0, 4.0)
 println("Point after move: (", p.x, ", ", p.y, ")")  # What are the coordinates of p after the function call?
+
+# Strategy_Formula[
+#     Exist_Eventually(Set([:A, :B]), 
+#         Strategy_to_State(
+#             State_Constraint(
+#                 And(
+#                     Greater(Var(:x), Const(8.0)), 
+#                     Greater(Var(:y), Const(8.0))
+#                 )
+#             )
+#         )), 
+#         Exist_Eventually(Set([:A, :B]), 
+#             Exist_Eventually(Set([:C]), 
+#                 Strategy_to_State(State_Constraint(Or(Less(Var(:x), Neg(Const(1.0))), Less(Var(:y), Neg(Const(11.0))))))))]
