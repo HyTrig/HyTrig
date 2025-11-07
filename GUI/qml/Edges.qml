@@ -22,6 +22,8 @@ Column {
         spacing: 10
         clip: true
 
+        property var edge_name: model.name
+
         model: edge_model
         delegate: Column {
 
@@ -240,7 +242,7 @@ Column {
                 clip: true
                 interactive: false
 
-                model: variables.variable_model
+                model: variable_model
                 delegate: Row {
 
                     width: jump.width
@@ -261,6 +263,7 @@ Column {
                         onAccepted: {
                             if (is_valid_formula(text, "expression"))
                             {
+                                edge_model.appendRow({edge: edge_name, var: model.name, jump: text});
                                 placeholderText = "";
                                 focus = false;
                             }

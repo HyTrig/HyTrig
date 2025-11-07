@@ -53,6 +53,12 @@ mutable struct QEdge
     action::String
 end
 
+mutable struct QJump
+    edge::String
+    var::String
+    jump::String
+end
+
 mutable struct QQuery
     name::String
 end
@@ -67,6 +73,12 @@ location_list::Vector{QLocation} = []
 edge_list::Vector{QEdge} = []
 query_list::Vector{QQuery} = []
 flow_list::Vector{QFlow} = []
+jump_list::Vector{QJump} = []
+
+termination_conditions = QML.QQmlPropertyMap()
+termination_conditions["time-bound"] = ""
+termination_conditions["max-steps"] = ""
+termination_conditions["state-formula"] = ""
 
 function has_name(name)::Bool
     name = String(name)
@@ -113,9 +125,13 @@ function save_to_json()
                 agent.name => [trigger.name for trigger in values(agent.triggers)[]] for agent in agent_list
             ),
             "actions" => [action.name for action in action_list],
-            "edges" => "" # TODO 
+            "edges" => [_get_edge_json(edge) for edge in edge_list]
         ),
-        "termination-conditions" => "", # TODO
+        "termination-conditions" => Dict(
+            "time-bound" => termination_conditions["time-bound"],
+            "max-steps" => termination_conditions["max-steps"],
+            "state-formula" => termination_conditions["state-formula"]
+        ),
         "queries" => [query.name for query in query_list]
     )
     open(joinpath("data", "save$(now()).json"), "w") do f
@@ -134,6 +150,21 @@ function _get_location_json(loc::QLocation)
     )
 end
 
+function _get_edge_json(edge::QEdge)
+    return Dict(
+        "name" => edge.name,
+        "source" => edge.source,
+        "target" => edge.target,
+        "guard" => edge.guard,
+        "decision" => Dict(
+            edge.agent => edge.action
+        ),
+        "jumps" => Dict(
+            jump.var => jump.jump for jump in jump_list if jump.edge == edge.name
+        )
+    )
+end
+
 @qmlfunction has_name is_valid_formula save_to_json
 
 qml_file = joinpath(dirname(@__FILE__), "qml", "gui.qml")
@@ -146,7 +177,9 @@ loadqml(
     location_model = JuliaItemModel(location_list),
     edge_model = JuliaItemModel(edge_list),
     query_model = JuliaItemModel(query_list),
-    flow_model = JuliaItemModel(flow_list)
+    flow_model = JuliaItemModel(flow_list),
+    jump_model = JuliaItemModel(jump_list),
+    termination_conditions = termination_conditions
 )
 
 exec()

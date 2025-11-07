@@ -37,6 +37,7 @@ Column {
                 var regex = /^(([1-9]\d*(\.\d+)?$)|(0\.\d*[1-9])$)/;
                 if (regex.test(text))
                 {
+                    termination_conditions["time-bound"] = text;
                     placeholderText = "";
                     focus = false;
                 }
@@ -65,6 +66,7 @@ Column {
                 var regex = /^[1-9]\d*$/;
                 if (regex.test(text))
                 {
+                    termination_conditions["max-steps"] = text;
                     placeholderText = "";
                     focus = false;
                 }
@@ -97,6 +99,7 @@ Column {
             onAccepted: {
                 if (is_valid_formula(text, "state"))
                 {
+                    termination_conditions["state-formula"] = text;
                     placeholderText = "";
                     focus = false;
                 }
