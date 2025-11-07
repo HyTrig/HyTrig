@@ -8,6 +8,7 @@ import org.julialang
 Column {
 
     spacing: 10
+    property alias location_list: location_list
 
     function add_location()
     {
@@ -68,6 +69,7 @@ Column {
                     width: (
                         parent.width - 5 * parent.spacing - location_name_text.width - location_inv_text.width - initial_location.width - location_remove.width
                     ) / 2
+                    text: model.name
                     placeholderText: "Enter name"
                     onAccepted: {
                         var regex = /^[A-Za-z]\w*$/;

@@ -2,6 +2,7 @@ import Qt.labs.platform
 import QtQml.Models
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Dialogs
 import QtQuick.Layouts
 import QtQuick.Controls.Material
 import org.julialang
@@ -23,8 +24,37 @@ ApplicationWindow {
         return Julia.is_valid_formula(input, level)
     }
 
-    function save() {
-        Julia.save_to_json();
+    function save(path) {
+        Julia.save_to_json(path);
+    }
+
+    function load(path) {
+        Julia.load_from_json(path);
+
+        // Refresh ListViews
+        variables.variable_list.model = [];
+        variables.variable_list.model = variable_model;
+        locations.location_list.model = [];
+        locations.location_list.model = location_model;
+        edges.edge_list.model = [];
+        edges.edge_list.model = edge_model;
+        agents.agent_list.model = [];
+        agents.agent_list.model = agent_model;
+        actions.action_list.model = [];
+        actions.action_list.model = action_model;
+        triggers.trigger_list.model = [];
+        triggers.trigger_list.model = agent_model;
+        queries.query_list.model = [];
+        queries.query_list.model = query_model;
+
+        // Refresh termination conditions
+        terminations.time_bound = termination_conditions["time-bound"];
+        terminations.max_steps = termination_conditions["max-steps"];
+        terminations.state_formula = termination_conditions["state-formula"];
+
+        // Refresh visibility of triggers
+        triggers.visible = agent_model.rowCount() > 0;
+        trigger_spacer.visible = agent_model.rowCount() > 0;
     }
 
     Column {
@@ -158,19 +188,46 @@ ApplicationWindow {
             anchors.horizontalCenter: parent.horizontalCenter
             spacing: 10
 
+            FileDialog {
+                id: save_dialog
+                title: "Select a location to save the JSON file"
+                
+                fileMode: FileDialog.SaveFile
+                currentFolder: StandardPaths.standardLocations(StandardPaths.DocumentsLocation)[0]
+                nameFilters: ["JSON files (*.json)"]
+                onAccepted: {
+                    save(selectedFile.toString());
+                }
+            }
+
+            FileDialog {
+                id: load_dialog
+                title: "Select a JSON file to load"
+
+                fileMode: FileDialog.OpenFile
+                currentFolder: StandardPaths.standardLocations(StandardPaths.DocumentsLocation)[0]
+                nameFilters: ["JSON files (*.json)"]
+                onAccepted: {
+                    load(selectedFile.toString());
+                }
+            }
+
             Button {
                 id: save_button
                 width: verify_button.width
                 text: "Save"
                 onClicked: {
-                    save();
+                    save_dialog.open();
                 }
             }
 
             Button {
                 id: load_button
-                width: verify_button.width
+                width:verify_button.width
                 text: "Load"
+                onClicked: {
+                    load_dialog.open();
+                }
             }
 
             Button {

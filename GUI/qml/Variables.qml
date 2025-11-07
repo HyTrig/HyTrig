@@ -8,6 +8,7 @@ import org.julialang
 Column {
 
     spacing: 10
+    property alias variable_list: variable_list
 
     function add_variable(variable, value)
     {

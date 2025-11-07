@@ -8,6 +8,7 @@ import org.julialang
 Column {
 
     spacing: 10
+    property alias agent_list: agent_list
 
     function add_agent(agent)
     {

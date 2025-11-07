@@ -8,6 +8,7 @@ import org.julialang
 Column {
 
     spacing: 10
+    property alias query_list: query_list
 
     function add_query(query)
     {

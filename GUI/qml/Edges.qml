@@ -8,7 +8,8 @@ import org.julialang
 Column {
 
     spacing: 10
-
+    property alias edge_list: edge_list
+    
     Text {
         width: parent.width
         text: "Edges"
@@ -30,6 +31,8 @@ Column {
             id: edge
             width: edge_list.width
             spacing: 10
+
+            property var edge_name: model.name
 
             function set_source(src) {
                 model.source = src;
@@ -91,6 +94,7 @@ Column {
                     TextField {
                         id: edge_name_text_field
                         width: (parent.width - 3 * parent.spacing - edge_remove.width) / 3
+                        text: model.name
                         placeholderText: "Enter name"
                         onAccepted: {
                             var regex = /^[A-Za-z]\w*$/;
@@ -198,7 +202,7 @@ Column {
                     textRole: "name"
                     valueRole: "name"
                     onActivated: {
-                        edge_list.model.setProperty(edge_index, "agent", currentValue);
+                        model.agent = currentValue;
                     }
                     popup.closePolicy: Popup.CloseOnPressOutside
                 }
@@ -220,7 +224,7 @@ Column {
                     textRole: "name"
                     valueRole: "name"
                     onActivated: {
-                        edge_list.model.setProperty(edge_index, "action", currentValue);
+                        model.action = currentValue;
                     }
                     popup.closePolicy: Popup.CloseOnPressOutside
                 }
@@ -259,7 +263,7 @@ Column {
                         width: parent.width - parent.spacing - guard_text.width
                         placeholderText: "Enter expression"
                         onAccepted: {
-                            if (is_valid_formula(text, "expression"))
+                            if (is_valid_formula(text, "constraint"))
                             {
                                 edge_model.appendRow({edge: edge_name, var: model.name, jump: text});
                                 placeholderText = "";

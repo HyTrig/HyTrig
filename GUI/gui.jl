@@ -114,7 +114,8 @@ function is_valid_formula(formula, level)
     end
 end
 
-function save_to_json()
+function save_to_json(path)
+    path = replace(String(path),  r"^(file:\/{2})" => "")
     data = Dict(
         "Game" => Dict(
             "name" => "save$(now())",
@@ -134,9 +135,57 @@ function save_to_json()
         ),
         "queries" => [query.name for query in query_list]
     )
-    open(joinpath("data", "save$(now()).json"), "w") do f
+    open(path, "w") do f
         JSON3.pretty(f, JSON3.write(data))
     end
+end
+
+function load_from_json(path)
+    path = replace(String(path),  r"^(file:\/{2})" => "")
+    data = open(path, "r") do f
+        JSON3.read(f)
+    end
+
+    empty!(agent_list)
+    empty!(action_list)
+    empty!(variable_list)
+    empty!(location_list)
+    empty!(edge_list)
+    empty!(query_list)
+    empty!(flow_list)
+    empty!(jump_list)
+
+    game = data["Game"]
+    for loc in game["locations"]
+        push!(location_list, QLocation(loc["name"], loc["invariant"], loc["initial"]))
+        for (var, flow) in loc["flow"]
+            push!(flow_list, QFlow(loc["name"], String(var), flow))
+        end
+    end
+    for (var, value) in game["initial_valuation"]
+        push!(variable_list, QVariable(String(var), value))
+    end
+    for agent_name in game["agents"]
+        triggers = JuliaItemModel([QTrigger(t) for t in game["triggers"][agent_name]])
+        push!(agent_list, QAgent(agent_name, triggers))
+    end
+    for action_name in game["actions"]
+        push!(action_list, QAction(action_name))
+    end
+    for edge in game["edges"]
+        push!(edge_list, QEdge(edge["name"], edge["source"], edge["target"], edge["guard"],
+                               String(first(keys(edge["decision"]))), first(values(edge["decision"]))))
+        for (var, jump) in edge["jumps"]
+            push!(jump_list, QJump(edge["name"], String(var), jump))
+        end
+    end
+    for query_name in data["queries"]
+        push!(query_list, QQuery(query_name))
+    end
+    term_conds = data["termination-conditions"]
+    termination_conditions["time-bound"] = term_conds["time-bound"]
+    termination_conditions["max-steps"] = term_conds["max-steps"]
+    termination_conditions["state-formula"] = term_conds["state-formula"]
 end
 
 function _get_location_json(loc::QLocation)
@@ -165,7 +214,7 @@ function _get_edge_json(edge::QEdge)
     )
 end
 
-@qmlfunction has_name is_valid_formula save_to_json
+@qmlfunction has_name is_valid_formula save_to_json load_from_json
 
 qml_file = joinpath(dirname(@__FILE__), "qml", "gui.qml")
 

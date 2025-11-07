@@ -8,6 +8,7 @@ import org.julialang
 Column {
 
     spacing: 10
+    property alias trigger_list: trigger_list
 
     Text {
         width: parent.width

@@ -8,6 +8,7 @@ import org.julialang
 Column {
 
     spacing: 10
+    property alias action_list: action_list
 
     function add_action(action)
     {
