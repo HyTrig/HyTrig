@@ -8,19 +8,12 @@ import org.julialang
 Column {
 
     spacing: 10
-    property alias query_model: query_model
-
-    ListModel {
-
-        id: query_model
-
-    }
 
     function add_query(query)
     {
         if (is_valid_formula(query, "strategy"))
         {
-            query_model.append({name: query});
+            query_model.appendRow({name: query});
             query_text_field.placeholderText = "Enter strategy formula";
             query_text_field.text = "";
         }
@@ -61,7 +54,7 @@ Column {
                 text: "-"
                 height: parent.height
                 onClicked: {
-                    query_model.remove(index, 1);
+                    query_model.removeRow(index);
                 }
             }
 

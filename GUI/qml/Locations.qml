@@ -37,6 +37,8 @@ Column {
             width: location_list.width
             spacing: 10
 
+            property var location_name: model.name
+
             Rectangle {
 
                 width: parent.width
@@ -143,7 +145,7 @@ Column {
 
             ListView {
 
-                id: flow
+                id: flow_list
                 width: parent.width
                 height: contentHeight
                 spacing: 10
@@ -153,7 +155,7 @@ Column {
                 model: variable_model
                 delegate: Row {
 
-                    width: flow.width
+                    width: flow_list.width
                     spacing: 10
 
                     Text {
@@ -171,6 +173,7 @@ Column {
                         onAccepted: {
                             if (is_valid_formula(text, "expression"))
                             {
+                                flow_model.appendRow({loc: location_name, var: model.name, flow: text});
                                 placeholderText = "";
                                 focus = false;
                             }

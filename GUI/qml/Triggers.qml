@@ -31,7 +31,7 @@ Column {
             {
                 if (is_valid_formula(trigger, "constraint"))
                 {
-                    agent_trigger_model.append({trigger: trigger});
+                    model.triggers.appendRow({name: trigger});
                     trigger_text_field.placeholderText = "Enter trigger";
                     trigger_text_field.text = "";
                 }
@@ -39,6 +39,12 @@ Column {
                     trigger_text_field.placeholderText = "Invalid trigger";
                     trigger_text_field.text = "";
                 }
+            }
+
+            function remove_trigger(index)
+            {
+                agent_trigger_model.remove(index, 1);
+                model.triggers.removeRow(index);
             }
 
             Rectangle {
@@ -64,11 +70,7 @@ Column {
                 clip: true
                 interactive: false
 
-                model: ListModel {
-
-                    id: agent_trigger_model
-
-                }
+                model: triggers
                 delegate: Row {
 
                     width: agent_trigger_list.width
@@ -76,14 +78,15 @@ Column {
 
                     Text {
                         width: parent.width -parent.spacing - trigger_button.width
-                        text: model.trigger
+                        text: model.name
+                        color: "blue"
                     }
 
                     Button {
                         text: "-"
                         height: parent.height
                         onClicked: {
-                            agent_trigger_model.remove(index, 1);
+                            triggers.removeRow(index);
                         }
                     }
 

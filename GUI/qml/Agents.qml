@@ -14,7 +14,7 @@ Column {
         var regex = /^[A-Za-z]\w*$/;
         if (regex.test(agent) && !Julia.has_name(agent))
         {
-            agent_model.appendRow({name: agent});
+            agent_model.appendRow({name: agent, triggers: []});
             agent_text_field.placeholderText = "Enter name";
             agent_text_field.text = "";
         }
