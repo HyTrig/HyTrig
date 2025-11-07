@@ -192,7 +192,6 @@ Column {
                 ComboBox {
                     id: agent_menu
                     width: (parent.width - 3 * parent.spacing - edge_agent_text.width - edge_action_text.width) / 2
-                    enabled: agent_model.rowCount() > 0
 
                     model: agent_model
 
@@ -215,7 +214,6 @@ Column {
                 ComboBox {
                     id: action_menu
                     width: (parent.width - 3 * parent.spacing - edge_agent_text.width - edge_action_text.width) / 2
-                    enabled: action_model.rowCount() > 0
 
                     model: action_model
 

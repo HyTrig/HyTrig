@@ -17,6 +17,7 @@ ApplicationWindow {
     height: 1080
     minimumHeight: 800
     maximumHeight: 2000
+    title: "HyTrig"
 
     function is_valid_formula(input, level) {
         return Julia.is_valid_formula(input, level)
