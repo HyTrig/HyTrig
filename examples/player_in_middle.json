@@ -13,7 +13,8 @@
                         "time": "1",
                         "middle_player": "sin(time) * spd_C",
                         "timer": "1"
-                    }
+                    },
+                "initial": false
             },
             {
                 "name": "A_Throwing",
@@ -35,7 +36,8 @@
                         "middle_player": "cos(time) * spd_C",
                         "timer": "1",
                         "time": "1"
-                    }
+                    },
+                "initial": false
             },
             {
                 "name": "B_Throwing",
@@ -46,7 +48,8 @@
                         "y": "spd_B * dir_y",
                         "middle_player": "cos(time) * spd_C",
                         "time": "1"
-                    }
+                    },
+                "initial": false
             },
             {
                 "name": "Caught",
@@ -54,7 +57,8 @@
                 "flow": 
                     {
                         "time": "1"
-                    }
+                    },
+                "initial": false
             }
         ],
         "initial_valuation":
