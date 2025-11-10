@@ -179,11 +179,12 @@ Column {
                         horizontalAlignment: Text.AlignLeft
                         verticalAlignment: Text.AlignVCenter
                         text: model.var
+                        clip: true
                     }
 
                     TextField {
                         id: flow_text_field
-                        width: parent.width - 2 * parent.spacing - location_name_text.width - initial_location.width
+                        width: parent.width - 2 * parent.spacing - location_name_text.width - add_location_button.width
                         text: model.flow
                         placeholderText: "Enter expression"
                         onAccepted: {
