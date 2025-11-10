@@ -159,7 +159,7 @@ function save_to_json(path)
         "Game" => Dict(
             "name" => "save$(now())",
             "locations" => [_get_location_json(loc) for loc in location_list],
-            "initial_valuation" => Dict(variable.name => variable.value for variable in variable_list),
+            "initial_valuation" => Dict(variable.name => Base.parse(Float64, variable.value) for variable in variable_list),
             "agents" => [agent.name for agent in agent_list],
             "triggers" => Dict(
                 agent.name => [trigger.name for trigger in values(agent.triggers)[]] for agent in agent_list
@@ -168,8 +168,8 @@ function save_to_json(path)
             "edges" => [_get_edge_json(edge) for edge in edge_list]
         ),
         "termination-conditions" => Dict(
-            "time-bound" => termination_conditions["time-bound"],
-            "max-steps" => termination_conditions["max-steps"],
+            "time-bound" => Base.parse(Float64, termination_conditions["time-bound"]),
+            "max-steps" => Base.parse(Int64, termination_conditions["max-steps"]),
             "state-formula" => termination_conditions["state-formula"]
         ),
         "queries" => [query.name for query in query_list]
@@ -202,7 +202,7 @@ function load_from_json(path)
         )
     end
     for (var, value) in game["initial_valuation"]
-        push!(variable_list, QVariable(String(var), value))
+        push!(variable_list, QVariable(String(var), string(value)))
     end
     for agent_name in game["agents"]
         triggers = JuliaItemModel([QTrigger(t) for t in game["triggers"][agent_name]])
@@ -214,7 +214,7 @@ function load_from_json(path)
     for edge in game["edges"]
         push!(
             edge_list,
-            QEdge(edge["name"], edge["source"], edge["target"], edge["guard"],
+            QEdge(edge["name"], edge["start_location"], edge["target_location"], edge["guard"],
                 String(first(keys(edge["decision"]))), first(values(edge["decision"])),
                 JuliaItemModel([QJump(String(var), jump) for (var, jump) in edge["jump"]])
             )
@@ -224,8 +224,8 @@ function load_from_json(path)
         push!(query_list, QQuery(query_name))
     end
     term_conds = data["termination-conditions"]
-    termination_conditions["time-bound"] = term_conds["time-bound"]
-    termination_conditions["max-steps"] = term_conds["max-steps"]
+    termination_conditions["time-bound"] = string(term_conds["time-bound"])
+    termination_conditions["max-steps"] = string(term_conds["max-steps"])
     termination_conditions["state-formula"] = term_conds["state-formula"]
 end
 
@@ -243,8 +243,8 @@ end
 function _get_edge_json(edge::QEdge)
     return Dict(
         "name" => edge.name,
-        "source" => edge.source,
-        "target" => edge.target,
+        "start_location" => edge.source,
+        "target_location" => edge.target,
         "guard" => edge.guard,
         "decision" => Dict(
             edge.agent => edge.action
