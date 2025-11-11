@@ -229,7 +229,6 @@ ApplicationWindow {
                 title: "Select a location to save the JSON file"
                 
                 fileMode: FileDialog.SaveFile
-                currentFolder: StandardPaths.standardLocations(StandardPaths.DocumentsLocation)[0]
                 nameFilters: ["JSON files (*.json)"]
                 onAccepted: {
                     save(selectedFile.toString());
@@ -242,7 +241,6 @@ ApplicationWindow {
                 title: "Select a JSON file to load"
 
                 fileMode: FileDialog.OpenFile
-                currentFolder: StandardPaths.standardLocations(StandardPaths.DocumentsLocation)[0]
                 nameFilters: ["JSON files (*.json)"]
                 onAccepted: {
                     load(selectedFile.toString());

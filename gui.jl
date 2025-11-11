@@ -141,7 +141,7 @@ function save_to_json(path)
         "Game" => Dict(
             "name" => "save$(now())",
             "locations" => [_get_location_json(loc) for loc in location_list],
-            "initial_valuation" => Dict(variable.name => Base.parse(Float64, variable.value) for variable in variable_list),
+            "initial_valuation" => [Dict(variable.name => Base.parse(Float64, variable.value)) for variable in variable_list],
             "agents" => [agent.name for agent in agent_list],
             "triggers" => Dict(
                 agent.name => [trigger.name for trigger in values(agent.triggers)[]] for agent in agent_list
@@ -187,12 +187,12 @@ function load_from_json(path)
         push!(
             location_list,
             QLocation(loc["name"], loc["invariant"], loc["initial"],
-                JuliaItemModel([QFlow(String(var), flow) for (var, flow) in loc["flow"]])
+                JuliaItemModel([QFlow(String(first(keys(flow))), first(values(flow))) for flow in loc["flow"]])
             )
         )
     end
-    for (var, value) in game["initial_valuation"]
-        push!(variable_list, QVariable(String(var), string(value)))
+    for var in game["initial_valuation"]
+        push!(variable_list, QVariable(String(first(keys(var))), string(first(values(var)))))
     end
     for agent_name in game["agents"]
         triggers = JuliaItemModel([QTrigger(t) for t in game["triggers"][agent_name]])
@@ -206,7 +206,7 @@ function load_from_json(path)
             edge_list,
             QEdge(edge["name"], edge["start_location"], edge["target_location"], edge["guard"],
                 String(first(keys(edge["decision"]))), first(values(edge["decision"])),
-                JuliaItemModel([QJump(String(var), jump) for (var, jump) in edge["jump"]])
+                JuliaItemModel([QJump(String(first(keys(jump))), first(values(jump))) for jump in edge["jump"]])
             )
         )
     end
@@ -223,9 +223,7 @@ function _get_location_json(loc::QLocation)
     return Dict(
         "name" => loc.name,
         "invariant" => loc.inv,
-        "flow" => Dict(
-            loc.flow[i].var => loc.flow[i].flow for i in 1:length(loc.flow)
-        ),
+        "flow" => [Dict(loc.flow[i].var => loc.flow[i].flow) for i in 1:length(loc.flow)],
         "initial" => loc.initial
     )
 end
@@ -239,9 +237,7 @@ function _get_edge_json(edge::QEdge)
         "decision" => Dict(
             edge.agent => edge.action
         ),
-        "jump" => Dict(
-            edge.jump[i].var => edge.jump[i].jump for i in 1:length(edge.jump)
-        )
+        "jump" => [Dict(edge.jump[i].var => edge.jump[i].jump) for i in 1:length(edge.jump)]
     )
 end
 
