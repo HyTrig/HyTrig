@@ -130,36 +130,36 @@ struct State_Deadlock <: State_Formula
 end
 
 
-function get_all_properties(formula::State_Formula)::Set{Constraint}
+function get_all_constraints(formula::State_Formula)::Set{Constraint}
     @match formula begin
         State_Location(_) => Set{State_Formula}()
         State_Constraint(constraint) => Set([constraint, Not(constraint)])
-        State_And(left, right) => get_all_properties(left) ∪ get_all_properties(right)
-        State_Or(left, right) => get_all_properties(left) ∪ get_all_properties(right)
-        State_Not(f) => get_all_properties(f)
-        State_Imply(left, right) => get_all_properties(left) ∪ get_all_properties(right)
+        State_And(left, right) => get_all_constraints(left) ∪ get_all_constraints(right)
+        State_Or(left, right) => get_all_constraints(left) ∪ get_all_constraints(right)
+        State_Not(f) => get_all_constraints(f)
+        State_Imply(left, right) => get_all_constraints(left) ∪ get_all_constraints(right)
         State_Deadlock() => Set{State_Formula}()
     end
 end
 
-function get_all_properties(formula::Strategy_Formula)::Set{Constraint}
+function get_all_constraints(formula::Strategy_Formula)::Set{Constraint}
     @match formula begin
-        Strategy_to_State(f) => get_all_properties(f)
-        Exist_Always(_, f) => get_all_properties(f)
-        Exist_Eventually(_, f) => get_all_properties(f)
-        All_Always(_, f) => get_all_properties(f)
-        All_Eventually(_, f) => get_all_properties(f)
-        Strategy_And(left, right) => get_all_properties(left) ∪ get_all_properties(right)
-        Strategy_Or(left, right) => get_all_properties(left) ∪ get_all_properties(right)
-        Strategy_Not(f) => get_all_properties(f)
-        Strategy_Imply(left, right) => get_all_properties(left) ∪ get_all_properties(right)
+        Strategy_to_State(f) => get_all_constraints(f)
+        Exist_Always(_, f) => get_all_constraints(f)
+        Exist_Eventually(_, f) => get_all_constraints(f)
+        All_Always(_, f) => get_all_constraints(f)
+        All_Eventually(_, f) => get_all_constraints(f)
+        Strategy_And(left, right) => get_all_constraints(left) ∪ get_all_constraints(right)
+        Strategy_Or(left, right) => get_all_constraints(left) ∪ get_all_constraints(right)
+        Strategy_Not(f) => get_all_constraints(f)
+        Strategy_Imply(left, right) => get_all_constraints(left) ∪ get_all_constraints(right)
     end
 end
 
-function get_all_properties(formulae::Vector{Logic_formula})::Set{Constraint}
+function get_all_constraints(formulae::Vector{Logic_formula})::Set{Constraint}
     props = Set{Constraint}()
     for formula in formulae
-        props = props ∪ get_all_properties(formula)
+        props = props ∪ get_all_constraints(formula)
     end
     return props
 end
@@ -179,8 +179,8 @@ end
 function evaluate(formula::Strategy_Formula, node::Node, all_agents::Set{Agent})::Bool
     @match formula begin
         Strategy_to_State(f) => evaluate(f, node)
-        All_Always(agents, f) => ! evaluate(Exist_Eventually(setdiff(all_agents, agents), State_Not(f)), node, all_agents)
-        All_Eventually(agents, f) => ! evaluate(Exist_Always(setdiff(all_agents, agents), State_Not(f)), node, all_agents)
+        All_Always(agents, f) => ! evaluate(Exist_Eventually(setdiff(all_agents, agents), Strategy_Not(f)), node, all_agents)
+        All_Eventually(agents, f) => ! evaluate(Exist_Always(setdiff(all_agents, agents), Strategy_Not(f)), node, all_agents)
         Strategy_And(left, right) => evaluate(left, node, all_agents) && evaluate(right, node, all_agents)
         Strategy_Or(left, right) => evaluate(left, node, all_agents) || evaluate(right, node, all_agents)
         Strategy_Not(f) => ! evaluate(f, node, all_agents)
@@ -211,11 +211,12 @@ function evaluate(formula::Strategy_Formula, node::Node, all_agents::Set{Agent})
                     push!(other_agents_children, child)
                 end
             end
-            if length(agents_children) > 0 && (length(other_agents_children) == 0 || last(agents_children).global_clock < last(other_agents_children).global_clock)
-                return false
-            else
-                return true
-            end
+            # if length(agents_children) > 0 && (length(other_agents_children) == 0 || last(agents_children).global_clock < last(other_agents_children).global_clock)
+            #     return false
+            # else
+            #     return true
+            # end
+            return true
         end
         Exist_Eventually(agents, f) => begin
             if evaluate(f, node, all_agents)
@@ -243,11 +244,12 @@ function evaluate(formula::Strategy_Formula, node::Node, all_agents::Set{Agent})
                     push!(other_agents_children, child)
                 end
             end
-            if length(agents_children) > 0 && (length(other_agents_children) == 0 || last(agents_children).global_clock < last(other_agents_children).global_clock)
-                return false
-            else
-                return true
-            end
+            return true
+            # if length(agents_children) > 0 && (length(other_agents_children) == 0 || last(agents_children).global_clock < last(other_agents_children).global_clock)
+            #     return false
+            # else
+            #     return true
+            # end
         end
     end
 end
