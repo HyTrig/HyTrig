@@ -1,3 +1,9 @@
+/**
+* @file Edges.qml
+* @brief GUI component for managing edges in the HGT Model Checker GUI
+* @authors Moritz Maas
+*/
+
 import QtQml.Models
 import QtQuick
 import QtQuick.Controls
@@ -5,11 +11,16 @@ import QtQuick.Layouts
 import QtQuick.Controls.Material
 import org.julialang
 
+// Outer container for edges
 Column {
 
     spacing: 10
     property alias edge_list: edge_list
 
+    /**
+    * Add an edge to the edge model
+    * @param {String} name    Name of the edge to add
+    */
     function add_edge(name)
     {
         var regex = /^[A-Za-z]\w*$/;
@@ -37,6 +48,7 @@ Column {
         text: "Edges"
     }
 
+    // List of edges
     ListView {
 
         id: edge_list
@@ -56,96 +68,123 @@ Column {
 
             property var edge_name: model.name
 
+            /**
+            * Get the agent of the edge
+            * @return {String}  Agent of the edge
+            */
             function get_agent() {
                 return model.agent;
             }
 
+            /**
+            * Get the action of the edge
+            * @return {String}  Action of the edge
+            */
             function get_action() {
                 return model.action;
             }
 
+            /**
+            * Get the source location of the edge
+            * @return {String}  Source location of the edge
+            */   
             function get_source() {
                 return model.source;
             }
 
+            /**
+            * Get the target location of the edge
+            * @return {String}  Target location of the edge
+            */
             function get_target() {
                 return model.target;
             }
 
+            /**
+            * Set the agent of the edge
+            * @param {String} ag   Agent to set
+            */
             function set_agent(ag) {
                 model.agent = ag;
             }
 
+            /**
+            * Set the action of the edge
+            * @param {String} ac   Action to set
+            */
             function set_action(ac) {
                 model.action = ac;
             }
 
+            /**
+            * Set the source location of the edge
+            * @param {String} src   Source location to set
+            */
             function set_source(src) {
                 model.source = src;
             }
 
+            /**
+            * Set the target location of the edge
+            * @param {String} tar   Target location to set
+            */
             function set_target(tar) {
                 model.target = tar;
             }
 
-                Rectangle {
+            Rectangle {
 
-                    width: parent.width
-                    height: 3
-                    visible: index != 0
-                    radius: 4
-                    color: "grey"
+                width: parent.width
+                height: 3
+                visible: index != 0
+                radius: 4                    
+                color: "grey"
 
+            }
+
+            // Property name row
+            Row {
+
+                width: parent.width
+                spacing: 10
+
+                Text {
+                    width: (parent.width - 3 * parent.spacing - edge_remove.width) / 3
+                    horizontalAlignment: Text.AlignLeft
+                    text: "Name"
                 }
 
-                Row {
-
-                    width: parent.width
-                    spacing: 10
-
-                    Text {
-                        width: (parent.width - 3 * parent.spacing - edge_remove.width) / 3
-                        horizontalAlignment: Text.AlignLeft
-                        text: "Name"
-                    }
-
-                    Text {
-                        width: (parent.width - 3 * parent.spacing - edge_remove.width) / 3
-                        horizontalAlignment: Text.AlignLeft
-                        text: "Start location"
-                    }
-
-                    Text {
-                        width: (parent.width - 3 * parent.spacing - edge_remove.width) / 3
-                        horizontalAlignment: Text.AlignLeft
-                        text: "End location"
-                    }
-
-                    Button {
-                        id: edge_remove
-                        text: "-"
-                        height: parent.height
-                        onClicked: {
-                            edge_model.removeRow(index);
-                        }
-                    }
-
+                Text {
+                    width: (parent.width - 3 * parent.spacing - edge_remove.width) / 3
+                    horizontalAlignment: Text.AlignLeft
+                    text: "Start location"
                 }
 
-                Row {
+                Text {
+                    width: (parent.width - 3 * parent.spacing - edge_remove.width) / 3
+                    horizontalAlignment: Text.AlignLeft
+                    text: "End location"
+                }
 
-                    width: parent.width
-                    spacing: 10
+            }
 
-                    Text {
-                        width: (parent.width - 3 * parent.spacing - edge_remove.width) / 3
-                        height: parent.height
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignVCenter
-                        text: model.name
-                        color: "blue"
-                    }
+            // Property row
+            Row {
 
+                width: parent.width
+                spacing: 10
+
+                // Edge name
+                Text {
+                    width: (parent.width - 3 * parent.spacing - edge_remove.width) / 3
+                    height: parent.height
+                    horizontalAlignment: Text.AlignLeft
+                    verticalAlignment: Text.AlignVCenter
+                    text: model.name
+                    color: "blue"
+                }
+
+                // Source location selector
                 ComboBox {
 
                     id: edge_start_menu
@@ -165,6 +204,7 @@ Column {
 
                 }
 
+                // Target location selector
                 ComboBox {
 
                     id: edge_end_menu
@@ -179,12 +219,24 @@ Column {
                     onActivated: {
                         set_target(currentValue);
                     }
+                    
                     popup.closePolicy: Popup.CloseOnPressOutside
 
                 }
 
+                // Edge remove button
+                Button {
+                    id: edge_remove
+                    text: "-"
+                    height: parent.height
+                    onClicked: {
+                        edge_model.removeRow(index);
+                    }
+                }
+
             }
 
+            // Guard row
             Row {
 
                 width: parent.width
@@ -198,6 +250,7 @@ Column {
                     text: "Guard"
                 }
 
+                // Guard input field
                 TextField {
                     id: guard_text_field
                     width: parent.width - parent.spacing - guard_text.width
@@ -220,6 +273,7 @@ Column {
 
             }
 
+            // Decision row
             Row {
 
                 width: parent.width
@@ -233,7 +287,9 @@ Column {
                     text: "Agent"
                 }
 
+                // Agent selector
                 ComboBox {
+
                     id: agent_menu
                     width: (parent.width - 3 * parent.spacing - edge_agent_text.width - edge_action_text.width) / 2
 
@@ -246,7 +302,9 @@ Column {
                     onActivated: {
                         set_agent(currentValue);
                     }
+
                     popup.closePolicy: Popup.CloseOnPressOutside
+
                 }
 
                 Text {
@@ -257,7 +315,9 @@ Column {
                     text: "Action"
                 }
 
+                // Action selector
                 ComboBox {
+
                     id: action_menu
                     width: (parent.width - 3 * parent.spacing - edge_agent_text.width - edge_action_text.width) / 2
 
@@ -270,7 +330,9 @@ Column {
                     onActivated: {
                         set_action(currentValue);
                     }
+
                     popup.closePolicy: Popup.CloseOnPressOutside
+
                 }
             }
 
@@ -279,6 +341,7 @@ Column {
                 text: "Jump"
             }
 
+            // Jump list
             ListView {
 
                 id: jump_list
@@ -294,6 +357,7 @@ Column {
                     width: jump_list.width
                     spacing: 10
 
+                    // Variable name
                     Text {
                         height: parent.height
                         width: guard_text.width
@@ -302,6 +366,7 @@ Column {
                         text: model.var
                     }
 
+                    // Jump expression input field
                     TextField {
                         id: jump_text_field
                         width: parent.width - parent.spacing - guard_text.width
@@ -334,11 +399,13 @@ Column {
 
     }
 
+    // Add edge row
     Row {
 
         width: parent.width
         spacing: 10
 
+        // Name input field
         TextField {
             id: edge_name_text_field
             width: parent.width - parent.spacing - edge_add_button.width
@@ -351,6 +418,7 @@ Column {
             }
         }
 
+        // Add edge button
         Button {
             id: edge_add_button
             Material.foreground: "white"

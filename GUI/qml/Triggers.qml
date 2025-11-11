@@ -1,3 +1,9 @@
+/**
+* @file Triggers.qml
+* @brief GUI component for managing triggers in the HGT Model Checker GUI
+* @authors Moritz Maas
+*/
+
 import QtQml.Models
 import QtQuick
 import QtQuick.Controls
@@ -5,6 +11,7 @@ import QtQuick.Layouts
 import QtQuick.Controls.Material
 import org.julialang
 
+// Outer container for triggers
 Column {
 
     spacing: 10
@@ -15,6 +22,7 @@ Column {
         text: "Triggers"
     }
 
+    // List of agents
     ListView {
 
         id: trigger_list
@@ -28,6 +36,10 @@ Column {
             width: trigger_list.width
             spacing: 10
 
+            /**
+            * Add a trigger to the current agents triggers
+            * @param {String} trigger    Trigger formula
+            */
             function add_trigger(trigger)
             {
                 if (is_valid_formula(trigger, "constraint"))
@@ -42,9 +54,12 @@ Column {
                 }
             }
 
+            /**
+            * Remove a trigger from the current agents triggers
+            * @param {String} index    Index of the trigger to remove
+            */
             function remove_trigger(index)
             {
-                agent_trigger_model.remove(index, 1);
                 model.triggers.removeRow(index);
             }
 
@@ -58,11 +73,13 @@ Column {
 
             }
 
+            // Agent name
             Text {
                 width: parent.width
                 text: model.name
             }
 
+            // List of triggers for the current agent
             ListView {
 
                 id: agent_trigger_list
@@ -77,12 +94,14 @@ Column {
                     width: agent_trigger_list.width
                     spacing: 10
 
+                    // Trigger formula
                     Text {
                         width: parent.width -parent.spacing - trigger_button.width
                         text: model.name
                         color: "blue"
                     }
 
+                    // Remove trigger button
                     Button {
                         text: "-"
                         height: parent.height
@@ -95,11 +114,13 @@ Column {
 
             }
 
+            // Add trigger row
             Row {
 
                 width: parent.width
                 spacing: 10
 
+                // Trigger input field
                 TextField {
                     id: trigger_text_field
                     width: parent.width - parent.spacing - trigger_button.width
@@ -110,6 +131,7 @@ Column {
                     }
                 }
 
+                // Add trigger button
                 Button {
                     id: trigger_button
                     Material.foreground: "white"

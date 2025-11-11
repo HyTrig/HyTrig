@@ -1,3 +1,9 @@
+/**
+* @file Agents.qml
+* @brief GUI component for managing agents in the HGT Model Checker GUI
+* @authors Moritz Maas
+*/
+
 import QtQml.Models
 import QtQuick
 import QtQuick.Controls
@@ -5,11 +11,16 @@ import QtQuick.Layouts
 import QtQuick.Controls.Material
 import org.julialang
 
+// Outer container for agents
 Column {
 
     spacing: 10
     property alias agent_list: agent_list
 
+    /**
+    * Add an agent to the agent model
+    * @param {String} agent    Name of the agent to add
+    */
     function add_agent(agent)
     {
         var regex = /^[A-Za-z]\w*$/;
@@ -32,6 +43,7 @@ Column {
         text: "Agents"
     }
 
+    // List of agents
     ListView {
 
         id: agent_list
@@ -53,6 +65,7 @@ Column {
 
             }
 
+            // Remove agent button
             Button {
                 text: "-"
                 height: parent.height
@@ -72,11 +85,13 @@ Column {
 
     }
 
+    // Add agent row
     Row {
 
         width: parent.width
         spacing: 10
 
+        // Agent name input field
         TextField {
             id: agent_text_field
             width: parent.width - parent.spacing - agent_button.width
@@ -89,6 +104,7 @@ Column {
             }
         }
 
+        // Add agent button
         Button {
             id: agent_button
             Layout.fillHeight: false

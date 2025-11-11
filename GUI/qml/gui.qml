@@ -1,3 +1,9 @@
+/**
+* @file gui.qml
+* @brief Main GUI component for the HGT Model Checker GUI
+* @authors Moritz Maas
+*/
+
 import Qt.labs.platform
 import QtQml.Models
 import QtQuick
@@ -7,6 +13,7 @@ import QtQuick.Layouts
 import QtQuick.Controls.Material
 import org.julialang
 
+// HyTrig application window
 ApplicationWindow {
 
     id: window
@@ -20,18 +27,36 @@ ApplicationWindow {
     maximumHeight: 2000
     title: "HyTrig"
 
+    /**
+    * Check if a formula is valid on a given parse level
+    * @param {String}   input   Formula to check
+    * @param {String}   level   Parse level, either 'expression', 'constraint', 'state' or 'strategy'
+    * @return {Boolean}         True, if formula is valid on the given parse level
+    */
     function is_valid_formula(input, level) {
         return Julia.is_valid_formula(input, level)
     }
 
+    /**
+    * Check if the current game is savable
+    * @return {Boolean}         True, if current state is savable
+    */
     function is_saveable() {
         return true; //TODO: check invalid params
     }
 
+    /**
+    * Save current game to file given by path.
+    * @param {String}   path   Path to save to
+    */
     function save(path) {
         Julia.save_to_json(path);
     }
 
+    /**
+    * Load game from file given by path.
+    * @param {String}   path   Path to load from
+    */
     function load(path) {
         Julia.load_from_json(path);
 
@@ -61,12 +86,14 @@ ApplicationWindow {
         trigger_spacer.visible = agent_model.rowCount() > 0;
     }
 
+    // Window-filling column
     Column {
 
         anchors.fill: parent
         anchors.margins: 10
         spacing: 10
 
+        // Left and right window row
         Row {
 
             width: parent.width
@@ -74,6 +101,7 @@ ApplicationWindow {
             spacing: 10
             clip: true
 
+            // Left window side
             Column {
 
                 id: left_column
@@ -81,6 +109,7 @@ ApplicationWindow {
                 height: parent.height
                 spacing: 10
 
+                // Agent and action row
                 Row {
 
                     width: parent.width
@@ -159,6 +188,7 @@ ApplicationWindow {
                 color: "black"
             }
 
+            // Right window side
             Column {
 
                 width: (parent.width - 2 * parent.spacing - page_separator.width) / 2
@@ -186,12 +216,14 @@ ApplicationWindow {
 
         }
 
+        // Button menu row
         Row {
 
             id: menu
             anchors.horizontalCenter: parent.horizontalCenter
             spacing: 10
 
+            // Save dialog
             FileDialog {
                 id: save_dialog
                 title: "Select a location to save the JSON file"
@@ -204,6 +236,7 @@ ApplicationWindow {
                 }
             }
 
+            // Load dialog
             FileDialog {
                 id: load_dialog
                 title: "Select a JSON file to load"
@@ -216,6 +249,7 @@ ApplicationWindow {
                 }
             }
 
+            // Save button
             Button {
                 id: save_button
                 width: verify_button.width
@@ -227,6 +261,7 @@ ApplicationWindow {
                 }
             }
 
+            // Load button
             Button {
                 id: load_button
                 width:verify_button.width
@@ -236,18 +271,17 @@ ApplicationWindow {
                 }
             }
 
+            // Verify button
             Button {
                 id: verify_button
                 text: "Verify"
+                onClicked: {
+                    // TODO
+                }
             }
             
         }
 
-    }
-
-    onActiveFocusItemChanged: {
-        triggers.visible = agent_model.rowCount() > 0;
-        trigger_spacer.visible = agent_model.rowCount() > 0;
     }
 
 }

@@ -1,3 +1,9 @@
+/**
+* @file Locations.qml
+* @brief GUI component for managing locations in the HGT Model Checker GUI
+* @authors Moritz Maas
+*/
+
 import QtQml.Models
 import QtQuick
 import QtQuick.Controls
@@ -5,11 +11,16 @@ import QtQuick.Layouts
 import QtQuick.Controls.Material
 import org.julialang
 
+// Outer container for locations
 Column {
 
     spacing: 10
     property alias location_list: location_list
 
+    /**
+    * Add a location to the location model
+    * @param {String} name    Name of the location to add
+    */
     function add_location(name)
     {
         var regex = /^[A-Za-z]\w*$/;
@@ -32,6 +43,7 @@ Column {
         }
     }
 
+    // Button group for 'initial' selector
     ButtonGroup {
         id: initial_button
     }
@@ -41,6 +53,7 @@ Column {
         text: "Locations"
     }
 
+    // List of locations
     ListView {
 
         id: location_list
@@ -67,6 +80,7 @@ Column {
 
             }
 
+            // Name, invariant, initial and remove button row
             Row {
 
                 width: parent.width
@@ -81,6 +95,7 @@ Column {
                     text: "Name"
                 }
 
+                // Location name
                 Text {
 
                     width: (
@@ -102,6 +117,7 @@ Column {
                     text: "Invariant"
                 }
 
+                // Invariant input field
                 TextField {
                     id: invariant_text_field
                     width: (
@@ -124,6 +140,7 @@ Column {
                     }
                 }
 
+                // 'Initial' button
                 RadioButton {
                     id: initial_location
                     ButtonGroup.group: initial_button
@@ -137,6 +154,7 @@ Column {
                     }
                 }
 
+                // Remove location button
                 Button {
                     id: location_remove
                     text: "-"
@@ -158,6 +176,7 @@ Column {
                 text: "Flow"
             }
 
+            // Flow list
             ListView {
 
                 id: flow_list
@@ -173,6 +192,7 @@ Column {
                     width: flow_list.width
                     spacing: 10
 
+                    // Variable name
                     Text {
                         height: parent.height
                         width: location_name_text.width
@@ -182,6 +202,7 @@ Column {
                         clip: true
                     }
 
+                    // Flow expression input field
                     TextField {
                         id: flow_text_field
                         width: parent.width - 2 * parent.spacing - location_name_text.width - add_location_button.width
@@ -209,11 +230,13 @@ Column {
 
     }
 
+    // Add location row
     Row {
 
         width: parent.width
         spacing: 10
 
+        // Name input field
         TextField {
             id: location_name_text_field
 
@@ -227,6 +250,7 @@ Column {
             }
         }
 
+        // Add location button
         Button {
             id: add_location_button
             Material.foreground: "white"

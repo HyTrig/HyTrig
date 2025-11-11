@@ -1,3 +1,9 @@
+/**
+* @file Actions.qml
+* @brief GUI component for managing actions in the HGT Model Checker GUI
+* @authors Moritz Maas
+*/
+
 import QtQml.Models
 import QtQuick
 import QtQuick.Controls
@@ -5,11 +11,16 @@ import QtQuick.Layouts
 import QtQuick.Controls.Material
 import org.julialang
 
+// Outer container for actions
 Column {
 
     spacing: 10
     property alias action_list: action_list
 
+    /**
+    * Add an action to the action model
+    * @param {String} action    Name of the action to add
+    */
     function add_action(action)
     {
         var regex = /^[A-Za-z][A-Za-z0-9_]*$/;
@@ -30,6 +41,7 @@ Column {
         text: "Actions"
     }
 
+    // List of actions
     ListView {
 
         id: action_list
@@ -52,6 +64,7 @@ Column {
 
             }
 
+            // Remove action button
             Button {
                 text: "-"
                 height: parent.height
@@ -69,11 +82,13 @@ Column {
 
     }
 
+    // Add action row
     Row {
 
         width: parent.width
         spacing: 10
 
+        // Action name input field
         TextField {
             id: action_text_field
             width: parent.width - parent.spacing - action_button.width
@@ -86,6 +101,7 @@ Column {
             }
         }
 
+        // Add action button
         Button {
             id: action_button
             Layout.fillHeight: false

@@ -1,3 +1,9 @@
+/**
+* @file Variables.qml
+* @brief GUI component for managing variables in the HGT Model Checker GUI
+* @authors Moritz Maas
+*/
+
 import QtQml.Models
 import QtQuick
 import QtQuick.Controls
@@ -5,11 +11,17 @@ import QtQuick.Layouts
 import QtQuick.Controls.Material
 import org.julialang
 
+// Outer container for variables
 Column {
 
     spacing: 10
     property alias variable_list: variable_list
 
+    /**
+    * Add a variable to the variable model
+    * @param {String} variable    Name of the variable to add
+    * @param {String} value       Initial value of the variable
+    */
     function add_variable(variable, value)
     {
         var name_regex = /^[A-Za-z]\w*$/;
@@ -52,6 +64,7 @@ Column {
         text: "Variables"
     }
 
+    // Property name row
     Row {
 
         width: parent.width - parent.spacing - variable_button.width
@@ -69,6 +82,7 @@ Column {
         }
     }
 
+    // List of variables
     ListView {
 
         id: variable_list
@@ -82,6 +96,7 @@ Column {
             width: variable_list.width
             spacing: 10
 
+            // Variable name
             Text {
                 width: (parent.width - 2 * parent.spacing - variable_button.width) / 2
                 horizontalAlignment: Text.AlignLeft
@@ -89,6 +104,7 @@ Column {
                 color: "blue"
             }
 
+            // Variable value
             Text {
                 width: (parent.width - 2 * parent.spacing - variable_button.width) / 2
                 horizontalAlignment: Text.AlignLeft
@@ -96,10 +112,12 @@ Column {
                 color: "blue"
             }
 
+            // Remove variable button
             Button {
                 text: "-"
                 height: parent.height
                 onClicked: {
+                    // Remove variable from flows
                     for (var i = 0; i < location_model.rowCount(); i++) {
                         var flow = location_model.data(location_model.index(i, 0), roles.flow);
                         for (var j = 0; j < flow.rowCount(); j++) {
@@ -109,6 +127,7 @@ Column {
                             }
                         }
                     }
+                    // Remove variable from jumps
                     for (var i = 0; i < edge_model.rowCount(); i++) {
                         var jump = edge_model.data(edge_model.index(i, 0), roles.jump);
                         for (var j = 0; j < jump.rowCount(); j++) {
@@ -130,11 +149,13 @@ Column {
 
     }
 
+    // Add variable row
     Row {
 
         width: parent.width
         spacing: 10
 
+        // Variable name input field
         TextField {
             id: variable_name_text_field
             width: (parent.width - 2 * parent.spacing - variable_button.width) / 2
@@ -147,6 +168,7 @@ Column {
             }
         }
 
+        // Variable value input field
         TextField {
             id: variable_value_text_field
             width: (parent.width - 2 * parent.spacing - variable_button.width) / 2
@@ -159,6 +181,7 @@ Column {
             }
         }
 
+        // Add variable button
         Button {
             id: variable_button
             Layout.fillHeight: false

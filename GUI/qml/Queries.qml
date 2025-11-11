@@ -1,3 +1,9 @@
+/**
+* @file Queries.qml
+* @brief GUI component for managing queries in the HGT Model Checker GUI
+* @authors Moritz Maas
+*/
+
 import QtQml.Models
 import QtQuick
 import QtQuick.Controls
@@ -5,11 +11,16 @@ import QtQuick.Layouts
 import QtQuick.Controls.Material
 import org.julialang
 
+// Outer container for queries
 Column {
 
     spacing: 10
     property alias query_list: query_list
 
+    /**
+    * Add a query to the query model
+    * @param {String} query    Strategy formula of the query
+    */
     function add_query(query)
     {
         if (is_valid_formula(query, "strategy"))
@@ -29,6 +40,8 @@ Column {
         text: "Queries"
     }
 
+
+    // List of queries
     ListView {
 
         id: query_list
@@ -43,6 +56,7 @@ Column {
             width: query_list.width
             spacing: 10
 
+            // Query formula
             Text {
 
                 width: parent.width - parent.spacing - query_button.width
@@ -51,6 +65,7 @@ Column {
 
             }
 
+            // Remove query button
             Button {
                 text: "-"
                 height: parent.height
@@ -63,11 +78,13 @@ Column {
 
     }
 
+    // Add query row
     Row {
 
         width: parent.width
         spacing: 10
 
+        // Formula input field
         TextField {
             id: query_text_field
             width: parent.width - parent.spacing - query_button.width
@@ -80,6 +97,7 @@ Column {
             }
         }
 
+        // Add formula button
         Button {
             id: query_button
             Layout.fillHeight: false

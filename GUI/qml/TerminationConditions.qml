@@ -1,3 +1,9 @@
+/**
+* @file TerminationConditions.qml
+* @brief GUI component for managing termination conditions in the HGT Model Checker GUI
+* @authors Moritz Maas
+*/
+
 import QtQml.Models
 import QtQuick
 import QtQuick.Controls
@@ -5,6 +11,7 @@ import QtQuick.Layouts
 import QtQuick.Controls.Material
 import org.julialang
 
+// Outer container for termination conditions
 Column {
 
     spacing: 10
@@ -17,6 +24,7 @@ Column {
         text: "Termination conditions"
     }
 
+    // Time bound and max steps row
     Row {
 
         width: parent.width
@@ -30,6 +38,7 @@ Column {
             text: "Time bound"
         }
 
+        // Time bound input field
         TextField {
             id: time_bound_text_field
             width: (
@@ -59,6 +68,7 @@ Column {
             text: "Max steps"
         }
 
+        // Max steps input field
         TextField {
             id: max_steps_text_field
             width: (
@@ -82,6 +92,7 @@ Column {
 
     }
 
+    // State formula row
     Row {
 
         width: parent.width
@@ -95,6 +106,7 @@ Column {
             text: "State formula"
         }
 
+        // State formula input field
         TextField {
             id: state_formula_text_field
             width: parent.width - parent.spacing - state_formula_text.width
