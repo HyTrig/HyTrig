@@ -12,7 +12,7 @@ example = 3
 
 if example == 1
     game, termination_conditions, queries = parse_game("examples/bouncing_ball.json")
-    # queries = Strategy_Formula[ Exist_Eventually(Set([:α]), Strategy_to_State(State_Constraint(parse_constraint("pos < 0 || pos > 1000"))))]
+    # queries = Strategy_Formula[ Exist_Eventually(Set([:A]), Strategy_to_State(State_Constraint(parse_constraint("pos < 0 || pos > 1000"))))]
 elseif example == 2
     game, termination_conditions, queries = parse_game("examples/3_players_1_ball.json")
     # queries = Strategy_Formula[ Exist_Eventually(Set([:A]), Exist_Eventually(Set([:A]), Strategy_to_State(State_Constraint(parse_constraint("y > 8"))))), 
