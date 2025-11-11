@@ -31,7 +31,7 @@
                 "guard": "spd < 0",
                 "decision": 
                 {
-                    "α": "up"
+                    "A": "up"
                 },
                 "jump": 
                 {
