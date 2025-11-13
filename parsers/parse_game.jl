@@ -15,7 +15,7 @@ function parse_game(json_file)
         actions = Set{Action}([Symbol(action) for action in GameDict["actions"]])
         initial_valuation::Valuation = Dict{Symbol, Float64}()
         if ! isempty(GameDict["initial_valuation"])
-            initial_valuation = OrderedDict(Symbol(var) => value for (var, value) in GameDict["initial_valuation"])
+            initial_valuation = OrderedDict(first(keys(init)) => first(values(init)) for init in GameDict["initial_valuation"])
         end
         variables = Set{String}([String(var) for var in keys(initial_valuation)])
         locations = Location[]
@@ -27,8 +27,8 @@ function parse_game(json_file)
             invariant::Constraint = parse(loc["invariant"], Bindings(Set([]), Set([]), variables), constraint)
             flow::ReAssignment = Dict{Symbol, ExprLike}()
             if ! isempty(loc["flow"])
-                flow = Dict(Symbol(var) => parse(diff_eq, Bindings(Set([]), Set([]), variables), expression)
-                                            for (var, diff_eq) in loc["flow"])
+                flow = Dict(first(keys(flow)) => parse(first(values(flow)), Bindings(Set([]), Set([]), variables), expression)
+                                            for flow in loc["flow"])
             end
             location = Location(name, invariant, flow)
             if haskey(loc, "initial") && loc["initial"]
@@ -56,8 +56,8 @@ function parse_game(json_file)
             guard::Constraint = parse(edge["guard"], Bindings(Set([]), Set([]), variables), constraint)
             jump::ReAssignment = Dict{Symbol, ExprLike}()
             if ! isempty(edge["jump"])
-                jump = Dict(Symbol(var) => parse(new_value, Bindings(Set([]), Set([]), variables), expression)
-                            for (var, new_value) in edge["jump"])
+                jump = Dict(first(keys(jump)) => parse(first(values(jump)), Bindings(Set([]), Set([]), variables), expression)
+                            for jump in edge["jump"])
             end
             push!(edges, Edge(name, start_location, target_location, guard, decisions[1], jump))
         end
