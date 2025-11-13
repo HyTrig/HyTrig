@@ -274,7 +274,7 @@ ApplicationWindow {
                 id: verify_button
                 text: "Verify"
                 onClicked: {
-                    // TODO
+                    Julia.verify();
                 }
             }
             

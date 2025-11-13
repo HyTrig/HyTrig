@@ -239,10 +239,12 @@ end
 
 A query used in QML models.
 
-    QQuery(name::String)
+    QQuery(name::String, verified::Bool)
 
 Create a QQuery with strategy formula `name`.
 """
 mutable struct QQuery <: QObject
     name::String
+    verified::Bool
+    result::Bool
 end

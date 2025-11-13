@@ -1,5 +1,7 @@
 include("node.jl")
+include("../hybrid_atl/logic.jl")
 include("../game_tree/time_to_trigger.jl")
+include("../game_tree/triggers_based_game_tree.jl")
 
 
 struct TriggerPathOnDemand
@@ -91,10 +93,11 @@ function evaluate_state(formula::State_Formula, node::NodeOnDemand, terminal_nod
     end
 end
 
-function evaluate_and_build!(game::Game, 
+function evaluate_and_build!(game::Game,
                              constraints::Set{Constraint}, 
                              formula::Strategy_Formula, 
                              node::NodeOnDemand,
+                             termination_conditions::Dict{String, Any},
                              terminal_nodes::Set{NodeOnDemand},
                              built_nodes::Set{NodeOnDemand},
                             #  path::Vector{NodeOnDemand}=NodeOnDemand[],
@@ -107,14 +110,14 @@ function evaluate_and_build!(game::Game,
             end
             return evaluate_state(f, node, terminal_nodes)
         end
-        All_Always(agents, f) => ! evaluate_and_build!(game, constraints, Exist_Eventually(setdiff(game.agents, agents), Strategy_Not(f)), node, terminal_nodes, built_nodes, level)
-        All_Eventually(agents, f) => ! evaluate_and_build!(game, constraints, Exist_Always(setdiff(game.agents, agents), Strategy_Not(f)), node, terminal_nodes, built_nodes, level)
-        Strategy_And(left, right) => evaluate_and_build!(game, constraints, left, node, terminal_nodes, built_nodes, level) && evaluate_and_build!(game, constraints, right, node, terminal_nodes, built_nodes, level)
-        Strategy_Or(left, right) => evaluate_and_build!(game, constraints, left, node, terminal_nodes, built_nodes, level) || evaluate_and_build!(game, constraints, right, node, terminal_nodes, built_nodes, level)
-        Strategy_Not(f) => ! evaluate_and_build!(game, constraints, f, node, terminal_nodes, built_nodes, level)
-        Strategy_Imply(left, right) => ! evaluate_and_build!(game, constraints, left, node, terminal_nodes, built_nodes, level) || evaluate_and_build!(game, constraints, right, node, terminal_nodes, built_nodes, level)
+        All_Always(agents, f) => ! evaluate_and_build!(game, constraints, Exist_Eventually(setdiff(game.agents, agents), Strategy_Not(f)), node, termination_conditions, terminal_nodes, built_nodes, level)
+        All_Eventually(agents, f) => ! evaluate_and_build!(game, constraints, Exist_Always(setdiff(game.agents, agents), Strategy_Not(f)), node, termination_conditions, terminal_nodes, built_nodes, level)
+        Strategy_And(left, right) => evaluate_and_build!(game, constraints, left, node, termination_conditions, terminal_nodes, built_nodes, level) && evaluate_and_build!(game, constraints, right, node, termination_conditions, terminal_nodes, built_nodes, level)
+        Strategy_Or(left, right) => evaluate_and_build!(game, constraints, left, node, termination_conditions, terminal_nodes, built_nodes, level) || evaluate_and_build!(game, constraints, right, node, termination_conditions, terminal_nodes, built_nodes, level)
+        Strategy_Not(f) => ! evaluate_and_build!(game, constraints, f, node, termination_conditions, terminal_nodes, built_nodes, level)
+        Strategy_Imply(left, right) => ! evaluate_and_build!(game, constraints, left, node, termination_conditions, terminal_nodes, built_nodes, level) || evaluate_and_build!(game, constraints, right, node, termination_conditions, terminal_nodes, built_nodes, level)
         Exist_Always(agents, f) => begin
-            if ! evaluate_and_build!(game, constraints, f, node, terminal_nodes, built_nodes, level)
+            if ! evaluate_and_build!(game, constraints, f, node, termination_conditions, terminal_nodes, built_nodes, level)
                 return false
             end
             if ! (node in built_nodes) # .children_built == false
@@ -124,18 +127,18 @@ function evaluate_and_build!(game::Game,
                 return true
             end
             if node.passive_node
-                return evaluate_and_build!(game, constraints, formula, node.children[1], terminal_nodes, built_nodes, level)
+                return evaluate_and_build!(game, constraints, formula, node.children[1], termination_conditions, terminal_nodes, built_nodes, level)
             end
             children = sort_children_by_clock_agent_on_demand(node, agents)
             agents_have_children = false
             for child in children
                 if child.reaching_decision.first in agents
-                    if evaluate_and_build!(game, constraints, formula, child, terminal_nodes, built_nodes, level + 1)
+                    if evaluate_and_build!(game, constraints, formula, child, termination_conditions, terminal_nodes, built_nodes, level + 1)
                         return true
                     end
                     agents_have_children = true
                 else 
-                    if ! evaluate_and_build!(game, constraints, formula, child, terminal_nodes, built_nodes, level + 1)
+                    if ! evaluate_and_build!(game, constraints, formula, child, termination_conditions, terminal_nodes, built_nodes, level + 1)
                         return false
                     end
                 end
@@ -147,7 +150,7 @@ function evaluate_and_build!(game::Game,
             end
         end
         Exist_Eventually(agents, f) => begin
-            if evaluate_and_build!(game, constraints, f, node, terminal_nodes, built_nodes, level)
+            if evaluate_and_build!(game, constraints, f, node, termination_conditions, terminal_nodes, built_nodes, level)
                 return true
             end
             if ! (node in built_nodes) # .children_built == false
@@ -157,18 +160,18 @@ function evaluate_and_build!(game::Game,
                 return false
             end
             if node.passive_node
-                return evaluate_and_build!(game, constraints, formula, node.children[1], terminal_nodes, built_nodes, level)
+                return evaluate_and_build!(game, constraints, formula, node.children[1], termination_conditions, terminal_nodes, built_nodes, level)
             end
             children = sort_children_by_clock_agent_on_demand(node, agents)
             agents_have_children = false
             for child in children
                 if child.reaching_decision.first in agents
-                    if evaluate_and_build!(game, constraints, formula, child, terminal_nodes, built_nodes, level + 1)
+                    if evaluate_and_build!(game, constraints, formula, child, termination_conditions, terminal_nodes, built_nodes, level + 1)
                         return true
                     end
                     agents_have_children = true
                 else 
-                    if ! evaluate_and_build!(game, constraints, formula, child, terminal_nodes, built_nodes, level + 1)
+                    if ! evaluate_and_build!(game, constraints, formula, child, termination_conditions, terminal_nodes, built_nodes, level + 1)
                         return false
                     end
                 end
@@ -192,7 +195,7 @@ function evaluate_queries(game::Game, termination_conditions, queries::Vector{St
     terminal_nodes = Set{NodeOnDemand}()
     built_nodes = Set{NodeOnDemand}()
     for formula in queries
-        push!(results, evaluate_and_build!(game, constraints, formula, root, terminal_nodes, built_nodes, 0))
+        push!(results, evaluate_and_build!(game, constraints, formula, root, termination_conditions, terminal_nodes, built_nodes, 0))
     end
     println("Built nodes count: ", length(built_nodes))
     println("Built terminal nodes count: ", length(terminal_nodes))

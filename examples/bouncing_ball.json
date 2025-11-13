@@ -6,20 +6,18 @@
             {
                 "name": "falling",
                 "invariant": "0 <= pos && pos <= 1000 && acc == -10",
-                "flow": 
-                    {
-                        "pos": "spd",
-                        "spd": "acc"
-                    },
+                "flow": [
+                    {"pos": "spd"},
+                    {"spd": "acc"}
+                ],
                 "initial": true
             }
         ],
-        "initial_valuation":
-            {
-                "pos": 1000,
-                "spd": 0,
-                "acc": -10
-            },
+        "initial_valuation": [
+            {"pos": 1000},
+            {"spd": 0},
+            {"acc": -10}
+        ],
         "agents": ["A"],
         "actions": ["up"],
         "edges": 
@@ -33,10 +31,9 @@
                 {
                     "A": "up"
                 },
-                "jump": 
-                {
-                    "spd": "- spd"
-                }
+                "jump": [
+                    {"spd": "- spd"}
+                ]
             }
         ],
         "triggers": 

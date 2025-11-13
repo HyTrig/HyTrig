@@ -8,76 +8,70 @@
             {
                 "name": "A_Waiting",
                 "invariant": "timer <= 5",
-                "flow": 
-                    {
-                        "middle_player": "sin(time) * spd_C",
-                        "timer": "1",
-                        "time": "1"
-                    },
+                "flow": [
+                    {"middle_player": "sin(time) * spd_C"},
+                    {"timer": "1"},
+                    {"time": "1"}
+                ],
                 "initial": false
             },
             {
                 "name": "A_Throwing",
                 "invariant": "",
-                "flow": 
-                    {
-                        "x": "spd_A * dir_x",
-                        "y": "spd_A * dir_y",
-                        "middle_player": "sin(time) * spd_C",
-                        "time": "1"
-                    },
+                "flow": [
+                    {"x": "spd_A * dir_x"},
+                    {"y": "spd_A * dir_y"},
+                    {"middle_player": "sin(time) * spd_C"},
+                    {"time": "1"}
+                ],
                 "initial": true
             },
             {
                 "name": "B_Waiting",
                 "invariant": "timer <= 5",
-                "flow": 
-                    {
-                        "middle_player": "cos(time) * spd_C",
-                        "timer": "1",
-                        "time": "1"
-                    },
+                "flow": [
+                    {"middle_player": "cos(time) * spd_C"},
+                    {"timer": "1"},
+                    {"time": "1"}
+                ],
                 "initial": false
             },
             {
                 "name": "B_Throwing",
                 "invariant": "",
-                "flow": 
-                    {
-                        "x": "spd_B * dir_x",
-                        "y": "spd_B * dir_y",
-                        "middle_player": "cos(time) * spd_C",
-                        "time": "1"
-                    },
+                "flow": [
+                    {"x": "spd_B * dir_x"},
+                    {"y": "spd_B * dir_y"},
+                    {"middle_player": "cos(time) * spd_C"},
+                    {"time": "1"}
+                ],
                 "initial": false
             },
             {
                 "name": "Caught",
                 "invariant": "-1 <= x && x <= 1 && (y - middle_player)^2 <= 1",
-                "flow": 
-                    {
-                        "time": "1"
-                    },
+                "flow": [
+                    {"time": "1"}
+                ],
                 "initial": false
             }
         ],
-        "initial_valuation":
-            {
-                "x": -5,
-                "y": 0.5,
-                "pos_A_x": -10,
-                "pos_A_y": 0,
-                "pos_B_x": 10,
-                "pos_B_y": 0,
-                "middle_player": 0,
-                "dir_x": -5,
-                "dir_y": -0.5,
-                "spd_A": 0.1,
-                "spd_B": 0.2,
-                "spd_C": 5,
-                "time": 0,
-                "timer": 0
-            },
+        "initial_valuation": [
+            {"x": -5},
+            {"y": 0.5},
+            {"pos_A_x": -10},
+            {"pos_A_y": 0},
+            {"pos_B_x": 10},
+            {"pos_B_y": 0},
+            {"middle_player": 0},
+            {"dir_x": -5},
+            {"dir_y": -0.5},
+            {"spd_A": 0.1},
+            {"spd_B": 0.2},
+            {"spd_C": 5},
+            {"time": 0},
+            {"timer": 0}
+        ],
         "agents": ["A", "B", "C"],
         "actions": ["catch", "throw"],
         "edges": 
@@ -91,10 +85,9 @@
                 {
                     "A": "catch"
                 },
-                "jump": 
-                {
-                    "timer": "0"
-                }
+                "jump": [
+                    {"timer": "0"}
+                ]
             },
             {
                 "name": "A_throw",
@@ -105,12 +98,11 @@
                 {
                     "A": "throw"
                 },
-                "jump": 
-                {
-                    "dir_x": "pos_B_x - x",
-                    "dir_y": "pos_B_y - y",
-                    "timer": "0"
-                }
+                "jump": [
+                    {"dir_x": "pos_B_x - x"},
+                    {"dir_y": "pos_B_y - y"},
+                    {"timer": "0"}
+                ]
             },
             {
                 "name": "B_Caught",
@@ -121,10 +113,9 @@
                 {
                     "B": "catch"
                 },
-                "jump": 
-                {
-                    "timer": "0"
-                }
+                "jump": [
+                    {"timer": "0"}
+                ]
             },
             {
                 "name": "B_throw",
@@ -135,12 +126,11 @@
                 {
                     "B": "throw"
                 },
-                "jump": 
-                {
-                    "dir_x": "pos_A_x - x",
-                    "dir_y": "pos_A_y - y",
-                    "timer": "0"
-                }
+                "jump": [
+                    {"dir_x": "pos_A_x - x"},
+                    {"dir_y": "pos_A_y - y"},
+                    {"timer": "0"}
+                ]
             },
             {
                 "name": "Middle_Caught_A",
@@ -151,9 +141,7 @@
                 {
                     "C": "catch"
                 },
-                "jump": 
-                {
-                }
+                "jump": []
             },
             {
                 "name": "Middle_Caught_B",
@@ -164,9 +152,7 @@
                 {
                     "C": "catch"
                 },
-                "jump": 
-                {
-                }
+                "jump": []
             }
         ],
         "triggers": 

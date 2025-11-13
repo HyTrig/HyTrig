@@ -25,7 +25,7 @@ Column {
     {
         if (is_valid_formula(query, "strategy"))
         {
-            query_model.appendRow({name: query});
+            query_model.appendRow({name: query, verified: false, result: false});
             query_text_field.placeholderText = "Enter strategy formula";
             query_text_field.text = "";
         }

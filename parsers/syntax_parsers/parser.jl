@@ -15,6 +15,7 @@ Uses tokens defined by [`tokenizer.jl`], [`grammar.jl`].
 
 include("tokenizer.jl")
 include("grammar.jl")
+include("../ast_to_logic.jl")
 
 """
     parse(str::String, bindings::Bindings, level::ParseLevel)::Union{Strategy_Formula, State_Formula, Constraint, ExprLike, Nothing}

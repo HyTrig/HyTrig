@@ -13,17 +13,20 @@ This script runs a GUI with QML. The GUI allows to create, edit, save, load and 
 - Moritz Maas
 """
 
-include("packages.jl")
+# include("packages.jl")
 
-# using Pkg
-# Pkg.activate(".")
+using Pkg
+Pkg.activate(".")
 
 using Dates
 using JSON3
 using QML
 
 include("GUI/QObjects.jl")
+
+include("game_syntax/game.jl")
 include("parsers/syntax_parsers/parser.jl")
+include("model_checking/build_and_evaluate.jl")
 
 # Declare synchronized models and roles
 
@@ -211,12 +214,86 @@ function load_from_json(path)
         )
     end
     for query_name in data["queries"]
-        push!(query_list, QQuery(query_name))
+        push!(query_list, QQuery(query_name, false, false))
     end
     term_conds = data["termination-conditions"]
     termination_conditions["time-bound"] = string(term_conds["time-bound"])
     termination_conditions["max-steps"] = string(term_conds["max-steps"])
     termination_conditions["state-formula"] = term_conds["state-formula"]
+end
+
+"""
+    verify()
+
+Verify the current hybrid game with triggers.
+"""
+function verify()
+    bindings = Bindings(
+        Set(collect(x.name for x in agent_list)),
+        Set(collect(x.name for x in location_list)),
+        Set(collect(x.name for x in variable_list))
+    )
+
+    locations::Vector{Location} = []
+    for loc in location_list
+        push!(
+            locations,
+            Location(
+                Symbol(loc.name),
+                parse(loc.inv, bindings, constraint),
+                Dict([(Variable(loc.flow[i].var) => parse(loc.flow[i].flow, bindings, expression)) for i in 1:length(loc.flow)])
+            )
+        )
+    end
+    initial_location::Location = locations[
+        findfirst(loc -> loc.name == Symbol(first(filter(loc -> loc.initial, location_list)).name), locations)
+    ]
+
+    initial_valuation::Valuation = Valuation(
+        Variable(var.name) => Base.parse(Float64, var.value) for var in variable_list
+    )
+    agents::Set{Agent} = Set(Agent(agent.name) for agent in agent_list)
+    actions::Set{Action} = Set(Action(action.name) for action in action_list)
+    edges::Vector{Edge} = [Edge(
+        Symbol(edge.name),
+        locations[findfirst(loc -> loc.name == Symbol(edge.source), locations)],
+        locations[findfirst(loc -> loc.name == Symbol(edge.target), locations)],
+        parse(edge.guard, bindings, constraint),
+        Decision(Agent(edge.agent), Action(edge.action)),
+        Dict(
+            Symbol(edge.jump[i].var) => parse(edge.jump[i].jump, bindings, expression) for i in 1:length(edge.jump)
+        )
+    ) for edge in edge_list]
+    triggers::Dict{Agent, Vector{Constraint}} = Dict{Agent, Vector{Constraint}}(
+        Symbol(agent.name) => [
+            parse(trigger.name, bindings, constraint) for trigger in values(agent.triggers)[]
+        ] for agent in agent_list
+    )
+
+    game = Game(
+        locations,
+        initial_location,
+        initial_valuation,
+        agents,
+        actions,
+        edges,
+        triggers,
+        true
+    )
+    term_conds::Dict{String, Any} = Dict(
+        "time-bound" => Base.parse(Float64, termination_conditions["time-bound"]),
+        "max-steps" => Base.parse(Int64, termination_conditions["max-steps"]),
+        "state-formula" => parse(termination_conditions["state-formula"], bindings, state)
+    )
+    queries::Vector{Strategy_Formula} = [parse(query.name, bindings, strategy) for query in query_list]
+
+    results, _ = evaluate_queries(game, term_conds, queries)
+
+    for (i, r) in enumerate(results)
+        query_list[i].verified = true
+        query_list[i].result = r
+    end
+    println("Verification complete.")
 end
 
 function _get_location_json(loc::QLocation)
@@ -243,7 +320,7 @@ end
 
 # Build and run QML GUI
 
-@qmlfunction has_name is_valid_formula save_to_json load_from_json
+@qmlfunction has_name is_valid_formula save_to_json load_from_json verify
 
 qml_file = joinpath(dirname(@__FILE__), "GUI", "qml", "gui.qml")
 

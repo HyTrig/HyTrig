@@ -6,48 +6,44 @@
             {
                 "name": "A_Throwing",
                 "invariant": "-11 <= x && x <= 11 && -1 <= y && y <= 11",
-                "flow": 
-                    {
-                        "x": "spd_A * dir_x",
-                        "y": "spd_A * dir_y",
-                        "time": "1"
-                    },
+                "flow": [
+                    {"x": "spd_A * dir_x"},
+                    {"y": "spd_A * dir_y"},
+                    {"time": "1"}
+                ],
                 "initial": true
             },
             {
                 "name": "B_Throwing",
                 "invariant": "-11 <= x && x <= 11 && -1 <= y && y <= 11",
-                "flow": 
-                    {
-                        "x": "spd_B * dir_x",
-                        "y": "spd_B * dir_y",
-                        "time": "1"
-                    },
+                "flow": [
+                    {"x": "spd_B * dir_x"},
+                    {"y": "spd_B * dir_y"},
+                    {"time": "1"}
+                ],
                 "initial": false
             },
             {
                 "name": "C_Throwing",
                 "invariant": "-11 <= x && x <= 11 && -1 <= y && y <= 11",
-                "flow": 
-                    {
-                        "x": "spd_C * dir_x",
-                        "y": "spd_C * dir_y",
-                        "time": "1"
-                    },
+                "flow": [
+                    {"x": "spd_C * dir_x"},
+                    {"y": "spd_C * dir_y"},
+                    {"time": "1"}
+                ],
                 "initial": false
             }
         ],
-        "initial_valuation":
-            {
-                "x": -5,
-                "y": 5,
-                "dir_x": -5,
-                "dir_y": -5,
-                "spd_A": 0.1,
-                "spd_B": 0.2,
-                "spd_C": 0.4,
-                "time": 0
-            },
+        "initial_valuation": [
+            {"x": -5},
+            {"y": 5},
+            {"dir_x": -5},
+            {"dir_y": -5},
+            {"spd_A": 0.1},
+            {"spd_B": 0.2},
+            {"spd_C": 0.4},
+            {"time": 0}
+        ],
         "agents": ["A", "B", "C"],
         "actions": ["R", "L"],
         "edges": 
@@ -61,11 +57,10 @@
                 {
                     "A": "R"
                 },
-                "jump": 
-                {
-                    "dir_x": "-10 - x",
-                    "dir_y": "- y"
-                }
+                "jump": [ 
+                    {"dir_x": "-10 - x"},
+                    {"dir_y": "- y"}
+                ]
             },
             {
                 "name": "C_A_B",
@@ -76,11 +71,10 @@
                 {
                     "A": "R"
                 },
-                "jump": 
-                {
-                    "dir_x": "-10 - x",
-                    "dir_y": "- y"
-                }
+                "jump": [
+                    {"dir_x": "-10 - x"},
+                    {"dir_y": "- y"}
+                ]
             },
             {
                 "name": "B_A_C",
@@ -91,11 +85,10 @@
                 {
                     "A": "L"
                 },
-                "jump": 
-                {
-                    "dir_x": "10 - x",
-                    "dir_y": "- y"
-                }
+                "jump": [
+                    {"dir_x": "10 - x"},
+                    {"dir_y": "- y"}
+                ]
             },
             {
                 "name": "C_A_C",
@@ -106,11 +99,10 @@
                 {
                     "A": "L"
                 },
-                "jump": 
-                {
-                    "dir_x": "10 - x",
-                    "dir_y": "- y"
-                }
+                "jump": [
+                    {"dir_x": "10 - x"},
+                    {"dir_y": "- y"}
+                ]
             },
             {
                 "name": "A_B_A",
@@ -121,11 +113,10 @@
                 {
                     "B": "R"
                 },
-                "jump": 
-                {
-                    "dir_x": "- x",
-                    "dir_y": "10 - y"
-                }
+                "jump": [
+                    {"dir_x": "- x"},
+                    {"dir_y": "10 - y"}
+                ]
             },
             {
                 "name": "C_B_A",
@@ -136,11 +127,10 @@
                 {
                     "B": "R"
                 },
-                "jump": 
-                {
-                    "dir_x": "- x",
-                    "dir_y": "10 - y"
-                }
+                "jump": [
+                    {"dir_x": "- x"},
+                    {"dir_y": "10 - y"}
+                ]
             },
             {
                 "name": "A_B_C",
@@ -151,11 +141,10 @@
                 {
                     "B": "L"
                 },
-                "jump": 
-                {
-                    "dir_x": "10 - x",
-                    "dir_y": "- y"
-                }
+                "jump": [
+                    {"dir_x": "10 - x"},
+                    {"dir_y": "- y"}
+                ]
             },
             {
                 "name": "C_B_C",
@@ -166,11 +155,10 @@
                 {
                     "B": "L"
                 },
-                "jump": 
-                {
-                    "dir_x": "10 - x",
-                    "dir_y": "- y"
-                }
+                "jump": [
+                    {"dir_x": "10 - x"},
+                    {"dir_y": "- y"}
+                ]
             },
             {
                 "name": "A_C_A",
@@ -181,11 +169,10 @@
                 {
                     "C": "R"
                 },
-                "jump": 
-                {
-                    "dir_x": "- x",
-                    "dir_y": "10 - y"
-                }
+                "jump": [
+                    {"dir_x": "- x"},
+                    {"dir_y": "10 - y"}
+                ]
             },
             {
                 "name": "B_C_A",
@@ -196,11 +183,10 @@
                 {
                     "C": "R"
                 },
-                "jump": 
-                {
-                    "dir_x": "- x",
-                    "dir_y": "10 - y"
-                }
+                "jump": [
+                    {"dir_x": "- x"},
+                    {"dir_y": "10 - y"}
+                ]
             },
             {
                 "name": "A_C_B",
@@ -211,11 +197,10 @@
                 {
                     "C": "L"
                 },
-                "jump": 
-                {
-                    "dir_x": "-10 - x",
-                    "dir_y": "- y"
-                }
+                "jump": [
+                    {"dir_x": "-10 - x"},
+                    {"dir_y": "- y"}
+                ]
             },
             {
                 "name": "B_C_B",
@@ -226,11 +211,10 @@
                 {
                     "C": "L"
                 },
-                "jump": 
-                {
-                    "dir_x": "-10 - x",
-                    "dir_y": "- y"
-                }
+                "jump": [
+                    {"dir_x": "-10 - x"},
+                    {"dir_y": "- y"}
+                ]
             }
         ],
         "triggers": 
