@@ -137,6 +137,9 @@ Save the current game to a JSON file at `path`.
 """
 function save_to_json(path)
     path = replace(String(path),  r"^(file:\/{2})" => "")
+    if !endswith(path, r"\.json")
+        path = path * ".json"
+    end
     data = Dict(
         "Game" => Dict(
             "name" => "save$(now())",
