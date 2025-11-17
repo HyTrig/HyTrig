@@ -86,6 +86,14 @@ ApplicationWindow {
         trigger_spacer.visible = agent_model.rowCount() > 0;
     }
 
+    function verify() {
+        Julia.verify();
+
+        // Refresh Queries
+        queries.query_list.model = [];
+        queries.query_list.model = query_model;
+    }
+
     // Window-filling column
     Column {
 
@@ -274,7 +282,7 @@ ApplicationWindow {
                 id: verify_button
                 text: "Verify"
                 onClicked: {
-                    Julia.verify();
+                    verify();
                 }
             }
             

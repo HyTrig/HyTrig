@@ -61,16 +61,20 @@ Column {
 
                 width: model.verified ? (parent.width - 2 * parent.spacing - checkbox.width - query_button.width) : (parent.width - parent.spacing - query_button.width)
                 text: model.name
+                horizontalAlignment: Text.AlignLeft
+                verticalAlignment: Text.AlignVCenter
                 color: "blue"
 
             }
 
+            // Verified checkbox
             CheckBox {
 
                 id: checkbox
                 visible: model.verified
+                tristate: true
                 checkable: false
-                checkState: model.result ? Qt.Checked : Qt.PariallyChecked
+                checkState: model.result ? Qt.Checked : Qt.PartiallyChecked
 
             }
 
