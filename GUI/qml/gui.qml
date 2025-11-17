@@ -58,7 +58,12 @@ ApplicationWindow {
     * @param {String}   path   Path to load from
     */
     function load(path) {
-        Julia.load_from_json(path);
+        var loaded = Julia.load_from_json(path);
+        if (!loaded)
+        {
+            load_fail_dialog.open();
+            return;
+        }
 
         // Refresh ListViews
         variables.variable_list.model = [];
@@ -92,6 +97,15 @@ ApplicationWindow {
         // Refresh Queries
         queries.query_list.model = [];
         queries.query_list.model = query_model;
+    }
+
+    // Load failure dialog
+    Dialog {
+        id: load_fail_dialog
+        anchors.centerIn: parent
+        title: "Failed to load from file"
+        modal: true
+        standardButtons: Dialog.Ok
     }
 
     // Window-filling column

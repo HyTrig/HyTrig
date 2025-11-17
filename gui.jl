@@ -172,7 +172,7 @@ Load a game from a JSON file at `path`.
 # Arguments
 - `path`: the path to load the JSON file from
 """
-function load_from_json(path)
+function load_from_json(path):: Bool
     path = replace(String(path),  r"^(file:\/{2})" => "")
     data = open(path, "r") do f
         JSON3.read(f)
@@ -185,41 +185,46 @@ function load_from_json(path)
     empty!(edge_list)
     empty!(query_list)
 
-    game = data["Game"]
-    for loc in game["locations"]
-        push!(
-            location_list,
-            QLocation(loc["name"], loc["invariant"], loc["initial"],
-                JuliaItemModel([QFlow(String(first(keys(flow))), first(values(flow))) for flow in loc["flow"]])
+    try
+        game = data["Game"]
+        for loc in game["locations"]
+            push!(
+                location_list,
+                QLocation(loc["name"], loc["invariant"], loc["initial"],
+                    JuliaItemModel([QFlow(String(first(keys(flow))), first(values(flow))) for flow in loc["flow"]])
+                )
             )
-        )
-    end
-    for var in game["initial_valuation"]
-        push!(variable_list, QVariable(String(first(keys(var))), string(first(values(var)))))
-    end
-    for agent_name in game["agents"]
-        triggers = JuliaItemModel([QTrigger(t) for t in game["triggers"][agent_name]])
-        push!(agent_list, QAgent(agent_name, triggers))
-    end
-    for action_name in game["actions"]
-        push!(action_list, QAction(action_name))
-    end
-    for edge in game["edges"]
-        push!(
-            edge_list,
-            QEdge(edge["name"], edge["start_location"], edge["target_location"], edge["guard"],
-                String(first(keys(edge["decision"]))), first(values(edge["decision"])),
-                JuliaItemModel([QJump(String(first(keys(jump))), first(values(jump))) for jump in edge["jump"]])
+        end
+        for var in game["initial_valuation"]
+            push!(variable_list, QVariable(String(first(keys(var))), string(first(values(var)))))
+        end
+        for agent_name in game["agents"]
+            triggers = JuliaItemModel([QTrigger(t) for t in game["triggers"][agent_name]])
+            push!(agent_list, QAgent(agent_name, triggers))
+        end
+        for action_name in game["actions"]
+            push!(action_list, QAction(action_name))
+        end
+        for edge in game["edges"]
+            push!(
+                edge_list,
+                QEdge(edge["name"], edge["start_location"], edge["target_location"], edge["guard"],
+                    String(first(keys(edge["decision"]))), first(values(edge["decision"])),
+                    JuliaItemModel([QJump(String(first(keys(jump))), first(values(jump))) for jump in edge["jump"]])
+                )
             )
-        )
+        end
+        for query_name in data["queries"]
+            push!(query_list, QQuery(query_name, false, false))
+        end
+        term_conds = data["termination-conditions"]
+        termination_conditions["time-bound"] = string(term_conds["time-bound"])
+        termination_conditions["max-steps"] = string(term_conds["max-steps"])
+        termination_conditions["state-formula"] = term_conds["state-formula"]
+    catch
+        return false
     end
-    for query_name in data["queries"]
-        push!(query_list, QQuery(query_name, false, false))
-    end
-    term_conds = data["termination-conditions"]
-    termination_conditions["time-bound"] = string(term_conds["time-bound"])
-    termination_conditions["max-steps"] = string(term_conds["max-steps"])
-    termination_conditions["state-formula"] = term_conds["state-formula"]
+    return true
 end
 
 """
