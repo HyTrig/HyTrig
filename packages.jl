@@ -1,9 +1,13 @@
 using Pkg
 
+compat = Pkg.Types.read_project("Project.toml").compat
+
 Pkg.activate(".")
 
-Pkg.add("CxxWrap")
-Pkg.compat("CxxWrap", "0.16")
+if !haskey(compat, "CxxWrap")
+    Pkg.add("CxxWrap")
+    Pkg.compat("CxxWrap", "0.16")
+end
 
 dependencies = [
     "DifferentialEquations",
