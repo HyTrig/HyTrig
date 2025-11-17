@@ -253,6 +253,7 @@ Column {
                 // Guard input field
                 TextField {
                     id: guard_text_field
+                    property bool had_focus: false
                     width: parent.width - parent.spacing - guard_text.width
                     text: model.guard
                     placeholderText: "Enter guard"
@@ -267,6 +268,25 @@ Column {
                             model.guard = "";
                             text = "";
                             placeholderText = "Invalid guard";
+                        }
+                    }
+                    onActiveFocusChanged: {
+                        if (had_focus)
+                        {
+                            had_focus = false;
+                            if (is_valid_formula(text, "constraint"))
+                            {
+                                model.guard = text;
+                                placeholderText = "";
+                                focus = false;
+                            }
+                            else {
+                                model.guard = "";
+                                text = "";
+                                placeholderText = "Invalid guard";
+                            }
+                        } else {
+                            had_focus = focus;
                         }
                     }
                 }
@@ -369,6 +389,7 @@ Column {
                     // Jump expression input field
                     TextField {
                         id: jump_text_field
+                        property bool had_focus: false
                         width: parent.width - parent.spacing - guard_text.width
                         text: model.jump
                         placeholderText: "Enter expression"
@@ -382,6 +403,24 @@ Column {
                             else {
                                 text = "";
                                 placeholderText = "Invalid expression";
+                            }
+                        }
+                        onActiveFocusChanged: {
+                            if (had_focus)
+                            {
+                                had_focus = false;
+                                if (is_valid_formula(text, "expression"))
+                                {
+                                    model.jump = text;
+                                    placeholderText = "";
+                                    focus = false;
+                                }
+                                else {
+                                    text = "";
+                                    placeholderText = "Invalid expression";
+                                }
+                            } else {
+                                had_focus = focus;
                             }
                         }
                     }

@@ -41,6 +41,7 @@ Column {
         // Time bound input field
         TextField {
             id: time_bound_text_field
+            property bool had_focus: false
             width: (
                 parent.width - 3 * parent.spacing - 2 * state_formula_text.width
             ) / 2
@@ -58,6 +59,25 @@ Column {
                     placeholderText = "Invalid time bound";
                 }
             }
+            onActiveFocusChanged: {
+                if (had_focus)
+                {
+                    had_focus = false;
+                    var regex = /^(([1-9]\d*(\.\d+)?$)|(0\.\d*[1-9])$)/;
+                    if (regex.test(text))
+                    {
+                        termination_conditions["time-bound"] = text;
+                        placeholderText = "";
+                        focus = false;
+                    }
+                    else {
+                        text = "";
+                        placeholderText = "Invalid time bound";
+                    }
+                } else {
+                    had_focus = focus;
+                }
+            }
         }
 
         Text {
@@ -71,6 +91,7 @@ Column {
         // Max steps input field
         TextField {
             id: max_steps_text_field
+            property bool had_focus: false
             width: (
                 parent.width - 3 * parent.spacing - 2 * state_formula_text.width
             ) / 2
@@ -86,6 +107,25 @@ Column {
                 else {
                     text = "";
                     placeholderText = "Invalid max steps";
+                }
+            }
+            onActiveFocusChanged: {
+                if (had_focus)
+                {
+                    had_focus = false;
+                    var regex = /^[1-9]\d*$/;
+                    if (regex.test(text))
+                    {
+                        termination_conditions["max-steps"] = text;
+                        placeholderText = "";
+                        focus = false;
+                    }
+                    else {
+                        text = "";
+                        placeholderText = "Invalid max steps";
+                    }
+                } else {
+                    had_focus = focus;
                 }
             }
         }
@@ -109,6 +149,7 @@ Column {
         // State formula input field
         TextField {
             id: state_formula_text_field
+            property bool had_focus: false
             width: parent.width - parent.spacing - state_formula_text.width
             placeholderText: "Enter state formula"
             onAccepted: {
@@ -121,6 +162,24 @@ Column {
                 else {
                     text = "";
                     placeholderText = "Invalid state formula";
+                }
+            }
+            onActiveFocusChanged: {
+                if (had_focus)
+                {
+                    had_focus = false;
+                    if (is_valid_formula(text, "state"))
+                    {
+                        termination_conditions["state-formula"] = text;
+                        placeholderText = "";
+                        focus = false;
+                    }
+                    else {
+                        text = "";
+                        placeholderText = "Invalid state formula";
+                    }
+                } else {
+                    had_focus = focus;
                 }
             }
         }

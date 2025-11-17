@@ -120,6 +120,7 @@ Column {
                 // Invariant input field
                 TextField {
                     id: invariant_text_field
+                    property bool had_focus: false
                     width: (
                         parent.width - 5 * parent.spacing - location_name_text.width - location_inv_text.width - initial_location.width - location_remove.width
                     ) / 2
@@ -136,6 +137,25 @@ Column {
                             model.inv = "";
                             text = "";
                             placeholderText = "Invalid invariant";
+                        }
+                    }
+                    onActiveFocusChanged: {
+                        if (had_focus)
+                        {
+                            had_focus = false;
+                            if (is_valid_formula(text, "constraint"))
+                            {
+                                model.inv = text;
+                                placeholderText = "";
+                                focus = false;
+                            }
+                            else {
+                                model.inv = "";
+                                text = "";
+                                placeholderText = "Invalid invariant";
+                            }
+                        } else {
+                            had_focus = focus;
                         }
                     }
                 }
@@ -205,6 +225,7 @@ Column {
                     // Flow expression input field
                     TextField {
                         id: flow_text_field
+                        property bool had_focus: false
                         width: parent.width - 2 * parent.spacing - location_name_text.width - add_location_button.width
                         text: model.flow
                         placeholderText: "Enter expression"
@@ -218,6 +239,24 @@ Column {
                             else {
                                 text = "";
                                 placeholderText = "Invalid expression";
+                            }
+                        }
+                        onActiveFocusChanged: {
+                            if (had_focus)
+                            {
+                                had_focus = false;
+                                if (is_valid_formula(text, "expression"))
+                                {
+                                    model.flow = text;
+                                    placeholderText = "";
+                                    focus = false;
+                                }
+                                else {
+                                    text = "";
+                                    placeholderText = "Invalid expression";
+                                }
+                            } else {
+                                had_focus = focus;
                             }
                         }
                     }
