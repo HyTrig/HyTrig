@@ -35,18 +35,16 @@ Column {
                     })
                 }
                 edge_model.appendRow({name: name, source: "", target: "", guard: "", agent: "", action: "", jump: jump});
-                edge_name_text_field.text = "";
                 edge_name_text_field.placeholderText = "Enter name";
             }
             else {
-                edge_name_text_field.text = "";
                 edge_name_text_field.placeholderText = "Name in use";
             }
         }
         else {
-            edge_name_text_field.text = "";
             edge_name_text_field.placeholderText = "Invalid name";
         }
+        edge_name_text_field.text = "";
     }
     
     Text {

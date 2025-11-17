@@ -150,7 +150,7 @@ ApplicationWindow {
                     width: parent.width
                     height: 5
                     radius: 4
-                    color: "black"
+                    color: "white"
                 }
 
                 Variables {
@@ -164,7 +164,7 @@ ApplicationWindow {
                     height: 5
                     visible: agent_model.rowCount() > 0
                     radius: 4
-                    color: "black"
+                    color: "white"
                 }
 
                 Triggers {
@@ -177,7 +177,7 @@ ApplicationWindow {
                     width: parent.width
                     height: 5
                     radius: 4
-                    color: "black"
+                    color: "white"
                 }
 
                 TerminationConditions {
@@ -189,7 +189,7 @@ ApplicationWindow {
                     width: parent.width
                     height: 5
                     radius: 4
-                    color: "black"
+                    color: "white"
                 }
 
                 Queries {
@@ -204,7 +204,7 @@ ApplicationWindow {
                 width: 5
                 height: parent.height
                 radius: 4
-                color: "black"
+                color: "white"
             }
 
             // Right window side
@@ -223,7 +223,7 @@ ApplicationWindow {
                     width: parent.width
                     height: 5
                     radius: 4
-                    color: "black"
+                    color: "white"
                 }
 
                 Edges {

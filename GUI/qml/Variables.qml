@@ -25,37 +25,39 @@ Column {
     {
         var name_regex = /^[A-Za-z]\w*$/;
         var value_regex = /(^-?(([1-9]\d*(\.\d+)?$)|(0\.\d*[1-9])$))|(^0$)/;
-        if (name_regex.test(variable) && !Julia.has_name(variable))
+        if (name_regex.test(variable))
         {
-            if (value_regex.test(value))
+            if (!Julia.has_name(variable))
             {
-                variable_model.appendRow({name: variable, value: value});
-                for (var i = 0; i < location_model.rowCount(); i++) {
-                    location_model.data(location_model.index(i, 0), roles.flow).appendRow({
-                        var: variable,
-                        flow: ""
-                    });
+                if (value_regex.test(value))
+                {
+                    variable_model.appendRow({name: variable, value: value});
+                    for (var i = 0; i < location_model.rowCount(); i++) {
+                        location_model.data(location_model.index(i, 0), roles.flow).appendRow({
+                            var: variable,
+                            flow: ""
+                        });
+                    }
+                    for (var i = 0; i < edge_model.rowCount(); i++) {
+                        edge_model.data(edge_model.index(i, 0), roles.jump).appendRow({
+                            var: variable,
+                            jump: ""
+                        });
+                    }
                 }
-                for (var i = 0; i < edge_model.rowCount(); i++) {
-                    edge_model.data(edge_model.index(i, 0), roles.jump).appendRow({
-                        var: variable,
-                        jump: ""
-                    });
+                else {
+                    variable_value_text_field.placeholderText = "Invalid number";
                 }
-                variable_name_text_field.text = "";
-                variable_value_text_field.text = "";
             }
             else {
-                variable_value_text_field.placeholderText = "Invalid value";
-                variable_name_text_field.text = "";
-                variable_value_text_field.text = "";
+                variable_name_text_field.placeholderText = "Name in use";
             }
         }
         else {
             variable_name_text_field.placeholderText = "Invalid name";
-            variable_name_text_field.text = "";
-            variable_value_text_field.text = "";
         }
+        variable_name_text_field.text = "";
+        variable_value_text_field.text = "";
     }
 
     Text {

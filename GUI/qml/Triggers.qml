@@ -46,12 +46,11 @@ Column {
                 {
                     model.triggers.appendRow({name: trigger});
                     trigger_text_field.placeholderText = "Enter trigger";
-                    trigger_text_field.text = "";
                 }
                 else {
                     trigger_text_field.placeholderText = "Invalid trigger";
-                    trigger_text_field.text = "";
                 }
+                trigger_text_field.text = "";
             }
 
             /**

@@ -29,17 +29,15 @@ Column {
             {
                 action_model.appendRow({name: action});
                 action_text_field.placeholderText = "Enter name";
-                action_text_field.text = "";
             }
             else {
                 action_text_field.placeholderText = "Name in use";
-                action_text_field.text = "";
             }
         }
         else {
             action_text_field.placeholderText = "Invalid name";
-            action_text_field.text = "";
         }
+        action_text_field.text = "";
     }
 
     Text {

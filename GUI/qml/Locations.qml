@@ -35,18 +35,16 @@ Column {
                     })
                 }
                 location_model.appendRow({name: name, inv: "", initial: location_model.rowCount() == 0, flow: flow});
-                location_name_text_field.text = "";
                 location_name_text_field.placeholderText = "Enter name";
             }
             else {
-                location_name_text_field.text = "";
                 location_name_text_field.placeholderText = "Name in use";
             }
         }
         else {
-            location_name_text_field.text = "";
             location_name_text_field.placeholderText = "Invalid name";
         }
+        location_name_text_field.text = "";
     }
 
     // Button group for 'initial' selector

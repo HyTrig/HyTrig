@@ -57,7 +57,7 @@ Column {
                 }
                 else {
                     text = "";
-                    placeholderText = "Invalid time bound";
+                    placeholderText = "Invalid number";
                 }
             }
             onActiveFocusChanged: {
@@ -73,7 +73,7 @@ Column {
                     }
                     else {
                         text = "";
-                        placeholderText = "Invalid time bound";
+                        placeholderText = "Invalid number";
                     }
                 } else {
                     had_focus = focus;
@@ -108,7 +108,7 @@ Column {
                 }
                 else {
                     text = "";
-                    placeholderText = "Invalid max steps";
+                    placeholderText = "Invalid number";
                 }
             }
             onActiveFocusChanged: {
@@ -124,7 +124,7 @@ Column {
                     }
                     else {
                         text = "";
-                        placeholderText = "Invalid max steps";
+                        placeholderText = "Invalid number";
                     }
                 } else {
                     had_focus = focus;

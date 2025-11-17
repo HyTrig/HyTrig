@@ -26,12 +26,11 @@ Column {
         {
             query_model.appendRow({name: query, verified: false, result: false});
             query_text_field.placeholderText = "Enter strategy formula";
-            query_text_field.text = "";
         }
         else {
             query_text_field.placeholderText = "Invalid strategy formula";
-            query_text_field.text = "";
         }
+        query_text_field.text = "";
     }
 
     Text {
@@ -72,9 +71,9 @@ Column {
 
                 id: checkbox
                 visible: model.verified
-                tristate: true
+                tristate: false
                 checkable: false
-                checkState: model.result ? Qt.Checked : Qt.PartiallyChecked
+                checkState: model.result ? Qt.Checked : Qt.Unchecked
 
             }
 
