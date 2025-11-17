@@ -59,9 +59,18 @@ Column {
             // Query formula
             Text {
 
-                width: parent.width - parent.spacing - query_button.width
+                width: model.verified ? (parent.width - 2 * parent.spacing - checkbox.width - query_button.width) : (parent.width - parent.spacing - query_button.width)
                 text: model.name
                 color: "blue"
+
+            }
+
+            CheckBox {
+
+                id: checkbox
+                visible: model.verified
+                checkable: false
+                checkState: model.result ? Qt.Checked : Qt.PariallyChecked
 
             }
 

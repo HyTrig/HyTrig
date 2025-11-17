@@ -13,10 +13,7 @@ This script runs a GUI with QML. The GUI allows to create, edit, save, load and 
 - Moritz Maas
 """
 
-# include("packages.jl")
-
-using Pkg
-Pkg.activate(".")
+include("packages.jl")
 
 using Dates
 using JSON3
