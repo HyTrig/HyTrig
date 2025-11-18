@@ -8,6 +8,7 @@ import QtQml.Models
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtQuick.Controls.Material
 import org.julialang
 
 // Outer container for agents
@@ -29,27 +30,26 @@ Column {
             if (!Julia.has_name(agent))
             {
                 agent_model.appendRow({name: agent, triggers: []});
-                agent_text_field.placeholderText = "Enter name";
-                agent_text_field.background.border.color = "black";
+                agent_text_field.text = "";
+                agent_text_field.placeholderText = agent_text_field.default_text;
+                agent_text_field.placeholderTextColor = agent_text_field.default_color;
                 triggers.visible = agent_model.rowCount() > 0;
                 trigger_spacer.visible = agent_model.rowCount() > 0;
+                return;
             }
             else {
-                agent_text_field.placeholderText = "Name in use";
-                agent_text_field.background.border.color = "red";
+                agent_text_field.placeholderText = "Name is already used";
             }
         }
         else {
-            agent_text_field.placeholderText = "Invalid name";
-            agent_text_field.background.border.color = "red";
+            agent_text_field.placeholderText = "Invalid agent name";
         }
-        agent_text_field.text = "";
+        agent_text_field.placeholderTextColor = agent_text_field.error_color;
     }
 
-    Text {
+    TitleText {
         width: parent.width
         text: "Agents"
-        color: "white"
     }
 
     // List of agents
@@ -66,12 +66,9 @@ Column {
             width: agent_list.width
             spacing: 10
 
-            Text {
-
+            DataText {
                 width: parent.width - parent.spacing - agent_button.width
                 text: model.name
-                color: "white"
-
             }
 
             // Remove agent button
@@ -101,22 +98,13 @@ Column {
         spacing: 10
 
         // Agent name input field
-        TextField {
+        InputField {
             id: agent_text_field
             width: parent.width - parent.spacing - agent_button.width
-            placeholderText: "Enter name"
-
-            background: Rectangle {
-                color: "black"
-                border.width: 1
-            }
+            default_text: "Enter agent name"
 
             onAccepted: {
                 agents.add_agent(agent_text_field.text);
-            }
-            onActiveFocusChanged: {
-                placeholderText = "Enter name";
-                background.border.color = "black";
             }
         }
 

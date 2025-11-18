@@ -8,6 +8,7 @@ import QtQml.Models
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtQuick.Controls.Material
 import org.julialang
 
 // Outer container for edges
@@ -36,25 +37,24 @@ Column {
                     })
                 }
                 edge_model.appendRow({name: name, source: "", target: "", guard: "", agent: "", action: "", jump: jump});
-                edge_name_text_field.placeholderText = "Enter name";
-                edge_name_text_field.background.border.color = "black";
+                edge_name_text_field.text = "";
+                edge_name_text_field.placeholderText = edge_name_text_field.default_text;
+                edge_name_text_field.placeholderTextColor = edge_name_text_field.default_color;
+                return;
             }
             else {
-                edge_name_text_field.placeholderText = "Name in use";
-                edge_name_text_field.background.border.color = "red";
+                edge_name_text_field.placeholderText = "Name is already used";
             }
         }
         else {
             edge_name_text_field.placeholderText = "Invalid name";
-            edge_name_text_field.background.border.color = "red";
         }
-        edge_name_text_field.text = "";
+        edge_name_text_field.placeholderTextColor = edge_name_text_field.error_color;
     }
     
-    Text {
+    TitleText {
         width: parent.width
         text: "Edges"
-        color: "white"
     }
 
     // List of edges
@@ -66,16 +66,12 @@ Column {
         spacing: 10
         clip: true
 
-        property var edge_name: model.name
-
         model: edge_model
         delegate: Column {
 
             id: edge
             width: edge_list.width
             spacing: 10
-
-            property var edge_name: model.name
 
             /**
             * Get the agent of the edge
@@ -157,25 +153,22 @@ Column {
                 width: parent.width
                 spacing: 10
 
-                Text {
+                TitleText {
                     width: (parent.width - 3 * parent.spacing - edge_remove.width) / 3
                     horizontalAlignment: Text.AlignLeft
                     text: "Name"
-                    color: "white"
                 }
 
-                Text {
+                TitleText {
                     width: (parent.width - 3 * parent.spacing - edge_remove.width) / 3
                     horizontalAlignment: Text.AlignLeft
                     text: "Start location"
-                    color: "white"
                 }
 
-                Text {
+                TitleText {
                     width: (parent.width - 3 * parent.spacing - edge_remove.width) / 3
                     horizontalAlignment: Text.AlignLeft
                     text: "End location"
-                    color: "white"
                 }
 
             }
@@ -187,13 +180,12 @@ Column {
                 spacing: 10
 
                 // Edge name
-                Text {
+                DataText {
                     width: (parent.width - 3 * parent.spacing - edge_remove.width) / 3
                     height: parent.height
                     horizontalAlignment: Text.AlignLeft
                     verticalAlignment: Text.AlignVCenter
                     text: model.name
-                    color: "white"
                 }
 
                 // Source location selector
@@ -254,64 +246,23 @@ Column {
                 width: parent.width
                 spacing: 10
 
-                Text {
+                TitleText {
+                    id: guard_text
                     width: contentWidth
                     height: parent.height
                     verticalAlignment: Text.AlignVCenter
-                    id: guard_text
                     text: "Guard"
-                    color: "white"
                 }
 
                 // Guard input field
-                TextField {
+                FormulaField {
                     id: guard_text_field
-                    property bool had_focus: false
                     width: parent.width - parent.spacing - guard_text.width
                     text: model.guard
-                    placeholderText: "Enter guard"
-
-                    background: Rectangle {
-                        color: "black"
-                        border.width: 1
-                    }
-
-                    onAccepted: {
-                        if (is_valid_formula(text, "constraint"))
-                        {
-                            model.guard = text;
-                            placeholderText = "";
-                            background.border.color = "green";
-                            focus = false;
-                        }
-                        else {
-                            model.guard = "";
-                            text = "";
-                            placeholderText = "Invalid guard";
-                            background.border.color = "red";
-                        }
-                    }
-                    onActiveFocusChanged: {
-                        if (had_focus)
-                        {
-                            had_focus = false;
-                            if (is_valid_formula(text, "constraint"))
-                            {
-                                model.guard = text;
-                                placeholderText = "";
-                                background.border.color = "green";
-                                focus = false;
-                            }
-                            else {
-                                model.guard = "";
-                                text = "";
-                                placeholderText = "Invalid guard";
-                                background.border.color = "red";
-                            }
-                        } else {
-                            had_focus = focus;
-                        }
-                    }
+                    default_text: "Enter guard"
+                    error_text: "Invalid guard constraint"
+                    set_role: (function(x) {model.guard = x;})
+                    level: "constraint"
                 }
 
             }
@@ -322,13 +273,12 @@ Column {
                 width: parent.width
                 spacing: 10
 
-                Text {
+                TitleText {
+                    id: edge_agent_text
                     width: guard_text.width
                     height: parent.height
                     verticalAlignment: Text.AlignVCenter
-                    id: edge_agent_text
                     text: "Agent"
-                    color: "white"
                 }
 
                 // Agent selector
@@ -351,13 +301,12 @@ Column {
 
                 }
 
-                Text {
+                TitleText {
                     width: contentWidth
                     height: parent.height
                     verticalAlignment: Text.AlignVCenter
                     id: edge_action_text
                     text: "Action"
-                    color: "white"
                 }
 
                 // Action selector
@@ -381,10 +330,9 @@ Column {
                 }
             }
 
-            Text {
+            TitleText {
                 id: jump_text
                 text: "Jump"
-                color: "white"
             }
 
             // Jump list
@@ -404,62 +352,23 @@ Column {
                     spacing: 10
 
                     // Variable name
-                    Text {
+                    TitleText {
                         height: parent.height
                         width: guard_text.width
                         horizontalAlignment: Text.AlignLeft
                         verticalAlignment: Text.AlignVCenter
                         text: model.var
-                        color: "white"
                     }
 
                     // Jump expression input field
-                    TextField {
+                    FormulaField {
                         id: jump_text_field
-                        property bool had_focus: false
                         width: parent.width - parent.spacing - guard_text.width
                         text: model.jump
-                        placeholderText: "Enter expression"
-
-                        background: Rectangle {
-                            color: "black"
-                            border.width: 1
-                        }
-
-                        onAccepted: {
-                            if (is_valid_formula(text, "expression"))
-                            {
-                                model.jump = text;
-                                placeholderText = "";
-                                background.border.color = "green";
-                                focus = false;
-                            }
-                            else {
-                                text = "";
-                                placeholderText = "Invalid expression";
-                                background.border.color = "red";
-                            }
-                        }
-                        onActiveFocusChanged: {
-                            if (had_focus)
-                            {
-                                had_focus = false;
-                                if (is_valid_formula(text, "expression"))
-                                {
-                                    model.jump = text;
-                                    placeholderText = "";
-                                    background.border.color = "green";
-                                    focus = false;
-                                }
-                                else {
-                                    text = "";
-                                    placeholderText = "Invalid expression";
-                                    background.border.color = "red";
-                                }
-                            } else {
-                                had_focus = focus;
-                            }
-                        }
+                        default_text: "Enter jump expression"
+                        error_text: "Invalid jump expression"
+                        set_role: (function(x) {model.jump = x;})
+                        level: "expression"
                     }
 
                 }
@@ -482,22 +391,13 @@ Column {
         spacing: 10
 
         // Name input field
-        TextField {
+        InputField {
             id: edge_name_text_field
             width: parent.width - parent.spacing - edge_add_button.width
-            placeholderText: "Enter name"
-
-            background: Rectangle {
-                color: "black"
-                border.width: 1
-            }
+            default_text: "Enter edge name"
 
             onAccepted: {
                 edges.add_edge(text);
-            }
-            onActiveFocusChanged: {
-                placeholderText = "Enter name";
-                background.border.color = "black";
             }
         }
 

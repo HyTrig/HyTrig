@@ -8,6 +8,7 @@ import QtQml.Models
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtQuick.Controls.Material
 import org.julialang
 
 // Outer container for queries
@@ -26,20 +27,20 @@ Column {
         if (is_valid_formula(query, "strategy"))
         {
             query_model.appendRow({name: query, verified: false, result: false});
-            query_text_field.placeholderText = "Enter strategy formula";
-            query_text_field.background.border.color = "black";
+            query_text_field.text = "";
+            query_text_field.placeholderText = query_text_field.default_text;
+            query_text_field.placeholderTextColor = query_text_field.default_color;
+            return;
         }
         else {
             query_text_field.placeholderText = "Invalid strategy formula";
-            query_text_field.background.border.color = "red";
+            query_text_field.placeholderTextColor = query_text_field.error_color;
         }
-        query_text_field.text = "";
     }
 
-    Text {
+    TitleText {
         width: parent.width
         text: "Queries"
-        color: "white"
     }
 
 
@@ -59,14 +60,11 @@ Column {
             spacing: 10
 
             // Query formula
-            Text {
-
+            DataText {
                 width: model.verified ? (parent.width - 2 * parent.spacing - checkbox.width - query_button.width) : (parent.width - parent.spacing - query_button.width)
                 text: model.name
                 horizontalAlignment: Text.AlignLeft
                 verticalAlignment: Text.AlignVCenter
-                color: "white"
-
             }
 
             // Verified checkbox
@@ -100,22 +98,13 @@ Column {
         spacing: 10
 
         // Formula input field
-        TextField {
+        InputField {
             id: query_text_field
             width: parent.width - parent.spacing - query_button.width
-            placeholderText: "Enter strategy formula"
-
-            background: Rectangle {
-                color: "black"
-                border.width: 1
-            }
+            default_text: "Enter strategy formula"
 
             onAccepted: {
                 queries.add_query(text);
-            }
-            onActiveFocusChanged: {
-                placeholderText = "Enter strategy formula";
-                background.border.color = "black";
             }
         }
 

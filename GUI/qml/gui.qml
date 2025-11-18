@@ -29,6 +29,7 @@ ApplicationWindow {
 
     Material.theme: Material.Dark
     Material.accent: Material.Orange
+    Material.foreground: Material.color(Material.Grey, Material.Shade100)
 
     /**
     * Check if a formula is valid on a given parse level

@@ -8,6 +8,7 @@ import QtQml.Models
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtQuick.Controls.Material
 import org.julialang
 
 // Outer container for variables
@@ -45,33 +46,33 @@ Column {
                             jump: ""
                         });
                     }
-                    variable_name_text_field.placeholderText = "Enter name";
-                    variable_value_text_field.placeholderText = "Enter value";
-                    variable_name_text_field.background.border.color = "black";
-                    variable_value_text_field.background.border.color = "black";
+                    variable_name_text_field.text = "";
+                    variable_value_text_field.text = "";
+                    variable_name_text_field.placeholderText = variable_name_text_field.default_text;
+                    variable_value_text_field.placeholderText = variable_value_text_field.default_text;
+                    variable_name_text_field.placeholderTextColor = variable_name_text_field.default_color;
+                    variable_value_text_field.placeholderTextColor = variable_value_text_field.default_color;
+                    return;
                 }
                 else {
-                    variable_value_text_field.placeholderText = "Invalid number";
-                    variable_value_text_field.background.border.color = "red";
+                    variable_value_text_field.placeholderText = "Invalid real number";
+                    variable_value_text_field.placeholderTextColor = variable_value_text_field.error_color;
                 }
             }
             else {
-                variable_name_text_field.placeholderText = "Name in use";
-                variable_name_text_field.background.border.color = "red";
+                variable_name_text_field.placeholderText = "Name is already used";
+                variable_name_text_field.placeholderTextColor = variable_name_text_field.error_color;
             }
         }
         else {
             variable_name_text_field.placeholderText = "Invalid name";
-            variable_name_text_field.background.border.color = "red";
+            variable_name_text_field.placeholderTextColor = variable_name_text_field.error_color;
         }
-        variable_name_text_field.text = "";
-        variable_value_text_field.text = "";
     }
 
-    Text {
+    TitleText {
         width: parent.width
         text: "Variables"
-        color: "white"
     }
 
     // Property name row
@@ -80,17 +81,16 @@ Column {
         width: parent.width - parent.spacing - variable_button.width
         spacing: 10
 
-        Text {
+        TitleText {
             width: (parent.width - parent.spacing) / 2
             horizontalAlignment: Text.AlignLeft
             text: "Name"
-            color: "white"
         }
-        Text {
+
+        TitleText {
             width: (parent.width - parent.spacing) / 2
             horizontalAlignment: Text.AlignLeft
             text: "Initial value"
-            color: "white"
         }
     }
 
@@ -109,19 +109,17 @@ Column {
             spacing: 10
 
             // Variable name
-            Text {
+            DataText {
                 width: (parent.width - 2 * parent.spacing - variable_button.width) / 2
                 horizontalAlignment: Text.AlignLeft
                 text: model.name
-                color: "white"
             }
 
             // Variable value
-            Text {
+            DataText {
                 width: (parent.width - 2 * parent.spacing - variable_button.width) / 2
                 horizontalAlignment: Text.AlignLeft
                 text: model.value
-                color: "white"
             }
 
             // Remove variable button
@@ -168,42 +166,24 @@ Column {
         spacing: 10
 
         // Variable name input field
-        TextField {
+        InputField {
             id: variable_name_text_field
             width: (parent.width - 2 * parent.spacing - variable_button.width) / 2
-            placeholderText: "Enter name"
-
-            background: Rectangle {
-                color: "black"
-                border.width: 1
-            }
+            default_text: "Enter variable name"
 
             onAccepted: {
                 variables.add_variable(variable_name_text_field.text, variable_value_text_field.text);
-            }
-            onActiveFocusChanged: {
-                placeholderText = "Enter name";
-                background.border.color = "black";
             }
         }
 
         // Variable value input field
-        TextField {
+        InputField {
             id: variable_value_text_field
             width: (parent.width - 2 * parent.spacing - variable_button.width) / 2
-            placeholderText: "Enter value"
-
-            background: Rectangle {
-                color: "black"
-                border.width: 1
-            }
+            default_text: "Enter variable value"
 
             onAccepted: {
                 variables.add_variable(variable_name_text_field.text, variable_value_text_field.text);
-            }
-            onActiveFocusChanged: {
-                placeholderText = "Enter value";
-                background.border.color = "black";
             }
         }
 
