@@ -23,19 +23,23 @@ Column {
     function add_action(action)
     {
         var regex = /^[A-Za-z][A-Za-z0-9_]*$/;
+        action_text_field.focus = true;
         if (regex.test(action))
         {
             if (!Julia.has_name(action))
             {
                 action_model.appendRow({name: action});
                 action_text_field.placeholderText = "Enter name";
+                action_text_field.background.border.color = "black";
             }
             else {
                 action_text_field.placeholderText = "Name in use";
+                action_text_field.background.border.color = "red";
             }
         }
         else {
             action_text_field.placeholderText = "Invalid name";
+            action_text_field.background.border.color = "red";
         }
         action_text_field.text = "";
     }
@@ -98,11 +102,18 @@ Column {
             id: action_text_field
             width: parent.width - parent.spacing - action_button.width
             placeholderText: "Enter name"
+
+            background: Rectangle {
+                color: "black"
+                border.width: 1
+            }
+
             onAccepted: {
                 actions.add_action(action_text_field.text);
             }
             onActiveFocusChanged: {
                 placeholderText = "Enter name";
+                background.border.color = "black";
             }
         }
 

@@ -42,13 +42,16 @@ Column {
             */
             function add_trigger(trigger)
             {
+                trigger_text_field.focus = true;
                 if (is_valid_formula(trigger, "constraint"))
                 {
                     model.triggers.appendRow({name: trigger});
                     trigger_text_field.placeholderText = "Enter trigger";
+                    trigger_text_field.background.border.color = "black";
                 }
                 else {
                     trigger_text_field.placeholderText = "Invalid trigger";
+                    trigger_text_field.background.border.color = "red";
                 }
                 trigger_text_field.text = "";
             }
@@ -125,9 +128,18 @@ Column {
                     id: trigger_text_field
                     width: parent.width - parent.spacing - trigger_button.width
                     placeholderText: "Enter trigger"
+
+                    background: Rectangle {
+                        color: "black"
+                        border.width: 1
+                    }
+
                     onAccepted: {
                         add_trigger(text);
-                        focus = false;
+                    }
+                    onActiveFocusChanged: {
+                        placeholderText = "Enter trigger";
+                        background.border.color = "black";
                     }
                 }
 

@@ -23,21 +23,25 @@ Column {
     function add_agent(agent)
     {
         var regex = /^[A-Za-z]\w*$/;
+        agent_text_field.focus = true;
         if (regex.test(agent))
         {
             if (!Julia.has_name(agent))
             {
                 agent_model.appendRow({name: agent, triggers: []});
                 agent_text_field.placeholderText = "Enter name";
+                agent_text_field.background.border.color = "black";
                 triggers.visible = agent_model.rowCount() > 0;
                 trigger_spacer.visible = agent_model.rowCount() > 0;
             }
             else {
                 agent_text_field.placeholderText = "Name in use";
+                agent_text_field.background.border.color = "red";
             }
         }
         else {
             agent_text_field.placeholderText = "Invalid name";
+            agent_text_field.background.border.color = "red";
         }
         agent_text_field.text = "";
     }
@@ -101,11 +105,18 @@ Column {
             id: agent_text_field
             width: parent.width - parent.spacing - agent_button.width
             placeholderText: "Enter name"
+
+            background: Rectangle {
+                color: "black"
+                border.width: 1
+            }
+
             onAccepted: {
                 agents.add_agent(agent_text_field.text);
             }
             onActiveFocusChanged: {
                 placeholderText = "Enter name";
+                background.border.color = "black";
             }
         }
 

@@ -25,6 +25,7 @@ Column {
     {
         var name_regex = /^[A-Za-z]\w*$/;
         var value_regex = /(^-?(([1-9]\d*(\.\d+)?$)|(0\.\d*[1-9])$))|(^0$)/;
+        variable_name_text_field.focus = true;
         if (name_regex.test(variable))
         {
             if (!Julia.has_name(variable))
@@ -44,17 +45,24 @@ Column {
                             jump: ""
                         });
                     }
+                    variable_name_text_field.placeholderText = "Enter name";
+                    variable_value_text_field.placeholderText = "Enter value";
+                    variable_name_text_field.background.border.color = "black";
+                    variable_value_text_field.background.border.color = "black";
                 }
                 else {
                     variable_value_text_field.placeholderText = "Invalid number";
+                    variable_value_text_field.background.border.color = "red";
                 }
             }
             else {
                 variable_name_text_field.placeholderText = "Name in use";
+                variable_name_text_field.background.border.color = "red";
             }
         }
         else {
             variable_name_text_field.placeholderText = "Invalid name";
+            variable_name_text_field.background.border.color = "red";
         }
         variable_name_text_field.text = "";
         variable_value_text_field.text = "";
@@ -164,11 +172,18 @@ Column {
             id: variable_name_text_field
             width: (parent.width - 2 * parent.spacing - variable_button.width) / 2
             placeholderText: "Enter name"
+
+            background: Rectangle {
+                color: "black"
+                border.width: 1
+            }
+
             onAccepted: {
                 variables.add_variable(variable_name_text_field.text, variable_value_text_field.text);
             }
             onActiveFocusChanged: {
                 placeholderText = "Enter name";
+                background.border.color = "black";
             }
         }
 
@@ -177,11 +192,18 @@ Column {
             id: variable_value_text_field
             width: (parent.width - 2 * parent.spacing - variable_button.width) / 2
             placeholderText: "Enter value"
+
+            background: Rectangle {
+                color: "black"
+                border.width: 1
+            }
+
             onAccepted: {
                 variables.add_variable(variable_name_text_field.text, variable_value_text_field.text);
             }
             onActiveFocusChanged: {
                 placeholderText = "Enter value";
+                background.border.color = "black";
             }
         }
 

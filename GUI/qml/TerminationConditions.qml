@@ -47,17 +47,25 @@ Column {
                 parent.width - 3 * parent.spacing - 2 * state_formula_text.width
             ) / 2
             placeholderText: "Enter time bound"
+
+            background: Rectangle {
+                color: "black"
+                border.width: 1
+            }
+
             onAccepted: {
                 var regex = /^(([1-9]\d*(\.\d+)?$)|(0\.\d*[1-9])$)/;
                 if (regex.test(text))
                 {
                     termination_conditions["time-bound"] = text;
                     placeholderText = "";
+                    background.border.color = "green";
                     focus = false;
                 }
                 else {
                     text = "";
                     placeholderText = "Invalid number";
+                    background.border.color = "red";
                 }
             }
             onActiveFocusChanged: {
@@ -69,11 +77,13 @@ Column {
                     {
                         termination_conditions["time-bound"] = text;
                         placeholderText = "";
+                        background.border.color = "green";
                         focus = false;
                     }
                     else {
                         text = "";
                         placeholderText = "Invalid number";
+                        background.border.color = "red";
                     }
                 } else {
                     had_focus = focus;
@@ -98,17 +108,25 @@ Column {
                 parent.width - 3 * parent.spacing - 2 * state_formula_text.width
             ) / 2
             placeholderText: "Enter max steps"
+
+            background: Rectangle {
+                color: "black"
+                border.width: 1
+            }
+
             onAccepted: {
                 var regex = /^[1-9]\d*$/;
                 if (regex.test(text))
                 {
                     termination_conditions["max-steps"] = text;
                     placeholderText = "";
+                    background.border.color = "green";
                     focus = false;
                 }
                 else {
                     text = "";
                     placeholderText = "Invalid number";
+                    background.border.color = "red";
                 }
             }
             onActiveFocusChanged: {
@@ -120,11 +138,13 @@ Column {
                     {
                         termination_conditions["max-steps"] = text;
                         placeholderText = "";
+                        background.border.color = "green";
                         focus = false;
                     }
                     else {
                         text = "";
                         placeholderText = "Invalid number";
+                        background.border.color = "red";
                     }
                 } else {
                     had_focus = focus;
@@ -155,16 +175,24 @@ Column {
             property bool had_focus: false
             width: parent.width - parent.spacing - state_formula_text.width
             placeholderText: "Enter state formula"
+
+            background: Rectangle {
+                color: "black"
+                border.width: 1
+            }
+
             onAccepted: {
                 if (is_valid_formula(text, "state"))
                 {
                     termination_conditions["state-formula"] = text;
                     placeholderText = "";
+                    background.border.color = "green";
                     focus = false;
                 }
                 else {
                     text = "";
                     placeholderText = "Invalid state formula";
+                    background.border.color = "red";
                 }
             }
             onActiveFocusChanged: {
@@ -175,11 +203,13 @@ Column {
                     {
                         termination_conditions["state-formula"] = text;
                         placeholderText = "";
+                        background.border.color = "green";
                         focus = false;
                     }
                     else {
                         text = "";
                         placeholderText = "Invalid state formula";
+                        background.border.color = "red";
                     }
                 } else {
                     had_focus = focus;

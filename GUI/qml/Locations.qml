@@ -23,6 +23,7 @@ Column {
     function add_location(name)
     {
         var regex = /^[A-Za-z]\w*$/;
+        location_name_text_field.focus = true;
         if (regex.test(name))
         {
             if (!Julia.has_name(name))
@@ -36,13 +37,16 @@ Column {
                 }
                 location_model.appendRow({name: name, inv: "", initial: location_model.rowCount() == 0, flow: flow});
                 location_name_text_field.placeholderText = "Enter name";
+                location_name_text_field.background.border.color = "black";
             }
             else {
                 location_name_text_field.placeholderText = "Name in use";
+                location_name_text_field.background.border.color = "red";
             }
         }
         else {
             location_name_text_field.placeholderText = "Invalid name";
+            location_name_text_field.background.border.color = "red";
         }
         location_name_text_field.text = "";
     }
@@ -133,17 +137,25 @@ Column {
                     ) / 2
                     text: model.inv
                     placeholderText: "Enter invariant"
+
+                    background: Rectangle {
+                        color: "black"
+                        border.width: 1
+                    }
+
                     onAccepted: {
                         if (is_valid_formula(text, "constraint"))
                         {
                             model.inv = text;
                             placeholderText = "";
+                            background.border.color = "green";
                             focus = false;
                         }
                         else {
                             model.inv = "";
                             text = "";
                             placeholderText = "Invalid invariant";
+                            background.border.color = "red";
                         }
                     }
                     onActiveFocusChanged: {
@@ -154,12 +166,14 @@ Column {
                             {
                                 model.inv = text;
                                 placeholderText = "";
+                                background.border.color = "green";
                                 focus = false;
                             }
                             else {
                                 model.inv = "";
                                 text = "";
                                 placeholderText = "Invalid invariant";
+                                background.border.color = "red";
                             }
                         } else {
                             had_focus = focus;
@@ -238,16 +252,24 @@ Column {
                         width: parent.width - 2 * parent.spacing - location_name_text.width - add_location_button.width
                         text: model.flow
                         placeholderText: "Enter expression"
+
+                        background: Rectangle {
+                            color: "black"
+                            border.width: 1
+                        }
+
                         onAccepted: {
                             if (is_valid_formula(text, "expression"))
                             {
                                 model.flow = text;
                                 placeholderText = "";
+                                background.border.color = "green";
                                 focus = false;
                             }
                             else {
                                 text = "";
                                 placeholderText = "Invalid expression";
+                                background.border.color = "red";
                             }
                         }
                         onActiveFocusChanged: {
@@ -258,11 +280,13 @@ Column {
                                 {
                                     model.flow = text;
                                     placeholderText = "";
+                                    background.border.color = "green";
                                     focus = false;
                                 }
                                 else {
                                     text = "";
                                     placeholderText = "Invalid expression";
+                                    background.border.color = "red";
                                 }
                             } else {
                                 had_focus = focus;
@@ -290,11 +314,18 @@ Column {
 
             width: parent.width - parent.spacing - add_location_button.width
             placeholderText: "Enter name"
+
+            background: Rectangle {
+                color: "black"
+                border.width: 1
+            }
+
             onAccepted: {
                 locations.add_location(text);
             }
             onActiveFocusChanged: {
                 placeholderText = "Enter name";
+                background.border.color = "black";
             }
         }
 

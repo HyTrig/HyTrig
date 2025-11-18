@@ -22,13 +22,16 @@ Column {
     */
     function add_query(query)
     {
+        query_text_field.focus = true;
         if (is_valid_formula(query, "strategy"))
         {
             query_model.appendRow({name: query, verified: false, result: false});
             query_text_field.placeholderText = "Enter strategy formula";
+            query_text_field.background.border.color = "black";
         }
         else {
             query_text_field.placeholderText = "Invalid strategy formula";
+            query_text_field.background.border.color = "red";
         }
         query_text_field.text = "";
     }
@@ -101,11 +104,18 @@ Column {
             id: query_text_field
             width: parent.width - parent.spacing - query_button.width
             placeholderText: "Enter strategy formula"
+
+            background: Rectangle {
+                color: "black"
+                border.width: 1
+            }
+
             onAccepted: {
                 queries.add_query(text);
             }
             onActiveFocusChanged: {
                 placeholderText = "Enter strategy formula";
+                background.border.color = "black";
             }
         }
 

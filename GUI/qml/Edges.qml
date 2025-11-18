@@ -23,6 +23,7 @@ Column {
     function add_edge(name)
     {
         var regex = /^[A-Za-z]\w*$/;
+        edge_name_text_field.focus = true;
         if (regex.test(name))
         { 
             if (!Julia.has_name(name))
@@ -36,13 +37,16 @@ Column {
                 }
                 edge_model.appendRow({name: name, source: "", target: "", guard: "", agent: "", action: "", jump: jump});
                 edge_name_text_field.placeholderText = "Enter name";
+                edge_name_text_field.background.border.color = "black";
             }
             else {
                 edge_name_text_field.placeholderText = "Name in use";
+                edge_name_text_field.background.border.color = "red";
             }
         }
         else {
             edge_name_text_field.placeholderText = "Invalid name";
+            edge_name_text_field.background.border.color = "red";
         }
         edge_name_text_field.text = "";
     }
@@ -266,17 +270,25 @@ Column {
                     width: parent.width - parent.spacing - guard_text.width
                     text: model.guard
                     placeholderText: "Enter guard"
+
+                    background: Rectangle {
+                        color: "black"
+                        border.width: 1
+                    }
+
                     onAccepted: {
                         if (is_valid_formula(text, "constraint"))
                         {
                             model.guard = text;
                             placeholderText = "";
+                            background.border.color = "green";
                             focus = false;
                         }
                         else {
                             model.guard = "";
                             text = "";
                             placeholderText = "Invalid guard";
+                            background.border.color = "red";
                         }
                     }
                     onActiveFocusChanged: {
@@ -287,12 +299,14 @@ Column {
                             {
                                 model.guard = text;
                                 placeholderText = "";
+                                background.border.color = "green";
                                 focus = false;
                             }
                             else {
                                 model.guard = "";
                                 text = "";
                                 placeholderText = "Invalid guard";
+                                background.border.color = "red";
                             }
                         } else {
                             had_focus = focus;
@@ -406,16 +420,24 @@ Column {
                         width: parent.width - parent.spacing - guard_text.width
                         text: model.jump
                         placeholderText: "Enter expression"
+
+                        background: Rectangle {
+                            color: "black"
+                            border.width: 1
+                        }
+
                         onAccepted: {
                             if (is_valid_formula(text, "expression"))
                             {
                                 model.jump = text;
                                 placeholderText = "";
+                                background.border.color = "green";
                                 focus = false;
                             }
                             else {
                                 text = "";
                                 placeholderText = "Invalid expression";
+                                background.border.color = "red";
                             }
                         }
                         onActiveFocusChanged: {
@@ -426,11 +448,13 @@ Column {
                                 {
                                     model.jump = text;
                                     placeholderText = "";
+                                    background.border.color = "green";
                                     focus = false;
                                 }
                                 else {
                                     text = "";
                                     placeholderText = "Invalid expression";
+                                    background.border.color = "red";
                                 }
                             } else {
                                 had_focus = focus;
@@ -462,11 +486,18 @@ Column {
             id: edge_name_text_field
             width: parent.width - parent.spacing - edge_add_button.width
             placeholderText: "Enter name"
+
+            background: Rectangle {
+                color: "black"
+                border.width: 1
+            }
+
             onAccepted: {
                 edges.add_edge(text);
             }
             onActiveFocusChanged: {
                 placeholderText = "Enter name";
+                background.border.color = "black";
             }
         }
 
