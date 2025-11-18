@@ -298,6 +298,7 @@ end
 
 const expression_operator_strength::Dict{String, Int} = Dict([
     ("^", 20),
+    ("%", 10),
     ("*", 10),
     ("/", 10),
     ("+", 0),

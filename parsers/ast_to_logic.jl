@@ -30,6 +30,7 @@ function to_logic(node::ExpressionBinaryOperation)::ExprLike
         "*" => Mul(to_logic(node.left_child), to_logic(node.right_child))
         "/" => Div(to_logic(node.left_child), to_logic(node.right_child))
         "^" => Expon(to_logic(node.left_child), to_logic(node.right_child))
+        "%" => Modulo(to_logic(node.left_child), to_logic(node.right_child))
     end
 end
 

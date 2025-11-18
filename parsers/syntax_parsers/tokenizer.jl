@@ -69,6 +69,7 @@ operators::Dict{String, Type} = Dict([
     ("*",  ExpressionBinaryOperatorToken),
     ("/",  ExpressionBinaryOperatorToken),
     ("^",  ExpressionBinaryOperatorToken),
+    ("%",  ExpressionBinaryOperatorToken),
 
     ("-",  ExpressionUnBinaryOperatorToken),
 
