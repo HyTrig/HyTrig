@@ -25,6 +25,7 @@ TextField {
     property bool had_focus: false
 
     placeholderText: default_text
+    font.pointSize: 16
 
     function check() {
         if (regex.test(text))

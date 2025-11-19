@@ -137,15 +137,7 @@ Column {
                 model.target = tar;
             }
 
-            Rectangle {
-
-                width: parent.width
-                height: 3
-                visible: index != 0
-                radius: 4                    
-                color: "grey"
-
-            }
+            Subspacer {}
 
             // Property name row
             Row {
@@ -153,19 +145,19 @@ Column {
                 width: parent.width
                 spacing: 10
 
-                TitleText {
+                SubtitleText {
                     width: (parent.width - 3 * parent.spacing - edge_remove.width) / 3
                     horizontalAlignment: Text.AlignLeft
                     text: "Name"
                 }
 
-                TitleText {
+                SubtitleText {
                     width: (parent.width - 3 * parent.spacing - edge_remove.width) / 3
                     horizontalAlignment: Text.AlignLeft
                     text: "Start location"
                 }
 
-                TitleText {
+                SubtitleText {
                     width: (parent.width - 3 * parent.spacing - edge_remove.width) / 3
                     horizontalAlignment: Text.AlignLeft
                     text: "End location"
@@ -246,7 +238,7 @@ Column {
                 width: parent.width
                 spacing: 10
 
-                TitleText {
+                SubtitleText {
                     id: guard_text
                     width: contentWidth
                     height: parent.height
@@ -273,7 +265,7 @@ Column {
                 width: parent.width
                 spacing: 10
 
-                TitleText {
+                SubtitleText {
                     id: edge_agent_text
                     width: guard_text.width
                     height: parent.height
@@ -301,7 +293,7 @@ Column {
 
                 }
 
-                TitleText {
+                SubtitleText {
                     width: contentWidth
                     height: parent.height
                     verticalAlignment: Text.AlignVCenter
@@ -330,7 +322,7 @@ Column {
                 }
             }
 
-            TitleText {
+            SubtitleText {
                 id: jump_text
                 text: "Jump"
             }
@@ -352,7 +344,7 @@ Column {
                     spacing: 10
 
                     // Variable name
-                    TitleText {
+                    SubtitleText {
                         height: parent.height
                         width: guard_text.width
                         horizontalAlignment: Text.AlignLeft

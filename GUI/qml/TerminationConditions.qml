@@ -30,7 +30,7 @@ Column {
         width: parent.width
         spacing: 10
 
-        TitleText {
+        SubtitleText {
             width: state_formula_text.width
             height: parent.height
             horizontalAlignment: Text.AlignLeft
@@ -50,7 +50,7 @@ Column {
             regex: /^(([1-9]\d*(\.\d+)?$)|(0\.\d*[1-9])$)/
         }
 
-        TitleText {
+        SubtitleText {
             width: state_formula_text.width
             height: parent.height
             horizontalAlignment: Text.AlignLeft
@@ -78,7 +78,7 @@ Column {
         width: parent.width
         spacing: 10
 
-        TitleText {
+        SubtitleText {
             id: state_formula_text
             height: parent.height
             horizontalAlignment: Text.AlignLeft

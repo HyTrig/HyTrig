@@ -81,13 +81,13 @@ Column {
         width: parent.width - parent.spacing - variable_button.width
         spacing: 10
 
-        TitleText {
+        SubtitleText {
             width: (parent.width - parent.spacing) / 2
             horizontalAlignment: Text.AlignLeft
             text: "Name"
         }
 
-        TitleText {
+        SubtitleText {
             width: (parent.width - parent.spacing) / 2
             horizontalAlignment: Text.AlignLeft
             text: "Initial value"

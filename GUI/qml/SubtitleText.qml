@@ -1,6 +1,6 @@
 /**
-* @file DataText.qml
-* @brief GUI component for data.
+* @file SubtitleText.qml
+* @brief GUI component for a subtitle.
 * @authors Moritz Maas
 */
 
@@ -14,7 +14,7 @@ import org.julialang
 Text {
 
     text: ""
-    color: Material.color(Material.Orange)
-    font.pointSize: 12
-
+    color: Material.color(Material.Grey, Material.Shade100)
+    font.pointSize: 16
+    
 }

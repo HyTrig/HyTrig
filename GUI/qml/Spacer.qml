@@ -1,6 +1,6 @@
 /**
-* @file TitleText.qml
-* @brief GUI component for a title.
+* @file Spacer.qml
+* @brief GUI component for a spacer between elements.
 * @authors Moritz Maas
 */
 
@@ -11,11 +11,12 @@ import QtQuick.Layouts
 import QtQuick.Controls.Material
 import org.julialang
 
-Text {
+Rectangle {
 
-    text: ""
+    property bool vertical: true
+    width: vertical ? 5 : parent.width
+    height: vertical ? parent.height : 5
+    radius: 4
     color: Material.color(Material.Grey, Material.Shade100)
-    font.pointSize: 20
-    font.bold: true
-    
+
 }

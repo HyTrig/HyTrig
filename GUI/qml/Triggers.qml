@@ -65,15 +65,7 @@ Column {
                 model.triggers.removeRow(index);
             }
 
-            Rectangle {
-
-                width: parent.width
-                height: 3
-                visible: index != 0
-                radius: 4
-                color: "grey"
-
-            }
+            Subspacer {}
 
             // Agent name
             DataText {

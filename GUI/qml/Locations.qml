@@ -77,15 +77,7 @@ Column {
             width: location_list.width
             spacing: 10
 
-            Rectangle {
-
-                width: parent.width
-                height: 3
-                visible: index != 0
-                radius: 4
-                color: "grey"
-
-            }
+            Subspacer {}
 
             // Name, invariant, initial and remove button row
             Row {
@@ -93,7 +85,7 @@ Column {
                 width: parent.width
                 spacing: 10
 
-                TitleText {
+                SubtitleText {
                     id: location_name_text
                     width: contentWidth
                     height: parent.height
@@ -113,7 +105,7 @@ Column {
                     text: model.name
                 }
 
-                TitleText {
+                SubtitleText {
                     id: location_inv_text
                     width: contentWidth
                     height: parent.height
@@ -167,7 +159,8 @@ Column {
 
             }
 
-            TitleText {
+            SubtitleText {
+                id: flow_text
                 text: "Flow"
             }
 
@@ -188,7 +181,7 @@ Column {
                     spacing: 10
 
                     // Variable name
-                    TitleText {
+                    SubtitleText {
                         height: parent.height
                         width: location_name_text.width
                         horizontalAlignment: Text.AlignLeft

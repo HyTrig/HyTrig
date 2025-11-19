@@ -20,6 +20,7 @@ TextField {
 
     placeholderText: default_text
     placeholderTextColor: default_color
+    font.pointSize: 16
 
     onActiveFocusChanged: {
         placeholderText = default_text;

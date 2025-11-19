@@ -151,11 +151,8 @@ ApplicationWindow {
 
                 }
 
-                Rectangle {
-                    width: parent.width
-                    height: 5
-                    radius: 4
-                    color: "white"
+                Spacer {
+                    vertical: false
                 }
 
                 Variables {
@@ -163,13 +160,10 @@ ApplicationWindow {
                     width: parent.width
                 }
 
-                Rectangle {
+                Spacer {
                     id: trigger_spacer
-                    width: parent.width
-                    height: 5
+                    vertical: false
                     visible: agent_model.rowCount() > 0
-                    radius: 4
-                    color: "white"
                 }
 
                 Triggers {
@@ -178,11 +172,8 @@ ApplicationWindow {
                     visible: agent_model.rowCount() > 0
                 }
 
-                Rectangle {
-                    width: parent.width
-                    height: 5
-                    radius: 4
-                    color: "white"
+                Spacer {
+                    vertical: false
                 }
 
                 TerminationConditions {
@@ -190,11 +181,8 @@ ApplicationWindow {
                     width: parent.width
                 }
 
-                Rectangle {
-                    width: parent.width
-                    height: 5
-                    radius: 4
-                    color: "white"
+                Spacer {
+                    vertical: false
                 }
 
                 Queries {
@@ -204,12 +192,9 @@ ApplicationWindow {
 
             }
 
-            Rectangle {
+            Spacer {
                 id: page_separator
-                width: 5
-                height: parent.height
-                radius: 4
-                color: "white"
+                vertical: true
             }
 
             // Right window side
@@ -224,11 +209,8 @@ ApplicationWindow {
                     width: parent.width
                 }
 
-                Rectangle {
-                    width: parent.width
-                    height: 5
-                    radius: 4
-                    color: "white"
+                Spacer {
+                    vertical: false
                 }
 
                 Edges {
