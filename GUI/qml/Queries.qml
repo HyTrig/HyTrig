@@ -52,7 +52,7 @@ Column {
 
         id: query_list
         width: parent.width
-        height: Math.min(contentHeight, 100)
+        height: Math.min(contentHeight, 200)
         spacing: 10
         clip: true
 

@@ -47,7 +47,7 @@ ApplicationWindow {
     * Check if the current game is savable
     * @return {Boolean}         True, if current game is savable
     */
-    function is_saveable() {
+    function is_savable() {
         if (termination_conditions["time-bound"] == "") {
             terminations.time_bound.placeholderTextColor = terminations.time_bound.error_color;
             save_fail_dialog.informativeText = "Time bound is invalid."
@@ -57,6 +57,11 @@ ApplicationWindow {
         if (termination_conditions["max-steps"] == "") {
             terminations.max_steps.placeholderTextColor = terminations.max_steps.error_color;
             save_fail_dialog.informativeText = "Max steps is invalid."
+            save_fail_dialog.open();
+            return false;
+        }
+        if (location_model.rowCount() == 0) {
+            save_fail_dialog.informativeText = "At least one location is required."
             save_fail_dialog.open();
             return false;
         }
@@ -306,7 +311,7 @@ ApplicationWindow {
                 width: save_as_button.width
                 text: "Save"
                 onClicked: {
-                    if (is_saveable()) {
+                    if (is_savable()) {
                         if (file_path != "") {
                             save(file_path);
                         } else {
@@ -321,7 +326,7 @@ ApplicationWindow {
                 id: save_as_button
                 text: "Save as"
                 onClicked: {
-                    if (is_saveable()) {
+                    if (is_savable()) {
                         save_dialog.open();
                     }
                 }
@@ -343,7 +348,9 @@ ApplicationWindow {
                 width: save_as_button.width
                 text: "Verify"
                 onClicked: {
-                    verify();
+                    if (is_savable()) {
+                        verify();
+                    }
                 }
             }
             

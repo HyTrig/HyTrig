@@ -255,7 +255,7 @@ function verify()
             Location(
                 Symbol(loc.name),
                 parse(loc.inv, bindings, constraint),
-                Dict([(Variable(loc.flow[i].var) => parse(loc.flow[i].flow, bindings, expression)) for i in 1:length(loc.flow)])
+                Dict{Symbol, ExprLike}([(Variable(loc.flow[i].var) => parse(loc.flow[i].flow, bindings, expression)) for i in 1:length(loc.flow)])
             )
         )
     end

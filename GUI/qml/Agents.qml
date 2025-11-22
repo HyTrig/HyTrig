@@ -58,7 +58,6 @@ Column {
         id: agent_list
         width: parent.width
         height: Math.min(contentHeight, 100)
-        spacing: 10
         clip: true
 
         model: agent_model

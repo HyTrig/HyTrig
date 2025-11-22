@@ -71,13 +71,18 @@ ApplicationWindow {
         }
 
         TitleText {
+            width: parent.width
             text: "Level " + level
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
         }
 
         ListView {
             id: node_list
-            width: parent.width
-            height: parent.height
+            width: Math.min(contentWidth, tree_window.width)
+            height: 500
+            anchors.horizontalCenter: parent.horizontalCenter
+            spacing: 10
             clip: true
 
             orientation: ListView.Horizontal
@@ -86,7 +91,7 @@ ApplicationWindow {
             delegate: Button {
 
                 width: 200
-                height: 100
+                height: 140
 
                 background: Rectangle {
 
@@ -103,6 +108,13 @@ ApplicationWindow {
                         DataText {
                             width: parent.width
                             text: "<" + model.agent + ", " + model.action + ">"
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignVCenter
+                        }
+
+                        DataText {
+                            width: parent.width
+                            text: "↓"
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignVCenter
                         }
