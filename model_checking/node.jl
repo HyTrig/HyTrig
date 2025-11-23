@@ -15,13 +15,13 @@ struct Node
     level::Int32
     trigger_number::Int32
     passive_number::Int32
-    passive_node::Bool
+    passive::Bool
     config::Configuration
     children::Vector{Node}
 end
 
 function count_nodes(root::Node, level=0)::Int
-    println("Level: ", root.level,  " - Trigger: ", root.trigger_number, " - Passive: ", root.passive_number, " - ", root.config.location.name, " - ",  root.config.valuation)
+    # println("Level: ", root.level,  " - Trigger: ", root.trigger_number, " - Passive: ", root.passive_number, " - ", root.config.location.name, " - ",  root.config.valuation)
     @match root begin
         Node(_, _, _, _, _, _, _, _, []) => 1
         Node(_, _, _, _, _, _, _, _, children) => 1 + sum(count_nodes(child, level+1) for child in children)
@@ -44,7 +44,7 @@ function depth_of_tree(root::Node, level::Int = 1)::Int
 end
 
 function child_time(child::Node)::Float64
-    if child.passive_node
+    if child.passive
         return child_time(child.children[1])
     else
         return child.config.global_clock

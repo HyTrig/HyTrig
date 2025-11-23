@@ -92,7 +92,7 @@ function evaluate_and_build!(game::Game,
                              )::Bool
     @match formula begin
         Strategy_to_State(f) => begin
-            if ! (node in built_nodes)
+            if ! (node.passive || (node in built_nodes))
                 build_children!(game, constraints, node, termination_conditions, terminal_nodes, built_nodes)
             end
             return evaluate_state(f, node, terminal_nodes)
@@ -107,7 +107,7 @@ function evaluate_and_build!(game::Game,
             if ! evaluate_and_build!(game, constraints, f, node, termination_conditions, terminal_nodes, built_nodes)
                 return false
             end
-            if ! (node in built_nodes) 
+            if ! (node.passive || (node in built_nodes))
                 build_children!(game, constraints, node, termination_conditions, terminal_nodes, built_nodes)
             end
             if length(node.children) == 0 || node in terminal_nodes
@@ -135,7 +135,7 @@ function evaluate_and_build!(game::Game,
             if evaluate_and_build!(game, constraints, f, node, termination_conditions, terminal_nodes, built_nodes)
                 return true
             end
-            if ! (node in built_nodes)
+            if ! (node.passive || (node in built_nodes))
                 build_children!(game, constraints, node, termination_conditions, terminal_nodes, built_nodes)
             end
             if length(node.children) == 0 || node in terminal_nodes 
