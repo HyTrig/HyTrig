@@ -165,7 +165,8 @@ end
 
 function evaluate_queries(game::Game, termination_conditions::Termination_Conditions, queries::Vector{Strategy_Formula}) 
     initial_config = initial_configuration(game)
-    root = Node(nothing, nothing, nothing, 0, 0, 0, false, initial_config, [])
+    root_father = Node(nothing, nothing, nothing, 0, 0, 0, true, nothing, [])
+    root = Node(root_father, nothing, nothing, 0, 0, 0, false, initial_config, [])
     constraints = get_all_constraints(queries ∪ State_Formula[termination_conditions.state_formula])
 
     results = Vector{Bool}()
@@ -175,5 +176,5 @@ function evaluate_queries(game::Game, termination_conditions::Termination_Condit
         result = evaluate_and_build!(game, constraints, query, root, termination_conditions, terminal_nodes, built_nodes)
         push!(results, result)
     end
-    return results, root
+    return results, root_father
 end

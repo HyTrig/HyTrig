@@ -8,7 +8,7 @@ struct TriggerPath
     path_to_trigger::Vector{Configuration}
 end
 
-mutable struct Node
+struct Node
     parent::Union{Node, Nothing}
     reaching_decision::Union{Pair{Agent, Action}, Pair{Agent, <:Constraint}, Nothing}
     reaching_trigger::Union{TriggerPath, Nothing}
