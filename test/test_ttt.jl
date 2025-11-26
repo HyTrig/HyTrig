@@ -1,6 +1,6 @@
 using Test
 
-include("../game_tree/time_to_trigger.jl")
+include("../model_checking/time_to_trigger.jl")
 include("../parsers/syntax_parsers/parser.jl")
 include("../parsers/ast_to_logic.jl")
 

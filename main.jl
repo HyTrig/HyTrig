@@ -7,14 +7,14 @@ include("model_checking/build_and_evaluate.jl")
 
 t1 = time();
 
-example = 2
+example = 3
 
 if example == 1
     game, termination_conditions, queries = parse_game("examples/bouncing_ball.json")
 elseif example == 2
     game, termination_conditions, queries = parse_game("examples/3_players_1_ball.json")
 elseif example == 3
-    game, termination_conditions, queries = parse_game("examples/player_in_middle.json")
+    game, termination_conditions, queries = parse_game("examples/volleyball.json")
 end
 
 t2 = time();

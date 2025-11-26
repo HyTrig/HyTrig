@@ -1,13 +1,14 @@
 using DifferentialEquations
 include("../essential_definitions/evolution.jl")
-include("../game_semantics/configuration.jl")
+include("node.jl")
 
 
 
-function time_to_trigger(config::Configuration, trigger::Constraint, constraints::Set{Constraint}, max_time::Float64)
+function time_to_trigger(node::Node, trigger::State_Formula, constraints::Set{Constraint}, max_time::Float64)
+    config = node.config
     constraints_val = Dict(constr => evaluate(constr, config.valuation) for constr in constraints)
     zero_constraints::Vector{ExprLike} = union_safe([get_zero(constr) for constr in constraints])
-    zero_triggers = get_zero(trigger)
+    zero_triggers = get_zero(get_all_constraints(trigger))
     path_to_trigger::Vector{Configuration} = Vector()
     function flowODE!(du, u, p, t)
         current_valuation = valuation_from_vector(config.valuation, u)
@@ -32,7 +33,8 @@ function time_to_trigger(config::Configuration, trigger::Constraint, constraints
             return # No need to affect the valuation if the trigger is not active
         end
         current_valuation = round5(valuation_from_vector(config.valuation, integrator.u))
-        if evaluate(trigger, current_valuation)
+        current_node = PassiveNode(nothing, nothing, Configuration(config.location, current_valuation, config.global_clock + integrator.t), 0, [])
+        if evaluate_state(trigger, current_node)
             # println("Terminated")
             terminate!(integrator) # Stop the integration when the condition is met
             return

@@ -19,23 +19,23 @@ end
 
 struct ActiveNode <: Node
     parent::Node
-    reaching_decision::Pair{Agent, Action}
-    reaching_trigger::Constraint
+    reaching_decision::Union{Pair{Agent, Action}, Nothing}
+    reaching_trigger::Union{Constraint, Nothing}
     config::Configuration
     level::Int32
     children::Vector{Node}
 end
 
 struct PassiveNode <: Node
-    parent::Node
-    reaching_decision::Pair{Agent, Constraint}
+    parent::Union{Node, Nothing}
+    reaching_decision::Union{Pair{Agent, Constraint}, Nothing}
     config::Configuration
     level::Int32
     children::Vector{Node}
 end
 
 function count_nodes(root::Node)::Int
-    # println(root.config.location.name, " - ",  root.config.valuation)
+    println("Level = ", root.level, " - ", root.config.location.name, " - ",  root.config.valuation)
     @match root begin
         RootNode(_, _, []) => 1
         RootNode(_, _, children) => 1 + sum(count_nodes(child) for child in children)

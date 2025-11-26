@@ -1,6 +1,6 @@
 include("node.jl")
 include("../hybrid_atl/logic.jl")
-include("../game_tree/time_to_trigger.jl")
+include("time_to_trigger.jl")
 include("../game_semantics/transitions.jl")
 include("../hybrid_atl/termination_conditions.jl")
 
@@ -24,13 +24,13 @@ function build_children!(game::Game,
                         terminal_nodes::Set{Node},
                         built_nodes::Set{Node})
     remaining_time = termination_conditions.time_limit - node.config.global_clock
-    _, location_invariant, _ = time_to_trigger(node.config, Not(node.config.location.invariant), Set{Constraint}(), remaining_time)
+    _, location_invariant, _ = time_to_trigger(node, State_Constraint(Not(node.config.location.invariant)), Set{Constraint}(), remaining_time)
 
     triggers_valuations::Dict{Agent, Vector{TriggerPath}} = Dict{Agent, Vector{TriggerPath}}()
     for agent in game.agents
         triggers_valuations[agent] = TriggerPath[]
         for trigger in game.triggers[agent]
-            new_valuation, ttt, path_to_trigger = time_to_trigger(node.config, trigger, constraints, location_invariant)
+            new_valuation, ttt, path_to_trigger = time_to_trigger(node, State_Constraint(trigger), constraints, location_invariant)
             if ttt <= remaining_time && ttt < location_invariant
                 trigger_path = TriggerPath(trigger, new_valuation, ttt, path_to_trigger)
                 push!(triggers_valuations[agent], trigger_path)
@@ -60,21 +60,26 @@ function build_children!(game::Game,
                 end
             end
         end
-    end 
-    push!(built_nodes, node)
-end
-
-
-function evaluate_state(formula::State_Formula, node::Node, terminal_nodes::Set{Node})::Bool
-    @match formula begin
-        State_Location(loc) => loc == node.config.location
-        State_Constraint(constraint) => evaluate(constraint, node.config.valuation)
-        State_And(left, right) => evaluate_state(left, node.config, terminal_nodes) && evaluate_state(right, node.config, terminal_nodes)
-        State_Or(left, right) => evaluate_state(left, node.config, terminal_nodes) || evaluate_state(right, node.config, terminal_nodes)
-        State_Not(f) => ! evaluate_state(f, node.config, terminal_nodes)
-        State_Imply(left, right) => ! evaluate_state(left, node.config, terminal_nodes) || evaluate_state(right, node.config, terminal_nodes)
-        State_Deadlock() => ! (node in terminal_nodes) && length(node.children) == 0
     end
+    if length(node.children) == 0
+        new_valuation, termination_time, path_to_trigger = time_to_trigger(node, termination_conditions.state_formula, constraints, location_invariant)
+        if termination_time <= remaining_time && termination_time < location_invariant
+            path_node = node
+            for path_config in path_to_trigger
+                child_node = PassiveNode(path_node, nothing, path_config, path_node.level, [])
+                if check_termination(child_node, termination_conditions)
+                    push!(terminal_nodes, child_node)
+                end
+                push!(path_node.children, child_node)
+                path_node = child_node
+            end
+            config_after_termination = Configuration(node.config.location, new_valuation, node.config.global_clock + termination_time)
+            terminal_node = ActiveNode(path_node, nothing, nothing, config_after_termination, node.level + 1, [])
+            push!(terminal_nodes, terminal_node)
+            push!(path_node.children, terminal_node) # No further children since terminated
+        end
+    end
+    push!(built_nodes, node)
 end
 
 function evaluate_and_build!(game::Game,

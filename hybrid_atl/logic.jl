@@ -1,5 +1,6 @@
 include("../essential_definitions/constraint.jl")
 include("../game_semantics/configuration.jl")
+include("../model_checking/node.jl")
 using Match
 using DataStructures
 
@@ -160,4 +161,17 @@ function get_all_constraints(formulae::Vector{Logic_formula})::Set{Constraint}
         props = props ∪ get_all_constraints(formula)
     end
     return props
+end
+
+
+function evaluate_state(formula::State_Formula, node::Node, terminal_nodes::Set{Node}=Set{Node}())::Bool
+    @match formula begin
+        State_Location(loc) => loc == node.config.location
+        State_Constraint(constraint) => evaluate(constraint, node.config.valuation)
+        State_And(left, right) => evaluate_state(left, node.config, terminal_nodes) && evaluate_state(right, node.config, terminal_nodes)
+        State_Or(left, right) => evaluate_state(left, node.config, terminal_nodes) || evaluate_state(right, node.config, terminal_nodes)
+        State_Not(f) => ! evaluate_state(f, node.config, terminal_nodes)
+        State_Imply(left, right) => ! evaluate_state(left, node.config, terminal_nodes) || evaluate_state(right, node.config, terminal_nodes)
+        State_Deadlock() => ! (node in terminal_nodes) && length(node.children) == 0
+    end
 end

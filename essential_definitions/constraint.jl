@@ -143,6 +143,13 @@ function get_zero(constraint::Constraint)::Vector{ExprLike}
         Imply(left, right) => get_zero(left) ∪ get_zero(right)
     end
 end
+function get_zero(constraints)::Vector{ExprLike}
+    zeros = Vector{ExprLike}()
+    for constr in constraints
+        zeros = zeros ∪ get_zero(constr)
+    end
+    return zeros
+end
 
 function evaluate(constraint::Constraint, valuation::Valuation)::Bool
     @match constraint begin
