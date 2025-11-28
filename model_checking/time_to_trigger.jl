@@ -2,7 +2,7 @@ using DifferentialEquations
 include("../essential_definitions/evolution.jl")
 include("../game_semantics/configuration.jl")
 
-function time_to_trigger(config::Configuration, constraints::Vector{Constraint}, invariant, max_time::Float64)
+function time_to_trigger(config::Configuration, constraints::Set{Constraint}, invariant, max_time::Float64)
 
     constraints_val = Dict(constr => evaluate(constr, config.valuation) for constr in constraints)
 

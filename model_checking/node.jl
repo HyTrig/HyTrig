@@ -42,37 +42,44 @@ struct EndNode <: Node
 end
 
 function print_tree(root::Node)
+    res = ""
     @match root begin
         RootNode(_, _, children) =>
             begin
-                println("Root ", root.config.location.name, " - Valuation: ", root.config.valuation)
+                res *= "\nRoot  $(root.config.location.name)\nValuation: $(root.config.valuation)\nChildren: $(length(children))"
+                res *= "\n--------------\n"
                 for child in children
-                    print_tree(child)
+                    res *= print_tree(child)
                 end
             end
         ActiveNode(_, decision, trigger, _, level, children) =>
             begin
-                println(level, "- Active - Agent: ", decision.first, " - Action: ", decision.second, " / ", trigger, " - Location: ", root.config.location.name, " - Valuation: ", root.config.valuation)
+                res *= "\n$level- Active - Agent: $(decision.first) - Action: $(decision.second) / $(str(trigger)) - Location: $(root.config.location.name)\nValuation: $(root.config.valuation), - Time: $(root.config.global_clock)\nChildren: $(length(children))"
+                res *= "\n--------------\n"
                 for child in children
-                    print_tree(child)
+                    res *= print_tree(child)
                 end
             end
         PassiveNode(_, decision, _, level, children) =>
             begin
                 if isnothing(decision)
-                    println(level, "- Passive - No Decision - Location: ", root.config.location.name, " - Valuation: ", root.config.valuation)
+                    res *= "\n$level- Passive - Location: $(root.config.location.name)\nValuation: $(root.config.valuation), - Time: $(root.config.global_clock)"
+                res *= "\n--------------\n"
                 else
-                    println(level, "- Passive - Agent: ", decision.first, " - Trigger: ", decision.second, " - Location: ", root.config.location.name, " - Valuation: ", root.config.valuation)
+                    res *= "\n$level- Passive - Agent: $(decision.first) - Trigger: $(str(decision.second)) - Location: $(root.config.location.name)\nValuation: $(root.config.valuation), - Time: $(root.config.global_clock)\nChildren: $(length(children))"
+                res *= "\n--------------\n"
                 end
                 for child in children
-                    print_tree(child)
+                    res *=print_tree(child)
                 end
             end
         EndNode(_, _, level, children) =>
             begin
-                println(level, "- End - Location: ", root.config.location.name, " - Valuation: ", root.config.valuation)
+                res *= "\n$level- End - Location: $(root.config.location.name)\nValuation: $(root.config.valuation), - Time: $(root.config.global_clock)"
+                res *= "\n--------------\n"
             end
     end
+    return res
 end
 
 function count_nodes(root::Node)::Int
@@ -102,7 +109,7 @@ function count_passive_nodes(root::Node)::Int
     end
 end
 
-function depth_of_tree(root::Node, level::Int = 1)::Int
+function depth_of_tree(root::Node)::Int
     @match root begin
         RootNode(_, _, []) => 1
         RootNode(_, _, children) => maximum(depth_of_tree(child) for child in children)
@@ -112,6 +119,20 @@ function depth_of_tree(root::Node, level::Int = 1)::Int
         PassiveNode(_, _, _, _, children) => maximum(depth_of_tree(child) for child in children)
         EndNode(_, _, _, []) => root.level
         EndNode(_, _, _, children) => maximum(depth_of_tree(child) for child in children)
+    end
+end
+
+
+function max_time(root::Node)::Float64
+    @match root begin
+        RootNode(_, _, []) => round5(root.config.global_clock)
+        RootNode(_, _, children) => maximum(max_time(child) for child in children)
+        ActiveNode(_, _, _, _, _, []) => round5(root.config.global_clock)
+        ActiveNode(_, _, _, _, _, children) => maximum(max_time(child) for child in children)
+        PassiveNode(_, _, _, _, []) => round5(root.config.global_clock)
+        PassiveNode(_, _, _, _, children) => maximum(max_time(child) for child in children)
+        EndNode(_, _, _, []) => round5(root.config.global_clock)
+        EndNode(_, _, _, children) => maximum(max_time(child) for child in children)
     end
 end
 

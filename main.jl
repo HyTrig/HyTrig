@@ -7,7 +7,7 @@ include("model_checking/build_and_evaluate.jl")
 
 t1 = time();
 
-example = 3
+example = 5
 
 if example == 1
     game, termination_conditions, queries = parse_game("examples/bouncing_ball.json")
@@ -15,49 +15,40 @@ elseif example == 2
     game, termination_conditions, queries = parse_game("examples/3_players_1_ball.json")
 elseif example == 3
     game, termination_conditions, queries = parse_game("examples/volleyball.json")
+elseif example == 4
+    game, termination_conditions, queries = parse_game("examples/4_player_square.json")
+elseif example == 5
+    game, termination_conditions, queries = parse_game("examples/volleyball_3p.json")
 end
+
+println("Locations = ", length(game.locations))
+println("Edges = ", length(game.edges))
+println("Agents = ", length(game.agents))
+println("Actions = ", length(game.actions))
+println("Triggers per agent = ", Dict(agent => length(game.triggers[agent]) for agent in game.agents))
+println("Initial Configurations = ", initial_configuration(game).valuation)
 
 t2 = time();
 
-
-# old_game_tree::OldNode = build_game_tree(game, termination_conditions, queries)
-
-# t3 = time();
-
-# old_results = evaluate(queries, game_tree, game.agents)
-
-# t4 = time();
-
-# nodes_count, passive_nodes = count_nodes(game_tree), count_passive_nodes(game_tree)
-# tree_depth = depth_of_tree(game_tree)
-
-#################################
-t5 = time();
+println("*************************")
+println("Time to parse = $(t2 - t1)")
+println("*************************")
 
 results, game_tree = evaluate_queries(game, termination_conditions, queries)
 
-t6 = time();
+t3 = time();
 
 nodes_count, passive_nodes = count_nodes(game_tree), count_passive_nodes(game_tree)
 tree_depth = depth_of_tree(game_tree)
+tree_max_time = max_time(game_tree)
 
+tree_text = print_tree(game_tree)
+io = open("logs/tree.md", "w");                                                                                                                                                                                                                                                                                                                               
+write(io, tree_text);                                                                                                                                                                                                                                                                                                                                                           
+close(io); 
 println("*************************")
-println("*************************")
-print_tree(game_tree)
-println("*************************")
-println("*************************")
-
-println("*************************")
-println("Time to parse = $(t2 - t1)")
-# println("queries = ", queries)
-println("*************************")
-# println("Nodes = ", nodes_count, " Passive Nodes = ", passive_nodes, " Depth = ", tree_depth)
-# println("results = ", results)
-# println("Time to build = $(t3 - t2)")
-# println("Time to evaluate = $(t4 - t3)")
-# println("*************************")
 println("***** On the fly ********")
-println("Nodes = ", nodes_count, " Passive Nodes = ", passive_nodes, " Depth = ", tree_depth)
+println("Nodes = ", nodes_count, " Passive Nodes = ", passive_nodes, " Depth = ", tree_depth, " Max Time = ", tree_max_time)
 println("results = ", results)
-println("Time to evaluate and build = $(t6 - t5)")
+println("Time to evaluate and build = $(t3 - t2)")
 println("*************************")
