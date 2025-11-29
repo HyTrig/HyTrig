@@ -125,7 +125,7 @@ struct State_Imply <: State_Formula
     right::State_Formula
 end
 
-struct State_Deadlock <: State_Formula
+struct Strategy_Deadlock <: Strategy_Formula
 end
 
 function get_all_constraints(formula::State_Formula)::Set{Constraint}
@@ -136,7 +136,6 @@ function get_all_constraints(formula::State_Formula)::Set{Constraint}
         State_Or(left, right) => get_all_constraints(left) ∪ get_all_constraints(right)
         State_Not(subformula) => get_all_constraints(subformula)
         State_Imply(left, right) => get_all_constraints(left) ∪ get_all_constraints(right)
-        State_Deadlock() => Set{Constraint}()
     end
 end
 
@@ -151,13 +150,22 @@ function get_all_constraints(formula::Strategy_Formula)::Set{Constraint}
         Strategy_Or(left, right) => get_all_constraints(left) ∪ get_all_constraints(right)
         Strategy_Not(f) => get_all_constraints(f)
         Strategy_Imply(left, right) => get_all_constraints(left) ∪ get_all_constraints(right)
+        Strategy_Deadlock() => Set{Constraint}()
     end
 end
 
 function get_all_constraints(formulae::Vector{Logic_formula})::Set{Constraint}
-    props = Set{Constraint}()
-    for formula in formulae
-        props = props ∪ get_all_constraints(formula)
+    return union_safe([get_all_constraints(formula) for formula in formulae])
+end
+
+
+function evaluate_state(formula::State_Formula, config::Configuration)::Bool
+    @match formula begin
+        State_Location(loc) => loc == config.location
+        State_Constraint(constraint) => evaluate(constraint, config.valuation)
+        State_And(left, right) => evaluate_state(left, config) && evaluate_state(right, config)
+        State_Or(left, right) => evaluate_state(left, config) || evaluate_state(right, config)
+        State_Not(f) => ! evaluate_state(f, config)
+        State_Imply(left, right) => ! evaluate_state(left, config) || evaluate_state(right, config)
     end
-    return props
 end
