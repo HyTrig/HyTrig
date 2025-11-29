@@ -380,7 +380,11 @@ julia> to_string(ExpressionBinaryOperation("+", VariableNode("x"), VariableNode(
 ```
 """
 function to_string(node::BinaryOperation)::String
-    return "($(to_string(node.left_child)))$(node.binary_operation)($(to_string(node.right_child)))"
+    if node.binary_operation in ["min", "max"]
+        return "$(node.binary_operation)($(to_string(node.left_child)),$(to_string(node.right_child)))"
+    else
+        return "($(to_string(node.left_child)))$(node.binary_operation)($(to_string(node.right_child)))"
+    end
 end
 
 """

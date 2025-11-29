@@ -94,7 +94,7 @@ ast = _parse_tokens(tokenize("x ^ y - z * 10", Bindings(Set([]), Set([]), Set(["
 ast = _parse_tokens(tokenize("min(max(x, y), z)", Bindings(Set([]), Set([]), Set(["x", "y", "z"]))))
 @test ast == ExpressionBinaryOperation("min", ExpressionBinaryOperation("max", VariableNode("x"), VariableNode("y")), VariableNode("z"))
 @test to_string(ast) == "min(max(x,y),z)"
-@test to_logic(ast) == Sub(Expon(Var(:x), Var(:y)), Mul(Var(:z), Const(10.0)))
+@test to_logic(ast) == Min(Max(Var(:x), Var(:y)), Var(:z))
 
 # test constraints
 

@@ -128,6 +128,12 @@ function _parse_binary_expression(left_tokens::ParseVector, token::OperatorToken
     return ExpressionBinaryOperation(token.type, left_tokens[1], right_tokens[1])
 end
 
+# expr_binary_func ( expr , expr )
+function _parse_binary_function(left_tokens::ParseVector, token::ExpressionBinaryFunctionToken, right_tokens::ParseVector)::ExpressionBinaryOperation
+    _check_token_count(0, 5, left_tokens, right_tokens)
+    return ExpressionBinaryOperation(token.type, right_tokens[2], right_tokens[4])
+end
+
 expression_grammar::Grammar = Dict([
     # expr -> ( expr )
     (VariableNode, [GrammarRule([SeparatorToken("(")], [SeparatorToken(")")], _parse_bracket)]),
@@ -144,7 +150,14 @@ expression_grammar::Grammar = Dict([
     # expr -> expr - expr
     (ExpressionUnBinaryOperatorToken, [GrammarRule([ExpressionNode], [ExpressionNode], _parse_binary_expression),
     # expr -> - expr
-                                       GrammarRule([], [ExpressionNode], _parse_unary_expression)])
+                                       GrammarRule([], [ExpressionNode], _parse_unary_expression)]),
+    # expr_binary_func ( expr , expr )
+    (ExpressionBinaryFunctionToken, [
+        GrammarRule(
+            [],
+            [SeparatorToken("("), ExpressionNode, SeparatorToken(","), ExpressionNode, SeparatorToken(")")],
+            _parse_binary_function
+        )])
 ])
 
 
