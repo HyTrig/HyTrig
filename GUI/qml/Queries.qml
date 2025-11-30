@@ -100,6 +100,11 @@ Column {
 
         }
 
+        ScrollBar.vertical: ScrollBar {
+            active: true
+            policy: ScrollBar.AlwaysOn
+        }
+
     }
 
     // Add query row
