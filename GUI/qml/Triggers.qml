@@ -18,6 +18,7 @@ Column {
     property alias trigger_list: trigger_list
 
     TitleText {
+        id: trigger_text
         width: parent.width
         text: "Triggers"
     }
@@ -27,7 +28,7 @@ Column {
 
         id: trigger_list
         width: parent.width
-        height: Math.min(contentHeight, 200)
+        height: parent.height - parent.spacing - trigger_text.height
         spacing: 10
         clip: true
 

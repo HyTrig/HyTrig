@@ -46,6 +46,7 @@ Column {
     }
 
     TitleText {
+        id: action_text
         width: parent.width
         text: "Actions"
     }
@@ -55,7 +56,7 @@ Column {
 
         id: action_list
         width: parent.width
-        height: Math.min(contentHeight, 100)
+        height: parent.height - 2 * parent.spacing - action_text.height - action_input_row.height
         clip: true
 
         model: action_model
@@ -89,6 +90,7 @@ Column {
     // Add action row
     Row {
 
+        id: action_input_row
         width: parent.width
         spacing: 10
 

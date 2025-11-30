@@ -53,6 +53,7 @@ Column {
     }
     
     TitleText {
+        id: edge_text
         width: parent.width
         text: "Edges"
     }
@@ -62,7 +63,7 @@ Column {
 
         id: edge_list
         width: parent.width
-        height: Math.min(contentHeight, 380)
+        height: parent.height - 2 * parent.spacing - edge_text.height - edge_input_row.height
         spacing: 10
         clip: true
 
@@ -378,6 +379,7 @@ Column {
     // Add edge row
     Row {
 
+        id: edge_input_row
         width: parent.width
         spacing: 10
 

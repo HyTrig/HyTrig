@@ -129,10 +129,6 @@ ApplicationWindow {
         terminations.time_bound.text = termination_conditions["time-bound"];
         terminations.max_steps.text = termination_conditions["max-steps"];
         terminations.state_formula.text = termination_conditions["state-formula"];
-
-        // Refresh visibility of triggers
-        triggers.visible = agent_model.rowCount() > 0;
-        trigger_spacer.visible = agent_model.rowCount() > 0;
     }
 
     /**
@@ -180,7 +176,8 @@ ApplicationWindow {
             // Left window side
             Column {
 
-                id: left_column
+                property real subwindow_height: (height - 8 * spacing - 4 * action_variable_spacer.height - terminations.height) / 4
+
                 width: (parent.width - 2 * parent.spacing - page_separator.width) / 2
                 height: parent.height
                 spacing: 10
@@ -189,39 +186,43 @@ ApplicationWindow {
                 Row {
 
                     width: parent.width
+                    height: parent.subwindow_height
                     spacing: 20
                     
                     Agents {
                         id: agents
                         width: (parent.width - parent.spacing) / 2
+                        height: parent.height
                     }
 
                     Actions {
                         id: actions
                         width: (parent.width - parent.spacing) / 2
+                        height: parent.height
                     }
 
                 }
 
                 Spacer {
+                    id: action_variable_spacer
                     vertical: false
                 }
 
                 Variables {
                     id: variables
                     width: parent.width
+                    height: parent.subwindow_height
                 }
 
                 Spacer {
                     id: trigger_spacer
                     vertical: false
-                    visible: agent_model.rowCount() > 0
                 }
 
                 Triggers {
                     id: triggers
                     width: parent.width
-                    visible: agent_model.rowCount() > 0
+                    height: parent.subwindow_height
                 }
 
                 Spacer {
@@ -240,6 +241,7 @@ ApplicationWindow {
                 Queries {
                     id: queries
                     width: parent.width
+                    height: parent.subwindow_height
                 }
 
             }
@@ -252,6 +254,8 @@ ApplicationWindow {
             // Right window side
             Column {
 
+                property real subwindow_height: (height - 2 * spacing - location_edge_spacer.height) / 2
+
                 width: (parent.width - 2 * parent.spacing - page_separator.width) / 2
                 height: parent.height
                 spacing: 10
@@ -259,15 +263,18 @@ ApplicationWindow {
                 Locations {
                     id: locations
                     width: parent.width
+                    height: parent.subwindow_height
                 }
 
                 Spacer {
+                    id: location_edge_spacer
                     vertical: false
                 }
 
                 Edges {
                     id: edges
                     width: parent.width
+                    height: parent.subwindow_height
                 }
 
             }

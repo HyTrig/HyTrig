@@ -43,6 +43,7 @@ Column {
     }
 
     TitleText {
+        id: query_text
         width: parent.width
         text: "Queries"
     }
@@ -52,7 +53,7 @@ Column {
 
         id: query_list
         width: parent.width
-        height: Math.min(contentHeight, 200)
+        height: parent.height - 2 * parent.spacing - query_text.height - query_input_row.height
         spacing: 10
         clip: true
 
@@ -64,7 +65,7 @@ Column {
 
             // Query formula
             DataText {
-                id: query_text
+                id: query_formula
                 width: model.verified ? (parent.width - 2 * parent.spacing - checkbox.width - query_button.width) : (parent.width - parent.spacing - query_button.width)
                 text: model.name
                 horizontalAlignment: Text.AlignLeft
@@ -75,7 +76,7 @@ Column {
             CheckBox {
 
                 id: checkbox
-                height: query_text.height
+                height: query_formula.height
                 visible: model.verified
                 tristate: false
                 checkable: false
@@ -104,6 +105,7 @@ Column {
     // Add query row
     Row {
 
+        id: query_input_row
         width: parent.width
         spacing: 10
 

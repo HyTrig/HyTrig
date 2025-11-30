@@ -33,8 +33,6 @@ Column {
                 agent_text_field.text = "";
                 agent_text_field.placeholderText = agent_text_field.default_text;
                 agent_text_field.placeholderTextColor = agent_text_field.default_color;
-                triggers.visible = agent_model.rowCount() > 0;
-                trigger_spacer.visible = agent_model.rowCount() > 0;
                 return;
             }
             else {
@@ -48,6 +46,7 @@ Column {
     }
 
     TitleText {
+        id: agent_text
         width: parent.width
         text: "Agents"
     }
@@ -57,7 +56,7 @@ Column {
 
         id: agent_list
         width: parent.width
-        height: Math.min(contentHeight, 100)
+        height: parent.height - 2 * parent.spacing - agent_text.height - agent_input_row.height
         clip: true
 
         model: agent_model
@@ -75,8 +74,6 @@ Column {
             RemoveButton {
                 onClicked: {
                     agent_model.removeRow(index);
-                    triggers.visible = agent_model.rowCount() > 0;
-                    trigger_spacer.visible = agent_model.rowCount() > 0;
                 }
             }
 
@@ -92,6 +89,7 @@ Column {
     // Add agent row
     Row {
 
+        id: agent_input_row
         width: parent.width
         spacing: 10
 

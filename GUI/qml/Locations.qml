@@ -58,6 +58,7 @@ Column {
     }
 
     TitleText {
+        id: location_text
         width: parent.width
         text: "Locations"
     }
@@ -67,7 +68,7 @@ Column {
 
         id: location_list
         width: parent.width
-        height: Math.min(contentHeight, 380)
+        height: parent.height - 2 * parent.spacing - location_text.height - location_input_row.height
         spacing: 10
         clip: true
 
@@ -215,6 +216,7 @@ Column {
     // Add location row
     Row {
 
+        id: location_input_row
         width: parent.width
         spacing: 10
 

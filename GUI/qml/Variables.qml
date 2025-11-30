@@ -71,6 +71,7 @@ Column {
     }
 
     TitleText {
+        id: variable_text
         width: parent.width
         text: "Variables"
     }
@@ -78,6 +79,7 @@ Column {
     // Property name row
     Row {
 
+        id: property_row
         width: parent.width - parent.spacing - variable_button.width
         spacing: 10
 
@@ -99,7 +101,7 @@ Column {
 
         id: variable_list
         width: parent.width
-        height: Math.min(contentHeight, 100)
+        height: parent.height - 3 * parent.spacing - variable_text.height - property_row.height - variable_input_row.height
         clip: true
 
         model: variable_model
@@ -160,6 +162,7 @@ Column {
     // Add variable row
     Row {
 
+        id: variable_input_row
         width: parent.width
         spacing: 10
 
