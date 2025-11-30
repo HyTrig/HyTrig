@@ -361,7 +361,6 @@ function down_tree(i)::Bool
         game_tree = game_tree.children[i]
         for child in game_tree.children
             push!(node_list, QActiveNode(child))
-            print(QActiveNode(child).passive_nodes)
         end
         return true
     else

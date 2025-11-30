@@ -17,6 +17,6 @@ Rectangle {
     width: vertical ? 5 : parent.width
     height: vertical ? parent.height : 5
     radius: 4
-    color: Material.color(Material.Grey, Material.Shade100)
+    color: Material.foreground
 
 }

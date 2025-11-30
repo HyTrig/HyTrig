@@ -70,7 +70,7 @@ Column {
             Subspacer {}
 
             // Agent name
-            DataText {
+            SubtitleText {
                 width: parent.width
                 text: model.name
             }

@@ -14,7 +14,7 @@ import org.julialang
 Text {
 
     text: ""
-    color: Material.color(Material.Grey, Material.Shade100)
+    color: Material.foreground
     font.pointSize: 20
     font.bold: true
     

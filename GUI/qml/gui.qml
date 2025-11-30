@@ -29,7 +29,6 @@ ApplicationWindow {
 
     Material.theme: Material.Dark
     Material.accent: Material.Blue
-    Material.foreground: Material.color(Material.Grey, Material.Shade100)
 
     property string file_path: ""
 
@@ -360,7 +359,26 @@ ApplicationWindow {
                     }
                 }
             }
-            
+
+            Button {
+                
+                width: save_as_button.width
+                height: save_as_button.height
+                icon.source: "icons/dark_mode.png"
+                icon.height: height
+                icon.color: Material.foreground
+                onClicked: {
+                    if (window.Material.theme == Material.Dark) {
+                        window.Material.theme = Material.Light;
+                        icon.source = "icons/light_mode.png";
+                    } else {
+                        window.Material.theme = Material.Dark;
+                        icon.source = "icons/dark_mode.png";
+                    }
+                }
+
+            }
+
         }
 
     }
