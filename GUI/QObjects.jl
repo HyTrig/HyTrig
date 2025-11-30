@@ -263,6 +263,7 @@ mutable struct QActiveNode <: QObject
     action::String
     trigger::String
     time::Float64
+    valuation::String
     passive_nodes::JuliaItemModel
 end
 
@@ -285,6 +286,7 @@ function QActiveNode(node::GUINode)::QActiveNode
             str(node.reaching_trigger)
         end,
         trunc(node.config.global_clock, digits=5),
+        _get_valuation_string(node.config.valuation),
         JuliaItemModel([QPassiveNode(passive) for passive in node.passive_nodes])
     )
 end
@@ -297,25 +299,24 @@ A passive tree node used in QML models.
     TODO
 """
 mutable struct QPassiveNode <: QObject
-    location::String
-    agent::String
-    constraint::String
+    valuation::String
     time::Float64
 end
 
 function QPassiveNode(node::PassiveNode)::QPassiveNode
     return QPassiveNode(
-        string(node.config.location.name),
-        if isnothing(node.reaching_decision)
-            ""
-        else
-            string(node.reaching_decision[1])
-        end,
-        if isnothing(node.reaching_decision)
-            ""
-        else
-            str(node.reaching_decision[2])
-        end,
+        _get_valuation_string(node.config.valuation),
         trunc(node.config.global_clock, digits=5)
     )
+end
+
+function _get_valuation_string(valuation::Valuation)::String
+    str = ""
+    for (i, val) in enumerate(keys(valuation))
+        str *= "$(string(val)) = $(trunc(valuation[val], digits=5))"
+        if i != length(keys(valuation))
+            str *= ",\n"
+        end
+    end
+    return "{$str}"
 end

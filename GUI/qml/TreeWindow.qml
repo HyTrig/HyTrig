@@ -13,16 +13,19 @@ import org.julialang
 
 ApplicationWindow {
 
+    id: tree_window
     width: 1500
     height: 1000
+    minimumWidth: 1000
+    minimumHeight: 800
 
     modality: Qt.ApplicationModal
 
     title: "Game tree viewer"
 
-    Material.theme: Material.Dark
-    Material.accent: Material.Blue
-    Material.foreground: Material.color(Material.Grey, Material.Shade100)
+    Material.theme: window.Material.theme
+    Material.accent: window.Material.accent
+    Material.foreground: window.Material.foreground
 
     property alias node_list: node_list
     property int level: 1
@@ -54,23 +57,13 @@ ApplicationWindow {
 
     Column {
 
+        id: tree_viewer_page
         anchors.fill: parent
         anchors.margins: 10
         spacing: 10
 
-        Button {
-
-            id: parent_button
-
-            text: "To parent"
-            
-            onClicked: {
-                tree_window.up();
-            }
-
-        }
-
         TitleText {
+            id: level_text
             width: parent.width
             text: "Level " + level
             horizontalAlignment: Text.AlignHCenter
@@ -79,8 +72,8 @@ ApplicationWindow {
 
         ListView {
             id: node_list
-            width: Math.min(contentWidth, tree_window.width)
-            height: 1000
+            width: Math.min(contentWidth, tree_viewer_page.width)
+            height: tree_viewer_page.height - level_text.height - parent_button.height - 2 * parent.spacing
             anchors.horizontalCenter: parent.horizontalCenter
             spacing: 10
             clip: true
@@ -90,113 +83,52 @@ ApplicationWindow {
             model: node_model
             delegate: Column {
                 
-                width: 200
+                width: 300
                 spacing: 10
-
+                
                 DataText {
+                    id: node_agent_text
                     width: parent.width
-                    text: model.trigger
+                    text: "Agent: " + model.agent
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     wrapMode: Text.Wrap
                 }
 
+                DataText {
+                    id: node_trigger_text
+                    width: parent.width
+                    text: "Trigger: " + model.trigger
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    wrapMode: Text.Wrap
+                }
+
+                DataText {
+                    id: node_active_time_text
+                    width: parent.width
+                    text: "Time = " + model.time
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                }
+
                 ListView {
                     id: passive_list
                     width: parent.width
-                    height: Math.min(contentHeight, 600)
+                    height: Math.min(contentHeight, node_list.height - node_agent_text.height - node_trigger_text.height - node_active_time_text.height - active_node.height - 5 * parent.spacing)
                     spacing: 5
+                    clip: true
 
                     model: passive_nodes
-                    delegate: Rectangle {
-
-                        width: passive_list.width
-                        height: 140
-                        radius: 4
-                        
-                        Column {
-
-                            width: parent.width
-                            height: parent.height
-                            spacing: 5
-
-                            DataText {
-                                width: parent.width
-                                text: model.agent
-                                horizontalAlignment: Text.AlignHCenter
-                                verticalAlignment: Text.AlignVCenter
-                            }
-
-                            Text {
-                                width: parent.width
-                                text: "↓"
-                                horizontalAlignment: Text.AlignHCenter
-                                verticalAlignment: Text.AlignVCenter
-                            }
-
-                            DataText {
-                                width: parent.width
-                                text: model.location
-                                horizontalAlignment: Text.AlignHCenter
-                                verticalAlignment: Text.AlignVCenter
-                            }
-
-                            DataText {
-                                width: parent.width
-                                text: "Time = " + model.time
-                                horizontalAlignment: Text.AlignHCenter
-                                verticalAlignment: Text.AlignVCenter
-                            }
-                        }
-                    }
+                    delegate: PassiveNode {}
                 }
                 
                 Button {
 
+                    id: active_node
                     width: parent.width
-                    height: 140
 
-                    background: Rectangle {
-
-                        width: parent.width
-                        height: parent.height
-                        radius: 4
-
-                        Column {
-
-                            width: parent.width
-                            height: parent.height
-                            spacing: 5
-
-                            DataText {
-                                width: parent.width
-                                text: "<" + model.agent + ", " + model.action + ">"
-                                horizontalAlignment: Text.AlignHCenter
-                                verticalAlignment: Text.AlignVCenter
-                            }
-
-                            Text {
-                                width: parent.width
-                                text: "↓"
-                                horizontalAlignment: Text.AlignHCenter
-                                verticalAlignment: Text.AlignVCenter
-                            }
-
-                            DataText {
-                                width: parent.width
-                                text: model.location
-                                horizontalAlignment: Text.AlignHCenter
-                                verticalAlignment: Text.AlignVCenter
-                            }
-
-                            DataText {
-                                width: parent.width
-                                text: "Time = " + model.time
-                                horizontalAlignment: Text.AlignHCenter
-                                verticalAlignment: Text.AlignVCenter
-                            }
-                        }
-                    }
+                    background: ActiveNode{}
 
                     onClicked: {
                         tree_window.down(index);
@@ -205,6 +137,18 @@ ApplicationWindow {
                 }
 
             }
+        }
+
+        Button {
+
+            id: parent_button
+            anchors.horizontalCenter: parent.horizontalCenter
+            text: "Go up"
+            
+            onClicked: {
+                tree_window.up();
+            }
+
         }
 
     }

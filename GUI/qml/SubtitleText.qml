@@ -14,7 +14,7 @@ import org.julialang
 Text {
 
     text: ""
-    color: window.Material.foreground
+    color: Material.foreground
     font.pointSize: 16
     
 }

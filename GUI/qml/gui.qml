@@ -21,10 +21,8 @@ ApplicationWindow {
     visible: true
     width: 1920
     minimumWidth: 1000
-    maximumWidth: 3000
     height: 1080
     minimumHeight: 800
-    maximumHeight: 2000
     title: "HyTrig"
 
     Material.theme: Material.Dark
@@ -368,7 +366,7 @@ ApplicationWindow {
                 icon.height: height
                 icon.color: Material.foreground
                 onClicked: {
-                    if (window.Material.theme == Material.Dark) {
+                    if (Material.theme == Material.Dark) {
                         window.Material.theme = Material.Light;
                         icon.source = "icons/light_mode.png";
                     } else {
