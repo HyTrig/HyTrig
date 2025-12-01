@@ -75,7 +75,7 @@ ApplicationWindow {
         ListView {
             id: node_list
             width: Math.min(contentWidth, tree_viewer_page.width)
-            height: tree_viewer_page.height - level_text.height - parent_button.height - 2 * parent.spacing
+            height: tree_viewer_page.height - level_text.height - legend.height - parent_button.height - 3 * parent.spacing
             anchors.horizontalCenter: parent.horizontalCenter
             spacing: 10
             clip: true
@@ -141,6 +141,43 @@ ApplicationWindow {
                 }
 
             }
+        }
+
+        // Color legend
+        Row {
+
+            id: legend
+            anchors.horizontalCenter: parent.horizontalCenter
+            spacing: 20
+
+            Rectangle {
+                id: active_legend
+                width: passive_legend.width
+                height: parent_button.height
+                radius: 4
+                color: Material.color(Material.Orange)
+                
+                SubtitleText {
+                    text: "Active node"
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+            }
+
+            Rectangle {
+                id: passive_legend
+                width: 200
+                height: parent_button.height
+                radius: 4
+                color: Material.color(Material.Blue)
+                
+                SubtitleText {
+                    text: "Passive node"
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+            }
+
         }
 
         // Return to parent button
