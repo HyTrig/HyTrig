@@ -278,8 +278,8 @@ function verify()
         locations[findfirst(loc -> loc.name == Symbol(edge.target), locations)],
         parse(edge.guard, bindings, constraint),
         Decision(Agent(edge.agent), Action(edge.action)),
-        Dict(
-            Symbol(edge.jump[i].var) => parse(edge.jump[i].jump, bindings, expression) for i in 1:length(edge.jump)
+        Dict{Symbol, ExprLike}(
+            [(Symbol(edge.jump[i].var) => parse(edge.jump[i].jump, bindings, expression)) for i in 1:length(edge.jump)]
         )
     ) for edge in edge_list]
     triggers::Dict{Agent, Vector{Constraint}} = Dict{Agent, Vector{Constraint}}(

@@ -3,7 +3,11 @@
 
 This file contains all definitions for creating the traversable game tree for the GUI.
 
-TODO
+# Types:
+- `GUINode`: a node in a traversable GUI tree
+
+# Functions:
+- `build_gui_tree(root::Union{ActiveNode, RootNode})::GUINode`: build a GUI tree from a game tree
 
 # Authors:
 - Moritz Maas
@@ -14,6 +18,11 @@ include("../game_syntax/game.jl")
 include("../game_semantics/configuration.jl")
 include("../model_checking/node.jl")
 
+"""
+    GUINode
+
+A node used in the traversable GUI tree.
+"""
 struct GUINode
     parent::Union{GUINode, Nothing}
     reaching_decision::Union{Pair{Agent, Action}, Nothing}
@@ -23,6 +32,14 @@ struct GUINode
     passive_nodes::Vector{PassiveNode}
 end
 
+"""
+    GUINode(node::ActiveNode, parent::Union{GUINode, Nothing})::GUINode
+
+Create a GUINode from the given active node `node` with the parent `parent`.
+# Arguments
+- `node::ActiveNode`: the active node
+- `parent::Union{GUINode, Nothing}`: the nodes next active parent
+"""
 function GUINode(node::ActiveNode, parent::Union{GUINode, Nothing})::GUINode
     return GUINode(
         parent,
@@ -34,6 +51,14 @@ function GUINode(node::ActiveNode, parent::Union{GUINode, Nothing})::GUINode
     )
 end
 
+"""
+    GUINode(node::RootNode, parent::Union{GUINode, Nothing})::GUINode
+
+Create a GUINode from the given root node `node` with the parent `parent`.
+# Arguments
+- `node::RootNode`: the root node
+- `parent::Union{GUINode, Nothing}`: the nodes next active parent
+"""
 function GUINode(node::RootNode, parent::Union{GUINode, Nothing})::GUINode
     return GUINode(
         parent,
@@ -45,6 +70,14 @@ function GUINode(node::RootNode, parent::Union{GUINode, Nothing})::GUINode
     )
 end
 
+"""
+    GUINode(node::EndNode, parent::Union{GUINode, Nothing})::GUINode
+
+Create a GUINode from the given end node `node` with the parent `parent`.
+# Arguments
+- `node::EndNode`: the end node
+- `parent::Union{GUINode, Nothing}`: the nodes next active parent
+"""
 function GUINode(node::EndNode, parent::Union{GUINode, Nothing})::GUINode
     return GUINode(
         parent,
@@ -56,6 +89,14 @@ function GUINode(node::EndNode, parent::Union{GUINode, Nothing})::GUINode
     )
 end
 
+"""
+    build_gui_tree(root::Union{ActiveNode, RootNode})::GUINode
+
+Recursively build the GUI tree from a game tree rooted in `root`.
+
+# Arguments
+- `root::Union{ActiveNode, RootNode}`: the game trees root
+"""
 function build_gui_tree(root::Union{ActiveNode, RootNode})::GUINode
     gui_root = GUINode(root, nothing)
     push!(gui_root.children, GUINode(root, gui_root))
@@ -70,6 +111,9 @@ function _get_next_layer(node::Union{ActiveNode, RootNode}, parent::GUINode)::Ve
         current_node::Node = child
         while !(current_node isa ActiveNode || current_node isa EndNode)
             push!(passives, current_node)
+            if length(current_node.children) != 1 && current_node.children[1] isa PassiveNode
+                print("Alarm!")
+            end
             current_node = current_node.children[1]
         end
         current_node = current_node.parent

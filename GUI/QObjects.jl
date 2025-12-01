@@ -14,6 +14,8 @@ This file contains all QML object definitions needed to create QML models for th
 - `QJump`: a jump used in QML models
 - `QEdge`: a edge used in QML models
 - `QQuery`: a query used in QML models
+- `QActiveNode`: an active node in the game tree in QML
+- `PassiveNode`: a passive node in the game tree in QML
 
 # Authors:
 - Moritz Maas
@@ -254,8 +256,6 @@ end
     QActiveNode <: QObject
 
 An active tree node used in QML models.
-
-    TODO
 """
 mutable struct QActiveNode <: QObject
     location::String
@@ -267,6 +267,13 @@ mutable struct QActiveNode <: QObject
     passive_nodes::JuliaItemModel
 end
 
+"""
+    QActiveNode(node::GUINode)::QActiveNode
+
+Create a QAction from the given GUI node `node`.
+# Arguments
+- `node::GUINode`: the gui node
+"""
 function QActiveNode(node::GUINode)::QActiveNode
     QActiveNode(
         string(node.config.location.name),
@@ -295,14 +302,19 @@ end
     QPassiveNode <: QObject
 
 A passive tree node used in QML models.
-
-    TODO
 """
 mutable struct QPassiveNode <: QObject
     valuation::String
     time::Float64
 end
 
+"""
+    QPassiveNode(node::PassiveNode)::QPassiveNode
+
+Create a QPassiveNode from the given passive node `node`.
+# Arguments
+- `node::PassiveNode`: the passive node
+"""
 function QPassiveNode(node::PassiveNode)::QPassiveNode
     return QPassiveNode(
         _get_valuation_string(node.config.valuation),
