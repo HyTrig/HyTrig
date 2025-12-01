@@ -6,11 +6,7 @@ This script runs a GUI with QML. The GUI allows to create, edit, save, load and 
 # Functions:
 - `has_name(name)::Bool`: check if a name is already in use
 - `is_valid_formula(formula, level)::Bool`: check if a formula is valid at a given parse level
-- `save_to_json(path)`: save the current game to a JSON file
-- `load_from_json(path)`: load a game from a JSON file
 - `verify()`: verify the current game
-- `up_tree()::Bool`: go up a layer in the last parsed game tree
-- `down_tree(i)::Bool` go down a child in the last parsed game tree
 
 # Authors:
 - Moritz Maas
@@ -23,6 +19,7 @@ using JSON3
 using QML
 
 include("GUI/gui_tree.jl")
+include("GUI/json_utils.jl")
 include("GUI/QObjects.jl")
 
 include("game_syntax/game.jl")
@@ -53,23 +50,11 @@ setsetter!(location_model, setflow!, roleindex(location_model, "flow"))
 roles["initial"] = roleindex(location_model, "initial")
 roles["flow"] = roleindex(location_model, "flow")
 
-# Temporarily create a flow model to get the role index for variable names
-temp_flow_list::Vector{QFlow} = []
-temp_flow_model::JuliaItemModel = JuliaItemModel(temp_flow_list)
-roles["flow_variable_name"] = roleindex(temp_flow_model, "var")
-roles["flow_expression"] = roleindex(temp_flow_model, "flow")
-
 # Declare edge model
 edge_list::Vector{QEdge} = []
 edge_model::JuliaItemModel = JuliaItemModel(edge_list)
 setsetter!(edge_model, setjump!, roleindex(edge_model, "jump"))
 roles["jump"] = roleindex(edge_model, "jump")
-
-# Temporarily create a jump model to get the role index for variable names
-temp_jump_list::Vector{QJump} = []
-temp_jump_model::JuliaItemModel = JuliaItemModel(temp_jump_list)
-roles["jump_variable_name"] = roleindex(temp_jump_model, "var")
-roles["jump_expression"] = roleindex(temp_jump_model, "jump")
 
 # Declare query model
 query_list::Vector{QQuery} = []
@@ -81,7 +66,7 @@ termination_conditions["max-steps"] = ""
 termination_conditions["state-formula"] = ""
 
 # Declare last parsed game tree
-game_tree::Union{GUINode, Node, Nothing} = nothing
+game_tree = nothing
 
 # Declare node model
 node_list::Vector{QActiveNode} = []
@@ -113,6 +98,81 @@ function has_name(name)::Bool
 end
 
 """
+    is_savable()::Bool
+
+Check if the current game state is savable.
+"""
+function is_savable()::Bool
+    for loc in location_list
+        for flow in values(loc.flow).val
+            if flow.flow == ""
+                return false
+            end
+        end
+    end
+    for edge in edge_list
+        for jump in values(edge.jump).val
+            if jump.jump == ""
+                return false
+            end
+        end
+    end
+    return true
+end
+
+"""
+    append_flow(i, var)
+
+Append the flow of location `i` with the variable `var`.
+
+# Arguments
+- `i`: location index
+- `var`: the flow variable to append
+"""
+function append_flow(i, var)
+    push!(location_list[i].flow, QFlow(String(var), ""))
+end
+
+"""
+    remove_flow(i, j)
+
+Removes the flow variable of location `i` at index `j`.
+
+# Arguments
+- `i`: location index
+- `j`: the index of the flow variable to remove
+"""
+function remove_flow(i, j)
+    delete!(location_list[i].flow, j)
+end
+
+"""
+    append_jump(i, var)
+
+Append the jump of edge `i` with the variable `var`.
+
+# Arguments
+- `i`: edge index
+- `var`: the jump variable to append
+"""
+function append_jump(i, var)
+    push!(edge_list[i].jump, QJump(String(var), ""))
+end
+
+"""
+    remove_jump(i, j)
+
+Removes the jump variable of edge `i` at index `j`.
+
+# Arguments
+- `i`: edge index
+- `j`: the index of the jump variable to remove
+"""
+function remove_jump(i, j)
+    delete!(edge_list[i].jump, j)
+end
+
+"""
     is_valid_formula(formula, level)::Bool
 
 Check if `formula` is a valid formula at level `level`.
@@ -138,106 +198,6 @@ function is_valid_formula(formula, level)::Bool
     catch
         return false
     end
-end
-
-"""
-    save_to_json(path)
-
-Save the current game to a JSON file at `path`.
-
-# Arguments
-- `path`: the path to save the JSON file to
-"""
-function save_to_json(path)
-    path = replace(String(path),  r"^(file:\/{2})" => "")
-    if !endswith(path, r"\.json")
-        path = path * ".json"
-    end
-    data = Dict(
-        "Game" => Dict(
-            "name" => "save$(now())",
-            "locations" => [_get_location_json(loc) for loc in location_list],
-            "initial_valuation" => [Dict(variable.name => Base.parse(Float64, variable.value)) for variable in variable_list],
-            "agents" => [agent.name for agent in agent_list],
-            "triggers" => Dict(
-                agent.name => [trigger.name for trigger in values(agent.triggers)[]] for agent in agent_list
-            ),
-            "actions" => [action.name for action in action_list],
-            "edges" => [_get_edge_json(edge) for edge in edge_list]
-        ),
-        "termination-conditions" => Dict(
-            "time-bound" => Base.parse(Float64, termination_conditions["time-bound"]),
-            "max-steps" => Base.parse(Int64, termination_conditions["max-steps"]),
-            "state-formula" => termination_conditions["state-formula"]
-        ),
-        "queries" => [query.name for query in query_list]
-    )
-    open(path, "w") do f
-        JSON3.pretty(f, JSON3.write(data))
-    end
-end
-
-"""
-    load_from_json(path)
-
-Load a game from a JSON file at `path`.
-
-# Arguments
-- `path`: the path to load the JSON file from
-"""
-function load_from_json(path)::Bool
-    path = replace(String(path),  r"^(file:\/{2})" => "")
-    data = open(path, "r") do f
-        JSON3.read(f)
-    end
-
-    empty!(agent_list)
-    empty!(action_list)
-    empty!(variable_list)
-    empty!(location_list)
-    empty!(edge_list)
-    empty!(query_list)
-
-    try
-        game = data["Game"]
-        for loc in game["locations"]
-            push!(
-                location_list,
-                QLocation(loc["name"], loc["invariant"], loc["initial"],
-                    JuliaItemModel([QFlow(String(first(keys(flow))), first(values(flow))) for flow in loc["flow"]])
-                )
-            )
-        end
-        for var in game["initial_valuation"]
-            push!(variable_list, QVariable(String(first(keys(var))), string(first(values(var)))))
-        end
-        for agent_name in game["agents"]
-            triggers = JuliaItemModel([QTrigger(t) for t in game["triggers"][agent_name]])
-            push!(agent_list, QAgent(agent_name, triggers))
-        end
-        for action_name in game["actions"]
-            push!(action_list, QAction(action_name))
-        end
-        for edge in game["edges"]
-            push!(
-                edge_list,
-                QEdge(edge["name"], edge["start_location"], edge["target_location"], edge["guard"],
-                    String(first(keys(edge["decision"]))), first(values(edge["decision"])),
-                    JuliaItemModel([QJump(String(first(keys(jump))), first(values(jump))) for jump in edge["jump"]])
-                )
-            )
-        end
-        for query_name in data["queries"]
-            push!(query_list, QQuery(query_name, false, false))
-        end
-        term_conds = data["termination-conditions"]
-        termination_conditions["time-bound"] = string(term_conds["time-bound"])
-        termination_conditions["max-steps"] = string(term_conds["max-steps"])
-        termination_conditions["state-formula"] = term_conds["state-formula"]
-    catch
-        return false
-    end
-    return true
 end
 
 """
@@ -321,80 +281,9 @@ function verify()
     end
 end
 
-"""
-    up_tree()::Bool
-
-Set the node model to the current nodes parent layer.
-"""
-function up_tree()::Bool
-    global game_tree
-    if isnothing(game_tree) || isnothing(game_tree.parent)
-        return false
-    end
-
-    empty!(node_list)
-
-    game_tree = game_tree.parent
-
-    for child in game_tree.children
-        push!(node_list, QActiveNode(child))
-    end
-    return true
-end
-
-"""
-    down_tree(i)::Bool
-
-Set the node model to the current nodes child layer of child `i`.
-"""
-function down_tree(i)::Bool
-    global game_tree
-    if isempty(node_list) || isnothing(game_tree)
-        return false
-    end
-
-    i = Int(i)
-
-    if 0 < i <= length(game_tree.children)
-        if isempty(game_tree.children[i].children)
-            return false
-        end
-        empty!(node_list)
-        game_tree = game_tree.children[i]
-        for child in game_tree.children
-            push!(node_list, QActiveNode(child))
-        end
-        return true
-    else
-        return false
-    end
-end
-
-function _get_location_json(loc::QLocation)
-    return Dict(
-        "name" => loc.name,
-        "invariant" => loc.inv,
-        "flow" => [Dict(loc.flow[i].var => loc.flow[i].flow) for i in 1:length(loc.flow)],
-        "initial" => loc.initial
-    )
-end
-
-function _get_edge_json(edge::QEdge)
-    return Dict(
-        "name" => edge.name,
-        "start_location" => edge.source,
-        "target_location" => edge.target,
-        "guard" => edge.guard,
-        "decision" => Dict(
-            edge.agent => edge.action
-        ),
-        "jump" => [Dict(edge.jump[i].var => edge.jump[i].jump) for i in 1:length(edge.jump)]
-    )
-end
-
 # Build and run QML GUI
 
-@qmlfunction has_name is_valid_formula save_to_json load_from_json verify up_tree down_tree
+@qmlfunction has_name is_savable append_flow remove_flow append_jump remove_jump is_valid_formula save_to_json load_from_json verify up_tree down_tree
 
 qml_file = joinpath(dirname(@__FILE__), "GUI", "qml", "gui.qml")
 

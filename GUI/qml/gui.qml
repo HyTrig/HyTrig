@@ -62,23 +62,10 @@ ApplicationWindow {
             save_fail_dialog.open();
             return false;
         }
-        for (var i = 0; i < location_model.rowCount(); i++) {
-            var flow_model = location_model.data(location_model.index(i, 0), roles.flow);
-            for (var j = 0; j < flow_model.rowCount(); j++) {
-                if (flow_model.data(flow_model.index(j, 0), roles.flow_expression) == "") {
-                    save_fail_dialog.informativeText = "Empty flow expressions are invalid."
-                    return false;
-                }
-            }
-        }
-        for (var i = 0; i < edge_model.rowCount(); i++) {
-            var jump_model = edge_model.data(edge_model.index(i, 0), roles.jump);
-            for (var j = 0; j < jump_model.rowCount(); j++) {
-                if (jump_model.data(jump_model.index(j, 0), roles.jump_expression) == "") {
-                    save_fail_dialog.informativeText = "Empty jump expressions are invalid."
-                    return false;
-                }
-            }
+        if (!Julia.is_savable()) {
+            save_fail_dialog.informativeText = "Flows and jumps cannot be empty."
+            save_fail_dialog.open();
+            return false;
         }
         return true;
     }

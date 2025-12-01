@@ -34,17 +34,11 @@ Column {
                 if (value_regex.test(value))
                 {
                     variable_model.appendRow({name: variable, value: value});
-                    for (var i = 0; i < location_model.rowCount(); i++) {
-                        location_model.data(location_model.index(i, 0), roles.flow).appendRow({
-                            var: variable,
-                            flow: ""
-                        });
+                    for (var i = 1; i <= location_model.rowCount(); i++) {
+                        Julia.append_flow(i, variable);
                     }
-                    for (var i = 0; i < edge_model.rowCount(); i++) {
-                        edge_model.data(edge_model.index(i, 0), roles.jump).appendRow({
-                            var: variable,
-                            jump: ""
-                        });
+                    for (var i = 1; i <= edge_model.rowCount(); i++) {
+                        Julia.append_jump(i, variable);
                     }
                     variable_name_text_field.text = "";
                     variable_value_text_field.text = "";
@@ -128,24 +122,12 @@ Column {
             RemoveButton {
                 onClicked: {
                     // Remove variable from flows
-                    for (var i = 0; i < location_model.rowCount(); i++) {
-                        var flow = location_model.data(location_model.index(i, 0), roles.flow);
-                        for (var j = 0; j < flow.rowCount(); j++) {
-                            if (flow.data(flow.index(j, 0), roles.flow_variable_name) == model.name) {
-                                flow.removeRow(j);
-                                break;
-                            }
-                        }
+                    for (var i = 1; i <= location_model.rowCount(); i++) {
+                        Julia.remove_flow(i, index + 1);
                     }
                     // Remove variable from jumps
-                    for (var i = 0; i < edge_model.rowCount(); i++) {
-                        var jump = edge_model.data(edge_model.index(i, 0), roles.jump);
-                        for (var j = 0; j < jump.rowCount(); j++) {
-                            if (jump.data(jump.index(j, 0), roles.jump_variable_name) == model.name) {
-                                jump.removeRow(j);
-                                break;
-                            }
-                        }
+                    for (var i = 1; i <= edge_model.rowCount(); i++) {
+                        Julia.remove_jump(i, index + 1);
                     }
                     variable_model.removeRow(index);
                 }

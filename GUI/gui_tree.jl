@@ -8,6 +8,8 @@ This file contains all definitions for creating the traversable game tree for th
 
 # Functions:
 - `build_gui_tree(root::Union{ActiveNode, RootNode})::GUINode`: build a GUI tree from a game tree
+- `up_tree()::Bool`: ascend a layer in the GUI tree
+- `down_tree(i)::Bool`: descend a layer in the GUI tree
 
 # Authors:
 - Moritz Maas
@@ -89,6 +91,8 @@ function GUINode(node::EndNode, parent::Union{GUINode, Nothing})::GUINode
     )
 end
 
+global game_tree::Union{GUINode, Node, Nothing}
+
 """
     build_gui_tree(root::Union{ActiveNode, RootNode})::GUINode
 
@@ -102,6 +106,56 @@ function build_gui_tree(root::Union{ActiveNode, RootNode})::GUINode
     push!(gui_root.children, GUINode(root, gui_root))
     append!(gui_root.children[1].children, _get_next_layer(root, gui_root.children[1]))
     return gui_root
+end
+
+
+"""
+    up_tree()::Bool
+
+Set the node model to the current nodes parent layer.
+"""
+function up_tree()::Bool
+    global game_tree
+    if isnothing(game_tree) || isnothing(game_tree.parent)
+        return false
+    end
+
+    empty!(node_list)
+
+    game_tree = game_tree.parent
+
+    for child in game_tree.children
+        push!(node_list, QActiveNode(child))
+    end
+    return true
+end
+
+"""
+    down_tree(i)::Bool
+
+Set the node model to the current nodes child layer of child `i`.
+"""
+function down_tree(i)::Bool
+    global game_tree
+    if isempty(node_list) || isnothing(game_tree)
+        return false
+    end
+
+    i = Int(i)
+
+    if 0 < i <= length(game_tree.children)
+        if isempty(game_tree.children[i].children)
+            return false
+        end
+        empty!(node_list)
+        game_tree = game_tree.children[i]
+        for child in game_tree.children
+            push!(node_list, QActiveNode(child))
+        end
+        return true
+    else
+        return false
+    end
 end
 
 function _get_next_layer(node::Union{ActiveNode, RootNode}, parent::GUINode)::Vector{GUINode}
