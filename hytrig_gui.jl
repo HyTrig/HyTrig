@@ -188,9 +188,9 @@ function is_valid_formula(formula, level)::Bool
         return false
     end
 
-    agents = Vector(collect(x.name for x in agent_list))
-    locations = Vector(collect(x.name for x in location_list))
-    variables = Vector(collect(x.name for x in variable_list))
+    agents = Set(collect(x.name for x in agent_list))
+    locations = Set(collect(x.name for x in location_list))
+    variables = Set(collect(x.name for x in variable_list))
 
     try
         parse(formula, Bindings(agents, locations, variables), level)
@@ -207,9 +207,9 @@ Verify the current hybrid game with triggers.
 """
 function verify()
     bindings = Bindings(
-        Vector(collect(x.name for x in agent_list)),
-        Vector(collect(x.name for x in location_list)),
-        Vector(collect(x.name for x in variable_list))
+        Set(collect(x.name for x in agent_list)),
+        Set(collect(x.name for x in location_list)),
+        Set(collect(x.name for x in variable_list))
     )
 
     locations::Vector{Location} = []
