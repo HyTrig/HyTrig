@@ -21,7 +21,7 @@ This file contains all QML object definitions needed to create QML models for th
 - Moritz Maas
 """
 
-include("../model_checking/node.jl")
+include("../src/model_checking/node.jl")
 
 # abstract types for all objects used in QML models
 abstract type QObject

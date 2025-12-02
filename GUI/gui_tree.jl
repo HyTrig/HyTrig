@@ -15,10 +15,10 @@ This file contains all definitions for creating the traversable game tree for th
 - Moritz Maas
 """
 
-include("../essential_definitions/iliases.jl")
-include("../game_syntax/game.jl")
-include("../game_semantics/configuration.jl")
-include("../model_checking/node.jl")
+include("../src/essential_definitions/aliases.jl")
+include("../src/game_syntax/game.jl")
+include("../src/game_semantics/configuration.jl")
+include("../src/model_checking/node.jl")
 
 """
     GUINode

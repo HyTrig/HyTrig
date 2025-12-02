@@ -1,7 +1,7 @@
 using DataStructures
 using Match
 
-include("iliases.jl")
+include("aliases.jl")
 include("constraint.jl")
 
 function round5(num::Float64)::Float64

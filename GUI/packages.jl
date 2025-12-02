@@ -15,7 +15,6 @@ dependencies = [
     "Match",
     "JSON3",
     "DataStructures",
-    "Plots",
     "QML"
 ]
 

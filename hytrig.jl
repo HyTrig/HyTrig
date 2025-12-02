@@ -1,19 +1,20 @@
 # using Ranges   # Remove this line
-include("packages.jl")
-include("parsers/parse_game.jl")
-include("model_checking/build_and_evaluate.jl")
+include("src/packages.jl")
+include("src/parsers/parse_game.jl")
+include("src/model_checking/build_and_evaluate.jl")
+
+if length(ARGS) == 0
+    println("Please provide a valid example.json file name")
+    return
+end
 
 example = ARGS[1]
 
 
 t0 = time();
 
-if example == "1"
-    game, termination_conditions, queries, queries_text = parse_game("examples/bouncing_ball.json")
-elseif example == "2"
-    game, termination_conditions, queries, queries_text = parse_game("examples/3_players_1_ball.json")
-elseif example == "3"
-    game, termination_conditions, queries, queries_text = parse_game("examples/player_in_middle.json")
+if isfile(example)
+    game, termination_conditions, queries, queries_text = parse_game(example)
 else 
     error("Example not recognized")
 end

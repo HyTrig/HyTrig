@@ -12,19 +12,19 @@ This script runs a GUI with QML. The GUI allows to create, edit, save, load and 
 - Moritz Maas
 """
 
-include("packages.jl")
+include("gui/packages.jl")
 
 using Dates
 using JSON3
 using QML
 
-include("GUI/gui_tree.jl")
-include("GUI/json_utils.jl")
-include("GUI/QObjects.jl")
+include("gui/gui_tree.jl")
+include("gui/json_utils.jl")
+include("gui/QObjects.jl")
 
-include("game_syntax/game.jl")
-include("parsers/syntax_parsers/parser.jl")
-include("model_checking/build_and_evaluate.jl")
+include("src/game_syntax/game.jl")
+include("src/parsers/syntax_parsers/parser.jl")
+include("src/model_checking/build_and_evaluate.jl")
 
 # Declare synchronized models and roles
 
