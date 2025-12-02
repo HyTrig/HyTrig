@@ -6,32 +6,19 @@
         "locations": 
         [
             {
-                "name": "A_Waiting",
-                "invariant": "timer <= 5",
+                "name": "initial",
+                "invariant": "time == 0",
                 "flow": [
-                    {"middle_player": "sin(time) * spd_C"},
-                    {"timer": "1"},
-                    {"time": "1"}
-                ],
-                "initial": false
-            },
-            {
-                "name": "A_Throwing",
-                "invariant": "",
-                "flow": [
-                    {"x": "spd_A * dir_x"},
-                    {"y": "spd_A * dir_y"},
-                    {"middle_player": "sin(time) * spd_C"},
                     {"time": "1"}
                 ],
                 "initial": true
             },
             {
-                "name": "B_Waiting",
-                "invariant": "timer <= 5",
+                "name": "A_Throwing",
+                "invariant": "",
                 "flow": [
-                    {"middle_player": "cos(time) * spd_C"},
-                    {"timer": "1"},
+                    {"ball": "spd"},
+                    {"middle_player": "sin(time) * 2"},
                     {"time": "1"}
                 ],
                 "initial": false
@@ -40,103 +27,113 @@
                 "name": "B_Throwing",
                 "invariant": "",
                 "flow": [
-                    {"x": "spd_B * dir_x"},
-                    {"y": "spd_B * dir_y"},
-                    {"middle_player": "cos(time) * spd_C"},
+                    {"ball": "spd"},
+                    {"middle_player": "sin(time) * 2"},
                     {"time": "1"}
                 ],
                 "initial": false
             },
             {
                 "name": "Caught",
-                "invariant": "-1 <= x && x <= 1 && (y - middle_player)^2 <= 1",
+                "invariant": "ball^2 + middle_player^2 <= 0.1",
                 "flow": [
-                    {"time": "1"}
                 ],
                 "initial": false
             }
         ],
         "initial_valuation": [
-            {"x": -5},
-            {"y": 0.5},
-            {"pos_A_x": -10},
-            {"pos_A_y": 0},
-            {"pos_B_x": 10},
-            {"pos_B_y": 0},
+            {"ball": -10},
             {"middle_player": 0},
-            {"dir_x": -5},
-            {"dir_y": -0.5},
-            {"spd_A": 0.1},
-            {"spd_B": 0.2},
-            {"spd_C": 5},
-            {"time": 0},
-            {"timer": 0}
+            {"spd": 0},
+            {"time": 0}
         ],
         "agents": ["A", "B", "C"],
-        "actions": ["catch", "throw"],
+        "actions": ["catch", "throw_1", "throw_2"],
         "edges": 
         [
             {
-                "name": "A_Caught",
-                "start_location": "B_Throwing",
-                "target_location": "A_Waiting",
-                "guard": "(x - pos_A_x)^2 + (y - pos_A_y)^2 <= 1",
-                "decision": 
-                {
-                    "A": "catch"
-                },
-                "jump": [
-                    {"timer": "0"}
-                ]
-            },
-            {
-                "name": "A_throw",
-                "start_location": "A_Waiting",
+                "name": "A_throw_1",
+                "start_location": "initial",
                 "target_location": "A_Throwing",
-                "guard": "1 <= timer && timer <= 4",
+                "guard": "ball < -9",
                 "decision": 
                 {
-                    "A": "throw"
+                    "A": "throw_1"
                 },
                 "jump": [
-                    {"dir_x": "pos_B_x - x"},
-                    {"dir_y": "pos_B_y - y"},
-                    {"timer": "0"}
+                    {"spd": "1"}
                 ]
             },
             {
-                "name": "B_Caught",
+                "name": "A_throw_2",
+                "start_location": "initial",
+                "target_location": "A_Throwing",
+                "guard": "ball < -9",
+                "decision": 
+                {
+                    "A": "throw_2"
+                },
+                "jump": [
+                    {"spd": "2"}
+                ]
+            },
+            {
+                "name": "B_A_throw_1",
+                "start_location": "B_Throwing",
+                "target_location": "A_Throwing",
+                "guard": "ball < -9",
+                "decision": 
+                {
+                    "A": "throw_1"
+                },
+                "jump": [
+                    {"spd": "1"}
+                ]
+            },
+            {
+                "name": "B_A_throw_2",
+                "start_location": "B_Throwing",
+                "target_location": "A_Throwing",
+                "guard": "ball < -9",
+                "decision": 
+                {
+                    "A": "throw_2"
+                },
+                "jump": [
+                    {"spd": "2"}
+                ]
+            },
+            {
+                "name": "B_throw_1",
                 "start_location": "A_Throwing",
-                "target_location": "B_Waiting",
-                "guard": "(x - pos_B_x)^2 + (y - pos_B_y)^2 <= 1",
+                "target_location": "B_Throwing",
+                "guard": "ball > 9",
                 "decision": 
                 {
-                    "B": "catch"
+                    "B": "throw_1"
                 },
                 "jump": [
-                    {"timer": "0"}
+                    {"spd": "-1"}
                 ]
             },
             {
-                "name": "B_throw",
-                "start_location": "B_Waiting",
+                "name": "B_throw_2",
+                "start_location": "A_Throwing",
                 "target_location": "B_Throwing",
-                "guard": "1 <= timer && timer <= 4",
+                "guard": "ball > 9",
                 "decision": 
                 {
-                    "B": "throw"
+                    "B": "throw_2"
                 },
                 "jump": [
-                    {"dir_x": "pos_A_x - x"},
-                    {"dir_y": "pos_A_y - y"},
-                    {"timer": "0"}
+                    {"spd": "-2"}
                 ]
             },
             {
                 "name": "Middle_Caught_A",
                 "start_location": "A_Throwing",
                 "target_location": "Caught",
-                "guard": "x^2 + (y - middle_player)^2 <= 1",
+                "guard": "ball^2 + middle_player^2 <= 0.1",
                 "decision": 
                 {
                     "C": "catch"
@@ -147,7 +144,7 @@
                 "name": "Middle_Caught_B",
                 "start_location": "B_Throwing",
                 "target_location": "Caught",
-                "guard": "x^2 + (y - middle_player)^2 <= 1",
+                "guard": "ball^2 + middle_player^2 <= 0.1",
                 "decision": 
                 {
                     "C": "catch"
@@ -157,18 +154,18 @@
         ],
         "triggers": 
         {
-            "A": ["(x - pos_A_x)^2 + (y - pos_A_y)^2 <= 0.5", "timer == 1", "timer == 2", "timer == 3", "timer == 4"],
-            "B": ["(x - pos_B_x)^2 + (y - pos_B_y)^2 <= 0.5", "timer == 1", "timer == 2", "timer == 3", "timer == 4"],
-            "C": ["x^2 + (y - middle_player)^2 <= 0.5"]
+            "A": ["ball <= -9.5", "ball == -10"],
+            "B": ["ball >= 9.5", "ball == 10"],
+            "C": ["ball^2 + middle_player^2 <= 0.1"]
         }
     },
     "termination-conditions": {
         "time-bound": 1000.0,
-        "max-steps": 4,
+        "max-steps": 20,
         "state-formula": "Caught"
     },
     "queries": 
     [
-        "<<C>> F Caught"
+        "<<A, B>>G ! Caught"
     ]
 }

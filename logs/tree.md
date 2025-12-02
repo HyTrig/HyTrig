@@ -1,115 +1,10235 @@
 
-Root  falling
-Valuation: OrderedDict(:pos => 1000.0, :spd => 0.0, :acc => -10.0, :dissipation => 0.9)
-Children: 1
+Root  initial
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 0.0, :shooter => 0.0)
+Children: 2
 --------------
 
-1- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => -0.0, :spd => 127.27922, :acc => -10.0, :dissipation => 0.9), - Time: 14.14214
-Children: 1
+1- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 0.0
+Children: 2
 --------------
 
-1- Passive - Agent: A - Trigger: pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => 700.0, :spd => 46.90414, :acc => -10.0, :dissipation => 0.9), - Time: 22.17964
-Children: 1
+2- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 10.0
+Children: 2
 --------------
 
-1- Passive - Agent: A - Trigger: pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => 700.00001, :spd => 46.90414, :acc => -10.0, :dissipation => 0.9), - Time: 22.17964
-Children: 1
+3- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 20.00001
+Children: 2
 --------------
 
-2- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => -0.0, :spd => 114.55129, :acc => -10.0, :dissipation => 0.9), - Time: 39.59798
-Children: 1
+4- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 30.00001
+Children: 2
 --------------
 
-3- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => -0.0, :spd => 103.09616, :acc => -10.0, :dissipation => 0.9), - Time: 62.50824
-Children: 1
+5- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 40.00002
+Children: 2
 --------------
 
-4- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => -0.0, :spd => 92.78654, :acc => -10.0, :dissipation => 0.9), - Time: 83.12747
-Children: 1
+6- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
 --------------
 
-5- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => 0.0, :spd => 83.50788, :acc => -10.0, :dissipation => 0.9), - Time: 101.68478
-Children: 1
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
 --------------
 
-6- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => -0.0, :spd => 75.15709, :acc => -10.0, :dissipation => 0.9), - Time: 118.38635
-Children: 1
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
 --------------
 
-7- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => 0.0, :spd => 67.64138, :acc => -10.0, :dissipation => 0.9), - Time: 133.41777
-Children: 1
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
 --------------
 
-8- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => -0.0, :spd => 60.87723, :acc => -10.0, :dissipation => 0.9), - Time: 146.94605
-Children: 1
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
 --------------
 
-9- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => 0.0, :spd => 54.78951, :acc => -10.0, :dissipation => 0.9), - Time: 159.12149
-Children: 1
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
 --------------
 
-10- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => -0.0, :spd => 49.31056, :acc => -10.0, :dissipation => 0.9), - Time: 170.0794
-Children: 1
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
 --------------
 
-11- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => -0.0, :spd => 44.3795, :acc => -10.0, :dissipation => 0.9), - Time: 179.94151
-Children: 1
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
 --------------
 
-12- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => 0.0, :spd => 39.94154, :acc => -10.0, :dissipation => 0.9), - Time: 188.81741
-Children: 1
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
 --------------
 
-13- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => 0.0, :spd => 35.94739, :acc => -10.0, :dissipation => 0.9), - Time: 196.80571
-Children: 1
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
 --------------
 
-14- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => -0.0, :spd => 32.35264, :acc => -10.0, :dissipation => 0.9), - Time: 203.99519
-Children: 1
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
 --------------
 
-15- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => 0.0, :spd => 29.11738, :acc => -10.0, :dissipation => 0.9), - Time: 210.46572
-Children: 1
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
 --------------
 
-16- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => -0.0, :spd => 26.20564, :acc => -10.0, :dissipation => 0.9), - Time: 216.28919
-Children: 1
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
 --------------
 
-17- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => 0.0, :spd => 23.58508, :acc => -10.0, :dissipation => 0.9), - Time: 221.53032
-Children: 1
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
 --------------
 
-18- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => -0.0, :spd => 21.22657, :acc => -10.0, :dissipation => 0.9), - Time: 226.24734
-Children: 1
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
 --------------
 
-19- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => 0.0, :spd => 19.10391, :acc => -10.0, :dissipation => 0.9), - Time: 230.49265
-Children: 1
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
 --------------
 
-20- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => -0.0, :spd => 17.19352, :acc => -10.0, :dissipation => 0.9), - Time: 234.31343
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+5- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+4- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 30.00001
+Children: 2
+--------------
+
+5- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+5- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+3- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 20.00001
+Children: 2
+--------------
+
+4- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 30.00001
+Children: 2
+--------------
+
+5- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+5- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+4- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 30.00001
+Children: 2
+--------------
+
+5- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+5- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+2- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 10.0
+Children: 2
+--------------
+
+3- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 20.00001
+Children: 2
+--------------
+
+4- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 30.00001
+Children: 2
+--------------
+
+5- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+5- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+4- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 30.00001
+Children: 2
+--------------
+
+5- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+5- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+3- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 20.00001
+Children: 2
+--------------
+
+4- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 30.00001
+Children: 2
+--------------
+
+5- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+5- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+4- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 30.00001
+Children: 2
+--------------
+
+5- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+5- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+1- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 0.0
+Children: 2
+--------------
+
+2- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 10.0
+Children: 2
+--------------
+
+3- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 20.00001
+Children: 2
+--------------
+
+4- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 30.00001
+Children: 2
+--------------
+
+5- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+5- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+4- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 30.00001
+Children: 2
+--------------
+
+5- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+5- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+3- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 20.00001
+Children: 2
+--------------
+
+4- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 30.00001
+Children: 2
+--------------
+
+5- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+5- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+4- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 30.00001
+Children: 2
+--------------
+
+5- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+5- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+2- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 10.0
+Children: 2
+--------------
+
+3- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 20.00001
+Children: 2
+--------------
+
+4- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 30.00001
+Children: 2
+--------------
+
+5- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+5- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+4- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 30.00001
+Children: 2
+--------------
+
+5- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+5- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+3- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 20.00001
+Children: 2
+--------------
+
+4- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 30.00001
+Children: 2
+--------------
+
+5- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+5- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+4- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 30.00001
+Children: 2
+--------------
+
+5- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+5- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 40.00002
+Children: 2
+--------------
+
+6- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+6- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 50.00002
+Children: 2
+--------------
+
+7- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+7- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 60.00002
+Children: 2
+--------------
+
+8- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: C - Action: R / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: C - Action: L / ((x == 5.0) ∧ (y == 5.0)) ∧ (shooter != 3.0) - Location: C_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 3.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+8- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 70.00003
+Children: 2
+--------------
+
+9- Active - Agent: A - Action: R / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: B - Action: R / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: B - Action: L / ((x == 5.0) ∧ (y == (- 5.0))) ∧ (shooter != 2.0) - Location: B_Throwing
+Valuation: OrderedDict(:x => 5.0, :y => -5.0, :dir_x => -1.0, :dir_y => 0.0, :shooter => 2.0), - Time: 90.00004
+Children: 0
+--------------
+
+9- Active - Agent: A - Action: L / ((x == (- 5.0)) ∧ (y == (- 5.0))) ∧ (shooter != 1.0) - Location: A_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => -5.0, :dir_x => 0.0, :dir_y => 1.0, :shooter => 1.0), - Time: 80.00003
+Children: 2
+--------------
+
+10- Active - Agent: D - Action: R / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 0.0, :dir_y => -1.0, :shooter => 4.0), - Time: 90.00004
+Children: 0
+--------------
+
+10- Active - Agent: D - Action: L / ((x == (- 5.0)) ∧ (y == 5.0)) ∧ (shooter != 4.0) - Location: D_Throwing
+Valuation: OrderedDict(:x => -5.0, :y => 5.0, :dir_x => 1.0, :dir_y => 0.0, :shooter => 4.0), - Time: 90.00004
 Children: 0
 --------------

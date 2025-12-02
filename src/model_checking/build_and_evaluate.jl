@@ -130,7 +130,13 @@ function evaluate_and_build!(game::Game,
                              )::Bool
     @match formula begin
         Strategy_to_State(f) => evaluate_state(f, node.config)
-        Strategy_Deadlock() => ! check_termination(node, termination_conditions) && length(node.children) == 0
+        Strategy_Deadlock() => begin
+            terminal_node = check_termination(node, termination_conditions)
+            if ! (isa(node, PassiveNode) || terminal_node || (node in built_nodes))
+                build_children!(game, constraints, node, termination_conditions, built_nodes)
+            end
+            return ! terminal_node && length(node.children) == 0
+        end
         All_Always(agents, f) => ! evaluate_and_build!(game, constraints, Exist_Eventually(setdiff(game.agents, agents), Strategy_Not(f)), node, termination_conditions, built_nodes)
         All_Eventually(agents, f) => ! evaluate_and_build!(game, constraints, Exist_Always(setdiff(game.agents, agents), Strategy_Not(f)), node, termination_conditions, built_nodes)
         Strategy_And(left, right) => evaluate_and_build!(game, constraints, left, node, termination_conditions, built_nodes) && evaluate_and_build!(game, constraints, right, node, termination_conditions, built_nodes)
@@ -145,15 +151,12 @@ function evaluate_and_build!(game::Game,
             if ! (isa(node, PassiveNode) || terminal_node || (node in built_nodes))
                 build_children!(game, constraints, node, termination_conditions, built_nodes)
             end
-            if length(node.children) == 0 || terminal_node
+            if length(node.children) == 0 || terminal_node || (length(node.children) == 1 && ! check_invariant(node.children[1].config))
                 return true
             end
             children = sort_children_by_clock_agent(node, agents)
             agents_have_children = false
             for child in children
-                if ! check_invariant(node.config)
-                    return false
-                end
                 if isa(child, EndNode) || isnothing(child.reaching_decision) || child.reaching_decision.first in agents
                     if evaluate_and_build!(game, constraints, formula, child, termination_conditions, built_nodes)
                         return true
@@ -177,16 +180,12 @@ function evaluate_and_build!(game::Game,
             if ! (isa(node, PassiveNode) || terminal_node || (node in built_nodes))
                 build_children!(game, constraints, node, termination_conditions, built_nodes)
             end
-            if length(node.children) == 0 || terminal_node
+            if length(node.children) == 0 || terminal_node || (length(node.children) == 1 && ! check_invariant(node.children[1].config))
                 return false
             end
             children = sort_children_by_clock_agent(node, agents)
             agents_have_children = false
             for child in children
-                if ! check_invariant(node.config)
-                    println("Invariant issue!")
-                    return false
-                end
                 if isa(child, EndNode) || isnothing(child.reaching_decision) || child.reaching_decision.first in agents
                     if evaluate_and_build!(game, constraints, formula, child, termination_conditions, built_nodes)
                         return true

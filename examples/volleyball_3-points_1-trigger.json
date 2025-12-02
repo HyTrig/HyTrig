@@ -1,6 +1,6 @@
 {
     "Game": {
-        "name":"Valleyball Game",
+        "name":"Valleyball Game - 3 Points - 1 Trigger",
         "locations": 
         [
             {
@@ -66,10 +66,10 @@
             {"dir_C_y": 0},
             {"dir_D_x": 0},
             {"dir_D_y": 0},
-            {"spd_A": 3.5},
+            {"spd_A": 3.2},
             {"spd_B": 3},
-            {"spd_C": 4},
-            {"spd_D": 3.5},
+            {"spd_C": 3.8},
+            {"spd_D": 3.2},
             {"team": 0},
             {"max_height": 4},
             {"g": 9.8},
@@ -535,11 +535,12 @@
     },
     "termination-conditions": {
         "time-bound": 300,
-        "max-steps": 15,
+        "max-steps": 10,
         "state-formula": "z <= 0"
     },
     "queries": 
     [
-        "<<C, D>> G x >= 9 -> z > 0"
+        "<<C, D>> G x >= 9 -> z > 0",
+        "[[]] G (not deadlock)"
     ]
 }

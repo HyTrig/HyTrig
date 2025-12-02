@@ -42,6 +42,12 @@
             {"spd_A": 0.1},
             {"spd_B": 0.2},
             {"spd_C": 0.4},
+            {"A_x": 0},
+            {"A_y": 10},
+            {"B_x": -10},
+            {"B_y": 0},
+            {"C_x": 10},
+            {"C_y": 0},
             {"time": 0}
         ],
         "agents": ["A", "B", "C"],
@@ -52,188 +58,189 @@
                 "name": "B_A_B",
                 "start_location": "B_Throwing",
                 "target_location": "A_Throwing",
-                "guard": "x^2 + (y - 10)^2 <= 1.5",
+                "guard": "(x - A_x)^2 + (y - A_y)^2 <= 1.0",
                 "decision": 
                 {
                     "A": "R"
                 },
                 "jump": [ 
-                    {"dir_x": "-10 - x"},
-                    {"dir_y": "- y"}
+                    {"dir_x": "B_x - x"},
+                    {"dir_y": "B_y - y"}
                 ]
             },
             {
                 "name": "C_A_B",
                 "start_location": "C_Throwing",
                 "target_location": "A_Throwing",
-                "guard": "x^2 + (y - 10)^2 <= 1.5",
+                "guard": "(x - A_x)^2 + (y - A_y)^2 <= 1.0",
                 "decision": 
                 {
                     "A": "R"
                 },
                 "jump": [
-                    {"dir_x": "-10 - x"},
-                    {"dir_y": "- y"}
+                    {"dir_x": "B_x - x"},
+                    {"dir_y": "B_y - y"}
                 ]
             },
             {
                 "name": "B_A_C",
                 "start_location": "B_Throwing",
                 "target_location": "A_Throwing",
-                "guard": "x^2 + (y - 10)^2 <= 1.5",
+                "guard": "(x - A_x)^2 + (y - A_y)^2 <= 1.0",
                 "decision": 
                 {
                     "A": "L"
                 },
                 "jump": [
-                    {"dir_x": "10 - x"},
-                    {"dir_y": "- y"}
+                    {"dir_x": "C_x - x"},
+                    {"dir_y": "C_y - y"}
                 ]
             },
             {
                 "name": "C_A_C",
                 "start_location": "C_Throwing",
                 "target_location": "A_Throwing",
-                "guard": "x^2 + (y - 10)^2 <= 1.5",
+                "guard": "(x - A_x)^2 + (y - A_y)^2 <= 1.0",
                 "decision": 
                 {
                     "A": "L"
                 },
                 "jump": [
-                    {"dir_x": "10 - x"},
-                    {"dir_y": "- y"}
+                    {"dir_x": "C_x - x"},
+                    {"dir_y": "C_y - y"}
                 ]
             },
             {
                 "name": "A_B_A",
                 "start_location": "A_Throwing",
                 "target_location": "B_Throwing",
-                "guard": "(x + 10)^2 + y^2 <= 1.5",
+                "guard": "(x - B_x)^2 + (y - B_y)^2 <= 1.0",
                 "decision": 
                 {
                     "B": "R"
                 },
                 "jump": [
-                    {"dir_x": "- x"},
-                    {"dir_y": "10 - y"}
+                    {"dir_x": "A_x - x"},
+                    {"dir_y": "A_y - y"}
                 ]
             },
             {
                 "name": "C_B_A",
                 "start_location": "C_Throwing",
                 "target_location": "B_Throwing",
-                "guard": "(x + 10)^2 + y^2 <= 1.5",
+                "guard": "(x - B_x)^2 + (y - B_y)^2 <= 1.0",
                 "decision": 
                 {
                     "B": "R"
                 },
                 "jump": [
-                    {"dir_x": "- x"},
-                    {"dir_y": "10 - y"}
+                    {"dir_x": "A_x - x"},
+                    {"dir_y": "A_y - y"}
                 ]
             },
             {
                 "name": "A_B_C",
                 "start_location": "A_Throwing",
                 "target_location": "B_Throwing",
-                "guard": "(x + 10)^2 + y^2 <= 1.5",
+                "guard": "(x - B_x)^2 + (y - B_y)^2 <= 1.0",
                 "decision": 
                 {
                     "B": "L"
                 },
                 "jump": [
-                    {"dir_x": "10 - x"},
-                    {"dir_y": "- y"}
+                    {"dir_x": "C_x - x"},
+                    {"dir_y": "C_y - y"}
                 ]
             },
             {
                 "name": "C_B_C",
                 "start_location": "C_Throwing",
                 "target_location": "B_Throwing",
-                "guard": "(x + 10)^2 + y^2 <= 1.5",
+                "guard": "(x - B_x)^2 + (y - B_y)^2 <= 1.0",
                 "decision": 
                 {
                     "B": "L"
                 },
                 "jump": [
-                    {"dir_x": "10 - x"},
-                    {"dir_y": "- y"}
+                    {"dir_x": "C_x - x"},
+                    {"dir_y": "C_y - y"}
                 ]
             },
             {
                 "name": "A_C_A",
                 "start_location": "A_Throwing",
                 "target_location": "C_Throwing",
-                "guard": "(x - 10)^2 + y^2 <= 1.5",
+                "guard": "(x - C_x)^2 + (y - C_y)^2 <= 1.0",
                 "decision": 
                 {
                     "C": "R"
                 },
                 "jump": [
-                    {"dir_x": "- x"},
-                    {"dir_y": "10 - y"}
+                    {"dir_x": "A_x - x"},
+                    {"dir_y": "A_y - y"}
                 ]
             },
             {
                 "name": "B_C_A",
                 "start_location": "B_Throwing",
                 "target_location": "C_Throwing",
-                "guard": "(x - 10)^2 + y^2 <= 1.5",
+                "guard": "(x - C_x)^2 + (y - C_y)^2 <= 1.0",
                 "decision": 
                 {
                     "C": "R"
                 },
                 "jump": [
-                    {"dir_x": "- x"},
-                    {"dir_y": "10 - y"}
+                    {"dir_x": "A_x - x"},
+                    {"dir_y": "A_y - y"}
                 ]
             },
             {
                 "name": "A_C_B",
                 "start_location": "A_Throwing",
                 "target_location": "C_Throwing",
-                "guard": "(x - 10)^2 + y^2 <= 1.5",
+                "guard": "(x - C_x)^2 + (y - C_y)^2 <= 1.0",
                 "decision": 
                 {
                     "C": "L"
                 },
                 "jump": [
-                    {"dir_x": "-10 - x"},
-                    {"dir_y": "- y"}
+                    {"dir_x": "B_x - x"},
+                    {"dir_y": "B_y - y"}
                 ]
             },
             {
                 "name": "B_C_B",
                 "start_location": "B_Throwing",
                 "target_location": "C_Throwing",
-                "guard": "(x - 10)^2 + y^2 <= 1.5",
+                "guard": "(x - C_x)^2 + (y - C_y)^2 <= 1.0",
                 "decision": 
                 {
                     "C": "L"
                 },
                 "jump": [
-                    {"dir_x": "-10 - x"},
-                    {"dir_y": "- y"}
+                    {"dir_x": "B_x - x"},
+                    {"dir_y": "B_y - y"}
                 ]
             }
         ],
         "triggers": 
         {
-            "A": ["-0.5 <= x  && x <= 0.5 && 9.5 <= y  && y <= 10.5"],
-            "B": ["-10.5 <= x  && x<= -9.5 && -0.5 <= y  && y <= 0.5"],
-            "C": ["9.5 <= x  && x<= 10.5 && -0.5 <= y  && y <= 0.5"]
+            "A": ["(x - A_x)^2 + (y - A_y)^2 <= 1.0",  "(x - A_x)^2 + (y - A_y)^2 <= 0.5"],
+            "B": ["(x - B_x)^2 + (y - B_y)^2 <= 1.0",  "(x - B_x)^2 + (y - B_y)^2 <= 0.5"],
+            "C": ["(x - C_x)^2 + (y - C_y)^2 <= 1.0",  "(x - C_x)^2 + (y - C_y)^2 <= 0.5"]
         }
 
     },
     "termination-conditions": {
-        "time-bound": 300.0,
-        "max-steps": 100,
+        "time-bound": 120.0,
+        "max-steps": 10,
         "state-formula": "false"
     },
     "queries": 
     [
         "<<A>> F y > 6",
         "<<B, C>> F <<B, C>> G y <= 2",
-        "<<B>> G <<B>> F x < -8"
+        "<<B>> G <<B>> F x < -8",
+        "[[]] G (not deadlock)"
     ]
 }
