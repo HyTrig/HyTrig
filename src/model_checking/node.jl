@@ -1,5 +1,4 @@
-include("../game_syntax/game.jl")
-include("../game_semantics/configuration.jl")
+include("../hybrid_atl/termination_conditions.jl")
 
 struct TriggerPath
     trigger::Constraint

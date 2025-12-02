@@ -1,8 +1,4 @@
-include("node.jl")
-include("../hybrid_atl/logic.jl")
 include("time_to_trigger.jl")
-include("../game_semantics/transitions.jl")
-include("../hybrid_atl/termination_conditions.jl")
 
 
 function check_invariant(config::Configuration)::Bool
@@ -52,7 +48,7 @@ function build_children!(game::Game,
         end
     end
 
-    final_valuation, final_time, path_configs = time_to_trigger(node.config, constraints ∪ triggers, Not(node.config.location.invariant), remaining_time)
+    final_valuation, final_time, path_configs = time_to_trigger(node.config, constraints ∪ triggers, remaining_time)
 
     terminatal_config = nothing
     passive_configs::Vector{Configuration} = Vector{Configuration}()

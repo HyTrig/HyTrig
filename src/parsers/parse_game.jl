@@ -1,9 +1,5 @@
 using JSON3
-using DataStructures
-include("../game_syntax/game.jl")
 include("syntax_parsers/parser.jl")
-include("ast_to_logic.jl")
-include("../hybrid_atl/termination_conditions.jl")
 
 
 function parse_game(json_file)

@@ -1,5 +1,4 @@
 include("edge.jl")
-using DataStructures
 
 struct Game
     locations::Vector{Location}

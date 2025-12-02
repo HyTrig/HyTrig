@@ -1,13 +1,11 @@
-using DifferentialEquations
-include("../essential_definitions/evolution.jl")
-include("../game_semantics/configuration.jl")
+include("node.jl")
 
-function time_to_trigger(config::Configuration, constraints::Vector{Constraint}, invariant::Constraint, max_time::Float64)
+function time_to_trigger(config::Configuration, constraints::Vector{Constraint}, max_time::Float64)
 
     constraints_val = Dict(constr => evaluate(constr, config.valuation) for constr in constraints)
 
     zero_constraints::Vector{ExprLike} = get_zero(constraints)
-    zero_invariant::Vector{ExprLike} = get_zero(invariant)
+    zero_invariant::Vector{ExprLike} = get_zero(config.location.invariant)
 
     path_to_trigger::Vector{Configuration} = Vector()
     function flowODE!(du, u, p, t)
@@ -30,7 +28,7 @@ function time_to_trigger(config::Configuration, constraints::Vector{Constraint},
             return # No need to affect the valuation if the trigger was already met at time 0
         end
         current_valuation = round5(valuation_from_flow_vector(config.location.flow, config.valuation, integrator.u))
-        if evaluate(invariant, current_valuation)
+        if ! evaluate(config.location.invariant, current_valuation)
             terminate!(integrator) # Stop the integration when the condition is met
             return
         end

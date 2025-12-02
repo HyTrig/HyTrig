@@ -1,6 +1,3 @@
-using Match
-using DataStructures
-
 include("expression.jl")
 
 abstract type Constraint end

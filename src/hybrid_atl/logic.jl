@@ -1,7 +1,4 @@
-include("../essential_definitions/constraint.jl")
-include("../game_semantics/configuration.jl")
-using Match
-using DataStructures
+include("../game_semantics/transitions.jl")
 
 abstract type Logic_formula end
 abstract type Strategy_Formula <: Logic_formula end

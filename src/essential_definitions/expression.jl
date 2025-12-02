@@ -1,5 +1,4 @@
 using Match
-using DataStructures
 include("aliases.jl")
 
 abstract type ExprLike end
