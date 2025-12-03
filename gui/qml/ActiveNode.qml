@@ -11,58 +11,71 @@ import QtQuick.Layouts
 import QtQuick.Controls.Material
 import org.julialang
 
-Rectangle {
+Button {
 
-    width: parent.width
-    implicitHeight: node_action_text.height + node_arrow_text.height + node_location_text.height + node_valuation_text.height + 3 * node_property_list.spacing
-    radius: 4
-    color: Material.color(Material.Orange)
+    width: 300
+    height: parent.height
+    
+    background: Rectangle {
 
-    Column {
-
-        id: node_property_list
         width: parent.width
         height: parent.height
-        spacing: 5
+        radius: 4
+        color: model.clickable ? Material.color(Material.Orange) : Material.color(Material.Orange, Material.Shade900)
 
-        SubtitleText {
-            id: node_action_text
-            width: parent.width
-            text: "<" + model.action + ">"
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-        }
+        Column {
 
-        SubtitleText {
-            id: node_arrow_text
+            id: node_property_list
             width: parent.width
-            text: "↓"
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-        }
-
-        SubtitleText {
-            id: node_location_text
-            width: parent.width
-            text: model.location
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-        }
-
-        // Scrollable text for long valuations
-        ScrollView {
-            id: node_valuation_text
-            width: parent.width
-            height: Math.min(contentHeight, 300)
+            height: parent.height
+            spacing: 5
 
             SubtitleText {
-                width: node_valuation_text.width
-                text: model.valuation
+                id: node_action_text
+                width: parent.width
+                text: "<" + model.action + ">"
                 horizontalAlignment: Text.AlignHCenter
-                clip: true
+                verticalAlignment: Text.AlignVCenter
             }
+
+            SubtitleText {
+                id: node_arrow_text
+                width: parent.width
+                text: "↓"
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+            }
+
+            SubtitleText {
+                id: node_location_text
+                width: parent.width
+                text: model.location
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+            }
+
+            // Scrollable text for long valuations
+            ScrollView {
+                id: node_valuation_text
+                width: parent.width
+                height: parent.height - 4 * parent.spacing - node_action_text.height - node_arrow_text.height - node_location_text.height
+
+                SubtitleText {
+                    width: node_valuation_text.width
+                    text: model.valuation
+                    horizontalAlignment: Text.AlignHCenter
+                    clip: true
+                }
+            }
+
         }
 
+    }
+
+    onClicked: {
+        if(model.clickable) {
+            branch_column.down(index);
+        }
     }
 
 }

@@ -69,8 +69,8 @@ termination_conditions["state-formula"] = ""
 game_tree = nothing
 
 # Declare node model
-node_list::Vector{QActiveNode} = []
-node_model::JuliaItemModel = JuliaItemModel(node_list)
+branch_list::Vector{QBranch} = []
+branch_model::JuliaItemModel = JuliaItemModel(branch_list)
 
 # Declare callable functions for QML
 
@@ -273,11 +273,11 @@ function verify()::String
     global game_tree
     results, game_tree = evaluate_queries(game, term_conds, queries)
 
-    empty!(node_list)
+    empty!(branch_list)
 
     if !isnothing(game_tree)
         game_tree = build_gui_tree(game_tree)
-        push!(node_list, QActiveNode(game_tree.children[1]))
+        push!(branch_list, QBranch(game_tree.branches[1]))
     end
 
     for (i, r) in enumerate(results)
@@ -292,7 +292,7 @@ end
 
 @qmlfunction has_name is_savable append_flow remove_flow append_jump remove_jump is_valid_formula save_to_json load_from_json verify up_tree down_tree
 
-qml_file = joinpath(dirname(@__FILE__), "GUI", "qml", "gui.qml")
+qml_file = joinpath(dirname(@__FILE__), "gui", "qml", "gui.qml")
 
 loadqml(
     qml_file,
@@ -304,7 +304,7 @@ loadqml(
     edge_model = edge_model,
     query_model = JuliaItemModel(query_list),
     termination_conditions = termination_conditions,
-    node_model = node_model
+    branch_model = branch_model
 )
 
 exec()
