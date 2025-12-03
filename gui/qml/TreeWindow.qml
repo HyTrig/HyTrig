@@ -191,6 +191,20 @@ ApplicationWindow {
                 }
             }
 
+            Rectangle {
+                id: leaf_legend
+                width: passive_legend.width
+                height: parent_button.height
+                radius: 4
+                color: Material.color(Material.Orange, Material.Shade900)
+                
+                SubtitleText {
+                    text: "End node"
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+            }
+
         }
 
         // Return to parent button
