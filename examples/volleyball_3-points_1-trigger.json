@@ -50,6 +50,7 @@
             {"spd_z": 0},
             {"target_x": 13},
             {"target_y": 4.5},
+            {"flight_time": 0},
             {"A_x": 7},
             {"A_y": 2},
             {"B_x": 7},
@@ -102,9 +103,10 @@
                 "jump": [ 
                     {"target_x": "p1_2_x"},
                     {"target_y": "p1_2_y"},
-                    {"spd_x": "(p1_2_x - x)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
-                    {"spd_y": "(p1_2_y - y)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
                     {"spd_z": "(2 * g * (max_height - z))^0.5"},
+                    {"flight_time": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g"},
+                    {"spd_x": "(p1_2_x - x)  /  flight_time"},
+                    {"spd_y": "(p1_2_y - y)  /  flight_time"},
                     {"team": "1"}
                 ]
             },
@@ -120,9 +122,10 @@
                 "jump": [ 
                     {"target_x": "p2_2_x"},
                     {"target_y": "p2_2_y"},
-                    {"spd_x": "(p2_2_x - x)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
-                    {"spd_y": "(p2_2_y - y)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
                     {"spd_z": "(2 * g * (max_height - z))^0.5"},
+                    {"flight_time": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g"},
+                    {"spd_x": "(p2_2_x - x)  /  flight_time"},
+                    {"spd_y": "(p2_2_y - y)  /  flight_time"},
                     {"team": "1"}
                 ]
             },
@@ -138,9 +141,10 @@
                 "jump": [ 
                     {"target_x": "p3_2_x"},
                     {"target_y": "p3_2_y"},
-                    {"spd_x": "(p3_2_x - x)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
-                    {"spd_y": "(p3_2_y - y)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
                     {"spd_z": "(2 * g * (max_height - z))^0.5"},
+                    {"flight_time": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g"},
+                    {"spd_x": "(p3_2_x - x)  /  flight_time"},
+                    {"spd_y": "(p3_2_y - y)  /  flight_time"},
                     {"team": "1"}
                 ]
             },
@@ -156,9 +160,10 @@
                 "jump": [ 
                     {"target_x": "p1_2_x"},
                     {"target_y": "p1_2_y"},
-                    {"spd_x": "(p1_2_x - x)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
-                    {"spd_y": "(p1_2_y - y)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
                     {"spd_z": "(2 * g * (max_height - z))^0.5"},
+                    {"flight_time": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g"},
+                    {"spd_x": "(p1_2_x - x)  /  flight_time"},
+                    {"spd_y": "(p1_2_y - y)  /  flight_time"},
                     {"dir_A_x": "0"},
                     {"dir_A_y": "0"},
                     {"dir_B_x": "0"},
@@ -178,9 +183,10 @@
                 "jump": [ 
                     {"target_x": "p2_2_x"},
                     {"target_y": "p2_2_y"},
-                    {"spd_x": "(p2_2_x - x)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
-                    {"spd_y": "(p2_2_y - y)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
                     {"spd_z": "(2 * g * (max_height - z))^0.5"},
+                    {"flight_time": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g"},
+                    {"spd_x": "(p2_2_x - x)  /  flight_time"},
+                    {"spd_y": "(p2_2_y - y)  /  flight_time"},
                     {"dir_A_x": "0"},
                     {"dir_A_y": "0"},
                     {"dir_B_x": "0"},
@@ -200,9 +206,10 @@
                 "jump": [ 
                     {"target_x": "p3_2_x"},
                     {"target_y": "p3_2_y"},
-                    {"spd_x": "(p3_2_x - x)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
-                    {"spd_y": "(p3_2_y - y)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
                     {"spd_z": "(2 * g * (max_height - z))^0.5"},
+                    {"flight_time": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g"},
+                    {"spd_x": "(p3_2_x - x)  /  flight_time"},
+                    {"spd_y": "(p3_2_y - y)  /  flight_time"},
                     {"dir_A_x": "0"},
                     {"dir_A_y": "0"},
                     {"dir_B_x": "0"},
@@ -222,9 +229,10 @@
                 "jump": [ 
                     {"target_x": "p1_2_x"},
                     {"target_y": "p1_2_y"},
-                    {"spd_x": "(p1_2_x - x)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
-                    {"spd_y": "(p1_2_y - y)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
                     {"spd_z": "(2 * g * (max_height - z))^0.5"},
+                    {"flight_time": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g"},
+                    {"spd_x": "(p1_2_x - x)  /  flight_time"},
+                    {"spd_y": "(p1_2_y - y)  /  flight_time"},
                     {"dir_A_x": "0"},
                     {"dir_A_y": "0"},
                     {"dir_B_x": "0"},
@@ -244,9 +252,10 @@
                 "jump": [ 
                     {"target_x": "p2_2_x"},
                     {"target_y": "p2_2_y"},
-                    {"spd_x": "(p2_2_x - x)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
-                    {"spd_y": "(p2_2_y - y)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
                     {"spd_z": "(2 * g * (max_height - z))^0.5"},
+                    {"flight_time": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g"},
+                    {"spd_x": "(p2_2_x - x)  /  flight_time"},
+                    {"spd_y": "(p2_2_y - y)  /  flight_time"},
                     {"dir_A_x": "0"},
                     {"dir_A_y": "0"},
                     {"dir_B_x": "0"},
@@ -266,9 +275,10 @@
                 "jump": [ 
                     {"target_x": "p3_2_x"},
                     {"target_y": "p3_2_y"},
-                    {"spd_x": "(p3_2_x - x)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
-                    {"spd_y": "(p3_2_y - y)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
                     {"spd_z": "(2 * g * (max_height - z))^0.5"},
+                    {"flight_time": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g"},
+                    {"spd_x": "(p3_2_x - x)  /  flight_time"},
+                    {"spd_y": "(p3_2_y - y)  /  flight_time"},
                     {"dir_A_x": "0"},
                     {"dir_A_y": "0"},
                     {"dir_B_x": "0"},
@@ -288,9 +298,10 @@
                 "jump": [ 
                     {"target_x": "p1_1_x"},
                     {"target_y": "p1_1_y"},
-                    {"spd_x": "(p1_1_x - x)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
-                    {"spd_y": "(p1_1_y - y)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
                     {"spd_z": "(2 * g * (max_height - z))^0.5"},
+                    {"flight_time": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g"},
+                    {"spd_x": "(p1_1_x - x)  /  flight_time"},
+                    {"spd_y": "(p1_1_y - y)  /  flight_time"},
                     {"dir_C_x": "0"},
                     {"dir_C_y": "0"},
                     {"dir_D_x": "0"},
@@ -310,9 +321,10 @@
                 "jump": [ 
                     {"target_x": "p2_1_x"},
                     {"target_y": "p2_1_y"},
-                    {"spd_x": "(p2_1_x - x)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
-                    {"spd_y": "(p2_1_y - y)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
                     {"spd_z": "(2 * g * (max_height - z))^0.5"},
+                    {"flight_time": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g"},
+                    {"spd_x": "(p2_1_x - x)  /  flight_time"},
+                    {"spd_y": "(p2_1_y - y)  /  flight_time"},
                     {"dir_C_x": "0"},
                     {"dir_C_y": "0"},
                     {"dir_D_x": "0"},
@@ -332,9 +344,10 @@
                 "jump": [ 
                     {"target_x": "p3_1_x"},
                     {"target_y": "p3_1_y"},
-                    {"spd_x": "(p3_1_x - x)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
-                    {"spd_y": "(p3_1_y - y)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
                     {"spd_z": "(2 * g * (max_height - z))^0.5"},
+                    {"flight_time": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g"},
+                    {"spd_x": "(p3_1_x - x)  /  flight_time"},
+                    {"spd_y": "(p3_1_y - y)  /  flight_time"},
                     {"dir_C_x": "0"},
                     {"dir_C_y": "0"},
                     {"dir_D_x": "0"},
@@ -354,9 +367,10 @@
                 "jump": [ 
                     {"target_x": "p1_1_x"},
                     {"target_y": "p1_1_y"},
-                    {"spd_x": "(p1_1_x - x)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
-                    {"spd_y": "(p1_1_y - y)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
                     {"spd_z": "(2 * g * (max_height - z))^0.5"},
+                    {"flight_time": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g"},
+                    {"spd_x": "(p1_1_x - x)  /  flight_time"},
+                    {"spd_y": "(p1_1_y - y)  /  flight_time"},
                     {"dir_C_x": "0"},
                     {"dir_C_y": "0"},
                     {"dir_D_x": "0"},
@@ -376,9 +390,10 @@
                 "jump": [ 
                     {"target_x": "p2_1_x"},
                     {"target_y": "p2_1_y"},
-                    {"spd_x": "(p2_1_x - x)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
-                    {"spd_y": "(p2_1_y - y)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
                     {"spd_z": "(2 * g * (max_height - z))^0.5"},
+                    {"flight_time": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g"},
+                    {"spd_x": "(p2_1_x - x)  /  flight_time"},
+                    {"spd_y": "(p2_1_y - y)  /  flight_time"},
                     {"dir_C_x": "0"},
                     {"dir_C_y": "0"},
                     {"dir_D_x": "0"},
@@ -398,9 +413,10 @@
                 "jump": [ 
                     {"target_x": "p3_1_x"},
                     {"target_y": "p3_1_y"},
-                    {"spd_x": "(p3_1_x - x)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
-                    {"spd_y": "(p3_1_y - y)  /  (((2 * g * (max_height - z))^0.5 + ( (2 * g * (max_height - z)) + 2 * g * z)^0.5) / g)"},
                     {"spd_z": "(2 * g * (max_height - z))^0.5"},
+                    {"flight_time": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g"},
+                    {"spd_x": "(p3_1_x - x)  /  flight_time"},
+                    {"spd_y": "(p3_1_y - y)  /  flight_time"},
                     {"dir_C_x": "0"},
                     {"dir_C_y": "0"},
                     {"dir_D_x": "0"},
@@ -534,13 +550,14 @@
         }
     },
     "termination-conditions": {
-        "time-bound": 300,
-        "max-steps": 10,
+        "time-bound": 30,
+        "max-steps": 8,
         "state-formula": "z <= 0"
     },
     "queries": 
     [
-        "<<C, D>> G x >= 9 -> z > 0",
+        "<<C, D>> G x > 9 -> z > 0",
+        "<<A, B>> G x < 9 -> z > 0",
         "[[]] G (not deadlock)"
     ]
 }

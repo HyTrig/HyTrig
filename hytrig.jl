@@ -26,9 +26,10 @@ t2 = time();
 
 nodes_count, passive_nodes = count_nodes(game_tree), count_passive_nodes(game_tree)
 tree_depth = depth_of_tree(game_tree)
+game_time = max_time(game_tree)
 
 println("*************************")
-println("Nodes = ", nodes_count, " Passive Nodes = ", passive_nodes, " Depth = ", tree_depth)
+println("Nodes = ", nodes_count, " Passive Nodes = ", passive_nodes, " Depth = ", tree_depth, " Max Time = ", game_time)
 println("results = ", results)
 println("Time to evaluate and build = $(t2 - t1)")
 println("*************************")
