@@ -1,6 +1,6 @@
 using Test
 
-include("../parsers/syntax_parsers/tokenizer.jl")
+include("../src/parsers/syntax_parsers/tokenizer.jl")
 
 @test tokenize("", Bindings([], [], [])) == Vector{Token}(undef, 0)
 

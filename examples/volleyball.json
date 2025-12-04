@@ -781,7 +781,7 @@
     },
     "termination-conditions": {
         "time-bound": 30,
-        "max-steps": 100,
+        "max-steps": 25,
         "state-formula": "z <= 0 || x <= 0 || x >= 18 || y <= 0 || y >= 9"
     },
     "queries": 

@@ -17,7 +17,7 @@ Uses tokens defined by [`tokens.jl`].
 - Moritz Maas
 """
 
-include("tokens.jl")
+include("grammar.jl")
 
 """
     Bindings

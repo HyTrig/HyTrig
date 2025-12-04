@@ -1,7 +1,7 @@
 using Test
 
-include("../parsers/syntax_parsers/parser.jl")
-include("../parsers/ast_to_logic.jl")
+include("../src/parsers/syntax_parsers/parser.jl")
+include("../src/parsers/ast_to_logic.jl")
 
 # test expressions
 

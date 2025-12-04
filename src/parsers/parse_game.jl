@@ -2,7 +2,7 @@ using JSON3
 include("syntax_parsers/parser.jl")
 
 
-function parse_game(json_file)
+function parse_game(json_file::String)
     open(json_file,"r") do f
         json_string = read(json_file, String)
         FileDict = JSON3.read(json_string)

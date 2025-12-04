@@ -14,7 +14,6 @@ Uses tokens defined by [`tokenizer.jl`], [`grammar.jl`].
 """
 
 include("tokenizer.jl")
-include("grammar.jl")
 include("../ast_to_logic.jl")
 
 """
