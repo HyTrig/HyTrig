@@ -5,7 +5,13 @@ using Dates
 
 function READ_USER_FILE()
     try
-        examples = ["3_players_1_ball", "4_player_square", "bouncing_ball", "player_in_middle", "volleyball", "volleyball_2-players_3-points_1-trigger", "volleyball_3-points_1-trigger"]
+        examples = ["3_players_1_ball", 
+                    "4_player_square", 
+                    "bouncing_ball", 
+                    "player_in_middle", 
+                    "volleyball", 
+                    "volleyball_3-points_1-trigger",
+                    "volleyball_2-players_3-points_1-trigger"]
 
         println("Please enter your the relative path to the JSON file or choose the number of one of the examples below:")
         for (i, exmp) in enumerate(examples)
@@ -40,7 +46,7 @@ function READ_USER_FILE()
         game_time = max_time(game_tree)
 
         println("*************************")
-        println("Nodes = ", nodes_count, " Passive Nodes = ", passive_nodes, " Depth = ", tree_depth)
+        println("Nodes = ", nodes_count, " Passive Nodes = ", passive_nodes, " Depth = ", tree_depth, " Max Time = ", game_time)
         println("results = ", results)
         for (r, result) in enumerate(results)
             print("$(queries_text[r]): ")
@@ -57,12 +63,13 @@ function READ_USER_FILE()
         println("*************************")
 
 
-        println("Would you like to save the outcome tree in logs/tree.md? (y/n)")
+        current_datetime_str = Dates.format(now(), "yyyy-mm-dd_HHMMSS")
+        tree_file_name = "logs/tree-1$(current_datetime_str).md"
+        println("Would you like to save the outcome tree in $tree_file_name? (y/n)")
         tree_answer = readline()
         if tree_answer == "y"
             tree_text = print_tree(game_tree)
-            current_datetime_str = Dates.format(now(), "yyyy-mm-dd_HHMMSS")
-            io = open("logs/tree-1$(current_datetime_str).md", "w");                                                                                                                                                                                                                                                                                                                               
+            io = open(tree_file_name, "w");                                                                                                                                                                                                                                                                                                                               
             write(io, tree_text);                                                                                                                                                                                                                                                                                                                                                           
             close(io); 
         end

@@ -552,12 +552,14 @@
     "termination-conditions": {
         "time-bound": 30,
         "max-steps": 8,
-        "state-formula": "z <= 0"
+        "state-formula": "z <= 0 || x < 0 || x > 18 || y < 0 || y > 9"
     },
     "queries": 
     [
-        "<<C, D>> G x > 9 -> z > 0",
-        "<<A, B>> G x < 9 -> z > 0",
-        "[[]] G (not deadlock)"
+        "<<A, C>>G hitter == 3 || hitter ==  1",
+        "<<A, B>>F x > 9 && z ==  0",
+        "<<C, D>>F x < 9 && z ==  0",
+        "<<A, B>>G x < 9 -> z >  0",
+        "<<C, D>>G x > 9 -> z >  0"
     ]
 }

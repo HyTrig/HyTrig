@@ -327,11 +327,12 @@
     },
     "termination-conditions": {
         "time-bound": 60,
-        "max-steps": 25,
-        "state-formula": "z <= 0"
+        "max-steps": 20,
+        "state-formula": "z <= 0 || x < 0 || x > 18 || y < 0 || y > 9"
     },
     "queries": 
     [
+        "<<A>> G x < 9 -> z > 0",
         "<<A>> F x > 9 && z == 0"
     ]
 }
