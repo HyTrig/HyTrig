@@ -11,7 +11,7 @@ This script contains utility functions for handling games and their .json repres
 - Moritz Maas
 """
 
-include("QObjects.jl")
+using JSON3
 
 """
     save_to_json(path)

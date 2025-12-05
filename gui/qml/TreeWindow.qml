@@ -27,7 +27,7 @@ ApplicationWindow {
     Material.accent: window.Material.accent
     Material.foreground: window.Material.foreground
 
-    property alias node_list: node_list
+    property alias branch_list: branch_list
     property int level: 1
 
     /**
@@ -37,21 +37,22 @@ ApplicationWindow {
         if (!Julia.up_tree()) {
             return;
         }
-        node_list.model = [];
-        node_list.model = node_model;
+        branch_list.model = [];
+        branch_list.model = branch_model;
         level = level - 1;
     }
 
     /**
     * Go down the game tree.
-    * @param {int}  i   child index
+    * @param {int}  i   branch index
+    * @param {int}  j   child index
     */
-    function down(i) {
-        if (!Julia.down_tree(i + 1)) {
+    function down(i, j) {
+        if (!Julia.down_tree(i + 1, j + 1)) {
             return;
         }
-        node_list.model = [];
-        node_list.model = node_model;
+        branch_list.model = [];
+        branch_list.model = branch_model;
         level = level + 1;
     }
 
@@ -73,7 +74,7 @@ ApplicationWindow {
 
         // Layer node list
         ListView {
-            id: node_list
+            id: branch_list
             width: Math.min(contentWidth, tree_viewer_page.width)
             height: tree_viewer_page.height - level_text.height - legend.height - parent_button.height - 3 * parent.spacing
             anchors.horizontalCenter: parent.horizontalCenter
@@ -82,11 +83,21 @@ ApplicationWindow {
 
             orientation: ListView.Horizontal
 
-            model: node_model
+            model: branch_model
             delegate: Column {
                 
-                width: 300
+                id: branch_column
+                width: active_list.width
+                height: branch_list.height
                 spacing: 10
+
+                /**
+                * Go down the game tree.
+                * @param {int}  i   child index
+                */
+                function down(i) {
+                    tree_window.down(index, i);
+                }
                 
                 DataText {
                     id: node_agent_text
@@ -118,7 +129,7 @@ ApplicationWindow {
                 ListView {
                     id: passive_list
                     width: parent.width
-                    height: Math.min(contentHeight, node_list.height - node_agent_text.height - node_trigger_text.height - node_active_time_text.height - active_node.height - 5 * parent.spacing)
+                    height: Math.min(contentHeight, branch_list.height - node_agent_text.height - node_trigger_text.height - node_active_time_text.height - active_list.height - 4 * parent.spacing)
                     spacing: 5
                     clip: true
 
@@ -126,21 +137,23 @@ ApplicationWindow {
                     delegate: PassiveNode {}
                 }
                 
-                // Active node
-                Button {
+                // Active node list
+                ListView {
+                    id: active_list
+                    width: contentWidth
+                    height: 300
+                    spacing: 5
+                    clip: true
+                    interactive: false
 
-                    id: active_node
-                    width: parent.width
+                    orientation: ListView.Horizontal
 
-                    background: ActiveNode{}
-
-                    onClicked: {
-                        tree_window.down(index);
-                    }
-
+                    model: active_nodes
+                    delegate: ActiveNode {}
                 }
 
             }
+            
         }
 
         // Color legend
@@ -178,6 +191,20 @@ ApplicationWindow {
                 }
             }
 
+            Rectangle {
+                id: leaf_legend
+                width: passive_legend.width
+                height: parent_button.height
+                radius: 4
+                color: Material.color(Material.Orange, Material.Shade900)
+                
+                SubtitleText {
+                    text: "End node"
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+            }
+
         }
 
         // Return to parent button
@@ -200,8 +227,8 @@ ApplicationWindow {
         while (Julia.up_tree()) {
             level = level - 1;
         }
-        node_list.model = [];
-        node_list.model = node_model;
+        branch_list.model = [];
+        branch_list.model = branch_model;
     }
     
 }

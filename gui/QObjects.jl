@@ -21,7 +21,7 @@ This file contains all QML object definitions needed to create QML models for th
 - Moritz Maas
 """
 
-include("../src/model_checking/node.jl")
+include("gui_tree.jl")
 
 # abstract types for all objects used in QML models
 abstract type QObject
@@ -253,18 +253,53 @@ mutable struct QQuery <: QObject
 end
 
 """
+    QBranch <: QObject
+
+A tree branch used in QML models.
+"""
+mutable struct QBranch <: QObject
+    agent::String
+    trigger::String
+    time::Float64
+    active_nodes::JuliaItemModel
+    passive_nodes::JuliaItemModel
+end
+
+"""
+    QBranch(branch::GUIBranch)::QBranch
+
+Create a QBranch from the given branch `branch`.
+# Arguments
+- `branch::GUIBranch`: the branch
+"""
+function QBranch(branch::GUIBranch)::QBranch
+    return QBranch(
+        if isnothing(branch.reaching_decision)
+            ""
+        else
+            string(branch.reaching_decision[1])
+        end,
+        if isnothing(branch.reaching_trigger)
+            ""
+        else
+            str(branch.reaching_trigger)
+        end,
+        trunc(branch.config.global_clock, digits=5),
+        JuliaItemModel([QActiveNode(node) for node in branch.active_nodes]),
+        JuliaItemModel([QPassiveNode(node) for node in branch.passive_nodes])
+    )
+end
+
+"""
     QActiveNode <: QObject
 
 An active tree node used in QML models.
 """
 mutable struct QActiveNode <: QObject
     location::String
-    agent::String
     action::String
-    trigger::String
-    time::Float64
     valuation::String
-    passive_nodes::JuliaItemModel
+    clickable::Bool
 end
 
 """
@@ -280,21 +315,10 @@ function QActiveNode(node::GUINode)::QActiveNode
         if isnothing(node.reaching_decision)
             ""
         else
-            string(node.reaching_decision[1])
-        end,
-        if isnothing(node.reaching_decision)
-            ""
-        else
             string(node.reaching_decision[2])
         end,
-        if isnothing(node.reaching_trigger)
-            ""
-        else
-            str(node.reaching_trigger)
-        end,
-        trunc(node.config.global_clock, digits=5),
         _get_valuation_string(node.config.valuation),
-        JuliaItemModel([QPassiveNode(passive) for passive in node.passive_nodes])
+        !isempty(node.branches)
     )
 end
 

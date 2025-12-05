@@ -14,17 +14,13 @@ This script runs a GUI with QML. The GUI allows to create, edit, save, load and 
 
 include("gui/packages.jl")
 
-using Dates
-using JSON3
-using QML
-
-include("gui/gui_tree.jl")
-include("gui/json_utils.jl")
-include("gui/QObjects.jl")
-
-include("src/game_syntax/game.jl")
 include("src/parsers/syntax_parsers/parser.jl")
 include("src/model_checking/build_and_evaluate.jl")
+
+using QML
+
+include("gui/QObjects.jl")
+include("gui/json_utils.jl")
 
 # Declare synchronized models and roles
 
@@ -69,8 +65,8 @@ termination_conditions["state-formula"] = ""
 game_tree = nothing
 
 # Declare node model
-node_list::Vector{QActiveNode} = []
-node_model::JuliaItemModel = JuliaItemModel(node_list)
+branch_list::Vector{QBranch} = []
+branch_model::JuliaItemModel = JuliaItemModel(branch_list)
 
 # Declare callable functions for QML
 
@@ -243,7 +239,7 @@ function verify()::String
         locations[findfirst(loc -> loc.name == Symbol(edge.target), locations)],
         parse(edge.guard, bindings, constraint),
         Decision(Agent(edge.agent), Action(edge.action)),
-        Dict{Symbol, ExprLike}(
+        OrderedDict{Symbol, ExprLike}(
             [(Symbol(edge.jump[i].var) => parse(edge.jump[i].jump, bindings, expression)) for i in 1:length(edge.jump)]
         )
     ) for edge in edge_list]
@@ -273,11 +269,11 @@ function verify()::String
     global game_tree
     results, game_tree = evaluate_queries(game, term_conds, queries)
 
-    empty!(node_list)
+    empty!(branch_list)
 
     if !isnothing(game_tree)
         game_tree = build_gui_tree(game_tree)
-        push!(node_list, QActiveNode(game_tree.children[1]))
+        push!(branch_list, QBranch(game_tree.branches[1]))
     end
 
     for (i, r) in enumerate(results)
@@ -292,7 +288,7 @@ end
 
 @qmlfunction has_name is_savable append_flow remove_flow append_jump remove_jump is_valid_formula save_to_json load_from_json verify up_tree down_tree
 
-qml_file = joinpath(dirname(@__FILE__), "GUI", "qml", "gui.qml")
+qml_file = joinpath(dirname(@__FILE__), "gui", "qml", "gui.qml")
 
 loadqml(
     qml_file,
@@ -304,7 +300,7 @@ loadqml(
     edge_model = edge_model,
     query_model = JuliaItemModel(query_list),
     termination_conditions = termination_conditions,
-    node_model = node_model
+    branch_model = branch_model
 )
 
 exec()
