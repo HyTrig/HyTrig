@@ -14,17 +14,13 @@ This script runs a GUI with QML. The GUI allows to create, edit, save, load and 
 
 include("gui/packages.jl")
 
-using Dates
-using JSON3
-using QML
-
-include("gui/gui_tree.jl")
-include("gui/json_utils.jl")
-include("gui/QObjects.jl")
-
-include("src/game_syntax/game.jl")
 include("src/parsers/syntax_parsers/parser.jl")
 include("src/model_checking/build_and_evaluate.jl")
+
+using QML
+
+include("gui/QObjects.jl")
+include("gui/json_utils.jl")
 
 # Declare synchronized models and roles
 
@@ -243,7 +239,7 @@ function verify()::String
         locations[findfirst(loc -> loc.name == Symbol(edge.target), locations)],
         parse(edge.guard, bindings, constraint),
         Decision(Agent(edge.agent), Action(edge.action)),
-        Dict{Symbol, ExprLike}(
+        OrderedDict{Symbol, ExprLike}(
             [(Symbol(edge.jump[i].var) => parse(edge.jump[i].jump, bindings, expression)) for i in 1:length(edge.jump)]
         )
     ) for edge in edge_list]
