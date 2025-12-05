@@ -5,13 +5,7 @@ using Dates
 
 function READ_USER_FILE()
     try
-        examples = ["3_players_1_ball", 
-                    "4_player_square", 
-                    "bouncing_ball", 
-                    "player_in_middle", 
-                    "volleyball", 
-                    "volleyball_3-points_1-trigger",
-                    "volleyball_2-players_3-points_1-trigger"]
+        examples = readdir("examples")
 
         println("Please enter your the relative path to the JSON file or choose the number of one of the examples below:")
         for (i, exmp) in enumerate(examples)
@@ -22,7 +16,7 @@ function READ_USER_FILE()
 
         example_number = tryparse(Int64, file_name)
         if example_number !== nothing
-            game, termination_conditions, queries, queries_text = parse_game("examples/" * examples[example_number] * ".json")
+            game, termination_conditions, queries, queries_text = parse_game("examples/" * examples[example_number])
             println("\n--- SUCCESS ---")
             println("Content successfully read from \"", examples[example_number], "\".")
             println("---------------")
