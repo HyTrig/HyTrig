@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Hamarneh
+    given-names: Qais
+    orcid: https://orcid.org/0009-0009-9718-1664
+  - family-names: Maas
+    given-names: Moritz
+  - family-names: Schwammberger
+    given-names: Maike
+    orcid: https://orcid.org/0000-0002-3344-6282
+title: "HyTrig"
+version: v1.0.0-beta.1
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.17829109
+date-released: 2025-12-05
