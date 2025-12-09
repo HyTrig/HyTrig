@@ -1,6 +1,6 @@
 include("src/packages.jl")
 include("src/parsers/parse_game.jl")
-include("src/model_checking/build_and_evaluate.jl")
+
 using Dates
 
 function READ_USER_FILE()
