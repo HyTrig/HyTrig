@@ -7,14 +7,24 @@
 import QtQuick
 import QtQuick.Controls.Material
 
-Rectangle {
-    
-    color: Material.color(Material.Orange)
+Item {
+
+    width: parent.width
+    height: parent.height
+
+    Rectangle {
+        anchors.fill: parent
+        anchors.margins: 5
+        color: Material.backgroundColor
+        border.width: 1
+        border.color: Material.accentColor
+    }
 
     Text {
         anchors.centerIn: parent
-        text: "Agent Tab"
-        font.pointSize: 40
+        text: qsTr("Agent Tab - TODO")
+        color: Material.accentColor
+        font.pointSize: 24
     }
 
 }

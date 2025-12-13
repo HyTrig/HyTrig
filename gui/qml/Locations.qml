@@ -7,14 +7,24 @@
 import QtQuick.Controls.Material
 import QtQuick
 
-Rectangle {
+Item {
 
-    color: Material.color(Material.Yellow)
+    width: parent.width
+    height: parent.height
+
+    Rectangle {
+        anchors.fill: parent
+        anchors.margins: 5
+        color: Material.backgroundColor
+        border.width: 1
+        border.color: Material.accentColor
+    }
 
     Text {
         anchors.centerIn: parent
-        text: "Location Tab"
-        font.pointSize: 40
+        text: qsTr("Location Tab - TODO")
+        color: Material.accentColor
+        font.pointSize: 24
     }
-    
+
 }
