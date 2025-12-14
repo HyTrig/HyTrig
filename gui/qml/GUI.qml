@@ -26,6 +26,7 @@ ApplicationWindow {
 
     Material.theme: Material.Dark
     Material.accent: Material.Blue
+    Material.primary: Material.color(Material.Grey, Material.Shade800)
 
     menuBar: MenuBar {
         
@@ -182,6 +183,7 @@ ApplicationWindow {
                 drag.target: tab_content_splitter
                 drag.axis: Drag.XAxis
                 drag.minimumX: 100
+                drag.maximumX: main_window.width / 2
 
             }
 
