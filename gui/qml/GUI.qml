@@ -119,6 +119,7 @@ ApplicationWindow {
             id: tab_bar
             width: Math.max(100, tab_content_splitter.x)
             height: parent.height
+
             model: ListModel {
                 ListElement { name: "Agents" }
                 ListElement { name: "Actions" }
@@ -128,30 +129,39 @@ ApplicationWindow {
                 ListElement { name: "Edges" }
                 ListElement { name: "Queries" }
             }
+
             delegate: ItemDelegate {
+
                 id: tab_selector
                 width: parent.width
                 text: name
                 highlighted: ListView.isCurrentItem
-                onClicked: {
-                    tab_bar.currentIndex = index
-                }
+            
                 background: Row {
+
                     width: parent.width
                     height: parent.height
+
                     Rectangle {
                         width: parent.width - selection_indicator.width
                         height: parent.height
                         color: Material.foreground
                         opacity: tab_selector.highlighted || tab_selector.hovered ? 0.1 : 0
                     }
+
                     Rectangle {
                         id: selection_indicator
                         width: tab_selector.highlighted ? 5 : 0
                         height: parent.height
                         color: tab_selector.highlighted ? Material.accent : Material.background
                     }
+
                 }
+
+                onClicked: {
+                    tab_bar.currentIndex = index
+                }
+
             }
 
         }
@@ -177,39 +187,60 @@ ApplicationWindow {
 
         }
 
-        StackLayout {
+        Item {
 
-            id: tabs
             width: parent.width - tab_bar.width - tab_content_splitter.width
             height: parent.height
-            currentIndex: tab_bar.currentIndex
 
-            Agents {
-                id: agent_tab
-            }
+            StackLayout {
 
-            Actions {
-                id: action_tab
-            }
+                id: tabs
+                anchors.fill: parent
+                anchors.margins: 5
+                currentIndex: tab_bar.currentIndex
 
-            Variables {
-                id: variable_tab
-            }
+                Tab {
+                    Agents {
+                        id: agent_tab
+                    }
+                }
 
-            Triggers {
-                id: trigger_tab
-            }
+                Tab {
+                    Actions {
+                        id: action_tab
+                    }
+                }
 
-            Locations {
-                id: location_tab
-            }
+                Tab {
+                    Variables {
+                        id: variable_tab
+                    }
+                }
 
-            Edges {
-                id: edge_tab
-            }
+                Tab {
+                    Triggers {
+                        id: trigger_tab
+                    }
+                }
 
-            Queries {
-                id: query_tab
+                Tab {
+                    Locations {
+                        id: location_tab
+                    }
+                }
+
+                Tab {
+                    Edges {
+                        id: edge_tab
+                    }
+                }
+
+                Tab {
+                    Queries {
+                        id: query_tab
+                    }
+                }
+
             }
 
         }
