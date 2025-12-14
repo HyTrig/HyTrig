@@ -129,10 +129,28 @@ ApplicationWindow {
                 ListElement { name: "Queries" }
             }
             delegate: ItemDelegate {
+                id: tab_selector
                 width: parent.width
                 text: name
+                highlighted: ListView.isCurrentItem
                 onClicked: {
-                    tabs.currentIndex = index;
+                    tab_bar.currentIndex = index
+                }
+                background: Row {
+                    width: parent.width
+                    height: parent.height
+                    Rectangle {
+                        width: parent.width - selection_indicator.width
+                        height: parent.height
+                        color: Material.foreground
+                        opacity: tab_selector.highlighted || tab_selector.hovered ? 0.1 : 0
+                    }
+                    Rectangle {
+                        id: selection_indicator
+                        width: tab_selector.highlighted ? 5 : 0
+                        height: parent.height
+                        color: tab_selector.highlighted ? Material.accent : Material.background
+                    }
                 }
             }
 
@@ -164,6 +182,7 @@ ApplicationWindow {
             id: tabs
             width: parent.width - tab_bar.width - tab_content_splitter.width
             height: parent.height
+            currentIndex: tab_bar.currentIndex
 
             Agents {
                 id: agent_tab
