@@ -25,5 +25,3 @@ loadqml(
 )
 
 exec()
-
-print(variable_list)

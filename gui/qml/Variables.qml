@@ -54,6 +54,8 @@ Column {
             id: variables
             anchors.fill: parent
             anchors.margins: 5
+            anchors.rightMargin: grid_scrollBar.width + grid_scrollBar.anchors.margins
+            clip: true
             cellWidth: 350
             cellHeight: currentItem ? currentItem.height : 0
             currentIndex: 0
@@ -120,23 +122,15 @@ Column {
                                 text: qsTr("Name: ")
                             }
 
-                            TextField {
+                            RegexField {
                                 id: name_field
                                 width: parent.width - name_label.width - parent.spacing
                                 text: model.name
                                 placeholderText: "Enter name"
 
-                                validator: RegularExpressionValidator {
-                                    regularExpression: /^[A-Za-z]\w*$/;
-                                }
-                                onEditingFinished: {
-                                    model.name = text;
-                                    focus = false;
-                                }
-                                onActiveFocusChanged: {
-                                    if (!activeFocus && !acceptableInput) {
-                                        text = ""
-                                    }
+                                regex: /^[A-Za-z]\w*$/
+                                onFinished: function(x) {
+                                    model.name = x;
                                 }
                             }
 
@@ -159,9 +153,14 @@ Column {
                             RegexField {
                                 id: value_field
                                 width: parent.width - value_label.width - parent.spacing
-                                data: model.value
-                                regex: /(^-?(([1-9]\d*(\.\d+)?$)|(0\.\d*[1-9])$))|(^0$)/
+                                
+                                text: model.value
                                 placeholderText: "Enter value"
+
+                                regex: /(^-?(([1-9]\d*(\.\d+)?$)|(0\.\d*[1-9])$))|(^0$)/
+                                onFinished: function(x) {
+                                    model.value = x;
+                                }
                             }
 
                         }
@@ -182,6 +181,17 @@ Column {
                 NumberAnimation { properties: "x,y"; duration: 300 }
             }
 
+            ScrollBar.vertical: grid_scrollBar
+
+        }
+
+        ScrollBar {
+            id: grid_scrollBar
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            anchors.right: parent.right
+            anchors.margins: 5
+            policy: ScrollBar.AlwaysOn
         }
 
     }
