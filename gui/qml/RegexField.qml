@@ -33,6 +33,8 @@ TextField {
         focus = false;
     }
 
+    // TODO: Add constraint function.
+
     onActiveFocusChanged: {
         if (!activeFocus && !acceptableInput) {
             text = "";
