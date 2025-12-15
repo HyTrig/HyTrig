@@ -126,8 +126,17 @@ Column {
                                 text: model.name
                                 placeholderText: "Enter name"
 
+                                validator: RegularExpressionValidator {
+                                    regularExpression: /^[A-Za-z]\w*$/;
+                                }
                                 onEditingFinished: {
                                     model.name = text;
+                                    focus = false;
+                                }
+                                onActiveFocusChanged: {
+                                    if (!activeFocus && !acceptableInput) {
+                                        text = ""
+                                    }
                                 }
                             }
 
@@ -147,18 +156,12 @@ Column {
                                 text: qsTr("Value: ")
                             }
 
-                            TextField {
+                            RegexField {
                                 id: value_field
                                 width: parent.width - value_label.width - parent.spacing
-                                text: model.value
+                                data: model.value
+                                regex: /(^-?(([1-9]\d*(\.\d+)?$)|(0\.\d*[1-9])$))|(^0$)/
                                 placeholderText: "Enter value"
-                                validator: RegularExpressionValidator {
-                                    regularExpression: /s/
-                                }
-
-                                onEditingFinished: {
-                                    model.value = text;
-                                }
                             }
 
                         }
