@@ -37,7 +37,7 @@ Column {
             text: qsTr("Add Variable")
             Material.background: hovered ? Material.color(Material.Blue, Material.Shade500) : Material.color(Material.Blue, Material.Shade900)
             onClicked: {
-                variable_model.insertRow({name: "", value: 0});
+                variable_model.appendRow({name: "", value: ""});
             }
 
         }
@@ -80,7 +80,7 @@ Column {
 
                         id: variable_column
                         anchors.fill: parent
-                        anchors.margins: 10
+                        anchors.margins: 15
 
                         spacing: 10
 
@@ -93,6 +93,7 @@ Column {
                                 width: parent.width - remove_button.width - parent.spacing
                                 height: parent.height
                                 text: qsTr("Variable")
+                                horizontalAlignment: Text.AlignHCenter
                             }
 
                             Button {
@@ -124,6 +125,10 @@ Column {
                                 width: parent.width - name_label.width - parent.spacing
                                 text: model.name
                                 placeholderText: "Enter name"
+
+                                onEditingFinished: {
+                                    model.name = text;
+                                }
                             }
 
                         }
@@ -147,6 +152,13 @@ Column {
                                 width: parent.width - value_label.width - parent.spacing
                                 text: model.value
                                 placeholderText: "Enter value"
+                                validator: RegularExpressionValidator {
+                                    regularExpression: /s/
+                                }
+
+                                onEditingFinished: {
+                                    model.value = text;
+                                }
                             }
 
                         }

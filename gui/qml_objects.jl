@@ -2,7 +2,7 @@
     TODO
 """
 
-struct QVariable
+mutable struct QVariable
     name::String
-    value::Float64
+    value::String
 end

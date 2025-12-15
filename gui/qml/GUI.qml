@@ -28,6 +28,8 @@ ApplicationWindow {
     Material.accent: Material.Blue
     Material.primary: Material.color(Material.Grey, Material.Shade800)
 
+    
+
     menuBar: MenuBar {
         
         id: menu_bar

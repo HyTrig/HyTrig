@@ -13,7 +13,7 @@ include("gui/qml_objects.jl")
 using QML
 
 # Initialize models
-variable_list::Vector{QVariable} = [QVariable("var1", 0.0), QVariable("var2", 1.0), QVariable("var1", 0.0), QVariable("var2", 1.0), QVariable("var1", 0.0), QVariable("var2", 1.0)]
+variable_list::Vector{QVariable} = []
 
 # Build and run QML GUI
 
