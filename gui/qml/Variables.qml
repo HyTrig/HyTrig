@@ -136,10 +136,6 @@ Column {
                                 onFinished: function(x) {
                                     model.name = x;
                                 }
-
-                                condition: function(x) {
-                                    return !Julia.hasName(x);
-                                }
                             }
 
                         }
@@ -170,10 +166,6 @@ Column {
 
                                 onFinished: function(x) {
                                     model.value = x;
-                                }
-
-                                condition: function(x) {
-                                    return true;
                                 }
                             }
 

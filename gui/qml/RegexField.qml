@@ -12,7 +12,6 @@ TextField {
     required property var regex
     
     required property var onFinished
-    required property var condition
 
     required property string default_text
     required property string error_text
