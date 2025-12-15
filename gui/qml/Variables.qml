@@ -4,6 +4,7 @@
 * @authors Moritz Maas
 */
 
+import org.julialang
 import QtQuick
 import QtQuick.Controls.Material
 
@@ -125,12 +126,19 @@ Column {
                             RegexField {
                                 id: name_field
                                 width: parent.width - name_label.width - parent.spacing
+
                                 text: model.name
-                                placeholderText: "Enter name"
+                                default_text: "Enter name"
+                                error_text: "Invalid name"
 
                                 regex: /^[A-Za-z]\w*$/
+
                                 onFinished: function(x) {
                                     model.name = x;
+                                }
+
+                                condition: function(x) {
+                                    return !Julia.hasName(x);
                                 }
                             }
 
@@ -155,11 +163,17 @@ Column {
                                 width: parent.width - value_label.width - parent.spacing
                                 
                                 text: model.value
-                                placeholderText: "Enter value"
+                                default_text: "Enter value"
+                                error_text: "Invalid number"
 
                                 regex: /(^-?(([1-9]\d*(\.\d+)?$)|(0\.\d*[1-9])$))|(^0$)/
+
                                 onFinished: function(x) {
                                     model.value = x;
+                                }
+
+                                condition: function(x) {
+                                    return true;
                                 }
                             }
 
