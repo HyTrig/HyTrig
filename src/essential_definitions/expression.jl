@@ -72,10 +72,6 @@ struct Max <: ExprLike
 end
 
 
-if !isdefined(Main, :ReAssignment)
-    const ReAssignment = OrderedDict{Variable, ExprLike}
-end
-
 function evaluate(expr::ExprLike, valuation::Valuation)::Float64
     @match expr begin
         Const(value) => round5(value)
@@ -154,4 +150,24 @@ function is_linear(expr::ExprLike)::Bool
         Min(left, right) => is_linear(left) && is_linear(right)
         Max(left, right) => is_linear(left) && is_linear(right)
     end
+end
+
+
+if !isdefined(Main, :Assignment)
+    const Assignment = OrderedDict{Variable, ExprLike}
+end
+
+function is_closed(assignment::Assignment)::Tuple{Bool, Valuation}
+    valuation = OrderedDict{Variable, Float64}()
+    changed = true
+    while changed && ! (Set(keys(assignment)) ⊆ Set(keys(valuation)))
+        changed = false
+        for (var, value) in assignment
+            if ! (var in Set(keys(valuation))) && Set(get_all_variables(value)) ⊆ Set(keys(valuation))
+                valuation[var] = evaluate(value, valuation)
+                changed = true
+            end
+        end
+    end
+    return Set(keys(assignment)) ⊆ Set(keys(valuation)), valuation
 end

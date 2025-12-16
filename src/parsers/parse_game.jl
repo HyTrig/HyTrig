@@ -22,7 +22,7 @@ function parse_game(json_file::String)
             name = Symbol(loc["name"])
             push!(locations_names, loc["name"])
             invariant::Constraint = parse(loc["invariant"], Bindings([], [], variables), constraint)
-            flow::ReAssignment = OrderedDict{Symbol, ExprLike}()
+            flow::Assignment = OrderedDict{Symbol, ExprLike}()
             for reassinment in loc["flow"]
                 flow[first(keys(reassinment))] = parse(first(values(reassinment)), Bindings([], [], variables), expression)
             end
@@ -50,7 +50,7 @@ function parse_game(json_file::String)
                 error("Edge $(name) must have exactly one decision (agent-action pair). Found: ", decisions)
             end
             guard::Constraint = parse(edge["guard"], Bindings([], [], variables), constraint)
-            jump::ReAssignment = OrderedDict{Symbol, ExprLike}()
+            jump::Assignment = OrderedDict{Symbol, ExprLike}()
             for reassinment in edge["jump"]
                 jump[first(keys(reassinment))] = parse(first(values(reassinment)), Bindings([], [], variables), expression)
             end

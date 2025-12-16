@@ -4,7 +4,7 @@ using DifferentialEquations
 
 
 function continuous_evolution(valuation::Valuation, 
-                              flow::ReAssignment,
+                              flow::Assignment,
                               time::Float64)::Valuation
 
     function flowODE!(du, u, p, t)
@@ -25,7 +25,7 @@ function continuous_evolution(valuation::Valuation,
 end
 
 function discrete_evolution(valuation::Valuation, 
-                            jump::ReAssignment)::Valuation
+                            jump::Assignment)::Valuation
     new_valuation::Valuation = copy(valuation)
     for (var, expr) in jump
         new_valuation[var] = evaluate(expr, new_valuation)

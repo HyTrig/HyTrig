@@ -3,14 +3,14 @@ include("../essential_definitions/evolution.jl")
 struct Location
     name::Symbol
     invariant::Constraint
-    flow::ReAssignment
+    flow::Assignment
     edges::Vector
 
     function Location(name::Symbol,
                     invariant::Constraint,
-                    flow::ReAssignment)
+                    flow::Assignment)
 
-        filtered_flow::ReAssignment = OrderedDict()
+        filtered_flow::Assignment = OrderedDict()
         for (var, val) in flow
             if val != Const(0.0)
                 filtered_flow[var] = val

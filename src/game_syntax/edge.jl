@@ -6,16 +6,16 @@ struct Edge
     target_location::Location
     guard::Constraint
     decision::Decision
-    jump::ReAssignment
+    jump::Assignment
 
     function Edge(name::Symbol,
                   start_location::Location,
                   target_location::Location,
                   guard::Constraint,
                   decision::Decision,
-                  jump::ReAssignment)
+                  jump::Assignment)
 
-        filtered_jump::ReAssignment = OrderedDict()
+        filtered_jump::Assignment = OrderedDict()
         for (var, val) in jump
             if val != Var(var)
                 filtered_jump[var] = val
