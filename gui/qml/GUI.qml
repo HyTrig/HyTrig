@@ -20,14 +20,14 @@ ApplicationWindow {
     height: 1080
     minimumHeight: 800
 
+
     title: qsTr("HyTrig")
     visible: true
+    visibility: Window.FullScreen
 
     Material.theme: Material.Dark
     Material.accent: Material.Blue
-    Material.primary: Material.color(Material.Grey, Material.Shade800)
-
-    
+    Material.primary: Material.Blue
 
     menuBar: MenuBar {
         
@@ -37,14 +37,14 @@ ApplicationWindow {
 
             title: qsTr("File")
 
-            MenuItem {
+            Action {
                 text: qsTr("New")
                 onTriggered: {
                     // TODO
                 }
             }
 
-            MenuItem {
+            Action {
                 text: qsTr("Open")
                 onTriggered: {
                     // TODO
@@ -53,14 +53,14 @@ ApplicationWindow {
 
             MenuSeparator {}
 
-            MenuItem {
+            Action {
                 text: qsTr("Save")
                 onTriggered: {
                     // TODO
                 }
             }
 
-            MenuItem {
+            Action {
                 text: qsTr("Save as")
                 onTriggered: {
                     // TODO
@@ -73,23 +73,34 @@ ApplicationWindow {
 
             title: qsTr("Edit")
 
+            Action {
+                text: qsTr("Clear")
+                onTriggered: {
+                    agent_model.clear();
+                    action_model.clear();
+                    variable_model.clear();
+                    // TODO
+                }
+            }
+
         }
 
         Menu {
 
             title: qsTr("View")
 
-            MenuItem {
+            Action {
                 text: qsTr("Toggle Fullscreen")
+                shortcut: "F11"
                 onTriggered: {
-                    main_window.visibility = main_window.visibility === Window.FullScreen ? Window.Windowed : Window.FullScreen
+                    main_window.visibility = main_window.visibility == Window.FullScreen ? Window.Windowed : Window.FullScreen
                 }
             }
 
-            MenuItem {
-                text: main_window.Material.theme === Material.Dark ? qsTr("Light Theme") : qsTr("Dark Theme")
+            Action {
+                text: main_window.Material.theme == Material.Dark ? qsTr("Light Theme") : qsTr("Dark Theme")
                 onTriggered: {
-                    main_window.Material.theme = main_window.Material.theme === Material.Dark ? Material.Light : Material.Dark
+                    main_window.Material.theme = main_window.Material.theme == Material.Dark ? Material.Light : Material.Dark
                 }
             }
             
@@ -161,7 +172,8 @@ ApplicationWindow {
                 }
 
                 onClicked: {
-                    tab_bar.currentIndex = index
+                    tab_bar.currentIndex = index;
+                    focus = true;
                 }
 
             }
@@ -203,45 +215,57 @@ ApplicationWindow {
                 currentIndex: tab_bar.currentIndex
 
                 Tab {
-                    Agents {
-                        id: agent_tab
+
+                    id: agent_tab
+
+                    tab_name: "Agents"
+                    element_name: "Agent"
+
+                    add: function() {
+                        agent_model.appendRow({name: ""});
                     }
+
+                    model: agent_model
+                    delegate: Agent {
+                        width: agent_tab.cellWidth
+                    }
+
                 }
 
                 Tab {
-                    Actions {
-                        id: action_tab
+
+                    id: action_tab
+
+                    tab_name: "Actions"
+                    element_name: "Action"
+
+                    add: function() {
+                        action_model.appendRow({name: ""});
                     }
+
+                    model: action_model
+                    delegate: Act {
+                        width: action_tab.cellWidth
+                    }
+
                 }
 
                 Tab {
-                    Variables {
-                        id: variable_tab
-                    }
-                }
 
-                Tab {
-                    Triggers {
-                        id: trigger_tab
-                    }
-                }
+                    id: variable_tab
 
-                Tab {
-                    Locations {
-                        id: location_tab
-                    }
-                }
+                    tab_name: "Variables"
+                    element_name: "Variable"
 
-                Tab {
-                    Edges {
-                        id: edge_tab
+                    add: function() {
+                        variable_model.appendRow({name: "", value: ""});
                     }
-                }
 
-                Tab {
-                    Queries {
-                        id: query_tab
+                    model: variable_model
+                    delegate: Variable {
+                        width: variable_tab.cellWidth
                     }
+
                 }
 
             }

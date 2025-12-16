@@ -14,13 +14,21 @@ using QML
 
 # Initialize models
 
-action_list::Vector{QAction} = []
-agent_list::Vector{QAgent} = []
-variable_list::Vector{QVariable} = []
+action_list::Vector{QAction} = [QAction("action")]
+agent_list::Vector{QAgent} = [QAgent("agent")]
+variable_list::Vector{QVariable} = [QVariable("variable", "0")]
+
+# Initialize QML functions
+
+function name_available(name::QString)::Bool
+    return !any(v -> v.name == name, [action_list; agent_list; variable_list])
+end
 
 # Build and run QML GUI
 
 qml_file = joinpath(dirname(@__FILE__), "gui", "qml", "GUI.qml")
+
+@qmlfunction name_available
 
 loadqml(
     qml_file,
