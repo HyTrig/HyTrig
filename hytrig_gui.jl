@@ -35,7 +35,8 @@ loadqml(
     qml_file,
     action_model = JuliaItemModel(action_list),
     agent_model = JuliaItemModel(agent_list),
-    variable_model = JuliaItemModel(variable_list)
+    variable_model = JuliaItemModel(variable_list),
+    trigger_model = JuliaItemModel(trigger_list)
 )
 
 exec()

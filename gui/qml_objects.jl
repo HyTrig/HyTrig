@@ -17,5 +17,5 @@ end
 
 mutable struct QTrigger
     agent::String
-    action::String
+    trigger::String
 end
