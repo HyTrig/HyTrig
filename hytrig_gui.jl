@@ -17,6 +17,7 @@ using QML
 action_list::Vector{QAction} = [QAction("action")]
 agent_list::Vector{QAgent} = [QAgent("agent")]
 variable_list::Vector{QVariable} = [QVariable("variable", "0")]
+trigger_list::Vector{QTrigger} = [QTrigger("agent", "true")]
 
 # Initialize QML functions
 
