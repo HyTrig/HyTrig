@@ -1,4 +1,4 @@
-include("../essential_definitions/evolution.jl")
+include("../../essential_definitions/evolution.jl")
 
 struct Location
     name::Symbol
@@ -9,7 +9,6 @@ struct Location
     function Location(name::Symbol,
                     invariant::Constraint,
                     flow::Assignment)
-
         filtered_flow::Assignment = OrderedDict()
         for (var, val) in flow
             if val != Const(0.0)

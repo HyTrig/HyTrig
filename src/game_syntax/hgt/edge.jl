@@ -14,7 +14,6 @@ struct Edge
                   guard::Constraint,
                   decision::Decision,
                   jump::Assignment)
-
         filtered_jump::Assignment = OrderedDict()
         for (var, val) in jump
             if val != Var(var)
@@ -27,16 +26,6 @@ end
 
 function enabled(edge::Edge, valuation::Valuation)::Bool
     return evaluate(edge.guard, valuation) && evaluate(edge.target_location.invariant, discrete_evolution(valuation, edge.jump))
-end
-
-function select_initial_edges(edges, config, decision::Decision)::Vector{Edge}
-    selected_edges = Vector{Edge}()
-    for edge in edges
-        if edge.target_location == config.location && edge.decision == decision && enabled(edge, config.valuation) 
-            push!(selected_edges, edge)
-        end
-    end
-    return selected_edges
 end
 
 function select_edges(config, decision::Decision)::Vector{Edge}
