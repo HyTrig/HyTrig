@@ -15,7 +15,7 @@ This script runs a GUI with QML. The GUI allows to create, edit, save, load and 
 include("gui/packages.jl")
 
 include("src/parsers/syntax_parsers/parser.jl")
-include("src/model_checking/build_and_evaluate.jl")
+include("src/model_checking/hgt/build_and_evaluate.jl")
 
 using QML
 

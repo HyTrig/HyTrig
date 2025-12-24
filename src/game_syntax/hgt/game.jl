@@ -1,24 +1,21 @@
 include("edge.jl")
 
-struct Game
-    locations::Vector{Location}
-    initial_location::Location
+struct HGT_Game <: Game
+    locations::Vector{HGT_Location}
+    initial_location::HGT_Location
     initial_valuation::Valuation
     agents:: Vector{Agent}
     actions::Vector{Action}
-    edges:: Vector{Edge}
+    edges:: Vector{HGT_Edge}
     triggers:: Dict{Agent, Vector{Constraint}}
 
-    function Game(  locations::Vector{Location}, 
-                    initial_location::Location, 
+    function HGT_Game(locations::Vector{HGT_Location}, 
+                    initial_location::HGT_Location, 
                     initial_valuation::Valuation, 
                     agents::Vector{Agent}, 
                     actions::Vector{Action},
-                    edges::Vector{Edge},
-                    triggers:: Dict{Agent, Vector{Constraint}})::Game
-
-        """ First edge in each location is a stutter edge that allows the game 
-            to stay in the same location without making any changes. """
+                    edges::Vector{HGT_Edge},
+                    triggers:: Dict{Agent, Vector{Constraint}})::HGT_Game
 
         for edge in edges
             push!(edge.start_location.edges, edge)

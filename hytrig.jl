@@ -1,11 +1,23 @@
 include("src/packages.jl")
-include("src/parsers/parse_game.jl")
+include("src/model_checking/hgt/build_and_evaluate.jl")
+include("src/parsers/parse_hgt_game.jl")
+include("src/parsers/parse_monotic_game.jl")
 
 using Dates
 
 function READ_USER_FILE()
     try
-        examples = readdir("examples")
+        game_types = readdir("examples")
+
+        println("Please the type of game you want to verify:")
+        for (i, gt) in enumerate(game_types)
+            println("\t $i. $gt")
+        end
+        game_type = tryparse(Int64, readline())
+
+        examples_folder = "examples/$(game_types[game_type])"
+
+        examples = readdir(examples_folder)
 
         println("Please enter your the relative path to the JSON file or choose the number of one of the examples below:")
         for (i, exmp) in enumerate(examples)
@@ -16,17 +28,19 @@ function READ_USER_FILE()
 
         example_number = tryparse(Int64, file_name)
         if example_number !== nothing
-            game, termination_conditions, queries, queries_text = parse_game("examples/" * examples[example_number])
-            println("\n--- SUCCESS ---")
-            println("Content successfully read from \"", examples[example_number], "\".")
-            println("---------------")
-        else 
-            game, termination_conditions, queries, queries_text = parse_game(file_name)
-            println("\n--- SUCCESS ---")
-            println("Content successfully read from \"", file_name, "\".")
-            println("---------------")
+            file_name = "$examples_folder/" * examples[example_number]
         end
 
+        if game_type == 1
+            game, termination_conditions, queries, queries_text = parse_hgt_game(file_name)
+        else
+            game, termination_conditions, queries, queries_text = parse_mhg_game(file_name)
+
+            return
+        end
+        println("\n--- SUCCESS ---")
+        println("Content successfully read from \"", file_name, "\".")
+        println("---------------")
         ##################################
 
         t1 = time();

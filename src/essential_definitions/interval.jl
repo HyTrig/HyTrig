@@ -1,12 +1,12 @@
 struct Interval
-    left::Float64
+    left::Real
     left_open::Bool
-    right::Float64
+    right::Real
     right_open::Bool
 
-    function Interval(left::Float64,
+    function Interval(left::Real,
                       left_open::Bool,
-                      right::Float64,
+                      right::Real,
                       right_open::Bool)
         if left > right
             new(0, true, 0, true)
@@ -34,7 +34,7 @@ function within(num::Float64, interval::Interval)::Bool
 end
 
 
-function intersect(interval_1::Interval, interval_2::Interval)::Interval
+function interval_intersect(interval_1::Interval, interval_2::Interval)::Interval
     if interval_1.left > interval_2.left 
         left = interval_1.left
         left_open = interval_1.left_open

@@ -1,0 +1,82 @@
+using JSON3
+include("../game_syntax/hgt/game.jl")
+include("../hybrid_atl/termination_conditions.jl")
+include("syntax_parsers/parser.jl")
+
+
+function parse_hgt_game(json_file::String)
+    open(json_file,"r") do f
+        json_string = read(json_file, String)
+        FileDict = JSON3.read(json_string)
+        GameDict = FileDict["Game"]
+        agents = Vector{Agent}([Symbol(agent) for agent in GameDict["agents"]])
+        agents_names = [string(agent) for agent in GameDict["agents"]]
+        actions = Vector{Action}([Symbol(action) for action in GameDict["actions"]])
+        initial_valuation::Valuation = OrderedDict{Symbol, Float64}()
+        if ! isempty(GameDict["initial_valuation"])
+            initial_valuation = OrderedDict(first(keys(init)) => first(values(init)) for init in GameDict["initial_valuation"])
+        end
+        variables = Vector{String}([String(var) for var in keys(initial_valuation)])
+        locations = HGT_Location[]
+        locations_names = Vector{String}()
+        initial_location = nothing
+        for loc in GameDict["locations"]
+            name = Symbol(loc["name"])
+            push!(locations_names, loc["name"])
+            invariant::Constraint = parse(loc["invariant"], Bindings([], [], variables), constraint)
+            flow::Assignment = OrderedDict{Symbol, ExprLike}()
+            for reassinment in loc["flow"]
+                flow[first(keys(reassinment))] = parse(first(values(reassinment)), Bindings([], [], variables), expression)
+            end
+            location = HGT_Location(name, invariant, flow)
+            if haskey(loc, "initial") && loc["initial"]
+                initial_location = location
+            end
+            push!(locations, location)
+        end
+        edges = HGT_Edge[]
+        for edge in GameDict["edges"]
+            name = Symbol(edge["name"])
+            start_location = nothing
+            target_location = nothing
+            start_location_ind = findfirst(loc -> loc.name == Symbol(edge["start_location"]), locations)
+            target_location_ind = findfirst(loc -> loc.name == Symbol(edge["target_location"]), locations)
+            if start_location_ind === nothing || target_location_ind === nothing
+                error("Edge $(name) references non-existent locations:", edge["start_location"], " - ", edge["target_location"])
+            else
+                start_location = locations[start_location_ind]
+                target_location = locations[target_location_ind]
+            end
+            decisions::Vector{Decision} = Pair{Agent, Action}[Symbol(agent) => Symbol(action) for (agent, action) in edge["decision"]]
+            if length(decisions) != 1
+                error("Edge $(name) must have exactly one decision (agent-action pair). Found: ", decisions)
+            end
+            guard::Constraint = parse(edge["guard"], Bindings([], [], variables), constraint)
+            jump::Assignment = OrderedDict{Symbol, ExprLike}()
+            for reassinment in edge["jump"]
+                jump[first(keys(reassinment))] = parse(first(values(reassinment)), Bindings([], [], variables), expression)
+            end
+            push!(edges, HGT_Edge(name, start_location, target_location, guard, decisions[1], jump))
+        end
+        triggers::Dict{Agent, Vector{Constraint}} = Dict(Symbol(agent) => 
+            Constraint[parse(trigger, Bindings([], [], variables), constraint)
+                for trigger in agents_triggers] 
+                for (agent, agents_triggers) in GameDict["triggers"])
+
+        game = HGT_Game(locations, initial_location, initial_valuation, agents, actions, edges, triggers)
+
+        termination_conditions = Termination_Conditions(
+            Float64(FileDict["termination-conditions"]["time-bound"]),
+            Int64(FileDict["termination-conditions"]["max-steps"]),
+            parse(FileDict["termination-conditions"]["state-formula"], Bindings(agents_names, locations_names, variables), state)
+        )
+        queries::Vector{Strategy_Formula} = Strategy_Formula[parse(query, Bindings(agents_names, locations_names, variables), strategy) for query in FileDict["queries"]]
+        return game, termination_conditions, queries, FileDict["queries"]
+
+    end
+end
+
+
+# game, termination_conditions, queries = parse_game("examples/3_players_1_ball.json")
+
+# println("********************")

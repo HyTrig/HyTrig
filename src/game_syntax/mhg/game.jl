@@ -1,22 +1,19 @@
 include("edge.jl")
 
-struct Game
-    locations::Vector{Location}
-    initial_location::Location
+struct MHG_Game <: Game
+    locations::Vector{MHG_Location}
+    initial_location::MHG_Location
     initial_valuation::IntervalAssignment
     agents:: Vector{Agent}
     actions::Vector{Action}
-    edges:: Vector{Edge}
+    edges:: Vector{MHG_Edge}
 
-    function Game(  locations::Vector{Location}, 
-                    initial_location::Location, 
+    function MHG_Game(  locations::Vector{MHG_Location}, 
+                    initial_location::MHG_Location, 
                     initial_valuation::IntervalAssignment, 
                     agents::Vector{Agent}, 
                     actions::Vector{Action},
-                    edges::Vector{Edge})::Game
-
-        """ First edge in each location is a stutter edge that allows the game 
-            to stay in the same location without making any changes. """
+                    edges::Vector{MHG_Edge})::MHG_Game
 
         for edge in edges
             push!(edge.start_location.edges, edge)

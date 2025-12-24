@@ -1,12 +1,13 @@
-include("../game_syntax/game.jl")
+include("../abtract_semantics.jl")
+include("../../game_syntax/hgt/game.jl")
 
-struct Configuration
+struct Configuration <: State
     location::Location
     valuation::Valuation
     global_clock::Float64
 end
 
-function initial_configuration(game::Game)::Configuration
+function initial_configuration(game::HGT_Game)::Configuration
     Configuration(game.initial_location, 
                   game.initial_valuation,
                   0.0)

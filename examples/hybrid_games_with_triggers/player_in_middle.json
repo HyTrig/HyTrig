@@ -2,7 +2,7 @@
 {
     "Description": "A bouncing ball game with a player in the middle moving in a sinusoidal pattern",
     "Game": {
-        "name":"Bouncing Ball Game",
+        "name":"Monkey in Middle",
         "locations": 
         [
             {

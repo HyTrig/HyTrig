@@ -1,12 +1,13 @@
+include("../abstract_syntax.jl")
 include("../../essential_definitions/evolution.jl")
 
-struct Location
+struct HGT_Location <: Location
     name::Symbol
     invariant::Constraint
     flow::Assignment
     edges::Vector
 
-    function Location(name::Symbol,
+    function HGT_Location(name::Symbol,
                     invariant::Constraint,
                     flow::Assignment)
         filtered_flow::Assignment = OrderedDict()

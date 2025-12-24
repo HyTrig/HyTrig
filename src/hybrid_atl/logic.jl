@@ -1,4 +1,5 @@
-include("../game_semantics/transitions.jl")
+include("../essential_definitions/constraint.jl")
+include("../game_semantics/abtract_semantics.jl")
 
 abstract type Logic_formula end
 abstract type Strategy_Formula <: Logic_formula end
@@ -156,13 +157,13 @@ function get_all_constraints(formulae::Vector{Logic_formula})::Vector{Constraint
 end
 
 
-function evaluate_state(formula::State_Formula, config::Configuration)::Bool
+function evaluate_state(formula::State_Formula, state::State)::Bool
     @match formula begin
-        State_Location(loc) => loc == config.location
-        State_Constraint(constraint) => evaluate(constraint, config.valuation)
-        State_And(left, right) => evaluate_state(left, config) && evaluate_state(right, config)
-        State_Or(left, right) => evaluate_state(left, config) || evaluate_state(right, config)
-        State_Not(f) => ! evaluate_state(f, config)
-        State_Imply(left, right) => ! evaluate_state(left, config) || evaluate_state(right, config)
+        State_Location(loc) => loc == state.location
+        State_Constraint(constraint) => evaluate(constraint, state.valuation)
+        State_And(left, right) => evaluate_state(left, state) && evaluate_state(right, state)
+        State_Or(left, right) => evaluate_state(left, state) || evaluate_state(right, state)
+        State_Not(f) => ! evaluate_state(f, state)
+        State_Imply(left, right) => ! evaluate_state(left, state) || evaluate_state(right, state)
     end
 end

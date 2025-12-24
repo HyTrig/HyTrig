@@ -1,4 +1,4 @@
-include("node.jl")
+include("../../game_semantics/state_semantics/transitions.jl")
 
 function time_to_trigger(config::Configuration, constraints::Vector{Constraint}, max_time::Float64)
 

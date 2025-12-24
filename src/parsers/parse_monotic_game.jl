@@ -1,8 +1,20 @@
 using JSON3
+include("../game_syntax/mhg/game.jl")
+include("../hybrid_atl/termination_conditions.jl")
 include("syntax_parsers/parser.jl")
 
+function parse_interval(interval_text::String)::Interval
+    left_open = interval_text[1] == "("
+    right_open = interval_text[end] == ")"
+    content = interval_text[2:end-1]
+    numbers = [tryparse(Float64, number) for number in split(content, ',')]
+    left = numbers[1]
+    right = numbers[2]
+    Interval(left, left_open, right, right_open)
+end
 
-function parse_game(json_file::String)
+
+function parse_mhg_game(json_file::String)
     open(json_file,"r") do f
         json_string = read(json_file, String)
         FileDict = JSON3.read(json_string)
@@ -10,29 +22,30 @@ function parse_game(json_file::String)
         agents = Vector{Agent}([Symbol(agent) for agent in GameDict["agents"]])
         agents_names = [string(agent) for agent in GameDict["agents"]]
         actions = Vector{Action}([Symbol(action) for action in GameDict["actions"]])
-        initial_valuation::Valuation = OrderedDict{Symbol, Float64}()
+        initial_valuation::IntervalAssignment = IntervalAssignment()
         if ! isempty(GameDict["initial_valuation"])
-            initial_valuation = OrderedDict(first(keys(init)) => first(values(init)) for init in GameDict["initial_valuation"])
+            initial_valuation = OrderedDict(first(keys(init)) => parse_interval(first(values(init))) for init in GameDict["initial_valuation"])
         end
         variables = Vector{String}([String(var) for var in keys(initial_valuation)])
-        locations = Location[]
+        locations = MHG_Location[]
         locations_names = Vector{String}()
         initial_location = nothing
         for loc in GameDict["locations"]
             name = Symbol(loc["name"])
             push!(locations_names, loc["name"])
-            invariant::Constraint = parse(loc["invariant"], Bindings([], [], variables), constraint)
-            flow::Assignment = OrderedDict{Symbol, ExprLike}()
+            invariant_constraint::Constraint = parse(loc["invariant"], Bindings([], [], variables), constraint)
+            invariant::RectConstr = constraint_to_rect_constraint(invariant_constraint)
+            flow::IntervalAssignment = IntervalAssignment()
             for reassinment in loc["flow"]
-                flow[first(keys(reassinment))] = parse(first(values(reassinment)), Bindings([], [], variables), expression)
+                flow[first(keys(reassinment))] = parse_interval(first(values(reassinment)))
             end
-            location = Location(name, invariant, flow)
+            location = MHG_Location(name, invariant, flow)
             if haskey(loc, "initial") && loc["initial"]
                 initial_location = location
             end
             push!(locations, location)
         end
-        edges = Edge[]
+        edges = MHG_Edge[]
         for edge in GameDict["edges"]
             name = Symbol(edge["name"])
             start_location = nothing
@@ -49,19 +62,16 @@ function parse_game(json_file::String)
             if length(decisions) != 1
                 error("Edge $(name) must have exactly one decision (agent-action pair). Found: ", decisions)
             end
-            guard::Constraint = parse(edge["guard"], Bindings([], [], variables), constraint)
-            jump::Assignment = OrderedDict{Symbol, ExprLike}()
+            guard_constraint::Constraint = parse(edge["guard"], Bindings([], [], variables), constraint)
+            guard::RectConstr = constraint_to_rect_constraint(guard_constraint)
+            jump::IntervalAssignment = IntervalAssignment()
             for reassinment in edge["jump"]
-                jump[first(keys(reassinment))] = parse(first(values(reassinment)), Bindings([], [], variables), expression)
+                jump[first(keys(reassinment))] = parse_interval(first(values(reassinment)))
             end
-            push!(edges, Edge(name, start_location, target_location, guard, decisions[1], jump))
+            push!(edges, MHG_Edge(name, start_location, target_location, guard, decisions[1], jump))
         end
-        triggers::Dict{Agent, Vector{Constraint}} = Dict(Symbol(agent) => 
-            Constraint[parse(trigger, Bindings([], [], variables), constraint)
-                for trigger in agents_triggers] 
-                for (agent, agents_triggers) in GameDict["triggers"])
 
-        game = Game(locations, initial_location, initial_valuation, agents, actions, edges, triggers, true)
+        game = MHG_Game(locations, initial_location, initial_valuation, agents, actions, edges)
 
         termination_conditions = Termination_Conditions(
             Float64(FileDict["termination-conditions"]["time-bound"]),
@@ -74,7 +84,8 @@ function parse_game(json_file::String)
     end
 end
 
+# game, tc, queries, queries_text = parse_mhg_game("../../examples/monotonic_hybrid_games/2_player_ball_game.json")
 
-# game, termination_conditions, queries = parse_game("examples/3_players_1_ball.json")
-
+# println("********************")
+# println(game)
 # println("********************")

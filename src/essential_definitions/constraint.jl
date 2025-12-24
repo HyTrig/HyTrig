@@ -64,29 +64,32 @@ end
 
 abstract type RectConstr <: Constraint end
 
+struct RectTrue <: RectConstr
+end
+
 struct RectLess <: RectConstr
-    var::Var
-    value::Const
+    var::Variable
+    value::Real
 end
 
 struct RectLessEq <: RectConstr
-    var::Var
-    value::Const
+    var::Variable
+    value::Real
 end
 
 struct RectGrt <: RectConstr
-    var::Var
-    value::Const
+    var::Variable
+    value::Real
 end
 
 struct RectGrtEq <: RectConstr
-    var::Var
-    value::Const
+    var::Variable
+    value::Real
 end
 
 struct RectEq <: RectConstr
-    var::Var
-    value::Const
+    var::Variable
+    value::Real
 end
 
 struct RectAnd <: RectConstr
@@ -205,12 +208,58 @@ function get_unsatisfied_constraints(constraints, valuation::Valuation)
     filter(constraint -> ! evaluate(constraint, valuation), constraints)
 end
 
+
+#######################################################
+#######################################################
+
+struct RectConstrError <: Exception
+    msg::AbstractString
+end
+
+function constraint_to_rect_constraint(constr::Constraint)::RectConstr
+    @match constr begin
+        Truth(true) => RectTrue()
+        LeQ(left::Var, right::Const) => RectLessEq(left.name, right.value)
+        LeQ(left::Var, Neg(val::Const)) => RectLessEq(left.name, - val.value)
+        Less(left::Var, right::Const) => RectLess(left.name, right.value)
+        Less(left::Var, Neg(val::Const)) => RectLessEq(left.name, - val.value)
+        GeQ(left::Var, right::Const) => RectGrtEq(left.name, right.value)
+        GeQ(left::Var, Neg(val::Const)) => RectLessEq(left.name, - val.value)
+        Greater(left::Var, right::Const) => RectGrt(left.name, right.value)
+        Greater(left::Var, Neg(val::Const)) => RectLessEq(left.name, - val.value)
+        Equal(left::Var, right::Const) => RectEq(left.name, right.value)
+        Equal(left::Var, Neg(val::Const)) => RectLessEq(left.name, - val.value)
+        And(left, right) => RectAnd(constraint_to_rect_constraint(left), constraint_to_rect_constraint(right))
+        _ => throw(RectConstrError("Invalid Constraint $constr."))
+    end
+end
+
+
+
 if !isdefined(Main, :IntervalAssignment)
     const IntervalAssignment = OrderedDict{Variable, Interval}
 end
 
-function trim_rect_constr(constr::RectConstr, assignment::IntervalAssignment)::IntervalAssignment
+function strip_variables(constr::RectConstr, variables)::RectConstr
     @match constr begin
+        RectTrue() => constr
+        RectLess(var, _) => if var in variables RectTrue() else constr end
+        RectLessEq(var, _) => if var in variables RectTrue() else constr end
+        RectGrt(var, _) => if var in variables RectTrue() else constr end
+        RectGrtEq(var, _) => if var in variables RectTrue() else constr end
+        RectEq(var, _) => if var in variables RectTrue() else constr end
+        RectAnd(left, right) => RectAnd(strip_variables(right, variables), strip_variables(left, variables))
+    end
+end
+
+function constraint_to_assignment(constr::RectConstr, variables)::IntervalAssignment
+    assignement = OrderedDict(var => Interval(-Inf, true, Inf, true) for var in variables)
+    return _constraint_to_assignment(constr, assignement)
+end
+
+function _constraint_to_assignment(constr::RectConstr, assignment::IntervalAssignment)::IntervalAssignment
+    @match constr begin
+        RectTrue() => assignment
         RectLess(var, val) => begin
             if val.value <= assignment[var.name].right
                 assignment[var.name] = Interval(assignment[var.name].left, assignment[var.name].left_open, val.value, true)
@@ -236,7 +285,7 @@ function trim_rect_constr(constr::RectConstr, assignment::IntervalAssignment)::I
                 assignment[var.name] = Interval(val.value, false, val.value, false)
             end
         end
-        RectAnd(left, right) => trim_rect_constr(right, trim_rect_constr(left, assignment))
+        RectAnd(left, right) => _constraint_to_assignment(right, _constraint_to_assignment(left, assignment))
     end
     assignment
 end
@@ -248,127 +297,4 @@ end
 
 # assignment_1 = OrderedDict(:x => interval_1, :y => interval_2)
 
-# println(trim_rect_constr(RectAnd(RectLessEq(Var(:x), Const(3)), RectLess(Var(:x), Const(3))), assignment_1))
-
-# function intersect(assignment_1::IntervalAssignment, assignment_2::IntervalAssignment)
-#     assignment::IntervalAssignment = OrderedDict{}()
-#     for (var, intervals_1) in assignment_1
-#         assignment[var] = intersect(intervals_1, assignment_2[var])
-#     end
-#     return assignment
-# end
-
-# function union(assignment_1::IntervalAssignment, assignment_2::IntervalAssignment)
-#     assignment::IntervalAssignment = OrderedDict{}()
-#     for (var, intervals_1) in assignment_1
-#         assignment[var] = union(intervals_1, assignment_2[var])
-#     end
-#     return assignment
-# end
-
-# function get_interval(constraint::Constraint, assignment::IntervalAssignment)::IntervalAssignment
-#     assignment::IntervalAssignment = OrderedDict{}()
-#     @match constraint begin
-#         Truth(value) => begin
-#             if value 
-#                 for var in variables
-#                     assignment[var] = [Interval(-Inf, true, Inf, true)]
-#                 end
-#             else 
-#                 for var in variables
-#                     assignment[var] = [Interval(0, true, 0, true)]
-#                 end
-#             end
-#             return assignment
-#         end
-#         Less(left, right) => begin
-#             if isa(left, Var) 
-#                 for var in variables
-#                     if left.name == var 
-#                         assignment[var] = [Interval(-Inf, true, right.value, true)]
-#                     else 
-#                         assignment[var] = [Interval(-Inf, true, Inf, true)]
-#                     end
-#                 end
-#                 return assignment
-#             else 
-#                 return get_interval(Less(right, left), variables)
-#             end
-#         end
-#         LeQ(left, right) => begin
-#             if isa(left, Var) 
-#                 for var in variables
-#                     if left.name == var 
-#                         assignment[var] = [Interval(-Inf, true, right.value, false)]
-#                     else 
-#                         assignment[var] = [Interval(-Inf, true, Inf, true)]
-#                     end
-#                 end
-#                 return assignment
-#             else 
-#                 return get_interval(LeQ(right, left), variables)
-#             end
-#         end
-#         Greater(left, right) => begin
-#             if isa(left, Var) 
-#                 for var in variables
-#                     if left.name == var 
-#                         assignment[var] = [Interval(right.value, true, Inf, true)]
-#                     else 
-#                         assignment[var] = [Interval(-Inf, true, Inf, true)]
-#                     end
-#                 end
-#             else 
-#                 return get_interval(Greater(right, left), variables)
-#             end
-#         end
-#         GeQ(left, right) => begin
-#             if isa(left, Var) 
-#                 for var in variables
-#                     if left.name == var 
-#                         assignment[var] = [Interval(right.value, false, Inf, true)]
-#                     else 
-#                         assignment[var] = [Interval(-Inf, true, Inf, true)]
-#                     end
-#                 end
-#             else 
-#                 return get_interval(GeQ(right, left), variables)
-#             end
-#         end
-#         Equal(left, right) => begin
-#             if isa(left, Var) 
-#                 for var in variables
-#                     if left.name == var 
-#                         assignment[var] = [Interval(right.value, false, right.value, false)]
-#                     else 
-#                         assignment[var] = [Interval(-Inf, true, Inf, true)]
-#                     end
-#                 end
-#             else 
-#                 return get_interval(Equal(right, left), variables)
-#             end
-#         end
-#         NotEqual(left, right) => begin
-#             if isa(left, Var) 
-#                 for var in variables
-#                     if left.name == var 
-#                         assignment[var] = [Interval(-Inf, true, right.value, true), 
-#                                            Interval(right.value, true, Inf, true)]
-#                     else 
-#                         assignment[var] = [Interval(-Inf, true, Inf, true)]
-#                     end
-#                 end
-#             else 
-#                 return get_interval(Equal(right, left), variables)
-#             end
-#         end
-#         And(left, right) => intersect(get_interval(left, variables), get_interval(right, variables))
-#         Or(left, right) => union(get_interval(left, variables), get_interval(right, variables))
-#         Not(c) => !evaluate(c, valuation)
-#         Imply(left, right) => get_interval(Or(Not(left), right),variables)
-#     end
-# end
-
-# function get_interval(constraint::RectConstr, assignment::IntervalAssignment)::IntervalAssignment
-
-# end
+# println(constraint_to_assignment(RectAnd(RectLessEq(Var(:x), Const(3)), RectGrt(Var(:x), Const(3))), keys(assignment_1)))
