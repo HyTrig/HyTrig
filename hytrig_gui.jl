@@ -39,4 +39,4 @@ loadqml(
     trigger_model = JuliaItemModel(trigger_list)
 )
 
-# exec()
+exec()
