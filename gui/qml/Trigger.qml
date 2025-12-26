@@ -4,7 +4,6 @@
 * @authors Moritz Maas
 */
 
-import org.julialang
 import QtQuick
 import QtQuick.Controls.Material
 
@@ -24,7 +23,7 @@ ElementFrame {
 
             parent: trigger_frame.column
             width: parent.width
-            height: agent_name_field.height
+            height: trigger_agent_box.height
             spacing: 5
 
             Label {
@@ -38,11 +37,18 @@ ElementFrame {
                 id: trigger_agent_box
                 width: parent.width - trigger_agent_label.width - parent.spacing
 
-                // TODO
-                
+                model: agent_model
+                textRole: "name"
+                valueRole: "name"
+
+                onAccepted: {
+                    print("Selected agent: " + trigger_agent_box.currentText);
+                }
             }
 
         }
+
+        // TODO: Add trigger text field
 
     ]
 

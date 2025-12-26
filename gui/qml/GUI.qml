@@ -268,6 +268,24 @@ ApplicationWindow {
 
                 }
 
+                Tab {
+
+                    id: trigger_tab
+
+                    tab_name: "Triggers"
+                    element_name: "Trigger"
+
+                    add: function() {
+                        trigger_model.appendRow({agent: "", trigger: ""})
+                    }
+
+                    model: trigger_model
+                    delegate: Trigger {
+                        width: trigger_tab.cellWidth
+                    }
+
+                }
+
             }
 
         }
