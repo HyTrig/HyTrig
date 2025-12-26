@@ -34,7 +34,7 @@ function is_formula(text::QString, level::QString)::Bool
         [x.name for x in variable_list]
     )
     try
-        parse(text, bindings, Symbol(String(level)))
+        parse(text, bindings, Symbol(eval(String(level))))
         return true
     catch
         return false
