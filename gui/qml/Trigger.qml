@@ -41,8 +41,8 @@ ElementFrame {
                 textRole: "name"
                 valueRole: "name"
 
-                onAccepted: {
-                    print("Selected agent: " + trigger_agent_box.currentText);
+                onActivated: {
+                    parent.model.agent = currentText;
                 }
             }
 
