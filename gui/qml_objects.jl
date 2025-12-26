@@ -19,3 +19,7 @@ mutable struct QTrigger
     agent::String
     trigger::String
 end
+
+mutable struct QLocation
+    name::String
+end

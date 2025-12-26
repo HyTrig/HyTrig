@@ -13,11 +13,38 @@ Item {
     required property int index
 
     required property string element_name
-    required property list<Item> content
+    default property list<Item> content
 
     required property var remove
 
     property alias column: column
+
+    readonly property list<Item> header: [
+        
+        Row {
+
+            width: parent.width
+            spacing: 5
+
+            Title {
+                width: parent.width - remove_button.width - parent.spacing
+                height: parent.height
+                text: qsTr(element_name)
+                horizontalAlignment: Text.AlignHCenter
+            }
+
+            Button {
+                id: remove_button
+                text: qsTr("Remove")
+                Material.background: Material.theme == Material.Dark ? Material.color(Material.Red, Material.Shade900) : Material.color(Material.Red, Material.Shade400)
+                onClicked: {
+                    remove();
+                }
+            }
+
+        }
+
+    ]
 
     height: column.implicitHeight + column.anchors.margins * 2 + back.anchors.margins * 2
     
@@ -41,30 +68,8 @@ Item {
             spacing: 10
 
             children: [
-
-                Row {
-
-                    width: parent.width
-                    spacing: 5
-
-                    Title {
-                        width: parent.width - remove_button.width - parent.spacing
-                        height: parent.height
-                        text: qsTr(element_name)
-                        horizontalAlignment: Text.AlignHCenter
-                    }
-
-                    Button {
-                        id: remove_button
-                        text: qsTr("Remove")
-                        Material.background: Material.theme == Material.Dark ? Material.color(Material.Red, Material.Shade900) : Material.color(Material.Red, Material.Shade400)
-                        onClicked: {
-                            remove();
-                        }
-                    }
-
-                }
-
+                ...header,
+                ...content
             ]
 
         }

@@ -79,6 +79,7 @@ ApplicationWindow {
                     agent_model.clear();
                     action_model.clear();
                     variable_model.clear();
+                    trigger_model.clear();
                     // TODO
                 }
             }
