@@ -12,7 +12,7 @@ include("gui/packages.jl")
 using QML
 
 include("gui/qml_objects.jl")
-# include("src/parsers/syntax_parsers/parser.jl")
+include("src/parsers/syntax_parsers/parser.jl")
 
 
 # Initialize models
@@ -32,7 +32,6 @@ trigger_list::Vector{QTrigger} = []
 location_list::Vector{QLocation} = [QLocation("location", true, "true", JuliaItemModel([QFlow("variable", "variable")]))]
 location_model::JuliaItemModel = JuliaItemModel(location_list)
 setsetter!(location_model, setflow!, roleindex(location_model, "flow"))
-roles["location_flow"] = roleindex(location_model, "flow")
 
 # Initialize QML functions
 
@@ -41,17 +40,17 @@ function name_available(name::QString)::Bool
 end
 
 function is_formula(text::QString, level::QString)::Bool
-    # bindings::Bindings = Bindings(
-    #     [x.name for x in agent_list],
-    #     [x.name for x in location_list],
-    #     [x.name for x in variable_list]
-    # )
-    # try
-    #     parse(text, bindings, Symbol(eval(String(level))))
-    #     return true
-    # catch
-    #     return false
-    # end
+    bindings::Bindings = Bindings(
+        [x.name for x in agent_list],
+        [x.name for x in location_list],
+        [x.name for x in variable_list]
+    )
+    try
+        parse(text, bindings, Symbol(eval(String(level))))
+        return true
+    catch
+        return false
+    end
     return true
 end
 
@@ -69,11 +68,17 @@ function rename_variable(index::Int32, name::QString)
     end
 end
 
+function remove_variable(index::Int32)
+    for loc in location_list
+        delete!(loc.flow, index + 1)
+    end
+end
+
 # Build and run QML GUI
 
 qml_file = joinpath(dirname(@__FILE__), "gui", "qml", "GUI.qml")
 
-@qmlfunction name_available is_formula add_variable rename_variable
+@qmlfunction name_available is_formula add_variable rename_variable remove_variable
 
 loadqml(
     qml_file,
