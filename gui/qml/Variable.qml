@@ -46,7 +46,7 @@ ElementFrame {
                 regex: /^[A-Za-z]\w*$/
 
                 action: function(x) {
-                    model.name = x;
+                    Julia.rename_variable(index, x);
                 }
                 condition: function(x) {
                     return x == model.name || Julia.name_available(x);

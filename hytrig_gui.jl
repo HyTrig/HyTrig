@@ -12,7 +12,8 @@ include("gui/packages.jl")
 using QML
 
 include("gui/qml_objects.jl")
-include("src/parsers/syntax_parsers/parser.jl")
+# include("src/parsers/syntax_parsers/parser.jl")
+
 
 # Initialize models
 
@@ -20,7 +21,8 @@ action_list::Vector{QAction} = [QAction("action")]
 agent_list::Vector{QAgent} = [QAgent("agent")]
 variable_list::Vector{QVariable} = [QVariable("variable", "0")]
 trigger_list::Vector{QTrigger} = []
-location_list::Vector{QLocation} = [QLocation("location", true, "true", JuliaItemModel([QFlow("variable", "variable")]))]
+location_list::Vector{QLocation} = [QLocation("location", true, "true", JuliaItemModel([QFlow("variable", "variable")])),
+                                    QLocation("location2", false, "true", JuliaItemModel([QFlow("variable2", "variable2")]))]
 
 # Initialize QML functions
 
@@ -29,16 +31,31 @@ function name_available(name::QString)::Bool
 end
 
 function is_formula(text::QString, level::QString)::Bool
-    bindings::Bindings = Bindings(
-        [x.name for x in agent_list],
-        [x.name for x in location_list],
-        [x.name for x in variable_list]
-    )
-    try
-        parse(text, bindings, Symbol(eval(String(level))))
-        return true
-    catch
-        return false
+    # bindings::Bindings = Bindings(
+    #     [x.name for x in agent_list],
+    #     [x.name for x in location_list],
+    #     [x.name for x in variable_list]
+    # )
+    # try
+    #     parse(text, bindings, Symbol(eval(String(level))))
+    #     return true
+    # catch
+    #     return false
+    # end
+    return true
+end
+
+function add_variable()
+    push!(variable_list, QVariable("",""))
+    for loc in location_list
+        push!(loc.flow, QFlow("",""))
+    end
+end
+
+function rename_variable(index::Int32, name::QString)
+    variable_list[index + 1].name = name
+    for loc in location_list
+        loc.flow[index + 1].variable = name
     end
 end
 
@@ -46,7 +63,7 @@ end
 
 qml_file = joinpath(dirname(@__FILE__), "gui", "qml", "GUI.qml")
 
-@qmlfunction name_available is_formula
+@qmlfunction name_available is_formula add_variable rename_variable
 
 loadqml(
     qml_file,

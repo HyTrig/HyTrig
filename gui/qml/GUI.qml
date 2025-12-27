@@ -4,6 +4,7 @@
 * @authors Moritz Maas
 */
 
+import org.julialang
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Controls.Material
@@ -260,7 +261,9 @@ ApplicationWindow {
                     element_name: "Variable"
 
                     add: function() {
-                        variable_model.appendRow({name: "", value: ""});
+                        Julia.add_variable();
+                        variable_tab.model = [];
+                        variable_tab.model = variable_model;
                     }
 
                     model: variable_model
@@ -303,6 +306,7 @@ ApplicationWindow {
                     model: location_model
                     delegate: Location {
                         width: location_tab.cellWidth
+                        flow_model: model.flow
                     }
 
                     ButtonGroup {

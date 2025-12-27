@@ -10,6 +10,8 @@ import QtQuick.Controls.Material
 
 ElementFrame {
 
+    property alias flow_model: location_flow_list.model
+
     id: location_frame
 
     element_name: "Location"
@@ -127,20 +129,30 @@ ElementFrame {
 
         Row {
 
+            parent: location_frame.column
+            width: parent.width
+            height: location_flow_list.height
+
             ListView {
 
                 id: location_flow_list
                 width: parent.width
                 height: contentHeight
+                clip: true
+                interactive: false
 
-                model: flow
+                model: location_frame.model.flow
                 delegate: Row {
-                    width: parent.width
-                    height: variable_field.height
+
+                    required property var model
+
+                    width: location_flow_list.width
+                    height: variable_field.height + variable_field.topInset
                     spacing: 5
 
                     Label {
                         id: variable_label
+                        width: location_invariant_label.width
                         height: parent.height
                         verticalAlignment: Text.AlignVCenter
                         text: model.variable
@@ -149,6 +161,7 @@ ElementFrame {
                     RegexField {
                         id: variable_field
                         width: parent.width - variable_label.width - parent.spacing
+                        topInset: 10
 
                         text: model.expression
                         default_text: "Enter flow expression"
@@ -164,6 +177,7 @@ ElementFrame {
                             return x == model.expression || Julia.is_formula(x, "expression");
                         }
                     }
+
                 }
 
             }
