@@ -8,10 +8,11 @@ This script runs a GUI with QML. The GUI allows to create, edit, save, load and 
 """
 
 include("gui/packages.jl")
-include("gui/qml_objects.jl")
-include("src/parsers/syntax_parsers/parser.jl")
 
 using QML
+
+include("gui/qml_objects.jl")
+include("src/parsers/syntax_parsers/parser.jl")
 
 # Initialize models
 
@@ -19,7 +20,7 @@ action_list::Vector{QAction} = [QAction("action")]
 agent_list::Vector{QAgent} = [QAgent("agent")]
 variable_list::Vector{QVariable} = [QVariable("variable", "0")]
 trigger_list::Vector{QTrigger} = []
-location_list::Vector{QLocation} = [QLocation("location", true, "true")]
+location_list::Vector{QLocation} = [QLocation("location", true, "true", JuliaItemModel([QFlow("variable", "variable")]))]
 
 # Initialize QML functions
 

@@ -24,4 +24,10 @@ mutable struct QLocation
     name::String
     initial::Bool
     invariant::String
+    flow::JuliaItemModel
+end
+
+mutable struct QFlow
+    variable::String
+    expression::String
 end

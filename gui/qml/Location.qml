@@ -29,6 +29,7 @@ ElementFrame {
 
             Label {
                 id: location_name_label
+                width: location_invariant_label.width
                 height: parent.height
                 verticalAlignment: Text.AlignVCenter
                 text: qsTr("Name: ")
@@ -101,6 +102,70 @@ ElementFrame {
                 condition: function(x) {
                     return x == model.invariant || Julia.is_formula(x, "constraint");
                 }
+            }
+
+        },
+
+        Row {
+
+            parent: location_frame.column
+            width: parent.width
+            height: location_invariant_field.height
+            spacing: 5
+
+            Title {
+                
+                id: flow_title
+                width: parent.width
+                height: parent.height
+                text: qsTr("Flow")
+                font.pointSize: 20
+
+            }
+
+        },
+
+        Row {
+
+            ListView {
+
+                id: location_flow_list
+                width: parent.width
+                height: contentHeight
+
+                model: flow
+                delegate: Row {
+                    width: parent.width
+                    height: variable_field.height
+                    spacing: 5
+
+                    Label {
+                        id: variable_label
+                        height: parent.height
+                        verticalAlignment: Text.AlignVCenter
+                        text: model.variable
+                    }
+
+                    RegexField {
+                        id: variable_field
+                        width: parent.width - variable_label.width - parent.spacing
+
+                        text: model.expression
+                        default_text: "Enter flow expression"
+                        error_text: "Invalid flow expression"
+                        condition_error_text: "Invalid flow expression"
+
+                        regex: /^.*$/
+
+                        action: function(x) {
+                            model.expression = x;
+                        }
+                        condition: function(x) {
+                            return x == model.expression || Julia.is_formula(x, "expression");
+                        }
+                    }
+                }
+
             }
 
         }
