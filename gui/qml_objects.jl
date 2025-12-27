@@ -27,11 +27,11 @@ mutable struct QLocation
     flow::JuliaItemModel
 end
 
-function QLocation(name, inv, initial, flow::AbstractArray)::QLocation
-    return QLocation(name, inv, initial, JuliaItemModel([QFlow(QML.value(f)["variable"], QML.value(f)["expression"]) for f in flow]))
+function QLocation(name::String, invariant::String, initial::Bool, flow::AbstractArray)::QLocation
+    return QLocation(name, invariant, initial, JuliaItemModel([QFlow(QML.value(f)["variable"], QML.value(f)["expression"]) for f in flow]))
 end
 
-function setflow!(location_model, flow, row, col)
+function setflow!(location_model::Vector{QLocation}, flow::AbstractArray, row::Int32, col::Int64)
     location_model[row].flow = JuliaItemModel([QFlow(QML.value(f)["variable"], QML.value(f)["expression"]) for f in flow])
 end
 

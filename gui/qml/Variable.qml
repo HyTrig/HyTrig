@@ -16,6 +16,7 @@ ElementFrame {
 
     remove: function() {
         variable_model.removeRow(index);
+        // TODO: Also remove variable from all locations' flow expressions
     }
 
     content: [
@@ -46,7 +47,12 @@ ElementFrame {
                 regex: /^[A-Za-z]\w*$/
 
                 action: function(x) {
-                    Julia.rename_variable(index, x);
+                    model.name = x;
+                    for (var i = 0; i < location_model.rowCount(); i++) {
+                        var location = location_model.data(location_model.index(i, 0), roles.location_flow);
+                        print(location.data(location.index(index, 0), 0));
+                    }
+                    // TODO: Also update variable names in all locations' flow expressions
                 }
                 condition: function(x) {
                     return x == model.name || Julia.name_available(x);

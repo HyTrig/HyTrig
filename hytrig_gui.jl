@@ -17,16 +17,22 @@ include("gui/qml_objects.jl")
 
 # Initialize models
 
+roles = JuliaPropertyMap()
+
 action_list::Vector{QAction} = [QAction("action")]
+
 agent_list::Vector{QAgent} = [QAgent("agent")]
+
 variable_list::Vector{QVariable} = [QVariable("variable", "0")]
+variable_model::JuliaItemModel = JuliaItemModel(variable_list)
+roles["variable_name"] = roleindex(variable_model, "name")
+
 trigger_list::Vector{QTrigger} = []
 
 location_list::Vector{QLocation} = [QLocation("location", true, "true", JuliaItemModel([QFlow("variable", "variable")]))]
 location_model::JuliaItemModel = JuliaItemModel(location_list)
 setsetter!(location_model, setflow!, roleindex(location_model, "flow"))
-
-# TODO: Define roles
+roles["location_flow"] = roleindex(location_model, "flow")
 
 # Initialize QML functions
 
@@ -74,7 +80,7 @@ loadqml(
     roles = roles,
     action_model = JuliaItemModel(action_list),
     agent_model = JuliaItemModel(agent_list),
-    variable_model = JuliaItemModel(variable_list),
+    variable_model = variable_model,
     trigger_model = JuliaItemModel(trigger_list),
     location_model = location_model
 )
