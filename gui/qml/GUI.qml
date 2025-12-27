@@ -300,7 +300,19 @@ ApplicationWindow {
                     element_name: "Location"
 
                     add: function() {
-                        location_model.appendRow({name: "", initial: location_model.rowCount() == 0, invariant: ""})
+                        var flow = []
+                        for (var i = 0; i < variable_model.rowCount(); i++) {
+                            flow.push({
+                                variable: variable_model.data(variable_model.index(i, 0), roles.variable_name),
+                                expression: variable_model.data(variable_model.index(i, 0), roles.variable_name)
+                            })
+                        }
+                        location_model.appendRow({
+                            name: "",
+                            initial: location_model.rowCount() == 0,
+                            invariant: "",
+                            flow: flow
+                        });
                     }
 
                     model: location_model

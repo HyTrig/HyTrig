@@ -26,6 +26,8 @@ location_list::Vector{QLocation} = [QLocation("location", true, "true", JuliaIte
 location_model::JuliaItemModel = JuliaItemModel(location_list)
 setsetter!(location_model, setflow!, roleindex(location_model, "flow"))
 
+# TODO: Define roles
+
 # Initialize QML functions
 
 function name_available(name::QString)::Bool
@@ -69,6 +71,7 @@ qml_file = joinpath(dirname(@__FILE__), "gui", "qml", "GUI.qml")
 
 loadqml(
     qml_file,
+    roles = roles,
     action_model = JuliaItemModel(action_list),
     agent_model = JuliaItemModel(agent_list),
     variable_model = JuliaItemModel(variable_list),
