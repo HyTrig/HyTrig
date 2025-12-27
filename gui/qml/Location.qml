@@ -10,7 +10,7 @@ import QtQuick.Controls.Material
 
 ElementFrame {
 
-    property alias flow_model: location_flow_list.model
+    required property var flow
 
     id: location_frame
 
@@ -141,10 +141,8 @@ ElementFrame {
                 clip: true
                 interactive: false
 
-                model: location_frame.model.flow
+                model: flow
                 delegate: Row {
-
-                    required property var model
 
                     width: location_flow_list.width
                     height: variable_field.height + variable_field.topInset

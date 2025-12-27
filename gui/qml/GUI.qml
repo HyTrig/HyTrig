@@ -306,7 +306,6 @@ ApplicationWindow {
                     model: location_model
                     delegate: Location {
                         width: location_tab.cellWidth
-                        flow_model: model.flow
                     }
 
                     ButtonGroup {
