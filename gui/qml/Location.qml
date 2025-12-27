@@ -36,7 +36,7 @@ ElementFrame {
 
             RegexField {
                 id: location_name_field
-                width: parent.width - location_name_label.width - parent.spacing
+                width: parent.width - location_name_label.width - location_initial_button.width - 2 * parent.spacing
 
                 text: model.name
                 default_text: "Enter location name"
@@ -53,22 +53,18 @@ ElementFrame {
                 }
             }
 
-            Label {
-                id: location_initial_label
-                height: parent.height
-                verticalAlignment: Text.AlignVCenter
-                text: qsTr(" Initial: ")
-            }
-
             RadioButton {
                 id: location_initial_button
                 height: parent.height
                 checked: model.initial
+                text: qsTr("Initial")
 
                 ButtonGroup.group: initial_location_group
 
                 onCheckedChanged: {
-                    model.initial = checked;
+                    if (model.initial != checked) {
+                        model.initial = checked;
+                    }
                 }
             }
 
