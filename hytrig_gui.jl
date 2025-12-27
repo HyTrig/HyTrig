@@ -19,12 +19,12 @@ action_list::Vector{QAction} = [QAction("action")]
 agent_list::Vector{QAgent} = [QAgent("agent")]
 variable_list::Vector{QVariable} = [QVariable("variable", "0")]
 trigger_list::Vector{QTrigger} = []
-location_list::Vector{QLocation} = []
+location_list::Vector{QLocation} = [QLocation("location", true, "true")]
 
 # Initialize QML functions
 
 function name_available(name::QString)::Bool
-    return !any(v -> v.name == name, [action_list; agent_list; variable_list])
+    return !any(v -> v.name == name, [action_list; agent_list; variable_list; location_list])
 end
 
 function is_formula(text::QString, level::QString)::Bool
@@ -52,7 +52,8 @@ loadqml(
     action_model = JuliaItemModel(action_list),
     agent_model = JuliaItemModel(agent_list),
     variable_model = JuliaItemModel(variable_list),
-    trigger_model = JuliaItemModel(trigger_list)
+    trigger_model = JuliaItemModel(trigger_list),
+    location_model = JuliaItemModel(location_list)
 )
 
 exec()

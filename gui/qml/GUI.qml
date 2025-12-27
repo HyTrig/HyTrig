@@ -80,7 +80,8 @@ ApplicationWindow {
                     action_model.clear();
                     variable_model.clear();
                     trigger_model.clear();
-                    // TODO
+                    location_model.clear();
+                    // TODO: edges and queries
                 }
             }
 
@@ -283,6 +284,29 @@ ApplicationWindow {
                     model: trigger_model
                     delegate: Trigger {
                         width: trigger_tab.cellWidth
+                    }
+
+                }
+
+                Tab {
+
+                    id: location_tab
+                    cellWidth: 700
+
+                    tab_name: "Locations"
+                    element_name: "Location"
+
+                    add: function() {
+                        location_model.appendRow({name: "", initial: location_model.rowCount() == 0, invariant: ""})
+                    }
+
+                    model: location_model
+                    delegate: Location {
+                        width: location_tab.cellWidth
+                    }
+
+                    ButtonGroup {
+                        id: initial_location_group
                     }
 
                 }

@@ -16,6 +16,7 @@ ElementFrame {
 
     remove: function() {
         agent_model.removeRow(index);
+        // TODO: Check triggers.
     }
 
     content: [
