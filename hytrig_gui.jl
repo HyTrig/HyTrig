@@ -21,8 +21,10 @@ action_list::Vector{QAction} = [QAction("action")]
 agent_list::Vector{QAgent} = [QAgent("agent")]
 variable_list::Vector{QVariable} = [QVariable("variable", "0")]
 trigger_list::Vector{QTrigger} = []
-location_list::Vector{QLocation} = [QLocation("location", true, "true", JuliaItemModel([QFlow("variable", "variable")])),
-                                    QLocation("location2", false, "true", JuliaItemModel([QFlow("variable2", "variable2")]))]
+
+location_list::Vector{QLocation} = [QLocation("location", true, "true", JuliaItemModel([QFlow("variable", "variable")]))]
+location_model::JuliaItemModel = JuliaItemModel(location_list)
+setsetter!(location_model, setflow!, roleindex(location_model, "flow"))
 
 # Initialize QML functions
 
@@ -71,7 +73,7 @@ loadqml(
     agent_model = JuliaItemModel(agent_list),
     variable_model = JuliaItemModel(variable_list),
     trigger_model = JuliaItemModel(trigger_list),
-    location_model = JuliaItemModel(location_list)
+    location_model = location_model
 )
 
 exec()
