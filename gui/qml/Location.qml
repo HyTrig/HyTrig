@@ -68,6 +68,41 @@ ElementFrame {
                 }
             }
 
+        },
+
+        Row {
+
+            parent: location_frame.column
+            width: parent.width
+            height: location_invariant_field.height
+            spacing: 5
+
+            Label {
+                id: location_invariant_label
+                height: parent.height
+                verticalAlignment: Text.AlignVCenter
+                text: qsTr("Invariant: ")
+            }
+
+            RegexField {
+                id: location_invariant_field
+                width: parent.width - location_invariant_label.width - parent.spacing
+
+                text: model.invariant
+                default_text: "Enter invariant"
+                error_text: "Invalid invariant"
+                condition_error_text: "Invalid invariant"
+
+                regex: /^.*$/
+
+                action: function(x) {
+                    model.invariant = x;
+                }
+                condition: function(x) {
+                    return x == model.invariant || Julia.is_formula(x, "constraint");
+                }
+            }
+
         }
 
     ]
