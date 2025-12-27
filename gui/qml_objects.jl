@@ -27,8 +27,12 @@ mutable struct QLocation
     flow::JuliaItemModel
 end
 
-function QLocation(name::String, initial::Bool, invariant::String)
-    return QLocation(name, initial, invariant, JuliaItemModel([QFlow(v.name, v.name) for v in variable_list]))
+function QLocation(name, inv, initial, flow::AbstractArray)::QLocation
+    return QLocation(name, inv, initial, JuliaItemModel([QFlow(QML.value(f)["variable"], QML.value(f)["expression"]) for f in flow]))
+end
+
+function setflow!(location_model, flow, row, col)
+    location_model[row].flow = JuliaItemModel([QFlow(QML.value(f)["variable"], QML.value(f)["expression"]) for f in flow])
 end
 
 mutable struct QFlow
