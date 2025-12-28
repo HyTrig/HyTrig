@@ -154,6 +154,7 @@ ElementFrame {
                         height: parent.height
                         verticalAlignment: Text.AlignVCenter
                         text: model.variable
+                        elide: Text.ElideRight
                     }
 
                     RegexField {

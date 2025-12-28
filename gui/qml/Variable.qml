@@ -19,6 +19,8 @@ ElementFrame {
         variable_model.removeRow(index);
         location_tab.model = [];
         location_tab.model = location_model;   
+        edge_tab.model = [];
+        edge_tab.model = edge_model;
     }
 
     content: [
@@ -52,6 +54,8 @@ ElementFrame {
                     Julia.rename_variable(index, x);
                     location_tab.model = [];
                     location_tab.model = location_model;
+                    edge_tab.model = [];
+                    edge_tab.model = edge_model;
                 }
                 condition: function(x) {
                     return x == model.name || Julia.name_available(x);

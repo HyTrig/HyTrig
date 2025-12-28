@@ -326,6 +326,37 @@ ApplicationWindow {
 
                 }
 
+                Tab {
+
+                    id: edge_tab
+                    cellWidth: 700
+
+                    tab_name: "Edges"
+                    element_name: "Edge"
+
+                    add: function() {
+                        var jump = []
+                        for (var i = 0; i < variable_model.rowCount(); i++) {
+                            jump.push({
+                                variable: variable_model.data(variable_model.index(i, 0), roles.variable_name),
+                                expression: variable_model.data(variable_model.index(i, 0), roles.variable_name)
+                            })
+                        }
+                        edge_model.appendRow({
+                            source: "",
+                            target: "",
+                            guard: "",
+                            jump: jump
+                        });
+                    }
+
+                    model: edge_model
+                    delegate: Edge {
+                        width: edge_tab.cellWidth
+                    }
+
+                }
+
             }
 
         }

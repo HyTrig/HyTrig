@@ -39,3 +39,23 @@ mutable struct QFlow
     variable::String
     expression::String
 end
+
+mutable struct QEdge
+    source::String
+    target::String
+    guard::String
+    jump::JuliaItemModel
+end
+
+function QEdge(source::String, target::String, guard::String, jump::AbstractArray)::QEdge
+    return QEdge(source, target, guard, JuliaItemModel([QFlow(QML.value(f)["variable"], QML.value(f)["expression"]) for f in jump]))
+end
+
+function setjump!(edge_model::Vector{QEdge}, jump::AbstractArray, row::Int32, col::Int64)
+    edge_model[row].jump = JuliaItemModel([QFlow(QML.value(f)["variable"], QML.value(f)["expression"]) for f in jump])
+end
+
+mutable struct QJump
+    variable::String
+    expression::String
+end
