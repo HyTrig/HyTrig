@@ -20,7 +20,7 @@ ElementFrame {
         edge_model.removeRow(index);
     }
 
-    content: [
+    elementContent: [
 
         Row {
             
@@ -44,7 +44,7 @@ ElementFrame {
                 textRole: "name"
                 valueRole: "name"
 
-                currentIndex: -1
+                currentIndex: find(edge_frame.model.source)
 
                 onActivated: {
                     edge_frame.model.source = currentValue;
@@ -66,7 +66,7 @@ ElementFrame {
                 textRole: "name"
                 valueRole: "name"
 
-                currentIndex: -1
+                currentIndex: find(edge_frame.model.target)
 
                 onActivated: {
                     edge_frame.model.target = currentValue;

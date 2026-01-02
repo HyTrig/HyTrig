@@ -15,15 +15,11 @@ ElementFrame {
     element_name: "Variable"
 
     remove: function() {
-        Julia.remove_variable(index);
+        variableRemoved(index);
         variable_model.removeRow(index);
-        location_tab.model = [];
-        location_tab.model = location_model;   
-        edge_tab.model = [];
-        edge_tab.model = edge_model;
     }
 
-    content: [
+    elementContent: [
 
         Row {
 
@@ -51,7 +47,7 @@ ElementFrame {
                 regex: /^[A-Za-z]\w*$/
 
                 action: function(x) {
-                    Julia.rename_variable(index, x);
+                    variableRenamed(index, x);
                     location_tab.model = [];
                     location_tab.model = location_model;
                     edge_tab.model = [];

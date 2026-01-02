@@ -18,7 +18,7 @@ ElementFrame {
         trigger_model.removeRow(index);
     }
 
-    content: [
+    elementContent: [
 
         Row {
 
@@ -43,7 +43,7 @@ ElementFrame {
                 textRole: "name"
                 valueRole: "name"
 
-                currentIndex: -1
+                currentIndex: find(trigger_frame.model.agent)
 
                 onActivated: {
                     trigger_frame.model.agent = currentValue;

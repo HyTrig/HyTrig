@@ -13,13 +13,13 @@ ElementFrame {
     id: agent_frame
 
     element_name: "Agent"
-
+    
     remove: function() {
+        agentRemoved(model.name);
         agent_model.removeRow(index);
-        // TODO: Check triggers.
     }
 
-    content: [
+    elementContent: [
 
         Row {
             

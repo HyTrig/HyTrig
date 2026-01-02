@@ -17,10 +17,11 @@ ElementFrame {
     element_name: "Location"
 
     remove: function() {
+        locationRemoved(model.name);
         location_model.removeRow(index);
     }
 
-    content: [
+    elementContent: [
 
         Row {
             

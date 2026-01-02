@@ -21,7 +21,6 @@ ApplicationWindow {
     height: 1080
     minimumHeight: 800
 
-
     title: qsTr("HyTrig")
     visible: true
     visibility: Window.FullScreen
@@ -29,6 +28,12 @@ ApplicationWindow {
     Material.theme: Material.Dark
     Material.accent: Material.Blue
     Material.primary: Material.Blue
+
+    signal agentRemoved(string name)
+    signal locationRemoved(string name)
+    signal variableAdded()
+    signal variableRemoved(int index)
+    signal variableRenamed(int index, string name)
 
     menuBar: MenuBar {
         
@@ -261,9 +266,8 @@ ApplicationWindow {
                     element_name: "Variable"
 
                     add: function() {
-                        Julia.add_variable();
-                        variable_tab.model = [];
-                        variable_tab.model = variable_model;
+                        variable_model.appendRow({name: "", value: ""});
+                        variableAdded();
                     }
 
                     model: variable_model
@@ -287,6 +291,15 @@ ApplicationWindow {
                     model: trigger_model
                     delegate: Trigger {
                         width: trigger_tab.cellWidth
+                        
+                        Connections {
+                            target: main_window
+                            function onAgentRemoved(name) {
+                                if (model.agent == name) {
+                                    model.agent = "";
+                                }
+                            }
+                        }
                     }
 
                 }
@@ -318,6 +331,19 @@ ApplicationWindow {
                     model: location_model
                     delegate: Location {
                         width: location_tab.cellWidth
+
+                        Connections {
+                            target: main_window
+                            function onVariableAdded() {
+                                model.flow.appendRow({variable: "", expression: ""});
+                            }
+                            function onVariableRemoved(index) {
+                                model.flow.removeRow(index);
+                            }
+                            function onVariableRenamed(index, name) {
+                                model.flow.setData(model.flow.index(index, 0), name, roles.variable_name);
+                            }
+                        }
                     }
 
                     ButtonGroup {
@@ -353,6 +379,46 @@ ApplicationWindow {
                     model: edge_model
                     delegate: Edge {
                         width: edge_tab.cellWidth
+
+                        Connections {
+                            target: main_window
+                            function onLocationRemoved(name) {
+                                if (model.source == name) {
+                                    model.source = "";
+                                }
+                                if (model.target == name) {
+                                    model.target = "";
+                                }
+                            }
+                            function onVariableAdded() {
+                                model.jump.appendRow({variable: "", expression: ""});
+                            }
+                            function onVariableRemoved(index) {
+                                model.jump.removeRow(index);
+                            }
+                            function onVariableRenamed(index, name) {
+                                model.jump.setData(model.jump.index(index, 0), name, roles.variable_name);
+                            }
+                        }
+                    }
+
+                }
+
+                Tab {
+
+                    id: query_tab
+                    cellWidth: 700
+
+                    tab_name: "Queries"
+                    element_name: "Query"
+
+                    add: function() {
+                        query_model.appendRow({formula: ""});
+                    }
+
+                    model: query_model
+                    delegate: Query {
+                        width: query_tab.cellWidth
                     }
 
                 }

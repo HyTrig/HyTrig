@@ -18,7 +18,7 @@ ElementFrame {
         action_model.removeRow(index);
     }
 
-    content: [
+    elementContent: [
 
         Row {
 
