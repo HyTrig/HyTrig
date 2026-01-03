@@ -13,7 +13,7 @@ Item {
     required property int index
 
     required property string element_name
-    property list<Item> elementContent
+    property list<Item> elementContent: []
 
     required property var remove
 

@@ -212,7 +212,7 @@ ApplicationWindow {
                 anchors.margins: 5
                 currentIndex: tab_bar.currentIndex
 
-                Tab {
+                ElementTab {
 
                     id: agent_tab
 
@@ -230,7 +230,7 @@ ApplicationWindow {
 
                 }
 
-                Tab {
+                ElementTab {
 
                     id: action_tab
 
@@ -248,7 +248,7 @@ ApplicationWindow {
 
                 }
 
-                Tab {
+                ElementTab {
 
                     id: variable_tab
 
@@ -267,7 +267,7 @@ ApplicationWindow {
 
                 }
 
-                Tab {
+                ElementTab {
 
                     id: trigger_tab
 
@@ -294,7 +294,7 @@ ApplicationWindow {
 
                 }
 
-                Tab {
+                ElementTab {
 
                     id: location_tab
                     cellWidth: 700
@@ -342,7 +342,7 @@ ApplicationWindow {
 
                 }
 
-                Tab {
+                ElementTab {
 
                     id: edge_tab
                     cellWidth: 700
@@ -402,7 +402,7 @@ ApplicationWindow {
 
                 }
 
-                Tab {
+                ElementTab {
 
                     id: query_tab
                     cellWidth: 700
@@ -421,7 +421,19 @@ ApplicationWindow {
 
                 }
 
-                // TODO: termination conditions tab
+                Tab {
+
+                    id: termination_condition_tab
+
+                    tab_name: "Termination Conditions"
+                    
+                    content: [
+                        TerminationConditions {
+                            // TODO
+                        }
+                    ]
+
+                }
 
             }
 
