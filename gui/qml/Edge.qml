@@ -27,13 +27,13 @@ ElementFrame {
             parent: edge_frame.column
             width: parent.width
             height: edge_source_box.height
-            spacing: 5
+            spacing: 10
 
             Label {
                 id: edge_source_label
                 height: parent.height
                 verticalAlignment: Text.AlignVCenter
-                text: qsTr("Source: ")
+                text: qsTr("Source:")
             }
 
             ComboBox {
@@ -53,9 +53,10 @@ ElementFrame {
 
             Label {
                 id: edge_target_label
+                width: edge_action_label.width
                 height: parent.height
                 verticalAlignment: Text.AlignVCenter
-                text: qsTr(" Target: ")
+                text: qsTr("Target:")
             }
 
             ComboBox {
@@ -80,14 +81,14 @@ ElementFrame {
             parent: edge_frame.column
             width: parent.width
             height: edge_guard_field.height
-            spacing: 5
+            spacing: 10
 
             Label {
                 id: edge_guard_label
                 width: edge_source_label.width
                 height: parent.height
                 verticalAlignment: Text.AlignVCenter
-                text: qsTr("Guard: ")
+                text: qsTr("Guard:")
             }
 
             RegexField {
@@ -116,12 +117,14 @@ ElementFrame {
             parent: edge_frame.column
             width: parent.width
             height: edge_agent_box.height
+            spacing: 10
 
             Label {
                 id: edge_agent_label
+                width: edge_source_label.width
                 height: parent.height
                 verticalAlignment: Text.AlignVCenter
-                text: qsTr("Agent: ")
+                text: qsTr("Agent:")
             }
 
             ComboBox {
@@ -143,7 +146,7 @@ ElementFrame {
                 id: edge_action_label
                 height: parent.height
                 verticalAlignment: Text.AlignVCenter
-                text: qsTr(" Action: ")
+                text: qsTr("Action:")
             }
 
             ComboBox {
@@ -200,7 +203,7 @@ ElementFrame {
 
                     width: edge_jump_list.width
                     height: variable_field.height + variable_field.topInset
-                    spacing: 5
+                    spacing: 10
 
                     Label {
                         id: variable_label

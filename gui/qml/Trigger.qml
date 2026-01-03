@@ -25,14 +25,14 @@ ElementFrame {
             parent: trigger_frame.column
             width: parent.width
             height: trigger_agent_box.height
-            spacing: 5
+            spacing: 10
 
             Label {
                 id: trigger_agent_label
                 height: parent.height
                 width: trigger_label.width
                 verticalAlignment: Text.AlignVCenter
-                text: qsTr("Agent: ")
+                text: qsTr("Agent:")
             }
 
             ComboBox {
@@ -57,13 +57,13 @@ ElementFrame {
             parent: trigger_frame.column
             width: parent.width
             height: trigger_field.height
-            spacing: 5
+            spacing: 10
 
             Label {
                 id: trigger_label
                 height: parent.height
                 verticalAlignment: Text.AlignVCenter
-                text: qsTr("Trigger: ")
+                text: qsTr("Trigger:")
             }
 
             RegexField {

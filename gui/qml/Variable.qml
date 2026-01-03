@@ -26,13 +26,13 @@ ElementFrame {
             parent: variable_frame.column
             width: parent.width
             height: name_field.height
-            spacing: 5
+            spacing: 10
 
             Label {
                 id: name_label
                 height: parent.height
                 verticalAlignment: Text.AlignVCenter
-                text: qsTr("Name: ")
+                text: qsTr("Name:")
             }
 
             RegexField {
@@ -65,14 +65,14 @@ ElementFrame {
             parent: variable_frame.column
             width: parent.width
             height: value_field.height
-            spacing: 5
+            spacing: 10
 
             Label {
                 id: value_label
                 width: name_label.width
                 height: parent.height
                 verticalAlignment: Text.AlignVCenter
-                text: qsTr("Value: ")
+                text: qsTr("Value:")
             }
 
             RegexField {

@@ -28,14 +28,14 @@ ElementFrame {
             parent: location_frame.column
             width: parent.width
             height: location_name_field.height
-            spacing: 5
+            spacing: 10
 
             Label {
                 id: location_name_label
                 width: location_invariant_label.width
                 height: parent.height
                 verticalAlignment: Text.AlignVCenter
-                text: qsTr("Name: ")
+                text: qsTr("Name:")
             }
 
             RegexField {
@@ -79,13 +79,13 @@ ElementFrame {
             parent: location_frame.column
             width: parent.width
             height: location_invariant_field.height
-            spacing: 5
+            spacing: 10
 
             Label {
                 id: location_invariant_label
                 height: parent.height
                 verticalAlignment: Text.AlignVCenter
-                text: qsTr("Invariant: ")
+                text: qsTr("Invariant:")
             }
 
             RegexField {
@@ -114,7 +114,6 @@ ElementFrame {
             parent: location_frame.column
             width: parent.width
             height: location_invariant_field.height
-            spacing: 5
 
             Title {
                 
@@ -147,14 +146,14 @@ ElementFrame {
 
                     width: location_flow_list.width
                     height: variable_field.height + variable_field.topInset
-                    spacing: 5
+                    spacing: 10
 
                     Label {
                         id: variable_label
                         width: location_invariant_label.width
                         height: parent.height
                         verticalAlignment: Text.AlignVCenter
-                        text: model.variable
+                        text: qsTr(model.variable)
                         elide: Text.ElideRight
                     }
 

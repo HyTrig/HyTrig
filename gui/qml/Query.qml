@@ -25,13 +25,13 @@ ElementFrame {
             parent: query_frame.column
             width: parent.width
             height: query_formula_field.height
-            spacing: 5
+            spacing: 10
 
             Label {
                 id: query_formula_label
                 height: parent.height
                 verticalAlignment: Text.AlignVCenter
-                text: qsTr("Formula: ")
+                text: qsTr("Formula:")
             }
 
             RegexField {
