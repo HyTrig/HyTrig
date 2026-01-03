@@ -15,6 +15,7 @@ ElementFrame {
     element_name: "Action"
 
     remove: function() {
+        actionRemoved(model.name);
         action_model.removeRow(index);
     }
 
@@ -38,10 +39,10 @@ ElementFrame {
                 id: action_name_field
                 width: parent.width - action_name_label.width - parent.spacing
 
-                text: model.name
-                default_text: "Enter action name"
-                error_text: "Invalid action name"
-                condition_error_text: "Name already in use"
+                text: qsTr(model.name)
+                default_text: qsTr("Enter action name")
+                error_text: qsTr("Invalid action name")
+                condition_error_text: qsTr("Name already in use")
 
                 regex: /^[A-Za-z]\w*$/
 

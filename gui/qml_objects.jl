@@ -44,11 +44,13 @@ mutable struct QEdge
     source::String
     target::String
     guard::String
+    agent::String
+    action::String
     jump::JuliaItemModel
 end
 
-function QEdge(source::String, target::String, guard::String, jump::AbstractArray)::QEdge
-    return QEdge(source, target, guard, JuliaItemModel([QJump(QML.value(j)["variable"], QML.value(j)["expression"]) for j in jump]))
+function QEdge(source::String, target::String, guard::String, agent::String, action::String, jump::AbstractArray)::QEdge
+    return QEdge(source, target, guard, agent, action, JuliaItemModel([QJump(QML.value(j)["variable"], QML.value(j)["expression"]) for j in jump]))
 end
 
 function setjump!(edge_model::Vector{QEdge}, jump::AbstractArray, row::Int32, col::Int64)

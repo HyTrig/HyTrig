@@ -39,10 +39,10 @@ ElementFrame {
                 id: name_field
                 width: parent.width - name_label.width - parent.spacing
 
-                text: model.name
-                default_text: "Enter variable name"
-                error_text: "Invalid variable name"
-                condition_error_text: "Name already in use"
+                text: qsTr(model.name)
+                default_text: qsTr("Enter variable name")
+                error_text: qsTr("Invalid variable name")
+                condition_error_text: qsTr("Name already in use")
 
                 regex: /^[A-Za-z]\w*$/
 
@@ -79,10 +79,10 @@ ElementFrame {
                 id: value_field
                 width: parent.width - value_label.width - parent.spacing
                 
-                text: model.value
-                default_text: "Enter decimal"
-                error_text: "Invalid decimal"
-                condition_error_text: ""
+                text: qsTr(model.value)
+                default_text: qsTr("Enter decimal")
+                error_text: qsTr("Invalid decimal")
+                condition_error_text: qsTr("Invalid decimal")
 
                 regex: /(^-?(([1-9]\d*(\.\d+)?$)|(0\.\d*[1-9])$))|(^0$)/
 

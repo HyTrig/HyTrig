@@ -70,10 +70,10 @@ ElementFrame {
                 id: trigger_field
                 width: parent.width - trigger_label.width - parent.spacing
 
-                text: model.trigger
-                default_text: "Enter trigger"
-                error_text: "Invalid trigger"
-                condition_error_text: "Invalid trigger"
+                text: qsTr(model.trigger)
+                default_text: qsTr("Enter trigger")
+                error_text: qsTr("Invalid trigger")
+                condition_error_text: qsTr("Invalid trigger")
 
                 regex: /^.*$/
 

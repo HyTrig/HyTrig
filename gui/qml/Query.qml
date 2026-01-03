@@ -38,10 +38,10 @@ ElementFrame {
                 id: query_formula_field
                 width: parent.width - query_formula_label.width - parent.spacing
 
-                text: model.formula
-                default_text: "Enter strategy"
-                error_text: "Invalid strategy"
-                condition_error_text: "Invalid strategy"
+                text: qsTr(model.formula)
+                default_text: qsTr("Enter strategy")
+                error_text: qsTr("Invalid strategy")
+                condition_error_text: qsTr("Invalid strategy")
 
                 regex: /^.*$/
 

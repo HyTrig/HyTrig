@@ -42,10 +42,10 @@ ElementFrame {
                 id: location_name_field
                 width: parent.width - location_name_label.width - location_initial_button.width - 2 * parent.spacing
 
-                text: model.name
-                default_text: "Enter location name"
-                error_text: "Invalid location name"
-                condition_error_text: "Name already in use"
+                text: qsTr(model.name)
+                default_text: qsTr("Enter location name")
+                error_text: qsTr("Invalid location name")
+                condition_error_text: qsTr("Name already in use")
 
                 regex: /^[A-Za-z]\w*$/
 
@@ -92,10 +92,10 @@ ElementFrame {
                 id: location_invariant_field
                 width: parent.width - location_invariant_label.width - parent.spacing
 
-                text: model.invariant
-                default_text: "Enter invariant"
-                error_text: "Invalid invariant"
-                condition_error_text: "Invalid invariant"
+                text: qsTr(model.invariant)
+                default_text: qsTr("Enter invariant")
+                error_text: qsTr("Invalid invariant")
+                condition_error_text: qsTr("Invalid invariant")
 
                 regex: /^.*$/
 
@@ -163,10 +163,10 @@ ElementFrame {
                         width: parent.width - variable_label.width - parent.spacing
                         topInset: 10
 
-                        text: model.expression
-                        default_text: "Enter flow expression"
-                        error_text: "Invalid flow expression"
-                        condition_error_text: "Invalid flow expression"
+                        text: qsTr(model.expression)
+                        default_text: qsTr("Enter flow expression")
+                        error_text: qsTr("Invalid flow expression")
+                        condition_error_text: qsTr("Invalid flow expression")
 
                         regex: /^.*$/
 

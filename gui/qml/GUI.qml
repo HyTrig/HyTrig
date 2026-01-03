@@ -29,6 +29,7 @@ ApplicationWindow {
     Material.accent: Material.Blue
     Material.primary: Material.Blue
 
+    signal actionRemoved(string name)
     signal agentRemoved(string name)
     signal locationRemoved(string name)
     signal variableAdded()
@@ -87,7 +88,9 @@ ApplicationWindow {
                     variable_model.clear();
                     trigger_model.clear();
                     location_model.clear();
-                    // TODO: edges and queries
+                    edge_model.clear();
+                    query_model.clear();
+                    // TODO: clear termination conditions
                 }
             }
 
@@ -155,7 +158,7 @@ ApplicationWindow {
 
                 id: tab_selector
                 width: parent.width
-                text: name
+                text: qsTr(model.name)
                 highlighted: ListView.isCurrentItem
             
                 background: Row {
@@ -372,6 +375,8 @@ ApplicationWindow {
                             source: "",
                             target: "",
                             guard: "",
+                            agent: "",
+                            action: "",
                             jump: jump
                         });
                     }
@@ -382,6 +387,12 @@ ApplicationWindow {
 
                         Connections {
                             target: main_window
+                            function onActionRemoved(name) {
+                                model.action = "";
+                            }
+                            function onAgentRemoved(name) {
+                                model.agent = "";
+                            }
                             function onLocationRemoved(name) {
                                 if (model.source == name) {
                                     model.source = "";

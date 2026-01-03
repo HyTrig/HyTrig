@@ -39,10 +39,10 @@ ElementFrame {
                 id: agent_name_field
                 width: parent.width - agent_name_label.width - parent.spacing
 
-                text: model.name
-                default_text: "Enter agent name"
-                error_text: "Invalid agent name"
-                condition_error_text: "Name already in use"
+                text: qsTr(model.name)
+                default_text: qsTr("Enter agent name")
+                error_text: qsTr("Invalid agent name")
+                condition_error_text: qsTr("Name already in use")
 
                 regex: /^[A-Za-z]\w*$/
 

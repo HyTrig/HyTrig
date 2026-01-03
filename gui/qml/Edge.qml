@@ -94,10 +94,10 @@ ElementFrame {
                 id: edge_guard_field
                 width: parent.width - edge_guard_label.width - parent.spacing
 
-                text: model.guard
-                default_text: "Enter guard"
-                error_text: "Invalid guard"
-                condition_error_text: "Invalid guard"
+                text: qsTr(model.guard)
+                default_text: qsTr("Enter guard")
+                error_text: qsTr("Invalid guard")
+                condition_error_text: qsTr("Invalid guard")
 
                 regex: /^.*$/
 
@@ -115,8 +115,59 @@ ElementFrame {
 
             parent: edge_frame.column
             width: parent.width
+            height: edge_agent_box.height
+
+            Label {
+                id: edge_agent_label
+                height: parent.height
+                verticalAlignment: Text.AlignVCenter
+                text: qsTr("Agent: ")
+            }
+
+            ComboBox {
+                id: edge_agent_box
+                width: (parent.width - edge_agent_label.width - edge_action_label.width - 3 * parent.spacing) / 2
+
+                model: agent_model
+                textRole: "name"
+                valueRole: "name"
+
+                currentIndex: find(edge_frame.model.agent)
+
+                onActivated: {
+                    edge_frame.model.agent = currentValue;
+                }
+            }
+
+            Label {
+                id: edge_action_label
+                height: parent.height
+                verticalAlignment: Text.AlignVCenter
+                text: qsTr(" Action: ")
+            }
+
+            ComboBox {
+                id: edge_action_box
+                width: (parent.width - edge_agent_label.width - edge_action_label.width - 3 * parent.spacing) / 2
+
+                model: action_model
+                textRole: "name"
+                valueRole: "name"
+
+                currentIndex: find(edge_frame.model.action)
+
+                onActivated: {
+                    edge_frame.model.action = currentValue;
+                }
+            }
+
+        },
+
+        Row {
+
+            parent: edge_frame.column
+            width: parent.width
             height: edge_guard_field.height
-            spacing: 5
 
             Title {
                 
@@ -156,7 +207,7 @@ ElementFrame {
                         width: edge_guard_label.width
                         height: parent.height
                         verticalAlignment: Text.AlignVCenter
-                        text: model.variable
+                        text: qsTr(model.variable)
                         elide: Text.ElideRight
                     }
 
@@ -165,10 +216,10 @@ ElementFrame {
                         width: parent.width - variable_label.width - parent.spacing
                         topInset: 10
 
-                        text: model.expression
-                        default_text: "Enter jump expression"
-                        error_text: "Invalid jump expression"
-                        condition_error_text: "Invalid jump expression"
+                        text: qsTr(model.expression)
+                        default_text: qsTr("Enter jump expression")
+                        error_text: qsTr("Invalid jump expression")
+                        condition_error_text: qsTr("Invalid jump expression")
 
                         regex: /^.*$/
 

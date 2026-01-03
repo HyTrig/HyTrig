@@ -35,7 +35,7 @@ location_list::Vector{QLocation} = [QLocation("location", true, "true", JuliaIte
 location_model::JuliaItemModel = JuliaItemModel(location_list)
 setsetter!(location_model, setflow!, roleindex(location_model, "flow"))
 
-edge_list::Vector{QEdge} = [QEdge("location", "location", "true", JuliaItemModel([QJump("variable", "variable + 1")]))]
+edge_list::Vector{QEdge} = [QEdge("location", "location", "true", "agent", "action", JuliaItemModel([QJump("variable", "variable + 1")]))]
 edge_model::JuliaItemModel = JuliaItemModel(edge_list)
 setsetter!(edge_model, setjump!, roleindex(edge_model, "jump"))
 
@@ -81,3 +81,5 @@ loadqml(
 )
 
 exec()
+
+print(edge_list)
