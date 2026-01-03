@@ -130,18 +130,27 @@ ApplicationWindow {
 
     }
 
-    Row {
+    SplitView {
 
-        id: tab_content_row
+        id: tab_content_split
         width: parent.width
         height: parent.height - menu_bar_spacer.height
         anchors.top: menu_bar_spacer.bottom
         anchors.left: parent.left
 
+        handle: Rectangle {
+            implicitWidth: 4
+            implicitHeight: 4
+            color: SplitHandle.pressed ? Material.accent
+                : (SplitHandle.hovered ? (Material.theme == Material.Dark ? Material.color(Material.Grey, Material.Shade800)
+                    : Material.color(Material.Grey, Material.Shade300)) : Material.background)
+        }
+
         ListView {
 
             id: tab_bar
-            width: Math.max(100, tab_content_splitter.x)
+            SplitView.minimumWidth: 100
+            SplitView.preferredWidth: 200
             height: parent.height
 
             model: ListModel {
@@ -152,6 +161,7 @@ ApplicationWindow {
                 ListElement { name: "Locations" }
                 ListElement { name: "Edges" }
                 ListElement { name: "Queries" }
+                ListElement { name: "Term. Conditions" }
             }
 
             delegate: ItemDelegate {
@@ -191,31 +201,8 @@ ApplicationWindow {
 
         }
 
-        Rectangle {
-
-            id: tab_content_splitter
-            x: 200
-            width: 2
-            height: parent.height
-            color: Material.accent
-
-            MouseArea {
-
-                anchors.fill: parent
-                hoverEnabled: true
-                cursorShape: Qt.SplitHCursor
-                drag.target: tab_content_splitter
-                drag.axis: Drag.XAxis
-                drag.minimumX: 100
-                drag.maximumX: main_window.width / 2
-
-            }
-
-        }
-
         Item {
 
-            width: parent.width - tab_bar.width - tab_content_splitter.width
             height: parent.height
 
             StackLayout {
@@ -433,6 +420,8 @@ ApplicationWindow {
                     }
 
                 }
+
+                // TODO: termination conditions tab
 
             }
 
