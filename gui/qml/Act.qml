@@ -16,7 +16,7 @@ ElementFrame {
 
     remove: function() {
         actionRemoved(model.name);
-        action_model.removeRow(index);
+        models.actions.removeRow(index);
     }
 
     elementContent: [

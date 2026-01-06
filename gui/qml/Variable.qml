@@ -16,7 +16,7 @@ ElementFrame {
 
     remove: function() {
         variableRemoved(index);
-        variable_model.removeRow(index);
+        models.variables.removeRow(index);
     }
 
     elementContent: [
@@ -47,11 +47,8 @@ ElementFrame {
                 regex: /^[A-Za-z]\w*$/
 
                 action: function(x) {
+                    model.name = x;
                     variableRenamed(index, x);
-                    location_tab.model = [];
-                    location_tab.model = location_model;
-                    edge_tab.model = [];
-                    edge_tab.model = edge_model;
                 }
                 condition: function(x) {
                     return x == model.name || Julia.name_available(x);

@@ -18,7 +18,7 @@ ElementFrame {
 
     remove: function() {
         locationRemoved(model.name);
-        location_model.removeRow(index);
+        models.locations.removeRow(index);
     }
 
     elementContent: [

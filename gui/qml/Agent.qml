@@ -16,7 +16,7 @@ ElementFrame {
     
     remove: function() {
         agentRemoved(model.name);
-        agent_model.removeRow(index);
+        models.agents.removeRow(index);
     }
 
     elementContent: [

@@ -15,7 +15,7 @@ ElementFrame {
     element_name: "Trigger"
 
     remove: function() {
-        trigger_model.removeRow(index);
+        models.triggers.removeRow(index);
     }
 
     elementContent: [
@@ -39,7 +39,7 @@ ElementFrame {
                 id: trigger_agent_box
                 width: parent.width - trigger_agent_label.width - parent.spacing
 
-                model: agent_model
+                model: models.agents
                 textRole: "name"
                 valueRole: "name"
 

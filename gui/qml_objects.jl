@@ -31,8 +31,8 @@ function QLocation(name::String, invariant::String, initial::Bool, flow::Abstrac
     return QLocation(name, invariant, initial, JuliaItemModel([QFlow(QML.value(f)["variable"], QML.value(f)["expression"]) for f in flow]))
 end
 
-function setflow!(location_model::Vector{QLocation}, flow::AbstractArray, row::Int32, col::Int64)
-    location_model[row].flow = JuliaItemModel([QFlow(QML.value(f)["variable"], QML.value(f)["expression"]) for f in flow])
+function setflow!(model::Vector{QLocation}, flow::AbstractArray, row::Int32, col::Int64)
+    model[row].flow = JuliaItemModel([QFlow(QML.value(f)["variable"], QML.value(f)["expression"]) for f in flow])
 end
 
 mutable struct QFlow
@@ -53,8 +53,8 @@ function QEdge(source::String, target::String, guard::String, agent::String, act
     return QEdge(source, target, guard, agent, action, JuliaItemModel([QJump(QML.value(j)["variable"], QML.value(j)["expression"]) for j in jump]))
 end
 
-function setjump!(edge_model::Vector{QEdge}, jump::AbstractArray, row::Int32, col::Int64)
-    edge_model[row].jump = JuliaItemModel([QJump(QML.value(j)["variable"], QML.value(j)["expression"]) for j in jump])
+function setjump!(model::Vector{QEdge}, jump::AbstractArray, row::Int32, col::Int64)
+    model[row].jump = JuliaItemModel([QJump(QML.value(j)["variable"], QML.value(j)["expression"]) for j in jump])
 end
 
 mutable struct QJump

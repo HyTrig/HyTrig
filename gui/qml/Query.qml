@@ -15,7 +15,7 @@ ElementFrame {
     element_name: "Query"
 
     remove: function() {
-        query_model.removeRow(index);
+        models.queries.removeRow(index);
     }
 
     elementContent: [

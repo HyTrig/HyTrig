@@ -23,29 +23,31 @@ config["state_formula"] = ""
 
 roles = JuliaPropertyMap()
 
+models = JuliaPropertyMap()
+
 action_list::Vector{QAction} = [QAction("action")]
-action_model::JuliaItemModel = JuliaItemModel(action_list)
+models["actions"] = JuliaItemModel(action_list)
 
 agent_list::Vector{QAgent} = [QAgent("agent")]
-agent_model::JuliaItemModel = JuliaItemModel(agent_list)
+models["agents"] = JuliaItemModel(agent_list)
 
 variable_list::Vector{QVariable} = [QVariable("variable", "0")]
-variable_model::JuliaItemModel = JuliaItemModel(variable_list)
-roles["variable_name"] = roleindex(variable_model, "name")
+models["variables"] = JuliaItemModel(variable_list)
+roles["variable_name"] = roleindex(models["variables"], "name")
 
 trigger_list::Vector{QTrigger} = [QTrigger("agent", "true")]
-trigger_model::JuliaItemModel = JuliaItemModel(trigger_list)
+models["triggers"] = JuliaItemModel(trigger_list)
 
 location_list::Vector{QLocation} = [QLocation("location", true, "true", JuliaItemModel([QFlow("variable", "variable + 1")]))]
-location_model::JuliaItemModel = JuliaItemModel(location_list)
-setsetter!(location_model, setflow!, roleindex(location_model, "flow"))
+models["locations"] = JuliaItemModel(location_list)
+setsetter!(models["locations"], setflow!, roleindex(models["locations"], "flow"))
 
 edge_list::Vector{QEdge} = [QEdge("location", "location", "true", "agent", "action", JuliaItemModel([QJump("variable", "variable + 1")]))]
-edge_model::JuliaItemModel = JuliaItemModel(edge_list)
-setsetter!(edge_model, setjump!, roleindex(edge_model, "jump"))
+models["edges"] = JuliaItemModel(edge_list)
+setsetter!(models["edges"], setjump!, roleindex(models["edges"], "jump"))
 
 query_list::Vector{QQuery} = [QQuery("<<agent>> F true")]
-query_model::JuliaItemModel = JuliaItemModel(query_list)
+models["queries"] = JuliaItemModel(query_list)
 
 # Initialize QML functions
 
@@ -65,7 +67,6 @@ function is_formula(text::QString, level::QString)::Bool
     catch
         return false
     end
-    return true
 end
 
 # Build and run QML GUI
@@ -78,13 +79,7 @@ loadqml(
     qml_file,
     roles=roles,
     config=config,
-    action_model=action_model,
-    agent_model=agent_model,
-    variable_model=variable_model,
-    trigger_model=trigger_model,
-    location_model=location_model,
-    edge_model=edge_model,
-    query_model=query_model,
+    models=models,
 )
 
 exec()

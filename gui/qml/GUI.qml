@@ -83,13 +83,13 @@ ApplicationWindow {
             Action {
                 text: qsTr("Clear")
                 onTriggered: {
-                    agent_model.clear();
-                    action_model.clear();
-                    variable_model.clear();
-                    trigger_model.clear();
-                    location_model.clear();
-                    edge_model.clear();
-                    query_model.clear();
+                    models.agents.clear();
+                    models.actions.clear();
+                    models.variables.clear();
+                    models.triggers.clear();
+                    models.locations.clear();
+                    models.edges.clear();
+                    models.queries.clear();
                     // TODO: clear termination conditions
                 }
             }
@@ -221,10 +221,10 @@ ApplicationWindow {
                     element_name: "Agent"
 
                     add: function() {
-                        agent_model.appendRow({name: ""});
+                        models.agents.appendRow({name: ""});
                     }
 
-                    model: agent_model
+                    model: models.agents
                     delegate: Agent {
                         width: agent_tab.cellWidth
                     }
@@ -239,10 +239,10 @@ ApplicationWindow {
                     element_name: "Action"
 
                     add: function() {
-                        action_model.appendRow({name: ""});
+                        models.actions.appendRow({name: ""});
                     }
 
-                    model: action_model
+                    model: models.actions
                     delegate: Act {
                         width: action_tab.cellWidth
                     }
@@ -257,11 +257,11 @@ ApplicationWindow {
                     element_name: "Variable"
 
                     add: function() {
-                        variable_model.appendRow({name: "", value: ""});
+                        models.variables.appendRow({name: "", value: ""});
                         variableAdded();
                     }
 
-                    model: variable_model
+                    model: models.variables
                     delegate: Variable {
                         width: variable_tab.cellWidth
                     }
@@ -276,10 +276,10 @@ ApplicationWindow {
                     element_name: "Trigger"
 
                     add: function() {
-                        trigger_model.appendRow({agent: "", trigger: ""})
+                        models.triggers.appendRow({agent: "", trigger: ""})
                     }
 
-                    model: trigger_model
+                    model: models.triggers
                     delegate: Trigger {
                         width: trigger_tab.cellWidth
                         
@@ -305,21 +305,21 @@ ApplicationWindow {
 
                     add: function() {
                         var flow = []
-                        for (var i = 0; i < variable_model.rowCount(); i++) {
+                        for (var i = 0; i < models.variables.rowCount(); i++) {
                             flow.push({
-                                variable: variable_model.data(variable_model.index(i, 0), roles.variable_name),
-                                expression: variable_model.data(variable_model.index(i, 0), roles.variable_name)
+                                variable: models.variables.data(models.variables.index(i, 0), roles.variable_name),
+                                expression: models.variables.data(models.variables.index(i, 0), roles.variable_name)
                             })
                         }
-                        location_model.appendRow({
+                        models.locations.appendRow({
                             name: "",
-                            initial: location_model.rowCount() == 0,
+                            initial: models.locations.rowCount() == 0,
                             invariant: "",
                             flow: flow
                         });
                     }
 
-                    model: location_model
+                    model: models.locations
                     delegate: Location {
                         width: location_tab.cellWidth
 
@@ -353,13 +353,13 @@ ApplicationWindow {
 
                     add: function() {
                         var jump = []
-                        for (var i = 0; i < variable_model.rowCount(); i++) {
+                        for (var i = 0; i < models.variables.rowCount(); i++) {
                             jump.push({
-                                variable: variable_model.data(variable_model.index(i, 0), roles.variable_name),
-                                expression: variable_model.data(variable_model.index(i, 0), roles.variable_name)
+                                variable: models.variables.data(models.variables.index(i, 0), roles.variable_name),
+                                expression: models.variables.data(models.variables.index(i, 0), roles.variable_name)
                             })
                         }
-                        edge_model.appendRow({
+                        models.edges.appendRow({
                             source: "",
                             target: "",
                             guard: "",
@@ -369,7 +369,7 @@ ApplicationWindow {
                         });
                     }
 
-                    model: edge_model
+                    model: models.edges
                     delegate: Edge {
                         width: edge_tab.cellWidth
 
@@ -412,10 +412,10 @@ ApplicationWindow {
                     element_name: "Query"
 
                     add: function() {
-                        query_model.appendRow({formula: ""});
+                        models.queries.appendRow({formula: ""});
                     }
 
-                    model: query_model
+                    model: models.queries
                     delegate: Query {
                         width: query_tab.cellWidth
                     }

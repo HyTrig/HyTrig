@@ -17,7 +17,7 @@ ElementFrame {
     element_name: "Edge"
 
     remove: function() {
-        edge_model.removeRow(index);
+        models.edges.removeRow(index);
     }
 
     elementContent: [
@@ -40,7 +40,7 @@ ElementFrame {
                 id: edge_source_box
                 width: (parent.width - edge_source_label.width - edge_target_label.width - 3 * parent.spacing) / 2
 
-                model: location_model
+                model: models.locations
                 textRole: "name"
                 valueRole: "name"
 
@@ -63,7 +63,7 @@ ElementFrame {
                 id: edge_target_box
                 width: (parent.width - edge_source_label.width - edge_target_label.width - 3 * parent.spacing) / 2
 
-                model: location_model
+                model: models.locations
                 textRole: "name"
                 valueRole: "name"
 
@@ -131,7 +131,7 @@ ElementFrame {
                 id: edge_agent_box
                 width: (parent.width - edge_agent_label.width - edge_action_label.width - 3 * parent.spacing) / 2
 
-                model: agent_model
+                model: models.agents
                 textRole: "name"
                 valueRole: "name"
 
@@ -153,7 +153,7 @@ ElementFrame {
                 id: edge_action_box
                 width: (parent.width - edge_agent_label.width - edge_action_label.width - 3 * parent.spacing) / 2
 
-                model: action_model
+                model: models.actions
                 textRole: "name"
                 valueRole: "name"
 
