@@ -51,10 +51,12 @@ models["queries"] = JuliaItemModel(query_list)
 
 # Initialize QML functions
 
+# TODO: write docs
 function name_available(name::QString)::Bool
     return !any(v -> v.name == name, [action_list; agent_list; variable_list; location_list])
 end
 
+# TODO: write docs
 function is_formula(text::QString, level::QString)::Bool
     bindings::Bindings = Bindings(
         [x.name for x in agent_list],
@@ -73,7 +75,7 @@ end
 
 qml_file = joinpath(dirname(@__FILE__), "gui", "qml", "GUI.qml")
 
-@qmlfunction name_available is_formula
+@qmlfunction name_available is_formula save load
 
 loadqml(
     qml_file,

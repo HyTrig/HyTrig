@@ -29,6 +29,8 @@ ApplicationWindow {
     Material.accent: Material.Blue
     Material.primary: Material.Blue
 
+    property string current_file: ""
+
     signal actionRemoved(string name)
     signal agentRemoved(string name)
     signal locationRemoved(string name)
@@ -45,6 +47,7 @@ ApplicationWindow {
             title: qsTr("File")
 
             Action {
+                id: new_action
                 text: qsTr("New")
                 onTriggered: {
                     // TODO
@@ -52,6 +55,7 @@ ApplicationWindow {
             }
 
             Action {
+                id: open_action
                 text: qsTr("Open")
                 onTriggered: {
                     // TODO
@@ -61,16 +65,22 @@ ApplicationWindow {
             MenuSeparator {}
 
             Action {
+                id: save_action
                 text: qsTr("Save")
                 onTriggered: {
-                    // TODO
+                    if (current_file == "") {
+                        save_as_action.trigger();
+                    } else {
+                        Julia.save(current_file);
+                    }
                 }
             }
 
             Action {
+                id: save_as_action
                 text: qsTr("Save as")
                 onTriggered: {
-                    // TODO
+                    save_dialog.open();
                 }
             }
             
@@ -81,6 +91,7 @@ ApplicationWindow {
             title: qsTr("Edit")
 
             Action {
+                id: clear_action
                 text: qsTr("Clear")
                 onTriggered: {
                     models.agents.clear();
@@ -90,7 +101,9 @@ ApplicationWindow {
                     models.locations.clear();
                     models.edges.clear();
                     models.queries.clear();
-                    // TODO: clear termination conditions
+                    config.max_steps = "";
+                    config.time_bound = "";
+                    config.state_formula = "";
                 }
             }
 
@@ -432,6 +445,32 @@ ApplicationWindow {
 
         }
 
+    }
+
+    // Save dialog
+    FileDialog {
+        id: save_dialog
+        title: "Select a location to save the JSON file"
+        
+        fileMode: FileDialog.SaveFile
+        nameFilters: ["JSON files (*.json)"]
+        onAccepted: {
+            Julia.save(selectedFile.toString());
+            current_file = selectedFile.toString();
+        }
+    }
+
+    // Load dialog
+    FileDialog {
+        id: load_dialog
+        title: "Select a JSON file to load"
+
+        fileMode: FileDialog.OpenFile
+        nameFilters: ["JSON files (*.json)"]
+        onAccepted: {
+            Julia.load(selectedFile.toString());
+            current_file = selectedFile.toString();
+        }
     }
 
 }
