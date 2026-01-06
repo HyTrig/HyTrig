@@ -257,7 +257,7 @@ ApplicationWindow {
                     element_name: "Variable"
 
                     add: function() {
-                        models.variables.appendRow({name: "", value: ""});
+                        models.variables.appendRow({name: "", expression: ""});
                         variableAdded();
                     }
 
@@ -307,8 +307,8 @@ ApplicationWindow {
                         var flow = []
                         for (var i = 0; i < models.variables.rowCount(); i++) {
                             flow.push({
-                                variable: models.variables.data(models.variables.index(i, 0), roles.variable_name),
-                                expression: models.variables.data(models.variables.index(i, 0), roles.variable_name)
+                                variable: models.variables.data(models.variables.index(i, 0), roles.name),
+                                expression: models.variables.data(models.variables.index(i, 0), roles.name)
                             })
                         }
                         models.locations.appendRow({
@@ -332,7 +332,7 @@ ApplicationWindow {
                                 model.flow.removeRow(index);
                             }
                             function onVariableRenamed(index, name) {
-                                model.flow.setData(model.flow.index(index, 0), name, roles.variable_name);
+                                model.flow.setData(model.flow.index(index, 0), name, roles.name);
                             }
                         }
                     }
@@ -355,8 +355,8 @@ ApplicationWindow {
                         var jump = []
                         for (var i = 0; i < models.variables.rowCount(); i++) {
                             jump.push({
-                                variable: models.variables.data(models.variables.index(i, 0), roles.variable_name),
-                                expression: models.variables.data(models.variables.index(i, 0), roles.variable_name)
+                                variable: models.variables.data(models.variables.index(i, 0), roles.name),
+                                expression: models.variables.data(models.variables.index(i, 0), roles.name)
                             })
                         }
                         models.edges.appendRow({
@@ -396,7 +396,7 @@ ApplicationWindow {
                                 model.jump.removeRow(index);
                             }
                             function onVariableRenamed(index, name) {
-                                model.jump.setData(model.jump.index(index, 0), name, roles.variable_name);
+                                model.jump.setData(model.jump.index(index, 0), name, roles.name);
                             }
                         }
                     }

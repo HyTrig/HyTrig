@@ -33,7 +33,7 @@ models["agents"] = JuliaItemModel(agent_list)
 
 variable_list::Vector{QVariable} = [QVariable("variable", "0")]
 models["variables"] = JuliaItemModel(variable_list)
-roles["variable_name"] = roleindex(models["variables"], "name")
+roles["name"] = roleindex(models["variables"], "name")
 
 trigger_list::Vector{QTrigger} = [QTrigger("agent", "true")]
 models["triggers"] = JuliaItemModel(trigger_list)

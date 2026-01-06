@@ -76,7 +76,7 @@ ElementFrame {
                 id: value_field
                 width: parent.width - value_label.width - parent.spacing
                 
-                text: qsTr(model.value)
+                text: qsTr(model.expression)
                 default_text: qsTr("Enter decimal")
                 error_text: qsTr("Invalid decimal")
                 condition_error_text: qsTr("Invalid decimal")
@@ -84,7 +84,7 @@ ElementFrame {
                 regex: /(^-?(([1-9]\d*(\.\d+)?$)|(0\.\d*[1-9])$))|(^0$)/
 
                 action: function(x) {
-                    model.value = x;
+                    model.expression = x;
                 }
                 condition: function(x) {
                     return true;

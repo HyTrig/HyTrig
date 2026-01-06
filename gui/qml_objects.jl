@@ -12,7 +12,7 @@ end
 
 mutable struct QVariable
     name::String
-    value::String
+    expression::String
 end
 
 mutable struct QTrigger
