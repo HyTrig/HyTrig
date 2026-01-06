@@ -1,6 +1,6 @@
 /**
 * @file ElementFrame.qml
-* @brief GUI component for an agent of the HyTrig GUI
+* @brief GUI component for a framed element of the HyTrig GUI
 * @authors Moritz Maas
 */
 

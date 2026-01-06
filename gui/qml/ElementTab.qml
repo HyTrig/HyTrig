@@ -20,7 +20,7 @@ Rectangle {
 
     color: Material.background
     border.width: 1
-    border.color: Material.accentColor
+    border.color: Material.accent
 
     Column {
 

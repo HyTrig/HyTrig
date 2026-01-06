@@ -16,6 +16,11 @@ include("src/parsers/syntax_parsers/parser.jl")
 
 # Initialize models
 
+config = JuliaPropertyMap()
+config["max_steps"] = ""
+config["time_bound"] = ""
+config["state_formula"] = ""
+
 roles = JuliaPropertyMap()
 
 action_list::Vector{QAction} = [QAction("action")]
@@ -60,6 +65,7 @@ function is_formula(text::QString, level::QString)::Bool
     catch
         return false
     end
+    return true
 end
 
 # Build and run QML GUI
@@ -71,6 +77,7 @@ qml_file = joinpath(dirname(@__FILE__), "gui", "qml", "GUI.qml")
 loadqml(
     qml_file,
     roles=roles,
+    config=config,
     action_model=action_model,
     agent_model=agent_model,
     variable_model=variable_model,
@@ -81,5 +88,3 @@ loadqml(
 )
 
 exec()
-
-print(edge_list)

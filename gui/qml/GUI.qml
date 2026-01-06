@@ -204,6 +204,7 @@ ApplicationWindow {
         Item {
 
             height: parent.height
+            SplitView.minimumWidth: 300
 
             StackLayout {
 
@@ -421,17 +422,9 @@ ApplicationWindow {
 
                 }
 
-                Tab {
+                TerminationConditions {
 
-                    id: termination_condition_tab
-
-                    tab_name: "Termination Conditions"
-                    
-                    content: [
-                        TerminationConditions {
-                            // TODO
-                        }
-                    ]
+                    id: termination_conditions_tab
 
                 }
 
