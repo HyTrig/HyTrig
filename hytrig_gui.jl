@@ -75,10 +75,35 @@ end
 
 # TODO: write docs
 function save(path::QString)
-    path = path
-    data = agent_list
-    open(String(path.toLocalFile()), "w") do f
-        write(f, data)
+    data::Dict{String,Union{Vector,Dict}} = Dict([
+        "agents" => agent_list,
+        "actions" => action_list,
+        "variables" => variable_list,
+        "triggers" => trigger_list,
+        "locations" => [
+            Dict(
+                "name" => loc.name,
+                "initial" => loc.initial,
+                "invariant" => loc.invariant,
+                "flow" => [
+                    Dict(
+                        "variable" => flow.variable,
+                        "expression" => flow.expression
+                    ) for flow in loc.flow
+                ],
+            ) for loc in location_list
+        ],
+        "edges" => edge_list,
+        "queries" => query_list,
+        "config" => Dict([
+            "max_steps" => config["max_steps"],
+            "time_bound" => config["time_bound"],
+            "state_formula" => config["state_formula"],
+        ]),
+    ])
+
+    open(replace(String(path), r"^(file:\/{2})" => ""), "w") do f
+        JSON3.pretty(f, JSON3.write(data))
     end
 end
 
