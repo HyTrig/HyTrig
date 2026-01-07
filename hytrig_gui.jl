@@ -9,10 +9,11 @@ This script runs a GUI with QML. The GUI allows to create, edit, save, load and 
 
 include("gui/packages.jl")
 
+using JSON3
 using QML
 
 include("gui/qml_objects.jl")
-include("src/parsers/syntax_parsers/parser.jl")
+# include("src/parsers/syntax_parsers/parser.jl")
 
 # Initialize models
 
@@ -58,17 +59,31 @@ end
 
 # TODO: write docs
 function is_formula(text::QString, level::QString)::Bool
-    bindings::Bindings = Bindings(
-        [x.name for x in agent_list],
-        [x.name for x in location_list],
-        [x.name for x in variable_list]
-    )
-    try
-        parse(text, bindings, Symbol(eval(String(level))))
-        return true
-    catch
-        return false
+    # bindings::Bindings = Bindings(
+    #     [x.name for x in agent_list],
+    #     [x.name for x in location_list],
+    #     [x.name for x in variable_list]
+    # )
+    # try
+    #     parse(text, bindings, Symbol(eval(String(level))))
+    #     return true
+    # catch
+    #     return false
+    # end
+    return true
+end
+
+# TODO: write docs
+function save(path::QString)
+    path = path
+    data = agent_list
+    open(String(path.toLocalFile()), "w") do f
+        write(f, data)
     end
+end
+
+# TODO: write docs
+function load(path::QString)
 end
 
 # Build and run QML GUI

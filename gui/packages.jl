@@ -12,6 +12,7 @@ end
 dependencies = [
     "DataStructures",
     "DifferentialEquations",
+    "JSON3",
     "Match",
     "QML"
 ]
