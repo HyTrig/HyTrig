@@ -68,6 +68,7 @@ ApplicationWindow {
             Action {
                 id: save_action
                 text: qsTr("Save")
+                shortcut: "Ctrl+S"
                 onTriggered: {
                     if (current_file == "") {
                         save_as_action.trigger();
@@ -80,6 +81,7 @@ ApplicationWindow {
             Action {
                 id: save_as_action
                 text: qsTr("Save as")
+                shortcut: "Ctrl+Shift+S"
                 onTriggered: {
                     save_dialog.open();
                 }
@@ -95,6 +97,7 @@ ApplicationWindow {
                 id: clear_action
                 text: qsTr("Clear")
                 onTriggered: {
+                    // TODO: confirm dialog
                     models.agents.clear();
                     models.actions.clear();
                     models.variables.clear();
@@ -115,6 +118,7 @@ ApplicationWindow {
             title: qsTr("View")
 
             Action {
+                id: toggle_fullscreen_action
                 text: qsTr("Toggle Fullscreen")
                 shortcut: "F11"
                 onTriggered: {
@@ -123,6 +127,7 @@ ApplicationWindow {
             }
 
             Action {
+                id: toggle_theme_action
                 text: main_window.Material.theme == Material.Dark ? qsTr("Light Theme") : qsTr("Dark Theme")
                 onTriggered: {
                     main_window.Material.theme = main_window.Material.theme == Material.Dark ? Material.Light : Material.Dark
