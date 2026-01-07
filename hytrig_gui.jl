@@ -13,7 +13,7 @@ using JSON3
 using QML
 
 include("gui/qml_objects.jl")
-# include("src/parsers/syntax_parsers/parser.jl")
+include("src/parsers/syntax_parsers/parser.jl")
 
 # Initialize models
 
@@ -59,18 +59,17 @@ end
 
 # TODO: write docs
 function is_formula(text::QString, level::QString)::Bool
-    # bindings::Bindings = Bindings(
-    #     [x.name for x in agent_list],
-    #     [x.name for x in location_list],
-    #     [x.name for x in variable_list]
-    # )
-    # try
-    #     parse(text, bindings, Symbol(eval(String(level))))
-    #     return true
-    # catch
-    #     return false
-    # end
-    return true
+    bindings::Bindings = Bindings(
+        [x.name for x in agent_list],
+        [x.name for x in location_list],
+        [x.name for x in variable_list]
+    )
+    try
+        parse(text, bindings, Symbol(eval(String(level))))
+        return true
+    catch
+        return false
+    end
 end
 
 # TODO: write docs
@@ -87,13 +86,27 @@ function save(path::QString)
                 "invariant" => loc.invariant,
                 "flow" => [
                     Dict(
-                        "variable" => flow.variable,
-                        "expression" => flow.expression
-                    ) for flow in loc.flow
+                        "variable" => loc.flow[i].variable,
+                        "expression" => loc.flow[i].expression,
+                    ) for i in 1:length(loc.flow)
                 ],
             ) for loc in location_list
         ],
-        "edges" => edge_list,
+        "edges" => [
+            Dict(
+                "source" => edge.source,
+                "target" => edge.target,
+                "guard" => edge.guard,
+                "agent" => edge.agent,
+                "action" => edge.action,
+                "jump" => [
+                    Dict(
+                        "variable" => edge.jump[i].variable,
+                        "expression" => edge.jump[i].expression,
+                    ) for i in 1:length(edge.jump)
+                ],
+            ) for edge in edge_list
+        ],
         "queries" => query_list,
         "config" => Dict([
             "max_steps" => config["max_steps"],
@@ -102,7 +115,7 @@ function save(path::QString)
         ]),
     ])
 
-    open(replace(String(path), r"^(file:\/{2})" => ""), "w") do f
+    open(replace(String(path), r"^(file:\/{2})" => "") * ".hytrig", "w") do f
         JSON3.pretty(f, JSON3.write(data))
     end
 end
