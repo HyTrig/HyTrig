@@ -50,14 +50,17 @@ ApplicationWindow {
             Action {
                 id: new_action
                 text: qsTr("New")
+                shortcut: "Ctrl+N"
                 onTriggered: {
-                    // TODO
+                    save_action.trigger();
+                    clear_action.trigger();
                 }
             }
 
             Action {
                 id: open_action
                 text: qsTr("Open")
+                shortcut: "Ctrl+O"
                 onTriggered: {
                     // TODO
                 }
@@ -151,6 +154,7 @@ ApplicationWindow {
 
     SplitView {
 
+        // TODO: set correct widths for children
         id: tab_content_split
         width: parent.width
         height: parent.height - menu_bar_spacer.height
@@ -170,6 +174,7 @@ ApplicationWindow {
             id: tab_bar
             SplitView.minimumWidth: 100
             SplitView.preferredWidth: 200
+            SplitView.maximumWidth: 300
             height: parent.height
 
             model: ListModel {
@@ -223,7 +228,8 @@ ApplicationWindow {
         Item {
 
             height: parent.height
-            SplitView.minimumWidth: 300
+            SplitView.minimumWidth: 500
+            SplitView.fillWidth: true
 
             StackLayout {
 
@@ -451,28 +457,66 @@ ApplicationWindow {
 
         }
 
+        Item {
+
+            height: parent.height
+            SplitView.minimumWidth: 200
+            SplitView.preferredWidth: 200
+            SplitView.maximumWidth: 400
+
+            // TODO: selector title
+
+            ComboBox {
+
+                id: verification_mode_selector
+                width: parent.width
+                anchors.top: parent.top
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.margins: 10
+                model: ["HyTrig", "Example2", "Example3"]
+
+                // TODO: change content based on selection
+
+            }
+
+            Button {
+
+                width: parent.width
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.bottom: parent.bottom
+                anchors.margins: 10
+
+                text: "Verify"
+
+            }
+
+        }
+
     }
 
-    // Save dialog
     FileDialog {
         id: save_dialog
-        title: "Select a location to save the JSON file"
+        title: "Select a location to save the HyTrig file"
         
         fileMode: FileDialog.SaveFile
-        nameFilters: ["JSON files (*.json)"]
+        nameFilters: ["HyTrig files (*.hytrig)"]
+        defaultSuffix: "hytrig"
         onAccepted: {
             Julia.save(selectedFile.toString());
             current_file = selectedFile.toString();
         }
     }
 
-    // Load dialog
     FileDialog {
         id: load_dialog
-        title: "Select a JSON file to load"
+        title: "Select a HyTrig file to load"
 
         fileMode: FileDialog.OpenFile
-        nameFilters: ["JSON files (*.json)"]
+        // TODO: load and save all existing jsons
+        // nameFilters: ["HyTrig files (*.hytrig)"]
+        defaultSuffix: "hytrig"
         onAccepted: {
             Julia.load(selectedFile.toString());
             current_file = selectedFile.toString();

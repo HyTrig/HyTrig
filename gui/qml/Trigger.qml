@@ -24,7 +24,7 @@ ElementFrame {
 
             parent: trigger_frame.column
             width: parent.width
-            height: trigger_agent_box.height
+            height: trigger_agent_selector.height
             spacing: 10
 
             Label {
@@ -35,8 +35,8 @@ ElementFrame {
                 text: qsTr("Agent:")
             }
 
-            ComboBox {
-                id: trigger_agent_box
+            Selector {
+                id: trigger_agent_selector
                 width: parent.width - trigger_agent_label.width - parent.spacing
 
                 model: models.agents
@@ -45,8 +45,8 @@ ElementFrame {
 
                 currentIndex: find(trigger_frame.model.agent)
 
-                onActivated: {
-                    trigger_frame.model.agent = currentValue;
+                action: function(x) {
+                    trigger_frame.model.agent = x;
                 }
             }
 

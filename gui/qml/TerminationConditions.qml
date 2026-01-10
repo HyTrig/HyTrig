@@ -54,6 +54,8 @@ Rectangle {
                     width: parent.width
                     spacing: 10
 
+                    // TODO: reorder content to fit narrow window sizes
+
                     ContentFrame {
 
                         width: (parent.width - 2 * parent.spacing) / 3

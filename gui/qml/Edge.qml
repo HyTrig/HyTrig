@@ -26,7 +26,7 @@ ElementFrame {
             
             parent: edge_frame.column
             width: parent.width
-            height: edge_source_box.height
+            height: edge_source_selector.height
             spacing: 10
 
             Label {
@@ -36,8 +36,8 @@ ElementFrame {
                 text: qsTr("Source:")
             }
 
-            ComboBox {
-                id: edge_source_box
+            Selector {
+                id: edge_source_selector
                 width: (parent.width - edge_source_label.width - edge_target_label.width - 3 * parent.spacing) / 2
 
                 model: models.locations
@@ -46,8 +46,8 @@ ElementFrame {
 
                 currentIndex: find(edge_frame.model.source)
 
-                onActivated: {
-                    edge_frame.model.source = currentValue;
+                action: function(x) {
+                    edge_frame.model.source = x;
                 }
             }
 
@@ -59,8 +59,8 @@ ElementFrame {
                 text: qsTr("Target:")
             }
 
-            ComboBox {
-                id: edge_target_box
+            Selector {
+                id: edge_target_selector
                 width: (parent.width - edge_source_label.width - edge_target_label.width - 3 * parent.spacing) / 2
 
                 model: models.locations
@@ -69,8 +69,8 @@ ElementFrame {
 
                 currentIndex: find(edge_frame.model.target)
 
-                onActivated: {
-                    edge_frame.model.target = currentValue;
+                action: function(x) {
+                    edge_frame.model.target = x;
                 }
             }
 
@@ -116,7 +116,7 @@ ElementFrame {
 
             parent: edge_frame.column
             width: parent.width
-            height: edge_agent_box.height
+            height: edge_agent_selector.height
             spacing: 10
 
             Label {
@@ -127,8 +127,8 @@ ElementFrame {
                 text: qsTr("Agent:")
             }
 
-            ComboBox {
-                id: edge_agent_box
+            Selector {
+                id: edge_agent_selector
                 width: (parent.width - edge_agent_label.width - edge_action_label.width - 3 * parent.spacing) / 2
 
                 model: models.agents
@@ -137,8 +137,8 @@ ElementFrame {
 
                 currentIndex: find(edge_frame.model.agent)
 
-                onActivated: {
-                    edge_frame.model.agent = currentValue;
+                action: function(x) {
+                    edge_frame.model.agent = x;
                 }
             }
 
@@ -149,8 +149,8 @@ ElementFrame {
                 text: qsTr("Action:")
             }
 
-            ComboBox {
-                id: edge_action_box
+            Selector {
+                id: edge_action_selector
                 width: (parent.width - edge_agent_label.width - edge_action_label.width - 3 * parent.spacing) / 2
 
                 model: models.actions
@@ -159,8 +159,8 @@ ElementFrame {
 
                 currentIndex: find(edge_frame.model.action)
 
-                onActivated: {
-                    edge_frame.model.action = currentValue;
+                action: function(x) {
+                    edge_frame.model.action = x;
                 }
             }
 
