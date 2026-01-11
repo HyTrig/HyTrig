@@ -14,7 +14,8 @@ dependencies = [
     "DifferentialEquations",
     "JSON3",
     "Match",
-    "QML"
+    "QML",
+    "StructTypes",
 ]
 
 Pkg.add(dependencies)

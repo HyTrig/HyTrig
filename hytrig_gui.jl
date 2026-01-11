@@ -9,8 +9,7 @@ This script runs a GUI with QML. The GUI allows to create, edit, save, load and 
 
 include("gui/packages.jl")
 
-using JSON3
-using QML
+using JSON3, QML, StructTypes
 
 include("gui/qml_objects.jl")
 include("src/parsers/syntax_parsers/parser.jl")
@@ -115,13 +114,41 @@ function save(path::QString)
         ]),
     ])
 
-    open(replace(String(path), r"^(file:\/{2})" => "") * ".hytrig", "w") do f
+    open(replace(String(path), r"^(file:\/{2})" => ""), "w") do f
         JSON3.pretty(f, JSON3.write(data))
     end
 end
 
 # TODO: write docs
 function load(path::QString)
+    function load_elements(name::String, type::Type, list::Vector)
+        for element in data[name]
+            push!(list, StructTypes.constructfrom(type, element))
+        end
+    end
+    empty!(action_list)
+    empty!(agent_list)
+    empty!(variable_list)
+    empty!(trigger_list)
+    empty!(location_list)
+    empty!(edge_list)
+    empty!(query_list)
+
+    data = open(replace(String(path), r"^(file:\/{2})" => ""), "r") do f
+        JSON3.read(f)
+    end
+
+    load_elements("agents", QAgent, agent_list)
+    load_elements("actions", QAction, action_list)
+    load_elements("variables", QVariable, variable_list)
+    load_elements("triggers", QTrigger, trigger_list)
+    # load_elements("locations", QLocation, location_list)
+    # load_elements("edges", QEdge, edge_list)
+    load_elements("queries", QQuery, query_list)
+
+    config["max_steps"] = data["config"]["max_steps"]
+    config["time_bound"] = data["config"]["time_bound"]
+    config["state_formula"] = data["config"]["state_formula"]
 end
 
 # Build and run QML GUI

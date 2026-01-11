@@ -1,0 +1,62 @@
+{
+    "agents": [
+        {
+            "name": "agent"
+        }
+    ],
+    "locations": [
+        {
+            "name": "location",
+            "initial": true,
+            "flow": [
+                {
+                    "expression": "variable + 1",
+                    "variable": "variable"
+                }
+            ],
+            "invariant": "true"
+        }
+    ],
+    "queries": [
+        {
+            "formula": "<<agent>> F true"
+        }
+    ],
+    "variables": [
+        {
+            "name": "variable",
+            "expression": "0"
+        }
+    ],
+    "actions": [
+        {
+            "name": "action"
+        }
+    ],
+    "config": {
+        "max_steps": "",
+        "time_bound": "",
+        "state_formula": ""
+    },
+    "triggers": [
+        {
+            "agent": "agent",
+            "trigger": "true"
+        }
+    ],
+    "edges": [
+        {
+            "guard": "true",
+            "source": "location",
+            "action": "action",
+            "target": "location",
+            "agent": "agent",
+            "jump": [
+                {
+                    "expression": "variable + 1",
+                    "variable": "variable"
+                }
+            ]
+        }
+    ]
+}

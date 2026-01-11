@@ -39,6 +39,39 @@ ApplicationWindow {
     signal variableRemoved(int index)
     signal variableRenamed(int index, string name)
 
+    function clear() {
+        models.agents.clear();
+        models.actions.clear();
+        models.variables.clear();
+        models.triggers.clear();
+        models.locations.clear();
+        models.edges.clear();
+        models.queries.clear();
+        config.max_steps = "";
+        config.time_bound = "";
+        config.state_formula = "";
+    }
+
+    function load(file) {
+        Julia.load(file);
+        current_file = file;
+        action_tab.model = [];
+        action_tab.model = models.actions;
+        agent_tab.model = [];
+        agent_tab.model = models.agents;
+        variable_tab.model = [];
+        variable_tab.model = models.variables;
+        trigger_tab.model = [];
+        trigger_tab.model = models.triggers;
+        location_tab.model = [];
+        location_tab.model = models.locations;
+        edge_tab.model = [];
+        edge_tab.model = models.edges;
+        query_tab.model = [];
+        query_tab.model = models.queries;
+        // TODO: reset termination conditions
+    }
+
     menuBar: MenuBar {
         
         id: menu_bar
@@ -52,8 +85,7 @@ ApplicationWindow {
                 text: qsTr("New")
                 shortcut: "Ctrl+N"
                 onTriggered: {
-                    save_action.trigger();
-                    clear_action.trigger();
+                    new_dialog.open();
                 }
             }
 
@@ -62,7 +94,7 @@ ApplicationWindow {
                 text: qsTr("Open")
                 shortcut: "Ctrl+O"
                 onTriggered: {
-                    // TODO
+                    load_dialog.open();
                 }
             }
 
@@ -74,7 +106,7 @@ ApplicationWindow {
                 shortcut: "Ctrl+S"
                 onTriggered: {
                     if (current_file == "") {
-                        save_as_action.trigger();
+                        save_dialog.open();
                     } else {
                         Julia.save(current_file);
                     }
@@ -100,17 +132,7 @@ ApplicationWindow {
                 id: clear_action
                 text: qsTr("Clear")
                 onTriggered: {
-                    // TODO: confirm dialog
-                    models.agents.clear();
-                    models.actions.clear();
-                    models.variables.clear();
-                    models.triggers.clear();
-                    models.locations.clear();
-                    models.edges.clear();
-                    models.queries.clear();
-                    config.max_steps = "";
-                    config.time_bound = "";
-                    config.state_formula = "";
+                    clear_dialog.open();
                 }
             }
 
@@ -357,7 +379,9 @@ ApplicationWindow {
                                 model.flow.removeRow(index);
                             }
                             function onVariableRenamed(index, name) {
-                                model.flow.setData(model.flow.index(index, 0), name, roles.name);
+                                if (model.flow) {
+                                    model.flow.setData(model.flow.index(index, 0), name, roles.name);
+                                }
                             }
                         }
                     }
@@ -421,7 +445,9 @@ ApplicationWindow {
                                 model.jump.removeRow(index);
                             }
                             function onVariableRenamed(index, name) {
-                                model.jump.setData(model.jump.index(index, 0), name, roles.name);
+                                if (model.jump) {
+                                    model.jump.setData(model.jump.index(index, 0), name, roles.name);
+                                }
                             }
                         }
                     }
@@ -496,30 +522,93 @@ ApplicationWindow {
 
     }
 
-    FileDialog {
-        id: save_dialog
-        title: "Select a location to save the HyTrig file"
-        
-        fileMode: FileDialog.SaveFile
-        nameFilters: ["HyTrig files (*.hytrig)"]
-        defaultSuffix: "hytrig"
+    // TODO: refactor dialogs
+
+    MessageDialog {
+        id: new_dialog
+        title: "Save current changes?"
+        // TODO: style message dialog
+
         onAccepted: {
-            Julia.save(selectedFile.toString());
-            current_file = selectedFile.toString();
+            if (current_file == "") {
+                new_dialog_save.open();
+            } else {
+                Julia.save(current_file);
+                clear();
+                current_file = "";
+            }
+        }
+        onRejected: {
+            clear();
+            current_file = "";
+        }
+    }
+
+    SaveDialog {
+        id: new_dialog_save
+        
+        action: function(x) {
+            clear();
+            current_file = "";
+        }
+    }
+
+    SaveDialog {
+        id: save_dialog
+        
+        action: function(x) {
+            current_file = x;
+        }
+    }
+
+    MessageDialog {
+        id: load_dialog
+        title: "Save current changes?"
+        // TODO: style message dialog
+
+        onAccepted: {
+            if (current_file == "") {
+                load_dialog_save.open();
+            } else {
+                Julia.save(current_file);
+                load_dialog_load.open();
+            }
+        }
+        onRejected: {
+            load_dialog_load.open();
+        }
+    }
+
+    SaveDialog {
+        id: load_dialog_save
+        
+        action: function(x) {
+            load_dialog_load.open();
         }
     }
 
     FileDialog {
-        id: load_dialog
+        id: load_dialog_load
         title: "Select a HyTrig file to load"
 
         fileMode: FileDialog.OpenFile
+        modality: Qt.ApplicationModal
         // TODO: load and save all existing jsons
         // nameFilters: ["HyTrig files (*.hytrig)"]
         defaultSuffix: "hytrig"
         onAccepted: {
-            Julia.load(selectedFile.toString());
+            load(selectedFile.toString());
             current_file = selectedFile.toString();
+        }
+    }
+
+    MessageDialog {
+        id: clear_dialog
+        title: "Are you sure?"
+        // TODO: style message dialog
+
+        onAccepted: {
+            clear();
         }
     }
 
