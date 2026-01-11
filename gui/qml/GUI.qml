@@ -69,7 +69,6 @@ ApplicationWindow {
         edge_tab.model = models.edges;
         query_tab.model = [];
         query_tab.model = models.queries;
-        // TODO: reset termination conditions
     }
 
     menuBar: MenuBar {

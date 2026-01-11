@@ -17,9 +17,9 @@ include("src/parsers/syntax_parsers/parser.jl")
 # Initialize models
 
 config = JuliaPropertyMap()
-config["max_steps"] = ""
-config["time_bound"] = ""
-config["state_formula"] = ""
+config["max_steps"] = "10"
+config["time_bound"] = "133.7"
+config["state_formula"] = "!location"
 
 roles = JuliaPropertyMap()
 
@@ -142,8 +142,20 @@ function load(path::QString)
     load_elements("actions", QAction, action_list)
     load_elements("variables", QVariable, variable_list)
     load_elements("triggers", QTrigger, trigger_list)
-    # load_elements("locations", QLocation, location_list)
-    # load_elements("edges", QEdge, edge_list)
+    for loc in data["locations"]
+        flow_list::Vector{QFlow} = Vector{QFlow}()
+        for flow in loc["flow"]
+            push!(flow_list, StructTypes.constructfrom(QFlow, flow))
+        end
+        push!(location_list, QLocation(loc["name"], loc["initial"], loc["invariant"], JuliaItemModel(flow_list)))
+    end
+    for edge in data["edges"]
+        jump_list::Vector{QJump} = Vector{QJump}()
+        for jump in edge["jump"]
+            push!(jump_list, StructTypes.constructfrom(QJump, jump))
+        end
+        push!(edge_list, QEdge(edge["source"], edge["target"], edge["guard"], edge["agent"], edge["action"], JuliaItemModel(jump_list)))
+    end
     load_elements("queries", QQuery, query_list)
 
     config["max_steps"] = data["config"]["max_steps"]
