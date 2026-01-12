@@ -2,6 +2,7 @@ include("src/packages.jl")
 include("src/model_checking/hgt/build_and_evaluate.jl")
 include("src/parsers/parse_hgt_game.jl")
 include("src/parsers/parse_monotic_game.jl")
+include("src/game_semantics/zone_semantics/zone.jl")
 
 using Dates
 
@@ -35,7 +36,10 @@ function READ_USER_FILE()
             game, termination_conditions, queries, queries_text = parse_hgt_game(file_name)
         else
             game, termination_conditions, queries, queries_text = parse_mhg_game(file_name)
-
+            println(str(initial_zone(game)))
+            for edge in game.initial_location.edges
+               println(str(edge_time_interval(initial_zone(game), edge))) 
+            end
             return
         end
         println("\n--- SUCCESS ---")
@@ -45,7 +49,12 @@ function READ_USER_FILE()
 
         t1 = time();
 
-        results, game_tree = evaluate_queries(game, termination_conditions, queries)
+        if game_type == 1
+            results, game_tree = evaluate_queries(game, termination_conditions, queries)
+        else
+            print(initial_zone)
+            return
+        end
 
         t2 = time();
 

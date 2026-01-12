@@ -4,7 +4,7 @@ include("aliases.jl")
 abstract type ExprLike end
 
 struct Const <: ExprLike
-    value::Float64
+    value::Real
 end
 
 struct Var <: ExprLike
@@ -72,7 +72,7 @@ struct Max <: ExprLike
 end
 
 
-function evaluate(expr::ExprLike, valuation::Valuation)::Float64
+function evaluate(expr::ExprLike, valuation::Valuation)::Real
     @match expr begin
         Const(value) => round5(value)
         Var(name) => round5(valuation[name])
@@ -158,7 +158,7 @@ if !isdefined(Main, :Assignment)
 end
 
 function is_closed(assignment::Assignment)::Tuple{Bool, Valuation}
-    valuation = OrderedDict{Variable, Float64}()
+    valuation = OrderedDict{Variable, Real}()
     changed = true
     while changed && ! (Set(keys(assignment)) ⊆ Set(keys(valuation)))
         changed = false

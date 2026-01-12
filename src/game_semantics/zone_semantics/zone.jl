@@ -1,12 +1,31 @@
-include("../../game_syntax/mhg/edge.jl")
+include("../../game_syntax/mhg/game.jl")
 
 struct Zone
     location::Location
     assignment::IntervalAssignment
 end
 
-function time_to_invariant(zone::Zone, max_location_assignment::IntervalAssignment)::Float64
-    times = Dict{Variable, Float64}()
+function initial_zone(game::MHG_Game)::Zone
+    Zone(game.initial_location, 
+                  game.initial_valuation)
+end
+
+# redefine comparison
+Base.:(==)(x::Zone, y::Zone) = (
+    x.location.name == y.location.name &&
+    all(x_interval == y.interval for (var, x_interval) in x.assignment)
+)
+
+function str(zone::Zone)::String
+    text = String(zone.location.name)
+    for (var, interval) in zone.assignment
+        text *= "\n   $var -> $(str(interval))"
+    end
+    text
+end
+
+function time_to_invariant(zone::Zone, max_location_assignment::IntervalAssignment)::Real
+    times = Dict{Variable, Real}()
     for (var, max_interval) in max_location_assignment
         flow = zone.location.flow[var]
         if monoton_interval(flow) == positive
@@ -58,17 +77,61 @@ function zone_lift(zone::Zone)::Zone
     return Zone(zone.location, new_assignment)
 end
 
-
-function zone_shift(zone::Zone, edge::Edge)::Pair(Interval, Zone)
+function edge_time_interval(zone, edge)::Pair{Interval, IntervalAssignment}
     target_invariant_after_jump = strip_variables(edge.target_location.invariant, keys(edge.jump))
     max_edge_assignment = constraint_to_assignment(RectAnd(RectAnd(zone.location.invariant, edge.guard), target_invariant_after_jump), keys(zone.assignment))
+    times = Interval[]
+    for (var, interval) in zone.assignment
+        flow = zone.location.flow[var] 
+        if flow.right > 0
+            minimum_time =  max(0, (max_edge_assignment[var].left - interval.right) / flow.right) 
+        elseif flow.left < 0
+            minimum_time = max(0, (max_edge_assignment[var].right - interval.left) / flow.left)
+        else    
+            if is_empty(intersection(max_edge_assignment[var], interval)) 
+                minimum_time =  Inf
+            else 
+                minimum_time = 0
+            end 
+        end
+        if flow.left > 0
+            maximum_time =  max(0, (max_edge_assignment[var].right - interval.left) / flow.left) 
+        elseif flow.right < 0
+            maximum_time = max(0, (max_edge_assignment[var].left - interval.right) / flow.right)
+        else    
+            if is_empty(intersection(max_edge_assignment[var], interval)) 
+                maximum_time =  Inf
+            else 
+                maximum_time = 0
+            end 
+        end
+        push!(times, Interval(minimum_time, true, maximum_time, true))
+    end
+    edge_time = intersection(times)
+    edge_assignment = IntervalAssignment()
+    for (var, interval) in zone.assignment
+        var_interval = Interval(interval.left + zone.location.flow[var].left * edge_time.left, true, interval.right + zone.location.flow[var].right * edge_time.right, true)
+        edge_assignment[var] = intersection(var_interval, max_edge_assignment[var])
+    end
+    return (edge_time => edge_assignment)
+end
 
-    edge_time_interval = Interval(0,true,0,true) # edge_time_interval(zone (z0), max_edge_assignment)
+function zone_shift(zone::Zone, edge::Edge)::Pair{Interval, Zone}
 
-    after_edge_assignement = IntervalAssignment() # if x in jump -> x => jump, else minimal interval of (x within the time interval & max_edge_assignment)
+    edge_time, edge_assignment = edge_time_interval(zone, edge)
 
-    shifted_zone = Zone(edge.target_location, after_edge_assignement)
-    return (edge_time_interval => shifted_zone)
+    after_edge_assignment = IntervalAssignment()
+    
+    for (var, interval) in edge_assignment
+        if var in keys(edge.jump)
+            after_edge_assignment[var] = edge.jump[var]
+        else
+            after_edge_assignment[var] = interval
+        end
+    end
+
+    shifted_zone = Zone(edge.target_location, after_edge_assignment)
+    return (edge_time => shifted_zone)
 end
 
 

@@ -4,7 +4,7 @@ include("../../game_syntax/hgt/game.jl")
 struct Configuration <: State
     location::Location
     valuation::Valuation
-    global_clock::Float64
+    global_clock::Real
 end
 
 function initial_configuration(game::HGT_Game)::Configuration

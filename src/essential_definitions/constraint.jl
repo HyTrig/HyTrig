@@ -253,36 +253,36 @@ function strip_variables(constr::RectConstr, variables)::RectConstr
 end
 
 function constraint_to_assignment(constr::RectConstr, variables)::IntervalAssignment
-    assignement = OrderedDict(var => Interval(-Inf, true, Inf, true) for var in variables)
-    return _constraint_to_assignment(constr, assignement)
+    assignment = OrderedDict(var => Interval(-Inf, true, Inf, true) for var in variables)
+    return _constraint_to_assignment(constr, assignment)
 end
 
 function _constraint_to_assignment(constr::RectConstr, assignment::IntervalAssignment)::IntervalAssignment
     @match constr begin
         RectTrue() => assignment
         RectLess(var, val) => begin
-            if val.value <= assignment[var.name].right
-                assignment[var.name] = Interval(assignment[var.name].left, assignment[var.name].left_open, val.value, true)
+            if val <= assignment[var].right
+                assignment[var] = Interval(assignment[var].left, assignment[var].left_open, val, true)
             end
         end
         RectLessEq(var, val) => begin
-            if val.value < assignment[var.name].right
-                assignment[var.name] = Interval(assignment[var.name].left, assignment[var.name].left_open, val.value, false)
+            if val < assignment[var].right
+                assignment[var] = Interval(assignment[var].left, assignment[var].left_open, val, false)
             end
         end
         RectGrt(var, val) => begin
-            if val.value >= assignment[var.name].left
-                assignment[var.name] = Interval(val.value, true, assignment[var.name].right, assignment[var.name].right_open)
+            if val >= assignment[var].left
+                assignment[var] = Interval(val, true, assignment[var].right, assignment[var].right_open)
             end
         end
         RectGrtEq(var, val) => begin
-            if val.value > assignment[var.name].left
-                assignment[var.name] = Interval(val.value, false, assignment[var.name].right, assignment[var.name].right_open)
+            if val > assignment[var].left
+                assignment[var] = Interval(val, false, assignment[var].right, assignment[var].right_open)
             end
         end
         RectEq(var, val) => begin
-            if val.value > assignment[var.name].left
-                assignment[var.name] = Interval(val.value, false, val.value, false)
+            if val > assignment[var].left
+                assignment[var] = Interval(val, false, val, false)
             end
         end
         RectAnd(left, right) => _constraint_to_assignment(right, _constraint_to_assignment(left, assignment))

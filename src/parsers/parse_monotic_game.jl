@@ -7,7 +7,7 @@ function parse_interval(interval_text::String)::Interval
     left_open = interval_text[1] == "("
     right_open = interval_text[end] == ")"
     content = interval_text[2:end-1]
-    numbers = [tryparse(Float64, number) for number in split(content, ',')]
+    numbers = [tryparse(Real, number) for number in split(content, ',')]
     left = numbers[1]
     right = numbers[2]
     Interval(left, left_open, right, right_open)
@@ -38,6 +38,11 @@ function parse_mhg_game(json_file::String)
             flow::IntervalAssignment = IntervalAssignment()
             for reassinment in loc["flow"]
                 flow[first(keys(reassinment))] = parse_interval(first(values(reassinment)))
+            end
+            for (var, _) in initial_valuation
+                if !(var in keys(flow))
+                    flow[var] = Interval(0, false, 0, false)
+                end
             end
             location = MHG_Location(name, invariant, flow)
             if haskey(loc, "initial") && loc["initial"]
@@ -74,7 +79,7 @@ function parse_mhg_game(json_file::String)
         game = MHG_Game(locations, initial_location, initial_valuation, agents, actions, edges)
 
         termination_conditions = Termination_Conditions(
-            Float64(FileDict["termination-conditions"]["time-bound"]),
+            Real(FileDict["termination-conditions"]["time-bound"]),
             Int64(FileDict["termination-conditions"]["max-steps"]),
             parse(FileDict["termination-conditions"]["state-formula"], Bindings(agents_names, locations_names, variables), state)
         )

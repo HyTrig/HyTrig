@@ -12,7 +12,7 @@ function parse_hgt_game(json_file::String)
         agents = Vector{Agent}([Symbol(agent) for agent in GameDict["agents"]])
         agents_names = [string(agent) for agent in GameDict["agents"]]
         actions = Vector{Action}([Symbol(action) for action in GameDict["actions"]])
-        initial_valuation::Valuation = OrderedDict{Symbol, Float64}()
+        initial_valuation::Valuation = OrderedDict{Symbol, Real}()
         if ! isempty(GameDict["initial_valuation"])
             initial_valuation = OrderedDict(first(keys(init)) => first(values(init)) for init in GameDict["initial_valuation"])
         end
@@ -66,7 +66,7 @@ function parse_hgt_game(json_file::String)
         game = HGT_Game(locations, initial_location, initial_valuation, agents, actions, edges, triggers)
 
         termination_conditions = Termination_Conditions(
-            Float64(FileDict["termination-conditions"]["time-bound"]),
+            Real(FileDict["termination-conditions"]["time-bound"]),
             Int64(FileDict["termination-conditions"]["max-steps"]),
             parse(FileDict["termination-conditions"]["state-formula"], Bindings(agents_names, locations_names, variables), state)
         )
