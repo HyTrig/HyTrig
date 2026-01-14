@@ -96,7 +96,11 @@ ApplicationWindow {
                 text: qsTr("New")
                 shortcut: "Ctrl+N"
                 onTriggered: {
-                    new_dialog.open();
+                    save_changes_dialog.action = function(x) {
+                        clear();
+                        current_file = "";
+                    };
+                    save_changes_dialog.open();
                 }
             }
 
@@ -105,7 +109,10 @@ ApplicationWindow {
                 text: qsTr("Open")
                 shortcut: "Ctrl+O"
                 onTriggered: {
-                    load_dialog.open();
+                    save_changes_dialog.action = function(x) {
+                        load_dialog.open();
+                    };
+                    save_changes_dialog.open();
                 }
             }
 
@@ -116,6 +123,7 @@ ApplicationWindow {
                 text: qsTr("Save")
                 shortcut: "Ctrl+S"
                 onTriggered: {
+                    save_dialog.action = function(x) {};
                     if (current_file == "") {
                         save_dialog.open();
                     } else {
@@ -129,6 +137,7 @@ ApplicationWindow {
                 text: qsTr("Save as")
                 shortcut: "Ctrl+Shift+S"
                 onTriggered: {
+                    save_dialog.action = function(x) {};
                     save_dialog.open();
                 }
             }
@@ -544,93 +553,86 @@ ApplicationWindow {
 
     }
 
-    // TODO: refactor dialogs
-
     MessageDialog {
-        id: new_dialog
-        title: "Save current changes?"
+        id: clear_dialog
+        title: qsTr("Are you sure?")
         // TODO: style message dialog
 
         onAccepted: {
-            if (current_file == "") {
-                new_dialog_save.open();
-            } else {
-                Julia.save(current_file);
-                clear();
-                current_file = "";
-            }
-        }
-        onRejected: {
             clear();
-            current_file = "";
-        }
-    }
-
-    SaveDialog {
-        id: new_dialog_save
-        
-        action: function(x) {
-            clear();
-            current_file = "";
-        }
-    }
-
-    SaveDialog {
-        id: save_dialog
-        
-        action: function(x) {
-            current_file = x;
         }
     }
 
     MessageDialog {
-        id: load_dialog
-        title: "Save current changes?"
-        // TODO: style message dialog
 
-        onAccepted: {
-            if (current_file == "") {
-                load_dialog_save.open();
-            } else {
-                Julia.save(current_file);
-                load_dialog_load.open();
+        id: save_changes_dialog
+
+        property var action: function(x) {}
+
+        title: qsTr("Save File?")
+        text: current_file == "" ? qsTr("Do you want to save changes?") : qsTr("Do you want to save changes to ") + current_file + qsTr("?")
+        informativeText: qsTr("Unsaved changes will be lost.")
+
+        buttons: MessageDialog.Save | MessageDialog.Discard | MessageDialog.Cancel
+
+        onButtonClicked: (button, role) => {
+            switch (button) {
+                case MessageDialog.Save:
+                    if (current_file == "") {
+                        save_dialog.action = action;
+                        save_dialog.open();
+                    } else {
+                        Julia.save(current_file);
+                        action(current_file);
+                    }
+                    break;
+                case MessageDialog.Discard:
+                    action(current_file);
+                    break;
+                case MessageDialog.Cancel:
+                    close();
+                    break;
             }
         }
-        onRejected: {
-            load_dialog_load.open();
-        }
-    }
 
-    SaveDialog {
-        id: load_dialog_save
-        
-        action: function(x) {
-            load_dialog_load.open();
-        }
     }
 
     FileDialog {
-        id: load_dialog_load
-        title: "Select a HyTrig file to load"
+
+        id: save_dialog
+
+        property var action: function(x) {}
+        
+        title: qsTr("Select a location to save the HyTrig file")
+        
+        fileMode: FileDialog.SaveFile
+        modality: Qt.ApplicationModal
+        nameFilters: ["HyTrig files (*.hytrig)"]
+        defaultSuffix: "hytrig"
+
+        onAccepted: {
+            Julia.save(selectedFile.toString());
+            action(selectedFile.toString());
+        }
+
+    }
+
+    FileDialog {
+
+        id: load_dialog
+
+        title: qsTr("Select a HyTrig file to load")
 
         fileMode: FileDialog.OpenFile
         modality: Qt.ApplicationModal
         nameFilters: ["HyTrig files (*.hytrig)"]
         defaultSuffix: "hytrig"
+
         onAccepted: {
             load(selectedFile.toString());
             current_file = selectedFile.toString();
         }
-    }
 
-    MessageDialog {
-        id: clear_dialog
-        title: "Are you sure?"
-        // TODO: style message dialog
-
-        onAccepted: {
-            clear();
-        }
     }
 
 }
