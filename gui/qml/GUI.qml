@@ -57,18 +57,30 @@ ApplicationWindow {
         current_file = file;
         action_tab.model = [];
         action_tab.model = models.actions;
+        tabs.currentIndex = 0;
         agent_tab.model = [];
         agent_tab.model = models.agents;
+        tabs.currentIndex = 1;
         variable_tab.model = [];
         variable_tab.model = models.variables;
+        tabs.currentIndex = 2;
         trigger_tab.model = [];
         trigger_tab.model = models.triggers;
+        tabs.currentIndex = 3;
         location_tab.model = [];
         location_tab.model = models.locations;
+        tabs.currentIndex = 4;
         edge_tab.model = [];
         edge_tab.model = models.edges;
+        tabs.currentIndex = 5;
+        termination_conditions_tab.max_steps.editingFinished();
+        termination_conditions_tab.time_bound.editingFinished();
+        termination_conditions_tab.state_formula.editingFinished();
+        tabs.currentIndex = 6;
         query_tab.model = [];
         query_tab.model = models.queries;
+        tabs.currentIndex = 7;
+        tabs.currentIndex = tab_bar.currentIndex;
     }
 
     menuBar: MenuBar {
@@ -175,7 +187,6 @@ ApplicationWindow {
 
     SplitView {
 
-        // TODO: set correct widths for children
         id: tab_content_split
         width: parent.width
         height: parent.height - menu_bar_spacer.height
@@ -195,7 +206,6 @@ ApplicationWindow {
             id: tab_bar
             SplitView.minimumWidth: 100
             SplitView.preferredWidth: 200
-            SplitView.maximumWidth: 300
             height: parent.height
 
             model: ListModel {
@@ -205,8 +215,8 @@ ApplicationWindow {
                 ListElement { name: "Triggers" }
                 ListElement { name: "Locations" }
                 ListElement { name: "Edges" }
-                ListElement { name: "Queries" }
                 ListElement { name: "Term. Conditions" }
+                ListElement { name: "Queries" }
             }
 
             delegate: ItemDelegate {
@@ -239,7 +249,8 @@ ApplicationWindow {
 
                 onClicked: {
                     tab_bar.currentIndex = index;
-                    focus = true;
+                    tabs.currentIndex = index;
+                    forceActiveFocus();
                 }
 
             }
@@ -372,7 +383,7 @@ ApplicationWindow {
                         Connections {
                             target: main_window
                             function onVariableAdded() {
-                                model.flow.appendRow({variable: "", expression: ""});
+                                model.flow.appendRow({variable: "", expression: "0"});
                             }
                             function onVariableRemoved(index) {
                                 model.flow.removeRow(index);
@@ -445,11 +456,20 @@ ApplicationWindow {
                             }
                             function onVariableRenamed(index, name) {
                                 if (model.jump) {
+                                    if (model.jump.data(model.jump.index(index, 0), roles.name) == model.jump.data(model.jump.index(index, 0), roles.expression)) {
+                                        model.jump.setData(model.jump.index(index, 0), name, roles.expression);
+                                    }
                                     model.jump.setData(model.jump.index(index, 0), name, roles.name);
                                 }
                             }
                         }
                     }
+
+                }
+
+                TerminationConditions {
+
+                    id: termination_conditions_tab
 
                 }
 
@@ -472,12 +492,6 @@ ApplicationWindow {
 
                 }
 
-                TerminationConditions {
-
-                    id: termination_conditions_tab
-
-                }
-
             }
 
         }
@@ -487,15 +501,24 @@ ApplicationWindow {
             height: parent.height
             SplitView.minimumWidth: 200
             SplitView.preferredWidth: 200
-            SplitView.maximumWidth: 400
 
-            // TODO: selector title
+            Title {
+
+                id: game_type_title
+                width: parent.width
+                anchors.top: parent.top
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.margins: 10
+                text: "Game Type"
+
+            }
 
             ComboBox {
 
                 id: verification_mode_selector
                 width: parent.width
-                anchors.top: parent.top
+                anchors.top: game_type_title.bottom
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.margins: 10
@@ -592,8 +615,7 @@ ApplicationWindow {
 
         fileMode: FileDialog.OpenFile
         modality: Qt.ApplicationModal
-        // TODO: load and save all existing jsons
-        // nameFilters: ["HyTrig files (*.hytrig)"]
+        nameFilters: ["HyTrig files (*.hytrig)"]
         defaultSuffix: "hytrig"
         onAccepted: {
             load(selectedFile.toString());

@@ -56,6 +56,7 @@ TextField {
 
     // TODO: Fix forced focus on first list element.
     Component.onCompleted: {
+        Material.foreground = accepted_color;
         forceActiveFocus();
     }
 

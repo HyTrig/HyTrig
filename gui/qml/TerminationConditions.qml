@@ -10,9 +10,9 @@ import QtQuick.Controls.Material
 
 Rectangle {
 
-    property alias max_steps: max_steps_field.text
-    property alias time_bound: time_bound_field.text
-    property alias state_formula: state_formula_field.text
+    property alias max_steps: max_steps_field
+    property alias time_bound: time_bound_field
+    property alias state_formula: state_formula_field
 
     color: Material.background
     border.width: 1
@@ -75,8 +75,6 @@ Rectangle {
                                     text: qsTr("Max Steps")
                                     horizontalAlignment: Text.AlignHCenter
                                 }
-
-                                // TODO: make text green on loading
 
                                 RegexField {
                                     id: max_steps_field
