@@ -51,12 +51,27 @@ models["queries"] = JuliaItemModel(query_list)
 
 # Initialize QML functions
 
-# TODO: write docs
+"""
+    name_available(name::QString)::Bool
+
+Check whether a name is available (not used by any action, agent, variable or location).
+
+# Arguments
+- `name::QString`: the name to check
+"""
 function name_available(name::QString)::Bool
     return !any(v -> v.name == name, [action_list; agent_list; variable_list; location_list])
 end
 
-# TODO: write docs
+"""
+    is_formula(text::QString, level::QString)::Bool
+
+Check whether a formula is valid at a given parse level.
+
+# Arguments
+- `text::QString`: the formula as a string
+- `level::QString`: the parse level as a string (`expression`, `constraint`, `state` or `strategy`)
+"""
 function is_formula(text::QString, level::QString)::Bool
     bindings::Bindings = Bindings(
         [x.name for x in agent_list],
@@ -71,7 +86,14 @@ function is_formula(text::QString, level::QString)::Bool
     end
 end
 
-# TODO: write docs
+"""
+    save(path::QString)
+
+Save the current game to a file given by `path`.
+
+# Arguments
+- `path::QString`: the file path to save to
+"""
 function save(path::QString)
     data::Dict{String,Union{Vector,Dict}} = Dict([
         "agents" => agent_list,
@@ -119,7 +141,14 @@ function save(path::QString)
     end
 end
 
-# TODO: write docs
+"""
+    load(path::QString)
+
+Load a game from a file given by `path`.
+
+# Arguments
+- `path::QString`: the file path to load from
+"""
 function load(path::QString)
     function load_elements(name::String, type::Type, list::Vector)
         for element in data[name]

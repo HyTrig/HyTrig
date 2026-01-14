@@ -1,7 +1,7 @@
 using JSON3
 include("syntax_parsers/parser.jl")
 
-
+# TODO: load .hytrig files
 function parse_game(json_file::String)
     open(json_file,"r") do f
         json_string = read(json_file, String)
