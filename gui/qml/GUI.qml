@@ -554,13 +554,19 @@ ApplicationWindow {
     }
 
     MessageDialog {
+
         id: clear_dialog
-        title: qsTr("Are you sure?")
-        // TODO: style message dialog
+
+        title: qsTr("Clear all data?")
+        text: qsTr("Do you really want to clear all data?")
+        informativeText: qsTr("This action cannot be undone.")
+
+        buttons: MessageDialog.Yes | MessageDialog.No
 
         onAccepted: {
             clear();
         }
+
     }
 
     MessageDialog {
