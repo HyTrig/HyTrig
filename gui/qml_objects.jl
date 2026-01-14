@@ -1,9 +1,34 @@
 """
-    TODO
+    QML Objects
+
+This file defines the QML objects used in the HyTrig GUI.
+
+# Types:
+- `QAction`: Represents an action in a hybrid game.
+- `QAgent`: Represents an agent in a hybrid game.
+- `QVariable`: Represents a variable in a hybrid game.
+- `QTrigger`: Represents a trigger in a hybrid game.
+- `QLocation`: Represents a location in a hybrid game.
+- `QFlow`: Represents a flow in a location.
+- `QEdge`: Represents an edge in a hybrid game.
+- `QJump`: Represents a jump in an edge.
+- `QQuery`: Represents a query in a hybrid game.
+
+# Authors:
+- Moritz Maas
 """
 
 using JSON3, StructTypes
 
+"""
+    QAction
+
+An action in a hybrid game.
+
+    QAction(name::String)
+
+Create a new action with the given name.
+"""
 mutable struct QAction
     name::String
 end
@@ -12,6 +37,15 @@ function QAction()::QAction
     return QAction("")
 end
 
+"""
+    QAgent
+
+An agent in a hybrid game.
+
+    QAgent(name::String)
+
+Create a new agent with the given name.
+"""
 mutable struct QAgent
     name::String
 end
@@ -20,6 +54,15 @@ function QAgent()::QAgent
     return QAgent("")
 end
 
+"""
+    QVariable
+
+A variable in a hybrid game.
+
+    QVariable(name::String, expression::String)
+
+Create a new variable with the given name and expression.
+"""
 mutable struct QVariable
     name::String
     expression::String
@@ -29,6 +72,15 @@ function QVariable()::QVariable
     return QVariable("", "")
 end
 
+"""
+    QTrigger
+
+A trigger in a hybrid game.
+
+    QTrigger(agent::String, trigger::String)
+
+Create a new trigger with the given agent and trigger.
+"""
 mutable struct QTrigger
     agent::String
     trigger::String
@@ -38,6 +90,11 @@ function QTrigger()::QTrigger
     return QTrigger("", "")
 end
 
+"""
+    QLocation
+
+A location in a hybrid game.
+"""
 mutable struct QLocation
     name::String
     initial::Bool
@@ -49,6 +106,11 @@ function QLocation()::QLocation
     return QLocation("", true, "", JuliaItemModel(QFlow[]))
 end
 
+"""
+    QLocation(name::String, invariant::String, initial::Bool, flow::AbstractArray)
+
+Create a new location with the given name, invariant, initial flag, and flow.
+"""
 function QLocation(name::String, invariant::String, initial::Bool, flow::AbstractArray)::QLocation
     return QLocation(name, invariant, initial, JuliaItemModel([QFlow(QML.value(f)["variable"], QML.value(f)["expression"]) for f in flow]))
 end
@@ -57,6 +119,15 @@ function setflow!(model::Vector{QLocation}, flow::AbstractArray, row::Int32, col
     model[row].flow = JuliaItemModel([QFlow(QML.value(f)["variable"], QML.value(f)["expression"]) for f in flow])
 end
 
+"""
+    QFlow
+
+A flow in a location.
+
+    QFlow(variable::String, expression::String)
+
+Create a new flow with the given variable and expression.
+"""
 mutable struct QFlow
     variable::String
     expression::String
@@ -66,6 +137,12 @@ function QFlow()::QFlow
     return QFlow("", "")
 end
 
+
+"""
+    QEdge
+
+An edge in a hybrid game.
+"""
 mutable struct QEdge
     source::String
     target::String
@@ -79,6 +156,11 @@ function QEdge()::QEdge
     return QEdge("", "", "", "", "", JuliaItemModel(QJump[]))
 end
 
+"""
+    QEdge(source::String, target::String, guard::String, agent::String, action::String, jump::AbstractArray)
+
+Create a new edge with the given source, target, guard, agent, action, and jump.
+"""
 function QEdge(source::String, target::String, guard::String, agent::String, action::String, jump::AbstractArray)::QEdge
     return QEdge(source, target, guard, agent, action, JuliaItemModel([QJump(QML.value(j)["variable"], QML.value(j)["expression"]) for j in jump]))
 end
@@ -87,6 +169,15 @@ function setjump!(model::Vector{QEdge}, jump::AbstractArray, row::Int32, col::In
     model[row].jump = JuliaItemModel([QJump(QML.value(j)["variable"], QML.value(j)["expression"]) for j in jump])
 end
 
+"""
+    QJump
+
+A jump in an edge.
+
+    QJump(variable::String, expression::String)
+
+Create a new jump with the given variable and expression.
+"""
 mutable struct QJump
     variable::String
     expression::String
@@ -96,6 +187,15 @@ function QJump()::QJump
     return QJump("", "")
 end
 
+"""
+    QQuery
+
+A query in a hybrid game.
+
+    QQuery(formula::String)
+
+Create a new query with the given formula.
+"""
 mutable struct QQuery
     formula::String
 end
