@@ -142,54 +142,62 @@ function save(path::QString)
 end
 
 """
-    load(path::QString)
+    load(path::QString)::String
 
 Load a game from a file given by `path`.
 
 # Arguments
 - `path::QString`: the file path to load from
 """
-function load(path::QString)
+function load(path::QString)::String
     function load_elements(name::String, type::Type, list::Vector)
+        empty!(list)
         for element in data[name]
             push!(list, StructTypes.constructfrom(type, element))
         end
     end
-    empty!(action_list)
-    empty!(agent_list)
-    empty!(variable_list)
-    empty!(trigger_list)
-    empty!(location_list)
-    empty!(edge_list)
-    empty!(query_list)
 
-    data = open(replace(String(path), r"^(file:\/{2})" => ""), "r") do f
-        JSON3.read(f)
-    end
+    data = Dict{String,Any}()
 
-    load_elements("agents", QAgent, agent_list)
-    load_elements("actions", QAction, action_list)
-    load_elements("variables", QVariable, variable_list)
-    load_elements("triggers", QTrigger, trigger_list)
-    for loc in data["locations"]
-        flow_list::Vector{QFlow} = Vector{QFlow}()
-        for flow in loc["flow"]
-            push!(flow_list, StructTypes.constructfrom(QFlow, flow))
+    try
+        data = open(replace(String(path), r"^(file:\/{2})" => ""), "r") do f
+            JSON3.read(f)
         end
-        push!(location_list, QLocation(loc["name"], loc["initial"], loc["invariant"], JuliaItemModel(flow_list)))
+    catch e
+        return String(strip(e.msg, ['\n', '\r', ' ']))
     end
-    for edge in data["edges"]
-        jump_list::Vector{QJump} = Vector{QJump}()
-        for jump in edge["jump"]
-            push!(jump_list, StructTypes.constructfrom(QJump, jump))
-        end
-        push!(edge_list, QEdge(edge["source"], edge["target"], edge["guard"], edge["agent"], edge["action"], JuliaItemModel(jump_list)))
-    end
-    load_elements("queries", QQuery, query_list)
 
-    config["max_steps"] = data["config"]["max_steps"]
-    config["time_bound"] = data["config"]["time_bound"]
-    config["state_formula"] = data["config"]["state_formula"]
+    try
+        load_elements("agents", QAgent, agent_list)
+        load_elements("actions", QAction, action_list)
+        load_elements("variables", QVariable, variable_list)
+        load_elements("triggers", QTrigger, trigger_list)
+        empty!(location_list)
+        for loc in data["locations"]
+            flow_list::Vector{QFlow} = Vector{QFlow}()
+            for flow in loc["flow"]
+                push!(flow_list, StructTypes.constructfrom(QFlow, flow))
+            end
+            push!(location_list, QLocation(loc["name"], loc["initial"], loc["invariant"], JuliaItemModel(flow_list)))
+        end
+        empty!(edge_list)
+        for edge in data["edges"]
+            jump_list::Vector{QJump} = Vector{QJump}()
+            for jump in edge["jump"]
+                push!(jump_list, StructTypes.constructfrom(QJump, jump))
+            end
+            push!(edge_list, QEdge(edge["source"], edge["target"], edge["guard"], edge["agent"], edge["action"], JuliaItemModel(jump_list)))
+        end
+        load_elements("queries", QQuery, query_list)
+
+        config["max_steps"] = data["config"]["max_steps"]
+        config["time_bound"] = data["config"]["time_bound"]
+        config["state_formula"] = data["config"]["state_formula"]
+    catch e
+        return "invalid HYTRIG file: Missing key $(e.key)"
+    end
+
+    return ""
 end
 
 # Build and run QML GUI

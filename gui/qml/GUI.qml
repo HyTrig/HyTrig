@@ -53,7 +53,7 @@ ApplicationWindow {
     }
 
     function load(file) {
-        Julia.load(file);
+        var error = Julia.load(file);
         current_file = file;
         action_tab.model = [];
         action_tab.model = models.actions;
@@ -81,6 +81,7 @@ ApplicationWindow {
         query_tab.model = models.queries;
         tabs.currentIndex = 7;
         tabs.currentIndex = tab_bar.currentIndex;
+        return error;
     }
 
     menuBar: MenuBar {
@@ -635,9 +636,26 @@ ApplicationWindow {
         defaultSuffix: "hytrig"
 
         onAccepted: {
-            load(selectedFile.toString());
-            current_file = selectedFile.toString();
+            var error = load(selectedFile.toString());
+            if (error != "") {
+                error_dialog.informativeText = error;
+                error_dialog.open();
+            } else {
+                current_file = selectedFile.toString();
+            }
         }
+
+    }
+
+    MessageDialog {
+
+        id: error_dialog
+
+        title: qsTr("Error")
+        text: qsTr("An error occurred while loading " + current_file + ":")
+        informativeText: ""
+
+        buttons: MessageDialog.Ok
 
     }
 
