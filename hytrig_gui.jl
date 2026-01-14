@@ -7,7 +7,10 @@ This script runs a GUI with QML. The GUI allows to create, edit, save, load and 
 - Moritz Maas
 """
 
-include("gui/packages.jl")
+using Pkg
+
+Pkg.activate(".")
+Pkg.instantiate()
 
 using JSON3, QML, StructTypes
 
