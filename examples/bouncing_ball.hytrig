@@ -1,0 +1,104 @@
+{
+    "agents": [
+        {
+            "name": "A"
+        }
+    ],
+    "locations": [
+        {
+            "name": "falling",
+            "initial": true,
+            "flow": [
+                {
+                    "expression": "spd",
+                    "variable": "pos"
+                },
+                {
+                    "expression": "acc",
+                    "variable": "spd"
+                },
+                {
+                    "expression": "acc",
+                    "variable": "acc"
+                },
+                {
+                    "expression": "dissipation",
+                    "variable": "dissipation"
+                }
+            ],
+            "invariant": "0 <= pos && pos <= 1000 && acc == -10"
+        }
+    ],
+    "queries": [
+        {
+            "formula": "<<A>> F pos < 0 || pos > 1000"
+        },
+        {
+            "formula": "[[A]] G pos >= 0"
+        },
+        {
+            "formula": "[[A]] F pos == 700 && spd > 0"
+        }
+    ],
+    "variables": [
+        {
+            "name": "pos",
+            "expression": "1000"
+        },
+        {
+            "name": "spd",
+            "expression": "0"
+        },
+        {
+            "name": "acc",
+            "expression": "-10"
+        },
+        {
+            "name": "dissipation",
+            "expression": "0.9"
+        }
+    ],
+    "actions": [
+        {
+            "name": "up"
+        }
+    ],
+    "config": {
+        "max_steps": "20",
+        "time_bound": "1000",
+        "state_formula": "pos == 0 && spd^2 < 0.01"
+    },
+    "triggers": [
+        {
+            "agent": "A",
+            "trigger": "pos == 0"
+        }
+    ],
+    "edges": [
+        {
+            "guard": "spd < 0",
+            "source": "falling",
+            "action": "up",
+            "target": "falling",
+            "agent": "A",
+            "jump": [
+                {
+                    "expression": "pos",
+                    "variable": "pos"
+                },
+                {
+                    "expression": "- dissipation * spd",
+                    "variable": "spd"
+                },
+                {
+                    "expression": "acc",
+                    "variable": "acc"
+                },
+                {
+                    "expression": "dissipation",
+                    "variable": "dissipation"
+                }
+            ]
+        }
+    ]
+}
