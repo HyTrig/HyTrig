@@ -11,7 +11,5 @@ ResumableFunctions = "c5292f4c-5179-55e1-98c5-05642aab7184"
 StructTypes = "856f2bd8-1eba-4b0a-8007-ebc267875bd4"
 
 [compat]
-ColorTypes = "0.11"
 CxxWrap = "0.16"
-QML = "0.9"
-julia = "1.6"
+julia = "0.10"
