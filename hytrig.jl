@@ -1,4 +1,8 @@
-include("src/packages.jl")
+using Pkg
+
+Pkg.activate(".")
+Pkg.instantiate()
+
 include("src/parsers/parse_game.jl")
 
 using Dates
