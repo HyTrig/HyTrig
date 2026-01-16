@@ -35,7 +35,7 @@ Rectangle {
             TabTitle {
                 
                 id: tab_title
-                width: parent.width
+                width: parent.widthFTO
                 height: parent.height
                 text: qsTr("Termination Conditions")
 
@@ -52,136 +52,144 @@ Rectangle {
 
                 anchors.fill: parent
                 anchors.margins: 5
+                spacing: 10
 
-                Row {
+                ContentFrame {
 
                     width: parent.width
-                    spacing: 10
+                    content: [
+                        Row {
 
-                    // TODO: reorder content to fit narrow window sizes
+                            width: parent.width
 
-                    ContentFrame {
-
-                        width: (parent.width - 2 * parent.spacing) / 3
-                        content: [
-                            Row {
-
+                            Title {
+                                id: max_steps_title
                                 width: parent.width
-                                spacing: 10
-
-                                Title {
-                                    id: max_steps_title
-                                    height: parent.height
-                                    text: qsTr("Max Steps")
-                                    horizontalAlignment: Text.AlignHCenter
-                                }
-
-                                RegexField {
-                                    id: max_steps_field
-                                    width: parent.width - parent.spacing - max_steps_title.width
-
-                                    text: qsTr(config.max_steps)
-                                    default_text: qsTr("Enter maximum steps")
-                                    error_text: qsTr("Invalid number")
-                                    condition_error_text: qsTr("Invalid number")
-
-                                    regex: /^([1-9]\d*)|0$/
-
-                                    action: function(x) {
-                                        config.max_steps = x;
-                                    }
-                                    condition: function(x) {
-                                        return true;
-                                    }
-                                }
-
+                                height: max_steps_field.height
+                                text: qsTr("Max Steps")
                             }
-                        ]
 
-                    }
+                        },
+                        
+                        Row {
 
-                    ContentFrame {
+                            width: parent.width
 
-                        width: (parent.width - 2 * parent.spacing) / 3
-                        content: [
-                            Row {
-
+                            RegexField {
+                                id: max_steps_field
                                 width: parent.width
-                                spacing: 10
 
-                                Title {
-                                    id: time_bound_title
-                                    height: parent.height
-                                    text: qsTr("Time Bound")
-                                    horizontalAlignment: Text.AlignHCenter
+                                text: qsTr(config.max_steps)
+                                default_text: qsTr("Enter maximum steps")
+                                error_text: qsTr("Invalid number")
+                                condition_error_text: qsTr("Invalid number")
+
+                                regex: /^([1-9]\d*)|0$/
+
+                                action: function(x) {
+                                    config.max_steps = x;
                                 }
-
-                                RegexField {
-                                    id: time_bound_field
-                                    width: parent.width - parent.spacing - time_bound_title.width
-
-                                    text: qsTr(config.time_bound)
-                                    default_text: qsTr("Enter time bound")
-                                    error_text: qsTr("Invalid decimal")
-                                    condition_error_text: qsTr("Invalid decimal")
-
-                                    regex: /^([1-9]\d*(\.\d+)?)|(0(\.\d+)?)$/
-
-                                    action: function(x) {
-                                        config.time_bound = x;
-                                    }
-                                    condition: function(x) {
-                                        return true;
-                                    }
+                                condition: function(x) {
+                                    return true;
                                 }
-
                             }
-                        ]
 
-                    }
-
-                    ContentFrame {
-
-                        width: (parent.width - 2 * parent.spacing) / 3
-                        content: [
-                            Row {
-
-                                width: parent.width
-                                spacing: 10
-
-                                Title {
-                                    id: state_formula_title
-                                    height: parent.height
-                                    text: qsTr("State Formula")
-                                    horizontalAlignment: Text.AlignHCenter
-                                }
-
-                                RegexField {
-                                    id: state_formula_field
-                                    width: parent.width - parent.spacing - state_formula_title.width
-
-                                    text: qsTr(config.state_formula)
-                                    default_text: qsTr("Enter state formula")
-                                    error_text: qsTr("Invalid state formula")
-                                    condition_error_text: qsTr("Invalid state formula")
-
-                                    regex: /^.*$/
-
-                                    action: function(x) {
-                                        config.state_formula = x;
-                                    }
-                                    condition: function(x) {
-                                        return x == config.state_formula || Julia.is_formula(x, "state");
-                                    }
-                                }
-
-                            }
-                        ]
-
-                    }
+                        }
+                    ]
 
                 }
 
+                ContentFrame {
+
+                    width: parent.width
+                    content: [
+                        Row {
+
+                            width: parent.width
+                            spacing: 10
+
+                            Title {
+                                id: time_bound_title
+                                width: parent.width
+                                height: time_bound_field.height
+                                text: qsTr("Time Bound")
+                            }
+                        
+                        },
+                        
+                        Row {
+
+                            width: parent.width
+
+                            RegexField {
+                                id: time_bound_field
+                                width: parent.width
+
+                                text: qsTr(config.time_bound)
+                                default_text: qsTr("Enter time bound")
+                                error_text: qsTr("Invalid decimal")
+                                condition_error_text: qsTr("Invalid decimal")
+
+                                regex: /^([1-9]\d*(\.\d+)?)|(0(\.\d+)?)$/
+
+                                action: function(x) {
+                                    config.time_bound = x;
+                                }
+                                condition: function(x) {
+                                    return true;
+                                }
+                            }
+
+                        }
+                    ]
+
+                }
+
+                ContentFrame {
+
+                    width: parent.width
+                    content: [
+                        Row {
+
+                            width: parent.width
+                            spacing: 10
+
+                            Title {
+                                id: state_formula_title
+                                width: parent.width
+                                height: state_formula_field.height
+                                text: qsTr("State Formula")
+                            }
+
+                        },
+                        
+                        Row {
+
+                            width: parent.width
+
+                            RegexField {
+                                id: state_formula_field
+                                width: parent.width
+
+                                text: qsTr(config.state_formula)
+                                default_text: qsTr("Enter state formula")
+                                error_text: qsTr("Invalid state formula")
+                                condition_error_text: qsTr("Invalid state formula")
+
+                                regex: /^.*$/
+
+                                action: function(x) {
+                                    config.state_formula = x;
+                                }
+                                condition: function(x) {
+                                    return x == config.state_formula || Julia.is_formula(x, "state");
+                                }
+                            }
+
+                        }
+                    ]
+
+                }
 
             }
 
