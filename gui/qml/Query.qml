@@ -36,7 +36,7 @@ ElementFrame {
 
             RegexField {
                 id: query_formula_field
-                width: parent.width - query_formula_label.width - parent.spacing
+                width: verified ? parent.width - query_formula_label.width - query_verified_checkbox.width - 2 * parent.spacing : parent.width - query_formula_label.width - parent.spacing
 
                 text: qsTr(model.formula)
                 default_text: qsTr("Enter strategy")
@@ -51,6 +51,14 @@ ElementFrame {
                 condition: function(x) {
                     return x == model.formula || Julia.is_formula(x, "strategy");
                 }
+            }
+
+            CheckBox {
+                id: query_verified_checkbox
+                height: parent.height
+                visible: verified
+                checked: model.verified
+                enabled: false
             }
 
         }

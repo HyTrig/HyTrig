@@ -198,6 +198,8 @@ Create a new query with the given formula.
 """
 mutable struct QQuery
     formula::String
+    verified::Bool
+    QQuery(formula::String) = new(formula, false)
 end
 
 function QQuery()::QQuery

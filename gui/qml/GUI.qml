@@ -31,6 +31,7 @@ ApplicationWindow {
     Material.primary: Material.Blue
 
     property string current_file: ""
+    property bool verified: false
 
     signal actionRemoved(string name)
     signal agentRemoved(string name)
@@ -154,6 +155,25 @@ ApplicationWindow {
                 text: qsTr("Clear")
                 onTriggered: {
                     clear_dialog.open();
+                }
+            }
+
+            Action {
+                id: verify_action
+                text: qsTr("Verify")
+                onTriggered: {
+                    var error = Julia.verify();
+                    if (error != "") {
+                        error_dialog.text = qsTr("An error occurred during verification:");
+                        error_dialog.informativeText = error;
+                        error_dialog.open();
+                    } else {
+                        verified = true;
+                        query_tab.model = [];
+                        query_tab.model = models.queries;
+                        tab_bar.currentIndex = 7;
+                        tabs.currentIndex = 7;
+                    }
                 }
             }
 
@@ -548,6 +568,10 @@ ApplicationWindow {
 
                 text: "Verify"
 
+                onClicked: {
+                    verify_action.trigger();
+                }
+
             }
 
         }
@@ -638,6 +662,7 @@ ApplicationWindow {
         onAccepted: {
             var error = load(selectedFile.toString());
             if (error != "") {
+                error_dialog.text = qsTr("An error occurred while loading " + selectedFile.toString() + ":");
                 error_dialog.informativeText = error;
                 error_dialog.open();
             } else {
@@ -652,8 +677,8 @@ ApplicationWindow {
         id: error_dialog
 
         title: qsTr("Error")
-        text: qsTr("An error occurred while loading " + current_file + ":")
-        informativeText: ""
+        text: qsTr("An error occurred:")
+        informativeText: qsTr("")
 
         buttons: MessageDialog.Ok
 

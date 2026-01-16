@@ -203,11 +203,81 @@ function load(path::QString)::String
     return ""
 end
 
+# TODO: write docs
+function verify()::String
+    bindings::Bindings = Bindings(
+        [x.name for x in agent_list],
+        [x.name for x in location_list],
+        [x.name for x in variable_list]
+    )
+    # TODO: error handling
+    locations = Vector{Location}([
+        Location(
+            Symbol(x.name),
+            parse(x.invariant, bindings, constraint),
+            ReAssignment(
+                Variable(x.flow[i].variable) => parse(x.flow[i].expression, bindings, expression) for i in 1:length(x.flow)
+            )
+        ) for x in location_list
+    ])
+    initial_valuation = Valuation(
+        Variable(x.name) => Base.parse(Float64, x.expression) for x in variable_list
+    )
+    edges = Vector{Edge}([
+        Edge(
+            Symbol(i),
+            locations[findfirst(loc -> loc.name == Symbol(edge.source), locations)],
+            locations[findfirst(loc -> loc.name == Symbol(edge.target), locations)],
+            parse(edge.guard, bindings, constraint),
+            Decision(
+                Agent(edge.agent),
+                Action(edge.action)
+            ),
+            ReAssignment(
+                Variable(edge.jump[j].variable) => parse(edge.jump[j].expression, bindings, expression) for j in 1:length(edge.jump)
+            )
+        ) for (i, edge) in enumerate(edge_list)
+    ])  
+    triggers = Dict{Agent, Vector{Constraint}}()
+    for x in trigger_list
+        agent = Agent(x.agent)
+        if !haskey(triggers, agent)
+            triggers[agent] = Vector{Constraint}()
+        end
+        push!(triggers[agent], parse(x.trigger, bindings, constraint))
+    end    
+    game = Game(
+        locations,
+        locations[findfirst(loc -> loc.initial, location_list)],
+        initial_valuation,
+        [Agent(x.name) for x in agent_list],
+        [Action(x.name) for x in action_list],
+        edges,
+        triggers,
+        true
+    )
+    results::Vector{Bool}, game_tree::Node = evaluate_queries(
+        game,
+        Termination_Conditions(
+            Base.parse(Float64, config["time_bound"]),
+            Base.parse(Int64, config["max_steps"]),
+            parse(config["state_formula"], bindings, state)
+        ),
+        Vector{Strategy_Formula}([parse(query.formula, bindings, strategy) for query in query_list])
+    )
+
+    for (i, query) in enumerate(query_list)
+        query.verified = results[i]
+    end
+
+    return ""
+end
+
 # Build and run QML GUI
 
 qml_file = joinpath(dirname(@__FILE__), "gui", "qml", "GUI.qml")
 
-@qmlfunction name_available is_formula save load
+@qmlfunction name_available is_formula save load verify
 
 loadqml(
     qml_file,
