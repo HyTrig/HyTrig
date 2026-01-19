@@ -21,7 +21,7 @@ TextField {
     property color accepted_color: Material.color(Material.Green)
     property color error_color: Material.color(Material.Red)
 
-    property bool edited: false
+    property bool edited: true
 
     Material.accent: error_color
 
@@ -30,6 +30,8 @@ TextField {
     validator: RegularExpressionValidator {
         regularExpression: regex
     }
+
+    // TODO: do not remove content on error, just indicate it visually
 
     onEditingFinished: {
         if (edited) {
@@ -50,14 +52,13 @@ TextField {
     onTextChanged: {
         edited = true;
         Material.foreground = parent.Material.foreground;
-        Material.accent = acceptableInput ? accepted_color : error_color;
-        placeholderText =  acceptableInput ? default_text : error_text;
+        let valid = acceptableInput && condition(text);
+        Material.accent = valid ? accepted_color : error_color;
+        placeholderText =  valid ? default_text : error_text;
     }
 
-    // TODO: Fix forced focus on first list element.
     Component.onCompleted: {
-        Material.foreground = accepted_color;
-        forceActiveFocus();
+        editingFinished();
     }
 
 }
