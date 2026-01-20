@@ -51,6 +51,7 @@ ApplicationWindow {
         config.max_steps = "";
         config.time_bound = "";
         config.state_formula = "";
+        verified = false;
     }
 
     function load(file) {
@@ -82,6 +83,7 @@ ApplicationWindow {
         query_tab.model = models.queries;
         tabs.currentIndex = 7;
         tabs.currentIndex = tab_bar.currentIndex;
+        verified = false;
         return error;
     }
 
@@ -101,6 +103,7 @@ ApplicationWindow {
                     save_changes_dialog.action = function(x) {
                         clear();
                         current_file = "";
+                        verified = false;
                     };
                     save_changes_dialog.open();
                 }

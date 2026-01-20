@@ -210,6 +210,8 @@ function verify()::String
         [x.name for x in location_list],
         [x.name for x in variable_list]
     )
+    results::Vector{Bool} = []
+    game_tree::Union{Node, Nothing} = nothing
     try
         locations = Vector{Location}([
             Location(
@@ -256,7 +258,7 @@ function verify()::String
             triggers,
             true
         )
-        results::Vector{Bool}, game_tree::Node = evaluate_queries(
+        results, game_tree = evaluate_queries(
             game,
             Termination_Conditions(
                 Base.parse(Float64, config["time_bound"]),
