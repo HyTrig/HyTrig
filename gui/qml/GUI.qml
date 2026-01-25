@@ -566,13 +566,31 @@ ApplicationWindow {
                 width: parent.width
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.bottom: parent.bottom
+                anchors.bottom: verified ? tree_button.top : parent.bottom
                 anchors.margins: 10
 
                 text: "Verify"
 
                 onClicked: {
                     verify_action.trigger();
+                }
+
+            }
+
+            Button {
+
+                id: tree_button
+                width: parent.width
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.bottom: parent.bottom
+                anchors.margins: 10
+
+                text: "View Tree"
+                visible: verified
+
+                onClicked: {
+                    tree_window.open();
                 }
 
             }

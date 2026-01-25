@@ -290,8 +290,6 @@ function verify()::String
         query.verified = results[i]
     end
 
-    # TODO: build tree
-
     return ""
 end
 
