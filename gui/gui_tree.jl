@@ -162,8 +162,8 @@ function down_tree(i, j)::Bool
         return false
     end
 
-    i = Int(i)
-    j = Int(j)
+    i = Int(i) + 1
+    j = Int(j) + 1
 
     if 0 < i <= length(game_tree.branches) && 0 < j <= length(game_tree.branches[i].active_nodes)
         empty!(branch_list)

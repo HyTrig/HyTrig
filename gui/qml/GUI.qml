@@ -590,7 +590,7 @@ ApplicationWindow {
                 visible: verified
 
                 onClicked: {
-                    tree_window.open();
+                    tree_viewer.open();
                 }
 
             }
@@ -703,6 +703,10 @@ ApplicationWindow {
 
         buttons: MessageDialog.Ok
 
+    }
+
+    TreeViewer {
+        id: tree_viewer
     }
 
 }
