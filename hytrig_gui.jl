@@ -14,7 +14,7 @@ Pkg.instantiate()
 
 using JSON3, QML, StructTypes
 
-include("gui/qml_objects.jl")
+include("gui/gui_tree.jl")
 include("src/parsers/syntax_parsers/parser.jl")
 
 # Initialize models

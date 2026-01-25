@@ -219,11 +219,11 @@ StructTypes.StructType(::Type{QQuery}) = StructTypes.Mutable()
 
 
 """
-    QBranch <: QObject
+    QBranch
 
 A tree branch used in QML models.
 """
-mutable struct QBranch <: QObject
+mutable struct QBranch
     agent::String
     trigger::String
     time::Float64
