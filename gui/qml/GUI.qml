@@ -590,7 +590,10 @@ ApplicationWindow {
                 visible: verified
 
                 onClicked: {
-                    tree_viewer.open();
+                    tree_viewer.level = 1;
+                    tree_viewer.branches.model = [];
+                    tree_viewer.branches.model = models.branches;
+                    tree_viewer.show();
                 }
 
             }

@@ -13,6 +13,7 @@ import org.julialang
 
 ApplicationWindow {
 
+    id: tree_viewer
     width: 1500
     height: 1000
     minimumWidth: 1000
@@ -80,7 +81,7 @@ ApplicationWindow {
                 height: branches.height
                 spacing: 10
                 function down(i) {
-                    tree_window.down(index, i);
+                    tree_viewer.down(index, i);
                 }
                 
                 Label {
@@ -195,7 +196,7 @@ ApplicationWindow {
             text: "Go up"
             
             onClicked: {
-                tree_window.up();
+                tree_viewer.up();
             }
 
         }
