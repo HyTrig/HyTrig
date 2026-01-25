@@ -13,6 +13,7 @@ This file defines the QML objects used in the HyTrig GUI.
 - `QEdge`: Represents an edge in a hybrid game.
 - `QJump`: Represents a jump in an edge.
 - `QQuery`: Represents a query in a hybrid game.
+TODO
 
 # Authors:
 - Moritz Maas
@@ -218,11 +219,49 @@ StructTypes.StructType(::Type{QQuery}) = StructTypes.Mutable()
 
 
 """
-    QActiveNode <: QObject
+    QBranch <: QObject
+
+A tree branch used in QML models.
+"""
+mutable struct QBranch <: QObject
+    agent::String
+    trigger::String
+    time::Float64
+    active_nodes::JuliaItemModel
+    passive_nodes::JuliaItemModel
+end
+
+"""
+    QBranch(branch::GUIBranch)::QBranch
+
+Create a QBranch from the given branch `branch`.
+# Arguments
+- `branch::GUIBranch`: the branch
+"""
+function QBranch(branch::GUIBranch)::QBranch
+    return QBranch(
+        if isnothing(branch.reaching_decision)
+            ""
+        else
+            string(branch.reaching_decision[1])
+        end,
+        if isnothing(branch.reaching_trigger)
+            ""
+        else
+            str(branch.reaching_trigger)
+        end,
+        trunc(branch.config.global_clock, digits=5),
+        JuliaItemModel([QActiveNode(node) for node in branch.active_nodes]),
+        JuliaItemModel([QPassiveNode(node) for node in branch.passive_nodes])
+    )
+end
+
+"""
+    QActiveNode
 
 An active tree node used in QML models.
 """
-mutable struct QActiveNode <: QObject
+mutable struct QActiveNode
     location::String
     action::String
     valuation::String
@@ -250,11 +289,11 @@ function QActiveNode(node::GUINode)::QActiveNode
 end
 
 """
-    QPassiveNode <: QObject
+    QPassiveNode
 
 A passive tree node used in QML models.
 """
-mutable struct QPassiveNode <: QObject
+mutable struct QPassiveNode
     valuation::String
     time::Float64
 end
