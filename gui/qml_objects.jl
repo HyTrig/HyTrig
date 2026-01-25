@@ -215,3 +215,71 @@ StructTypes.StructType(::Type{QFlow}) = StructTypes.Mutable()
 StructTypes.StructType(::Type{QEdge}) = StructTypes.Mutable()
 StructTypes.StructType(::Type{QJump}) = StructTypes.Mutable()
 StructTypes.StructType(::Type{QQuery}) = StructTypes.Mutable()
+
+
+"""
+    QActiveNode <: QObject
+
+An active tree node used in QML models.
+"""
+mutable struct QActiveNode <: QObject
+    location::String
+    action::String
+    valuation::String
+    clickable::Bool
+end
+
+"""
+    QActiveNode(node::GUINode)::QActiveNode
+
+Create a QAction from the given GUI node `node`.
+# Arguments
+- `node::GUINode`: the gui node
+"""
+function QActiveNode(node::GUINode)::QActiveNode
+    QActiveNode(
+        string(node.config.location.name),
+        if isnothing(node.reaching_decision)
+            ""
+        else
+            string(node.reaching_decision[2])
+        end,
+        _get_valuation_string(node.config.valuation),
+        !isempty(node.branches)
+    )
+end
+
+"""
+    QPassiveNode <: QObject
+
+A passive tree node used in QML models.
+"""
+mutable struct QPassiveNode <: QObject
+    valuation::String
+    time::Float64
+end
+
+"""
+    QPassiveNode(node::PassiveNode)::QPassiveNode
+
+Create a QPassiveNode from the given passive node `node`.
+# Arguments
+- `node::PassiveNode`: the passive node
+"""
+function QPassiveNode(node::PassiveNode)::QPassiveNode
+    return QPassiveNode(
+        _get_valuation_string(node.config.valuation),
+        trunc(node.config.global_clock, digits=5)
+    )
+end
+
+function _get_valuation_string(valuation::Valuation)::String
+    str = ""
+    for (i, val) in enumerate(keys(valuation))
+        str *= "$(string(val)) = $(trunc(valuation[val], digits=5))"
+        if i != length(keys(valuation))
+            str *= ",\n"
+        end
+    end
+    return "{$str}"
+end
