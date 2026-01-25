@@ -14,8 +14,9 @@ Pkg.instantiate()
 
 using JSON3, QML, StructTypes
 
-include("gui/gui_tree.jl")
 include("src/parsers/syntax_parsers/parser.jl")
+include("gui/gui_tree.jl")
+include("gui/qml_objects.jl")
 
 # Initialize models
 
@@ -298,7 +299,7 @@ end
 
 qml_file = joinpath(dirname(@__FILE__), "gui", "qml", "GUI.qml")
 
-@qmlfunction name_available is_formula save load verify
+@qmlfunction name_available is_formula save load verify up_tree down_tree
 
 loadqml(
     qml_file,

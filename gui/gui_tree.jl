@@ -15,8 +15,6 @@ This file contains all definitions for creating the traversable game tree for th
 - Moritz Maas
 """
 
-include("qml_objects.jl")
-
 """
     GUIBranch
 
