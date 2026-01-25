@@ -113,7 +113,7 @@ function GUIBranch(node::Union{RootNode, EndNode}, active_nodes::Vector{GUINode}
     )
 end
 
-global game_tree::Union{GUINode, Node, Nothing} = nothing
+game_tree::Union{GUINode, Node, Nothing} = nothing
 
 """
     build_gui_tree(root::Union{ActiveNode, RootNode})::GUINode

@@ -209,13 +209,13 @@ end
 
 # TODO: write docs
 function verify()::String
+    global game_tree
     bindings::Bindings = Bindings(
         [x.name for x in agent_list],
         [x.name for x in location_list],
         [x.name for x in variable_list]
     )
     results::Vector{Bool} = []
-    game_tree::Union{Node, Nothing} = nothing
     try
         locations = Vector{Location}([
             Location(
@@ -262,7 +262,7 @@ function verify()::String
             triggers,
             true
         )
-        global game_tree
+
         results, game_tree = evaluate_queries(
             game,
             Termination_Conditions(
@@ -272,6 +272,7 @@ function verify()::String
             ),
             Vector{Strategy_Formula}([parse(query.formula, bindings, strategy) for query in query_list])
         )
+        println(typeof(game_tree))
     catch e
         if e isa ParseError
             return "parse error: $(e.msg)"
@@ -282,9 +283,12 @@ function verify()::String
     empty!(branch_list)
 
     if !isnothing(game_tree)
+        println(typeof(game_tree))
         game_tree = build_gui_tree(game_tree)
         push!(branch_list, QBranch(game_tree.branches[1]))
     end
+
+    println(game_tree)
 
     for (i, query) in enumerate(query_list)
         query.verified = results[i]

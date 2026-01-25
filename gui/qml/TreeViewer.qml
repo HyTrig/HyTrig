@@ -23,9 +23,9 @@ ApplicationWindow {
 
     title: "Game tree viewer"
 
-    Material.theme: window.Material.theme
-    Material.accent: window.Material.accent
-    Material.foreground: window.Material.foreground
+    Material.theme: main_window.Material.theme
+    Material.accent: main_window.Material.accent
+    Material.foreground: main_window.Material.foreground
 
     property alias branches: branches
     property int level: 1
@@ -73,7 +73,7 @@ ApplicationWindow {
 
             orientation: ListView.Horizontal
 
-            model: branch_model
+            model: models.branches
             delegate: Column {
                 
                 id: branch_column
