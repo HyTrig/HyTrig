@@ -52,6 +52,9 @@ setsetter!(models["edges"], setjump!, roleindex(models["edges"], "jump"))
 query_list::Vector{QQuery} = [QQuery("<<agent>> F true")]
 models["queries"] = JuliaItemModel(query_list)
 
+branch_list::Vector{QBranch} = []
+models["branches"] = JuliaItemModel(branch_list)
+
 # Initialize QML functions
 
 """
@@ -258,6 +261,7 @@ function verify()::String
             triggers,
             true
         )
+        global game_tree
         results, game_tree = evaluate_queries(
             game,
             Termination_Conditions(
@@ -272,6 +276,13 @@ function verify()::String
             return "parse error: $(e.msg)"
         end
         return "verification error: $(e.msg)"
+    end
+
+    empty!(branch_list)
+
+    if !isnothing(game_tree)
+        game_tree = build_gui_tree(game_tree)
+        push!(branch_list, QBranch(game_tree.branches[1]))
     end
 
     for (i, query) in enumerate(query_list)
