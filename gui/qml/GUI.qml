@@ -24,7 +24,6 @@ ApplicationWindow {
 
     title: qsTr("HyTrig")
     visible: true
-    visibility: Window.FullScreen
 
     Material.theme: Material.Dark
     Material.accent: Material.Blue
@@ -87,10 +86,6 @@ ApplicationWindow {
         return error;
     }
 
-    function test() {
-        load_dialog.open();
-    }
-
     menuBar: MenuBar {
         
         id: menu_bar
@@ -119,7 +114,7 @@ ApplicationWindow {
                 shortcut: "Ctrl+O"
                 onTriggered: {
                     save_changes_dialog.action = function(x) {
-                        test();
+                        load_dialog.open();
                     };
                     save_changes_dialog.open();
                 }
