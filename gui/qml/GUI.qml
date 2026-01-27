@@ -115,6 +115,7 @@ ApplicationWindow {
                 shortcut: "Ctrl+O"
                 onTriggered: {
                     save_changes_dialog.action = function(x) {
+                        print("Opening file dialog");
                         load_dialog.open();
                     };
                     save_changes_dialog.open();
@@ -628,11 +629,12 @@ ApplicationWindow {
         text: current_file == "" ? qsTr("Do you want to save changes?") : qsTr("Do you want to save changes to ") + current_file + qsTr("?")
         informativeText: qsTr("Unsaved changes will be lost.")
 
-        buttons: MessageDialog.Save | MessageDialog.Discard | MessageDialog.Cancel
+        buttons: MessageDialog.Ok | MessageDialog.No | MessageDialog.Cancel
 
         onButtonClicked: (button, role) => {
             switch (button) {
-                case MessageDialog.Save:
+                case MessageDialog.Ok:
+                    print("Saving changes");
                     if (current_file == "") {
                         save_dialog.action = action;
                         save_dialog.open();
@@ -641,8 +643,8 @@ ApplicationWindow {
                         action(current_file);
                     }
                     break;
-                case MessageDialog.Discard:
-                    close();
+                case MessageDialog.No:
+                    print("Not saving changes");
                     action(current_file);
                     break;
                 case MessageDialog.Cancel:
