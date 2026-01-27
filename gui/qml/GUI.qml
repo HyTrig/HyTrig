@@ -87,6 +87,10 @@ ApplicationWindow {
         return error;
     }
 
+    function test() {
+        load_dialog.open();
+    }
+
     menuBar: MenuBar {
         
         id: menu_bar
@@ -115,7 +119,7 @@ ApplicationWindow {
                 shortcut: "Ctrl+O"
                 onTriggered: {
                     save_changes_dialog.action = function(x) {
-                        load_dialog.open();
+                        test();
                     };
                     save_changes_dialog.open();
                 }
