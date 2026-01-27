@@ -12,4 +12,4 @@ StructTypes = "856f2bd8-1eba-4b0a-8007-ebc267875bd4"
 
 [compat]
 CxxWrap = "0.16"
-julia = "0.10"
+julia = "1.10"
