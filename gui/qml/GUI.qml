@@ -663,7 +663,6 @@ ApplicationWindow {
         title: qsTr("Select a location to save the HyTrig file")
         
         fileMode: FileDialog.SaveFile
-        modality: Qt.ApplicationModal
         nameFilters: ["HyTrig files (*.hytrig)"]
         defaultSuffix: "hytrig"
 
@@ -682,7 +681,6 @@ ApplicationWindow {
         title: qsTr("Select a HyTrig file to load")
 
         fileMode: FileDialog.OpenFile
-        modality: Qt.ApplicationModal
         nameFilters: ["HyTrig files (*.hytrig)"]
         defaultSuffix: "hytrig"
 
