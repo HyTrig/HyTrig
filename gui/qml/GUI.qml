@@ -115,7 +115,6 @@ ApplicationWindow {
                 shortcut: "Ctrl+O"
                 onTriggered: {
                     save_changes_dialog.action = function(x) {
-                        print("Opening file dialog");
                         load_dialog.open();
                     };
                     save_changes_dialog.open();
@@ -606,6 +605,7 @@ ApplicationWindow {
     MessageDialog {
 
         id: clear_dialog
+        parentWindow: main_window
 
         title: qsTr("Clear all data?")
         text: qsTr("Do you really want to clear all data?")
@@ -622,6 +622,7 @@ ApplicationWindow {
     MessageDialog {
 
         id: save_changes_dialog
+        parentWindow: main_window
 
         property var action: function(x) {}
 
@@ -629,12 +630,11 @@ ApplicationWindow {
         text: current_file == "" ? qsTr("Do you want to save changes?") : qsTr("Do you want to save changes to ") + current_file + qsTr("?")
         informativeText: qsTr("Unsaved changes will be lost.")
 
-        buttons: MessageDialog.Ok | MessageDialog.No | MessageDialog.Cancel
+        buttons: MessageDialog.Save | MessageDialog.Discard | MessageDialog.Cancel
 
         onButtonClicked: (button, role) => {
             switch (button) {
-                case MessageDialog.Ok:
-                    print("Saving changes");
+                case MessageDialog.Save:
                     if (current_file == "") {
                         save_dialog.action = action;
                         save_dialog.open();
@@ -643,8 +643,7 @@ ApplicationWindow {
                         action(current_file);
                     }
                     break;
-                case MessageDialog.No:
-                    print("Not saving changes");
+                case MessageDialog.Discard:
                     action(current_file);
                     break;
                 case MessageDialog.Cancel:
@@ -658,6 +657,7 @@ ApplicationWindow {
     FileDialog {
 
         id: save_dialog
+        parentWindow: main_window
 
         property var action: function(x) {}
         
@@ -678,6 +678,7 @@ ApplicationWindow {
     FileDialog {
 
         id: load_dialog
+        parentWindow: main_window
 
         title: qsTr("Select a HyTrig file to load")
 
@@ -702,6 +703,7 @@ ApplicationWindow {
     MessageDialog {
 
         id: error_dialog
+        parentWindow: main_window
 
         title: qsTr("Error")
         text: qsTr("An error occurred:")
