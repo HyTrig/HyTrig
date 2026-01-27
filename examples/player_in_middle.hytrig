@@ -1,106 +1,117 @@
 {
-    "agents": [
+    "triggers": [
         {
-            "name": "A"
+            "agent": "A",
+            "trigger": "ball <= -9.5"
         },
         {
-            "name": "B"
+            "agent": "A",
+            "trigger": "ball == -10"
         },
         {
-            "name": "C"
+            "agent": "B",
+            "trigger": "ball >= 9.5"
+        },
+        {
+            "agent": "B",
+            "trigger": "ball == 10"
+        },
+        {
+            "agent": "C",
+            "trigger": "ball^2 + middle_player^2 <= 0.1"
         }
     ],
     "locations": [
         {
-            "name": "initial",
-            "initial": true,
             "flow": [
                 {
-                    "expression": "ball",
-                    "variable": "ball"
+                    "variable": "ball",
+                    "expression": "0"
                 },
                 {
-                    "expression": "middle_player",
-                    "variable": "middle_player"
+                    "variable": "middle_player",
+                    "expression": "0"
                 },
                 {
-                    "expression": "spd",
-                    "variable": "spd"
+                    "variable": "spd",
+                    "expression": "0"
                 },
                 {
-                    "expression": "1",
-                    "variable": "time"
+                    "variable": "time",
+                    "expression": "1"
                 }
             ],
+            "initial": true,
+            "name": "initial",
             "invariant": "time == 0"
         },
         {
+            "flow": [
+                {
+                    "variable": "ball",
+                    "expression": "spd"
+                },
+                {
+                    "variable": "middle_player",
+                    "expression": "sin(time) * 2"
+                },
+                {
+                    "variable": "spd",
+                    "expression": "0"
+                },
+                {
+                    "variable": "time",
+                    "expression": "1"
+                }
+            ],
+            "initial": false,
             "name": "A_Throwing",
-            "initial": false,
-            "flow": [
-                {
-                    "expression": "spd",
-                    "variable": "ball"
-                },
-                {
-                    "expression": "sin(time) * 2",
-                    "variable": "middle_player"
-                },
-                {
-                    "expression": "spd",
-                    "variable": "spd"
-                },
-                {
-                    "expression": "1",
-                    "variable": "time"
-                }
-            ],
             "invariant": ""
         },
         {
+            "flow": [
+                {
+                    "variable": "ball",
+                    "expression": "spd"
+                },
+                {
+                    "variable": "middle_player",
+                    "expression": "sin(time) * 2"
+                },
+                {
+                    "variable": "spd",
+                    "expression": "0"
+                },
+                {
+                    "variable": "time",
+                    "expression": "1"
+                }
+            ],
+            "initial": false,
             "name": "B_Throwing",
-            "initial": false,
-            "flow": [
-                {
-                    "expression": "spd",
-                    "variable": "ball"
-                },
-                {
-                    "expression": "sin(time) * 2",
-                    "variable": "middle_player"
-                },
-                {
-                    "expression": "spd",
-                    "variable": "spd"
-                },
-                {
-                    "expression": "1",
-                    "variable": "time"
-                }
-            ],
             "invariant": ""
         },
         {
-            "name": "Caught",
-            "initial": false,
             "flow": [
                 {
-                    "expression": "ball",
-                    "variable": "ball"
+                    "variable": "ball",
+                    "expression": "0"
                 },
                 {
-                    "expression": "middle_player",
-                    "variable": "middle_player"
+                    "variable": "middle_player",
+                    "expression": "0"
                 },
                 {
-                    "expression": "spd",
-                    "variable": "spd"
+                    "variable": "spd",
+                    "expression": "0"
                 },
                 {
-                    "expression": "time",
-                    "variable": "time"
+                    "variable": "time",
+                    "expression": "0"
                 }
             ],
+            "initial": false,
+            "name": "Caught",
             "invariant": "ball^2 + middle_player^2 <= 0.1"
         }
     ],
@@ -138,233 +149,222 @@
             "name": "throw_2"
         }
     ],
-    "config": {
-        "max_steps": "20",
-        "time_bound": "1000",
-        "state_formula": "Caught"
-    },
-    "triggers": [
-        {
-            "agent": "A",
-            "trigger": "ball <= -9.5"
-        },
-        {
-            "agent": "A",
-            "trigger": "ball == -10"
-        },
-        {
-            "agent": "B",
-            "trigger": "ball >= 9.5"
-        },
-        {
-            "agent": "B",
-            "trigger": "ball == 10"
-        },
-        {
-            "agent": "C",
-            "trigger": "ball^2 + middle_player^2 <= 0.1"
-        }
-    ],
     "edges": [
         {
+            "agent": "A",
+            "action": "throw_1",
             "guard": "ball < -9",
             "source": "initial",
-            "action": "throw_1",
             "target": "A_Throwing",
-            "agent": "A",
             "jump": [
                 {
-                    "expression": "ball",
-                    "variable": "ball"
+                    "variable": "ball",
+                    "expression": "ball"
                 },
                 {
-                    "expression": "middle_player",
-                    "variable": "middle_player"
+                    "variable": "middle_player",
+                    "expression": "middle_player"
                 },
                 {
-                    "expression": "1",
-                    "variable": "spd"
+                    "variable": "spd",
+                    "expression": "1"
                 },
                 {
-                    "expression": "time",
-                    "variable": "time"
+                    "variable": "time",
+                    "expression": "time"
                 }
             ]
         },
         {
+            "agent": "A",
+            "action": "throw_2",
             "guard": "ball < -9",
             "source": "initial",
-            "action": "throw_2",
             "target": "A_Throwing",
-            "agent": "A",
             "jump": [
                 {
-                    "expression": "ball",
-                    "variable": "ball"
+                    "variable": "ball",
+                    "expression": "ball"
                 },
                 {
-                    "expression": "middle_player",
-                    "variable": "middle_player"
+                    "variable": "middle_player",
+                    "expression": "middle_player"
                 },
                 {
-                    "expression": "2",
-                    "variable": "spd"
+                    "variable": "spd",
+                    "expression": "2"
                 },
                 {
-                    "expression": "time",
-                    "variable": "time"
+                    "variable": "time",
+                    "expression": "time"
                 }
             ]
         },
         {
+            "agent": "A",
+            "action": "throw_1",
             "guard": "ball < -9",
             "source": "B_Throwing",
-            "action": "throw_1",
             "target": "A_Throwing",
-            "agent": "A",
             "jump": [
                 {
-                    "expression": "ball",
-                    "variable": "ball"
+                    "variable": "ball",
+                    "expression": "ball"
                 },
                 {
-                    "expression": "middle_player",
-                    "variable": "middle_player"
+                    "variable": "middle_player",
+                    "expression": "middle_player"
                 },
                 {
-                    "expression": "1",
-                    "variable": "spd"
+                    "variable": "spd",
+                    "expression": "1"
                 },
                 {
-                    "expression": "time",
-                    "variable": "time"
+                    "variable": "time",
+                    "expression": "time"
                 }
             ]
         },
         {
+            "agent": "A",
+            "action": "throw_2",
             "guard": "ball < -9",
             "source": "B_Throwing",
-            "action": "throw_2",
             "target": "A_Throwing",
-            "agent": "A",
             "jump": [
                 {
-                    "expression": "ball",
-                    "variable": "ball"
+                    "variable": "ball",
+                    "expression": "ball"
                 },
                 {
-                    "expression": "middle_player",
-                    "variable": "middle_player"
+                    "variable": "middle_player",
+                    "expression": "middle_player"
                 },
                 {
-                    "expression": "2",
-                    "variable": "spd"
+                    "variable": "spd",
+                    "expression": "2"
                 },
                 {
-                    "expression": "time",
-                    "variable": "time"
+                    "variable": "time",
+                    "expression": "time"
                 }
             ]
         },
         {
-            "guard": "ball > 9",
-            "source": "A_Throwing",
+            "agent": "B",
             "action": "throw_1",
-            "target": "B_Throwing",
-            "agent": "B",
-            "jump": [
-                {
-                    "expression": "ball",
-                    "variable": "ball"
-                },
-                {
-                    "expression": "middle_player",
-                    "variable": "middle_player"
-                },
-                {
-                    "expression": "-1",
-                    "variable": "spd"
-                },
-                {
-                    "expression": "time",
-                    "variable": "time"
-                }
-            ]
-        },
-        {
             "guard": "ball > 9",
             "source": "A_Throwing",
-            "action": "throw_2",
             "target": "B_Throwing",
-            "agent": "B",
             "jump": [
                 {
-                    "expression": "ball",
-                    "variable": "ball"
+                    "variable": "ball",
+                    "expression": "ball"
                 },
                 {
-                    "expression": "middle_player",
-                    "variable": "middle_player"
+                    "variable": "middle_player",
+                    "expression": "middle_player"
                 },
                 {
-                    "expression": "-2",
-                    "variable": "spd"
+                    "variable": "spd",
+                    "expression": "-1"
                 },
                 {
-                    "expression": "time",
-                    "variable": "time"
+                    "variable": "time",
+                    "expression": "time"
                 }
             ]
         },
         {
+            "agent": "B",
+            "action": "throw_2",
+            "guard": "ball > 9",
+            "source": "A_Throwing",
+            "target": "B_Throwing",
+            "jump": [
+                {
+                    "variable": "ball",
+                    "expression": "ball"
+                },
+                {
+                    "variable": "middle_player",
+                    "expression": "middle_player"
+                },
+                {
+                    "variable": "spd",
+                    "expression": "-2"
+                },
+                {
+                    "variable": "time",
+                    "expression": "time"
+                }
+            ]
+        },
+        {
+            "agent": "C",
+            "action": "catch",
             "guard": "ball^2 + middle_player^2 <= 0.1",
             "source": "A_Throwing",
-            "action": "catch",
             "target": "Caught",
-            "agent": "C",
             "jump": [
                 {
-                    "expression": "ball",
-                    "variable": "ball"
+                    "variable": "ball",
+                    "expression": "ball"
                 },
                 {
-                    "expression": "middle_player",
-                    "variable": "middle_player"
+                    "variable": "middle_player",
+                    "expression": "middle_player"
                 },
                 {
-                    "expression": "spd",
-                    "variable": "spd"
+                    "variable": "spd",
+                    "expression": "spd"
                 },
                 {
-                    "expression": "time",
-                    "variable": "time"
+                    "variable": "time",
+                    "expression": "time"
                 }
             ]
         },
         {
+            "agent": "C",
+            "action": "catch",
             "guard": "ball^2 + middle_player^2 <= 0.1",
             "source": "B_Throwing",
-            "action": "catch",
             "target": "Caught",
-            "agent": "C",
             "jump": [
                 {
-                    "expression": "ball",
-                    "variable": "ball"
+                    "variable": "ball",
+                    "expression": "ball"
                 },
                 {
-                    "expression": "middle_player",
-                    "variable": "middle_player"
+                    "variable": "middle_player",
+                    "expression": "middle_player"
                 },
                 {
-                    "expression": "spd",
-                    "variable": "spd"
+                    "variable": "spd",
+                    "expression": "spd"
                 },
                 {
-                    "expression": "time",
-                    "variable": "time"
+                    "variable": "time",
+                    "expression": "time"
                 }
             ]
         }
-    ]
+    ],
+    "agents": [
+        {
+            "name": "A"
+        },
+        {
+            "name": "B"
+        },
+        {
+            "name": "C"
+        }
+    ],
+    "config": {
+        "state_formula": "Caught",
+        "time_bound": "1000",
+        "max_steps": "20"
+    }
 }

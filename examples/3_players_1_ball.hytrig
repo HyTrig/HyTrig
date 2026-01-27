@@ -1,203 +1,218 @@
 {
-    "agents": [
+    "triggers": [
         {
-            "name": "A"
+            "agent": "A",
+            "trigger": "(x - A_x)^2 + (y - A_y)^2 <= 1.0"
         },
         {
-            "name": "B"
+            "agent": "A",
+            "trigger": "(x - A_x)^2 + (y - A_y)^2 <= 0.5"
         },
         {
-            "name": "C"
+            "agent": "B",
+            "trigger": "(x - B_x)^2 + (y - B_y)^2 <= 1.0"
+        },
+        {
+            "agent": "B",
+            "trigger": "(x - B_x)^2 + (y - B_y)^2 <= 0.5"
+        },
+        {
+            "agent": "C",
+            "trigger": "(x - C_x)^2 + (y - C_y)^2 <= 1.0"
+        },
+        {
+            "agent": "C",
+            "trigger": "(x - C_x)^2 + (y - C_y)^2 <= 0.5"
         }
     ],
     "locations": [
         {
-            "name": "A_Throwing",
+            "flow": [
+                {
+                    "variable": "x",
+                    "expression": "spd_A * dir_x"
+                },
+                {
+                    "variable": "y",
+                    "expression": "spd_A * dir_y"
+                },
+                {
+                    "variable": "dir_x",
+                    "expression": "0"
+                },
+                {
+                    "variable": "dir_y",
+                    "expression": "0"
+                },
+                {
+                    "variable": "spd_A",
+                    "expression": "0"
+                },
+                {
+                    "variable": "spd_B",
+                    "expression": "0"
+                },
+                {
+                    "variable": "spd_C",
+                    "expression": "0"
+                },
+                {
+                    "variable": "A_x",
+                    "expression": "0"
+                },
+                {
+                    "variable": "A_y",
+                    "expression": "0"
+                },
+                {
+                    "variable": "B_x",
+                    "expression": "0"
+                },
+                {
+                    "variable": "B_y",
+                    "expression": "0"
+                },
+                {
+                    "variable": "C_x",
+                    "expression": "0"
+                },
+                {
+                    "variable": "C_y",
+                    "expression": "0"
+                },
+                {
+                    "variable": "time",
+                    "expression": "1"
+                }
+            ],
             "initial": true,
-            "flow": [
-                {
-                    "expression": "spd_A * dir_x",
-                    "variable": "x"
-                },
-                {
-                    "expression": "spd_A * dir_y",
-                    "variable": "y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "dir_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "dir_y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "spd_A"
-                },
-                {
-                    "expression": "0",
-                    "variable": "spd_B"
-                },
-                {
-                    "expression": "0",
-                    "variable": "spd_C"
-                },
-                {
-                    "expression": "0",
-                    "variable": "A_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "A_y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "B_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "B_y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "C_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "C_y"
-                },
-                {
-                    "expression": "1",
-                    "variable": "time"
-                }
-            ],
+            "name": "A_Throwing",
             "invariant": "-11 <= x && x <= 11 && -1 <= y && y <= 11"
         },
         {
+            "flow": [
+                {
+                    "variable": "x",
+                    "expression": "spd_B * dir_x"
+                },
+                {
+                    "variable": "y",
+                    "expression": "spd_B * dir_y"
+                },
+                {
+                    "variable": "dir_x",
+                    "expression": "0"
+                },
+                {
+                    "variable": "dir_y",
+                    "expression": "0"
+                },
+                {
+                    "variable": "spd_A",
+                    "expression": "0"
+                },
+                {
+                    "variable": "spd_B",
+                    "expression": "0"
+                },
+                {
+                    "variable": "spd_C",
+                    "expression": "0"
+                },
+                {
+                    "variable": "A_x",
+                    "expression": "0"
+                },
+                {
+                    "variable": "A_y",
+                    "expression": "0"
+                },
+                {
+                    "variable": "B_x",
+                    "expression": "0"
+                },
+                {
+                    "variable": "B_y",
+                    "expression": "0"
+                },
+                {
+                    "variable": "C_x",
+                    "expression": "0"
+                },
+                {
+                    "variable": "C_y",
+                    "expression": "0"
+                },
+                {
+                    "variable": "time",
+                    "expression": "1"
+                }
+            ],
+            "initial": false,
             "name": "B_Throwing",
-            "initial": false,
-            "flow": [
-                {
-                    "expression": "spd_B * dir_x",
-                    "variable": "x"
-                },
-                {
-                    "expression": "spd_B * dir_y",
-                    "variable": "y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "dir_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "dir_y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "spd_A"
-                },
-                {
-                    "expression": "0",
-                    "variable": "spd_B"
-                },
-                {
-                    "expression": "0",
-                    "variable": "spd_C"
-                },
-                {
-                    "expression": "0",
-                    "variable": "A_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "A_y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "B_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "B_y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "C_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "C_y"
-                },
-                {
-                    "expression": "1",
-                    "variable": "time"
-                }
-            ],
             "invariant": "-11 <= x && x <= 11 && -1 <= y && y <= 11"
         },
         {
-            "name": "C_Throwing",
-            "initial": false,
             "flow": [
                 {
-                    "expression": "spd_C * dir_x",
-                    "variable": "x"
+                    "variable": "x",
+                    "expression": "spd_C * dir_x"
                 },
                 {
-                    "expression": "spd_C * dir_y",
-                    "variable": "y"
+                    "variable": "y",
+                    "expression": "spd_C * dir_y"
                 },
                 {
-                    "expression": "0",
-                    "variable": "dir_x"
+                    "variable": "dir_x",
+                    "expression": "0"
                 },
                 {
-                    "expression": "0",
-                    "variable": "dir_y"
+                    "variable": "dir_y",
+                    "expression": "0"
                 },
                 {
-                    "expression": "0",
-                    "variable": "spd_A"
+                    "variable": "spd_A",
+                    "expression": "0"
                 },
                 {
-                    "expression": "0",
-                    "variable": "spd_B"
+                    "variable": "spd_B",
+                    "expression": "0"
                 },
                 {
-                    "expression": "0",
-                    "variable": "spd_C"
+                    "variable": "spd_C",
+                    "expression": "0"
                 },
                 {
-                    "expression": "0",
-                    "variable": "A_x"
+                    "variable": "A_x",
+                    "expression": "0"
                 },
                 {
-                    "expression": "0",
-                    "variable": "A_y"
+                    "variable": "A_y",
+                    "expression": "0"
                 },
                 {
-                    "expression": "0",
-                    "variable": "B_x"
+                    "variable": "B_x",
+                    "expression": "0"
                 },
                 {
-                    "expression": "0",
-                    "variable": "B_y"
+                    "variable": "B_y",
+                    "expression": "0"
                 },
                 {
-                    "expression": "0",
-                    "variable": "C_x"
+                    "variable": "C_x",
+                    "expression": "0"
                 },
                 {
-                    "expression": "0",
-                    "variable": "C_y"
+                    "variable": "C_y",
+                    "expression": "0"
                 },
                 {
-                    "expression": "1",
-                    "variable": "time"
+                    "variable": "time",
+                    "expression": "1"
                 }
             ],
+            "initial": false,
+            "name": "C_Throwing",
             "invariant": "-11 <= x && x <= 11 && -1 <= y && y <= 11"
         }
     ],
@@ -281,817 +296,802 @@
             "name": "L"
         }
     ],
-    "config": {
-        "max_steps": "10",
-        "time_bound": "120",
-        "state_formula": "false"
-    },
-    "triggers": [
-        {
-            "agent": "A",
-            "trigger": "(x - A_x)^2 + (y - A_y)^2 <= 1.0"
-        },
-        {
-            "agent": "A",
-            "trigger": "(x - A_x)^2 + (y - A_y)^2 <= 0.5"
-        },
-        {
-            "agent": "B",
-            "trigger": "(x - B_x)^2 + (y - B_y)^2 <= 1.0"
-        },
-        {
-            "agent": "B",
-            "trigger": "(x - B_x)^2 + (y - B_y)^2 <= 0.5"
-        },
-        {
-            "agent": "C",
-            "trigger": "(x - C_x)^2 + (y - C_y)^2 <= 1.0"
-        },
-        {
-            "agent": "C",
-            "trigger": "(x - C_x)^2 + (y - C_y)^2 <= 0.5"
-        }
-    ],
     "edges": [
         {
+            "agent": "A",
+            "action": "R",
             "guard": "(x - A_x)^2 + (y - A_y)^2 <= 1.0",
             "source": "B_Throwing",
-            "action": "R",
             "target": "A_Throwing",
-            "agent": "A",
             "jump": [
                 {
-                    "expression": "x",
-                    "variable": "x"
+                    "variable": "x",
+                    "expression": "x"
                 },
                 {
-                    "expression": "y",
-                    "variable": "y"
+                    "variable": "y",
+                    "expression": "y"
                 },
                 {
-                    "expression": "B_x - x",
-                    "variable": "dir_x"
+                    "variable": "dir_x",
+                    "expression": "B_x - x"
                 },
                 {
-                    "expression": "B_y - y",
-                    "variable": "dir_y"
+                    "variable": "dir_y",
+                    "expression": "B_y - y"
                 },
                 {
-                    "expression": "spd_A",
-                    "variable": "spd_A"
+                    "variable": "spd_A",
+                    "expression": "spd_A"
                 },
                 {
-                    "expression": "spd_B",
-                    "variable": "spd_B"
+                    "variable": "spd_B",
+                    "expression": "spd_B"
                 },
                 {
-                    "expression": "spd_C",
-                    "variable": "spd_C"
+                    "variable": "spd_C",
+                    "expression": "spd_C"
                 },
                 {
-                    "expression": "A_x",
-                    "variable": "A_x"
+                    "variable": "A_x",
+                    "expression": "A_x"
                 },
                 {
-                    "expression": "A_y",
-                    "variable": "A_y"
+                    "variable": "A_y",
+                    "expression": "A_y"
                 },
                 {
-                    "expression": "B_x",
-                    "variable": "B_x"
+                    "variable": "B_x",
+                    "expression": "B_x"
                 },
                 {
-                    "expression": "B_y",
-                    "variable": "B_y"
+                    "variable": "B_y",
+                    "expression": "B_y"
                 },
                 {
-                    "expression": "C_x",
-                    "variable": "C_x"
+                    "variable": "C_x",
+                    "expression": "C_x"
                 },
                 {
-                    "expression": "C_y",
-                    "variable": "C_y"
+                    "variable": "C_y",
+                    "expression": "C_y"
                 },
                 {
-                    "expression": "time",
-                    "variable": "time"
+                    "variable": "time",
+                    "expression": "time"
                 }
             ]
         },
         {
+            "agent": "A",
+            "action": "R",
             "guard": "(x - A_x)^2 + (y - A_y)^2 <= 1.0",
             "source": "C_Throwing",
-            "action": "R",
             "target": "A_Throwing",
-            "agent": "A",
             "jump": [
                 {
-                    "expression": "x",
-                    "variable": "x"
+                    "variable": "x",
+                    "expression": "x"
                 },
                 {
-                    "expression": "y",
-                    "variable": "y"
+                    "variable": "y",
+                    "expression": "y"
                 },
                 {
-                    "expression": "B_x - x",
-                    "variable": "dir_x"
+                    "variable": "dir_x",
+                    "expression": "B_x - x"
                 },
                 {
-                    "expression": "B_y - y",
-                    "variable": "dir_y"
+                    "variable": "dir_y",
+                    "expression": "B_y - y"
                 },
                 {
-                    "expression": "spd_A",
-                    "variable": "spd_A"
+                    "variable": "spd_A",
+                    "expression": "spd_A"
                 },
                 {
-                    "expression": "spd_B",
-                    "variable": "spd_B"
+                    "variable": "spd_B",
+                    "expression": "spd_B"
                 },
                 {
-                    "expression": "spd_C",
-                    "variable": "spd_C"
+                    "variable": "spd_C",
+                    "expression": "spd_C"
                 },
                 {
-                    "expression": "A_x",
-                    "variable": "A_x"
+                    "variable": "A_x",
+                    "expression": "A_x"
                 },
                 {
-                    "expression": "A_y",
-                    "variable": "A_y"
+                    "variable": "A_y",
+                    "expression": "A_y"
                 },
                 {
-                    "expression": "B_x",
-                    "variable": "B_x"
+                    "variable": "B_x",
+                    "expression": "B_x"
                 },
                 {
-                    "expression": "B_y",
-                    "variable": "B_y"
+                    "variable": "B_y",
+                    "expression": "B_y"
                 },
                 {
-                    "expression": "C_x",
-                    "variable": "C_x"
+                    "variable": "C_x",
+                    "expression": "C_x"
                 },
                 {
-                    "expression": "C_y",
-                    "variable": "C_y"
+                    "variable": "C_y",
+                    "expression": "C_y"
                 },
                 {
-                    "expression": "time",
-                    "variable": "time"
+                    "variable": "time",
+                    "expression": "time"
                 }
             ]
         },
         {
+            "agent": "A",
+            "action": "L",
             "guard": "(x - A_x)^2 + (y - A_y)^2 <= 1.0",
             "source": "B_Throwing",
-            "action": "L",
             "target": "A_Throwing",
-            "agent": "A",
             "jump": [
                 {
-                    "expression": "x",
-                    "variable": "x"
+                    "variable": "x",
+                    "expression": "x"
                 },
                 {
-                    "expression": "y",
-                    "variable": "y"
+                    "variable": "y",
+                    "expression": "y"
                 },
                 {
-                    "expression": "C_x - x",
-                    "variable": "dir_x"
+                    "variable": "dir_x",
+                    "expression": "C_x - x"
                 },
                 {
-                    "expression": "C_y - y",
-                    "variable": "dir_y"
+                    "variable": "dir_y",
+                    "expression": "C_y - y"
                 },
                 {
-                    "expression": "spd_A",
-                    "variable": "spd_A"
+                    "variable": "spd_A",
+                    "expression": "spd_A"
                 },
                 {
-                    "expression": "spd_B",
-                    "variable": "spd_B"
+                    "variable": "spd_B",
+                    "expression": "spd_B"
                 },
                 {
-                    "expression": "spd_C",
-                    "variable": "spd_C"
+                    "variable": "spd_C",
+                    "expression": "spd_C"
                 },
                 {
-                    "expression": "A_x",
-                    "variable": "A_x"
+                    "variable": "A_x",
+                    "expression": "A_x"
                 },
                 {
-                    "expression": "A_y",
-                    "variable": "A_y"
+                    "variable": "A_y",
+                    "expression": "A_y"
                 },
                 {
-                    "expression": "B_x",
-                    "variable": "B_x"
+                    "variable": "B_x",
+                    "expression": "B_x"
                 },
                 {
-                    "expression": "B_y",
-                    "variable": "B_y"
+                    "variable": "B_y",
+                    "expression": "B_y"
                 },
                 {
-                    "expression": "C_x",
-                    "variable": "C_x"
+                    "variable": "C_x",
+                    "expression": "C_x"
                 },
                 {
-                    "expression": "C_y",
-                    "variable": "C_y"
+                    "variable": "C_y",
+                    "expression": "C_y"
                 },
                 {
-                    "expression": "time",
-                    "variable": "time"
+                    "variable": "time",
+                    "expression": "time"
                 }
             ]
         },
         {
+            "agent": "A",
+            "action": "L",
             "guard": "(x - A_x)^2 + (y - A_y)^2 <= 1.0",
             "source": "C_Throwing",
-            "action": "L",
             "target": "A_Throwing",
-            "agent": "A",
             "jump": [
                 {
-                    "expression": "x",
-                    "variable": "x"
+                    "variable": "x",
+                    "expression": "x"
                 },
                 {
-                    "expression": "y",
-                    "variable": "y"
+                    "variable": "y",
+                    "expression": "y"
                 },
                 {
-                    "expression": "C_x - x",
-                    "variable": "dir_x"
+                    "variable": "dir_x",
+                    "expression": "C_x - x"
                 },
                 {
-                    "expression": "C_y - y",
-                    "variable": "dir_y"
+                    "variable": "dir_y",
+                    "expression": "C_y - y"
                 },
                 {
-                    "expression": "spd_A",
-                    "variable": "spd_A"
+                    "variable": "spd_A",
+                    "expression": "spd_A"
                 },
                 {
-                    "expression": "spd_B",
-                    "variable": "spd_B"
+                    "variable": "spd_B",
+                    "expression": "spd_B"
                 },
                 {
-                    "expression": "spd_C",
-                    "variable": "spd_C"
+                    "variable": "spd_C",
+                    "expression": "spd_C"
                 },
                 {
-                    "expression": "A_x",
-                    "variable": "A_x"
+                    "variable": "A_x",
+                    "expression": "A_x"
                 },
                 {
-                    "expression": "A_y",
-                    "variable": "A_y"
+                    "variable": "A_y",
+                    "expression": "A_y"
                 },
                 {
-                    "expression": "B_x",
-                    "variable": "B_x"
+                    "variable": "B_x",
+                    "expression": "B_x"
                 },
                 {
-                    "expression": "B_y",
-                    "variable": "B_y"
+                    "variable": "B_y",
+                    "expression": "B_y"
                 },
                 {
-                    "expression": "C_x",
-                    "variable": "C_x"
+                    "variable": "C_x",
+                    "expression": "C_x"
                 },
                 {
-                    "expression": "C_y",
-                    "variable": "C_y"
+                    "variable": "C_y",
+                    "expression": "C_y"
                 },
                 {
-                    "expression": "time",
-                    "variable": "time"
+                    "variable": "time",
+                    "expression": "time"
                 }
             ]
         },
         {
+            "agent": "B",
+            "action": "R",
             "guard": "(x - B_x)^2 + (y - B_y)^2 <= 1.0",
             "source": "A_Throwing",
+            "target": "B_Throwing",
+            "jump": [
+                {
+                    "variable": "x",
+                    "expression": "x"
+                },
+                {
+                    "variable": "y",
+                    "expression": "y"
+                },
+                {
+                    "variable": "dir_x",
+                    "expression": "A_x - x"
+                },
+                {
+                    "variable": "dir_y",
+                    "expression": "A_y - y"
+                },
+                {
+                    "variable": "spd_A",
+                    "expression": "spd_A"
+                },
+                {
+                    "variable": "spd_B",
+                    "expression": "spd_B"
+                },
+                {
+                    "variable": "spd_C",
+                    "expression": "spd_C"
+                },
+                {
+                    "variable": "A_x",
+                    "expression": "A_x"
+                },
+                {
+                    "variable": "A_y",
+                    "expression": "A_y"
+                },
+                {
+                    "variable": "B_x",
+                    "expression": "B_x"
+                },
+                {
+                    "variable": "B_y",
+                    "expression": "B_y"
+                },
+                {
+                    "variable": "C_x",
+                    "expression": "C_x"
+                },
+                {
+                    "variable": "C_y",
+                    "expression": "C_y"
+                },
+                {
+                    "variable": "time",
+                    "expression": "time"
+                }
+            ]
+        },
+        {
+            "agent": "B",
             "action": "R",
-            "target": "B_Throwing",
-            "agent": "B",
-            "jump": [
-                {
-                    "expression": "x",
-                    "variable": "x"
-                },
-                {
-                    "expression": "y",
-                    "variable": "y"
-                },
-                {
-                    "expression": "A_x - x",
-                    "variable": "dir_x"
-                },
-                {
-                    "expression": "A_y - y",
-                    "variable": "dir_y"
-                },
-                {
-                    "expression": "spd_A",
-                    "variable": "spd_A"
-                },
-                {
-                    "expression": "spd_B",
-                    "variable": "spd_B"
-                },
-                {
-                    "expression": "spd_C",
-                    "variable": "spd_C"
-                },
-                {
-                    "expression": "A_x",
-                    "variable": "A_x"
-                },
-                {
-                    "expression": "A_y",
-                    "variable": "A_y"
-                },
-                {
-                    "expression": "B_x",
-                    "variable": "B_x"
-                },
-                {
-                    "expression": "B_y",
-                    "variable": "B_y"
-                },
-                {
-                    "expression": "C_x",
-                    "variable": "C_x"
-                },
-                {
-                    "expression": "C_y",
-                    "variable": "C_y"
-                },
-                {
-                    "expression": "time",
-                    "variable": "time"
-                }
-            ]
-        },
-        {
-            "guard": "(x - B_x)^2 + (y - B_y)^2 <= 1.0",
-            "source": "C_Throwing",
-            "action": "R",
-            "target": "B_Throwing",
-            "agent": "B",
-            "jump": [
-                {
-                    "expression": "x",
-                    "variable": "x"
-                },
-                {
-                    "expression": "y",
-                    "variable": "y"
-                },
-                {
-                    "expression": "A_x - x",
-                    "variable": "dir_x"
-                },
-                {
-                    "expression": "A_y - y",
-                    "variable": "dir_y"
-                },
-                {
-                    "expression": "spd_A",
-                    "variable": "spd_A"
-                },
-                {
-                    "expression": "spd_B",
-                    "variable": "spd_B"
-                },
-                {
-                    "expression": "spd_C",
-                    "variable": "spd_C"
-                },
-                {
-                    "expression": "A_x",
-                    "variable": "A_x"
-                },
-                {
-                    "expression": "A_y",
-                    "variable": "A_y"
-                },
-                {
-                    "expression": "B_x",
-                    "variable": "B_x"
-                },
-                {
-                    "expression": "B_y",
-                    "variable": "B_y"
-                },
-                {
-                    "expression": "C_x",
-                    "variable": "C_x"
-                },
-                {
-                    "expression": "C_y",
-                    "variable": "C_y"
-                },
-                {
-                    "expression": "time",
-                    "variable": "time"
-                }
-            ]
-        },
-        {
-            "guard": "(x - B_x)^2 + (y - B_y)^2 <= 1.0",
-            "source": "A_Throwing",
-            "action": "L",
-            "target": "B_Throwing",
-            "agent": "B",
-            "jump": [
-                {
-                    "expression": "x",
-                    "variable": "x"
-                },
-                {
-                    "expression": "y",
-                    "variable": "y"
-                },
-                {
-                    "expression": "C_x - x",
-                    "variable": "dir_x"
-                },
-                {
-                    "expression": "C_y - y",
-                    "variable": "dir_y"
-                },
-                {
-                    "expression": "spd_A",
-                    "variable": "spd_A"
-                },
-                {
-                    "expression": "spd_B",
-                    "variable": "spd_B"
-                },
-                {
-                    "expression": "spd_C",
-                    "variable": "spd_C"
-                },
-                {
-                    "expression": "A_x",
-                    "variable": "A_x"
-                },
-                {
-                    "expression": "A_y",
-                    "variable": "A_y"
-                },
-                {
-                    "expression": "B_x",
-                    "variable": "B_x"
-                },
-                {
-                    "expression": "B_y",
-                    "variable": "B_y"
-                },
-                {
-                    "expression": "C_x",
-                    "variable": "C_x"
-                },
-                {
-                    "expression": "C_y",
-                    "variable": "C_y"
-                },
-                {
-                    "expression": "time",
-                    "variable": "time"
-                }
-            ]
-        },
-        {
             "guard": "(x - B_x)^2 + (y - B_y)^2 <= 1.0",
             "source": "C_Throwing",
-            "action": "L",
             "target": "B_Throwing",
+            "jump": [
+                {
+                    "variable": "x",
+                    "expression": "x"
+                },
+                {
+                    "variable": "y",
+                    "expression": "y"
+                },
+                {
+                    "variable": "dir_x",
+                    "expression": "A_x - x"
+                },
+                {
+                    "variable": "dir_y",
+                    "expression": "A_y - y"
+                },
+                {
+                    "variable": "spd_A",
+                    "expression": "spd_A"
+                },
+                {
+                    "variable": "spd_B",
+                    "expression": "spd_B"
+                },
+                {
+                    "variable": "spd_C",
+                    "expression": "spd_C"
+                },
+                {
+                    "variable": "A_x",
+                    "expression": "A_x"
+                },
+                {
+                    "variable": "A_y",
+                    "expression": "A_y"
+                },
+                {
+                    "variable": "B_x",
+                    "expression": "B_x"
+                },
+                {
+                    "variable": "B_y",
+                    "expression": "B_y"
+                },
+                {
+                    "variable": "C_x",
+                    "expression": "C_x"
+                },
+                {
+                    "variable": "C_y",
+                    "expression": "C_y"
+                },
+                {
+                    "variable": "time",
+                    "expression": "time"
+                }
+            ]
+        },
+        {
             "agent": "B",
+            "action": "L",
+            "guard": "(x - B_x)^2 + (y - B_y)^2 <= 1.0",
+            "source": "A_Throwing",
+            "target": "B_Throwing",
             "jump": [
                 {
-                    "expression": "x",
-                    "variable": "x"
+                    "variable": "x",
+                    "expression": "x"
                 },
                 {
-                    "expression": "y",
-                    "variable": "y"
+                    "variable": "y",
+                    "expression": "y"
                 },
                 {
-                    "expression": "C_x - x",
-                    "variable": "dir_x"
+                    "variable": "dir_x",
+                    "expression": "C_x - x"
                 },
                 {
-                    "expression": "C_y - y",
-                    "variable": "dir_y"
+                    "variable": "dir_y",
+                    "expression": "C_y - y"
                 },
                 {
-                    "expression": "spd_A",
-                    "variable": "spd_A"
+                    "variable": "spd_A",
+                    "expression": "spd_A"
                 },
                 {
-                    "expression": "spd_B",
-                    "variable": "spd_B"
+                    "variable": "spd_B",
+                    "expression": "spd_B"
                 },
                 {
-                    "expression": "spd_C",
-                    "variable": "spd_C"
+                    "variable": "spd_C",
+                    "expression": "spd_C"
                 },
                 {
-                    "expression": "A_x",
-                    "variable": "A_x"
+                    "variable": "A_x",
+                    "expression": "A_x"
                 },
                 {
-                    "expression": "A_y",
-                    "variable": "A_y"
+                    "variable": "A_y",
+                    "expression": "A_y"
                 },
                 {
-                    "expression": "B_x",
-                    "variable": "B_x"
+                    "variable": "B_x",
+                    "expression": "B_x"
                 },
                 {
-                    "expression": "B_y",
-                    "variable": "B_y"
+                    "variable": "B_y",
+                    "expression": "B_y"
                 },
                 {
-                    "expression": "C_x",
-                    "variable": "C_x"
+                    "variable": "C_x",
+                    "expression": "C_x"
                 },
                 {
-                    "expression": "C_y",
-                    "variable": "C_y"
+                    "variable": "C_y",
+                    "expression": "C_y"
                 },
                 {
-                    "expression": "time",
-                    "variable": "time"
+                    "variable": "time",
+                    "expression": "time"
                 }
             ]
         },
         {
+            "agent": "B",
+            "action": "L",
+            "guard": "(x - B_x)^2 + (y - B_y)^2 <= 1.0",
+            "source": "C_Throwing",
+            "target": "B_Throwing",
+            "jump": [
+                {
+                    "variable": "x",
+                    "expression": "x"
+                },
+                {
+                    "variable": "y",
+                    "expression": "y"
+                },
+                {
+                    "variable": "dir_x",
+                    "expression": "C_x - x"
+                },
+                {
+                    "variable": "dir_y",
+                    "expression": "C_y - y"
+                },
+                {
+                    "variable": "spd_A",
+                    "expression": "spd_A"
+                },
+                {
+                    "variable": "spd_B",
+                    "expression": "spd_B"
+                },
+                {
+                    "variable": "spd_C",
+                    "expression": "spd_C"
+                },
+                {
+                    "variable": "A_x",
+                    "expression": "A_x"
+                },
+                {
+                    "variable": "A_y",
+                    "expression": "A_y"
+                },
+                {
+                    "variable": "B_x",
+                    "expression": "B_x"
+                },
+                {
+                    "variable": "B_y",
+                    "expression": "B_y"
+                },
+                {
+                    "variable": "C_x",
+                    "expression": "C_x"
+                },
+                {
+                    "variable": "C_y",
+                    "expression": "C_y"
+                },
+                {
+                    "variable": "time",
+                    "expression": "time"
+                }
+            ]
+        },
+        {
+            "agent": "C",
+            "action": "R",
             "guard": "(x - C_x)^2 + (y - C_y)^2 <= 1.0",
             "source": "A_Throwing",
-            "action": "R",
             "target": "C_Throwing",
-            "agent": "C",
             "jump": [
                 {
-                    "expression": "x",
-                    "variable": "x"
+                    "variable": "x",
+                    "expression": "x"
                 },
                 {
-                    "expression": "y",
-                    "variable": "y"
+                    "variable": "y",
+                    "expression": "y"
                 },
                 {
-                    "expression": "A_x - x",
-                    "variable": "dir_x"
+                    "variable": "dir_x",
+                    "expression": "A_x - x"
                 },
                 {
-                    "expression": "A_y - y",
-                    "variable": "dir_y"
+                    "variable": "dir_y",
+                    "expression": "A_y - y"
                 },
                 {
-                    "expression": "spd_A",
-                    "variable": "spd_A"
+                    "variable": "spd_A",
+                    "expression": "spd_A"
                 },
                 {
-                    "expression": "spd_B",
-                    "variable": "spd_B"
+                    "variable": "spd_B",
+                    "expression": "spd_B"
                 },
                 {
-                    "expression": "spd_C",
-                    "variable": "spd_C"
+                    "variable": "spd_C",
+                    "expression": "spd_C"
                 },
                 {
-                    "expression": "A_x",
-                    "variable": "A_x"
+                    "variable": "A_x",
+                    "expression": "A_x"
                 },
                 {
-                    "expression": "A_y",
-                    "variable": "A_y"
+                    "variable": "A_y",
+                    "expression": "A_y"
                 },
                 {
-                    "expression": "B_x",
-                    "variable": "B_x"
+                    "variable": "B_x",
+                    "expression": "B_x"
                 },
                 {
-                    "expression": "B_y",
-                    "variable": "B_y"
+                    "variable": "B_y",
+                    "expression": "B_y"
                 },
                 {
-                    "expression": "C_x",
-                    "variable": "C_x"
+                    "variable": "C_x",
+                    "expression": "C_x"
                 },
                 {
-                    "expression": "C_y",
-                    "variable": "C_y"
+                    "variable": "C_y",
+                    "expression": "C_y"
                 },
                 {
-                    "expression": "time",
-                    "variable": "time"
+                    "variable": "time",
+                    "expression": "time"
                 }
             ]
         },
         {
+            "agent": "C",
+            "action": "R",
             "guard": "(x - C_x)^2 + (y - C_y)^2 <= 1.0",
             "source": "B_Throwing",
-            "action": "R",
             "target": "C_Throwing",
-            "agent": "C",
             "jump": [
                 {
-                    "expression": "x",
-                    "variable": "x"
+                    "variable": "x",
+                    "expression": "x"
                 },
                 {
-                    "expression": "y",
-                    "variable": "y"
+                    "variable": "y",
+                    "expression": "y"
                 },
                 {
-                    "expression": "A_x - x",
-                    "variable": "dir_x"
+                    "variable": "dir_x",
+                    "expression": "A_x - x"
                 },
                 {
-                    "expression": "A_y - y",
-                    "variable": "dir_y"
+                    "variable": "dir_y",
+                    "expression": "A_y - y"
                 },
                 {
-                    "expression": "spd_A",
-                    "variable": "spd_A"
+                    "variable": "spd_A",
+                    "expression": "spd_A"
                 },
                 {
-                    "expression": "spd_B",
-                    "variable": "spd_B"
+                    "variable": "spd_B",
+                    "expression": "spd_B"
                 },
                 {
-                    "expression": "spd_C",
-                    "variable": "spd_C"
+                    "variable": "spd_C",
+                    "expression": "spd_C"
                 },
                 {
-                    "expression": "A_x",
-                    "variable": "A_x"
+                    "variable": "A_x",
+                    "expression": "A_x"
                 },
                 {
-                    "expression": "A_y",
-                    "variable": "A_y"
+                    "variable": "A_y",
+                    "expression": "A_y"
                 },
                 {
-                    "expression": "B_x",
-                    "variable": "B_x"
+                    "variable": "B_x",
+                    "expression": "B_x"
                 },
                 {
-                    "expression": "B_y",
-                    "variable": "B_y"
+                    "variable": "B_y",
+                    "expression": "B_y"
                 },
                 {
-                    "expression": "C_x",
-                    "variable": "C_x"
+                    "variable": "C_x",
+                    "expression": "C_x"
                 },
                 {
-                    "expression": "C_y",
-                    "variable": "C_y"
+                    "variable": "C_y",
+                    "expression": "C_y"
                 },
                 {
-                    "expression": "time",
-                    "variable": "time"
+                    "variable": "time",
+                    "expression": "time"
                 }
             ]
         },
         {
+            "agent": "C",
+            "action": "L",
             "guard": "(x - C_x)^2 + (y - C_y)^2 <= 1.0",
             "source": "A_Throwing",
-            "action": "L",
             "target": "C_Throwing",
-            "agent": "C",
             "jump": [
                 {
-                    "expression": "x",
-                    "variable": "x"
+                    "variable": "x",
+                    "expression": "x"
                 },
                 {
-                    "expression": "y",
-                    "variable": "y"
+                    "variable": "y",
+                    "expression": "y"
                 },
                 {
-                    "expression": "B_x - x",
-                    "variable": "dir_x"
+                    "variable": "dir_x",
+                    "expression": "B_x - x"
                 },
                 {
-                    "expression": "B_y - y",
-                    "variable": "dir_y"
+                    "variable": "dir_y",
+                    "expression": "B_y - y"
                 },
                 {
-                    "expression": "spd_A",
-                    "variable": "spd_A"
+                    "variable": "spd_A",
+                    "expression": "spd_A"
                 },
                 {
-                    "expression": "spd_B",
-                    "variable": "spd_B"
+                    "variable": "spd_B",
+                    "expression": "spd_B"
                 },
                 {
-                    "expression": "spd_C",
-                    "variable": "spd_C"
+                    "variable": "spd_C",
+                    "expression": "spd_C"
                 },
                 {
-                    "expression": "A_x",
-                    "variable": "A_x"
+                    "variable": "A_x",
+                    "expression": "A_x"
                 },
                 {
-                    "expression": "A_y",
-                    "variable": "A_y"
+                    "variable": "A_y",
+                    "expression": "A_y"
                 },
                 {
-                    "expression": "B_x",
-                    "variable": "B_x"
+                    "variable": "B_x",
+                    "expression": "B_x"
                 },
                 {
-                    "expression": "B_y",
-                    "variable": "B_y"
+                    "variable": "B_y",
+                    "expression": "B_y"
                 },
                 {
-                    "expression": "C_x",
-                    "variable": "C_x"
+                    "variable": "C_x",
+                    "expression": "C_x"
                 },
                 {
-                    "expression": "C_y",
-                    "variable": "C_y"
+                    "variable": "C_y",
+                    "expression": "C_y"
                 },
                 {
-                    "expression": "time",
-                    "variable": "time"
+                    "variable": "time",
+                    "expression": "time"
                 }
             ]
         },
         {
+            "agent": "C",
+            "action": "L",
             "guard": "(x - C_x)^2 + (y - C_y)^2 <= 1.0",
             "source": "B_Throwing",
-            "action": "L",
             "target": "C_Throwing",
-            "agent": "C",
             "jump": [
                 {
-                    "expression": "x",
-                    "variable": "x"
+                    "variable": "x",
+                    "expression": "x"
                 },
                 {
-                    "expression": "y",
-                    "variable": "y"
+                    "variable": "y",
+                    "expression": "y"
                 },
                 {
-                    "expression": "B_x - x",
-                    "variable": "dir_x"
+                    "variable": "dir_x",
+                    "expression": "B_x - x"
                 },
                 {
-                    "expression": "B_y - y",
-                    "variable": "dir_y"
+                    "variable": "dir_y",
+                    "expression": "B_y - y"
                 },
                 {
-                    "expression": "spd_A",
-                    "variable": "spd_A"
+                    "variable": "spd_A",
+                    "expression": "spd_A"
                 },
                 {
-                    "expression": "spd_B",
-                    "variable": "spd_B"
+                    "variable": "spd_B",
+                    "expression": "spd_B"
                 },
                 {
-                    "expression": "spd_C",
-                    "variable": "spd_C"
+                    "variable": "spd_C",
+                    "expression": "spd_C"
                 },
                 {
-                    "expression": "A_x",
-                    "variable": "A_x"
+                    "variable": "A_x",
+                    "expression": "A_x"
                 },
                 {
-                    "expression": "A_y",
-                    "variable": "A_y"
+                    "variable": "A_y",
+                    "expression": "A_y"
                 },
                 {
-                    "expression": "B_x",
-                    "variable": "B_x"
+                    "variable": "B_x",
+                    "expression": "B_x"
                 },
                 {
-                    "expression": "B_y",
-                    "variable": "B_y"
+                    "variable": "B_y",
+                    "expression": "B_y"
                 },
                 {
-                    "expression": "C_x",
-                    "variable": "C_x"
+                    "variable": "C_x",
+                    "expression": "C_x"
                 },
                 {
-                    "expression": "C_y",
-                    "variable": "C_y"
+                    "variable": "C_y",
+                    "expression": "C_y"
                 },
                 {
-                    "expression": "time",
-                    "variable": "time"
+                    "variable": "time",
+                    "expression": "time"
                 }
             ]
         }
-    ]
+    ],
+    "agents": [
+        {
+            "name": "A"
+        },
+        {
+            "name": "B"
+        },
+        {
+            "name": "C"
+        }
+    ],
+    "config": {
+        "state_formula": "false",
+        "time_bound": "120",
+        "max_steps": "10"
+    }
 }
