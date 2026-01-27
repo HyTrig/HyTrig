@@ -272,7 +272,6 @@ function verify()::String
             ),
             Vector{Strategy_Formula}([parse(query.formula, bindings, strategy) for query in query_list])
         )
-        println(typeof(game_tree))
     catch e
         if e isa ParseError
             return "parse error: $(e.msg)"
@@ -283,12 +282,9 @@ function verify()::String
     empty!(branch_list)
 
     if !isnothing(game_tree)
-        println(typeof(game_tree))
         game_tree = build_gui_tree(game_tree)
         push!(branch_list, QBranch(game_tree.branches[1]))
     end
-
-    println(game_tree)
 
     for (i, query) in enumerate(query_list)
         query.verified = results[i]
