@@ -642,6 +642,7 @@ ApplicationWindow {
                     }
                     break;
                 case MessageDialog.Discard:
+                    close();
                     action(current_file);
                     break;
                 case MessageDialog.Cancel:
