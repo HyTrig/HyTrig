@@ -13,7 +13,9 @@ This file defines the QML objects used in the HyTrig GUI.
 - `QEdge`: Represents an edge in a hybrid game.
 - `QJump`: Represents a jump in an edge.
 - `QQuery`: Represents a query in a hybrid game.
-TODO
+- `QBranch`: Represents a tree branch used in QML models.
+- `QActiveNode`: Represents an active tree node used in QML models.
+- `QPassiveNode`: Represents a passive tree node used in QML models.
 
 # Authors:
 - Moritz Maas

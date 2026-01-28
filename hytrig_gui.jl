@@ -207,7 +207,11 @@ function load(path::QString)::String
     return ""
 end
 
-# TODO: write docs
+"""
+    verify()::String
+
+Verify the current game.
+"""
 function verify()::String
     global game_tree
     bindings::Bindings = Bindings(

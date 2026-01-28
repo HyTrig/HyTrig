@@ -554,7 +554,7 @@ ApplicationWindow {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.margins: 10
-                model: ["HyTrig", "Example2", "Example3"]
+                model: ["Hybrid Game with Triggers", "Monotonic Hybrid Game"]
 
                 // TODO: change content based on selection
 
