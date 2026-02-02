@@ -9,6 +9,8 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Controls.Material
 
+import "mhg" as MHG
+
 GameType {
 
     game_type_name: "MHG"
@@ -24,7 +26,207 @@ GameType {
     }
 
     tab_list: [
-        // TODO: Implement MHG tabs
+        ElementTab {
+
+            id: agent_tab
+
+            tab_name: "Agents"
+            element_name: "Agent"
+
+            add: function() {
+                mhg_models.agents.appendRow({name: ""});
+            }
+
+            model: mhg_models.agents
+            delegate: MHG.Agent {
+                width: agent_tab.cellWidth
+            }
+
+        },
+
+        ElementTab {
+
+            id: action_tab
+
+            tab_name: "Actions"
+            element_name: "Action"
+
+            add: function() {
+                mhg_models.actions.appendRow({name: ""});
+            }
+
+            model: mhg_models.actions
+            delegate: MHG.Act {
+                width: action_tab.cellWidth
+            }
+
+        },
+
+        ElementTab {
+
+            id: variable_tab
+
+            tab_name: "Variables"
+            element_name: "Variable"
+
+            add: function() {
+                mhg_models.variables.appendRow({name: "", lower_open: true, upper_open: true, lower_bound: 0.0, upper_bound: 0.0});
+                variableAdded();
+            }
+
+            model: mhg_models.variables
+            delegate: MHG.Variable {
+                width: variable_tab.cellWidth
+            }
+
+        },
+
+        ElementTab {
+
+            id: location_tab
+            cellWidth: 700
+
+            tab_name: "Locations"
+            element_name: "Location"
+
+            add: function() {
+                var flow = []
+                for (var i = 0; i < mhg_models.variables.rowCount(); i++) {
+                    flow.push({
+                        variable: mhg_models.variables.data(mhg_models.variables.index(i, 0), roles.name),
+                        lower_open: true,
+                        upper_open: true,
+                        lower_bound: 0.0,
+                        upper_bound: 0.0
+                    })
+                }
+                mhg_models.locations.appendRow({
+                    name: "",
+                    initial: mhg_models.locations.rowCount() == 0,
+                    invariant: "",
+                    flow: flow
+                });
+            }
+
+            model: mhg_models.locations
+            delegate: MHG.Location {
+                width: location_tab.cellWidth
+
+                Connections {
+                    target: main_window
+                    function onVariableAdded() {
+                        model.flow.appendRow({variable: "", lower_open: true, upper_open: true, lower_bound: 0.0, upper_bound: 0.0});
+                    }
+                    function onVariableRemoved(index) {
+                        model.flow.removeRow(index);
+                    }
+                    function onVariableRenamed(index, name) {
+                        if (model.flow) {
+                            model.flow.setData(model.flow.index(index, 0), name, roles.name);
+                        }
+                    }
+                }
+            }
+
+            ButtonGroup {
+                id: mhg_initial_location_group
+            }
+
+        },
+
+        ElementTab {
+
+            id: edge_tab
+            cellWidth: 700
+
+            tab_name: "Edges"
+            element_name: "Edge"
+
+            add: function() {
+                var jump = []
+                for (var i = 0; i < mhg_models.variables.rowCount(); i++) {
+                    jump.push({
+                        variable: mhg_models.variables.data(mhg_models.variables.index(i, 0), roles.name),
+                        lower_open: true,
+                        upper_open: true,
+                        lower_bound: 0.0,
+                        upper_bound: 0.0
+                    })
+                }
+                mhg_models.edges.appendRow({
+                    source: "",
+                    target: "",
+                    guard: "",
+                    agent: "",
+                    action: "",
+                    jump: jump
+                });
+            }
+
+            model: mhg_models.edges
+            delegate: MHG.Edge {
+                width: edge_tab.cellWidth
+
+                Connections {
+                    target: main_window
+                    function onActionRemoved(name) {
+                        if (model.action == name) {
+                            model.action = "";
+                        }
+                    }
+                    function onAgentRemoved(name) {
+                        if (model.agent == name) {
+                            model.agent = "";
+                        }
+                    }
+                    function onLocationRemoved(name) {
+                        if (model.source == name) {
+                            model.source = "";
+                        }
+                        if (model.target == name) {
+                            model.target = "";
+                        }
+                    }
+                    function onVariableAdded() {
+                        model.jump.appendRow({variable: "", lower_open: true, upper_open: true, lower_bound: 0.0, upper_bound: 0.0});
+                    }
+                    function onVariableRemoved(index) {
+                        model.jump.removeRow(index);
+                    }
+                    function onVariableRenamed(index, name) {
+                        if (model.jump) {
+                            model.jump.setData(model.jump.index(index, 0), name, roles.name);
+                        }
+                    }
+                }
+            }
+
+        },
+
+        MHG.TerminationConditions {
+
+            id: termination_conditions_tab
+
+        },
+
+        ElementTab {
+
+            id: query_tab
+            cellWidth: 700
+
+            tab_name: "Queries"
+            element_name: "Query"
+
+            add: function() {
+                mhg_models.queries.appendRow({formula: ""});
+            }
+
+            model: mhg_models.queries
+            delegate: MHG.Query {
+                width: query_tab.cellWidth
+            }
+
+        }
     ]
 
     clear: function () {

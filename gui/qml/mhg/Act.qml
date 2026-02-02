@@ -18,7 +18,7 @@ ElementFrame {
 
     remove: function() {
         actionRemoved(model.name);
-        mhg_models.actions.removeRow(index);
+        hgt_models.actions.removeRow(index);
     }
 
     elementContent: [
@@ -52,7 +52,7 @@ ElementFrame {
                     model.name = x;
                 }
                 condition: function(x) {
-                    return x == model.name || Julia.mhg_name_available(x);
+                    return x == model.name || Julia.hgt_name_available(x);
                 }
             }
 

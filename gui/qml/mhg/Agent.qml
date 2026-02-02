@@ -1,6 +1,6 @@
 /**
-* @file Act.qml
-* @brief GUI component for an action of the HyTrig GUI
+* @file Agent.qml
+* @brief GUI component for an agent of the HyTrig GUI
 * @authors Moritz Maas
 */
 
@@ -12,38 +12,38 @@ import ".."
 
 ElementFrame {
 
-    id: action_frame
+    id: agent_frame
 
-    element_name: "Action"
-
+    element_name: "Agent"
+    
     remove: function() {
-        actionRemoved(model.name);
-        mhg_models.actions.removeRow(index);
+        agentRemoved(model.name);
+        mhg_models.agents.removeRow(index);
     }
 
     elementContent: [
 
         Row {
-
-            parent: action_frame.column
+            
+            parent: agent_frame.column
             width: parent.width
-            height:action_name_field.height
+            height: agent_name_field.height
             spacing: 10
 
             Label {
-                id: action_name_label
+                id: agent_name_label
                 height: parent.height
                 verticalAlignment: Text.AlignVCenter
                 text: qsTr("Name:")
             }
 
             RegexField {
-                id: action_name_field
-                width: parent.width - action_name_label.width - parent.spacing
+                id: agent_name_field
+                width: parent.width - agent_name_label.width - parent.spacing
 
                 text: qsTr(model.name)
-                default_text: qsTr("Enter action name")
-                error_text: qsTr("Invalid action name")
+                default_text: qsTr("Enter agent name")
+                error_text: qsTr("Invalid agent name")
                 condition_error_text: qsTr("Name already in use")
 
                 regex: /^[A-Za-z]\w*$/

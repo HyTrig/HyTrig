@@ -283,6 +283,8 @@ ApplicationWindow {
                 anchors.margins: 10
                 model: ["Hybrid Game with Triggers", "Monotonic Hybrid Game"]
 
+                // TODO: open save changes dialog and clear old game on change
+
                 Component.onCompleted: {
                     console.assert(game_types.length == game_type_selector.model.length, "Number of game types does not match number of selections");
                 }

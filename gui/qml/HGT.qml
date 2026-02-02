@@ -154,7 +154,7 @@ GameType {
             }
 
             ButtonGroup {
-                id: initial_location_group
+                id: hgt_initial_location_group
             }
 
         },
@@ -192,10 +192,14 @@ GameType {
                 Connections {
                     target: main_window
                     function onActionRemoved(name) {
-                        model.action = "";
+                        if (model.action == name) {
+                            model.action = "";
+                        }
                     }
                     function onAgentRemoved(name) {
-                        model.agent = "";
+                        if (model.agent == name) {
+                            model.agent = "";
+                        }
                     }
                     function onLocationRemoved(name) {
                         if (model.source == name) {
