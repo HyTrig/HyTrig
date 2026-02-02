@@ -63,6 +63,7 @@ loadqml(
     roles=roles,
     tree=tree,
     hgt_models=hgt_models,
+    mhg_models=mhg_models,
 )
 
 exec()
