@@ -20,6 +20,7 @@ include("gui/gui_tree.jl")
 roles = JuliaPropertyMap()
 
 include("gui/qml_objects/hgt_objects.jl")
+include("gui/qml_objects/mhg_objects.jl")
 
 tree = JuliaPropertyMap()
 

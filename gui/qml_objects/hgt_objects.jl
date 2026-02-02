@@ -266,6 +266,7 @@ Save the current game to a file given by `path`.
 """
 function hgt_save(path::QString)
     data::Dict{String,Union{Vector,Dict}} = Dict([
+        "game_type" => "HGT",
         "agents" => hgt_agent_list,
         "actions" => hgt_action_list,
         "variables" => hgt_variable_list,
@@ -338,6 +339,9 @@ function hgt_load(path::QString)::String
     end
 
     try
+        if data["game_type"] != "HGT"
+            return "not a Hybrid Game with Triggers"
+        end
         load_elements("agents", QHGTAgent, hgt_agent_list)
         load_elements("actions", QHGTAction, hgt_action_list)
         load_elements("variables", QHGTVariable, hgt_variable_list)
