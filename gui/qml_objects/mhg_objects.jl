@@ -291,7 +291,7 @@ Save the current game to a file given by `path`.
 - `path::QString`: the file path to save to
 """
 function mhg_save(path::QString)
-    data::Dict{String,Union{Vector,Dict}} = Dict([
+    data::Dict{String, Any} = Dict([
         "game_type" => "MHG",
         "agents" => mhg_agent_list,
         "actions" => mhg_action_list,
@@ -359,7 +359,7 @@ function mhg_load(path::QString)::String
         end
     end
 
-    data = Dict{String,Any}()
+    data = Dict{String, Any}()
 
     try
         data = open(replace(String(path), r"^(file:\/{2})" => ""), "r") do f

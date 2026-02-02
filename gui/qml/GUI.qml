@@ -34,16 +34,9 @@ ApplicationWindow {
 
     readonly property GameType game: game_types[game_type_selector.currentIndex]
     readonly property list<GameType> game_types: [
-        HGT {},
-        MHG {}
+        HGT { id: hgt_game },
+        MHG { id: mhg_game }
     ]
-
-    signal actionRemoved(string name)
-    signal agentRemoved(string name)
-    signal locationRemoved(string name)
-    signal variableAdded()
-    signal variableRemoved(int index)
-    signal variableRenamed(int index, string name)
 
     menuBar: MenuBar {
         
@@ -284,6 +277,11 @@ ApplicationWindow {
                 model: ["Hybrid Game with Triggers", "Monotonic Hybrid Game"]
 
                 // TODO: open save changes dialog and clear old game on change
+
+                onActivated: {
+                    current_file = "";
+                    verified = false;
+                }
 
                 Component.onCompleted: {
                     console.assert(game_types.length == game_type_selector.model.length, "Number of game types does not match number of selections");

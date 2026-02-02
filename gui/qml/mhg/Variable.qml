@@ -59,23 +59,10 @@ ElementFrame {
 
         },
 
-        Row {
-
+        Interval {
             parent: variable_frame.column
             width: parent.width
-            height: value_field.height
-            spacing: 10
-
-            Label {
-                id: value_label
-                width: name_label.width
-                height: parent.height
-                verticalAlignment: Text.AlignVCenter
-                text: qsTr("Value:")
-            }
-
-            // TODO: add variable interval
-
+            interval_model: variable_frame.model
         }
 
     ]

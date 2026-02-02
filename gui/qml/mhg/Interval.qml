@@ -1,0 +1,90 @@
+/**
+* @file Interval.qml
+* @brief GUI component for an interval of the HyTrig GUI
+* @authors Moritz Maas
+*/
+
+import QtQuick
+import QtQuick.Controls
+
+import ".."
+
+Row {
+
+    height: lower_field.height
+    spacing: 10
+
+    required property var interval_model
+
+    BracketSelector {
+        id: left_bracket_selector
+        width: name_label.width
+        height: parent.height
+
+        currentIndex: find(interval_model.lower_open ? "(" : "[")
+
+        is_left: true
+        action: function (open) {
+            interval_model.lower_open = open;
+        }
+    }
+
+    RegexField {
+        id: lower_field
+        width: (parent.width - left_bracket_selector.width - right_bracket_selector.width - comma_label.width - 4 * parent.spacing) / 2
+        
+        text: qsTr(interval_model.lower.toString())
+        default_text: qsTr("Enter decimal")
+        error_text: qsTr("Invalid decimal")
+        condition_error_text: qsTr("Invalid decimal")
+
+        regex: /(^-?(([1-9]\d*(\.\d+)?$)|(0\.\d*[1-9])$))|(^0$)/
+
+        action: function(x) {
+            interval_model.lower = parseFloat(x);
+        }
+        condition: function(x) {
+            return true;
+        }
+    }
+
+    Label {
+        id: comma_label
+        height: parent.height
+        verticalAlignment: Text.AlignVCenter
+        text: qsTr(",")
+    }
+
+    RegexField {
+        id: upper_field
+        width: (parent.width - left_bracket_selector.width - right_bracket_selector.width - comma_label.width - 4 * parent.spacing) / 2
+        
+        text: qsTr(interval_model.upper.toString())
+        default_text: qsTr("Enter decimal")
+        error_text: qsTr("Invalid decimal")
+        condition_error_text: qsTr("Invalid decimal")
+
+        regex: /(^-?(([1-9]\d*(\.\d+)?$)|(0\.\d*[1-9])$))|(^0$)/
+
+        action: function(x) {
+            interval_model.upper = parseFloat(x);
+        }
+        condition: function(x) {
+            return true;
+        }
+    }
+
+    BracketSelector {
+        id: right_bracket_selector
+        width: name_label.width
+        height: parent.height
+
+        currentIndex: find(interval_model.upper_open ? ")" : "]")
+
+        is_left: false
+        action: function (open) {
+            interval_model.upper_open = open;
+        }
+    }
+
+}

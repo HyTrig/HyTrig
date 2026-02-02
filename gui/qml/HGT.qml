@@ -98,7 +98,7 @@ GameType {
                 width: trigger_tab.cellWidth
                 
                 Connections {
-                    target: main_window
+                    target: hgt_game
                     function onAgentRemoved(name) {
                         if (model.agent == name) {
                             model.agent = "";
@@ -138,7 +138,7 @@ GameType {
                 width: location_tab.cellWidth
 
                 Connections {
-                    target: main_window
+                    target: hgt_game
                     function onVariableAdded() {
                         model.flow.appendRow({variable: "", expression: "0"});
                     }
@@ -190,7 +190,7 @@ GameType {
                 width: edge_tab.cellWidth
 
                 Connections {
-                    target: main_window
+                    target: hgt_game
                     function onActionRemoved(name) {
                         if (model.action == name) {
                             model.action = "";
@@ -315,5 +315,12 @@ GameType {
         tab_bar.currentIndex = 7;
         tabs.currentIndex = 7;
     }
+
+    signal actionRemoved(string name)
+    signal agentRemoved(string name)
+    signal locationRemoved(string name)
+    signal variableAdded()
+    signal variableRemoved(int index)
+    signal variableRenamed(int index, string name)
 
 }

@@ -265,7 +265,7 @@ Save the current game to a file given by `path`.
 - `path::QString`: the file path to save to
 """
 function hgt_save(path::QString)
-    data::Dict{String,Union{Vector,Dict}} = Dict([
+    data::Dict{String, Any} = Dict([
         "game_type" => "HGT",
         "agents" => hgt_agent_list,
         "actions" => hgt_action_list,
@@ -328,7 +328,7 @@ function hgt_load(path::QString)::String
         end
     end
 
-    data = Dict{String,Any}()
+    data = Dict{String, Any}()
 
     try
         data = open(replace(String(path), r"^(file:\/{2})" => ""), "r") do f

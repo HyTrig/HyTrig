@@ -56,7 +56,7 @@ end
 
 qml_file = joinpath(dirname(@__FILE__), "gui", "qml", "GUI.qml")
 
-@qmlfunction is_formula up_tree down_tree hgt_name_available hgt_save hgt_load hgt_verify
+@qmlfunction is_formula up_tree down_tree hgt_name_available hgt_save hgt_load hgt_verify mhg_name_available mhg_save mhg_load mhg_verify
 
 loadqml(
     qml_file,

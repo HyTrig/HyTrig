@@ -65,12 +65,13 @@ GameType {
         ElementTab {
 
             id: variable_tab
+            cellWidth: 700
 
             tab_name: "Variables"
             element_name: "Variable"
 
             add: function() {
-                mhg_models.variables.appendRow({name: "", lower_open: true, upper_open: true, lower_bound: 0.0, upper_bound: 0.0});
+                mhg_models.variables.appendRow({name: "", lower_open: true, upper_open: true, lower: 0.0, upper: 0.0});
                 variableAdded();
             }
 
@@ -96,8 +97,8 @@ GameType {
                         variable: mhg_models.variables.data(mhg_models.variables.index(i, 0), roles.name),
                         lower_open: true,
                         upper_open: true,
-                        lower_bound: 0.0,
-                        upper_bound: 0.0
+                        lower: 0.0,
+                        upper: 0.0
                     })
                 }
                 mhg_models.locations.appendRow({
@@ -113,9 +114,9 @@ GameType {
                 width: location_tab.cellWidth
 
                 Connections {
-                    target: main_window
+                    target: mhg_game
                     function onVariableAdded() {
-                        model.flow.appendRow({variable: "", lower_open: true, upper_open: true, lower_bound: 0.0, upper_bound: 0.0});
+                        model.flow.appendRow({variable: "", lower_open: true, upper_open: true, lower: 0.0, upper: 0.0});
                     }
                     function onVariableRemoved(index) {
                         model.flow.removeRow(index);
@@ -149,8 +150,8 @@ GameType {
                         variable: mhg_models.variables.data(mhg_models.variables.index(i, 0), roles.name),
                         lower_open: true,
                         upper_open: true,
-                        lower_bound: 0.0,
-                        upper_bound: 0.0
+                        lower: 0.0,
+                        upper: 0.0
                     })
                 }
                 mhg_models.edges.appendRow({
@@ -168,7 +169,7 @@ GameType {
                 width: edge_tab.cellWidth
 
                 Connections {
-                    target: main_window
+                    target: mhg_game
                     function onActionRemoved(name) {
                         if (model.action == name) {
                             model.action = "";
@@ -188,7 +189,7 @@ GameType {
                         }
                     }
                     function onVariableAdded() {
-                        model.jump.appendRow({variable: "", lower_open: true, upper_open: true, lower_bound: 0.0, upper_bound: 0.0});
+                        model.jump.appendRow({variable: "", lower_open: true, upper_open: true, lower: 0.0, upper: 0.0});
                     }
                     function onVariableRemoved(index) {
                         model.jump.removeRow(index);
@@ -286,5 +287,12 @@ GameType {
         tab_bar.currentIndex = 6;
         tabs.currentIndex = 6;
     }
+
+    signal actionRemoved(string name)
+    signal agentRemoved(string name)
+    signal locationRemoved(string name)
+    signal variableAdded()
+    signal variableRemoved(int index)
+    signal variableRenamed(int index, string name)
 
 }
