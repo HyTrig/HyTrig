@@ -32,7 +32,7 @@ ApplicationWindow {
     property string current_file: ""
     property bool verified: false
 
-    readonly property GameType game: game_types[game_type_selector.currentIndex]
+    readonly property GameType game: game_types[game_type_selector.previous_index]
     readonly property list<GameType> game_types: [
         HGT { id: hgt_game },
         MHG { id: mhg_game }
@@ -56,6 +56,7 @@ ApplicationWindow {
                         current_file = "";
                         verified = false;
                     };
+                    save_changes_dialog.cancel = function(x) {};
                     save_changes_dialog.open();
                 }
             }
@@ -68,6 +69,7 @@ ApplicationWindow {
                     save_changes_dialog.action = function(x) {
                         load_dialog.open();
                     };
+                    save_changes_dialog.cancel = function(x) {};
                     save_changes_dialog.open();
                 }
             }
@@ -269,18 +271,29 @@ ApplicationWindow {
             ComboBox {
 
                 id: game_type_selector
+
+                property int previous_index: 0
+
                 width: parent.width
                 anchors.top: game_type_title.bottom
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.margins: 10
                 model: ["Hybrid Game with Triggers", "Monotonic Hybrid Game"]
-
-                // TODO: open save changes dialog and clear old game on change
-
+                
                 onActivated: {
-                    current_file = "";
-                    verified = false;
+                    if (previous_index != currentIndex) {
+                        save_changes_dialog.action = function(x) {
+                            game.clear();
+                            previous_index = currentIndex;
+                            current_file = "";
+                            verified = false;
+                        }
+                        save_changes_dialog.cancel = function(x) {
+                            game_type_selector.currentIndex = previous_index;
+                        }
+                        save_changes_dialog.open();
+                    }
                 }
 
                 Component.onCompleted: {
@@ -353,6 +366,7 @@ ApplicationWindow {
         parentWindow: main_window
 
         property var action: function(x) {}
+        property var cancel: function(x) {}
 
         title: qsTr("Save File?")
         text: current_file == "" ? qsTr("Do you want to save changes?") : qsTr("Do you want to save changes to ") + current_file + qsTr("?")
@@ -375,6 +389,7 @@ ApplicationWindow {
                     action(current_file);
                     break;
                 case MessageDialog.Cancel:
+                    cancel(current_file);
                     close();
                     break;
             }
