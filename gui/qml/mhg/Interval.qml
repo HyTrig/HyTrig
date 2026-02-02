@@ -16,10 +16,14 @@ Row {
 
     required property var interval_model
 
+    property real bracket_width: 70
+    property real inset: 0
+
     BracketSelector {
         id: left_bracket_selector
-        width: name_label.width
+        width: bracket_width
         height: parent.height
+        topInset: inset
 
         currentIndex: find(interval_model.lower_open ? "(" : "[")
 
@@ -32,6 +36,7 @@ Row {
     RegexField {
         id: lower_field
         width: (parent.width - left_bracket_selector.width - right_bracket_selector.width - comma_label.width - 4 * parent.spacing) / 2
+        topInset: inset
         
         text: qsTr(interval_model.lower.toString())
         default_text: qsTr("Enter decimal")
@@ -58,6 +63,7 @@ Row {
     RegexField {
         id: upper_field
         width: (parent.width - left_bracket_selector.width - right_bracket_selector.width - comma_label.width - 4 * parent.spacing) / 2
+        topInset: inset
         
         text: qsTr(interval_model.upper.toString())
         default_text: qsTr("Enter decimal")
@@ -76,8 +82,9 @@ Row {
 
     BracketSelector {
         id: right_bracket_selector
-        width: name_label.width
+        width: bracket_width
         height: parent.height
+        topInset: inset
 
         currentIndex: find(interval_model.upper_open ? ")" : "]")
 

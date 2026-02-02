@@ -28,7 +28,6 @@ ComboBox {
 
     onActivated: {
         var open = (currentValue == "(" || currentValue == ")");
-        print(open);
         action(open);
     }
 

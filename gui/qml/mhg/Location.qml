@@ -147,7 +147,7 @@ ElementFrame {
                 delegate: Row {
 
                     width: location_flow_list.width
-                    height: variable_field.height + variable_field.topInset
+                    height: flow_interval.height + flow_interval.inset
                     spacing: 10
 
                     Label {
@@ -159,7 +159,12 @@ ElementFrame {
                         elide: Text.ElideRight
                     }
 
-                    // TODO: add flow interval
+                    Interval {
+                        id: flow_interval
+                        width: parent.width - variable_label.width - parent.spacing
+                        inset: 10
+                        interval_model: model
+                    }
 
                 }
 
