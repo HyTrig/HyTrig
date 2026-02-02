@@ -8,6 +8,8 @@ import org.julialang
 import QtQuick
 import QtQuick.Controls.Material
 
+import ".."
+
 ElementFrame {
 
     id: trigger_frame
@@ -15,7 +17,7 @@ ElementFrame {
     element_name: "Trigger"
 
     remove: function() {
-        models.triggers.removeRow(index);
+        hgt_models.triggers.removeRow(index);
     }
 
     elementContent: [
@@ -39,7 +41,7 @@ ElementFrame {
                 id: trigger_agent_selector
                 width: parent.width - trigger_agent_label.width - parent.spacing
 
-                model: models.agents
+                model: hgt_models.agents
                 textRole: "name"
                 valueRole: "name"
 

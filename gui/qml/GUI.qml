@@ -32,59 +32,18 @@ ApplicationWindow {
     property string current_file: ""
     property bool verified: false
 
+    readonly property GameType game: game_types[game_type_selector.currentIndex]
+    readonly property list<GameType> game_types: [
+        HGT {},
+        MHG {}
+    ]
+
     signal actionRemoved(string name)
     signal agentRemoved(string name)
     signal locationRemoved(string name)
     signal variableAdded()
     signal variableRemoved(int index)
     signal variableRenamed(int index, string name)
-
-    function clear() {
-        models.agents.clear();
-        models.actions.clear();
-        models.variables.clear();
-        models.triggers.clear();
-        models.locations.clear();
-        models.edges.clear();
-        models.queries.clear();
-        config.max_steps = "";
-        config.time_bound = "";
-        config.state_formula = "";
-        verified = false;
-    }
-
-    function load(file) {
-        var error = Julia.load(file);
-        current_file = file;
-        action_tab.model = [];
-        action_tab.model = models.actions;
-        tabs.currentIndex = 0;
-        agent_tab.model = [];
-        agent_tab.model = models.agents;
-        tabs.currentIndex = 1;
-        variable_tab.model = [];
-        variable_tab.model = models.variables;
-        tabs.currentIndex = 2;
-        trigger_tab.model = [];
-        trigger_tab.model = models.triggers;
-        tabs.currentIndex = 3;
-        location_tab.model = [];
-        location_tab.model = models.locations;
-        tabs.currentIndex = 4;
-        edge_tab.model = [];
-        edge_tab.model = models.edges;
-        tabs.currentIndex = 5;
-        termination_conditions_tab.max_steps.editingFinished();
-        termination_conditions_tab.time_bound.editingFinished();
-        termination_conditions_tab.state_formula.editingFinished();
-        tabs.currentIndex = 6;
-        query_tab.model = [];
-        query_tab.model = models.queries;
-        tabs.currentIndex = 7;
-        tabs.currentIndex = tab_bar.currentIndex;
-        verified = false;
-        return error;
-    }
 
     menuBar: MenuBar {
         
@@ -100,7 +59,7 @@ ApplicationWindow {
                 shortcut: "Ctrl+N"
                 onTriggered: {
                     save_changes_dialog.action = function(x) {
-                        clear();
+                        game.clear();
                         current_file = "";
                         verified = false;
                     };
@@ -131,7 +90,7 @@ ApplicationWindow {
                     if (current_file == "") {
                         save_dialog.open();
                     } else {
-                        Julia.save(current_file);
+                        game.save(current_file);
                     }
                 }
             }
@@ -164,17 +123,14 @@ ApplicationWindow {
                 id: verify_action
                 text: qsTr("Verify")
                 onTriggered: {
-                    var error = Julia.verify();
+                    var error = game.verify();
                     if (error != "") {
                         error_dialog.text = qsTr("An error occurred during verification:");
                         error_dialog.informativeText = error;
                         error_dialog.open();
                     } else {
                         verified = true;
-                        query_tab.model = [];
-                        query_tab.model = models.queries;
-                        tab_bar.currentIndex = 7;
-                        tabs.currentIndex = 7;
+                        game.verification_success();
                     }
                 }
             }
@@ -240,16 +196,7 @@ ApplicationWindow {
             SplitView.preferredWidth: 200
             height: parent.height
 
-            model: ListModel {
-                ListElement { name: "Agents" }
-                ListElement { name: "Actions" }
-                ListElement { name: "Variables" }
-                ListElement { name: "Triggers" }
-                ListElement { name: "Locations" }
-                ListElement { name: "Edges" }
-                ListElement { name: "Term. Conditions" }
-                ListElement { name: "Queries" }
-            }
+            model: game.tab_names
 
             delegate: ItemDelegate {
 
@@ -302,227 +249,7 @@ ApplicationWindow {
                 anchors.margins: 5
                 currentIndex: tab_bar.currentIndex
 
-                ElementTab {
-
-                    id: agent_tab
-
-                    tab_name: "Agents"
-                    element_name: "Agent"
-
-                    add: function() {
-                        models.agents.appendRow({name: ""});
-                    }
-
-                    model: models.agents
-                    delegate: Agent {
-                        width: agent_tab.cellWidth
-                    }
-
-                }
-
-                ElementTab {
-
-                    id: action_tab
-
-                    tab_name: "Actions"
-                    element_name: "Action"
-
-                    add: function() {
-                        models.actions.appendRow({name: ""});
-                    }
-
-                    model: models.actions
-                    delegate: Act {
-                        width: action_tab.cellWidth
-                    }
-
-                }
-
-                ElementTab {
-
-                    id: variable_tab
-
-                    tab_name: "Variables"
-                    element_name: "Variable"
-
-                    add: function() {
-                        models.variables.appendRow({name: "", expression: ""});
-                        variableAdded();
-                    }
-
-                    model: models.variables
-                    delegate: Variable {
-                        width: variable_tab.cellWidth
-                    }
-
-                }
-
-                ElementTab {
-
-                    id: trigger_tab
-
-                    tab_name: "Triggers"
-                    element_name: "Trigger"
-
-                    add: function() {
-                        models.triggers.appendRow({agent: "", trigger: ""})
-                    }
-
-                    model: models.triggers
-                    delegate: Trigger {
-                        width: trigger_tab.cellWidth
-                        
-                        Connections {
-                            target: main_window
-                            function onAgentRemoved(name) {
-                                if (model.agent == name) {
-                                    model.agent = "";
-                                }
-                            }
-                        }
-                    }
-
-                }
-
-                ElementTab {
-
-                    id: location_tab
-                    cellWidth: 700
-
-                    tab_name: "Locations"
-                    element_name: "Location"
-
-                    add: function() {
-                        var flow = []
-                        for (var i = 0; i < models.variables.rowCount(); i++) {
-                            flow.push({
-                                variable: models.variables.data(models.variables.index(i, 0), roles.name),
-                                expression: models.variables.data(models.variables.index(i, 0), roles.name)
-                            })
-                        }
-                        models.locations.appendRow({
-                            name: "",
-                            initial: models.locations.rowCount() == 0,
-                            invariant: "",
-                            flow: flow
-                        });
-                    }
-
-                    model: models.locations
-                    delegate: Location {
-                        width: location_tab.cellWidth
-
-                        Connections {
-                            target: main_window
-                            function onVariableAdded() {
-                                model.flow.appendRow({variable: "", expression: "0"});
-                            }
-                            function onVariableRemoved(index) {
-                                model.flow.removeRow(index);
-                            }
-                            function onVariableRenamed(index, name) {
-                                if (model.flow) {
-                                    model.flow.setData(model.flow.index(index, 0), name, roles.name);
-                                }
-                            }
-                        }
-                    }
-
-                    ButtonGroup {
-                        id: initial_location_group
-                    }
-
-                }
-
-                ElementTab {
-
-                    id: edge_tab
-                    cellWidth: 700
-
-                    tab_name: "Edges"
-                    element_name: "Edge"
-
-                    add: function() {
-                        var jump = []
-                        for (var i = 0; i < models.variables.rowCount(); i++) {
-                            jump.push({
-                                variable: models.variables.data(models.variables.index(i, 0), roles.name),
-                                expression: models.variables.data(models.variables.index(i, 0), roles.name)
-                            })
-                        }
-                        models.edges.appendRow({
-                            source: "",
-                            target: "",
-                            guard: "",
-                            agent: "",
-                            action: "",
-                            jump: jump
-                        });
-                    }
-
-                    model: models.edges
-                    delegate: Edge {
-                        width: edge_tab.cellWidth
-
-                        Connections {
-                            target: main_window
-                            function onActionRemoved(name) {
-                                model.action = "";
-                            }
-                            function onAgentRemoved(name) {
-                                model.agent = "";
-                            }
-                            function onLocationRemoved(name) {
-                                if (model.source == name) {
-                                    model.source = "";
-                                }
-                                if (model.target == name) {
-                                    model.target = "";
-                                }
-                            }
-                            function onVariableAdded() {
-                                model.jump.appendRow({variable: "", expression: ""});
-                            }
-                            function onVariableRemoved(index) {
-                                model.jump.removeRow(index);
-                            }
-                            function onVariableRenamed(index, name) {
-                                if (model.jump) {
-                                    if (model.jump.data(model.jump.index(index, 0), roles.name) == model.jump.data(model.jump.index(index, 0), roles.expression)) {
-                                        model.jump.setData(model.jump.index(index, 0), name, roles.expression);
-                                    }
-                                    model.jump.setData(model.jump.index(index, 0), name, roles.name);
-                                }
-                            }
-                        }
-                    }
-
-                }
-
-                TerminationConditions {
-
-                    id: termination_conditions_tab
-
-                }
-
-                ElementTab {
-
-                    id: query_tab
-                    cellWidth: 700
-
-                    tab_name: "Queries"
-                    element_name: "Query"
-
-                    add: function() {
-                        models.queries.appendRow({formula: ""});
-                    }
-
-                    model: models.queries
-                    delegate: Query {
-                        width: query_tab.cellWidth
-                    }
-
-                }
+                children: game.tab_list
 
             }
 
@@ -548,7 +275,7 @@ ApplicationWindow {
 
             ComboBox {
 
-                id: verification_mode_selector
+                id: game_type_selector
                 width: parent.width
                 anchors.top: game_type_title.bottom
                 anchors.left: parent.left
@@ -556,7 +283,9 @@ ApplicationWindow {
                 anchors.margins: 10
                 model: ["Hybrid Game with Triggers", "Monotonic Hybrid Game"]
 
-                // TODO: change content based on selection
+                Component.onCompleted: {
+                    console.assert(game_types.length == game_type_selector.model.length, "Number of game types does not match number of selections");
+                }
 
             }
 
@@ -591,7 +320,7 @@ ApplicationWindow {
                 onClicked: {
                     tree_viewer.level = 1;
                     tree_viewer.branches.model = [];
-                    tree_viewer.branches.model = models.branches;
+                    tree_viewer.branches.model = tree.branches;
                     tree_viewer.show();
                 }
 
@@ -613,7 +342,7 @@ ApplicationWindow {
         buttons: MessageDialog.Yes | MessageDialog.No
 
         onAccepted: {
-            clear();
+            game.clear();
         }
 
     }
@@ -638,7 +367,7 @@ ApplicationWindow {
                         save_dialog.action = action;
                         save_dialog.open();
                     } else {
-                        Julia.save(current_file);
+                        game.save(current_file);
                         action(current_file);
                     }
                     break;
@@ -667,7 +396,7 @@ ApplicationWindow {
         defaultSuffix: "hytrig"
 
         onAccepted: {
-            Julia.save(selectedFile.toString());
+            game.save(selectedFile.toString());
             action(selectedFile.toString());
         }
 
@@ -685,7 +414,7 @@ ApplicationWindow {
         defaultSuffix: "hytrig"
 
         onAccepted: {
-            var error = load(selectedFile.toString());
+            var error = game.load(selectedFile.toString());
             if (error != "") {
                 error_dialog.text = qsTr("An error occurred while loading " + selectedFile.toString() + ":");
                 error_dialog.informativeText = error;

@@ -8,6 +8,8 @@ import org.julialang
 import QtQuick
 import QtQuick.Controls.Material
 
+import ".."
+
 Rectangle {
 
     property alias max_steps: max_steps_field
@@ -79,7 +81,7 @@ Rectangle {
                                 id: max_steps_field
                                 width: parent.width
 
-                                text: qsTr(config.max_steps)
+                                text: qsTr(hgt_models.max_steps)
                                 default_text: qsTr("Enter maximum steps")
                                 error_text: qsTr("Invalid number")
                                 condition_error_text: qsTr("Invalid number")
@@ -87,7 +89,7 @@ Rectangle {
                                 regex: /^([1-9]\d*)|0$/
 
                                 action: function(x) {
-                                    config.max_steps = x;
+                                    hgt_models.max_steps = x;
                                 }
                                 condition: function(x) {
                                     return true;
@@ -125,7 +127,7 @@ Rectangle {
                                 id: time_bound_field
                                 width: parent.width
 
-                                text: qsTr(config.time_bound)
+                                text: qsTr(hgt_models.time_bound)
                                 default_text: qsTr("Enter time bound")
                                 error_text: qsTr("Invalid decimal")
                                 condition_error_text: qsTr("Invalid decimal")
@@ -133,7 +135,7 @@ Rectangle {
                                 regex: /^([1-9]\d*(\.\d+)?)|(0(\.\d+)?)$/
 
                                 action: function(x) {
-                                    config.time_bound = x;
+                                    hgt_models.time_bound = x;
                                 }
                                 condition: function(x) {
                                     return true;
@@ -171,7 +173,7 @@ Rectangle {
                                 id: state_formula_field
                                 width: parent.width
 
-                                text: qsTr(config.state_formula)
+                                text: qsTr(hgt_models.state_formula)
                                 default_text: qsTr("Enter state formula")
                                 error_text: qsTr("Invalid state formula")
                                 condition_error_text: qsTr("Invalid state formula")
@@ -179,10 +181,10 @@ Rectangle {
                                 regex: /^.*$/
 
                                 action: function(x) {
-                                    config.state_formula = x;
+                                    hgt_models.state_formula = x;
                                 }
                                 condition: function(x) {
-                                    return x == config.state_formula || Julia.is_formula(x, "state");
+                                    return x == hgt_models.state_formula || Julia.is_formula(x, "state");
                                 }
                             }
 

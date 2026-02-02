@@ -8,6 +8,8 @@ import org.julialang
 import QtQuick
 import QtQuick.Controls.Material
 
+import ".."
+
 ElementFrame {
 
     required property var jump
@@ -17,7 +19,7 @@ ElementFrame {
     element_name: "Edge"
 
     remove: function() {
-        models.edges.removeRow(index);
+        hgt_models.edges.removeRow(index);
     }
 
     elementContent: [
@@ -40,7 +42,7 @@ ElementFrame {
                 id: edge_source_selector
                 width: (parent.width - edge_source_label.width - edge_target_label.width - 3 * parent.spacing) / 2
 
-                model: models.locations
+                model: hgt_models.locations
                 textRole: "name"
                 valueRole: "name"
 
@@ -63,7 +65,7 @@ ElementFrame {
                 id: edge_target_selector
                 width: (parent.width - edge_source_label.width - edge_target_label.width - 3 * parent.spacing) / 2
 
-                model: models.locations
+                model: hgt_models.locations
                 textRole: "name"
                 valueRole: "name"
 
@@ -131,7 +133,7 @@ ElementFrame {
                 id: edge_agent_selector
                 width: (parent.width - edge_agent_label.width - edge_action_label.width - 3 * parent.spacing) / 2
 
-                model: models.agents
+                model: hgt_models.agents
                 textRole: "name"
                 valueRole: "name"
 
@@ -153,7 +155,7 @@ ElementFrame {
                 id: edge_action_selector
                 width: (parent.width - edge_agent_label.width - edge_action_label.width - 3 * parent.spacing) / 2
 
-                model: models.actions
+                model: hgt_models.actions
                 textRole: "name"
                 valueRole: "name"
 

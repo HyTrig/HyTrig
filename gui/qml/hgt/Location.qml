@@ -8,6 +8,8 @@ import org.julialang
 import QtQuick
 import QtQuick.Controls.Material
 
+import ".."
+
 ElementFrame {
 
     required property var flow
@@ -18,7 +20,7 @@ ElementFrame {
 
     remove: function() {
         locationRemoved(model.name);
-        models.locations.removeRow(index);
+        hgt_models.locations.removeRow(index);
     }
 
     elementContent: [
@@ -53,7 +55,7 @@ ElementFrame {
                     model.name = x;
                 }
                 condition: function(x) {
-                    return x == model.name || Julia.name_available(x);
+                    return x == model.name || Julia.hgt_name_available(x);
                 }
             }
 

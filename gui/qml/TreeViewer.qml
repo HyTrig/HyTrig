@@ -35,7 +35,7 @@ ApplicationWindow {
             return;
         }
         branches.model = [];
-        branches.model = models.branches;
+        branches.model = tree.branches;
         level = level - 1;
     }
 
@@ -44,7 +44,7 @@ ApplicationWindow {
             return;
         }
         branches.model = [];
-        branches.model = models.branches;
+        branches.model = tree.branches;
         level = level + 1;
     }
 
@@ -73,7 +73,7 @@ ApplicationWindow {
 
             orientation: ListView.Horizontal
 
-            model: models.branches
+            model: tree.branches
             delegate: Column {
                 
                 id: branch_column
@@ -208,7 +208,7 @@ ApplicationWindow {
             level = level - 1;
         }
         branches.model = [];
-        branches.model = branch_model;
+        branches.model = tree.branches;
     }
     
 }

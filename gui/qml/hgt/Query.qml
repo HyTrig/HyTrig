@@ -8,6 +8,8 @@ import org.julialang
 import QtQuick
 import QtQuick.Controls.Material
 
+import ".."
+
 ElementFrame {
 
     id: query_frame
@@ -15,7 +17,7 @@ ElementFrame {
     element_name: "Query"
 
     remove: function() {
-        models.queries.removeRow(index);
+        hgt_models.queries.removeRow(index);
     }
 
     elementContent: [

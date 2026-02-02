@@ -8,6 +8,8 @@ import org.julialang
 import QtQuick
 import QtQuick.Controls.Material
 
+import ".."
+
 ElementFrame {
 
     id: agent_frame
@@ -16,7 +18,7 @@ ElementFrame {
     
     remove: function() {
         agentRemoved(model.name);
-        models.agents.removeRow(index);
+        hgt_models.agents.removeRow(index);
     }
 
     elementContent: [
@@ -50,7 +52,7 @@ ElementFrame {
                     model.name = x;
                 }
                 condition: function(x) {
-                    return x == model.name || Julia.name_available(x);
+                    return x == model.name || Julia.hgt_name_available(x);
                 }
             }
 

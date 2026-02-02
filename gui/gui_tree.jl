@@ -4,7 +4,11 @@
 This file contains all definitions for creating the traversable game tree for the GUI.
 
 # Types:
+- `GUIBranch`: a branch in a traversable GUI tree
 - `GUINode`: a node in a traversable GUI tree
+- `QBranch`: Represents a tree branch used in QML models.
+- `QActiveNode`: Represents an active tree node used in QML models.
+- `QPassiveNode`: Represents a passive tree node used in QML models.
 
 # Functions:
 - `build_gui_tree(root::Union{ActiveNode, RootNode})::GUINode`: build a GUI tree from a game tree
@@ -204,4 +208,109 @@ function _get_next_layer(node::Union{ActiveNode, RootNode}, parent::GUINode)::Ve
         push!(branches, GUIBranch(current_node, actives, passives))
     end
     return branches
+end
+
+"""
+    QBranch
+
+A tree branch used in QML models.
+"""
+mutable struct QBranch
+    agent::String
+    trigger::String
+    time::Float64
+    active_nodes::JuliaItemModel
+    passive_nodes::JuliaItemModel
+end
+
+"""
+    QBranch(branch::GUIBranch)::QBranch
+
+Create a QBranch from the given branch `branch`.
+# Arguments
+- `branch::GUIBranch`: the branch
+"""
+function QBranch(branch::GUIBranch)::QBranch
+    return QBranch(
+        if isnothing(branch.reaching_decision)
+            ""
+        else
+            string(branch.reaching_decision[1])
+        end,
+        if isnothing(branch.reaching_trigger)
+            ""
+        else
+            str(branch.reaching_trigger)
+        end,
+        trunc(branch.config.global_clock, digits=5),
+        JuliaItemModel([QActiveNode(node) for node in branch.active_nodes]),
+        JuliaItemModel([QPassiveNode(node) for node in branch.passive_nodes])
+    )
+end
+
+"""
+    QActiveNode
+
+An active tree node used in QML models.
+"""
+mutable struct QActiveNode
+    location::String
+    action::String
+    valuation::String
+    clickable::Bool
+end
+
+"""
+    QActiveNode(node::GUINode)::QActiveNode
+
+Create a QAction from the given GUI node `node`.
+# Arguments
+- `node::GUINode`: the gui node
+"""
+function QActiveNode(node::GUINode)::QActiveNode
+    QActiveNode(
+        string(node.config.location.name),
+        if isnothing(node.reaching_decision)
+            ""
+        else
+            string(node.reaching_decision[2])
+        end,
+        _get_valuation_string(node.config.valuation),
+        !isempty(node.branches)
+    )
+end
+
+"""
+    QPassiveNode
+
+A passive tree node used in QML models.
+"""
+mutable struct QPassiveNode
+    valuation::String
+    time::Float64
+end
+
+"""
+    QPassiveNode(node::PassiveNode)::QPassiveNode
+
+Create a QPassiveNode from the given passive node `node`.
+# Arguments
+- `node::PassiveNode`: the passive node
+"""
+function QPassiveNode(node::PassiveNode)::QPassiveNode
+    return QPassiveNode(
+        _get_valuation_string(node.config.valuation),
+        trunc(node.config.global_clock, digits=5)
+    )
+end
+
+function _get_valuation_string(valuation::Valuation)::String
+    str = ""
+    for (i, val) in enumerate(keys(valuation))
+        str *= "$(string(val)) = $(trunc(valuation[val], digits=5))"
+        if i != length(keys(valuation))
+            str *= ",\n"
+        end
+    end
+    return "{$str}"
 end
