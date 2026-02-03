@@ -31,7 +31,9 @@ tree["branches"] = JuliaItemModel(branch_list)
 
 qml_file = joinpath(dirname(@__FILE__), "gui", "qml", "GUI.qml")
 
-@qmlfunction up_tree down_tree hgt_is_formula hgt_name_available hgt_save hgt_load hgt_verify mhg_is_formula mhg_name_available mhg_save mhg_load mhg_verify
+@qmlfunction up_tree down_tree
+@qmlfunction hgt_is_formula hgt_name_available hgt_save hgt_load hgt_verify
+@qmlfunction mhg_is_formula mhg_name_available mhg_save mhg_load mhg_verify
 
 loadqml(
     qml_file,
