@@ -1,4 +1,5 @@
 include("expression.jl")
+include("interval.jl")
 
 abstract type Constraint end
 
@@ -60,6 +61,46 @@ end
 
 ############################
 ############################
+
+abstract type RectConstr <: Constraint end
+
+struct RectTrue <: RectConstr
+end
+
+struct RectLess <: RectConstr
+    var::Variable
+    value::Real
+end
+
+struct RectLessEq <: RectConstr
+    var::Variable
+    value::Real
+end
+
+struct RectGrt <: RectConstr
+    var::Variable
+    value::Real
+end
+
+struct RectGrtEq <: RectConstr
+    var::Variable
+    value::Real
+end
+
+struct RectEq <: RectConstr
+    var::Variable
+    value::Real
+end
+
+struct RectAnd <: RectConstr
+    left::RectConstr
+    right::RectConstr
+end
+
+
+############################
+############################
+
 
 function str(constraint::Constraint)::String
     @match constraint begin
@@ -167,4 +208,86 @@ end
 
 function get_unsatisfied_constraints(constraints, valuation::Valuation)
     filter(constraint -> ! evaluate(constraint, valuation), constraints)
+end
+
+
+
+############################
+############################
+
+
+function constraint_to_rect_constraint(constr::Constraint)::Union{Bool, RectConstr}
+    @match constr begin
+        Truth(true) => RectTrue()
+        LeQ(left::Var, right::Const) => RectLessEq(left.name, right.value)
+        LeQ(left::Var, Neg(val::Const)) => RectLessEq(left.name, - val.value)
+        LeQ(left::Const, right::Var) => RectLessEq(right.name, left.value)
+        LeQ(Neg(val::Const), right::Var) => RectLessEq(right.name, - val.value)
+        
+        Less(left::Var, right::Const) => RectLess(left.name, right.value)
+        Less(left::Var, Neg(val::Const)) => RectLess(left.name, - val.value)
+        Less(left::Const, right::Var) => RectLess(right.name, left.value)
+        Less(Neg(val::Const), right::Var) => RectLess(right.name, - val.value)
+
+        GeQ(left::Var, right::Const) => RectGrtEq(left.name, right.value)
+        GeQ(left::Var, Neg(val::Const)) => RectGrtEq(left.name, - val.value)
+        GeQ(left::Var, right::Var) => RectGrtEq(right.name, left.value)
+        GeQ(Neg(val::Const), right::Var) => RectGrtEq(right.name, - val.value)
+
+        Greater(left::Var, right::Const) => RectGrt(left.name, right.value)
+        Greater(left::Var, Neg(val::Const)) => RectGrt(left.name, - val.value)
+        Greater(left::Const, right::Var) => RectGrt(right.name, left.value)
+        Greater(Neg(val::Const), right::Var) => RectGrt(right.name, - val.value)
+
+        Equal(left::Var, right::Const) => RectEq(left.name, right.value)
+        Equal(left::Var, Neg(val::Const)) => RectEq(left.name, - val.value)
+        Equal(left::Const, right::Var) => RectEq(right.name, left.value)
+        Equal(Neg(val::Const), right::Var) => RectEq(right.name, - val.value)
+
+        And(left, right) => RectAnd(constraint_to_rect_constraint(left), constraint_to_rect_constraint(right))
+        _ => false
+    end
+end
+
+
+if !isdefined(Main, :IntervalAssignment)
+    const IntervalAssignment = OrderedDict{Variable, Interval}
+end
+
+function constraint_to_assignment(constr::RectConstr, variables)::IntervalAssignment
+    assignment = OrderedDict(var => Interval(-Inf, true, Inf, true) for var in variables)
+    return _constraint_to_assignment(constr, assignment)
+end
+
+function _constraint_to_assignment(constr::RectConstr, assignment::IntervalAssignment)::IntervalAssignment
+    @match constr begin
+        RectTrue() => assignment
+        RectLess(var, val) => begin
+            if val <= assignment[var].right
+                assignment[var] = Interval(assignment[var].left, assignment[var].left_open, val, true)
+            end
+        end
+        RectLessEq(var, val) => begin
+            if val < assignment[var].right
+                assignment[var] = Interval(assignment[var].left, assignment[var].left_open, val, false)
+            end
+        end
+        RectGrt(var, val) => begin
+            if val >= assignment[var].left
+                assignment[var] = Interval(val, true, assignment[var].right, assignment[var].right_open)
+            end
+        end
+        RectGrtEq(var, val) => begin
+            if val > assignment[var].left
+                assignment[var] = Interval(val, false, assignment[var].right, assignment[var].right_open)
+            end
+        end
+        RectEq(var, val) => begin
+            if val > assignment[var].left
+                assignment[var] = Interval(val, false, val, false)
+            end
+        end
+        RectAnd(left, right) => _constraint_to_assignment(right, _constraint_to_assignment(left, assignment))
+    end
+    assignment
 end
