@@ -283,6 +283,30 @@ function mhg_name_available(name::QString)::Bool
 end
 
 """
+    mhg_is_formula(text::QString, level::QString)::Bool
+
+Check whether a formula is valid at a given parse level.
+
+# Arguments
+- `text::QString`: the formula as a string
+- `level::QString`: the parse level as a string (`expression`, `constraint`, `state` or `strategy`)
+"""
+function mhg_is_formula(text::QString, level::QString)::Bool
+    bindings::Bindings = Bindings(
+        [x.name for x in mhg_agent_list],
+        [x.name for x in mhg_location_list],
+        [x.name for x in mhg_variable_list]
+    )
+    try
+        # TODO: Add rectangular constraint
+        parse(String(text), bindings, eval(Symbol(String(level))))
+        return true
+    catch
+        return false
+    end
+end
+
+"""
     mhg_save(path::QString)
 
 Save the current game to a file given by `path`.

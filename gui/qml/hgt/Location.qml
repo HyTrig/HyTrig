@@ -105,7 +105,7 @@ ElementFrame {
                     model.invariant = x;
                 }
                 condition: function(x) {
-                    return x == model.invariant || Julia.is_formula(x, "constraint");
+                    return x == model.invariant || Julia.hgt_is_formula(x, "constraint");
                 }
             }
 
@@ -175,7 +175,7 @@ ElementFrame {
                             model.expression = x;
                         }
                         condition: function(x) {
-                            return x == model.expression || Julia.is_formula(x, "expression");
+                            return x == model.expression || Julia.hgt_is_formula(x, "expression");
                         }
                     }
 

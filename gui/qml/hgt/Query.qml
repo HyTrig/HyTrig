@@ -51,7 +51,7 @@ ElementFrame {
                     model.formula = x;
                 }
                 condition: function(x) {
-                    return x == model.formula || Julia.is_formula(x, "strategy");
+                    return x == model.formula || Julia.hgt_is_formula(x, "strategy");
                 }
             }
 

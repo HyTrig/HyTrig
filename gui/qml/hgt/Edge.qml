@@ -108,7 +108,7 @@ ElementFrame {
                     model.guard = x;
                 }
                 condition: function(x) {
-                    return x == model.guard || Julia.is_formula(x, "constraint");
+                    return x == model.guard || Julia.hgt_is_formula(x, "constraint");
                 }
             }
 
@@ -232,7 +232,7 @@ ElementFrame {
                             model.expression = x;
                         }
                         condition: function(x) {
-                            return x == model.expression || Julia.is_formula(x, "expression");
+                            return x == model.expression || Julia.hgt_is_formula(x, "expression");
                         }
                     }
 

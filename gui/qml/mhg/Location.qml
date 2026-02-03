@@ -105,7 +105,7 @@ ElementFrame {
                     model.invariant = x;
                 }
                 condition: function(x) {
-                    return x == model.invariant || (Julia.is_formula(x, "constraint") /* TODO: check if rectangular */);
+                    return x == model.invariant || Julia.mhg_is_formula(x, "constraint");
                 }
             }
 

@@ -83,7 +83,7 @@ ElementFrame {
                     model.trigger = x;
                 }
                 condition: function(x) {
-                    return x == model.trigger || Julia.is_formula(x, "constraint");
+                    return x == model.trigger || Julia.hgt_is_formula(x, "constraint");
                 }
             }
 

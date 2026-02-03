@@ -184,7 +184,7 @@ Rectangle {
                                     hgt_models.state_formula = x;
                                 }
                                 condition: function(x) {
-                                    return x == hgt_models.state_formula || Julia.is_formula(x, "state");
+                                    return x == hgt_models.state_formula || Julia.hgt_is_formula(x, "state");
                                 }
                             }
 

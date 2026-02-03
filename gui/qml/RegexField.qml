@@ -31,8 +31,6 @@ TextField {
         regularExpression: regex
     }
 
-    // TODO: do not remove content on error, just indicate it visually
-
     onEditingFinished: {
         if (edited) {
             edited = false;

@@ -62,7 +62,6 @@ ElementFrame {
         Interval {
             parent: variable_frame.column
             width: parent.width
-            bracket_width: name_label.width
             interval_model: variable_frame.model
         }
 

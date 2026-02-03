@@ -108,7 +108,7 @@ ElementFrame {
                     model.guard = x;
                 }
                 condition: function(x) {
-                    return x == model.guard || (Julia.is_formula(x, "constraint") /* TODO: check if rectangular */);
+                    return x == model.guard || Julia.mhg_is_formula(x, "constraint");
                 }
             }
 

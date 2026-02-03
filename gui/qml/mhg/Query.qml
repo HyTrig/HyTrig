@@ -51,7 +51,7 @@ ElementFrame {
                     model.formula = x;
                 }
                 condition: function(x) {
-                    return x == model.formula || (Julia.is_formula(x, "strategy") /* TODO: check if rectangular */);
+                    return x == model.formula || Julia.mhg_is_formula(x, "strategy");
                 }
             }
 

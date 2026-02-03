@@ -184,7 +184,7 @@ Rectangle {
                                     mhg_models.state_formula = x;
                                 }
                                 condition: function(x) {
-                                    return x == mhg_models.state_formula || (Julia.is_formula(x, "state") /* TODO: check if rectangular */);
+                                    return x == mhg_models.state_formula || Julia.mhg_is_formula(x, "state");
                                 }
                             }
 
