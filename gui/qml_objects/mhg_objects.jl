@@ -171,6 +171,7 @@ function QMHGEdge(source::String, target::String, guard::String, agent::String, 
         [
             QMHGJump(
                 QML.value(j)["variable"],
+                QML.value(j)["is_none"],
                 QML.value(j)["lower_open"],
                 QML.value(j)["upper_open"],
                 QML.value(j)["lower"],
@@ -185,6 +186,7 @@ function setjump!(model::Vector{QMHGEdge}, jump::AbstractArray, row::Int32, col:
         [
             QMHGJump(
                 QML.value(j)["variable"],
+                QML.value(j)["is_none"],
                 QML.value(j)["lower_open"],
                 QML.value(j)["upper_open"],
                 QML.value(j)["lower"],
@@ -199,12 +201,13 @@ end
 
 A jump in an edge.
 
-    QMHGJump(variable::String, lower_open::Bool, upper_open::Bool, lower::Float64, upper::Float64)
+    QMHGJump(variable::String, is_none::Bool, lower_open::Bool, upper_open::Bool, lower::Float64, upper::Float64)
 
 Create a new jump with the given variable and interval.
 """
 mutable struct QMHGJump
     variable::String
+    is_none::Bool
     lower_open::Bool
     upper_open::Bool
     lower::Float64
@@ -212,7 +215,7 @@ mutable struct QMHGJump
 end
 
 function QMHGJump()::QMHGJump
-    return QMHGJump("", true, true, 0.0, 0.0)
+    return QMHGJump("", true, true, true, 0.0, 0.0)
 end
 
 """
@@ -263,7 +266,7 @@ mhg_location_list::Vector{QMHGLocation} = [QMHGLocation("location", true, "true"
 mhg_models["locations"] = JuliaItemModel(mhg_location_list)
 setsetter!(mhg_models["locations"], setflow!, roleindex(mhg_models["locations"], "flow"))
 
-mhg_edge_list::Vector{QMHGEdge} = [QMHGEdge("location", "location", "true", "agent", "action", JuliaItemModel([QMHGJump("variable", false, false, 0.0, 1.0)]))]
+mhg_edge_list::Vector{QMHGEdge} = [QMHGEdge("location", "location", "true", "agent", "action", JuliaItemModel([QMHGJump("variable", false, false, false, 0.0, 1.0)]))]
 mhg_models["edges"] = JuliaItemModel(mhg_edge_list)
 setsetter!(mhg_models["edges"], setjump!, roleindex(mhg_models["edges"], "jump"))
 
@@ -346,6 +349,7 @@ function mhg_save(path::QString)
                 "jump" => [
                     Dict(
                         "variable" => edge.jump[i].variable,
+                        "is_none" => edge.jump[i].is_none,
                         "lower_open" => edge.jump[i].lower_open,
                         "upper_open" => edge.jump[i].upper_open,
                         "lower" => edge.jump[i].lower,

@@ -209,7 +209,7 @@ ElementFrame {
 
                     Label {
                         id: variable_label
-                        width: edge_guard_label.width
+                        width: model.is_none ? parent.width - jump_type_selector.width - parent.spacing : edge_guard_label.width
                         height: parent.height
                         verticalAlignment: Text.AlignVCenter
                         text: qsTr(model.variable)
@@ -218,9 +218,23 @@ ElementFrame {
 
                     Interval {
                         id: jump_interval
-                        width: parent.width - variable_label.width - parent.spacing
+                        visible: !model.is_none
+                        width: parent.width - variable_label.width - jump_type_selector.width - 2 * parent.spacing
                         inset: 10
                         interval_model: model
+                    } 
+
+                    Switch {
+                        id: jump_type_selector
+                        height: parent.height
+
+                        Material.accent: Material.Green
+
+                        checked: !model.is_none
+
+                        onClicked: {
+                            model.is_none = !checked;
+                        }
                     }
 
                 }
