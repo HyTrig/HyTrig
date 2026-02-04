@@ -128,8 +128,11 @@ Recursively build the GUI tree from a game tree rooted in `root`.
 - `root::Union{ActiveNode, RootNode}`: the game trees root
 """
 function build_gui_tree(root::Union{ActiveNode, RootNode})::GUINode
+    # Create root node with branches
     gui_root = GUINode(root, nothing)
     push!(gui_root.branches, GUIBranch(root, [GUINode(root, gui_root)], Vector{PassiveNode}()))
+
+    # Recursively add all layers
     append!(gui_root.branches[1].active_nodes[1].branches, _get_next_layer(root, gui_root.branches[1].active_nodes[1]))
     return gui_root
 end
@@ -183,10 +186,13 @@ end
 
 function _get_next_layer(node::Union{ActiveNode, RootNode}, parent::GUINode)::Vector{GUIBranch}
     branches::Vector{GUIBranch} = []
+
+    # Create child branches
     for child in node.children
-        passives::Vector{PassiveNode} = []
         current_node::Node = child
         
+        # Collect passive nodes until an active or end node is reached
+        passives::Vector{PassiveNode} = []
         while !(current_node isa ActiveNode || current_node isa EndNode)
             push!(passives, current_node)
             if length(current_node.children) != 1 && current_node.children[1] isa PassiveNode
@@ -196,6 +202,8 @@ function _get_next_layer(node::Union{ActiveNode, RootNode}, parent::GUINode)::Ve
         end
 
         current_node = current_node.parent
+        
+        # Create active nodes for the current layer
         actives::Vector{GUINode} = []
         for active in current_node.children
             gui_node = GUINode(active, parent)
