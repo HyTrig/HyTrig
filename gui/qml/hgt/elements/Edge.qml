@@ -8,9 +8,9 @@ import org.julialang
 import QtQuick
 import QtQuick.Controls.Material
 
-import ".."
+import "../../util"
 
-ElementFrame {
+Element {
 
     required property var jump
 
@@ -19,7 +19,7 @@ ElementFrame {
     element_name: "Edge"
 
     remove: function() {
-        mhg_models.edges.removeRow(index);
+        hgt_models.edges.removeRow(index);
     }
 
     elementContent: [
@@ -42,7 +42,7 @@ ElementFrame {
                 id: edge_source_selector
                 width: (parent.width - edge_source_label.width - edge_target_label.width - 3 * parent.spacing) / 2
 
-                model: mhg_models.locations
+                model: hgt_models.locations
                 textRole: "name"
                 valueRole: "name"
 
@@ -65,7 +65,7 @@ ElementFrame {
                 id: edge_target_selector
                 width: (parent.width - edge_source_label.width - edge_target_label.width - 3 * parent.spacing) / 2
 
-                model: mhg_models.locations
+                model: hgt_models.locations
                 textRole: "name"
                 valueRole: "name"
 
@@ -108,7 +108,7 @@ ElementFrame {
                     model.guard = x;
                 }
                 condition: function(x) {
-                    return x == model.guard || Julia.mhg_is_formula(x, "constraint");
+                    return x == model.guard || Julia.hgt_is_formula(x, "constraint");
                 }
             }
 
@@ -133,7 +133,7 @@ ElementFrame {
                 id: edge_agent_selector
                 width: (parent.width - edge_agent_label.width - edge_action_label.width - 3 * parent.spacing) / 2
 
-                model: mhg_models.agents
+                model: hgt_models.agents
                 textRole: "name"
                 valueRole: "name"
 
@@ -155,7 +155,7 @@ ElementFrame {
                 id: edge_action_selector
                 width: (parent.width - edge_agent_label.width - edge_action_label.width - 3 * parent.spacing) / 2
 
-                model: mhg_models.actions
+                model: hgt_models.actions
                 textRole: "name"
                 valueRole: "name"
 
@@ -204,36 +204,35 @@ ElementFrame {
                 delegate: Row {
 
                     width: edge_jump_list.width
-                    height: jump_interval.height + jump_interval.inset
+                    height: variable_field.height + variable_field.topInset
                     spacing: 10
 
                     Label {
                         id: variable_label
-                        width: model.is_none ? parent.width - jump_type_selector.width - parent.spacing : edge_guard_label.width
+                        width: edge_guard_label.width
                         height: parent.height
                         verticalAlignment: Text.AlignVCenter
                         text: qsTr(model.variable)
                         elide: Text.ElideRight
                     }
 
-                    Interval {
-                        id: jump_interval
-                        visible: !model.is_none
-                        width: parent.width - variable_label.width - jump_type_selector.width - 2 * parent.spacing
-                        inset: 10
-                        interval_model: model
-                    } 
+                    RegexField {
+                        id: variable_field
+                        width: parent.width - variable_label.width - parent.spacing
+                        topInset: 10
 
-                    Switch {
-                        id: jump_type_selector
-                        height: parent.height
+                        text: qsTr(model.expression)
+                        default_text: qsTr("Enter jump expression")
+                        error_text: qsTr("Invalid jump expression")
+                        condition_error_text: qsTr("Invalid jump expression")
 
-                        Material.accent: Material.Green
+                        regex: /^.*$/
 
-                        checked: !model.is_none
-
-                        onClicked: {
-                            model.is_none = !checked;
+                        action: function(x) {
+                            model.expression = x;
+                        }
+                        condition: function(x) {
+                            return x == model.expression || Julia.hgt_is_formula(x, "expression");
                         }
                     }
 

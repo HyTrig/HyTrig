@@ -8,16 +8,16 @@ import org.julialang
 import QtQuick
 import QtQuick.Controls.Material
 
-import ".."
+import "../../util"
 
-ElementFrame {
+Element {
 
     id: query_frame
 
     element_name: "Query"
 
     remove: function() {
-        hgt_models.queries.removeRow(index);
+        mhg_models.queries.removeRow(index);
     }
 
     elementContent: [
@@ -51,7 +51,7 @@ ElementFrame {
                     model.formula = x;
                 }
                 condition: function(x) {
-                    return x == model.formula || Julia.hgt_is_formula(x, "strategy");
+                    return x == model.formula || Julia.mhg_is_formula(x, "strategy");
                 }
             }
 

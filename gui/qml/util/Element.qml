@@ -1,5 +1,5 @@
 /**
-* @file ElementFrame.qml
+* @file Element.qml
 * @brief GUI component for a framed element of the HyTrig GUI
 * @authors Moritz Maas
 */

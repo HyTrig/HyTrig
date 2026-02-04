@@ -8,9 +8,9 @@ import org.julialang
 import QtQuick
 import QtQuick.Controls.Material
 
-import ".."
+import "../../util"
 
-ElementFrame {
+Element {
 
     id: variable_frame
 

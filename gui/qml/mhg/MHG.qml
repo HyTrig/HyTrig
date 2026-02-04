@@ -1,5 +1,5 @@
 /**
-* @file MHG.qml
+* @file qml
 * @brief Mono Hybrid Gametype of game in the HyTrig GUI
 * @authors Moritz Maas
 */
@@ -9,7 +9,9 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Controls.Material
 
-import "mhg" as MHG
+import ".."
+import "../util"
+import "elements" as Elements
 
 GameType {
 
@@ -38,7 +40,7 @@ GameType {
             }
 
             model: mhg_models.agents
-            delegate: MHG.Agent {
+            delegate: Elements.Agent {
                 width: agent_tab.cellWidth
             }
 
@@ -56,7 +58,7 @@ GameType {
             }
 
             model: mhg_models.actions
-            delegate: MHG.Act {
+            delegate: Elements.Action {
                 width: action_tab.cellWidth
             }
 
@@ -76,7 +78,7 @@ GameType {
             }
 
             model: mhg_models.variables
-            delegate: MHG.Variable {
+            delegate: Elements.Variable {
                 width: variable_tab.cellWidth
             }
 
@@ -110,7 +112,7 @@ GameType {
             }
 
             model: mhg_models.locations
-            delegate: MHG.Location {
+            delegate: Elements.Location {
                 width: location_tab.cellWidth
 
                 Connections {
@@ -165,7 +167,7 @@ GameType {
             }
 
             model: mhg_models.edges
-            delegate: MHG.Edge {
+            delegate: Elements.Edge {
                 width: edge_tab.cellWidth
 
                 Connections {
@@ -204,7 +206,7 @@ GameType {
 
         },
 
-        MHG.TerminationConditions {
+        Elements.TerminationConditions {
 
             id: termination_conditions_tab
 
@@ -223,7 +225,7 @@ GameType {
             }
 
             model: mhg_models.queries
-            delegate: MHG.Query {
+            delegate: Elements.Query {
                 width: query_tab.cellWidth
             }
 

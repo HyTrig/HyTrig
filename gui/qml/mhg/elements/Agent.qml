@@ -1,6 +1,6 @@
 /**
-* @file Variable.qml
-* @brief GUI component for a variable of the HyTrig GUI
+* @file Agent.qml
+* @brief GUI component for an agent of the HyTrig GUI
 * @authors Moritz Maas
 */
 
@@ -8,61 +8,54 @@ import org.julialang
 import QtQuick
 import QtQuick.Controls.Material
 
-import ".."
+import "../../util"
 
-ElementFrame {
+Element {
 
-    id: variable_frame
+    id: agent_frame
 
-    element_name: "Variable"
-
+    element_name: "Agent"
+    
     remove: function() {
-        variableRemoved(index);
-        mhg_models.variables.removeRow(index);
+        agentRemoved(model.name);
+        mhg_models.agents.removeRow(index);
     }
 
     elementContent: [
 
         Row {
-
-            parent: variable_frame.column
+            
+            parent: agent_frame.column
             width: parent.width
-            height: name_field.height
+            height: agent_name_field.height
             spacing: 10
 
             Label {
-                id: name_label
+                id: agent_name_label
                 height: parent.height
                 verticalAlignment: Text.AlignVCenter
                 text: qsTr("Name:")
             }
 
             RegexField {
-                id: name_field
-                width: parent.width - name_label.width - parent.spacing
+                id: agent_name_field
+                width: parent.width - agent_name_label.width - parent.spacing
 
                 text: qsTr(model.name)
-                default_text: qsTr("Enter variable name")
-                error_text: qsTr("Invalid variable name")
+                default_text: qsTr("Enter agent name")
+                error_text: qsTr("Invalid agent name")
                 condition_error_text: qsTr("Name already in use")
 
                 regex: /^[A-Za-z]\w*$/
 
                 action: function(x) {
                     model.name = x;
-                    variableRenamed(index, x);
                 }
                 condition: function(x) {
                     return x == model.name || Julia.mhg_name_available(x);
                 }
             }
 
-        },
-
-        Interval {
-            parent: variable_frame.column
-            width: parent.width
-            interval_model: variable_frame.model
         }
 
     ]

@@ -1,5 +1,5 @@
 /**
-* @file HGT.qml
+* @file qml
 * @brief Hybrid Games with Triggers type of game in the HyTrig GUI
 * @authors Moritz Maas
 */
@@ -9,7 +9,9 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Controls.Material
 
-import "hgt" as HGT
+import ".."
+import "../util"
+import "elements" as Elements
 
 GameType {
 
@@ -39,7 +41,7 @@ GameType {
             }
 
             model: hgt_models.agents
-            delegate: HGT.Agent {
+            delegate: Elements.Agent {
                 width: agent_tab.cellWidth
             }
 
@@ -57,7 +59,7 @@ GameType {
             }
 
             model: hgt_models.actions
-            delegate: HGT.Act {
+            delegate: Elements.Action {
                 width: action_tab.cellWidth
             }
 
@@ -76,7 +78,7 @@ GameType {
             }
 
             model: hgt_models.variables
-            delegate: HGT.Variable {
+            delegate: Elements.Variable {
                 width: variable_tab.cellWidth
             }
 
@@ -94,7 +96,7 @@ GameType {
             }
 
             model: hgt_models.triggers
-            delegate: HGT.Trigger {
+            delegate: Elements.Trigger {
                 width: trigger_tab.cellWidth
                 
                 Connections {
@@ -134,7 +136,7 @@ GameType {
             }
 
             model: hgt_models.locations
-            delegate: HGT.Location {
+            delegate: Elements.Location {
                 width: location_tab.cellWidth
 
                 Connections {
@@ -186,7 +188,7 @@ GameType {
             }
 
             model: hgt_models.edges
-            delegate: HGT.Edge {
+            delegate: Elements.Edge {
                 width: edge_tab.cellWidth
 
                 Connections {
@@ -228,7 +230,7 @@ GameType {
 
         },
 
-        HGT.TerminationConditions {
+        Elements.TerminationConditions {
 
             id: termination_conditions_tab
 
@@ -247,7 +249,7 @@ GameType {
             }
 
             model: hgt_models.queries
-            delegate: HGT.Query {
+            delegate: Elements.Query {
                 width: query_tab.cellWidth
             }
 

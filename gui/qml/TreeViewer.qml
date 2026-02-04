@@ -11,6 +11,8 @@ import QtQuick.Layouts
 import QtQuick.Controls.Material
 import org.julialang
 
+import "util"
+
 ApplicationWindow {
 
     id: tree_viewer

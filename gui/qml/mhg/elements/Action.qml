@@ -1,5 +1,5 @@
 /**
-* @file Act.qml
+* @file Action.qml
 * @brief GUI component for an action of the HyTrig GUI
 * @authors Moritz Maas
 */
@@ -8,9 +8,9 @@ import org.julialang
 import QtQuick
 import QtQuick.Controls.Material
 
-import ".."
+import "../../util"
 
-ElementFrame {
+Element {
 
     id: action_frame
 
@@ -18,7 +18,7 @@ ElementFrame {
 
     remove: function() {
         actionRemoved(model.name);
-        hgt_models.actions.removeRow(index);
+        mhg_models.actions.removeRow(index);
     }
 
     elementContent: [
@@ -52,7 +52,7 @@ ElementFrame {
                     model.name = x;
                 }
                 condition: function(x) {
-                    return x == model.name || Julia.hgt_name_available(x);
+                    return x == model.name || Julia.mhg_name_available(x);
                 }
             }
 

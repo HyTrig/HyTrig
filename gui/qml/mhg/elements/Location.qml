@@ -8,9 +8,9 @@ import org.julialang
 import QtQuick
 import QtQuick.Controls.Material
 
-import ".."
+import "../../util"
 
-ElementFrame {
+Element {
 
     required property var flow
 
@@ -20,7 +20,7 @@ ElementFrame {
 
     remove: function() {
         locationRemoved(model.name);
-        hgt_models.locations.removeRow(index);
+        mhg_models.locations.removeRow(index);
     }
 
     elementContent: [
@@ -55,7 +55,7 @@ ElementFrame {
                     model.name = x;
                 }
                 condition: function(x) {
-                    return x == model.name || Julia.hgt_name_available(x);
+                    return x == model.name || Julia.mhg_name_available(x);
                 }
             }
 
@@ -65,7 +65,7 @@ ElementFrame {
                 checked: model.initial
                 text: qsTr("Initial")
 
-                ButtonGroup.group: hgt_initial_location_group
+                ButtonGroup.group: mhg_initial_location_group
 
                 onCheckedChanged: {
                     if (model.initial != checked) {
@@ -105,7 +105,7 @@ ElementFrame {
                     model.invariant = x;
                 }
                 condition: function(x) {
-                    return x == model.invariant || Julia.hgt_is_formula(x, "constraint");
+                    return x == model.invariant || Julia.mhg_is_formula(x, "constraint");
                 }
             }
 
@@ -147,7 +147,7 @@ ElementFrame {
                 delegate: Row {
 
                     width: location_flow_list.width
-                    height: variable_field.height + variable_field.topInset
+                    height: flow_interval.height + flow_interval.inset
                     spacing: 10
 
                     Label {
@@ -159,24 +159,11 @@ ElementFrame {
                         elide: Text.ElideRight
                     }
 
-                    RegexField {
-                        id: variable_field
+                    Interval {
+                        id: flow_interval
                         width: parent.width - variable_label.width - parent.spacing
-                        topInset: 10
-
-                        text: qsTr(model.expression)
-                        default_text: qsTr("Enter flow expression")
-                        error_text: qsTr("Invalid flow expression")
-                        condition_error_text: qsTr("Invalid flow expression")
-
-                        regex: /^.*$/
-
-                        action: function(x) {
-                            model.expression = x;
-                        }
-                        condition: function(x) {
-                            return x == model.expression || Julia.hgt_is_formula(x, "expression");
-                        }
+                        inset: 10
+                        interval_model: model
                     }
 
                 }

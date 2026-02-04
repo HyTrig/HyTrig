@@ -12,6 +12,10 @@ import QtQuick.Dialogs
 import QtQuick.Layouts
 import QtQuick.Window
 
+import "hgt" as HGT
+import "mhg" as MHG
+import "util"
+
 // HyTrig application window
 ApplicationWindow {
 
@@ -34,8 +38,8 @@ ApplicationWindow {
 
     readonly property GameType game: game_types[game_type_selector.previous_index]
     readonly property list<GameType> game_types: [
-        HGT { id: hgt_game },
-        MHG { id: mhg_game }
+        HGT.HGT { id: hgt_game },
+        MHG.MHG { id: mhg_game }
     ]
 
     menuBar: MenuBar {

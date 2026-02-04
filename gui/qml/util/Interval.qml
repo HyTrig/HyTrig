@@ -5,9 +5,7 @@
 */
 
 import QtQuick
-import QtQuick.Controls
-
-import ".."
+import QtQuick.Controls.Material
 
 Row {
 
