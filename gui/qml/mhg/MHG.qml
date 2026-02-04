@@ -252,6 +252,7 @@ GameType {
     load: function (file) {
         var error = Julia.mhg_load(file);
         current_file = file;
+        // Reset view to show changes done in Julia 
         action_tab.model = [];
         action_tab.model = mhg_models.actions;
         tabs.currentIndex = 0;
@@ -284,11 +285,14 @@ GameType {
     }
 
     verification_success: function () { 
+        // Open query tab on successful verification
         query_tab.model = [];
         query_tab.model = mhg_models.queries;
         tab_bar.currentIndex = 6;
         tabs.currentIndex = 6;
     }
+
+    // Signals to notify elements of removals and changes
 
     signal actionRemoved(string name)
     signal agentRemoved(string name)

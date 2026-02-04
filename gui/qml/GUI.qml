@@ -275,7 +275,7 @@ ApplicationWindow {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.margins: 10
-                text: "Game Type"
+                text: qsTr("Game Type")
 
             }
 
@@ -322,7 +322,7 @@ ApplicationWindow {
                 anchors.bottom: verified ? tree_button.top : parent.bottom
                 anchors.margins: 10
 
-                text: "Verify"
+                text: qsTr("Verify")
 
                 onClicked: {
                     verify_action.trigger();
@@ -339,7 +339,7 @@ ApplicationWindow {
                 anchors.bottom: parent.bottom
                 anchors.margins: 10
 
-                text: "View Tree"
+                text: qsTr("View Tree")
                 visible: verified
 
                 onClicked: {

@@ -1,5 +1,5 @@
 /**
-* @file Act.qml
+* @file Action.qml
 * @brief GUI component for an action of the HyTrig GUI
 * @authors Moritz Maas
 */
