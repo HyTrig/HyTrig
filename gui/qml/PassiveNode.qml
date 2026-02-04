@@ -24,7 +24,7 @@ Rectangle {
         Label {
             id: node_time_text
             width: parent.width
-            text: "Time = " + model.time
+            text: qsTr("Time = " + model.time)
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
         }
@@ -32,7 +32,7 @@ Rectangle {
         Label {
             id: node_valuation_text
             width: parent.width
-            text: model.valuation
+            text: qsTr(model.valuation)
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
         }

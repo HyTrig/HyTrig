@@ -9,9 +9,12 @@ import QtQuick.Controls.Material
 
 TextField {
 
+    // Regular expression for validating the input
     required property var regex
 
+    // Function executed when the input is valid and condition is met, receives the input text
     required property var action
+    // Function that checks an additional condition on the input, receives the input text and returns a boolean
     required property var condition
 
     required property string default_text
@@ -55,6 +58,7 @@ TextField {
         placeholderText =  valid ? default_text : error_text;
     }
 
+    // On component load, trigger editingFinished to validate initial text
     Component.onCompleted: {
         editingFinished();
     }

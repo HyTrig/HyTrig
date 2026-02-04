@@ -13,10 +13,20 @@ Item {
     required property string game_type_name
     required property ListModel tab_names
     required property list<Item> tab_list
+
+    // Function for clearing the current game, no return value
     required property var clear
+
+    // Function for saving the current game, no return value
     required property var save
+
+    // Function for loading a saved game, returns "" on success, error message otherwise
     required property var load
+
+    // Function for verifying the current game, returns "" on success, error message otherwise
     required property var verify
+
+    // Function called after successful verification, no retrun value
     required property var verification_success
 
     Component.onCompleted: {

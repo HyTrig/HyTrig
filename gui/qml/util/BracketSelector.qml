@@ -10,6 +10,7 @@ import QtQuick.Controls.Material
 ComboBox {
     
     required property bool is_left
+    // Function executed when a bracket is selected, receives a boolean indicating whether an opening bracket was selected
     required property var action
 
     property ListModel left_model: ListModel {

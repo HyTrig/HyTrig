@@ -9,16 +9,22 @@ import QtQuick.Controls.Material
 
 Item {
 
+    // Data model of the element, passed automatically when used as a delegate
     required property var model
+    // Index of the element in the list, passed automatically when used as a delegate
     required property int index
 
     required property string element_name
+
+    // Items to be displayed inside the element frame below the header
     property list<Item> elementContent: []
 
+    // Function executed when the remove button is clicked
     required property var remove
 
     property alias column: column
 
+    // Default header with element name and remove button
     readonly property list<Item> header: [
         
         Row {

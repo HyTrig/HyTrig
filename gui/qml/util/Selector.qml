@@ -9,6 +9,7 @@ import QtQuick.Controls.Material
 
 ComboBox {
 
+    // Function executed when an item is selected, receives the selected value
     required property var action
 
     Material.foreground: Material.color(Material.Green)

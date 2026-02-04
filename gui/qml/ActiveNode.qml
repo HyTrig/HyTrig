@@ -29,7 +29,7 @@ Button {
             Label {
                 id: node_action_text
                 width: parent.width
-                text: "<" + model.action + ">"
+                text: qsTr("<" + model.action + ">")
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
             }
@@ -37,7 +37,7 @@ Button {
             Label {
                 id: node_arrow_text
                 width: parent.width
-                text: "↓"
+                text: qsTr("↓")
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
             }
@@ -45,7 +45,7 @@ Button {
             Label {
                 id: node_location_text
                 width: parent.width
-                text: model.location
+                text: qsTr(model.location)
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
             }
@@ -57,7 +57,7 @@ Button {
 
                 Label {
                     width: node_valuation_text.width
-                    text: model.valuation
+                    text: qsTr(model.valuation)
                     horizontalAlignment: Text.AlignHCenter
                     clip: true
                 }
@@ -68,6 +68,7 @@ Button {
     }
 
     onClicked: {
+        // Only allow navigation if the node is not terminal
         if(model.clickable) {
             branch_column.down(index);
         }

@@ -32,6 +32,10 @@ ApplicationWindow {
     property alias branches: branches
     property int level: 1
 
+    /**
+    * Go up one level in the tree
+    * @return   void
+    */
     function up() {
         if (!Julia.up_tree()) {
             return;
@@ -41,6 +45,13 @@ ApplicationWindow {
         level = level - 1;
     }
 
+    
+    /**
+    * Go down one level in the tree
+    * @param    {number}    i - index of the branch to access
+    * @param    {number}    j - index of the node in the branch to access
+    * @return   void
+    */
     function down(i, j) {
         if (!Julia.down_tree(i, j)) {
             return;
@@ -60,11 +71,12 @@ ApplicationWindow {
         Title {
             id: level_text
             width: parent.width
-            text: "Level " + level
+            text: qsTr("Level " + level)
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
         }
 
+        // Branches of the current node
         ListView {
             id: branches
             width: Math.min(contentWidth, tree_viewer_page.width)
@@ -82,6 +94,13 @@ ApplicationWindow {
                 width: active_list.width
                 height: branches.height
                 spacing: 10
+
+
+                /**
+                * Go down one node in the current branch
+                * @param    {number}    i - index of the node in the branch to access
+                * @return   void
+                */
                 function down(i) {
                     tree_viewer.down(index, i);
                 }
@@ -89,7 +108,7 @@ ApplicationWindow {
                 Label {
                     id: node_agent_text
                     width: parent.width
-                    text: "Agent: " + model.agent
+                    text: qsTr("Agent: " + model.agent)
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     wrapMode: Text.Wrap
@@ -98,7 +117,7 @@ ApplicationWindow {
                 Label {
                     id: node_trigger_text
                     width: parent.width
-                    text: "Trigger: " + model.trigger
+                    text: qsTr("Trigger: " + model.trigger)
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     wrapMode: Text.Wrap
@@ -107,11 +126,12 @@ ApplicationWindow {
                 Label {
                     id: node_active_time_text
                     width: parent.width
-                    text: "Time = " + model.time
+                    text: qsTr("Time = " + model.time)
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                 }
 
+                // Passive nodes in this branch
                 ListView {
                     id: passive_list
                     width: parent.width
@@ -123,6 +143,7 @@ ApplicationWindow {
                     delegate: PassiveNode {}
                 }
                 
+                // Active nodes in this branch
                 ListView {
                     id: active_list
                     width: contentWidth
@@ -155,7 +176,7 @@ ApplicationWindow {
                 color: Material.color(Material.Orange)
                 
                 Title {
-                    text: "Active node"
+                    text: qsTr("Active node")
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
                 }
@@ -169,7 +190,7 @@ ApplicationWindow {
                 color: Material.color(Material.Blue)
                 
                 Title {
-                    text: "Passive node"
+                    text: qsTr("Passive node")
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
                 }
@@ -183,7 +204,7 @@ ApplicationWindow {
                 color: Material.color(Material.Orange, Material.Shade900)
                 
                 Title {
-                    text: "End node"
+                    text: qsTr("End node")
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
                 }
@@ -195,7 +216,7 @@ ApplicationWindow {
 
             id: parent_button
             anchors.horizontalCenter: parent.horizontalCenter
-            text: "Go up"
+            text: qsTr("Go up")
             
             onClicked: {
                 tree_viewer.up();
@@ -206,6 +227,7 @@ ApplicationWindow {
     }
 
     onClosing: {
+        // Reset tree viewer to root for next opening
         while (Julia.up_tree()) {
             level = level - 1;
         }

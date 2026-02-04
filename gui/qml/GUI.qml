@@ -161,6 +161,7 @@ ApplicationWindow {
 
     }
 
+    // Spacer below menu bar
     Rectangle {
 
         id: menu_bar_spacer
@@ -172,6 +173,7 @@ ApplicationWindow {
 
     }
 
+    // Tab bar, tab content and game type selector
     SplitView {
 
         id: tab_content_split
@@ -209,6 +211,7 @@ ApplicationWindow {
                     width: parent.width
                     height: parent.height
 
+                    // Background highlight
                     Rectangle {
                         width: parent.width - selection_indicator.width
                         height: parent.height
@@ -216,6 +219,7 @@ ApplicationWindow {
                         opacity: tab_selector.highlighted || tab_selector.hovered ? 0.1 : 0
                     }
 
+                    // Selection indicator
                     Rectangle {
                         id: selection_indicator
                         width: tab_selector.highlighted ? 5 : 0
@@ -235,12 +239,14 @@ ApplicationWindow {
 
         }
 
+        // Tab content frame
         Item {
 
             height: parent.height
             SplitView.minimumWidth: 500
             SplitView.fillWidth: true
 
+            // Tab content
             StackLayout {
 
                 id: tabs
@@ -254,6 +260,7 @@ ApplicationWindow {
 
         }
 
+        // Game type selector
         Item {
 
             height: parent.height
@@ -287,6 +294,7 @@ ApplicationWindow {
                 
                 onActivated: {
                     if (previous_index != currentIndex) {
+                        // Prompt to save changes if necessary
                         save_changes_dialog.action = function(x) {
                             game.clear();
                             previous_index = currentIndex;
@@ -335,6 +343,7 @@ ApplicationWindow {
                 visible: verified
 
                 onClicked: {
+                    // Reset tree viewer and show
                     tree_viewer.level = 1;
                     tree_viewer.branches.model = [];
                     tree_viewer.branches.model = tree.branches;
@@ -346,6 +355,8 @@ ApplicationWindow {
         }
 
     }
+
+    // Dialogs
 
     MessageDialog {
 
@@ -369,7 +380,10 @@ ApplicationWindow {
         id: save_changes_dialog
         parentWindow: main_window
 
+        // Function executed after saving or discarding changes, set before opening the dialog
         property var action: function(x) {}
+
+        // Function executed after cancelling, set before opening the dialog
         property var cancel: function(x) {}
 
         title: qsTr("Save File?")
@@ -406,6 +420,7 @@ ApplicationWindow {
         id: save_dialog
         parentWindow: main_window
 
+        // Function executed after saving, set before opening the dialog
         property var action: function(x) {}
         
         title: qsTr("Select a location to save the HyTrig file")
@@ -452,12 +467,18 @@ ApplicationWindow {
 
         title: qsTr("Error")
         text: qsTr("An error occurred:")
+        // Set before opening this dialog
         informativeText: qsTr("")
 
         buttons: MessageDialog.Ok
 
+        onOpen: {
+            console.assert(informativeText != "", "Error dialog opened without informative text set");
+        }
+
     }
 
+    // TODO: export to game types
     TreeViewer {
         id: tree_viewer
     }

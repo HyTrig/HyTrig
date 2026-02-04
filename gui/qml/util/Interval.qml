@@ -12,6 +12,7 @@ Row {
     height: lower_field.height
     spacing: 10
 
+    // Data model of the interval, with properties lower, upper, lower_open, upper_open
     required property var interval_model
 
     property real bracket_width: 70

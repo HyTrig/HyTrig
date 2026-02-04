@@ -12,6 +12,7 @@ Rectangle {
     required property string tab_name
     required property string element_name
     
+    // Function executed when the add button is clicked
     required property var add
 
     property alias model: elements.model
@@ -64,6 +65,7 @@ Rectangle {
             width: parent.width
             height: parent.height - title_row.height - parent.spacing
 
+            // Grid view displaying the elements in the tab
             GridView {
 
                 id: elements

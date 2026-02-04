@@ -11,6 +11,7 @@ Item {
 
     height: column.implicitHeight + column.anchors.margins * 2 + back.anchors.margins * 2
 
+    // Items to be displayed in a column inside the content frame
     required property list<Item> content
     
     Rectangle {
