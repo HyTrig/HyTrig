@@ -13,6 +13,13 @@ This file defines the QML objects used in the HyTrig GUI by the MHG game type.
 - `QMHGJump`: Represents a jump in an edge.
 - `QMHGQuery`: Represents a query in a hybrid game.
 
+# Functions:
+- `mhg_name_available(name::QString)::Bool`: Check whether a name is available.
+- `mhg_is_formula(text::QString, level::QString)::Bool`: Check whether a formula is valid at a given parse level.
+- `mhg_save(path::QString)`: Save the current game to a file.
+- `mhg_load(path::QString)::String`: Load a game from a file.
+- `mhg_verify()::String`: Verify the current game.
+
 # Authors:
 - Moritz Maas
 """

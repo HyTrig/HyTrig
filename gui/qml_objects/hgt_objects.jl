@@ -14,6 +14,13 @@ This file defines the QML objects used in the HyTrig GUI by the HGT game type.
 - `QHGTJump`: Represents a jump in an edge.
 - `QHGTQuery`: Represents a query in a hybrid game.
 
+# Functions:
+- `hgt_name_available(name::QString)::Bool`: Check whether a name is available.
+- `hgt_is_formula(text::QString, level::QString)::Bool`: Check whether a formula is valid at a given parse level.
+- `hgt_save(path::QString)`: Save the current game to a file.
+- `hgt_load(path::QString)::String`: Load a game from a file.
+- `hgt_verify()::String`: Verify the current game.
+
 # Authors:
 - Moritz Maas
 """
