@@ -1,6 +1,7 @@
 """TODO: write docs"""
 
 export evaluate, evaluate_state
+export Assignment
 
 function evaluate(expr::ExprLike, valuation::Valuation)::Real
     @match expr begin

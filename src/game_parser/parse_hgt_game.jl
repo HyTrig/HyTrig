@@ -16,11 +16,11 @@ function parse_hgt_game(hytrig_file::String)
         [],
         [string(var["name"]) for var in data["variables"]],
     )
-    locations = Vector{Location}([
-        Location(
+    locations = Vector{HGT_Location}([
+        HGT_Location(
             Symbol(loc["name"]),
             parse(loc["invariant"], bindings, constraint),
-            ReAssignment(
+            Assignment(
                 Variable(flow["variable"]) => parse(flow["expression"], bindings, expression) for flow in loc["flow"]
             )
         ) for loc in data["locations"]
@@ -32,8 +32,8 @@ function parse_hgt_game(hytrig_file::String)
         [string(loc.name) for loc in locations],
         [string(var["name"]) for var in data["variables"]],
     )
-    edges = Vector{Edge}([
-        Edge(
+    edges = Vector{HGT_Edge}([
+        HGT_Edge(
             Symbol(i),
             locations[findfirst(loc -> loc.name == Symbol(edge["source"]), locations)],
             locations[findfirst(loc -> loc.name == Symbol(edge["target"]), locations)],
@@ -42,7 +42,7 @@ function parse_hgt_game(hytrig_file::String)
                 Agent(edge["agent"]),
                 Action(edge["action"])
             ),
-            ReAssignment(
+            Assignment(
                 Variable(jump["variable"]) => parse(jump["expression"], bindings, expression) for jump in edge["jump"]
             )
         ) for (i, edge) in enumerate(data["edges"])
@@ -55,15 +55,14 @@ function parse_hgt_game(hytrig_file::String)
         end
         push!(triggers[agent], parse(trigger["trigger"], bindings, constraint))
     end
-    game = Game(
+    game = HGT_Game(
         locations,
         initial_location,
         initial_valuation,
         agents,
         actions,
         edges,
-        triggers,
-        true
+        triggers
     )
     termination_conditions = Termination_Conditions(
         Base.parse(Float64, data["config"]["time_bound"]),

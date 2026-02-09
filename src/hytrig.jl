@@ -9,6 +9,8 @@ using .ModelChecker
 using .ModelChecker.HybridGames
 using .ModelChecker.HybridGames.HybridATL
 
+export evaluate_queries
+
 include("parser/parser.jl")
 using .Parser
 using .Parser: parse

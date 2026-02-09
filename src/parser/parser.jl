@@ -4,8 +4,7 @@ module Parser
 
 using Match
 
-include("../hybrid_atl/hybrid_atl.jl")
-using .HybridATL
+using ..ModelChecker.HybridGames.HybridATL
 
 include("formula_parser/formula_parser.jl")
 using .FormulaParser

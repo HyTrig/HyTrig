@@ -2,7 +2,7 @@
 
 module ModelChecker
 
-using Match
+using DifferentialEquations, Match
 
 include("../hybrid_games/hybrid_games.jl")
 using .HybridGames
