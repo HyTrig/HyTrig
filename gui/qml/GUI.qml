@@ -472,10 +472,6 @@ ApplicationWindow {
 
         buttons: MessageDialog.Ok
 
-        onOpen: {
-            console.assert(informativeText != "", "Error dialog opened without informative text set");
-        }
-
     }
 
     // TODO: export to game types
