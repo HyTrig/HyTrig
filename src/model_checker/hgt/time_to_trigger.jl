@@ -53,8 +53,6 @@ function time_to_trigger(config::Configuration, constraints::Vector{Constraint},
     u0 = Real[round5(config.valuation[var]) for (var, _) in config.location.flow] 
     tspan = (0.0, max_time + 1e-5)  # Add a small buffer to ensure we capture the trigger time
     prob = ODEProblem(flowODE!, u0, tspan)
-    println(prob)
-    println(cbv)
     sol = solve(prob, Tsit5(), callback=cbv, abstol=1e-6, reltol=1e-6)
     
     final_valuation = round5(valuation_from_flow_vector(config.location.flow, config.valuation, sol[end]))
