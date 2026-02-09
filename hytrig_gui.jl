@@ -14,7 +14,9 @@ Pkg.instantiate()
 
 using JSON3, QML, StructTypes
 
-include("src/parsers/syntax_parsers/parser.jl")
+include("src/hytrig.jl")
+using .HyTrig
+
 include("gui/gui_tree.jl")
 
 roles = JuliaPropertyMap()

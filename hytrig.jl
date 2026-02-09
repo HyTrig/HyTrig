@@ -3,12 +3,10 @@ using Pkg
 Pkg.activate(".")
 Pkg.instantiate()
 
-include("src/model_checking/hgt/build_and_evaluate.jl")
-include("src/parsers/parse_hgt_game.jl")
-include("src/parsers/parse_monotic_game.jl")
-include("src/game_semantics/zone_semantics/zone.jl")
-
 using Dates
+
+include("src/hytrig.jl")
+using .HyTrig
 
 function READ_USER_FILE()
     try
@@ -40,9 +38,9 @@ function READ_USER_FILE()
             game, termination_conditions, queries, queries_text = parse_hgt_game(file_name)
         else
             game, termination_conditions, queries, queries_text = parse_mhg_game(file_name)
-            println(str(initial_zone(game)))
+            println(to_string(initial_zone(game)))
             for edge in game.initial_location.edges
-               println(str(edge_time_interval(initial_zone(game), edge))) 
+               println(to_string(edge_time_interval(initial_zone(game), edge))) 
             end
             return
         end
@@ -105,9 +103,10 @@ function READ_USER_FILE()
             println("!!! ---------------------- !!!")
         else
             # Handle other unexpected errors (e.g., permission issues)
-            println("\n!!! UNEXPECTED ERROR OCCURRED !!!")
-            showerror(stdout, e)
-            println("\n!!! --------------------------- !!!")
+            # println("\n!!! UNEXPECTED ERROR OCCURRED !!!")
+            # showerror(stdout, e)
+            # println("\n!!! --------------------------- !!!")
+            throw(e)
         end
     end
 end

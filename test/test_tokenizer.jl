@@ -1,6 +1,7 @@
 using Test
 
-include("../src/parsers/syntax_parsers/tokenizer.jl")
+include("../src/parser/formula_parser/tokenizer/tokenizer.jl")
+using .Tokenizer
 
 function _test_a_plus_b(input::String)
     test_tokens::Vector{Token} = tokenize(input, Bindings([], [], ["a", "b"]))
