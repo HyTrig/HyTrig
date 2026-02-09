@@ -1,4 +1,12 @@
+using Pkg
+
+Pkg.activate("..")
+Pkg.instantiate()
+
 using Test
+
+include("../src/model_checker/model_checker.jl")
+using .ModelChecker
 
 include("../src/parser/parser.jl")
 using .Parser
