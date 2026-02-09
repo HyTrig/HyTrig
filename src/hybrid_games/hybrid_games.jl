@@ -5,7 +5,7 @@ module HybridGames
 using DataStructures, DifferentialEquations, Match
 
 include("../hybrid_atl/hybrid_atl.jl")
-using .HybridATL
+@reexport using .HybridATL
 import .HybridATL: round5
 
 export Action, Valuation, Decision

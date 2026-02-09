@@ -7,6 +7,7 @@ JSON3 = "0f8b85d8-7281-11e9-16c2-39a750bddbf1"
 Match = "7eb4fadd-790c-5f42-8a69-bfa0b872bfbf"
 Observables = "510215fc-4207-5dde-b226-833fc4488ee2"
 QML = "2db162a6-7e43-52c3-8d84-290c1c42d82a"
+Reexport = "189a3867-3050-52da-a836-e630ba90ab69"
 ResumableFunctions = "c5292f4c-5179-55e1-98c5-05642aab7184"
 StructTypes = "856f2bd8-1eba-4b0a-8007-ebc267875bd4"
 

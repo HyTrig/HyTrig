@@ -2,11 +2,10 @@
 
 module ModelChecker
 
-using DifferentialEquations, Match
+using DifferentialEquations, Match, Reexport
 
 include("../hybrid_games/hybrid_games.jl")
-using .HybridGames
-using .HybridGames.HybridATL
+@reexport using .HybridGames
 
 include("hgt/hgt_checker.jl")
 include("mhg/mhg_checker.jl")

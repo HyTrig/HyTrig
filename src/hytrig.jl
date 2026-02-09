@@ -6,8 +6,6 @@ using DataStructures, JSON3, Match
 
 include("model_checker/model_checker.jl")
 using .ModelChecker
-using .ModelChecker.HybridGames
-using .ModelChecker.HybridGames.HybridATL
 
 export evaluate_queries
 

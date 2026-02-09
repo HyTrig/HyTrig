@@ -3,7 +3,6 @@ using Test
 include("../src/parser/parser.jl")
 using .Parser
 using .Parser: parse
-using .Parser.HybridATL
 
 @testset "Parser Tests" begin
     expr1 = parse("x + y * z", Bindings([], [], ["x", "y", "z"]), expression)
