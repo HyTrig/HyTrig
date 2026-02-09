@@ -1,7 +1,9 @@
 using JSON3
+include("../game_syntax/hgt/game.jl")
+include("../hybrid_atl/termination_conditions.jl")
 include("syntax_parsers/parser.jl")
 
-function parse_game(hytrig_file::String)
+function parse_hgt_game(hytrig_file::String)
     data = open(hytrig_file,"r") do f
         JSON3.read(f)
     end

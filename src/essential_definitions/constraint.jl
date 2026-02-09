@@ -97,6 +97,82 @@ struct RectAnd <: RectConstr
     right::RectConstr
 end
 
+############################
+############################
+
+abstract type RectConstr <: Constraint end
+
+struct RectTrue <: RectConstr
+end
+
+struct RectLess <: RectConstr
+    var::Variable
+    value::Real
+end
+
+struct RectLessEq <: RectConstr
+    var::Variable
+    value::Real
+end
+
+struct RectGrt <: RectConstr
+    var::Variable
+    value::Real
+end
+
+struct RectGrtEq <: RectConstr
+    var::Variable
+    value::Real
+end
+
+struct RectEq <: RectConstr
+    var::Variable
+    value::Real
+end
+
+struct RectAnd <: RectConstr
+    left::RectConstr
+    right::RectConstr
+end
+
+############################
+############################
+
+abstract type RectConstr <: Constraint end
+
+struct RectTrue <: RectConstr
+end
+
+struct RectLess <: RectConstr
+    var::Variable
+    value::Real
+end
+
+struct RectLessEq <: RectConstr
+    var::Variable
+    value::Real
+end
+
+struct RectGrt <: RectConstr
+    var::Variable
+    value::Real
+end
+
+struct RectGrtEq <: RectConstr
+    var::Variable
+    value::Real
+end
+
+struct RectEq <: RectConstr
+    var::Variable
+    value::Real
+end
+
+struct RectAnd <: RectConstr
+    left::RectConstr
+    right::RectConstr
+end
+
 
 ############################
 ############################
@@ -211,47 +287,47 @@ function get_unsatisfied_constraints(constraints, valuation::Valuation)
 end
 
 
+#######################################################
+#######################################################
 
-############################
-############################
+struct RectConstrError <: Exception
+    msg::AbstractString
+end
 
-
-function constraint_to_rect_constraint(constr::Constraint)::Union{Bool, RectConstr}
+function constraint_to_rect_constraint(constr::Constraint)::RectConstr
     @match constr begin
         Truth(true) => RectTrue()
         LeQ(left::Var, right::Const) => RectLessEq(left.name, right.value)
         LeQ(left::Var, Neg(val::Const)) => RectLessEq(left.name, - val.value)
-        LeQ(left::Const, right::Var) => RectLessEq(right.name, left.value)
-        LeQ(Neg(val::Const), right::Var) => RectLessEq(right.name, - val.value)
-        
         Less(left::Var, right::Const) => RectLess(left.name, right.value)
-        Less(left::Var, Neg(val::Const)) => RectLess(left.name, - val.value)
-        Less(left::Const, right::Var) => RectLess(right.name, left.value)
-        Less(Neg(val::Const), right::Var) => RectLess(right.name, - val.value)
-
+        Less(left::Var, Neg(val::Const)) => RectLessEq(left.name, - val.value)
         GeQ(left::Var, right::Const) => RectGrtEq(left.name, right.value)
-        GeQ(left::Var, Neg(val::Const)) => RectGrtEq(left.name, - val.value)
-        GeQ(left::Var, right::Var) => RectGrtEq(right.name, left.value)
-        GeQ(Neg(val::Const), right::Var) => RectGrtEq(right.name, - val.value)
-
+        GeQ(left::Var, Neg(val::Const)) => RectLessEq(left.name, - val.value)
         Greater(left::Var, right::Const) => RectGrt(left.name, right.value)
-        Greater(left::Var, Neg(val::Const)) => RectGrt(left.name, - val.value)
-        Greater(left::Const, right::Var) => RectGrt(right.name, left.value)
-        Greater(Neg(val::Const), right::Var) => RectGrt(right.name, - val.value)
-
+        Greater(left::Var, Neg(val::Const)) => RectLessEq(left.name, - val.value)
         Equal(left::Var, right::Const) => RectEq(left.name, right.value)
-        Equal(left::Var, Neg(val::Const)) => RectEq(left.name, - val.value)
-        Equal(left::Const, right::Var) => RectEq(right.name, left.value)
-        Equal(Neg(val::Const), right::Var) => RectEq(right.name, - val.value)
-
+        Equal(left::Var, Neg(val::Const)) => RectLessEq(left.name, - val.value)
         And(left, right) => RectAnd(constraint_to_rect_constraint(left), constraint_to_rect_constraint(right))
-        _ => false
+        _ => throw(RectConstrError("Invalid Constraint $constr."))
     end
 end
 
 
+
 if !isdefined(Main, :IntervalAssignment)
     const IntervalAssignment = OrderedDict{Variable, Interval}
+end
+
+function strip_variables(constr::RectConstr, variables)::RectConstr
+    @match constr begin
+        RectTrue() => constr
+        RectLess(var, _) => if var in variables RectTrue() else constr end
+        RectLessEq(var, _) => if var in variables RectTrue() else constr end
+        RectGrt(var, _) => if var in variables RectTrue() else constr end
+        RectGrtEq(var, _) => if var in variables RectTrue() else constr end
+        RectEq(var, _) => if var in variables RectTrue() else constr end
+        RectAnd(left, right) => RectAnd(strip_variables(right, variables), strip_variables(left, variables))
+    end
 end
 
 function constraint_to_assignment(constr::RectConstr, variables)::IntervalAssignment
@@ -291,3 +367,12 @@ function _constraint_to_assignment(constr::RectConstr, assignment::IntervalAssig
     end
     assignment
 end
+
+# interval_1 = Interval(1.0, false, 5.0, false)
+# interval_2 = Interval(0.0, false, 1.0, true)
+# interval_3 = Interval(3.0, true, 7.0, false)
+# interval_4 = Interval(-9.0, true, -5.0, true)
+
+# assignment_1 = OrderedDict(:x => interval_1, :y => interval_2)
+
+# println(constraint_to_assignment(RectAnd(RectLessEq(Var(:x), Const(3)), RectGrt(Var(:x), Const(3))), keys(assignment_1)))

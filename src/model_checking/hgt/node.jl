@@ -1,9 +1,10 @@
-include("../hybrid_atl/termination_conditions.jl")
+include("../../essential_definitions/constraint.jl")
+include("../../game_semantics/state_semantics/configuration.jl")
 
 struct TriggerPath
     trigger::Constraint
     end_valuation::Valuation
-    ttt::Float64
+    ttt::Real
     path_to_trigger::Vector{Configuration}
 end
 
@@ -125,7 +126,7 @@ function depth_of_tree(root::Node)::Int
 end
 
 
-function max_time(root::Node)::Float64
+function max_time(root::Node)::Real
     @match root begin
         RootNode(_, _, []) => round5(root.config.global_clock)
         RootNode(_, _, children) => maximum(max_time(child) for child in children)
@@ -138,7 +139,7 @@ function max_time(root::Node)::Float64
     end
 end
 
-function child_time(child::Node)::Float64
+function child_time(child::Node)::Real
     @match child begin
         RootNode(_, _, _) => 0
         ActiveNode(_, _, _, _, _, _) => child.config.global_clock

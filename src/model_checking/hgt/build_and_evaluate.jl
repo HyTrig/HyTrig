@@ -1,4 +1,6 @@
+include("node.jl")
 include("time_to_trigger.jl")
+include("../../hybrid_atl/termination_conditions.jl")
 
 
 function check_invariant(config::Configuration)::Bool

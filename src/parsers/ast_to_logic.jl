@@ -1,5 +1,5 @@
 include("syntax_parsers/ast_nodes.jl")
-include("../model_checking/build_and_evaluate.jl")
+include("../hybrid_atl/Logic.jl")
 
 
 function to_logic(node::ConstantOperation)::Union{State_Location, Strategy_Deadlock, Truth, Const, Var}
