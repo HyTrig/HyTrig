@@ -453,15 +453,14 @@ function hgt_verify()::String
             end
             push!(triggers[agent], parse(x.trigger, bindings, constraint))
         end    
-        game = HGT_ame(
+        game = HGT_Game(
             locations,
             locations[findfirst(loc -> loc.initial, hgt_location_list)],
             initial_valuation,
             [Agent(x.name) for x in hgt_agent_list],
             [Action(x.name) for x in hgt_action_list],
             edges,
-            triggers,
-            true
+            triggers
         )
 
         results, game_tree = evaluate_queries(

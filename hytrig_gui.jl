@@ -16,6 +16,7 @@ using JSON3, QML, StructTypes
 
 include("src/hytrig.jl")
 using .HyTrig
+using .HyTrig: parse
 
 include("gui/gui_tree.jl")
 
