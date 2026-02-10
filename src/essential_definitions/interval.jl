@@ -70,12 +70,12 @@ function intersection(interval_1::Interval, interval_2::Interval)::Interval
     return Interval(left, left_open, right, right_open)
 end
 
-function intersection(intervals)::Interval
-    interval = full_interval()
-    for interv in intervals
-        interval = intersection(interval, interv)
+function intersection(intervals::Vector{Interval})::Interval
+    intersection_interval = full_interval()
+    for interval in intervals
+        intersection_interval = intersection(intersection_interval, interval)
     end
-    interval
+    intersection_interval
 end
 
 

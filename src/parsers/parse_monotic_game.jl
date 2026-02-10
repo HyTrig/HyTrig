@@ -7,7 +7,7 @@ function parse_interval(interval_text::String)::Interval
     left_open = interval_text[1] == "("
     right_open = interval_text[end] == ")"
     content = interval_text[2:end-1]
-    numbers = [tryparse(Real, number) for number in split(content, ',')]
+    numbers = [tryparse(Float64, number) for number in split(content, ',')]
     left = numbers[1]
     right = numbers[2]
     Interval(left, left_open, right, right_open)

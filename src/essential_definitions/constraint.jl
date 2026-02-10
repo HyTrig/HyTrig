@@ -253,7 +253,7 @@ if !isdefined(Main, :IntervalAssignment)
     const IntervalAssignment = OrderedDict{Variable, Interval}
 end
 
-function strip_variables(constr::RectConstr, variables)::RectConstr
+function strip_variables_from_rectconstraint(constr::RectConstr, variables::Container{Variable})::RectConstr
     @match constr begin
         RectTrue() => constr
         RectLess(var, _) => if var in variables RectTrue() else constr end
@@ -261,11 +261,11 @@ function strip_variables(constr::RectConstr, variables)::RectConstr
         RectGrt(var, _) => if var in variables RectTrue() else constr end
         RectGrtEq(var, _) => if var in variables RectTrue() else constr end
         RectEq(var, _) => if var in variables RectTrue() else constr end
-        RectAnd(left, right) => RectAnd(strip_variables(right, variables), strip_variables(left, variables))
+        RectAnd(left, right) => RectAnd(strip_variables_from_rectconstraint(right, variables), strip_variables_from_rectconstraint(left, variables))
     end
 end
 
-function constraint_to_assignment(constr::RectConstr, variables)::IntervalAssignment
+function constraint_to_assignment(constr::RectConstr, variables::Container{Variable})::IntervalAssignment
     assignment = OrderedDict(var => Interval(-Inf, true, Inf, true) for var in variables)
     return _constraint_to_assignment(constr, assignment)
 end
