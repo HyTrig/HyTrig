@@ -29,9 +29,9 @@ function time_to_invariant(zone::Zone, max_location_assignment::IntervalAssignme
     for (var, max_interval) in max_location_assignment
         flow = zone.location.flow[var]
         if monoton_interval(flow) == positive
-            times[var] = if flow.left > 0 ((max_interval.right - zone.assignment[var].left) / flow.left) else Inf end
+            times[var] = if flow.left > 0.0 ((max_interval.right - zone.assignment[var].left) / flow.left) else Inf end
         else 
-            times[var] = if flow.right < 0 ((max_interval.left - zone.assignment[var].right) / flow.right) else Inf end
+            times[var] = if flow.right < 0.0 ((max_interval.left - zone.assignment[var].right) / flow.right) else Inf end
         end
     end
     return minimum(time for (var, time) in times), true
@@ -47,7 +47,7 @@ function zone_lift(zone::Zone, variables::Container{Variable})::Zone
     for (var, original_interval) in zone.assignment
         flow = zone.location.flow[var]
         if monoton_interval(flow) == positive
-            if flow.right == 0
+            if flow.right == 0.0
                 new_assignment[var] = original_interval
             elseif max_location_time == Inf
                 new_assignment[var] = Interval(original_interval.left, original_interval.left_open, Inf, true)
@@ -60,7 +60,7 @@ function zone_lift(zone::Zone, variables::Container{Variable})::Zone
                 end
             end
         else
-            if flow.left == 0
+            if flow.left == 0.0
                 new_assignment[var] = original_interval
             elseif max_location_time == Inf
                 new_assignment[var] = Interval(-Inf, true, original_interval.right, original_interval.right_open)
@@ -77,33 +77,31 @@ function zone_lift(zone::Zone, variables::Container{Variable})::Zone
     return Zone(zone.location, new_assignment)
 end
 
-function edge_time_interval(zone::Zone, edge::MHG_Edge, variables::Container{Variable})::Pair{Interval, IntervalAssignment}
+function edge_time_interval(zone::Zone, edge::MHG_Edge, variables::Container{Variable})::Tuple{Interval, IntervalAssignment}
     target_invariant_after_jump = strip_variables_from_rectconstraint(edge.target_location.invariant, keys(edge.jump))
     max_edge_assignment = constraint_to_assignment(RectAnd(RectAnd(zone.location.invariant, edge.guard), target_invariant_after_jump), variables)
     times = Interval[]
     for (var, interval) in zone.assignment
         flow = zone.location.flow[var] 
-        minimum_time = 0
-        if flow.right > 0
+        minimum_time = Inf
+        if ! is_empty(intersection(max_edge_assignment[var], interval)) 
+            minimum_time =  0.0
+        elseif flow.right > 0.0
             minimum_time =  max(0, (max_edge_assignment[var].left - interval.right) / flow.right) 
-        elseif flow.left < 0
+        elseif flow.left < 0.0
             minimum_time = max(0, (max_edge_assignment[var].right - interval.left) / flow.left)
-        else 
-            if is_empty(intersection(max_edge_assignment[var], interval)) 
-                minimum_time =  Inf
-            end 
         end
 
         maximum_time =  Inf
-        if flow.left > 0
+        if flow.left > 0.0
             maximum_time =  max(0, (max_edge_assignment[var].right - interval.left) / flow.left) 
-        elseif flow.right < 0
+        elseif flow.right < 0.0
             maximum_time = max(0, (max_edge_assignment[var].left - interval.right) / flow.right)
         # else    
         #     if is_empty(intersection(max_edge_assignment[var], interval)) 
         #         maximum_time =  Inf
         #     else 
-        #         maximum_time = 0
+        #         maximum_time = 0.0
         #     end 
         end
         push!(times, Interval(minimum_time, true, maximum_time, true))
@@ -112,16 +110,19 @@ function edge_time_interval(zone::Zone, edge::MHG_Edge, variables::Container{Var
     edge_assignment = IntervalAssignment()
     for (var, interval) in zone.assignment
         if var in keys(zone.location.flow)
-            var_interval = Interval(interval.left + zone.location.flow[var].left * edge_time.left, true, interval.right + zone.location.flow[var].right * edge_time.right, true)
+            var_interval = Interval(interval.left + zone.location.flow[var].left * edge_time.left, true, 
+                                    interval.right + zone.location.flow[var].right * edge_time.right, true)
+            println(var, " initial interval => ", str(var_interval))
+            println(var, " flow => ", str(zone.location.flow[var]))
         else
             var_interval = max_edge_assignment[var]
         end
         edge_assignment[var] = intersection(var_interval, max_edge_assignment[var])
     end
-    return (edge_time => edge_assignment)
+    return edge_time, edge_assignment
 end
 
-function zone_shift(zone::Zone, edge::Edge, variables::Container{Variable})::Pair{Interval, Zone}
+function zone_shift(zone::Zone, edge::Edge, variables::Container{Variable})::Tuple{Interval, Zone}
 
     edge_time, edge_assignment = edge_time_interval(zone, edge, variables)
 
@@ -136,5 +137,5 @@ function zone_shift(zone::Zone, edge::Edge, variables::Container{Variable})::Pai
     end
 
     shifted_zone = Zone(edge.target_location, after_edge_assignment)
-    return (edge_time => shifted_zone)
+    return edge_time, shifted_zone
 end

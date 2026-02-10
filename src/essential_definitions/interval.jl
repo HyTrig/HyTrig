@@ -50,7 +50,7 @@ function intersection(interval_1::Interval, interval_2::Interval)::Interval
     if interval_1.left > interval_2.left 
         left = interval_1.left
         left_open = interval_1.left_open
-    elseif interval_2.left > interval_1.left
+    elseif interval_1.left < interval_2.left
         left = interval_2.left
         left_open = interval_2.left_open
     else 
@@ -58,9 +58,9 @@ function intersection(interval_1::Interval, interval_2::Interval)::Interval
         left_open = interval_1.left_open || interval_2.left_open
     end
     if interval_1.right < interval_2.right 
-        right = interval_1.left
+        right = interval_1.right
         right_open = interval_1.right_open
-    elseif interval_2.right < interval_1.right
+    elseif interval_1.right > interval_2.right
         right = interval_2.right
         right_open = interval_2.right_open
     else 
@@ -78,8 +78,10 @@ function intersection(intervals::Vector{Interval})::Interval
     intersection_interval
 end
 
-
-
+# i1 = Interval(0, true, Inf, true)
+# i2 = Interval(0, false, 11, false)
+# println(str(intersection(i1, i2)))
+# println(str(intersection([i1, i2])))
 
 struct MonotonError <: Exception
     msg::AbstractString
