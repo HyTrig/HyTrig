@@ -46,6 +46,10 @@ function full_interval()::Interval
     return Interval(-Inf, true, Inf, true)
 end
 
+function zero_interval()::Interval
+    return Interval(0, false, 0, false)
+end
+
 function intersection(interval_1::Interval, interval_2::Interval)::Interval
     if interval_1.left > interval_2.left 
         left = interval_1.left

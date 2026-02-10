@@ -2,7 +2,7 @@
 
 function continuous_evolution(valuation::Valuation, 
                               flow::Assignment,
-                              time::Real)::Valuation
+                              time::Float64)::Valuation
 
     function flowODE!(du, u, p, t)
         current_valuation = valuation_from_flow_vector(flow, valuation, u)
@@ -12,7 +12,7 @@ function continuous_evolution(valuation::Valuation,
         end
     end
 
-    u0 = Real[round5(valuation[var]) for (var, _) in flow] 
+    u0 = Float64[round5(valuation[var]) for (var, _) in flow] 
     tspan = (0.0, time)  # Add a small buffer to ensure we capture the trigger time
     prob = ODEProblem(flowODE!, u0, tspan)
     sol = solve(prob, Tsit5(), abstol=1e-6, reltol=1e-6)

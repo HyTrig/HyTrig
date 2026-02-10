@@ -58,8 +58,6 @@ function evaluate_state(formula::State_Formula, state::State)::Bool
     end
 end
 
-const Assignment = OrderedDict{Variable, ExprLike}
-
 function is_closed(assignment::Assignment)::Tuple{Bool, Valuation}
     valuation = OrderedDict{Variable, Real}()
     changed = true

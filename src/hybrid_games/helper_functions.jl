@@ -18,7 +18,7 @@ function valuation_from_vector(valuation::Valuation, vector::Vector{Real})::Valu
     return new_valuation
 end
 
-function valuation_from_flow_vector(flow:: Assignment, valuation::Valuation, vector::Vector{Real})::Valuation
+function valuation_from_flow_vector(flow:: Assignment, valuation::Valuation, vector::Vector{<:Real})::Valuation
     new_valuation::OrderedDict{Symbol, Real} = OrderedDict()
     i = 1
     for (var, value) in valuation

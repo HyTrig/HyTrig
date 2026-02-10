@@ -183,21 +183,36 @@ struct RectConstrError <: Exception
     msg::AbstractString
 end
 
-function constraint_to_rect_constraint(constr::Constraint)::RectConstr
+function constraint_to_rect_constraint(constr::Constraint)::Union{Bool, RectConstr}
     @match constr begin
         Truth(true) => RectTrue()
         LeQ(left::Var, right::Const) => RectLessEq(left.name, right.value)
         LeQ(left::Var, Neg(val::Const)) => RectLessEq(left.name, - val.value)
+        LeQ(left::Const, right::Var) => RectLessEq(right.name, left.value)
+        LeQ(Neg(val::Const), right::Var) => RectLessEq(right.name, - val.value)
+        
         Less(left::Var, right::Const) => RectLess(left.name, right.value)
-        Less(left::Var, Neg(val::Const)) => RectLessEq(left.name, - val.value)
+        Less(left::Var, Neg(val::Const)) => RectLess(left.name, - val.value)
+        Less(left::Const, right::Var) => RectLess(right.name, left.value)
+        Less(Neg(val::Const), right::Var) => RectLess(right.name, - val.value)
+
         GeQ(left::Var, right::Const) => RectGrtEq(left.name, right.value)
-        GeQ(left::Var, Neg(val::Const)) => RectLessEq(left.name, - val.value)
+        GeQ(left::Var, Neg(val::Const)) => RectGrtEq(left.name, - val.value)
+        GeQ(left::Var, right::Var) => RectGrtEq(right.name, left.value)
+        GeQ(Neg(val::Const), right::Var) => RectGrtEq(right.name, - val.value)
+
         Greater(left::Var, right::Const) => RectGrt(left.name, right.value)
-        Greater(left::Var, Neg(val::Const)) => RectLessEq(left.name, - val.value)
+        Greater(left::Var, Neg(val::Const)) => RectGrt(left.name, - val.value)
+        Greater(left::Const, right::Var) => RectGrt(right.name, left.value)
+        Greater(Neg(val::Const), right::Var) => RectGrt(right.name, - val.value)
+
         Equal(left::Var, right::Const) => RectEq(left.name, right.value)
-        Equal(left::Var, Neg(val::Const)) => RectLessEq(left.name, - val.value)
+        Equal(left::Var, Neg(val::Const)) => RectEq(left.name, - val.value)
+        Equal(left::Const, right::Var) => RectEq(right.name, left.value)
+        Equal(Neg(val::Const), right::Var) => RectEq(right.name, - val.value)
+
         And(left, right) => RectAnd(constraint_to_rect_constraint(left), constraint_to_rect_constraint(right))
-        _ => throw(RectConstrError("Invalid Constraint $constr."))
+        _ => false
     end
 end
 

@@ -2,13 +2,12 @@
 
 module Parser
 
-using Match
+using Match, Reexport
 
 using ..ModelChecker
 
 include("formula_parser/formula_parser.jl")
-using .FormulaParser
-export Bindings, ParseError, ParseLevel, expression, constraint, state, strategy
+@reexport using .FormulaParser
 
 export parse
 

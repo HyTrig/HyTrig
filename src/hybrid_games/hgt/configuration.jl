@@ -5,7 +5,7 @@ export Configuration, initial_configuration
 struct Configuration <: State
     location::Location
     valuation::Valuation
-    global_clock::Real
+    global_clock::Float64
 end
 
 function initial_configuration(game::HGT_Game)::Configuration

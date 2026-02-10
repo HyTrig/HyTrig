@@ -6,7 +6,6 @@ using DataStructures, JSON3, Match, Reexport
 
 include("model_checker/model_checker.jl")
 @reexport using .ModelChecker
-
 export evaluate_queries
 
 include("parser/parser.jl")
