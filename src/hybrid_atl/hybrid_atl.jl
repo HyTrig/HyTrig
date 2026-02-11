@@ -20,6 +20,7 @@ struct Termination_Conditions
     state_formula::State_Formula
 end
 
+# TODO: type this function
 function union_safe(l)
     if isempty(l)
         # Return an empty vector with a specific type if known,
