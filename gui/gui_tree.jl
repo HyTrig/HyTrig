@@ -248,7 +248,7 @@ function QBranch(branch::GUIBranch)::QBranch
         if isnothing(branch.reaching_trigger)
             ""
         else
-            str(branch.reaching_trigger)
+            to_string(branch.reaching_trigger)
         end,
         trunc(branch.config.global_clock, digits=5),
         JuliaItemModel([QActiveNode(node) for node in branch.active_nodes]),

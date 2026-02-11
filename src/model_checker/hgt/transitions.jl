@@ -1,0 +1,29 @@
+"""TODO: write docs"""
+
+function continuous_transition(start_config::Configuration, time::Real)::Configuration
+    Configuration(start_config.location, 
+                  continuous_evolution(start_config.valuation, start_config.location.flow, time),
+                    start_config.global_clock + time
+                 )
+end
+
+function discrete_transition(start_config::Configuration, edge::Edge)::Configuration
+    Configuration(edge.target_location, 
+                  discrete_evolution(start_config.valuation, edge.jump),
+                  start_config.global_clock
+                 )
+end
+
+function enabled(edge::HGT_Edge, valuation::Valuation)::Bool
+    return evaluate(edge.guard, valuation) && evaluate(edge.target_location.invariant, discrete_evolution(valuation, edge.jump))
+end
+
+function select_edges(config, decision::Decision)::Vector{HGT_Edge}
+    selected_edges = Vector{HGT_Edge}()
+    for edge in config.location.edges
+        if edge.decision == decision && enabled(edge, config.valuation) 
+            push!(selected_edges, edge)
+        end
+    end
+    return selected_edges
+end

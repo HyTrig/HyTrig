@@ -1,0 +1,75 @@
+{
+    "Game": {
+        "name":"2 Player Ball Game",
+        "locations": 
+        [
+            {
+                "name": "A_Throwing",
+                "invariant": "x >= -1 && x <= 11 && y >= -1 && y <= 11",
+                "flow": [
+                    {"x": "[1, 2]"},
+                    {"y": "[1, 2]"}
+                ],
+                "initial": true
+            },
+            {
+                "name": "B_Throwing",
+                "invariant": "x >= -1 && x <= 11 && y >= -1 && y <= 11",
+                "flow": [
+                    {"x": "[-3, -2]"},
+                    {"y": "[-3, -2]"}
+                ],
+                "initial": false
+            }
+        ],
+        "initial_valuation": [
+            {"x": "[-0.5, 0.5]"},
+            {"y": "[-0.5, 0.5]"},
+            {"A_x": "[-0.5, 0.5]"},
+            {"A_y": "[-0.5, 0.5]"},
+            {"B_x": "[9.5, 10.5]"},
+            {"B_y": "[9.5, 10.5]"}
+        ],
+        "agents": ["A", "B"],
+        "actions": ["Throw"],
+        "edges": 
+        [
+            {
+                "name": "A_B",
+                "start_location": "B_Throwing",
+                "target_location": "A_Throwing",
+                "guard": "x >= -0.5 && x <= 0.5 && y >= -0.5 && y <= 0.5",
+                "decision": 
+                {
+                    "A": "Throw"
+                },
+                "jump": [ 
+                    {"y": "[0, 0]"}
+                ]
+            },
+            {
+                "name": "B_A",
+                "start_location": "A_Throwing",
+                "target_location": "B_Throwing",
+                "guard": "x >= 9.5 && x <= 10.5 && y >= 9.5 && y <= 10.5",
+                "decision": 
+                {
+                    "A": "Throw"
+                },
+                "jump": [ 
+                    {"x": "[10, 10]"}
+                ]
+            }
+        ]
+    },
+    "termination-conditions": {
+        "time-bound": 120.0,
+        "max-steps": 5,
+        "state-formula": "false"
+    },
+    "queries": 
+    [
+        "<<A>> F y > 6",
+        "[[]] G (not deadlock)"
+    ]
+}

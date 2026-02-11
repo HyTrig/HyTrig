@@ -418,11 +418,11 @@ function hgt_verify()::String
     )
     results::Vector{Bool} = []
     try
-        locations = Vector{Location}([
-            Location(
+        locations = Vector{HGT_Location}([
+            HGT_Location(
                 Symbol(x.name),
                 parse(x.invariant, bindings, constraint),
-                ReAssignment(
+                Assignment(
                     Variable(x.flow[i].variable) => parse(x.flow[i].expression, bindings, expression) for i in 1:length(x.flow)
                 )
             ) for x in hgt_location_list
@@ -430,8 +430,8 @@ function hgt_verify()::String
         initial_valuation = Valuation(
             Variable(x.name) => Base.parse(Float64, x.expression) for x in hgt_variable_list
         )
-        edges = Vector{Edge}([
-            Edge(
+        edges = Vector{HGT_Edge}([
+            HGT_Edge(
                 Symbol(i),
                 locations[findfirst(loc -> loc.name == Symbol(edge.source), locations)],
                 locations[findfirst(loc -> loc.name == Symbol(edge.target), locations)],
@@ -440,7 +440,7 @@ function hgt_verify()::String
                     Agent(edge.agent),
                     Action(edge.action)
                 ),
-                ReAssignment(
+                Assignment(
                     Variable(edge.jump[j].variable) => parse(edge.jump[j].expression, bindings, expression) for j in 1:length(edge.jump)
                 )
             ) for (i, edge) in enumerate(hgt_edge_list)
@@ -453,15 +453,14 @@ function hgt_verify()::String
             end
             push!(triggers[agent], parse(x.trigger, bindings, constraint))
         end    
-        game = Game(
+        game = HGT_Game(
             locations,
             locations[findfirst(loc -> loc.initial, hgt_location_list)],
             initial_valuation,
             [Agent(x.name) for x in hgt_agent_list],
             [Action(x.name) for x in hgt_action_list],
             edges,
-            triggers,
-            true
+            triggers
         )
 
         results, game_tree = evaluate_queries(
