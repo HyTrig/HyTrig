@@ -4,7 +4,7 @@ module Parser
 
 using Match, Reexport
 
-using ..ModelChecker
+using ..ModelChecker.HybridATL
 
 include("formula_parser/formula_parser.jl")
 @reexport using .FormulaParser

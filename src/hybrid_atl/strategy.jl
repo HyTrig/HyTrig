@@ -1,10 +1,8 @@
 """TODO: write docs"""
 
-export Agent, Strategy_Formula, Strategy_to_State, Exist_Always, Exist_Eventually, All_Always, All_Eventually
+export Strategy_Formula, Strategy_to_State, Exist_Always, Exist_Eventually, All_Always, All_Eventually
 export Strategy_And, Strategy_Or, Strategy_Not, Strategy_Imply, Strategy_Deadlock
 export get_all_constraints, formula_to_rect_formula
-
-const Agent = Symbol
 
 abstract type Strategy_Formula <: Logic_Formula end
 

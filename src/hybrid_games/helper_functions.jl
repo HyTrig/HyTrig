@@ -1,6 +1,6 @@
 """TODO: write docs"""
 
-export round5, valuation_from_vector, valuation_from_flow_vector
+export round5, valuation_from_vector, valuation_from_flow_vector, union_safe
 
 function round5(valuation::Valuation)::Valuation
     new_valuation::OrderedDict{Symbol, Real} = OrderedDict()
@@ -30,4 +30,15 @@ function valuation_from_flow_vector(flow:: Assignment, valuation::Valuation, vec
         end
     end
     return new_valuation
+end
+
+# TODO: type this function
+function union_safe(l)
+    if isempty(l)
+        # Return an empty vector with a specific type if known,
+        # or a generic empty vector if not.
+        return eltype(l)[] 
+    else
+        return union(l...)
+    end
 end

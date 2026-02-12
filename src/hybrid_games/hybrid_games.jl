@@ -4,13 +4,13 @@ module HybridGames
 
 using DataStructures, DifferentialEquations, Match
 
-include("../hybrid_atl/hybrid_atl.jl")
-@reexport using .HybridATL
-import .HybridATL: round5, to_string
-
-export Action, Assignment, Valuation, Decision
+export Agent, Action, Assignment, Valuation, Decision
 export Location, Edge, Game, State
 
+include("expression.jl")
+include("constraint.jl")
+
+const Agent = Symbol
 const Action = Symbol
 const Assignment = OrderedDict{Variable, ExprLike}
 const Valuation = OrderedDict{Variable, Real}

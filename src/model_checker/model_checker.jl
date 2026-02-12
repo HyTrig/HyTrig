@@ -4,8 +4,8 @@ module ModelChecker
 
 using DifferentialEquations, Match, Reexport
 
-include("../hybrid_games/hybrid_games.jl")
-@reexport using .HybridGames
+include("../hybrid_atl/hybrid_atl.jl")
+@reexport using .HybridATL
 
 include("evaluation.jl")
 include("evolution.jl")
