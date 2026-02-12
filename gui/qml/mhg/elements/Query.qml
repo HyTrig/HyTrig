@@ -53,6 +53,7 @@ Element {
                 condition: function(x) {
                     return x == model.formula || Julia.mhg_is_formula(x, "strategy");
                 }
+                error_value: model.formula
             }
 
             CheckBox {

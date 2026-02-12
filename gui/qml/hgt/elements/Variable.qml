@@ -55,6 +55,7 @@ Element {
                 condition: function(x) {
                     return x == model.name || Julia.hgt_name_available(x);
                 }
+                error_value: model.name
             }
 
         },
@@ -91,6 +92,7 @@ Element {
                 condition: function(x) {
                     return true;
                 }
+                error_value: model.expression
             }
 
         }

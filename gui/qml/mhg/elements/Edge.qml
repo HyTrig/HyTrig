@@ -110,6 +110,7 @@ Element {
                 condition: function(x) {
                     return x == model.guard || Julia.mhg_is_formula(x, "constraint");
                 }
+                error_value: model.guard
             }
 
         },

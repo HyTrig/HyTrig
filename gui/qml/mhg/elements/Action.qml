@@ -54,6 +54,7 @@ Element {
                 condition: function(x) {
                     return x == model.name || Julia.mhg_name_available(x);
                 }
+                error_value: model.name
             }
 
         }

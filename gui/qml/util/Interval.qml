@@ -40,7 +40,7 @@ Row {
         text: qsTr(interval_model.lower.toString())
         default_text: qsTr("Enter decimal")
         error_text: qsTr("Invalid decimal")
-        condition_error_text: qsTr("Invalid decimal")
+        condition_error_text: qsTr("Interval not monotonic")
 
         regex: /(^-?(([1-9]\d*(\.\d+)?$)|(0\.\d*[1-9])$))|(^0$)/
 
@@ -48,8 +48,15 @@ Row {
             interval_model.lower = parseFloat(x);
         }
         condition: function(x) {
-            return true;
+            if (interval_model.upper > 0) {
+                return parseFloat(x) >= 0;
+            } else if (interval_model.upper < 0) {
+                return parseFloat(x) <= 0;
+            } else {
+                return true;
+            }
         }
+        error_value: 0
     }
 
     Label {
@@ -67,7 +74,7 @@ Row {
         text: qsTr(interval_model.upper.toString())
         default_text: qsTr("Enter decimal")
         error_text: qsTr("Invalid decimal")
-        condition_error_text: qsTr("Invalid decimal")
+        condition_error_text: qsTr("Interval not monotonic")
 
         regex: /(^-?(([1-9]\d*(\.\d+)?$)|(0\.\d*[1-9])$))|(^0$)/
 
@@ -75,8 +82,15 @@ Row {
             interval_model.upper = parseFloat(x);
         }
         condition: function(x) {
-            return true;
+            if (interval_model.lower > 0) {
+                return parseFloat(x) >= 0;
+            } else if (interval_model.lower < 0) {
+                return parseFloat(x) <= 0;
+            } else {
+                return true;
+            }
         }
+        error_value: 0
     }
 
     BracketSelector {

@@ -57,6 +57,7 @@ Element {
                 condition: function(x) {
                     return x == model.name || Julia.mhg_name_available(x);
                 }
+                error_value: model.name
             }
 
             RadioButton {
@@ -107,6 +108,7 @@ Element {
                 condition: function(x) {
                     return x == model.invariant || Julia.mhg_is_formula(x, "constraint");
                 }
+                error_value: model.invariant
             }
 
         },

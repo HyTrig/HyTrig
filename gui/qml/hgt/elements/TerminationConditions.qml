@@ -94,6 +94,7 @@ Rectangle {
                                 condition: function(x) {
                                     return true;
                                 }
+                                error_value: hgt_models.max_steps
                             }
 
                         }
@@ -140,6 +141,7 @@ Rectangle {
                                 condition: function(x) {
                                     return true;
                                 }
+                                error_value: hgt_models.time_bound
                             }
 
                         }
@@ -186,6 +188,7 @@ Rectangle {
                                 condition: function(x) {
                                     return x == hgt_models.state_formula || Julia.hgt_is_formula(x, "state");
                                 }
+                                error_value: hgt_models.state_formula
                             }
 
                         }

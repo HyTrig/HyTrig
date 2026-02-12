@@ -11,11 +11,12 @@ TextField {
 
     // Regular expression for validating the input
     required property var regex
-
     // Function executed when the input is valid and condition is met, receives the input text
     required property var action
     // Function that checks an additional condition on the input, receives the input text and returns a boolean
     required property var condition
+    // Action is called with this value when the input is invalid or condition is not met
+    required property var error_value
 
     required property string default_text
     required property string error_text
@@ -42,7 +43,7 @@ TextField {
                 Material.foreground = accepted_color;
                 focus = false;
             } else {
-                action("");
+                action(error_value);
                 placeholderText = condition_error_text;
             }
         } else {
@@ -53,9 +54,9 @@ TextField {
     onTextChanged: {
         edited = true;
         Material.foreground = parent.Material.foreground;
-        let valid = acceptableInput && condition(text);
-        Material.accent = valid ? accepted_color : error_color;
-        placeholderText =  valid ? default_text : error_text;
+        let cond = condition(text);
+        Material.accent = acceptableInput && cond ? accepted_color : error_color;
+        placeholderText =  acceptableInput ? (cond ? default_text : condition_error_text) : error_text;
     }
 
     // On component load, trigger editingFinished to validate initial text

@@ -85,6 +85,7 @@ Element {
                 condition: function(x) {
                     return x == model.trigger || Julia.hgt_is_formula(x, "constraint");
                 }
+                error_value: model.trigger
             }
 
         }
