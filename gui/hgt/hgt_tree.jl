@@ -132,17 +132,20 @@ function build_gui_tree(root::Union{ActiveNode, RootNode})::GUINode
     return gui_root
 end
 
-function _get_next_layer(node::Union{ActiveNode, RootNode}, parent::GUINode)::Vector{GUIBranch}
+function _get_next_layer(last_node::Union{ActiveNode, RootNode}, parent::GUINode)::Vector{GUIBranch}
     branches::Vector{GUIBranch} = []
+    last_trigger_time::Float64 = last_node.config.global_clock
 
     # Create child branches
-    for child in node.children
+    for child in last_node.children
         current_node::Node = child
         
         # Collect passive nodes until an active or end node is reached
         passives::Vector{PassiveNode} = []
         while !(current_node isa ActiveNode || current_node isa EndNode)
-            push!(passives, current_node)
+            if current_node.config.global_clock >= last_trigger_time
+                push!(passives, current_node)
+            end
             if length(current_node.children) != 1 && current_node.children[1] isa PassiveNode
                 throw(ArgumentError("Tree is not valid."))
             end
@@ -160,7 +163,9 @@ function _get_next_layer(node::Union{ActiveNode, RootNode}, parent::GUINode)::Ve
             end
             push!(actives, gui_node)
         end
+
         current_node = current_node.children[1]
+        last_trigger_time = current_node.config.global_clock
         push!(branches, GUIBranch(current_node, actives, passives))
     end
     return branches
