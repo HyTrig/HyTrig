@@ -253,8 +253,6 @@ StructTypes.StructType(::Type{QMHGEdge}) = StructTypes.Mutable()
 StructTypes.StructType(::Type{QMHGJump}) = StructTypes.Mutable()
 StructTypes.StructType(::Type{QMHGQuery}) = StructTypes.Mutable()
 
-mhg_models = JuliaPropertyMap()
-
 mhg_models["max_steps"] = "10"
 mhg_models["time_bound"] = "13.37"
 mhg_models["state_formula"] = "!location"

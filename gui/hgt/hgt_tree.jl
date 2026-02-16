@@ -117,8 +117,6 @@ function GUIBranch(node::Union{RootNode, EndNode}, active_nodes::Vector{GUINode}
     )
 end
 
-game_tree::Union{GUINode, Node, Nothing} = nothing
-
 """
     build_gui_tree(root::Union{ActiveNode, RootNode})::GUINode
 
@@ -143,16 +141,16 @@ end
 Set the branch model to the current nodes parent layer.
 """
 function up_tree()::Bool
-    global game_tree
-    if isnothing(game_tree) || isnothing(game_tree.parent)
+    global hgt_tree
+    if isnothing(hgt_tree) || isnothing(hgt_tree.parent)
         return false
     end
 
     empty!(branch_list)
 
-    game_tree = game_tree.parent
+    hgt_tree = hgt_tree.parent
 
-    for branch in game_tree.branches
+    for branch in hgt_tree.branches
         push!(branch_list, QBranch(branch))
     end
     return true
@@ -164,18 +162,18 @@ end
 Set the branch model to the child layer of child `j` of branch `i`.
 """
 function down_tree(i, j)::Bool
-    global game_tree
-    if isempty(branch_list) || isnothing(game_tree)
+    global hgt_tree
+    if isempty(branch_list) || isnothing(hgt_tree)
         return false
     end
 
     i = Int(i) + 1
     j = Int(j) + 1
 
-    if 0 < i <= length(game_tree.branches) && 0 < j <= length(game_tree.branches[i].active_nodes)
+    if 0 < i <= length(hgt_tree.branches) && 0 < j <= length(hgt_tree.branches[i].active_nodes)
         empty!(branch_list)
-        game_tree = game_tree.branches[i].active_nodes[j]
-        for branch in game_tree.branches
+        hgt_tree = hgt_tree.branches[i].active_nodes[j]
+        for branch in hgt_tree.branches
             push!(branch_list, QBranch(branch))
         end
         return true
@@ -311,6 +309,9 @@ function QPassiveNode(node::PassiveNode)::QPassiveNode
         trunc(node.config.global_clock, digits=5)
     )
 end
+
+branch_list::Vector{QBranch} = []
+hgt_models["branches"] = JuliaItemModel(branch_list)
 
 function _get_valuation_string(valuation::Valuation)::String
     str = ""

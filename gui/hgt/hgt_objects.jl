@@ -221,8 +221,6 @@ StructTypes.StructType(::Type{QHGTEdge}) = StructTypes.Mutable()
 StructTypes.StructType(::Type{QHGTJump}) = StructTypes.Mutable()
 StructTypes.StructType(::Type{QHGTQuery}) = StructTypes.Mutable()
 
-hgt_models = JuliaPropertyMap()
-
 hgt_models["max_steps"] = "10"
 hgt_models["time_bound"] = "13.37"
 hgt_models["state_formula"] = "!location"
@@ -410,7 +408,7 @@ end
 Verify the current game.
 """
 function hgt_verify()::String
-    global game_tree
+    global hgt_tree
     bindings::Bindings = Bindings(
         [x.name for x in hgt_agent_list],
         [x.name for x in hgt_location_list],
@@ -463,7 +461,7 @@ function hgt_verify()::String
             triggers
         )
 
-        results, game_tree = evaluate_queries(
+        results, hgt_tree = evaluate_queries(
             game,
             Termination_Conditions(
                 Base.parse(Float64, hgt_models["time_bound"]),
@@ -481,9 +479,9 @@ function hgt_verify()::String
 
     empty!(branch_list)
 
-    if !isnothing(game_tree)
-        game_tree = build_gui_tree(game_tree)
-        push!(branch_list, QBranch(game_tree.branches[1]))
+    if !isnothing(hgt_tree)
+        hgt_tree = build_gui_tree(hgt_tree)
+        push!(branch_list, QBranch(hgt_tree.branches[1]))
     end
 
     for (i, query) in enumerate(hgt_query_list)

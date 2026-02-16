@@ -41,7 +41,7 @@ ApplicationWindow {
             return;
         }
         branches.model = [];
-        branches.model = tree.branches;
+        branches.model = hgt_models.branches;
         level = level - 1;
     }
 
@@ -57,7 +57,7 @@ ApplicationWindow {
             return;
         }
         branches.model = [];
-        branches.model = tree.branches;
+        branches.model = hgt_models.branches;
         level = level + 1;
     }
 
@@ -87,7 +87,7 @@ ApplicationWindow {
 
             orientation: ListView.Horizontal
 
-            model: tree.branches
+            model: hgt_models.branches
             delegate: Column {
                 
                 id: branch_column
@@ -232,7 +232,7 @@ ApplicationWindow {
             level = level - 1;
         }
         branches.model = [];
-        branches.model = tree.branches;
+        branches.model = hgt_models.branches;
     }
     
 }

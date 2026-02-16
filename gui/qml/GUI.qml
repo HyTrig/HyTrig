@@ -346,7 +346,7 @@ ApplicationWindow {
                     // Reset tree viewer and show
                     tree_viewer.level = 1;
                     tree_viewer.branches.model = [];
-                    tree_viewer.branches.model = tree.branches;
+                    tree_viewer.branches.model = hgt_models.branches;
                     tree_viewer.show();
                 }
 

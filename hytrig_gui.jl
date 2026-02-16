@@ -18,17 +18,7 @@ include("src/hytrig.jl")
 using .HyTrig
 using .HyTrig: parse
 
-include("gui/gui_tree.jl")
-
-roles = JuliaPropertyMap()
-
-include("gui/qml_objects/hgt_objects.jl")
-include("gui/qml_objects/mhg_objects.jl")
-
-tree = JuliaPropertyMap()
-
-branch_list::Vector{QBranch} = []
-tree["branches"] = JuliaItemModel(branch_list)
+include("gui/gui.jl")
 
 # Build and run QML GUI
 
@@ -41,7 +31,6 @@ qml_file = joinpath(dirname(@__FILE__), "gui", "qml", "GUI.qml")
 loadqml(
     qml_file,
     roles=roles,
-    tree=tree,
     hgt_models=hgt_models,
     mhg_models=mhg_models,
 )
