@@ -6,14 +6,11 @@ This file contains all definitions for creating the traversable game tree for th
 # Types:
 - `GUIBranch`: a branch in a traversable GUI tree
 - `GUINode`: a node in a traversable GUI tree
-- `QBranch`: Represents a tree branch used in QML models.
-- `QActiveNode`: Represents an active tree node used in QML models.
-- `QPassiveNode`: Represents a passive tree node used in QML models.
 
 # Functions:
 - `build_gui_tree(root::Union{ActiveNode, RootNode})::GUINode`: build a GUI tree from a game tree
-- `up_tree()::Bool`: ascend a layer in the GUI tree
-- `down_tree(i)::Bool`: descend a layer in the GUI tree
+- `hgt_up_tree()::Bool`: ascend a layer in the GUI tree
+- `hgt_down_tree(i)::Bool`: descend a layer in the GUI tree
 
 # Authors:
 - Moritz Maas
@@ -135,53 +132,6 @@ function build_gui_tree(root::Union{ActiveNode, RootNode})::GUINode
     return gui_root
 end
 
-"""
-    up_tree()::Bool
-
-Set the branch model to the current nodes parent layer.
-"""
-function up_tree()::Bool
-    global hgt_tree
-    if isnothing(hgt_tree) || isnothing(hgt_tree.parent)
-        return false
-    end
-
-    empty!(branch_list)
-
-    hgt_tree = hgt_tree.parent
-
-    for branch in hgt_tree.branches
-        push!(branch_list, QBranch(branch))
-    end
-    return true
-end
-
-"""
-    down_tree(i, j)::Bool
-
-Set the branch model to the child layer of child `j` of branch `i`.
-"""
-function down_tree(i, j)::Bool
-    global hgt_tree
-    if isempty(branch_list) || isnothing(hgt_tree)
-        return false
-    end
-
-    i = Int(i) + 1
-    j = Int(j) + 1
-
-    if 0 < i <= length(hgt_tree.branches) && 0 < j <= length(hgt_tree.branches[i].active_nodes)
-        empty!(branch_list)
-        hgt_tree = hgt_tree.branches[i].active_nodes[j]
-        for branch in hgt_tree.branches
-            push!(branch_list, QBranch(branch))
-        end
-        return true
-    else
-        return false
-    end
-end
-
 function _get_next_layer(node::Union{ActiveNode, RootNode}, parent::GUINode)::Vector{GUIBranch}
     branches::Vector{GUIBranch} = []
 
@@ -215,103 +165,6 @@ function _get_next_layer(node::Union{ActiveNode, RootNode}, parent::GUINode)::Ve
     end
     return branches
 end
-
-"""
-    QBranch
-
-A tree branch used in QML models.
-"""
-mutable struct QBranch
-    agent::String
-    trigger::String
-    time::Float64
-    active_nodes::JuliaItemModel
-    passive_nodes::JuliaItemModel
-end
-
-"""
-    QBranch(branch::GUIBranch)::QBranch
-
-Create a QBranch from the given branch `branch`.
-# Arguments
-- `branch::GUIBranch`: the branch
-"""
-function QBranch(branch::GUIBranch)::QBranch
-    return QBranch(
-        if isnothing(branch.reaching_decision)
-            ""
-        else
-            string(branch.reaching_decision[1])
-        end,
-        if isnothing(branch.reaching_trigger)
-            ""
-        else
-            to_string(branch.reaching_trigger)
-        end,
-        trunc(branch.config.global_clock, digits=5),
-        JuliaItemModel([QActiveNode(node) for node in branch.active_nodes]),
-        JuliaItemModel([QPassiveNode(node) for node in branch.passive_nodes])
-    )
-end
-
-"""
-    QActiveNode
-
-An active tree node used in QML models.
-"""
-mutable struct QActiveNode
-    location::String
-    action::String
-    valuation::String
-    clickable::Bool
-end
-
-"""
-    QActiveNode(node::GUINode)::QActiveNode
-
-Create a QAction from the given GUI node `node`.
-# Arguments
-- `node::GUINode`: the gui node
-"""
-function QActiveNode(node::GUINode)::QActiveNode
-    QActiveNode(
-        string(node.config.location.name),
-        if isnothing(node.reaching_decision)
-            ""
-        else
-            string(node.reaching_decision[2])
-        end,
-        _get_valuation_string(node.config.valuation),
-        !isempty(node.branches)
-    )
-end
-
-"""
-    QPassiveNode
-
-A passive tree node used in QML models.
-"""
-mutable struct QPassiveNode
-    valuation::String
-    time::Float64
-end
-
-"""
-    QPassiveNode(node::PassiveNode)::QPassiveNode
-
-Create a QPassiveNode from the given passive node `node`.
-# Arguments
-- `node::PassiveNode`: the passive node
-"""
-function QPassiveNode(node::PassiveNode)::QPassiveNode
-    return QPassiveNode(
-        _get_valuation_string(node.config.valuation),
-        trunc(node.config.global_clock, digits=5)
-    )
-end
-
-branch_list::Vector{QBranch} = []
-hgt_models["branches"] = JuliaItemModel(branch_list)
 
 function _get_valuation_string(valuation::Valuation)::String
     str = ""

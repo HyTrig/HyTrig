@@ -13,6 +13,9 @@ This file defines the QML objects used in the HyTrig GUI by the HGT game type.
 - `QHGTEdge`: Represents an edge in a hybrid game.
 - `QHGTJump`: Represents a jump in an edge.
 - `QHGTQuery`: Represents a query in a hybrid game.
+- `QHGTBranch`: Represents a tree branch used in QML models.
+- `QHGTActiveNode`: Represents an active tree node used in QML models.
+- `QHGTPassiveNode`: Represents a passive tree node used in QML models.
 
 # Functions:
 - `hgt_name_available(name::QString)::Bool`: Check whether a name is available.
@@ -211,6 +214,100 @@ function QHGTQuery()::QHGTQuery
     return QHGTQuery("")
 end
 
+"""
+    QHGTBranch
+
+A tree branch used in QML models.
+"""
+mutable struct QHGTBranch
+    agent::String
+    trigger::String
+    time::Float64
+    active_nodes::JuliaItemModel
+    passive_nodes::JuliaItemModel
+end
+
+"""
+    QHGTBranch(branch::GUIBranch)::QHGTBranch
+
+Create a QHGTBranch from the given branch `branch`.
+# Arguments
+- `branch::GUIBranch`: the branch
+"""
+function QHGTBranch(branch::GUIBranch)::QHGTBranch
+    return QHGTBranch(
+        if isnothing(branch.reaching_decision)
+            ""
+        else
+            string(branch.reaching_decision[1])
+        end,
+        if isnothing(branch.reaching_trigger)
+            ""
+        else
+            to_string(branch.reaching_trigger)
+        end,
+        trunc(branch.config.global_clock, digits=5),
+        JuliaItemModel([QHGTActiveNode(node) for node in branch.active_nodes]),
+        JuliaItemModel([QHGTPassiveNode(node) for node in branch.passive_nodes])
+    )
+end
+
+"""
+    QHGTActiveNode
+
+An active tree node used in QML models.
+"""
+mutable struct QHGTActiveNode
+    location::String
+    action::String
+    valuation::String
+    clickable::Bool
+end
+
+"""
+    QHGTActiveNode(node::GUINode)::QHGTActiveNode
+
+Create a QAction from the given GUI node `node`.
+# Arguments
+- `node::GUINode`: the gui node
+"""
+function QHGTActiveNode(node::GUINode)::QHGTActiveNode
+    QHGTActiveNode(
+        string(node.config.location.name),
+        if isnothing(node.reaching_decision)
+            ""
+        else
+            string(node.reaching_decision[2])
+        end,
+        _get_valuation_string(node.config.valuation),
+        !isempty(node.branches)
+    )
+end
+
+"""
+    QHGTPassiveNode
+
+A passive tree node used in QML models.
+"""
+mutable struct QHGTPassiveNode
+    valuation::String
+    time::Float64
+end
+
+"""
+    QHGTPassiveNode(node::PassiveNode)::QHGTPassiveNode
+
+Create a QHGTPassiveNode from the given passive node `node`.
+# Arguments
+- `node::PassiveNode`: the passive node
+"""
+function QHGTPassiveNode(node::PassiveNode)::QHGTPassiveNode
+    return QHGTPassiveNode(
+        _get_valuation_string(node.config.valuation),
+        trunc(node.config.global_clock, digits=5)
+    )
+end
+
 StructTypes.StructType(::Type{QHGTAction}) = StructTypes.Mutable()
 StructTypes.StructType(::Type{QHGTAgent}) = StructTypes.Mutable()
 StructTypes.StructType(::Type{QHGTVariable}) = StructTypes.Mutable()
@@ -248,6 +345,9 @@ setsetter!(hgt_models["edges"], setjump!, roleindex(hgt_models["edges"], "jump")
 
 hgt_query_list::Vector{QHGTQuery} = [QHGTQuery("<<agent>> F true")]
 hgt_models["queries"] = JuliaItemModel(hgt_query_list)
+
+branch_list::Vector{QHGTBranch} = []
+hgt_models["branches"] = JuliaItemModel(branch_list)
 
 """
     hgt_name_available(name::QString)::Bool
@@ -481,7 +581,7 @@ function hgt_verify()::String
 
     if !isnothing(hgt_tree)
         hgt_tree = build_gui_tree(hgt_tree)
-        push!(branch_list, QBranch(hgt_tree.branches[1]))
+        push!(branch_list, QHGTBranch(hgt_tree.branches[1]))
     end
 
     for (i, query) in enumerate(hgt_query_list)
@@ -489,4 +589,51 @@ function hgt_verify()::String
     end
 
     return ""
+end
+
+"""
+    hgt_up_tree()::Bool
+
+Set the branch model to the current nodes parent layer.
+"""
+function hgt_up_tree()::Bool
+    global hgt_tree
+    if isnothing(hgt_tree) || isnothing(hgt_tree.parent)
+        return false
+    end
+
+    empty!(branch_list)
+
+    hgt_tree = hgt_tree.parent
+
+    for branch in hgt_tree.branches
+        push!(branch_list, QHGTBranch(branch))
+    end
+    return true
+end
+
+"""
+    hgt_down_tree(i, j)::Bool
+
+Set the branch model to the child layer of child `j` of branch `i`.
+"""
+function hgt_down_tree(i, j)::Bool
+    global hgt_tree
+    if isempty(branch_list) || isnothing(hgt_tree)
+        return false
+    end
+
+    i = Int(i) + 1
+    j = Int(j) + 1
+
+    if 0 < i <= length(hgt_tree.branches) && 0 < j <= length(hgt_tree.branches[i].active_nodes)
+        empty!(branch_list)
+        hgt_tree = hgt_tree.branches[i].active_nodes[j]
+        for branch in hgt_tree.branches
+            push!(branch_list, QHGTBranch(branch))
+        end
+        return true
+    else
+        return false
+    end
 end

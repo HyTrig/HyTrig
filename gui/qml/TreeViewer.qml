@@ -37,7 +37,7 @@ ApplicationWindow {
     * @return   void
     */
     function up() {
-        if (!Julia.up_tree()) {
+        if (!Julia.hgt_up_tree()) {
             return;
         }
         branches.model = [];
@@ -53,7 +53,7 @@ ApplicationWindow {
     * @return   void
     */
     function down(i, j) {
-        if (!Julia.down_tree(i, j)) {
+        if (!Julia.hgt_down_tree(i, j)) {
             return;
         }
         branches.model = [];
@@ -228,7 +228,7 @@ ApplicationWindow {
 
     onClosing: {
         // Reset tree viewer to root for next opening
-        while (Julia.up_tree()) {
+        while (Julia.hgt_up_tree()) {
             level = level - 1;
         }
         branches.model = [];
