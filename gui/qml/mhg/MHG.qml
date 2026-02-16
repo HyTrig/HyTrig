@@ -232,6 +232,13 @@ GameType {
         }
     ]
 
+    game_viewer: GameViewer {
+        // TODO: add MHG viewer
+        reset: function() {
+            // Remove when MHG viewer is implemented
+        }
+    }
+
     clear: function () {
         mhg_models.agents.clear();
         mhg_models.actions.clear();

@@ -343,11 +343,7 @@ ApplicationWindow {
                 visible: verified
 
                 onClicked: {
-                    // Reset tree viewer and show
-                    tree_viewer.level = 1;
-                    tree_viewer.branches.model = [];
-                    tree_viewer.branches.model = hgt_models.branches;
-                    tree_viewer.show();
+                    game.show_tree();
                 }
 
             }
@@ -472,11 +468,6 @@ ApplicationWindow {
 
         buttons: MessageDialog.Ok
 
-    }
-
-    // TODO: export to game types
-    TreeViewer {
-        id: tree_viewer
     }
 
 }

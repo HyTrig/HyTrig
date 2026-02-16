@@ -256,6 +256,10 @@ GameType {
         }
     ]
 
+    game_viewer: HGTViewer {
+        id: hgt_viewer
+    }
+
     clear: function () {
         hgt_models.agents.clear();
         hgt_models.actions.clear();

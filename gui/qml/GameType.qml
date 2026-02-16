@@ -5,6 +5,7 @@
 */
 
 import QtQuick
+import "util"
 
 Item {
 
@@ -13,6 +14,7 @@ Item {
     required property string game_type_name
     required property ListModel tab_names
     required property list<Item> tab_list
+    required property GameViewer game_viewer
 
     // Function for clearing the current game, no return value
     required property var clear
@@ -28,6 +30,15 @@ Item {
 
     // Function called after successful verification, no retrun value
     required property var verification_success
+
+    /**
+    * Show the game viewer for the current game
+    * @return   void
+    */
+    function show_tree() {
+        game_viewer.reset();
+        game_viewer.show();
+    }
 
     Component.onCompleted: {
         console.assert(tab_list.length == tab_names.count, "Number of tabs of " + game_type_name + " does not match number of tab names");

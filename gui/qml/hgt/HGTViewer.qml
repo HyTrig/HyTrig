@@ -1,6 +1,6 @@
 /**
-* @file TreeWindow.qml
-* @brief GUI component for a window dedicated to traversing a parsed game tree.
+* @file HGTViewer.qml
+* @brief GUI component for a window dedicated to traversing a verified game tree of HGT games.
 * @authors Moritz Maas
 */
 
@@ -11,26 +11,25 @@ import QtQuick.Layouts
 import QtQuick.Controls.Material
 import org.julialang
 
-import "util"
+import ".."
+import "../util"
+import "elements" as Elements
 
-ApplicationWindow {
+GameViewer {
 
-    id: tree_viewer
-    width: 1500
-    height: 1000
-    minimumWidth: 1000
-    minimumHeight: 800
-
-    modality: Qt.ApplicationModal
-
-    title: "Game tree viewer"
-
-    Material.theme: main_window.Material.theme
-    Material.accent: main_window.Material.accent
-    Material.foreground: main_window.Material.foreground
+    id: hgt_viewer
 
     property alias branches: branches
     property int level: 1
+
+    reset: function() {
+        // Reset tree viewer to root
+        while (Julia.hgt_up_tree()) {
+            level = level - 1;
+        }
+        branches.model = [];
+        branches.model = hgt_models.branches;
+    }
 
     /**
     * Go up one level in the tree
@@ -63,7 +62,7 @@ ApplicationWindow {
 
     Column {
 
-        id: tree_viewer_page
+        id: game_viewer_page
         anchors.fill: parent
         anchors.margins: 10
         spacing: 10
@@ -79,22 +78,19 @@ ApplicationWindow {
         // Branches of the current node
         ListView {
             id: branches
-            width: Math.min(contentWidth, tree_viewer_page.width)
-            height: tree_viewer_page.height - level_text.height - legend.height - parent_button.height - 3 * parent.spacing
+            width: game_viewer_page.width
+            height: game_viewer_page.height - level_text.height - legend.height - parent_button.height - 3 * parent.spacing
             anchors.horizontalCenter: parent.horizontalCenter
             spacing: 10
             clip: true
-
-            orientation: ListView.Horizontal
+            ScrollBar.vertical: ScrollBar {}
 
             model: hgt_models.branches
             delegate: Column {
                 
                 id: branch_column
-                width: active_list.width
-                height: branches.height
+                width: branches.width
                 spacing: 10
-
 
                 /**
                 * Go down one node in the current branch
@@ -102,60 +98,74 @@ ApplicationWindow {
                 * @return   void
                 */
                 function down(i) {
-                    tree_viewer.down(index, i);
-                }
-                
-                Label {
-                    id: node_agent_text
-                    width: parent.width
-                    text: qsTr("Agent: " + model.agent)
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    wrapMode: Text.Wrap
-                }
-
-                Label {
-                    id: node_trigger_text
-                    width: parent.width
-                    text: qsTr("Trigger: " + model.trigger)
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    wrapMode: Text.Wrap
-                }
-
-                Label {
-                    id: node_active_time_text
-                    width: parent.width
-                    text: qsTr("Time = " + model.time)
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
+                    hgt_viewer.down(index, i);
                 }
 
                 // Passive nodes in this branch
                 ListView {
                     id: passive_list
-                    width: parent.width
-                    height: Math.min(contentHeight, branches.height - node_agent_text.height - node_trigger_text.height - node_active_time_text.height - active_list.height - 4 * parent.spacing)
+                    width: 400
+                    height: contentHeight
                     spacing: 5
                     clip: true
 
                     model: passive_nodes
-                    delegate: PassiveNode {}
+                    delegate: Elements.PassiveNode {}
                 }
-                
-                // Active nodes in this branch
-                ListView {
-                    id: active_list
-                    width: contentWidth
-                    height: 300
-                    spacing: 5
-                    clip: true
-                    interactive: false
 
-                    orientation: ListView.Horizontal
+                Row {
 
-                    model: active_nodes
-                    delegate: ActiveNode {}
+                    width: parent.width
+                    height: active_list.height
+
+                    // Trigger
+                    Column {
+
+                        width: 400
+                        height: active_list.height
+
+                        Label {
+                            id: node_agent_text
+                            width: parent.width
+                            text: qsTr("Agent: " + model.agent)
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignVCenter
+                            wrapMode: Text.Wrap
+                        }
+
+                        Label {
+                            id: node_trigger_text
+                            width: parent.width
+                            text: qsTr("Trigger: " + model.trigger)
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignVCenter
+                            wrapMode: Text.Wrap
+                        }
+
+                        Label {
+                            id: node_active_time_text
+                            width: parent.width
+                            text: qsTr("Time = " + model.time)
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignVCenter
+                        }
+                    }
+                    
+                    // Active nodes in this branch
+                    ListView {
+                        id: active_list
+                        width: contentWidth
+                        height: 300
+                        spacing: 5
+                        clip: true
+                        interactive: false
+
+                        orientation: ListView.Horizontal
+
+                        model: active_nodes
+                        delegate: Elements.ActiveNode {}
+                    }
+
                 }
 
             }
@@ -219,20 +229,11 @@ ApplicationWindow {
             text: qsTr("Go up")
             
             onClicked: {
-                tree_viewer.up();
+                hgt_viewer.up();
             }
 
         }
 
-    }
-
-    onClosing: {
-        // Reset tree viewer to root for next opening
-        while (Julia.hgt_up_tree()) {
-            level = level - 1;
-        }
-        branches.model = [];
-        branches.model = hgt_models.branches;
     }
     
 }
