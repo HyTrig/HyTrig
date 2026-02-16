@@ -38,7 +38,7 @@ Element {
 
             RegexField {
                 id: query_formula_field
-                width: verified ? parent.width - query_formula_label.width - query_verified_checkbox.width - 2 * parent.spacing : parent.width - query_formula_label.width - parent.spacing
+                width: parent.width - query_formula_label.width - query_verified_checkmark.width - 2 * parent.spacing
 
                 text: qsTr(model.formula)
                 default_text: qsTr("Enter strategy")
@@ -56,12 +56,12 @@ Element {
                 error_value: model.formula
             }
 
-            CheckBox {
-                id: query_verified_checkbox
+            CheckMark {
+                id: query_verified_checkmark
                 height: parent.height
-                visible: verified
+                width: height
+                enabled: verified
                 checked: model.verified
-                enabled: false
             }
 
         }
