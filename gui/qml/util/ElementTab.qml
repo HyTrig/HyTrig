@@ -20,7 +20,7 @@ Rectangle {
     property alias cellWidth: elements.cellWidth
 
     color: Material.background
-    border.width: 1
+    border.width: 2
     border.color: Material.accent
 
     Column {
@@ -51,6 +51,7 @@ Rectangle {
                 id: add_button
                 height: parent.height
                 text: qsTr("Add " + element_name)
+                Material.foreground: "#ffffff"
                 Material.background: hovered ? Material.accent : Material.primary
                 onClicked: {
                     add();

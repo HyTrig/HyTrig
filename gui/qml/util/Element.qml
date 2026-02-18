@@ -42,7 +42,6 @@ Item {
             Button {
                 id: remove_button
                 text: qsTr("Remove")
-                Material.background: Material.theme == Material.Dark ? Material.color(Material.Red, Material.Shade900) : Material.color(Material.Red, Material.Shade400)
                 onClicked: {
                     remove();
                 }

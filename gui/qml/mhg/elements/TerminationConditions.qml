@@ -17,7 +17,7 @@ Rectangle {
     property alias state_formula: state_formula_field
 
     color: Material.background
-    border.width: 1
+    border.width: 2
     border.color: Material.accent
 
     Column {

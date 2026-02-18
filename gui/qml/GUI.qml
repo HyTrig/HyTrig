@@ -41,13 +41,13 @@ ApplicationWindow {
     readonly property string icon_path: "icons/" + (Material.theme == Material.Dark ? "dark/" : "light/")
 
     Material.theme: Material.Dark
-    Material.accent: Material.Blue
-    Material.primary: Material.Blue
+    Material.accent: "#009682"
+    Material.primary: "#009682"
 
     readonly property color light_background_color: (
         Material.theme == Material.Dark
-        ? Material.color(Material.BlueGrey, Material.Shade900) 
-        : Material.color(Material.BlueGrey, Material.Shade50)
+        ? "#202020"
+        : "#eeeeee"
     )
 
     Rectangle {
@@ -194,7 +194,7 @@ ApplicationWindow {
 
         id: menu_bar_spacer
         width: parent.width
-        height: 2
+        height: 4
         anchors.top: menu_bar.bottom
         anchors.left: parent.left
         color: Material.accent
