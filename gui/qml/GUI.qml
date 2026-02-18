@@ -29,10 +29,6 @@ ApplicationWindow {
     title: qsTr("HyTrig")
     visible: true
 
-    Material.theme: Material.Dark
-    Material.accent: Material.Blue
-    Material.primary: Material.Blue
-
     property string current_file: ""
     property bool verified: false
 
@@ -42,12 +38,44 @@ ApplicationWindow {
         MHG.MHG { id: mhg_game }
     ]
 
-    menuBar: MenuBar {
+    readonly property string icon_path: "icons/" + (Material.theme == Material.Dark ? "dark/" : "light/")
+
+    Material.theme: Material.Dark
+    Material.accent: Material.Blue
+    Material.primary: Material.Blue
+
+    readonly property color light_background_color: (
+        Material.theme == Material.Dark
+        ? Material.color(Material.BlueGrey, Material.Shade900) 
+        : Material.color(Material.BlueGrey, Material.Shade50)
+    )
+
+    Rectangle {
+        id: logo
+        width: menu_bar.height
+        height: menu_bar.height
+        anchors.left: parent.left
+        anchors.top: parent.top
+        color: menu_bar.background.color
+
+        Image {
+            anchors.fill: parent
+            source: Qt.resolvedUrl(icon_path + "logo.png")
+            fillMode: Image.PreserveAspectFit
+            mipmap: true
+        }
+    }
+
+    MenuBar {
         
         id: menu_bar
+        width: parent.width - logo.width
+        anchors.top: parent.top
+        anchors.left: logo.right
 
         Menu {
 
+            id: file_menu
             title: qsTr("File")
 
             Action {
@@ -167,7 +195,7 @@ ApplicationWindow {
         id: menu_bar_spacer
         width: parent.width
         height: 2
-        anchors.top: parent.top
+        anchors.top: menu_bar.bottom
         anchors.left: parent.left
         color: Material.accent
 
@@ -178,7 +206,7 @@ ApplicationWindow {
 
         id: tab_content_split
         width: parent.width
-        height: parent.height - menu_bar_spacer.height
+        height: parent.height - menu_bar.height - menu_bar_spacer.height
         anchors.top: menu_bar_spacer.bottom
         anchors.left: parent.left
 

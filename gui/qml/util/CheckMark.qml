@@ -13,10 +13,8 @@ Image {
     required property bool enabled
     required property bool checked
 
-    readonly property string icons: "../icons/"
-    readonly property string mode: main_window.Material.theme == Material.Dark ? "dark/" : "light/"
     readonly property string state: enabled ? (checked ? "_true" : "_false") : ""
-    readonly property url source_url: Qt.resolvedUrl(icons + mode + "checkbox" + state + ".png")
+    readonly property url source_url: Qt.resolvedUrl("../" + icon_path + "checkbox" + state + ".png")
 
     source: source_url
     fillMode: Image.PreserveAspectFit

@@ -60,7 +60,7 @@ Item {
         anchors.fill: parent
         anchors.margins: 5
 
-        color: Material.theme == Material.Dark ? Material.color(Material.BlueGrey, Material.Shade900) : Material.color(Material.BlueGrey, Material.Shade50)
+        color: light_background_color
         border.color: Material.accent
         border.width: 2
         radius: 5
