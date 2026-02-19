@@ -1,16 +1,14 @@
 """"
-    GUI tree
+    HGT Tree
 
-This file contains all definitions for creating the traversable game tree for the GUI.
+This file contains all definitions for creating the traversable verification tree of Hybrid Games with Triggers for the GUI.
 
 # Types:
-- `GUIBranch`: a branch in a traversable GUI tree
-- `GUINode`: a node in a traversable GUI tree
+- `GUIBranch`: A branch in a traversable GUI tree.
+- `GUINode`: A node in a traversable GUI tree.
 
 # Functions:
-- `build_gui_tree(root::Union{ActiveNode, RootNode})::GUINode`: build a GUI tree from a game tree
-- `hgt_up_tree()::Bool`: ascend a layer in the GUI tree
-- `hgt_down_tree(i)::Bool`: descend a layer in the GUI tree
+- `build_gui_tree(root::Union{ActiveNode, RootNode})::GUINode`: Build a GUI tree from a game tree.
 
 # Authors:
 - Moritz Maas
@@ -45,9 +43,10 @@ end
     GUINode(node::ActiveNode, parent::Union{GUINode, Nothing})::GUINode
 
 Create a GUINode from the given active node `node` with the parent `parent`.
+
 # Arguments
-- `node::ActiveNode`: the active node
-- `parent::Union{GUINode, Nothing}`: the nodes next active parent
+- `node::ActiveNode`: The active node.
+- `parent::Union{GUINode, Nothing}`: The nodes next active parent.
 """
 function GUINode(node::ActiveNode, parent::Union{GUINode, Nothing})::GUINode
     return GUINode(
@@ -62,9 +61,10 @@ end
     GUINode(node::Union{RootNode, EndNode}, parent::Union{GUINode, Nothing})::GUINode
 
 Create a GUINode from the given root or end node `node` with the parent `parent`.
+
 # Arguments
-- `node::Union{RootNode, EndNode}`: the root or end node
-- `parent::Union{GUINode, Nothing}`: the nodes next active parent
+- `node::Union{RootNode, EndNode}`: The root or end node.
+- `parent::Union{GUINode, Nothing}`: The nodes next active parent.
 """
 function GUINode(node::Union{RootNode, EndNode}, parent::Union{GUINode, Nothing})::GUINode
     return GUINode(
@@ -80,10 +80,11 @@ end
     GUIBranch(node::ActiveNode, active_nodes::Vector{GUINode}, passive_nodes::Vector{PassiveNode})::GUIBranch
 
 Create a GUIBranch from the given active node `node` with the `active_nodes` and `passive_nodes`.
+
 # Arguments
-- `node::ActiveNode`: the active node
-- `active_nodes::Vector{GUINode}`: the branches active nodes
-- `passive_nodes::Vector{PassiveNode}`: the branches passive nodes
+- `node::ActiveNode`: The active node.
+- `active_nodes::Vector{GUINode}`: The branches active nodes.
+- `passive_nodes::Vector{PassiveNode}`: The branches passive nodes.
 """
 function GUIBranch(node::ActiveNode, active_nodes::Vector{GUINode}, passive_nodes::Vector{PassiveNode})::GUIBranch
     return GUIBranch(
@@ -99,10 +100,11 @@ end
     GUIBranch(node::Union{RootNode, EndNode}, active_nodes::Vector{GUINode}, passive_nodes::Vector{PassiveNode})::GUIBranch
 
 Create a GUIBranch from the given root or end node `node` with the `active_nodes` and `passive_nodes`.
+
 # Arguments
-- `node::Union{RootNode, EndNode}`: the root or end node
-- `active_nodes::Vector{GUINode}`: the branches active nodes
-- `passive_nodes::Vector{PassiveNode}`: the branches passive nodes
+- `node::Union{RootNode, EndNode}`: The root or end node.
+- `active_nodes::Vector{GUINode}`: The branches active nodes.
+- `passive_nodes::Vector{PassiveNode}`: The branches passive nodes.
 """
 function GUIBranch(node::Union{RootNode, EndNode}, active_nodes::Vector{GUINode}, passive_nodes::Vector{PassiveNode})::GUIBranch
     return GUIBranch(
@@ -120,7 +122,7 @@ end
 Recursively build the GUI tree from a game tree rooted in `root`.
 
 # Arguments
-- `root::Union{ActiveNode, RootNode}`: the game trees root
+- `root::Union{ActiveNode, RootNode}`: The game trees root.
 """
 function build_gui_tree(root::Union{ActiveNode, RootNode})::GUINode
     # Create root node with branches

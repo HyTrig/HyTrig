@@ -4,25 +4,25 @@
 This file contains all grammar rules needed to parse a strategy formula.
 
 # Types:
-- `GrammarRule`: defines a grammar rule for a `Token` or `ASTNode`
-- `ParseError`: describes an error that occured while parsing
-- `ParseLevel`: enum for all levels of parsing (expression, constraint, state, strategy)
+- `GrammarRule`: Defines a grammar rule for a `Token` or `ASTNode`.
+- `ParseError`: Describes an error that occured while parsing.
+- `ParseLevel`: Enum for all levels of parsing (expression, constraint, state, strategy).
 
 # Constants:
-- `ParseVector`: type of array of partially parsed tokens
-- `Grammar`: type of map from token or node types to derivation rules 
-- `level_to_grammar`: map parse levels to grammars
-- `pre_parse_grammar`: grammar rules for pre parsing
-- `expression_grammar`: grammar rules for expressions
-- `constraint_grammar`: grammar rules for constraints
-- `location_grammar`: grammar rules for locations
-- `state_grammar`: grammar rules for states
-- `agent_grammar`: grammar rules for variable and agent lists
-- `strategy_grammar`: grammar rules for strategies
-- `expression_operator_strength`: operator binding strength for expressions
-- `constraint_operator_strength`: operator binding strength for constraints
-- `strategy_operator_strength`: operator binding strength for strategies
-- `operator_type_to_strength`: maps types of operators to their strength rankings
+- `ParseVector`: Type of array of partially parsed tokens.
+- `Grammar`: Type of map from token or node types to derivation rules. 
+- `level_to_grammar`: Map parse levels to grammars.
+- `pre_parse_grammar`: Grammar rules for pre parsing.
+- `expression_grammar`: Grammar rules for expressions.
+- `constraint_grammar`: Grammar rules for constraints.
+- `location_grammar`: Grammar rules for locations.
+- `state_grammar`: Grammar rules for states.
+- `agent_grammar`: Grammar rules for variable and agent lists.
+- `strategy_grammar`: Grammar rules for strategies.
+- `expression_operator_strength`: Operator binding strength for expressions.
+- `constraint_operator_strength`: Operator binding strength for constraints.
+- `strategy_operator_strength`: Operator binding strength for strategies.
+- `operator_type_to_strength`: Maps types of operators to their strength rankings.
 
 # Authors:
 - Moritz Maas

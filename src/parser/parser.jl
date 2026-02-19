@@ -1,4 +1,14 @@
-"""TODO: write docs"""
+"""
+    Parser
+
+This module provides functionality to parse user input strings into logic formulas that can be used in the model checking process.
+
+# Functions:
+- `parse(str::String, bindings::Bindings, level::ParseLevel)`: Convert an input string into a parsed logic formula.
+
+# Authors:
+- Moritz Maas
+"""
 
 module Parser
 
@@ -18,9 +28,9 @@ Convert an input string `str` into a parsed logic formula.
 Calls `tokenize`, `_parse_tokens` and `_to_logic`.
 
 # Arguments
-- `str::String`: the string input to parse
-- `bindings::Bindings`: sets of all user-binded words
-- `level::ParseLevel`: defines level on which to parse
+- `str::String`: The string input to parse.
+- `bindings::Bindings`: Sets of all user-binded words.
+- `level::ParseLevel`: Defines level on which to parse.
 
 # Examples
 ```julia-repl

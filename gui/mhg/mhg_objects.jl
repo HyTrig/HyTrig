@@ -13,18 +13,17 @@ This file defines the QML objects used in the HyTrig GUI by the MHG game type.
 - `QMHGJump`: Represents a jump in an edge.
 - `QMHGQuery`: Represents a query in a hybrid game.
 
-# Functions:
-- `mhg_name_available(name::QString)::Bool`: Check whether a name is available.
-- `mhg_is_formula(text::QString, level::QString)::Bool`: Check whether a formula is valid at a given parse level.
-- `mhg_save(path::QString)`: Save the current game to a file.
-- `mhg_load(path::QString)::String`: Load a game from a file.
-- `mhg_verify()::String`: Verify the current game.
+# Global variables:
+- `mhg_action_list::Vector{QMHGAction}`: A list of actions
+- `mhg_agent_list::Vector{QMHGAgent}`: A list of agents
+- `mhg_variable_list::Vector{QMHGVariable}`: A list of variables
+- `mhg_location_list::Vector{QMHGLocation}`: A list of locations
+- `mhg_edge_list::Vector{QMHGEdge}`: A list of edges
+- `mhg_query_list::Vector{QMHGQuery}`: A list of queries
 
 # Authors:
 - Moritz Maas
 """
-
-using JSON3, StructTypes
 
 """
     QMHGAction
@@ -244,6 +243,7 @@ function QMHGQuery()::QMHGQuery
     return QMHGQuery("")
 end
 
+# Define StructTypes for JSON3 serialization
 StructTypes.StructType(::Type{QMHGAction}) = StructTypes.Mutable()
 StructTypes.StructType(::Type{QMHGAgent}) = StructTypes.Mutable()
 StructTypes.StructType(::Type{QMHGVariable}) = StructTypes.Mutable()
@@ -257,23 +257,53 @@ mhg_models["max_steps"] = "10"
 mhg_models["time_bound"] = "13.37"
 mhg_models["state_formula"] = "!location"
 
+"""
+    mhg_action_list::Vector{QMHGAction}
+
+A list of actions in the current Monotonic Hybrid Game.
+"""
 mhg_action_list::Vector{QMHGAction} = [QMHGAction("action")]
 mhg_models["actions"] = JuliaItemModel(mhg_action_list)
 
+"""
+    mhg_agent_list::Vector{QMHGAgent}
+
+A list of agents in the current Monotonic Hybrid Game.
+"""
 mhg_agent_list::Vector{QMHGAgent} = [QMHGAgent("agent")]
 mhg_models["agents"] = JuliaItemModel(mhg_agent_list)
 
+"""
+    mhg_variable_list::Vector{QMHGVariable}
+
+A list of variables in the current Monotonic Hybrid Game.
+"""
 mhg_variable_list::Vector{QMHGVariable} = [QMHGVariable("variable", true, false, 0.0, 10.0)]
 mhg_models["variables"] = JuliaItemModel(mhg_variable_list)
 roles["name"] = roleindex(mhg_models["variables"], "name")
 
+"""
+    mhg_location_list::Vector{QMHGLocation}
+
+A list of locations in the current Monotonic Hybrid Game.
+"""
 mhg_location_list::Vector{QMHGLocation} = [QMHGLocation("location", true, "true", JuliaItemModel([QMHGFlow("variable", false, false, 0.0, 1.0)]))]
 mhg_models["locations"] = JuliaItemModel(mhg_location_list)
 setsetter!(mhg_models["locations"], setflow!, roleindex(mhg_models["locations"], "flow"))
 
+"""
+    mhg_edge_list::Vector{QMHGEdge} 
+
+A list of edges in the current Monotonic Hybrid Game.
+"""
 mhg_edge_list::Vector{QMHGEdge} = [QMHGEdge("location", "location", "true", "agent", "action", JuliaItemModel([QMHGJump("variable", false, false, false, 0.0, 1.0)]))]
 mhg_models["edges"] = JuliaItemModel(mhg_edge_list)
 setsetter!(mhg_models["edges"], setjump!, roleindex(mhg_models["edges"], "jump"))
 
+"""
+    mhg_query_list::Vector{QMHGQuery}
+
+A list of queries in the current Monotonic Hybrid Game.
+"""
 mhg_query_list::Vector{QMHGQuery} = [QMHGQuery("<<agent>> F true")]
 mhg_models["queries"] = JuliaItemModel(mhg_query_list)

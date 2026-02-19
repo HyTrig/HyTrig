@@ -1,5 +1,5 @@
 """
-    HyTrig-GUI
+    HyTrig GUI
 
 This script runs a GUI with QML. The GUI allows to create, edit, save, load and verify hybrid games with triggers.
 

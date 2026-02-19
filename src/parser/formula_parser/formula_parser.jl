@@ -7,7 +7,7 @@ The tokens are parsed according to the set of grammar rules for strategy formula
 Uses tokens defined by [`tokenizer.jl`], [`grammar.jl`].
 
 # Functions:
-- `parse_formula(str::String, bindings::Bindings, level::ParseLevel)`: returns the parsed logic formula
+- `parse_formula(str::String, bindings::Bindings, level::ParseLevel)`: Returns the parsed logic formula.
 
 # Authors:
 - Moritz Maas
@@ -32,9 +32,9 @@ Convert an input string `str` into a parsed logic formula.
 Calls `tokenize`, `_parse_tokens` and `_to_logic`.
 
 # Arguments
-- `str::String`: the string input to parse
-- `bindings::Bindings`: sets of all user-binded words
-- `level::ParseLevel`: defines level on which to parse
+- `str::String`: The string input to parse.
+- `bindings::Bindings`: Sets of all user-binded words.
+- `level::ParseLevel`: Defines level on which to parse.
 
 # Examples
 ```julia-repl

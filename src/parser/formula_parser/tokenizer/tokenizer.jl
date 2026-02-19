@@ -7,11 +7,11 @@ The tokens are created according to the set of grammar rules for strategy formul
 Uses tokens defined by [`tokens.jl`].
 
 # Functions:
-- `tokenize(str::String, bindings::Bindings)::Vector{Token}`: returns the tokenized string as an array of tokens
+- `tokenize(str::String, bindings::Bindings)::Vector{Token}`: Returns the tokenized string as an array of tokens.
 
 # Types:
-- `Bindings`: contains all binded names
-- `TokenizeError`: describes an error that occured while tokenizing
+- `Bindings`: Contains all binded names.
+- `TokenizeError`: Describes an error that occured while tokenizing.
 
 # Authors:
 - Moritz Maas
@@ -137,8 +137,8 @@ numeric_symbols::Vector{Char} = Vector(union(
 Convert an input string `str` into ordered tokens.
 
 # Arguments
-- `str::String`: the string input to tokenize
-- `bindings::Bindings`: sets of all user-binded words
+- `str::String`: The string input to tokenize.
+- `bindings::Bindings`: Sets of all user-binded words.
 
 # Examples
 ```julia-repl

@@ -1,4 +1,26 @@
-"""TODO: write docs"""
+"""
+TODO: document this file by filling out the form below
+
+    File Name
+    
+File description.
+
+# Types:
+- `MyType`: Description of MyType.
+
+# Constants:
+- `my_constant::Int`: Description of my_constant.
+
+# Functions:
+- `foo(x::String)::Bool`: Do foo.
+
+# Global variables:
+- `my_global_variable::Int`: Description of my_global_variable.
+
+# Authors:
+- Author 1
+- Author 2
+"""
 
 export Node, RootNode, ActiveNode, PassiveNode, EndNode
 export print_tree, count_nodes, count_passive_nodes, depth_of_tree, max_time

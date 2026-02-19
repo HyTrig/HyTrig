@@ -4,33 +4,33 @@
 This file contains all token definitions needed to convert a string into an array of tokens.
 
 # Functions:
-- `to_string(token::Token)::String`: convert a token to a string
+- `to_string(token::Token)::String`: Convert a token to a string.
 
 # Types:
-- `Token`: abstract type for all tokens
-- `KeywordToken`: abstract type for all keywords
-- `OperatorToken`: abstract type for all operators
-- `EmptyListToken`: token for empty lists
-- `SeparatorToken`: token for all valid separators
-- `CustomToken`: abstract type for all custom names
-- `AgentToken`: token for all user defined agents
-- `LocationToken`: token for all user defined locations
-- `VariableToken`: token for all user defined variables
-- `NumericToken`: token for all numeric values
-- `BooleanToken`: token for all boolean values
-- `StrategyConstantToken`: token for deadlocks
-- `QuantifierToken`: token for quantifier keywords
-- `StrategyUnaryOperatorToken`: token for unary operations on strategies
-- `StrategyBinaryOperatorToken`: token for binary operations on strategies
-- `StateUnaryOperatorToken`: token for unary operations on states
-- `StateBinaryOperatorToken`: token for binary operations on states
-- `ConstraintUnaryOperatorToken`: token for unary operations on constraints
-- `ConstraintBinaryOperatorToken`: token for binary operations on constraints
-- `ConstraintCompareToken`: token for comparison operators
-- `ExpressionUnaryOperatorToken`: token for unary operations on expressions
-- `ExpressionBinaryOperatorToken`: token for binary operations on expressions
-- `ExpressionUnBinaryOperatorToken`: token for ambiguous unary and binary operators
-- `ExpressionBinaryFunctionToken`: token for binary functions on expressions
+- `Token`: Abstract type for all tokens.
+- `KeywordToken`: Abstract type for all keywords.
+- `OperatorToken`: Abstract type for all operators.
+- `EmptyListToken`: Token for empty lists.
+- `SeparatorToken`: Token for all valid separators.
+- `CustomToken`: Abstract type for all custom names.
+- `AgentToken`: Token for all user defined agents.
+- `LocationToken`: Token for all user defined locations.
+- `VariableToken`: Token for all user defined variables.
+- `NumericToken`: Token for all numeric values.
+- `BooleanToken`: Token for all boolean values.
+- `StrategyConstantToken`: Token for deadlocks.
+- `QuantifierToken`: Token for quantifier keywords.
+- `StrategyUnaryOperatorToken`: Token for unary operations on strategies.
+- `StrategyBinaryOperatorToken`: Token for binary operations on strategies.
+- `StateUnaryOperatorToken`: Token for unary operations on states.
+- `StateBinaryOperatorToken`: Token for binary operations on states.
+- `ConstraintUnaryOperatorToken`: Token for unary operations on constraints.
+- `ConstraintBinaryOperatorToken`: Token for binary operations on constraints.
+- `ConstraintCompareToken`: Token for comparison operators.
+- `ExpressionUnaryOperatorToken`: Token for unary operations on expressions.
+- `ExpressionBinaryOperatorToken`: Token for binary operations on expressions.
+- `ExpressionUnBinaryOperatorToken`: Token for ambiguous unary and binary operators.
+- `ExpressionBinaryFunctionToken`: Token for binary functions on expressions.
 
 The types are hierarchically ordered as follows:
     Token
@@ -342,7 +342,7 @@ end
 Convert a Token `token` to a string.
 
 # Arguments
-- `token::Token`: token to convert.
+- `token::Token`: Token to convert.
 
 # Examples
 ```julia-repl

@@ -17,18 +17,19 @@ This file defines the QML objects used in the HyTrig GUI by the HGT game type.
 - `QHGTActiveNode`: Represents an active tree node used in QML models.
 - `QHGTPassiveNode`: Represents a passive tree node used in QML models.
 
-# Functions:
-- `hgt_name_available(name::QString)::Bool`: Check whether a name is available.
-- `hgt_is_formula(text::QString, level::QString)::Bool`: Check whether a formula is valid at a given parse level.
-- `hgt_save(path::QString)`: Save the current game to a file.
-- `hgt_load(path::QString)::String`: Load a game from a file.
-- `hgt_verify()::String`: Verify the current game.
+# Global variables:
+- `hgt_action_list::Vector{QHGTAction}`: A list of actions
+- `hgt_agent_list::Vector{QHGTAgent}`: A list of agents
+- `hgt_variable_list::Vector{QHGTVariable}`: A list of variables
+- `hgt_trigger_list::Vector{QHGTTrigger}`: A list of triggers
+- `hgt_location_list::Vector{QHGTLocation}`: A list of locations
+- `hgt_edge_list::Vector{QHGTEdge}`: A list of edges
+- `hgt_query_list::Vector{QHGTQuery}`: A list of queries
+- `hgt_branch_list::Vector{QHGTBranch}`: A list of tree
 
 # Authors:
 - Moritz Maas
 """
-
-using JSON3, StructTypes
 
 """
     QHGTAction
@@ -232,7 +233,7 @@ end
 
 Create a QHGTBranch from the given branch `branch`.
 # Arguments
-- `branch::GUIBranch`: the branch
+- `branch::GUIBranch`: The branch.
 """
 function QHGTBranch(branch::GUIBranch)::QHGTBranch
     return QHGTBranch(
@@ -269,7 +270,7 @@ end
 
 Create a QAction from the given GUI node `node`.
 # Arguments
-- `node::GUINode`: the gui node
+- `node::GUINode`: The GUI node.
 """
 function QHGTActiveNode(node::GUINode)::QHGTActiveNode
     QHGTActiveNode(
@@ -299,7 +300,7 @@ end
 
 Create a QHGTPassiveNode from the given passive node `node`.
 # Arguments
-- `node::PassiveNode`: the passive node
+- `node::PassiveNode`: The passive node.
 """
 function QHGTPassiveNode(node::PassiveNode)::QHGTPassiveNode
     return QHGTPassiveNode(
@@ -308,6 +309,7 @@ function QHGTPassiveNode(node::PassiveNode)::QHGTPassiveNode
     )
 end
 
+# Define StructTypes for JSON3 serialization
 StructTypes.StructType(::Type{QHGTAction}) = StructTypes.Mutable()
 StructTypes.StructType(::Type{QHGTAgent}) = StructTypes.Mutable()
 StructTypes.StructType(::Type{QHGTVariable}) = StructTypes.Mutable()
@@ -322,29 +324,69 @@ hgt_models["max_steps"] = "10"
 hgt_models["time_bound"] = "13.37"
 hgt_models["state_formula"] = "!location"
 
+"""
+    hgt_action_list::Vector{QHGTAction}
+
+A list of actions in the current Hybrid Game with Triggers.
+"""
 hgt_action_list::Vector{QHGTAction} = [QHGTAction("action")]
 hgt_models["actions"] = JuliaItemModel(hgt_action_list)
 
+"""
+    hgt_agent_list::Vector{QHGTAgent}
+
+A list of agents in the current Hybrid Game with Triggers.
+"""
 hgt_agent_list::Vector{QHGTAgent} = [QHGTAgent("agent")]
 hgt_models["agents"] = JuliaItemModel(hgt_agent_list)
 
+"""
+    hgt_variable_list::Vector{QHGTVariable}
+
+A list of variables in the current Hybrid Game with Triggers.
+"""
 hgt_variable_list::Vector{QHGTVariable} = [QHGTVariable("variable", "0")]
 hgt_models["variables"] = JuliaItemModel(hgt_variable_list)
 roles["name"] = roleindex(hgt_models["variables"], "name")
 
+"""
+    hgt_trigger_list::Vector{QHGTTrigger}
+
+A list of triggers in the current Hybrid Game with Triggers.
+"""
 hgt_trigger_list::Vector{QHGTTrigger} = [QHGTTrigger("agent", "true")]
 hgt_models["triggers"] = JuliaItemModel(hgt_trigger_list)
 
+"""
+    hgt_location_list::Vector{QHGTLocation}
+
+A list of locations in the current Hybrid Game with Triggers.
+"""
 hgt_location_list::Vector{QHGTLocation} = [QHGTLocation("location", true, "true", JuliaItemModel([QHGTFlow("variable", "variable + 1")]))]
 hgt_models["locations"] = JuliaItemModel(hgt_location_list)
 setsetter!(hgt_models["locations"], setflow!, roleindex(hgt_models["locations"], "flow"))
 
+"""
+    hgt_edge_list::Vector{QHGTEdge}
+
+A list of edges in the current Hybrid Game with Triggers.
+"""
 hgt_edge_list::Vector{QHGTEdge} = [QHGTEdge("location", "location", "true", "agent", "action", JuliaItemModel([QHGTJump("variable", "variable + 1")]))]
 hgt_models["edges"] = JuliaItemModel(hgt_edge_list)
 setsetter!(hgt_models["edges"], setjump!, roleindex(hgt_models["edges"], "jump"))
 
+"""
+    hgt_query_list::Vector{QHGTQuery}
+
+A list of queries in the current Hybrid Game with Triggers.
+"""
 hgt_query_list::Vector{QHGTQuery} = [QHGTQuery("<<agent>> F true")]
 hgt_models["queries"] = JuliaItemModel(hgt_query_list)
 
-branch_list::Vector{QHGTBranch} = []
-hgt_models["branches"] = JuliaItemModel(branch_list)
+"""
+    hgt_branch_list::Vector{QHGTBranch}
+
+A list of branches in the current Hybrid Game with Triggers.
+"""
+hgt_branch_list::Vector{QHGTBranch} = []
+hgt_models["branches"] = JuliaItemModel(hgt_branch_list)

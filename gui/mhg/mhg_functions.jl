@@ -1,4 +1,19 @@
-"""TODO: write docs"""
+"""
+    MHG Functions
+    
+This file contains all functions related to the Monotonic Hybrid Games (MHG) editor in the HyTrig GUI.
+
+# Functions:
+- `mhg_name_available(name::QString)::Bool`: Check whether a name is available.
+- `mhg_is_formula(text::QString, level::QString)::Bool`: Check whether a formula is valid at a given parse level.
+- `mhg_save(path::QString)`: Save the current game to a file.
+- `mhg_load(path::QString)::String`: Load a game from a file.
+- `mhg_verify()::String`: Verify the current game.
+
+# Authors:
+- Moritz Maas
+"""
+
 
 """
     mhg_name_available(name::QString)::Bool
@@ -6,7 +21,7 @@
 Check whether a name is available (not used by any action, agent, variable or location).
 
 # Arguments
-- `name::QString`: the name to check
+- `name::QString`: The name to check.
 """
 function mhg_name_available(name::QString)::Bool
     return !any(v -> v.name == name, [mhg_action_list; mhg_agent_list; mhg_variable_list; mhg_location_list])
@@ -18,8 +33,8 @@ end
 Check whether a formula is valid at a given parse level.
 
 # Arguments
-- `text::QString`: the formula as a string
-- `level::QString`: the parse level as a string (`expression`, `constraint`, `state` or `strategy`)
+- `text::QString`: The formula as a string.
+- `level::QString`: The parse level as a string (`expression`, `constraint`, `state` or `strategy`).
 """
 function mhg_is_formula(text::QString, level::QString)::Bool
     bindings::Bindings = Bindings(
@@ -42,7 +57,7 @@ end
 Save the current game to a file given by `path`.
 
 # Arguments
-- `path::QString`: the file path to save to
+- `path::QString`: The file path to save to.
 """
 function mhg_save(path::QString)
     data::Dict{String, Any} = Dict([
@@ -104,7 +119,7 @@ end
 Load a game from a file given by `path`.
 
 # Arguments
-- `path::QString`: the file path to load from
+- `path::QString`: The file path to load from.
 """
 function mhg_load(path::QString)::String
     function load_elements(name::String, type::Type, list::Vector)

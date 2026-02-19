@@ -4,30 +4,30 @@
 This file contains all definitions needed to parse tokens to an AST.
 
 # Functions:
-- `to_string(node::ASTNode)::String`: convert a node to a string
+- `to_string(node::ASTNode)::String`: Convert a node to a string.
 
 # Types:
-- `ASTNode`: abstract type for all nodes
-- `AgentList`: node for agent lists
-- `Agents`: node for agent lists
-- `StrategyNode`: abstract type for strategy nodes
-- `Quantifier`: node for quantified strategies
-- `StrategyConstant`: node for deadlocks
-- `StrategyUnaryOperation`: node for unary operations on strategies
-- `StrategyBinaryOperation`: node for binary operations on strategies
-- `StateNode`: abstract type for state nodes
-- `LocationNode`: node for locations
-- `StateUnaryOperation`: node for unary operations on states
-- `StateBinaryOperation`: node for binary operations on states
-- `ConstraintNode`: abstract type for constraint nodes
-- `ConstraintConstant`: node for boolean constants
-- `ConstraintUnaryOperation`: node for unary operations on constraints
-- `ConstraintBinaryOperation`: node for binary operations on constraints
-- `ExpressionNode`: abstract type for expression nodes
-- `VariableNode`: node for user-defined variables
-- `ExpressionConstant`: node for numerical constants
-- `ExpressionUnaryOperation`: node for unary operations on expressions
-- `ExpressionBinaryOperation`: node for binary operations on expressions
+- `ASTNode`: Abstract type for all nodes.
+- `AgentList`: Node for agent lists.
+- `Agents`: Node for agent lists.
+- `StrategyNode`: Abstract type for strategy nodes.
+- `Quantifier`: Node for quantified strategies.
+- `StrategyConstant`: Node for deadlocks.
+- `StrategyUnaryOperation`: Node for unary operations on strategies.
+- `StrategyBinaryOperation`: Node for binary operations on strategies.
+- `StateNode`: Abstract type for state nodes.
+- `LocationNode`: Node for locations.
+- `StateUnaryOperation`: Node for unary operations on states.
+- `StateBinaryOperation`: Node for binary operations on states.
+- `ConstraintNode`: Abstract type for constraint nodes.
+- `ConstraintConstant`: Node for boolean constants.
+- `ConstraintUnaryOperation`: Node for unary operations on constraints.
+- `ConstraintBinaryOperation`: Node for binary operations on constraints.
+- `ExpressionNode`: Abstract type for expression nodes.
+- `VariableNode`: Node for user-defined variables.
+- `ExpressionConstant`: Node for numerical constants.
+- `ExpressionUnaryOperation`: Node for unary operations on expressions.
+- `ExpressionBinaryOperation`: Node for binary operations on expressions.
 
 The types are hierarchically ordered as follows:
     ASTNode
@@ -343,7 +343,7 @@ const BinaryOperation = Union{StrategyBinaryOperation, StateBinaryOperation, Con
 Convert a ConstantOperation `node` to a string.
 
 # Arguments
-- `node::ConstantOperation`: node to convert.
+- `node::ConstantOperation`: Node to convert.
 
 # Examples
 ```julia-repl
@@ -361,7 +361,7 @@ end
 Convert a UnaryOperation `node` to a string.
 
 # Arguments
-- `node::UnaryOperation`: node to convert.
+- `node::UnaryOperation`: Node to convert.
 
 # Examples
 ```julia-repl
@@ -379,7 +379,7 @@ end
 Convert a BinaryOperation `node` to a string.
 
 # Arguments
-- `node::BinaryOperation`: node to convert.
+- `node::BinaryOperation`: Node to convert.
 
 # Examples
 ```julia-repl
@@ -401,7 +401,7 @@ end
 Convert a AgentList `node` to a string.
 
 # Arguments
-- `node::AgentList`: node to convert.
+- `node::AgentList`: Node to convert.
 
 # Examples
 ```julia-repl
@@ -426,7 +426,7 @@ end
 Convert an Agents node `node` to a string.
 
 # Arguments
-- `node::Agents`: node to convert.
+- `node::Agents`: Node to convert.
 
 # Examples
 ```julia-repl
@@ -447,7 +447,7 @@ end
 Convert a Quantifier `node` to a string.
 
 # Arguments
-- `node::Quantifier`: node to convert.
+- `node::Quantifier`: Node to convert.
 
 # Examples
 ```julia-repl

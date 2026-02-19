@@ -1,4 +1,26 @@
-"""TODO: write docs"""
+"""
+TODO: document this file by filling out the form below
+
+    File Name
+    
+File description.
+
+# Types:
+- `MyType`: Description of MyType.
+
+# Constants:
+- `my_constant::Int`: Description of my_constant.
+
+# Functions:
+- `foo(x::String)::Bool`: Do foo.
+
+# Global variables:
+- `my_global_variable::Int`: Description of my_global_variable.
+
+# Authors:
+- Author 1
+- Author 2
+"""
 
 export State_Formula, State_Location, State_Constraint, State_And, State_Or, State_Not, State_Imply
 export get_all_constraints, formula_to_rect_formula

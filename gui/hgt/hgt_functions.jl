@@ -1,4 +1,20 @@
-"""TODO: write docs"""
+"""
+    HGT Functions
+    
+This file contains all functions related to the Hybrid Games with Triggers (HGT) editor in the HyTrig GUI.
+
+# Functions:
+- `hgt_name_available(name::QString)::Bool`: Check whether a name is available.
+- `hgt_is_formula(text::QString, level::QString)::Bool`: Check whether a formula is valid at a given parse level.
+- `hgt_save(path::QString)`: Save the current game to a file.
+- `hgt_load(path::QString)::String`: Load a game from a file.
+- `hgt_verify()::String`: Verify the current game.
+- `hgt_up_tree()::Bool`: Set the branch model to the current nodes parent layer.
+- `hgt_down_tree(i::Int32, j::Int32)::Bool`: Set the branch model to the child layer of child `j` of branch `i`.
+
+# Authors:
+- Moritz Maas
+"""
 
 """
     hgt_name_available(name::QString)::Bool
@@ -6,7 +22,7 @@
 Check whether a name is available (not used by any action, agent, variable or location).
 
 # Arguments
-- `name::QString`: the name to check
+- `name::QString`: The name to check.
 """
 function hgt_name_available(name::QString)::Bool
     return !any(v -> v.name == name, [hgt_action_list; hgt_agent_list; hgt_variable_list; hgt_location_list])
@@ -18,8 +34,8 @@ end
 Check whether a formula is valid at a given parse level.
 
 # Arguments
-- `text::QString`: the formula as a string
-- `level::QString`: the parse level as a string (`expression`, `constraint`, `state` or `strategy`)
+- `text::QString`: The formula as a string.
+- `level::QString`: The parse level as a string (`expression`, `constraint`, `state` or `strategy`).
 """
 function hgt_is_formula(text::QString, level::QString)::Bool
     bindings::Bindings = Bindings(
@@ -41,7 +57,7 @@ end
 Save the current game to a file given by `path`.
 
 # Arguments
-- `path::QString`: the file path to save to
+- `path::QString`: The file path to save to.
 """
 function hgt_save(path::QString)
     data::Dict{String, Any} = Dict([
@@ -97,7 +113,7 @@ end
 Load a game from a file given by `path`.
 
 # Arguments
-- `path::QString`: the file path to load from
+- `path::QString`: The file path to load from.
 """
 function hgt_load(path::QString)::String
     function load_elements(name::String, type::Type, list::Vector)
@@ -228,11 +244,11 @@ function hgt_verify()::String
         throw(e)
     end
 
-    empty!(branch_list)
+    empty!(hgt_branch_list)
 
     if !isnothing(hgt_tree)
         hgt_tree = build_gui_tree(hgt_tree)
-        push!(branch_list, QHGTBranch(hgt_tree.branches[1]))
+        push!(hgt_branch_list, QHGTBranch(hgt_tree.branches[1]))
     end
 
     for (i, query) in enumerate(hgt_query_list)
@@ -253,24 +269,28 @@ function hgt_up_tree()::Bool
         return false
     end
 
-    empty!(branch_list)
+    empty!(hgt_branch_list)
 
     hgt_tree = hgt_tree.parent
 
     for branch in hgt_tree.branches
-        push!(branch_list, QHGTBranch(branch))
+        push!(hgt_branch_list, QHGTBranch(branch))
     end
     return true
 end
 
 """
-    hgt_down_tree(i, j)::Bool
+    hgt_down_tree(i::Int32, j::Int32)::Bool
 
 Set the branch model to the child layer of child `j` of branch `i`.
+
+# Arguments:
+- `i::Int32`: The index of the branch to go down to.
+- `j::Int32`: The index of the child to go down to.
 """
-function hgt_down_tree(i, j)::Bool
+function hgt_down_tree(i::Int32, j::Int32)::Bool
     global hgt_tree
-    if isempty(branch_list) || isnothing(hgt_tree)
+    if isempty(hgt_branch_list) || isnothing(hgt_tree)
         return false
     end
 
@@ -278,10 +298,10 @@ function hgt_down_tree(i, j)::Bool
     j = Int(j) + 1
 
     if 0 < i <= length(hgt_tree.branches) && 0 < j <= length(hgt_tree.branches[i].active_nodes)
-        empty!(branch_list)
+        empty!(hgt_branch_list)
         hgt_tree = hgt_tree.branches[i].active_nodes[j]
         for branch in hgt_tree.branches
-            push!(branch_list, QHGTBranch(branch))
+            push!(hgt_branch_list, QHGTBranch(branch))
         end
         return true
     else
