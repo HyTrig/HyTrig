@@ -131,6 +131,21 @@ ApplicationWindow {
                     save_dialog.open();
                 }
             }
+
+            MenuSeparator {}
+
+            Action {
+                id: close_action
+                text: qsTr("Exit")
+                shortcut: "Ctrl+Q"
+                onTriggered: {
+                    save_changes_dialog.action = function(x) {
+                        main_window.close();
+                    };
+                    save_changes_dialog.cancel = function(x) {};
+                    save_changes_dialog.open();
+                }
+            }
             
         }
 
@@ -185,6 +200,26 @@ ApplicationWindow {
                 }
             }
             
+        }
+
+        Menu {
+            
+            title: qsTr("Help")
+
+            // TODO: add guide
+            // TODO: add HGT and MHG reference
+
+            Action {
+                id: about_action
+                text: qsTr("About")
+                onTriggered: {
+                    // TODO: add about dialog
+                    error_dialog.text = qsTr("Not yet implemented.")
+                    error_dialog.informativeText = qsTr("This dialog will show information about the application, the GitHub repo and authors.");
+                    error_dialog.open();
+                }
+            }
+
         }
 
     }
@@ -490,7 +525,8 @@ ApplicationWindow {
         parentWindow: main_window
 
         title: qsTr("Error")
-        text: qsTr("An error occurred:")
+        // Set before opening this dialog
+        text: qsTr("")
         // Set before opening this dialog
         informativeText: qsTr("")
 
