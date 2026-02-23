@@ -110,45 +110,30 @@ GameViewer {
                     clip: true
 
                     model: passive_nodes
-                    delegate: Elements.PassiveNode {}
+                    delegate: Elements.PassiveNode {
+                        width: passive_list.width
+                    }
                 }
 
                 Row {
 
                     width: parent.width
                     height: active_list.height
+                    spacing: 10
 
-                    // Trigger
-                    Column {
-
+                    Elements.TriggerNode {
                         width: 400
                         height: active_list.height
+                        agent: model.agent
+                        trigger: model.trigger
+                        time: model.time
+                    }
 
-                        Label {
-                            id: node_agent_text
-                            width: parent.width
-                            text: qsTr("Agent: " + model.agent)
-                            horizontalAlignment: Text.AlignHCenter
-                            verticalAlignment: Text.AlignVCenter
-                            wrapMode: Text.Wrap
-                        }
-
-                        Label {
-                            id: node_trigger_text
-                            width: parent.width
-                            text: qsTr("Trigger: " + model.trigger)
-                            horizontalAlignment: Text.AlignHCenter
-                            verticalAlignment: Text.AlignVCenter
-                            wrapMode: Text.Wrap
-                        }
-
-                        Label {
-                            id: node_active_time_text
-                            width: parent.width
-                            text: qsTr("Time = " + model.time)
-                            horizontalAlignment: Text.AlignHCenter
-                            verticalAlignment: Text.AlignVCenter
-                        }
+                    Title {
+                        height: parent.height
+                        text: qsTr("→")
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
                     }
                     
                     // Active nodes in this branch
@@ -163,7 +148,10 @@ GameViewer {
                         orientation: ListView.Horizontal
 
                         model: active_nodes
-                        delegate: Elements.ActiveNode {}
+                        delegate: Elements.ActiveNode {
+                            width: 300
+                            height: parent.height
+                        }
                     }
 
                 }

@@ -9,7 +9,6 @@ import QtQuick.Controls.Material
 
 Rectangle {
 
-    width: passive_list.width
     height: node_time_text.height + node_valuation_text.height + node_property_list.spacing
     radius: 4
     color: Material.color(Material.Blue)
