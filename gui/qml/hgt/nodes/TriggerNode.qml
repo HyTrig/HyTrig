@@ -13,13 +13,15 @@ Rectangle {
     required property string trigger
     required property string time
 
+    height: node_property_list.height + 2 * node_property_list.spacing
     radius: 4
     color: Material.color(Material.Green)
 
     Column {
 
+        id: node_property_list
         width: parent.width
-        height: parent.height
+        anchors.centerIn: parent
         spacing: 5
 
         Label {

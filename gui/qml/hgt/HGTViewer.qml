@@ -13,7 +13,7 @@ import org.julialang
 
 import ".."
 import "../util"
-import "elements" as Elements
+import "nodes" as Nodes
 
 GameViewer {
 
@@ -21,6 +21,8 @@ GameViewer {
 
     property alias branches: branches
     property int level: 1
+    property real node_width: 400
+    property real node_height: 300
 
     reset: function() {
         // Reset tree viewer to root
@@ -104,13 +106,13 @@ GameViewer {
                 // Passive nodes in this branch
                 ListView {
                     id: passive_list
-                    width: 400
+                    width: node_width
                     height: contentHeight
                     spacing: 5
                     clip: true
 
                     model: passive_nodes
-                    delegate: Elements.PassiveNode {
+                    delegate: Nodes.PassiveNode {
                         width: passive_list.width
                     }
                 }
@@ -121,9 +123,10 @@ GameViewer {
                     height: active_list.height
                     spacing: 10
 
-                    Elements.TriggerNode {
-                        width: 400
-                        height: active_list.height
+                    Nodes.TriggerNode {
+                        id: trigger_node
+                        width: node_width
+                        anchors.verticalCenter: parent.verticalCenter
                         agent: model.agent
                         trigger: model.trigger
                         time: model.time
@@ -140,7 +143,7 @@ GameViewer {
                     ListView {
                         id: active_list
                         width: contentWidth
-                        height: 300
+                        height: Math.max(node_height, trigger_node.height) 
                         spacing: 5
                         clip: true
                         interactive: false
@@ -148,8 +151,8 @@ GameViewer {
                         orientation: ListView.Horizontal
 
                         model: active_nodes
-                        delegate: Elements.ActiveNode {
-                            width: 300
+                        delegate: Nodes.ActiveNode {
+                            width: node_width
                             height: parent.height
                         }
                     }
