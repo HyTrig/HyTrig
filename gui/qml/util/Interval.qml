@@ -14,6 +14,7 @@ Row {
 
     // Data model of the interval, with properties lower, upper, lower_open, upper_open
     required property var interval_model
+    required property bool monotonic
 
     property real bracket_width: 70
     property real inset: 0
@@ -48,6 +49,9 @@ Row {
             interval_model.lower = parseFloat(x);
         }
         condition: function(x) {
+            if (!monotonic) {
+                return true;
+            }
             if (interval_model.upper > 0) {
                 return parseFloat(x) >= 0;
             } else if (interval_model.upper < 0) {
@@ -82,6 +86,9 @@ Row {
             interval_model.upper = parseFloat(x);
         }
         condition: function(x) {
+            if (!monotonic) {
+                return true;
+            }
             if (interval_model.lower > 0) {
                 return parseFloat(x) >= 0;
             } else if (interval_model.lower < 0) {

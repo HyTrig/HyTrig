@@ -280,7 +280,6 @@ GameType {
 
     load: function (file) {
         var error = Julia.hgt_load(file);
-        current_file = file;
         // Reset view to show changes done in Julia 
         action_tab.model = [];
         action_tab.model = hgt_models.actions;

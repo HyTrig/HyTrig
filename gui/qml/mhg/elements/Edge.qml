@@ -223,6 +223,7 @@ Element {
                         width: parent.width - variable_label.width - jump_type_selector.width - 2 * parent.spacing
                         inset: 10
                         interval_model: model
+                        monotonic: false
                     } 
 
                     Switch {

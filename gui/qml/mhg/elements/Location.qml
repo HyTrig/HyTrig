@@ -166,6 +166,7 @@ Element {
                         width: parent.width - variable_label.width - parent.spacing
                         inset: 10
                         interval_model: model
+                        monotonic: true
                     }
 
                 }

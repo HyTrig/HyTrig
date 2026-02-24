@@ -97,8 +97,8 @@ GameType {
                 for (var i = 0; i < mhg_models.variables.rowCount(); i++) {
                     flow.push({
                         variable: mhg_models.variables.data(mhg_models.variables.index(i, 0), roles.name),
-                        lower_open: true,
-                        upper_open: true,
+                        lower_open: false,
+                        upper_open: false,
                         lower: 0.0,
                         upper: 0.0
                     })
@@ -118,7 +118,7 @@ GameType {
                 Connections {
                     target: mhg_game
                     function onVariableAdded() {
-                        model.flow.appendRow({variable: "", lower_open: true, upper_open: true, lower: 0.0, upper: 0.0});
+                        model.flow.appendRow({variable: "", lower_open: false, upper_open: false, lower: 0.0, upper: 0.0});
                     }
                     function onVariableRemoved(index) {
                         model.flow.removeRow(index);
@@ -150,8 +150,9 @@ GameType {
                 for (var i = 0; i < mhg_models.variables.rowCount(); i++) {
                     jump.push({
                         variable: mhg_models.variables.data(mhg_models.variables.index(i, 0), roles.name),
-                        lower_open: true,
-                        upper_open: true,
+                        is_none: true,
+                        lower_open: false,
+                        upper_open: false,
                         lower: 0.0,
                         upper: 0.0
                     })
@@ -191,7 +192,7 @@ GameType {
                         }
                     }
                     function onVariableAdded() {
-                        model.jump.appendRow({variable: "", lower_open: true, upper_open: true, lower: 0.0, upper: 0.0});
+                        model.jump.appendRow({variable: "", lower_open: false, upper_open: false, lower: 0.0, upper: 0.0});
                     }
                     function onVariableRemoved(index) {
                         model.jump.removeRow(index);
@@ -258,7 +259,6 @@ GameType {
 
     load: function (file) {
         var error = Julia.mhg_load(file);
-        current_file = file;
         // Reset view to show changes done in Julia 
         action_tab.model = [];
         action_tab.model = mhg_models.actions;

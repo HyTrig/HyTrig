@@ -1,0 +1,291 @@
+{
+    "game_type": "MHG",
+    "agents": [
+        {
+            "name": "A"
+        },
+        {
+            "name": "B"
+        }
+    ],
+    "locations": [
+        {
+            "name": "A_Throwing",
+            "initial": true,
+            "flow": [
+                {
+                    "lower_open": false,
+                    "upper_open": false,
+                    "lower": 1,
+                    "variable": "x",
+                    "upper": 2
+                },
+                {
+                    "lower_open": false,
+                    "upper_open": false,
+                    "lower": 1,
+                    "variable": "y",
+                    "upper": 2
+                },
+                {
+                    "lower_open": false,
+                    "upper_open": false,
+                    "lower": 0,
+                    "variable": "A_x",
+                    "upper": 0
+                },
+                {
+                    "lower_open": false,
+                    "upper_open": false,
+                    "lower": 0,
+                    "variable": "A_y",
+                    "upper": 0
+                },
+                {
+                    "lower_open": false,
+                    "upper_open": false,
+                    "lower": 0,
+                    "variable": "B_x",
+                    "upper": 0
+                },
+                {
+                    "lower_open": false,
+                    "upper_open": false,
+                    "lower": 0,
+                    "variable": "B_y",
+                    "upper": 0
+                }
+            ],
+            "invariant": "x >= -1 && x <= 11 && y >= -1 && y <= 11"
+        },
+        {
+            "name": "B_Throwing",
+            "initial": false,
+            "flow": [
+                {
+                    "lower_open": false,
+                    "upper_open": false,
+                    "lower": -3,
+                    "variable": "x",
+                    "upper": -2
+                },
+                {
+                    "lower_open": false,
+                    "upper_open": false,
+                    "lower": -3,
+                    "variable": "y",
+                    "upper": -2
+                },
+                {
+                    "lower_open": false,
+                    "upper_open": false,
+                    "lower": 0,
+                    "variable": "A_x",
+                    "upper": 0
+                },
+                {
+                    "lower_open": false,
+                    "upper_open": false,
+                    "lower": 0,
+                    "variable": "A_y",
+                    "upper": 0
+                },
+                {
+                    "lower_open": false,
+                    "upper_open": false,
+                    "lower": 0,
+                    "variable": "B_x",
+                    "upper": 0
+                },
+                {
+                    "lower_open": false,
+                    "upper_open": false,
+                    "lower": 0,
+                    "variable": "B_y",
+                    "upper": 0
+                }
+            ],
+            "invariant": "x >= -1 && x <= 11 && y >= -1 && y <= 11"
+        }
+    ],
+    "variables": [
+        {
+            "name": "x",
+            "lower_open": false,
+            "upper_open": false,
+            "lower": -0.5,
+            "upper": 0.5
+        },
+        {
+            "name": "y",
+            "lower_open": false,
+            "upper_open": false,
+            "lower": -0.5,
+            "upper": 0.5
+        },
+        {
+            "name": "A_x",
+            "lower_open": false,
+            "upper_open": false,
+            "lower": -0.5,
+            "upper": 0.5
+        },
+        {
+            "name": "A_y",
+            "lower_open": false,
+            "upper_open": false,
+            "lower": -0.5,
+            "upper": 0.5
+        },
+        {
+            "name": "B_x",
+            "lower_open": false,
+            "upper_open": false,
+            "lower": 9.5,
+            "upper": 10.5
+        },
+        {
+            "name": "B_y",
+            "lower_open": false,
+            "upper_open": false,
+            "lower": 9.5,
+            "upper": 10.5
+        }
+    ],
+    "actions": [
+        {
+            "name": "Throw"
+        }
+    ],
+    "queries": [
+        {
+            "formula": "<<A>> F y > 6",
+            "verified": false
+        },
+        {
+            "formula": "[[]] G (not deadlock)",
+            "verified": false
+        }
+    ],
+    "config": {
+        "max_steps": "5",
+        "time_bound": "120.0",
+        "state_formula": "false"
+    },
+    "edges": [
+        {
+            "guard": "x >= -0.5 && x <= 0.5 && y >= -0.5 && y <= 0.5",
+            "source": "B_Throwing",
+            "action": "Throw",
+            "target": "A_Throwing",
+            "agent": "A",
+            "jump": [
+                {
+                    "lower_open": false,
+                    "is_none": true,
+                    "upper_open": false,
+                    "lower": 0,
+                    "variable": "x",
+                    "upper": 1
+                },
+                {
+                    "lower_open": false,
+                    "is_none": false,
+                    "upper_open": false,
+                    "lower": 0,
+                    "variable": "y",
+                    "upper": 0
+                },
+                {
+                    "lower_open": true,
+                    "is_none": true,
+                    "upper_open": true,
+                    "lower": 0,
+                    "variable": "A_x",
+                    "upper": 0
+                },
+                {
+                    "lower_open": true,
+                    "is_none": true,
+                    "upper_open": true,
+                    "lower": 0,
+                    "variable": "A_y",
+                    "upper": 0
+                },
+                {
+                    "lower_open": true,
+                    "is_none": true,
+                    "upper_open": true,
+                    "lower": 0,
+                    "variable": "B_x",
+                    "upper": 0
+                },
+                {
+                    "lower_open": true,
+                    "is_none": true,
+                    "upper_open": true,
+                    "lower": 0,
+                    "variable": "B_y",
+                    "upper": 0
+                }
+            ]
+        },
+        {
+            "guard": "x >= 9.5 && x <= 10.5 && y >= 9.5 && y <= 10.5",
+            "source": "A_Throwing",
+            "action": "Throw",
+            "target": "B_Throwing",
+            "agent": "B",
+            "jump": [
+                {
+                    "lower_open": false,
+                    "is_none": false,
+                    "upper_open": false,
+                    "lower": 10,
+                    "variable": "x",
+                    "upper": 10
+                },
+                {
+                    "lower_open": true,
+                    "is_none": true,
+                    "upper_open": true,
+                    "lower": 0,
+                    "variable": "y",
+                    "upper": 0
+                },
+                {
+                    "lower_open": true,
+                    "is_none": true,
+                    "upper_open": true,
+                    "lower": 0,
+                    "variable": "A_x",
+                    "upper": 0
+                },
+                {
+                    "lower_open": true,
+                    "is_none": true,
+                    "upper_open": true,
+                    "lower": 0,
+                    "variable": "A_y",
+                    "upper": 0
+                },
+                {
+                    "lower_open": true,
+                    "is_none": true,
+                    "upper_open": true,
+                    "lower": 0,
+                    "variable": "B_x",
+                    "upper": 0
+                },
+                {
+                    "lower_open": true,
+                    "is_none": true,
+                    "upper_open": true,
+                    "lower": 0,
+                    "variable": "B_y",
+                    "upper": 0
+                }
+            ]
+        }
+    ]
+}

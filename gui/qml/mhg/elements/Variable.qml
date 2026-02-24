@@ -64,6 +64,7 @@ Element {
             parent: variable_frame.column
             width: parent.width
             interval_model: variable_frame.model
+            monotonic: false
         }
 
     ]

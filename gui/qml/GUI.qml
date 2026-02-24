@@ -113,8 +113,8 @@ ApplicationWindow {
                 text: qsTr("Save")
                 shortcut: "Ctrl+S"
                 onTriggered: {
-                    save_dialog.action = function(x) {};
                     if (current_file == "") {
+                        save_dialog.action = function(x) {};
                         save_dialog.open();
                     } else {
                         game.save(current_file);
@@ -490,6 +490,7 @@ ApplicationWindow {
 
         onAccepted: {
             game.save(selectedFile.toString());
+            current_file = selectedFile.toString();
             action(selectedFile.toString());
         }
 
