@@ -181,5 +181,5 @@ function _get_valuation_string(valuation::Valuation)::String
             str *= ",\n"
         end
     end
-    return "{$str}"
+    return "$str"
 end

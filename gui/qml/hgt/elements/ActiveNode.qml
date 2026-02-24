@@ -29,7 +29,7 @@ Rectangle {
         Label {
             id: node_action_text
             width: parent.width
-            text: qsTr("<" + model.action + ">")
+            text: qsTr("Action: " + model.action)
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
         }
@@ -45,7 +45,7 @@ Rectangle {
         Label {
             id: node_location_text
             width: parent.width
-            text: qsTr(model.location)
+            text: qsTr("Location: " + model.location)
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
         }
