@@ -186,9 +186,29 @@ Rectangle {
                                     hgt_models.state_formula = x;
                                 }
                                 condition: function(x) {
-                                    return x == hgt_models.state_formula || Julia.hgt_is_formula(x, "state");
+                                    return Julia.hgt_is_formula(x, "state");
                                 }
-                                error_value: hgt_models.state_formula
+                                error_value: text
+
+                                Connections {
+                                    target: hgt_game
+                                    function onLocationRenamed(index, name) {
+                                        state_formula_field.textChanged();
+                                        state_formula_field.editingFinished();
+                                    }
+                                    function onLocationRemoved(name) {
+                                        state_formula_field.textChanged();
+                                        state_formula_field.editingFinished();
+                                    }
+                                    function onVariableRenamed(index, name) {
+                                        state_formula_field.textChanged();
+                                        state_formula_field.editingFinished();
+                                    }
+                                    function onVariableRemoved(index) {
+                                        state_formula_field.textChanged();
+                                        state_formula_field.editingFinished();
+                                    }
+                                }
                             }
 
                         }

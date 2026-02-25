@@ -17,8 +17,9 @@ Element {
     element_name: "Variable"
 
     remove: function() {
-        variableRemoved(index);
+        var i = index;
         mhg_models.variables.removeRow(index);
+        variableRemoved(i);
     }
 
     elementContent: [

@@ -17,8 +17,9 @@ Element {
     element_name: "Variable"
 
     remove: function() {
-        variableRemoved(index);
+        var i = index;
         hgt_models.variables.removeRow(index);
+        variableRemoved(i);
     }
 
     elementContent: [
@@ -92,7 +93,7 @@ Element {
                 condition: function(x) {
                     return true;
                 }
-                error_value: model.expression
+                error_value: text
             }
 
         }

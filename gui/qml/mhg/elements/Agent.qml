@@ -17,8 +17,9 @@ Element {
     element_name: "Agent"
     
     remove: function() {
-        agentRemoved(model.name);
+        var name = model.name;
         mhg_models.agents.removeRow(index);
+        agentRemoved(name);
     }
 
     elementContent: [
@@ -50,6 +51,7 @@ Element {
 
                 action: function(x) {
                     model.name = x;
+                    agentRenamed(index, x);
                 }
                 condition: function(x) {
                     return x == model.name || Julia.mhg_name_available(x);

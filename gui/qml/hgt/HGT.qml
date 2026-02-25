@@ -98,15 +98,6 @@ GameType {
             model: hgt_models.triggers
             delegate: Elements.Trigger {
                 width: trigger_tab.cellWidth
-                
-                Connections {
-                    target: hgt_game
-                    function onAgentRemoved(name) {
-                        if (model.agent == name) {
-                            model.agent = "";
-                        }
-                    }
-                }
             }
 
         },
@@ -138,21 +129,6 @@ GameType {
             model: hgt_models.locations
             delegate: Elements.Location {
                 width: location_tab.cellWidth
-
-                Connections {
-                    target: hgt_game
-                    function onVariableAdded() {
-                        model.flow.appendRow({variable: "", expression: "0"});
-                    }
-                    function onVariableRemoved(index) {
-                        model.flow.removeRow(index);
-                    }
-                    function onVariableRenamed(index, name) {
-                        if (model.flow) {
-                            model.flow.setData(model.flow.index(index, 0), name, roles.name);
-                        }
-                    }
-                }
             }
 
             ButtonGroup {
@@ -190,42 +166,6 @@ GameType {
             model: hgt_models.edges
             delegate: Elements.Edge {
                 width: edge_tab.cellWidth
-
-                Connections {
-                    target: hgt_game
-                    function onActionRemoved(name) {
-                        if (model.action == name) {
-                            model.action = "";
-                        }
-                    }
-                    function onAgentRemoved(name) {
-                        if (model.agent == name) {
-                            model.agent = "";
-                        }
-                    }
-                    function onLocationRemoved(name) {
-                        if (model.source == name) {
-                            model.source = "";
-                        }
-                        if (model.target == name) {
-                            model.target = "";
-                        }
-                    }
-                    function onVariableAdded() {
-                        model.jump.appendRow({variable: "", expression: ""});
-                    }
-                    function onVariableRemoved(index) {
-                        model.jump.removeRow(index);
-                    }
-                    function onVariableRenamed(index, name) {
-                        if (model.jump) {
-                            if (model.jump.data(model.jump.index(index, 0), roles.name) == model.jump.data(model.jump.index(index, 0), roles.expression)) {
-                                model.jump.setData(model.jump.index(index, 0), name, roles.expression);
-                            }
-                            model.jump.setData(model.jump.index(index, 0), name, roles.name);
-                        }
-                    }
-                }
             }
 
         },
@@ -279,6 +219,7 @@ GameType {
     }
 
     load: function (file) {
+        clear();
         var error = Julia.hgt_load(file);
         // Reset view to show changes done in Julia 
         action_tab.model = [];
@@ -327,7 +268,9 @@ GameType {
 
     signal actionRemoved(string name)
     signal agentRemoved(string name)
+    signal agentRenamed(int index, string name)
     signal locationRemoved(string name)
+    signal locationRenamed(int index, string name)
     signal variableAdded()
     signal variableRemoved(int index)
     signal variableRenamed(int index, string name)

@@ -17,8 +17,9 @@ Element {
     element_name: "Action"
 
     remove: function() {
-        actionRemoved(model.name);
+        var name = model.name;
         mhg_models.actions.removeRow(index);
+        actionRemoved(name);
     }
 
     elementContent: [

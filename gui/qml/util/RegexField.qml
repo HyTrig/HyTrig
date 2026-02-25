@@ -41,14 +41,13 @@ TextField {
             if (condition(text)) {
                 action(text);
                 Material.foreground = accepted_color;
-                focus = false;
             } else {
                 action(error_value);
+                Material.foreground = error_color;
                 placeholderText = condition_error_text;
             }
-        } else {
-            focus = false;
-        }
+        } 
+        focus = false;
     }
 
     onTextChanged: {

@@ -83,13 +83,34 @@ Element {
                     model.trigger = x;
                 }
                 condition: function(x) {
-                    return x == model.trigger || Julia.hgt_is_formula(x, "constraint");
+                    return Julia.hgt_is_formula(x, "constraint");
                 }
-                error_value: model.trigger
+                error_value: text
+
+                Connections {
+                    target: hgt_game
+                    function onVariableRenamed(index, name) {
+                        trigger_field.textChanged();
+                        trigger_field.editingFinished();
+                    }
+                    function onVariableRemoved(index) {
+                        trigger_field.textChanged();
+                        trigger_field.editingFinished();
+                    }
+                }
             }
 
         }
 
     ]
+
+    Connections {
+        target: hgt_game
+        function onAgentRemoved(name) {
+            if (model.agent == name) {
+                model.agent = "";
+            }
+        }
+    }
 
 }

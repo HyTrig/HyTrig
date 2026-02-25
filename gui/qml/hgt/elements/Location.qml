@@ -19,8 +19,9 @@ Element {
     element_name: "Location"
 
     remove: function() {
-        locationRemoved(model.name);
+        var name = model.name;
         hgt_models.locations.removeRow(index);
+        locationRemoved(name);
     }
 
     elementContent: [
@@ -53,6 +54,7 @@ Element {
 
                 action: function(x) {
                     model.name = x;
+                    locationRenamed(index, x);
                 }
                 condition: function(x) {
                     return x == model.name || Julia.hgt_name_available(x);
@@ -106,9 +108,21 @@ Element {
                     model.invariant = x;
                 }
                 condition: function(x) {
-                    return x == model.invariant || Julia.hgt_is_formula(x, "constraint");
+                    return Julia.hgt_is_formula(x, "constraint");
                 }
-                error_value: model.invariant
+                error_value: text
+
+                Connections {
+                    target: hgt_game
+                    function onVariableRenamed(index, name) {
+                        location_invariant_field.textChanged();
+                        location_invariant_field.editingFinished();
+                    }
+                    function onVariableRemoved(index) {
+                        location_invariant_field.textChanged();
+                        location_invariant_field.editingFinished();
+                    }
+                }
             }
 
         },
@@ -177,9 +191,21 @@ Element {
                             model.expression = x;
                         }
                         condition: function(x) {
-                            return x == model.expression || Julia.hgt_is_formula(x, "expression");
+                            return Julia.hgt_is_formula(x, "expression");
                         }
-                        error_value: model.expression
+                        error_value: text
+
+                        Connections {
+                            target: hgt_game
+                            function onVariableRenamed(index, name) {
+                                variable_field.textChanged();
+                                variable_field.editingFinished();
+                            }
+                            function onVariableRemoved(index) {
+                                variable_field.textChanged();
+                                variable_field.editingFinished();
+                            }
+                        }
                     }
 
                 }
@@ -189,5 +215,20 @@ Element {
         }
 
     ]
+
+    Connections {
+        target: hgt_game
+        function onVariableAdded() {
+            model.flow.appendRow({variable: "", expression: "0"});
+        }
+        function onVariableRemoved(index) {
+            model.flow.removeRow(index);
+        }
+        function onVariableRenamed(index, name) {
+            if (model.flow) {
+                model.flow.setData(model.flow.index(index, 0), name, roles.name);
+            }
+        }
+    }
 
 }

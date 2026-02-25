@@ -19,8 +19,9 @@ Element {
     element_name: "Location"
 
     remove: function() {
-        locationRemoved(model.name);
+        var name = model.name;
         mhg_models.locations.removeRow(index);
+        locationRemoved(name);
     }
 
     elementContent: [
@@ -53,6 +54,7 @@ Element {
 
                 action: function(x) {
                     model.name = x;
+                    locationRenamed(index, x);
                 }
                 condition: function(x) {
                     return x == model.name || Julia.mhg_name_available(x);
@@ -106,9 +108,21 @@ Element {
                     model.invariant = x;
                 }
                 condition: function(x) {
-                    return x == model.invariant || Julia.mhg_is_formula(x, "constraint");
+                    return Julia.mhg_is_formula(x, "constraint");
                 }
-                error_value: model.invariant
+                error_value: text
+
+                Connections {
+                    target: mhg_game
+                    function onVariableRenamed(index, name) {
+                        location_invariant_field.textChanged();
+                        location_invariant_field.editingFinished();
+                    }
+                    function onVariableRemoved(index) {
+                        location_invariant_field.textChanged();
+                        location_invariant_field.editingFinished();
+                    }
+                }
             }
 
         },
@@ -176,5 +190,20 @@ Element {
         }
 
     ]
+
+    Connections {
+        target: mhg_game
+        function onVariableAdded() {
+            model.flow.appendRow({variable: "", lower_open: false, upper_open: false, lower: 0.0, upper: 0.0});
+        }
+        function onVariableRemoved(index) {
+            model.flow.removeRow(index);
+        }
+        function onVariableRenamed(index, name) {
+            if (model.flow) {
+                model.flow.setData(model.flow.index(index, 0), name, roles.name);
+            }
+        }
+    }
 
 }

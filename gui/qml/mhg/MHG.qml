@@ -114,21 +114,6 @@ GameType {
             model: mhg_models.locations
             delegate: Elements.Location {
                 width: location_tab.cellWidth
-
-                Connections {
-                    target: mhg_game
-                    function onVariableAdded() {
-                        model.flow.appendRow({variable: "", lower_open: false, upper_open: false, lower: 0.0, upper: 0.0});
-                    }
-                    function onVariableRemoved(index) {
-                        model.flow.removeRow(index);
-                    }
-                    function onVariableRenamed(index, name) {
-                        if (model.flow) {
-                            model.flow.setData(model.flow.index(index, 0), name, roles.name);
-                        }
-                    }
-                }
             }
 
             ButtonGroup {
@@ -170,41 +155,7 @@ GameType {
             model: mhg_models.edges
             delegate: Elements.Edge {
                 width: edge_tab.cellWidth
-
-                Connections {
-                    target: mhg_game
-                    function onActionRemoved(name) {
-                        if (model.action == name) {
-                            model.action = "";
-                        }
-                    }
-                    function onAgentRemoved(name) {
-                        if (model.agent == name) {
-                            model.agent = "";
-                        }
-                    }
-                    function onLocationRemoved(name) {
-                        if (model.source == name) {
-                            model.source = "";
-                        }
-                        if (model.target == name) {
-                            model.target = "";
-                        }
-                    }
-                    function onVariableAdded() {
-                        model.jump.appendRow({variable: "", lower_open: false, upper_open: false, lower: 0.0, upper: 0.0});
-                    }
-                    function onVariableRemoved(index) {
-                        model.jump.removeRow(index);
-                    }
-                    function onVariableRenamed(index, name) {
-                        if (model.jump) {
-                            model.jump.setData(model.jump.index(index, 0), name, roles.name);
-                        }
-                    }
-                }
             }
-
         },
 
         Elements.TerminationConditions {
@@ -258,6 +209,7 @@ GameType {
     }
 
     load: function (file) {
+        clear();
         var error = Julia.mhg_load(file);
         // Reset view to show changes done in Julia 
         action_tab.model = [];
@@ -303,7 +255,9 @@ GameType {
 
     signal actionRemoved(string name)
     signal agentRemoved(string name)
+    signal agentRenamed(int index, string name)
     signal locationRemoved(string name)
+    signal locationRenamed(int index, string name)
     signal variableAdded()
     signal variableRemoved(int index)
     signal variableRenamed(int index, string name)

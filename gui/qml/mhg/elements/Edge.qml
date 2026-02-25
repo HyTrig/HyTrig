@@ -108,9 +108,21 @@ Element {
                     model.guard = x;
                 }
                 condition: function(x) {
-                    return x == model.guard || Julia.mhg_is_formula(x, "constraint");
+                    return Julia.mhg_is_formula(x, "constraint");
                 }
-                error_value: model.guard
+                error_value: text
+
+                Connections {
+                    target: mhg_game
+                    function onVariableRenamed(index, name) {
+                        edge_guard_field.textChanged();
+                        edge_guard_field.editingFinished();
+                    }
+                    function onVariableRemoved(index) {
+                        edge_guard_field.textChanged();
+                        edge_guard_field.editingFinished();
+                    }
+                }
             }
 
         },
@@ -247,4 +259,36 @@ Element {
 
     ]
 
+    Connections {
+        target: mhg_game
+        function onActionRemoved(name) {
+            if (model.action == name) {
+                model.action = "";
+            }
+        }
+        function onAgentRemoved(name) {
+            if (model.agent == name) {
+                model.agent = "";
+            }
+        }
+        function onLocationRemoved(name) {
+            if (model.source == name) {
+                model.source = "";
+            }
+            if (model.target == name) {
+                model.target = "";
+            }
+        }
+        function onVariableAdded() {
+            model.jump.appendRow({variable: "", lower_open: false, upper_open: false, lower: 0.0, upper: 0.0});
+        }
+        function onVariableRemoved(index) {
+            model.jump.removeRow(index);
+        }
+        function onVariableRenamed(index, name) {
+            if (model.jump) {
+                model.jump.setData(model.jump.index(index, 0), name, roles.name);
+            }
+        }
+    }
 }

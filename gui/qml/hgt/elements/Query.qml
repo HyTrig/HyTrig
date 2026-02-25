@@ -51,9 +51,37 @@ Element {
                     model.formula = x;
                 }
                 condition: function(x) {
-                    return x == model.formula || Julia.hgt_is_formula(x, "strategy");
+                    return Julia.hgt_is_formula(x, "strategy");
                 }
-                error_value: model.formula
+                error_value: text
+
+                Connections {
+                    target: hgt_game
+                    function onAgentRenamed(index, name) {
+                        query_formula_field.textChanged();
+                        query_formula_field.editingFinished();
+                    }
+                    function onAgentRemoved(name) {
+                        query_formula_field.textChanged();
+                        query_formula_field.editingFinished();
+                    }
+                    function onLocationRenamed(index, name) {
+                        query_formula_field.textChanged();
+                        query_formula_field.editingFinished();
+                    }
+                    function onLocationRemoved(name) {
+                        query_formula_field.textChanged();
+                        query_formula_field.editingFinished();
+                    }
+                    function onVariableRenamed(index, name) {
+                        query_formula_field.textChanged();
+                        query_formula_field.editingFinished();
+                    }
+                    function onVariableRemoved(index) {
+                        query_formula_field.textChanged();
+                        query_formula_field.editingFinished();
+                    }
+                }
             }
 
             CheckMark {

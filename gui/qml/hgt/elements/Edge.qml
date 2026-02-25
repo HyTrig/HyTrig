@@ -108,9 +108,21 @@ Element {
                     model.guard = x;
                 }
                 condition: function(x) {
-                    return x == model.guard || Julia.hgt_is_formula(x, "constraint");
+                    return Julia.hgt_is_formula(x, "constraint");
                 }
-                error_value: model.guard
+                error_value: text
+
+                Connections {
+                    target: hgt_game
+                    function onVariableRenamed(index, name) {
+                        edge_guard_field.textChanged();
+                        edge_guard_field.editingFinished();
+                    }
+                    function onVariableRemoved(index) {
+                        edge_guard_field.textChanged();
+                        edge_guard_field.editingFinished();
+                    }
+                }
             }
 
         },
@@ -233,9 +245,21 @@ Element {
                             model.expression = x;
                         }
                         condition: function(x) {
-                            return x == model.expression || Julia.hgt_is_formula(x, "expression");
+                            return Julia.hgt_is_formula(x, "expression");
                         }
-                        error_value: model.expression
+                        error_value: text
+
+                        Connections {
+                            target: hgt_game
+                            function onVariableRenamed(index, name) {
+                                variable_field.textChanged();
+                                variable_field.editingFinished();
+                            }
+                            function onVariableRemoved(index) {
+                                variable_field.textChanged();
+                                variable_field.editingFinished();
+                            }
+                        }
                     }
 
                 }
@@ -245,5 +269,41 @@ Element {
         }
 
     ]
+
+    Connections {
+        target: hgt_game
+        function onActionRemoved(name) {
+            if (model.action == name) {
+                model.action = "";
+            }
+        }
+        function onAgentRemoved(name) {
+            if (model.agent == name) {
+                model.agent = "";
+            }
+        }
+        function onLocationRemoved(name) {
+            if (model.source == name) {
+                model.source = "";
+            }
+            if (model.target == name) {
+                model.target = "";
+            }
+        }
+        function onVariableAdded() {
+            model.jump.appendRow({variable: "", expression: ""});
+        }
+        function onVariableRemoved(index) {
+            model.jump.removeRow(index);
+        }
+        function onVariableRenamed(index, name) {
+            if (model.jump) {
+                if (model.jump.data(model.jump.index(index, 0), roles.name) == model.jump.data(model.jump.index(index, 0), roles.expression)) {
+                    model.jump.setData(model.jump.index(index, 0), name, roles.expression);
+                }
+                model.jump.setData(model.jump.index(index, 0), name, roles.name);
+            }
+        }
+    }
 
 }
