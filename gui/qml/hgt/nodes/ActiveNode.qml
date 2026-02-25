@@ -14,10 +14,12 @@ Rectangle {
 
     width: parent.width
     height: parent.height
-    radius: 4
+    radius: 5
     color: (model.clickable
-    ? (active_node_mouse_area.containsMouse ? Material.color(Material.Orange, Material.Shade400) : Material.color(Material.Orange)) 
-    : Material.color(Material.Orange, Material.Shade900))
+    ? (active_node_mouse_area.containsMouse ? Material.accent : active_node_color) 
+    : light_background_color)
+    border.color: Material.accent
+    border.width: 2
 
     Column {
 
@@ -54,6 +56,7 @@ Rectangle {
             id: node_valuation_text
             width: parent.width
             height: parent.height - 4 * parent.spacing - node_action_text.height - node_arrow_text.height - node_location_text.height
+            ScrollBar.vertical.policy: ScrollBar.AlwaysOn
 
             Label {
                 width: node_valuation_text.width

@@ -21,8 +21,11 @@ GameViewer {
 
     property alias branches: branches
     property int level: 1
-    property real node_width: 400
-    property real node_height: 300
+    readonly property real node_width: 400
+    readonly property real node_height: 300
+    readonly property color passive_node_color: "#4664aa"
+    readonly property color active_node_color: "#004f44"
+    readonly property color trigger_node_color: "#df9b1b"
 
     reset: function() {
         // Reset tree viewer to root
@@ -85,7 +88,9 @@ GameViewer {
             anchors.horizontalCenter: parent.horizontalCenter
             spacing: 10
             clip: true
-            ScrollBar.vertical: ScrollBar {}
+            ScrollBar.vertical: ScrollBar {
+                policy: ScrollBar.AlwaysOn
+            }
 
             model: hgt_models.branches
             delegate: Column {
@@ -170,25 +175,13 @@ GameViewer {
             spacing: 20
 
             Rectangle {
-                id: active_legend
-                width: passive_legend.width
-                height: parent_button.height
-                radius: 4
-                color: Material.color(Material.Orange)
-                
-                Title {
-                    text: qsTr("Active node")
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.verticalCenter: parent.verticalCenter
-                }
-            }
-
-            Rectangle {
                 id: passive_legend
                 width: 200
                 height: parent_button.height
-                radius: 4
-                color: Material.color(Material.Blue)
+                radius: 5
+                color: light_background_color
+                border.color: passive_node_color
+                border.width: 2
                 
                 Title {
                     text: qsTr("Passive node")
@@ -198,11 +191,45 @@ GameViewer {
             }
 
             Rectangle {
+                id: trigger_legend
+                width: 200
+                height: parent_button.height
+                radius: 5
+                color: light_background_color
+                border.color: trigger_node_color
+                border.width: 2
+                
+                Title {
+                    text: qsTr("Trigger")
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+            }
+
+            Rectangle {
+                id: active_legend
+                width: passive_legend.width
+                height: parent_button.height
+                radius: 5
+                color: active_node_color
+                border.color: Material.accent
+                border.width: 2
+                
+                Title {
+                    text: qsTr("Active node")
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+            }
+
+            Rectangle {
                 id: leaf_legend
                 width: passive_legend.width
                 height: parent_button.height
-                radius: 4
-                color: Material.color(Material.Orange, Material.Shade900)
+                radius: 5
+                color: light_background_color
+                border.color: Material.accent
+                border.width: 2
                 
                 Title {
                     text: qsTr("End node")
@@ -226,5 +253,5 @@ GameViewer {
         }
 
     }
-    
+
 }

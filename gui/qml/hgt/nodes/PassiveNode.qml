@@ -9,31 +9,40 @@ import QtQuick.Controls.Material
 
 Rectangle {
 
-    height: node_time_text.height + node_valuation_text.height + node_property_list.spacing
-    radius: 4
-    color: Material.color(Material.Blue)
+    height: node_property_list.height + 2 * node_property_list.spacing
+    radius: 5
+    color: light_background_color
+    border.color: passive_node_color
+    border.width: 2
     
     Column {
 
         id: node_property_list
-        width: parent.width
-        height: parent.height
+        width: parent.width - 2 * spacing
+        anchors.centerIn: parent
         spacing: 5
 
         Label {
-            id: node_time_text
             width: parent.width
-            text: qsTr("Time = " + model.time)
-            horizontalAlignment: Text.AlignHCenter
+            text: qsTr("Time: " + model.time)
             verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
         }
 
         Label {
-            id: node_valuation_text
+            width: parent.width
+            text: qsTr("Valuation: ")
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+        }
+
+        Label {
             width: parent.width
             text: qsTr(model.valuation)
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
         }
+
     }
+
 }

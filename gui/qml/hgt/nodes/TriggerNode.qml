@@ -14,8 +14,10 @@ Rectangle {
     required property string time
 
     height: node_property_list.height + 2 * node_property_list.spacing
-    radius: 4
-    color: Material.color(Material.Green)
+    radius: 5
+    color: light_background_color
+    border.color: trigger_node_color
+    border.width: 2
 
     Column {
 
