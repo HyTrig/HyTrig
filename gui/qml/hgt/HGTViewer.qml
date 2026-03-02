@@ -27,7 +27,7 @@ GameViewer {
     readonly property real node_width: 400
     readonly property real node_height: 300
     readonly property color passive_node_color: "#4664aa"
-    readonly property color active_node_color: "#004f44"
+    readonly property color active_node_color: main_window.Material.theme === Material.Dark ? "#004f44" : '#00ceb2'
     readonly property color trigger_node_color: "#df9b1b"
 
     reset: function() {
@@ -102,7 +102,7 @@ GameViewer {
         Rectangle {
 
             width: game_viewer_page.width
-            height: game_viewer_page.height - level_row.height - legend.height - parent_button.height - 3 * parent.spacing
+            height: game_viewer_page.height - level_row.height - legend.height - 3 * parent.spacing
 
             color: Material.background
             border.width: 2
@@ -112,6 +112,8 @@ GameViewer {
 
                 anchors.fill: parent
                 anchors.margins: 10
+                anchors.topMargin: 25
+                anchors.bottomMargin: 25
 
                 Shape {
                     id: time_line
@@ -123,13 +125,28 @@ GameViewer {
                         strokeWidth: 5
                         strokeColor: main_window.Material.theme === Material.Dark ? "#ffffff" : "#000000"
                         startX: time_line_spacing
-                        startY: 0
+                        startY: -15
                         PathLine {
                             x: time_line_spacing
-                            y: time_line.height
+                            y: time_line.height + 15
+                        }
+                        PathLine {
+                            x: time_line_spacing - 10
+                            y: time_line.height + 5
+                        }
+                        PathLine {
+                            x: time_line_spacing
+                            y: time_line.height + 15
+                        }
+                        PathLine {
+                            x: time_line_spacing + 10
+                            y: time_line.height + 5
+                        }
+                        PathLine {
+                            x: time_line_spacing
+                            y: time_line.height + 15
                         }
                     }
-
                 }
 
                 // Branches of the current node
