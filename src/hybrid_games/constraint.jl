@@ -120,16 +120,16 @@ end
 function to_string(constraint::Constraint)::String
     @match constraint begin
         Truth(value) => string(value)
-        Less(left, right) => "$(to_string(left)) < $(to_string(right))"
-        LeQ(left, right) => "$(to_string(left)) <= $(to_string(right))"
-        Greater(left, right) => "$(to_string(left)) > $(to_string(right))"
-        GeQ(left, right) => "$(to_string(left)) >= $(to_string(right))"
-        Equal(left, right) => "$(to_string(left)) == $(to_string(right))"
-        NotEqual(left, right) => "$(to_string(left)) != $(to_string(right))"
-        And(left, right) => "($(to_string(left))) ∧ ($(to_string(right)))"
-        Or(left, right) => "($(to_string(left))) ∨ ($(to_string(right)))"
-        Not(c) => "¬($(to_string(c)))"
-        Imply(left, right) => "($(to_string(left))) → ($(to_string(right)))"
+        Less(left, right) => "($(to_string(left)) < $(to_string(right)))"
+        LeQ(left, right) => "($(to_string(left)) <= $(to_string(right)))"
+        Greater(left, right) => "($(to_string(left)) > $(to_string(right)))"
+        GeQ(left, right) => "($(to_string(left)) >= $(to_string(right)))"
+        Equal(left, right) => "($(to_string(left)) == $(to_string(right)))"
+        NotEqual(left, right) => "($(to_string(left)) != $(to_string(right)))"
+        And(left, right) => "($(to_string(left))) && ($(to_string(right)))"
+        Or(left, right) => "($(to_string(left))) || ($(to_string(right)))"
+        Not(c) => "!$(to_string(c))"
+        Imply(left, right) => "($(to_string(left))) -> ($(to_string(right)))"
     end
 end
 
@@ -205,7 +205,7 @@ struct RectConstrError <: Exception
     msg::AbstractString
 end
 
-function constraint_to_rect_constraint(constr::Constraint)::Union{Bool, RectConstr}
+function constraint_to_rect_constraint(constr::Constraint)::RectConstr
     @match constr begin
         Truth(true) => RectTrue()
         LeQ(left::Var, right::Const) => RectLessEq(left.name, right.value)
@@ -234,7 +234,7 @@ function constraint_to_rect_constraint(constr::Constraint)::Union{Bool, RectCons
         Equal(Neg(val::Const), right::Var) => RectEq(right.name, - val.value)
 
         And(left, right) => RectAnd(constraint_to_rect_constraint(left), constraint_to_rect_constraint(right))
-        _ => false
+        _ => throw(ArgumentError("$(to_string(constr)) not a rectangular constraint."))
     end
 end
 

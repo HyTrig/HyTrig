@@ -102,12 +102,12 @@ function to_string(expr::ExprLike)::String
     @match expr begin
         Const(value) => "$value"
         Var(name) => String(name)
-        Neg(expr1) => "(- $(to_string(expr1)))"
+        Neg(expr1) => "-$(to_string(expr1))"
         Add(left, right) => "($(to_string(left)) + $(to_string(right)))"
         Mul(left, right) => "($(to_string(left)) * $(to_string(right)))"
         Sub(left, right) => "($(to_string(left)) - $(to_string(right)))"
         Div(left, right) => "($(to_string(left)) / $(to_string(right)))"
-        Expon(base, power) => "$(to_string(base))^$(to_string(power))"
+        Expon(base, power) => "($(to_string(base)) ^ $(to_string(power)))"
         Modulo(left, right) => "($(to_string(left)) % $(to_string(right)))"
         Sin(base) => "sin($(to_string(base)))"
         CoSin(base) => "cos($(to_string(base)))"

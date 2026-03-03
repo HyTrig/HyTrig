@@ -42,9 +42,19 @@ function mhg_is_formula(text::QString, level::QString)::Bool
         [x.name for x in mhg_location_list],
         [x.name for x in mhg_variable_list]
     )
+    level::ParseLevel = eval(Symbol(String(level)))
     try
-        # TODO: Add rectangular constraint
-        parse(String(text), bindings, eval(Symbol(String(level))))
+        if level == expression
+            parse(String(text), bindings, level)
+        elseif level == constraint
+            constraint_to_rect_constraint(
+                parse(String(text), bindings, level)
+            )
+        else
+            formula_to_rect_formula(
+                parse(String(text), bindings, level)
+            )
+        end
         return true
     catch
         return false

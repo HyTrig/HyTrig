@@ -140,83 +140,17 @@ function get_all_constraints(formulae::Vector{Logic_Formula})::Vector{Constraint
     return union_safe([get_all_constraints(formula) for formula in formulae])
 end
 
-function formula_to_rect_formula(formula::Strategy_Formula)::Union{Bool, Strategy_Formula}
+function formula_to_rect_formula(formula::Strategy_Formula)::Strategy_Formula
     @match formula begin
-        Strategy_to_State(f) => begin
-            inner_formula = formula_to_rect_formula(f)
-            if isa(inner_formula, State_Formula)
-                Strategy_to_State(inner_formula)
-            else
-                false
-            end
-        end
-        Exist_Always(a, f) => begin
-            inner_formula = formula_to_rect_formula(f)
-            if isa(inner_formula, Strategy_Formula)
-                Exist_Always(a, inner_formula)
-            else
-                false
-            end
-        end
-        Exist_Eventually(a, f) => begin
-            inner_formula = formula_to_rect_formula(f)
-            if isa(inner_formula, Strategy_Formula)
-                Exist_Eventually(a, inner_formula)
-            else
-                false
-            end
-        end
-        All_Always(a, f) => begin
-            inner_formula = formula_to_rect_formula(f)
-            if isa(inner_formula, Strategy_Formula)
-                All_Always(a, inner_formula)
-            else
-                false
-            end
-        end
-        All_Eventually(a, f) => begin
-            inner_formula = formula_to_rect_formula(f)
-            if isa(inner_formula, Strategy_Formula)
-                All_Always(a, inner_formula)
-            else
-                false
-            end
-        end
-        Strategy_And(left, right) => begin
-            left_formula = formula_to_rect_formula(left)
-            right_formula = formula_to_rect_formula(right)
-            if isa(left_formula, Strategy_Formula) && isa(right_formula, Strategy_Formula) 
-                Strategy_And(left_formula, right_formula)
-            else
-                false
-            end
-        end
-        Strategy_Or(left, right) => begin
-            left_formula = formula_to_rect_formula(left)
-            right_formula = formula_to_rect_formula(right)
-            if isa(left_formula, Strategy_Formula) && isa(right_formula, Strategy_Formula) 
-                Strategy_Or(left_formula, right_formula)
-            else
-                false
-            end
-        end
-        Strategy_Not(f) => begin
-            inner_formula = formula_to_rect_formula(f)
-            if isa(inner_formula, Strategy_Formula)
-                Strategy_Not(inner_formula)
-            else
-                false
-            end
-        end
-        Strategy_Imply(left, right) => begin
-            left_formula = formula_to_rect_formula(left)
-            right_formula = formula_to_rect_formula(right)
-            if isa(left_formula, Strategy_Formula) && isa(right_formula, Strategy_Formula) 
-                Strategy_Imply(left_formula, right_formula)
-            else
-                false
-            end
-        end
+        Strategy_to_State(f) => Strategy_to_State(formula_to_rect_formula(f))
+        Exist_Always(a, f) => Exists_Always(a, formula_to_rect_formula(f))
+        Exist_Eventually(a, f) => Exist_Eventually(a, formula_to_rect_formula(f))
+        All_Always(a, f) => All_Always(a, formula_to_rect_formula(f))
+        All_Eventually(a, f) => All_Eventually(a, formula_to_rect_formula(f))
+        Strategy_And(left, right) => Strategy_And(formula_to_rect_formula(left), formula_to_rect_formula(right))
+        Strategy_Or(left, right) => Strategy_Or(formula_to_rect_formula(left), formula_to_rect_formula(right))
+        Strategy_Not(f) => Strategy_Not(formula_to_rect_formula(f))
+        Strategy_Imply(left, right) => Strategy_Imply(formula_to_rect_formula(left), formula_to_rect_formula(right))
         Strategy_Deadlock() => Strategy_Deadlock()
     end
 end

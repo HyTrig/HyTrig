@@ -255,7 +255,7 @@ StructTypes.StructType(::Type{QMHGQuery}) = StructTypes.Mutable()
 
 mhg_models["max_steps"] = "10"
 mhg_models["time_bound"] = "13.37"
-mhg_models["state_formula"] = "!location"
+mhg_models["state_formula"] = "location"
 
 """
     mhg_action_list::Vector{QMHGAction}
