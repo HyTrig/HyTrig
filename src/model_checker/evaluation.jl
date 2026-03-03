@@ -36,6 +36,7 @@ function evaluate(expr::ExprLike, valuation::Valuation)::Real
         Div(left, right) => round5(evaluate(left, valuation) / evaluate(right, valuation))
         Expon(base, power) => round5(evaluate(base, valuation) ^ evaluate(power, valuation))
         Modulo(left, right) => round5(evaluate(left, valuation) % evaluate(right, valuation))
+        Abs(base) => round5(abs(evaluate(base, valuation)))
         Sin(base) => round5(sin(evaluate(base, valuation)))
         CoSin(base) => round5(cos(evaluate(base, valuation)))
         Tan(base) => round5(tan(evaluate(base, valuation)))

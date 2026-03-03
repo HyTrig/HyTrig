@@ -23,7 +23,7 @@ File description.
 """
 
 export Variable
-export ExprLike, Const, Var, Neg, Add, Mul, Sub, Div, Expon, Modulo, Sin, CoSin, Tan, CoTan, Min, Max
+export ExprLike, Const, Var, Neg, Add, Mul, Sub, Div, Expon, Modulo, Abs, Sin, CoSin, Tan, CoTan, Min, Max
 export expression_to_string, is_constant, is_linear, get_all_variables, round5
 
 const Variable = Symbol
@@ -72,6 +72,10 @@ struct Modulo <: ExprLike
     right::ExprLike
 end
 
+struct Abs <: ExprLike
+    expr::ExprLike
+end
+
 struct Sin <: ExprLike
     base::ExprLike
 end
@@ -109,6 +113,7 @@ function expression_to_string(expr::ExprLike)::String
         Div(left, right) => "($(expression_to_string(left)) / $(expression_to_string(right)))"
         Expon(base, power) => "($(expression_to_string(base)) ^ $(expression_to_string(power)))"
         Modulo(left, right) => "($(expression_to_string(left)) % $(expression_to_string(right)))"
+        Abs(expr) => "|$(expression_to_string(expr))|"
         Sin(base) => "sin($(expression_to_string(base)))"
         CoSin(base) => "cos($(expression_to_string(base)))"
         Tan(base) => "tan($(expression_to_string(base)))"
@@ -129,6 +134,7 @@ function is_constant(expr::ExprLike)::Bool
         Div(left, right) => is_constant(left) && is_constant(right)
         Expon(base, power) => is_constant(base) && is_constant(power)
         Modulo(left, right) => is_constant(left) && is_constant(right)
+        Abs(base) => is_constant(base)
         Sin(base) => is_constant(base)
         CoSin(base) => is_constant(base)
         Tan(base) => is_constant(base)
@@ -149,6 +155,7 @@ function is_linear(expr::ExprLike)::Bool
         Div(left, right) => is_linear(left) && is_constant(right) && (is_linear(left) || is_linear(right))
         Expon(base, power) => is_linear(base) && is_constant(power)
         Modulo(left, right) => is_linear(left) && is_constant(right) && (is_linear(left) || is_linear(right))
+        Abs(base) => is_constant(base)
         Sin(base) => is_constant(base)
         CoSin(base) => is_constant(base)
         Tan(base) => is_constant(base)
@@ -162,6 +169,7 @@ function round5(num::Real)::Real
     return round(num, digits=5)
 end
 
+# TODO: Fill out this function
 function round5(expr::ExprLike)::ExprLike
     @match expr begin
         Const(value) => Const(round5(value))

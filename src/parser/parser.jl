@@ -95,6 +95,7 @@ end
 function _to_logic(node::ExpressionUnaryOperation)::ExprLike
     @match node.unary_operation begin
         "-" => Neg(_to_logic(node.child))
+        "abs" => Abs(_to_logic(node.child))
         "sin" => Sin(_to_logic(node.child))
         "cos" => CoSin(_to_logic(node.child))
         "tan" => Tan(_to_logic(node.child))

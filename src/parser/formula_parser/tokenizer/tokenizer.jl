@@ -70,6 +70,7 @@ keywords::Dict{String, Type} = Dict([
     ("true",  BooleanToken),
     ("false", BooleanToken),
 
+    ("abs",   ExpressionUnaryOperatorToken),
     ("sin",   ExpressionUnaryOperatorToken),
     ("cos",   ExpressionUnaryOperatorToken),
     ("tan",   ExpressionUnaryOperatorToken),
