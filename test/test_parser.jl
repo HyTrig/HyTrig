@@ -1,7 +1,4 @@
-using Pkg
-
-Pkg.activate("..")
-Pkg.instantiate()
+module TestParser
 
 using Test
 
@@ -93,4 +90,6 @@ using .Parser: parse
                     Strategy_to_State(State_Constraint(Greater(Add(Var(:x), Mul(Var(:y), Var(:z))), Const(0.0))))))
         )
     @test_throws ParseError("Cannot parse empty expressions or strategies.") parse("", Bindings([], [], []), strategy)
+end
+
 end

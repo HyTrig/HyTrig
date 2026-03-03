@@ -1,3 +1,5 @@
+module TestFormulaParser
+
 using Test
 
 include("../src/parser/formula_parser/formula_parser.jl")
@@ -196,4 +198,6 @@ using .FormulaParser
     @test_throws ParseError("Cannot parse tokens between 'true' and '&&'.") parse_formula("true && false", Bindings([], [], []), expression)
     @test_throws ParseError("Cannot parse tokens between 'true' and '&&'.") parse_formula("true && var", Bindings([], [], ["var"]), strategy)
     
+end
+
 end

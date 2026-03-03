@@ -1,3 +1,5 @@
+module TestTokenizer
+
 using Test
 
 include("../src/parser/formula_parser/tokenizer/tokenizer.jl")
@@ -93,4 +95,6 @@ end
     @test_throws TokenizeError("''' is an invalid starting symbol.") tokenize("a'b", Bindings([], [], ["a", "b"]))
     @test_throws TokenizeError("'_' is an invalid starting symbol.") tokenize("a && _b", Bindings([], [], ["a", "b"]))
     @test_throws TokenizeError("'a' is not defined in bindings.") tokenize("a", Bindings([], [], []))
+end
+
 end
