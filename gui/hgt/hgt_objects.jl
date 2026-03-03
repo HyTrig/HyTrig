@@ -245,7 +245,7 @@ function QHGTBranch(branch::GUIBranch)::QHGTBranch
         if isnothing(branch.reaching_trigger)
             ""
         else
-            to_string(branch.reaching_trigger)
+            constraint_to_string(branch.reaching_trigger)
         end,
         trunc(branch.config.global_clock, digits=5),
         JuliaItemModel([QHGTActiveNode(node) for node in branch.active_nodes]),

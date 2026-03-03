@@ -72,7 +72,7 @@ function print_tree(root::Node)
             end
         ActiveNode(_, decision, trigger, _, level, children) =>
             begin
-                res *= "\n$level- Active - Agent: $(decision.first) - Action: $(decision.second) / $(to_string(trigger)) - Location: $(root.config.location.name)\nValuation: $(round5(root.config.valuation)), - Time: $(round5(root.config.global_clock))\nChildren: $(length(children))"
+                res *= "\n$level- Active - Agent: $(decision.first) - Action: $(decision.second) / $(constraint_to_string(trigger)) - Location: $(root.config.location.name)\nValuation: $(round5(root.config.valuation)), - Time: $(round5(root.config.global_clock))\nChildren: $(length(children))"
                 res *= "\n--------------\n"
                 for child in children
                     res *= print_tree(child)
@@ -84,7 +84,7 @@ function print_tree(root::Node)
                     res *= "\n$level- Passive - Location: $(root.config.location.name)\nValuation: $(root.config.valuation), - Time: $(root.config.global_clock)"
                 res *= "\n--------------\n"
                 else
-                    res *= "\n$level- Passive - Agent: $(decision.first) - Trigger: $(to_string(decision.second)) - Location: $(root.config.location.name)\nValuation: $(round5(root.config.valuation)), - Time: $(round5(root.config.global_clock))\nChildren: $(length(children))"
+                    res *= "\n$level- Passive - Agent: $(decision.first) - Trigger: $(constraint_to_string(decision.second)) - Location: $(root.config.location.name)\nValuation: $(round5(root.config.valuation)), - Time: $(round5(root.config.global_clock))\nChildren: $(length(children))"
                 res *= "\n--------------\n"
                 end
                 for child in children

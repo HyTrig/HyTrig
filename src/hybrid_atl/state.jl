@@ -23,7 +23,7 @@ File description.
 """
 
 export State_Formula, State_Location, State_Constraint, State_And, State_Or, State_Not, State_Imply
-export get_all_constraints, formula_to_rect_formula, to_string
+export get_all_constraints, formula_to_rect_formula, state_to_string
 
 abstract type State_Formula <: Logic_Formula end
 
@@ -70,17 +70,17 @@ function formula_to_rect_formula(formula::State_Formula)::State_Formula
         State_Location(_) => formula
         State_Constraint(constraint) => State_Constraint(constraint_to_rect_constraint(constraint))
         State_And(left, right) => State_And(formula_to_rect_formula(left), formula_to_rect_formula(right))
-        _ => throw(ArgumentError("$(to_string(formula)) not a rectangular state formula."))
+        _ => throw(ArgumentError("$(state_to_string(formula)) not a rectangular state formula."))
     end
 end
 
-function to_string(formula::State_Formula)::String
+function state_to_string(formula::State_Formula)::String
     @match formula begin
         State_Location(loc) => String(loc)
-        State_Constraint(constraint) => to_string(constraint)
-        State_And(left, right) => "($(to_string(left)) && $(to_string(right)))"
-        State_Or(left, right) => "($(to_string(left)) || $(to_string(right)))"
-        State_Not(subformula) => "!$(to_string(subformula))"
-        State_Imply(left, right) => "($(to_string(left)) -> $(to_string(right)))"
+        State_Constraint(constraint) => constraint_to_string(constraint)
+        State_And(left, right) => "($(state_to_string(left)) && $(state_to_string(right)))"
+        State_Or(left, right) => "($(state_to_string(left)) || $(state_to_string(right)))"
+        State_Not(subformula) => "!$(state_to_string(subformula))"
+        State_Imply(left, right) => "($(state_to_string(left)) -> $(state_to_string(right)))"
     end
 end

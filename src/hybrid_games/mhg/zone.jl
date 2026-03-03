@@ -22,7 +22,7 @@ File description.
 - Author 2
 """
 
-export Zone, initial_zone, to_string, time_to_invariant, zone_lift, edge_time_interval, zone_shift
+export Zone, initial_zone, zone_to_string, time_to_invariant, zone_lift, edge_time_interval, zone_shift
 
 struct Zone
     location::Location
@@ -40,10 +40,10 @@ Base.:(==)(x::Zone, y::Zone) = (
     all(x_interval == y.interval for (var, x_interval) in x.assignment)
 )
 
-function to_string(zone::Zone)::String
+function zone_to_string(zone::Zone)::String
     text = String(zone.location.name)
     for (var, interval) in zone.assignment
-        text *= "\n   $var -> $(to_string(interval))"
+        text *= "\n   $var -> $(interval_to_string(interval))"
     end
     text
 end

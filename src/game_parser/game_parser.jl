@@ -1,25 +1,10 @@
 """
-TODO: document this file by filling out the form below
-
-    File Name
+    Game Parser
     
-File description.
-
-# Types:
-- `MyType`: Description of MyType.
-
-# Constants:
-- `my_constant::Int`: Description of my_constant.
-
-# Functions:
-- `foo(x::String)::Bool`: Do foo.
-
-# Global variables:
-- `my_global_variable::Int`: Description of my_global_variable.
+This file combines the game parsers for all supported games.
 
 # Authors:
-- Author 1
-- Author 2
+- Moritz Maas
 """
 
 include("parse_hgt_game.jl")

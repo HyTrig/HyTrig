@@ -24,7 +24,7 @@ File description.
 
 export Constraint, Truth, Less, LeQ, Greater, GeQ, Equal, NotEqual, And, Or, Not, Imply
 export RectConstr, RectTrue, RectLess, RectLessEq, RectGrt, RectGrtEq, RectEq, RectAnd
-export to_string, is_closed, get_atomic_constraints, negation_normal_form, get_zero
+export constraint_to_string, is_closed, get_atomic_constraints, negation_normal_form, get_zero
 export constraint_to_rect_constraint, strip_variables, round5
 
 abstract type Constraint end
@@ -117,19 +117,19 @@ struct RectAnd <: RectConstr
     right::RectConstr
 end
 
-function to_string(constraint::Constraint)::String
+function constraint_to_string(constraint::Constraint)::String
     @match constraint begin
         Truth(value) => string(value)
-        Less(left, right) => "($(to_string(left)) < $(to_string(right)))"
-        LeQ(left, right) => "($(to_string(left)) <= $(to_string(right)))"
-        Greater(left, right) => "($(to_string(left)) > $(to_string(right)))"
-        GeQ(left, right) => "($(to_string(left)) >= $(to_string(right)))"
-        Equal(left, right) => "($(to_string(left)) == $(to_string(right)))"
-        NotEqual(left, right) => "($(to_string(left)) != $(to_string(right)))"
-        And(left, right) => "($(to_string(left))) && ($(to_string(right)))"
-        Or(left, right) => "($(to_string(left))) || ($(to_string(right)))"
-        Not(c) => "!$(to_string(c))"
-        Imply(left, right) => "($(to_string(left))) -> ($(to_string(right)))"
+        Less(left, right) => "($(expression_to_string(left)) < $(expression_to_string(right)))"
+        LeQ(left, right) => "($(expression_to_string(left)) <= $(expression_to_string(right)))"
+        Greater(left, right) => "($(expression_to_string(left)) > $(expression_to_string(right)))"
+        GeQ(left, right) => "($(expression_to_string(left)) >= $(expression_to_string(right)))"
+        Equal(left, right) => "($(expression_to_string(left)) == $(expression_to_string(right)))"
+        NotEqual(left, right) => "($(expression_to_string(left)) != $(expression_to_string(right)))"
+        And(left, right) => "($(constraint_to_string(left))) && ($(constraint_to_string(right)))"
+        Or(left, right) => "($(constraint_to_string(left))) || ($(constraint_to_string(right)))"
+        Not(c) => "!$(constraint_to_string(c))"
+        Imply(left, right) => "($(constraint_to_string(left))) -> ($(constraint_to_string(right)))"
     end
 end
 
@@ -234,7 +234,7 @@ function constraint_to_rect_constraint(constr::Constraint)::RectConstr
         Equal(Neg(val::Const), right::Var) => RectEq(right.name, - val.value)
 
         And(left, right) => RectAnd(constraint_to_rect_constraint(left), constraint_to_rect_constraint(right))
-        _ => throw(ArgumentError("$(to_string(constr)) not a rectangular constraint."))
+        _ => throw(ArgumentError("$(constraint_to_string(constr)) not a rectangular constraint."))
     end
 end
 

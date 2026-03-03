@@ -24,7 +24,7 @@ File description.
 
 export Variable
 export ExprLike, Const, Var, Neg, Add, Mul, Sub, Div, Expon, Modulo, Sin, CoSin, Tan, CoTan, Min, Max
-export to_string, is_constant, is_linear, get_all_variables, round5
+export expression_to_string, is_constant, is_linear, get_all_variables, round5
 
 const Variable = Symbol
 
@@ -98,23 +98,23 @@ struct Max <: ExprLike
     right::ExprLike
 end
 
-function to_string(expr::ExprLike)::String
+function expression_to_string(expr::ExprLike)::String
     @match expr begin
         Const(value) => "$value"
         Var(name) => String(name)
-        Neg(expr1) => "-$(to_string(expr1))"
-        Add(left, right) => "($(to_string(left)) + $(to_string(right)))"
-        Mul(left, right) => "($(to_string(left)) * $(to_string(right)))"
-        Sub(left, right) => "($(to_string(left)) - $(to_string(right)))"
-        Div(left, right) => "($(to_string(left)) / $(to_string(right)))"
-        Expon(base, power) => "($(to_string(base)) ^ $(to_string(power)))"
-        Modulo(left, right) => "($(to_string(left)) % $(to_string(right)))"
-        Sin(base) => "sin($(to_string(base)))"
-        CoSin(base) => "cos($(to_string(base)))"
-        Tan(base) => "tan($(to_string(base)))"
-        CoTan(base) => "cot($(to_string(base)))"
-        Min(left, right) => "min($(to_string(left)), $(to_string(right)))"
-        Max(left, right) => "max($(to_string(left)), $(to_string(right)))"
+        Neg(expr1) => "-$(expression_to_string(expr1))"
+        Add(left, right) => "($(expression_to_string(left)) + $(expression_to_string(right)))"
+        Mul(left, right) => "($(expression_to_string(left)) * $(expression_to_string(right)))"
+        Sub(left, right) => "($(expression_to_string(left)) - $(expression_to_string(right)))"
+        Div(left, right) => "($(expression_to_string(left)) / $(expression_to_string(right)))"
+        Expon(base, power) => "($(expression_to_string(base)) ^ $(expression_to_string(power)))"
+        Modulo(left, right) => "($(expression_to_string(left)) % $(expression_to_string(right)))"
+        Sin(base) => "sin($(expression_to_string(base)))"
+        CoSin(base) => "cos($(expression_to_string(base)))"
+        Tan(base) => "tan($(expression_to_string(base)))"
+        CoTan(base) => "cot($(expression_to_string(base)))"
+        Min(left, right) => "min($(expression_to_string(left)), $(expression_to_string(right)))"
+        Max(left, right) => "max($(expression_to_string(left)), $(expression_to_string(right)))"
     end
 end
 

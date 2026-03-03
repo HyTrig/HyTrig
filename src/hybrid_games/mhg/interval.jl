@@ -22,7 +22,7 @@ File description.
 - Author 2
 """
 
-export Interval, to_string, in_interval, is_empty, empty_interval, full_interval, intersection
+export Interval, interval_to_string, in_interval, is_empty, empty_interval, full_interval, intersection
 export MonotonError, Monoton, positive, negative, not_monoton, monoton_interval
 export IntervalAssignment, constraint_to_assignment
 
@@ -39,7 +39,7 @@ Base.:(==)(x::Interval, y::Interval) = (
     x.left_open == y.left_open && x.right_open == y.right_open
 )
 
-function to_string(interval::Interval)::String
+function interval_to_string(interval::Interval)::String
     res = if interval.left_open "(" else "[" end
     res *= "$(interval.left), $(interval.right)"
     res *= if interval.right_open ")" else "]" end
@@ -48,11 +48,11 @@ end
 
 function in_interval(num::Real, interval::Interval)::Bool
     if num == interval.left 
-        ! left_open
+        !interval.left_open
     elseif num == interval.right
-        ! right_open
+        !interval.right_open
     else
-        left < num < right
+        interval.left < num < interval.right
     end
 end
 
@@ -84,7 +84,7 @@ function intersection(interval_1::Interval, interval_2::Interval)::Interval
         left_open = interval_1.left_open || interval_2.left_open
     end
     if interval_1.right < interval_2.right 
-        right = interval_1.left
+        right = interval_1.right
         right_open = interval_1.right_open
     elseif interval_2.right < interval_1.right
         right = interval_2.right

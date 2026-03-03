@@ -1,30 +1,26 @@
 """
-TODO: document this file by filling out the form below
-
-    File Name
+    HGT Game Parser
     
-File description.
-
-# Types:
-- `MyType`: Description of MyType.
-
-# Constants:
-- `my_constant::Int`: Description of my_constant.
+This file contains the functions to parse a JSON file containing a game description of a Hybrid Game with Triggers.
 
 # Functions:
-- `foo(x::String)::Bool`: Do foo.
-
-# Global variables:
-- `my_global_variable::Int`: Description of my_global_variable.
+- `parse_hgt_game(hytrig_file::String)::Tuple{HGT_Game, Termination_Conditions, Vector{Strategy_Formula}, Vector{String}}`: Parse a HGT game from a JSON file.
 
 # Authors:
-- Author 1
-- Author 2
+- Moritz Maas
 """
 
 export parse_hgt_game
 
-function parse_hgt_game(hytrig_file::String)
+"""
+    parse_hgt_game(hytrig_file::String)::Tuple{HGT_Game, Termination_Conditions, Vector{Strategy_Formula}, Vector{String}}
+
+Parse a HGT game from a JSON file.
+
+# Arguments
+- `hytrig_file::String`: Path to the JSON file containing the game description.
+"""
+function parse_hgt_game(hytrig_file::String)::Tuple{HGT_Game, Termination_Conditions, Vector{Strategy_Formula}, Vector{String}}
     data = open(hytrig_file,"r") do f
         JSON3.read(f)
     end

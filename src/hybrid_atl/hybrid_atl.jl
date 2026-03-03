@@ -28,7 +28,7 @@ using DataStructures, Match, Reexport
 
 include("../hybrid_games/hybrid_games.jl")
 @reexport using .HybridGames
-import .HybridGames: round5, to_string
+import .HybridGames: round5
 
 export Logic_Formula, Termination_Conditions, union_safe
 

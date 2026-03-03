@@ -38,9 +38,9 @@ function READ_USER_FILE()
             game, termination_conditions, queries, queries_text = parse_hgt_game(file_name)
         else
             game, termination_conditions, queries, queries_text = parse_mhg_game(file_name)
-            println(to_string(initial_zone(game)))
+            println(zone_to_string(initial_zone(game)))
             for edge in game.initial_location.edges
-               println(to_string(edge_time_interval(initial_zone(game), edge))) 
+               println(interval_to_string(edge_time_interval(initial_zone(game), edge))) 
             end
             return
         end
