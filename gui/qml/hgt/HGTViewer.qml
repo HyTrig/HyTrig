@@ -28,6 +28,7 @@ GameViewer {
     readonly property real node_height: 300
     readonly property color passive_node_color: "#4664aa"
     readonly property color active_node_color: main_window.Material.theme === Material.Dark ? "#004f44" : '#00ceb2'
+    readonly property color end_node_color: Material.color(Material.Red)
     readonly property color trigger_node_color: "#df9b1b"
 
     reset: function() {
@@ -112,8 +113,8 @@ GameViewer {
 
                 anchors.fill: parent
                 anchors.margins: 10
-                anchors.topMargin: 25
-                anchors.bottomMargin: 25
+                anchors.topMargin: 40
+                anchors.bottomMargin: 40
 
                 Shape {
                     id: time_line

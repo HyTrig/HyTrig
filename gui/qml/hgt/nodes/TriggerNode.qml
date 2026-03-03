@@ -64,6 +64,32 @@ Item {
         border.color: trigger_node_color
         border.width: 2
 
+        readonly property list<Item> node_info: [
+            Label {
+                width: node.width
+                text: qsTr("Agent: " + agent)
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                wrapMode: Text.Wrap
+            },
+            Label {
+                width: node.width
+                text: qsTr("Trigger: " + trigger)
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                wrapMode: Text.Wrap
+            }
+        ]
+        readonly property list<Item> initial_node_info: [
+            Label {
+                width: node.width
+                text: qsTr("Empty Trigger")
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                wrapMode: Text.Wrap
+            }
+        ]
+
         Column {
 
             id: node_property_list
@@ -71,21 +97,11 @@ Item {
             anchors.centerIn: parent
             spacing: 5
 
-            Label {
-                width: parent.width
-                text: qsTr("Agent: " + agent)
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                wrapMode: Text.Wrap
-            }
-
-            Label {
-                width: parent.width
-                text: qsTr("Trigger: " + trigger)
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                wrapMode: Text.Wrap
-            }
+            children: (agent != "" ? [
+                ...node.node_info
+            ] : [
+                ...node.initial_node_info
+            ])
 
         }
 
