@@ -23,7 +23,7 @@ File description.
 """
 
 export Strategy_Formula, Strategy_to_State, Exist_Always, Exist_Eventually, All_Always, All_Eventually
-export Strategy_And, Strategy_Or, Strategy_Not, Strategy_Imply, Strategy_Deadlock
+# export Strategy_And, Strategy_Or, Strategy_Not, Strategy_Imply, Strategy_Deadlock
 export get_all_constraints, formula_to_rect_formula
 
 abstract type Strategy_Formula <: Logic_Formula end
@@ -39,7 +39,7 @@ Base.:(==)(x::Strategy_to_State, y::Strategy_to_State) = (
 
 struct Exist_Always <: Strategy_Formula
     agents::Vector{Agent}
-    formula::Strategy_Formula
+    formula::State_Formula
 end
 
 # redefine comparison
@@ -50,7 +50,7 @@ Base.:(==)(x::Exist_Always, y::Exist_Always) = (
 
 struct Exist_Eventually <: Strategy_Formula
     agents::Vector{Agent}
-    formula::Strategy_Formula
+    formula::State_Formula
 end
 
 # redefine comparison
@@ -61,7 +61,7 @@ Base.:(==)(x::Exist_Eventually, y::Exist_Eventually) = (
 
 struct All_Always <: Strategy_Formula
     agents::Vector{Agent}
-    formula::Strategy_Formula
+    formula::State_Formula
 end
 
 # redefine comparison
@@ -72,7 +72,7 @@ Base.:(==)(x::All_Always, y::All_Always) = (
 
 struct All_Eventually <: Strategy_Formula
     agents::Vector{Agent}
-    formula::Strategy_Formula
+    formula::State_Formula
 end
 
 # redefine comparison
@@ -81,45 +81,45 @@ Base.:(==)(x::All_Eventually, y::All_Eventually) = (
     x.formula == y.formula
 )
 
-struct Strategy_And <: Strategy_Formula
-    left::Strategy_Formula
-    right::Strategy_Formula
-end
+# struct Strategy_And <: Strategy_Formula
+#     left::Strategy_Formula
+#     right::Strategy_Formula
+# end
 
-# redefine comparison
-Base.:(==)(x::Strategy_And, y::Strategy_And) = (
-    x.left == y.left &&
-    x.right == y.right
-)
+# # redefine comparison
+# Base.:(==)(x::Strategy_And, y::Strategy_And) = (
+#     x.left == y.left &&
+#     x.right == y.right
+# )
 
-struct Strategy_Or <: Strategy_Formula
-    left::Strategy_Formula
-    right::Strategy_Formula
-end
+# struct Strategy_Or <: Strategy_Formula
+#     left::Strategy_Formula
+#     right::Strategy_Formula
+# end
 
 
-struct Strategy_Not <: Strategy_Formula
-    formula::Strategy_Formula
-end
+# struct Strategy_Not <: Strategy_Formula
+#     formula::Strategy_Formula
+# end
 
-# redefine comparison
-Base.:(==)(x::Strategy_Not, y::Strategy_Not) = (
-    x.formula == y.formula
-)
+# # redefine comparison
+# Base.:(==)(x::Strategy_Not, y::Strategy_Not) = (
+#     x.formula == y.formula
+# )
 
-struct Strategy_Imply <: Strategy_Formula
-    left::Strategy_Formula
-    right::Strategy_Formula
-end
+# struct Strategy_Imply <: Strategy_Formula
+#     left::Strategy_Formula
+#     right::Strategy_Formula
+# end
 
-# redefine comparison
-Base.:(==)(x::Strategy_Imply, y::Strategy_Imply) = (
-    x.left == y.left &&
-    x.right == y.right
-)
+# # redefine comparison
+# Base.:(==)(x::Strategy_Imply, y::Strategy_Imply) = (
+#     x.left == y.left &&
+#     x.right == y.right
+# )
 
-struct Strategy_Deadlock <: Strategy_Formula
-end
+# struct Strategy_Deadlock <: Strategy_Formula
+# end
 
 function get_all_constraints(formula::Strategy_Formula)::Vector{Constraint}
     @match formula begin
@@ -128,11 +128,11 @@ function get_all_constraints(formula::Strategy_Formula)::Vector{Constraint}
         Exist_Eventually(_, f) => get_all_constraints(f)
         All_Always(_, f) => get_all_constraints(f)
         All_Eventually(_, f) => get_all_constraints(f)
-        Strategy_And(left, right) => get_all_constraints(left) ∪ get_all_constraints(right)
-        Strategy_Or(left, right) => get_all_constraints(left) ∪ get_all_constraints(right)
-        Strategy_Not(f) => get_all_constraints(f)
-        Strategy_Imply(left, right) => get_all_constraints(left) ∪ get_all_constraints(right)
-        Strategy_Deadlock() => Vector{Constraint}()
+        # Strategy_And(left, right) => get_all_constraints(left) ∪ get_all_constraints(right)
+        # Strategy_Or(left, right) => get_all_constraints(left) ∪ get_all_constraints(right)
+        # Strategy_Not(f) => get_all_constraints(f)
+        # Strategy_Imply(left, right) => get_all_constraints(left) ∪ get_all_constraints(right)
+        # Strategy_Deadlock() => Vector{Constraint}()
     end
 end
 
@@ -147,10 +147,10 @@ function formula_to_rect_formula(formula::Strategy_Formula)::Strategy_Formula
         Exist_Eventually(a, f) => Exist_Eventually(a, formula_to_rect_formula(f))
         All_Always(a, f) => All_Always(a, formula_to_rect_formula(f))
         All_Eventually(a, f) => All_Eventually(a, formula_to_rect_formula(f))
-        Strategy_And(left, right) => Strategy_And(formula_to_rect_formula(left), formula_to_rect_formula(right))
-        Strategy_Or(left, right) => Strategy_Or(formula_to_rect_formula(left), formula_to_rect_formula(right))
-        Strategy_Not(f) => Strategy_Not(formula_to_rect_formula(f))
-        Strategy_Imply(left, right) => Strategy_Imply(formula_to_rect_formula(left), formula_to_rect_formula(right))
-        Strategy_Deadlock() => Strategy_Deadlock()
+        # Strategy_And(left, right) => Strategy_And(formula_to_rect_formula(left), formula_to_rect_formula(right))
+        # Strategy_Or(left, right) => Strategy_Or(formula_to_rect_formula(left), formula_to_rect_formula(right))
+        # Strategy_Not(f) => Strategy_Not(formula_to_rect_formula(f))
+        # Strategy_Imply(left, right) => Strategy_Imply(formula_to_rect_formula(left), formula_to_rect_formula(right))
+        # Strategy_Deadlock() => Strategy_Deadlock()
     end
 end

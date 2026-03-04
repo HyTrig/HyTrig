@@ -60,7 +60,7 @@ function READ_USER_FILE()
 
         t2 = time();
 
-        nodes_count, passive_nodes = count_nodes(game_tree), count_passive_nodes(game_tree)
+        nodes_count = count_nodes(game_tree)
         tree_depth = depth_of_tree(game_tree)
         game_time = max_time(game_tree)
 
