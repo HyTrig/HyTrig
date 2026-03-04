@@ -38,6 +38,8 @@ const Assignment = OrderedDict{Variable, ExprLike}
 const Valuation = OrderedDict{Variable, Real}
 const Decision = Pair{Agent, Action}
 
+include("evaluation.jl")
+
 abstract type Location end
 abstract type Edge end
 abstract type Game end
