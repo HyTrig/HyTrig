@@ -29,6 +29,11 @@ This file contains all definitions needed to parse tokens to an AST.
 - `ExpressionUnaryOperation`: Node for unary operations on expressions.
 - `ExpressionBinaryOperation`: Node for binary operations on expressions.
 
+# Constants:
+- `ConstantOperation`: Union of all types of operations with arity 0.
+- `UnaryOperation`: Union of all types of operations with arity 1.
+- `BinaryOperation`: Union of all types of operations with arity 2.
+
 The types are hierarchically ordered as follows:
     ASTNode
     |-- AgentList
@@ -333,8 +338,19 @@ Base.:(==)(x::Quantifier, y::Quantifier) = (
 )
 
 # group operation types
+"""
+All types of operations with arity 0.
+"""
 const ConstantOperation = Union{LocationNode, StrategyConstant, ConstraintConstant, ExpressionConstant, VariableNode}
+
+"""
+All types of operations with arity 1.
+"""
 const UnaryOperation = Union{StrategyUnaryOperation, StateUnaryOperation, ConstraintUnaryOperation, ExpressionUnaryOperation}
+
+"""
+All types of operations with arity 2.
+"""
 const BinaryOperation = Union{StrategyBinaryOperation, StateBinaryOperation, ConstraintBinaryOperation, ExpressionBinaryOperation}
 
 """

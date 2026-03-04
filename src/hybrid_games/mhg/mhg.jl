@@ -26,6 +26,7 @@ export MHG_Location, MHG_Edge, MHG_Game
 
 include("interval.jl")
 
+# TODO: add type documentation
 struct MHG_Location <: Location
     name::Symbol
     invariant::RectConstr
@@ -39,6 +40,7 @@ struct MHG_Location <: Location
     end
 end
 
+# TODO: add type documentation
 struct MHG_Edge <: Edge
     name::Symbol
     start_location::MHG_Location
@@ -48,6 +50,7 @@ struct MHG_Edge <: Edge
     jump::IntervalAssignment
 end
 
+# TODO: add type documentation
 struct MHG_Game <: Game
     locations::Vector{MHG_Location}
     initial_location::MHG_Location

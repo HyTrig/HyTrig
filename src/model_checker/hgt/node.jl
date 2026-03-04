@@ -26,15 +26,17 @@ export Node, RootNode, ActiveNode, PassiveNode, EndNode
 export print_tree, count_nodes, count_passive_nodes, depth_of_tree, max_time
 export sort_children_by_clock!, sort_children_by_clock_agent
 
-abstract type Node
-end
+# abstract type for nodes in the game tree
+abstract type Node end
 
+# TODO: add type documentation
 struct RootNode <: Node
     config::Configuration
     level::Int32
     children::Vector{Node}
 end
 
+# TODO: add type documentation
 struct ActiveNode <: Node
     parent::Node
     reaching_decision::Pair{Agent, Action}
@@ -44,6 +46,7 @@ struct ActiveNode <: Node
     children::Vector{Node}
 end
 
+# TODO: add type documentation
 struct PassiveNode <: Node
     parent::Node
     reaching_decision::Union{Pair{Agent, Constraint}, Nothing}
@@ -52,6 +55,7 @@ struct PassiveNode <: Node
     children::Vector{Node}
 end
 
+# TODO: add type documentation
 struct EndNode <: Node
     parent::Node
     config::Configuration
@@ -59,6 +63,7 @@ struct EndNode <: Node
     children::Vector{Node}
 end
 
+# TODO: add function documentation
 function print_tree(root::Node)
     res = ""
     @match root begin
@@ -103,6 +108,7 @@ function print_tree(root::Node)
     return res
 end
 
+# TODO: add function documentation
 function count_nodes(root::Node)::Int
     @match root begin
         RootNode(_, _, []) => 1
@@ -116,6 +122,7 @@ function count_nodes(root::Node)::Int
     end
 end
 
+# TODO: add function documentation
 function count_passive_nodes(root::Node)::Int
     @match root begin
         RootNode(_, _, []) => 0
@@ -129,6 +136,7 @@ function count_passive_nodes(root::Node)::Int
     end
 end
 
+# TODO: add function documentation
 function depth_of_tree(root::Node)::Int
     @match root begin
         RootNode(_, _, []) => 1
@@ -142,7 +150,7 @@ function depth_of_tree(root::Node)::Int
     end
 end
 
-
+# TODO: add function documentation
 function max_time(root::Node)::Real
     @match root begin
         RootNode(_, _, []) => round5(root.config.global_clock)
@@ -156,6 +164,7 @@ function max_time(root::Node)::Real
     end
 end
 
+# TODO: add function documentation
 function child_time(child::Node)::Real
     @match child begin
         RootNode(_, _, _) => 0
@@ -166,11 +175,13 @@ function child_time(child::Node)::Real
     end
 end
 
+# TODO: add function documentation
 function sort_children_by_clock!(root::Node)
     # sorts children by global clock, and if two children have the same clock, the one with the agent's decision comes last
     sort!(root.children, by = child -> child_time(child))
 end
 
+# TODO: add function documentation
 function sort_children_by_clock_agent(root::Node, agents::Vector{Agent})
     # sorts children by global clock, and if two children have the same clock, the one with the agent's decision comes last
     sort(root.children, by = child -> (child_time(child), child.reaching_decision.first in agents))

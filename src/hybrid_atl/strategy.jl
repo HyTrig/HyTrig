@@ -26,8 +26,10 @@ export Strategy_Formula, Strategy_to_State, Exist_Always, Exist_Eventually, All_
 export Strategy_And, Strategy_Or, Strategy_Not, Strategy_Imply, Strategy_Deadlock
 export get_all_constraints, formula_to_rect_formula
 
+# abstract type for all strategy formulas
 abstract type Strategy_Formula <: Logic_Formula end
 
+# TODO: add type documentation
 struct Strategy_to_State <: Strategy_Formula
     formula::State_Formula
 end
@@ -37,6 +39,7 @@ Base.:(==)(x::Strategy_to_State, y::Strategy_to_State) = (
     x.formula == y.formula
 )
 
+# TODO: add type documentation
 struct Exist_Always <: Strategy_Formula
     agents::Vector{Agent}
     formula::Strategy_Formula
@@ -48,6 +51,7 @@ Base.:(==)(x::Exist_Always, y::Exist_Always) = (
     x.formula == y.formula
 )
 
+# TODO: add type documentation
 struct Exist_Eventually <: Strategy_Formula
     agents::Vector{Agent}
     formula::Strategy_Formula
@@ -59,6 +63,7 @@ Base.:(==)(x::Exist_Eventually, y::Exist_Eventually) = (
     x.formula == y.formula
 )
 
+# TODO: add type documentation
 struct All_Always <: Strategy_Formula
     agents::Vector{Agent}
     formula::Strategy_Formula
@@ -70,6 +75,7 @@ Base.:(==)(x::All_Always, y::All_Always) = (
     x.formula == y.formula
 )
 
+# TODO: add type documentation
 struct All_Eventually <: Strategy_Formula
     agents::Vector{Agent}
     formula::Strategy_Formula
@@ -81,6 +87,7 @@ Base.:(==)(x::All_Eventually, y::All_Eventually) = (
     x.formula == y.formula
 )
 
+# TODO: add type documentation
 struct Strategy_And <: Strategy_Formula
     left::Strategy_Formula
     right::Strategy_Formula
@@ -92,12 +99,13 @@ Base.:(==)(x::Strategy_And, y::Strategy_And) = (
     x.right == y.right
 )
 
+# TODO: add type documentation
 struct Strategy_Or <: Strategy_Formula
     left::Strategy_Formula
     right::Strategy_Formula
 end
 
-
+# TODO: add type documentation
 struct Strategy_Not <: Strategy_Formula
     formula::Strategy_Formula
 end
@@ -107,6 +115,7 @@ Base.:(==)(x::Strategy_Not, y::Strategy_Not) = (
     x.formula == y.formula
 )
 
+# TODO: add type documentation
 struct Strategy_Imply <: Strategy_Formula
     left::Strategy_Formula
     right::Strategy_Formula
@@ -118,9 +127,11 @@ Base.:(==)(x::Strategy_Imply, y::Strategy_Imply) = (
     x.right == y.right
 )
 
+# TODO: add type documentation
 struct Strategy_Deadlock <: Strategy_Formula
 end
 
+# TODO: add function documentation
 function get_all_constraints(formula::Strategy_Formula)::Vector{Constraint}
     @match formula begin
         Strategy_to_State(f) => get_all_constraints(f)
@@ -136,10 +147,12 @@ function get_all_constraints(formula::Strategy_Formula)::Vector{Constraint}
     end
 end
 
+# TODO: add function documentation
 function get_all_constraints(formulae::Vector{Logic_Formula})::Vector{Constraint}
     return union_safe([get_all_constraints(formula) for formula in formulae])
 end
 
+# TODO: add function documentation
 function formula_to_rect_formula(formula::Strategy_Formula)::Strategy_Formula
     @match formula begin
         Strategy_to_State(f) => Strategy_to_State(formula_to_rect_formula(f))

@@ -22,6 +22,7 @@ File description.
 - Author 2
 """
 
+# TODO: add function documentation
 function continuous_transition(start_config::Configuration, time::Real)::Configuration
     Configuration(start_config.location, 
                   continuous_evolution(start_config.valuation, start_config.location.flow, time),
@@ -29,6 +30,7 @@ function continuous_transition(start_config::Configuration, time::Real)::Configu
                  )
 end
 
+# TODO: add function documentation
 function discrete_transition(start_config::Configuration, edge::Edge)::Configuration
     Configuration(edge.target_location, 
                   discrete_evolution(start_config.valuation, edge.jump),
@@ -36,10 +38,12 @@ function discrete_transition(start_config::Configuration, edge::Edge)::Configura
                  )
 end
 
+# TODO: add function documentation
 function enabled(edge::HGT_Edge, valuation::Valuation)::Bool
     return evaluate(edge.guard, valuation) && evaluate(edge.target_location.invariant, discrete_evolution(valuation, edge.jump))
 end
 
+# TODO: add function documentation
 function select_edges(config, decision::Decision)::Vector{HGT_Edge}
     selected_edges = Vector{HGT_Edge}()
     for edge in config.location.edges

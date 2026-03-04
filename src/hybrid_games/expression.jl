@@ -26,82 +26,101 @@ export Variable
 export ExprLike, Const, Var, Neg, Add, Mul, Sub, Div, Expon, Modulo, Abs, Sin, CoSin, Tan, CoTan, Min, Max
 export expression_to_string, is_constant, is_linear, get_all_variables, round5
 
+# TODO: add constant documentation
 const Variable = Symbol
 
+# abstract type for expressions
 abstract type ExprLike end
 
+# TODO: add type documentation
 struct Const <: ExprLike
     value::Real
 end
 
+# TODO: add type documentation
 struct Var <: ExprLike
     name::Variable
 end
 
+# TODO: add type documentation
 struct Neg <: ExprLike
     expr::ExprLike
 end
 
+# TODO: add type documentation
 struct Add <: ExprLike
     left::ExprLike
     right::ExprLike
 end
 
+# TODO: add type documentation
 struct Mul <: ExprLike
     left::ExprLike
     right::ExprLike
 end
 
+# TODO: add type documentation
 struct Sub <: ExprLike
     left::ExprLike
     right::ExprLike
 end
 
+# TODO: add type documentation
 struct Div <: ExprLike
     left::ExprLike
     right::ExprLike
 end
 
+# TODO: add type documentation
 struct Expon <: ExprLike
     base::ExprLike
     power::ExprLike
 end
 
+# TODO: add type documentation
 struct Modulo <: ExprLike
     left::ExprLike
     right::ExprLike
 end
 
+# TODO: add type documentation
 struct Abs <: ExprLike
     expr::ExprLike
 end
 
+# TODO: add type documentation
 struct Sin <: ExprLike
     base::ExprLike
 end
 
+# TODO: add type documentation
 struct CoSin <: ExprLike
     base::ExprLike
 end
 
+# TODO: add type documentation
 struct Tan <: ExprLike
     base::ExprLike
 end
 
+# TODO: add type documentation
 struct CoTan <: ExprLike
     base::ExprLike
 end
 
+# TODO: add type documentation
 struct Min <: ExprLike
     left::ExprLike
     right::ExprLike
 end
 
+# TODO: add type documentation
 struct Max <: ExprLike
     left::ExprLike
     right::ExprLike
 end
 
+# TODO: add function documentation
 function expression_to_string(expr::ExprLike)::String
     @match expr begin
         Const(value) => "$value"
@@ -123,6 +142,7 @@ function expression_to_string(expr::ExprLike)::String
     end
 end
 
+# TODO: add function documentation
 function is_constant(expr::ExprLike)::Bool
     @match expr begin
         Const(_) => true
@@ -144,6 +164,7 @@ function is_constant(expr::ExprLike)::Bool
     end
 end
 
+# TODO: add function documentation
 function is_linear(expr::ExprLike)::Bool
     @match expr begin
         Const(_) => true
@@ -165,11 +186,12 @@ function is_linear(expr::ExprLike)::Bool
     end
 end
 
+# TODO: add function documentation
 function round5(num::Real)::Real
     return round(num, digits=5)
 end
 
-# TODO: Fill out this function
+# TODO: add function documentation
 function round5(expr::ExprLike)::ExprLike
     @match expr begin
         Const(value) => Const(round5(value))

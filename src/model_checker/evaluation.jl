@@ -25,14 +25,17 @@ File description.
 export evaluate_state
 export Assignment
 
+# TODO: add function documentation
 function get_satisfied_constraints(constraints, valuation::Valuation)
     filter(constraint -> evaluate(constraint, valuation), constraints)
 end
 
+# TODO: add function documentation
 function get_unsatisfied_constraints(constraints, valuation::Valuation)
     filter(constraint -> ! evaluate(constraint, valuation), constraints)
 end
 
+# TODO: add function documentation
 function evaluate_state(formula::State_Formula, state::State)::Bool
     @match formula begin
         State_Location(loc) => loc == state.location
@@ -44,6 +47,7 @@ function evaluate_state(formula::State_Formula, state::State)::Bool
     end
 end
 
+# TODO: add function documentation
 function is_closed(assignment::Assignment)::Tuple{Bool, Valuation}
     valuation = OrderedDict{Variable, Real}()
     changed = true

@@ -22,6 +22,7 @@ File description.
 - Author 2
 """
 
+# TODO: add function documentation
 function continuous_evolution(valuation::Valuation, 
                               flow::Assignment,
                               time::Float64)::Valuation
@@ -43,6 +44,7 @@ function continuous_evolution(valuation::Valuation,
     return final_valuation, round5(sol.t[end])
 end
 
+# TODO: add function documentation
 function discrete_evolution(valuation::Valuation, 
                             jump::Assignment)::Valuation
     new_valuation::Valuation = copy(valuation)

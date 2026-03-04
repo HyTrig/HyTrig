@@ -27,96 +27,117 @@ export RectConstr, RectTrue, RectLess, RectLessEq, RectGrt, RectGrtEq, RectEq, R
 export constraint_to_string, is_closed, get_atomic_constraints, negation_normal_form, get_zero
 export constraint_to_rect_constraint, strip_variables, round5
 
+# abstract type for all constraints
 abstract type Constraint end
 
+# TODO: add type documentation
 struct Truth <: Constraint
     value::Bool
 end
 
+# TODO: add type documentation
 struct Less <: Constraint
     left::ExprLike
     right::ExprLike
 end
 
+# TODO: add type documentation
 struct LeQ <: Constraint
     left::ExprLike
     right::ExprLike
 end
 
+# TODO: add type documentation
 struct Greater <: Constraint
     left::ExprLike
     right::ExprLike
 end
 
+# TODO: add type documentation
 struct GeQ <: Constraint
     left::ExprLike
     right::ExprLike
 end
 
+# TODO: add type documentation
 struct Equal <: Constraint
     left::ExprLike
     right::ExprLike
 end
 
+# TODO: add type documentation
 struct NotEqual <: Constraint
     left::ExprLike
     right::ExprLike
 end
 
+# TODO: add type documentation
 struct And <: Constraint
     left::Constraint
     right::Constraint
 end
 
+# TODO: add type documentation
 struct Or <: Constraint
     left::Constraint
     right::Constraint
 end
 
+# TODO: add type documentation
 struct Not <: Constraint
     constraint::Constraint
 end
 
+# TODO: add type documentation
 struct Imply <: Constraint
     left::Constraint
     right::Constraint
 end
 
+# abstract type for rectangular constraints
 abstract type RectConstr <: Constraint end
 
+# TODO: add type documentation
 struct RectTrue <: RectConstr
 end
 
+# TODO: add type documentation
 struct RectLess <: RectConstr
     var::Variable
     value::Real
 end
 
+# TODO: add type documentation
 struct RectLessEq <: RectConstr
     var::Variable
     value::Real
 end
 
+# TODO: add type documentation
 struct RectGrt <: RectConstr
     var::Variable
     value::Real
 end
 
+# TODO: add type documentation
 struct RectGrtEq <: RectConstr
     var::Variable
     value::Real
 end
 
+# TODO: add type documentation
 struct RectEq <: RectConstr
     var::Variable
     value::Real
 end
 
+# TODO: add type documentation
 struct RectAnd <: RectConstr
     left::RectConstr
     right::RectConstr
 end
 
+# TODO: add function documentation
 function constraint_to_string(constraint::Constraint)::String
     @match constraint begin
         Truth(value) => string(value)
@@ -133,6 +154,7 @@ function constraint_to_string(constraint::Constraint)::String
     end
 end
 
+# TODO: add function documentation
 function is_closed(constraint::Constraint)::Bool
     @match constraint begin
         Truth(_) => true
@@ -149,6 +171,7 @@ function is_closed(constraint::Constraint)::Bool
     end
 end
 
+# TODO: add function documentation
 function get_atomic_constraints(constraint::Constraint)::Vector{Constraint}
     @match constraint begin
         Truth(_) => [constraint]
@@ -165,6 +188,7 @@ function get_atomic_constraints(constraint::Constraint)::Vector{Constraint}
     end
 end
 
+# TODO: add function documentation
 function negation_normal_form(constraint::Constraint)::Constraint
     @match constraint begin
         Not(Not(c)) => negation_normal_form(c)
@@ -180,6 +204,7 @@ function negation_normal_form(constraint::Constraint)::Constraint
     end
 end
 
+# TODO: add function documentation
 function get_zero(constraint::Constraint)::Vector{ExprLike}
     @match constraint begin
         Truth(true) => ExprLike[Const(0)]
@@ -197,14 +222,17 @@ function get_zero(constraint::Constraint)::Vector{ExprLike}
     end
 end
 
+# TODO: add function documentation
 function get_zero(constraints)::Vector{ExprLike}
     return union_safe([get_zero(constr) for constr in constraints])
 end
 
+# TODO: add type documentation
 struct RectConstrError <: Exception
     msg::AbstractString
 end
 
+# TODO: add function documentation
 function constraint_to_rect_constraint(constr::Constraint)::RectConstr
     @match constr begin
         Truth(true) => RectTrue()
@@ -238,6 +266,7 @@ function constraint_to_rect_constraint(constr::Constraint)::RectConstr
     end
 end
 
+# TODO: add function documentation
 function strip_variables(constr::RectConstr, variables::Vector{Variable})::RectConstr
     @match constr begin
         RectTrue() => constr
@@ -250,6 +279,7 @@ function strip_variables(constr::RectConstr, variables::Vector{Variable})::RectC
     end
 end
 
+# TODO: add function documentation
 function round5(constraint::Constraint)::Constraint
     @match constraint begin
         Truth(value) => Truth(value)

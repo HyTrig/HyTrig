@@ -23,6 +23,7 @@ This file contains all grammar rules needed to parse a strategy formula.
 - `constraint_operator_strength`: Operator binding strength for constraints.
 - `strategy_operator_strength`: Operator binding strength for strategies.
 - `operator_type_to_strength`: Maps types of operators to their strength rankings.
+- `level_to_grammar`: A map from parse levels to their corresponding grammars.
 
 # Authors:
 - Moritz Maas
@@ -51,9 +52,15 @@ Base.:(==)(x::GrammarRule, y::GrammarRule) = (
     x.parse == y.parse
 )
 
-# parse vectors are arrays of partially parsed tokens
+"""
+A vector of partially parsed tokens. The tokens can be either `Token`s or `ASTNode`s.
+"""
 const ParseVector = Vector{Union{Token, ASTNode}}
-# grammars map token and node types to derivation rules
+
+"""
+A map from token or node types to derivation rules.
+Keys are `Token` or `ASTNode` types, values are vectors of `GrammarRule`s that can be applied to parse the token or node type.
+"""
 const Grammar = Dict{Type, Vector{GrammarRule}}
 
 
@@ -99,6 +106,9 @@ function _parse_deadlock_strategy(left_tokens::ParseVector, token::StrategyConst
     return StrategyConstant(token.type)
 end
 
+"""
+The grammar for pre parsing. This grammar is used to parse constant tokens into their corresponding AST nodes before applying the main grammar rules.
+"""
 pre_parse_grammar::Grammar = Dict([
     # expr -> var
     (VariableToken, [GrammarRule([], [], _parse_variable)]),
@@ -134,6 +144,9 @@ function _parse_binary_function(left_tokens::ParseVector, token::ExpressionBinar
     return ExpressionBinaryOperation(token.type, right_tokens[2], right_tokens[4])
 end
 
+"""
+The grammar for parsing expressions.
+"""
 expression_grammar::Grammar = Dict([
     # expr -> ( expr )
     (VariableNode, [GrammarRule([SeparatorToken("(")], [SeparatorToken(")")], _parse_bracket)]),
@@ -180,6 +193,9 @@ function _parse_compare_constraint(left_tokens::ParseVector, token::ConstraintCo
     return ConstraintBinaryOperation(token.type, left_tokens[1], right_tokens[1])
 end
 
+"""
+The grammar for parsing constraints.
+"""
 const constraint_grammar::Grammar = Dict([
     # constr -> ( constr )
     (ConstraintConstant, [GrammarRule([SeparatorToken("(")], [SeparatorToken(")")], _parse_bracket)]),
@@ -209,6 +225,9 @@ function _parse_binary_state(left_tokens::ParseVector, token::ConstraintBinaryOp
     return StateBinaryOperation(token.type, left_tokens[1], right_tokens[1])
 end
 
+"""
+The grammar for parsing state formulas.
+"""
 const state_grammar::Grammar = Dict([
     # state -> ( state )
     (LocationNode, [GrammarRule([SeparatorToken("(")], [SeparatorToken(")")], _parse_bracket)]),
@@ -241,6 +260,9 @@ function _parse_empty_list(left_tokens::ParseVector, token::EmptyListToken, righ
     return Agents(token.type == "[[]]", AgentList([]))
 end
 
+"""
+The grammar for parsing agent lists.
+"""
 const agent_grammar::Grammar = Dict([
     # agent_list -> agent_list , agent_list
     (AgentList, [GrammarRule([], [SeparatorToken(","), AgentList], _parse_agent_list),
@@ -278,6 +300,9 @@ function _parse_binary_strategy(left_tokens::ParseVector, token::StrategyBinaryO
     return StrategyBinaryOperation(token.type, left_tokens[1], right_tokens[1])
 end
 
+"""
+The grammar for parsing strategy formulas.
+"""
 const strategy_grammar::Grammar = Dict([
     # strat -> ( strat )
     (Quantifier, [GrammarRule([SeparatorToken("(")], [SeparatorToken(")")], _parse_bracket)]),
@@ -306,6 +331,9 @@ function _check_token_count(l::Int, r::Int, provided_l::ParseVector, provided_r:
     return
 end
 
+"""
+The binding strength of operators for expressions.
+"""
 const expression_operator_strength::Dict{String, Int} = Dict([
     ("^", 20),
     ("%", 10),
@@ -315,18 +343,28 @@ const expression_operator_strength::Dict{String, Int} = Dict([
     ("-", 0)
 ])
 
+"""
+The binding strength of operators for constraints and states.
+"""
 const constraint_operator_strength::Dict{String, Int} = Dict([
     ("&&", 20),
     ("||", 10),
     ("->", 0)
 ])
 
+"""
+The binding strength of operators for strategies.
+"""
 const strategy_operator_strength::Dict{String, Int} = Dict([
     ("and", 20),
     ("or", 10),
     ("imply", 0)
 ])
 
+"""
+A map from types of operators to their strength rankings.
+This is used to determine the order of operations when parsing.
+"""
 const operator_type_to_strength::Dict{Type, Dict{String, Int}} = Dict([
     (ExpressionUnBinaryOperatorToken, expression_operator_strength),
     (ExpressionBinaryOperatorToken, expression_operator_strength),
@@ -349,7 +387,11 @@ Enum for all levels of parsing
     strategy
 end
 
-level_to_grammar::Dict{ParseLevel, Vector{Grammar}} = Dict([
+"""
+A map from parse levels to their corresponding grammars.
+This is used to determine which grammar rules to apply when parsing a formula at a given level.
+"""
+const level_to_grammar::Dict{ParseLevel, Vector{Grammar}} = Dict([
     (expression, [
         pre_parse_grammar,
         expression_grammar

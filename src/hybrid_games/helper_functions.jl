@@ -24,6 +24,7 @@ File description.
 
 export round5, valuation_from_vector, valuation_from_flow_vector, union_safe
 
+# TODO: add function documentation
 function round5(valuation::Valuation)::Valuation
     new_valuation::OrderedDict{Symbol, Real} = OrderedDict()
     for (var, value) in valuation
@@ -32,6 +33,7 @@ function round5(valuation::Valuation)::Valuation
     return new_valuation
 end
 
+# TODO: add function documentation
 function valuation_from_vector(valuation::Valuation, vector::Vector{Real})::Valuation
     new_valuation::OrderedDict{Symbol, Real} = OrderedDict()
     for (i, (var, _)) in enumerate(valuation)
@@ -40,6 +42,7 @@ function valuation_from_vector(valuation::Valuation, vector::Vector{Real})::Valu
     return new_valuation
 end
 
+# TODO: add function documentation
 function valuation_from_flow_vector(flow:: Assignment, valuation::Valuation, vector::Vector{<:Real})::Valuation
     new_valuation::OrderedDict{Symbol, Real} = OrderedDict()
     i = 1
@@ -54,6 +57,7 @@ function valuation_from_flow_vector(flow:: Assignment, valuation::Valuation, vec
     return new_valuation
 end
 
+# TODO: add function documentation
 # TODO: type this function
 function union_safe(l)
     if isempty(l)

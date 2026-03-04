@@ -24,14 +24,10 @@ File description.
 
 export Zone, initial_zone, zone_to_string, time_to_invariant, zone_lift, edge_time_interval, zone_shift
 
+# TODO: add type documentation
 struct Zone
     location::Location
     assignment::IntervalAssignment
-end
-
-function initial_zone(game::MHG_Game)::Zone
-    Zone(game.initial_location, 
-                  game.initial_valuation)
 end
 
 # redefine comparison
@@ -40,6 +36,13 @@ Base.:(==)(x::Zone, y::Zone) = (
     all(x_interval == y.interval for (var, x_interval) in x.assignment)
 )
 
+# TODO: add function documentation
+function initial_zone(game::MHG_Game)::Zone
+    Zone(game.initial_location, 
+                  game.initial_valuation)
+end
+
+# TODO: add function documentation
 function zone_to_string(zone::Zone)::String
     text = String(zone.location.name)
     for (var, interval) in zone.assignment
@@ -48,6 +51,7 @@ function zone_to_string(zone::Zone)::String
     text
 end
 
+# TODO: add function documentation
 function time_to_invariant(zone::Zone, max_location_assignment::IntervalAssignment)::Real
     times = Dict{Variable, Real}()
     for (var, max_interval) in max_location_assignment
@@ -61,6 +65,7 @@ function time_to_invariant(zone::Zone, max_location_assignment::IntervalAssignme
     minimum(time for (var, time) in times)
 end
 
+# TODO: add function documentation
 function zone_lift(zone::Zone)::Zone
 
     max_location_assignment = constraint_to_assignment(zone.location.invariant, keys(zone.assignment))
@@ -100,6 +105,7 @@ function zone_lift(zone::Zone)::Zone
     end
     return Zone(zone.location, new_assignment)
 end
+# TODO: add function documentation
 
 function edge_time_interval(zone::Zone, edge::MHG_Edge)::Pair{Interval, IntervalAssignment}
     target_invariant_after_jump = strip_variables(edge.target_location.invariant, keys(edge.jump))
@@ -140,6 +146,7 @@ function edge_time_interval(zone::Zone, edge::MHG_Edge)::Pair{Interval, Interval
     return (edge_time => edge_assignment)
 end
 
+# TODO: add function documentation
 function zone_shift(zone::Zone, edge::Edge)::Pair{Interval, Zone}
 
     edge_time, edge_assignment = edge_time_interval(zone, edge)

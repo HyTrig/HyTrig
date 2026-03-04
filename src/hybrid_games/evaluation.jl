@@ -24,6 +24,7 @@ File description.
 
 export evaluate
 
+# TODO: add function documentation
 function evaluate(expr::ExprLike, valuation::Valuation)::Real
     @match expr begin
         Const(value) => round5(value)
@@ -45,6 +46,7 @@ function evaluate(expr::ExprLike, valuation::Valuation)::Real
     end
 end
 
+# TODO: add function documentation
 function evaluate(constraint::Constraint, valuation::Valuation)::Bool
     @match constraint begin
         Truth(value) => value
