@@ -302,7 +302,7 @@ GameViewer {
                 height: parent_button.height
                 radius: 5
                 color: light_background_color
-                border.color: Material.accent
+                border.color: end_node_color
                 border.width: 2
                 
                 Title {
