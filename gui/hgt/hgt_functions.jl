@@ -52,6 +52,25 @@ function hgt_is_formula(text::QString, level::QString)::Bool
 end
 
 """
+    hgt_is_closed(formula::QString, i::Int32)::Bool
+
+Check whether a variable value in an initial valuation only uses variables up to index `i`.
+"""
+function hgt_is_closed(formula::QString, i::Int32)::Bool
+    bindings::Bindings = Bindings(
+        [],
+        [],
+        [hgt_variable_list[j].name for j in 1:i]
+    )
+    try
+        parse(String(formula), bindings, expression)
+        return true
+    catch
+        return false
+    end
+end
+
+"""
     hgt_save(path::QString)
 
 Save the current game to a file given by `path`.
@@ -192,9 +211,13 @@ function hgt_verify()::String
                 )
             ) for x in hgt_location_list
         ])
-        initial_valuation = Valuation(
-            Variable(x.name) => Base.parse(Float64, x.expression) for x in hgt_variable_list
-        )
+        initial_valuation = Valuation()
+        for x in hgt_variable_list
+            initial_valuation[Variable(x.name)] = evaluate(
+                parse(x.expression, bindings, expression),
+                initial_valuation
+            )
+        end
         edges = Vector{HGT_Edge}([
             HGT_Edge(
                 Symbol(i),
@@ -238,8 +261,12 @@ function hgt_verify()::String
             Vector{Strategy_Formula}([parse(query.formula, bindings, strategy) for query in hgt_query_list])
         )
     catch e
-        if e isa ParseError
+        if e isa TokenizeError
+            return "tokenize error: $(e.msg)"
+        elseif e isa ParseError
             return "parse error: $(e.msg)"
+        elseif e isa KeyError
+            return "key error: undefined variable '$(e.key)'"
         end
         throw(e)
     end

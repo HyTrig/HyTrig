@@ -25,7 +25,7 @@ include("gui/gui.jl")
 qml_file = joinpath(dirname(@__FILE__), "gui", "qml", "GUI.qml")
 
 @qmlfunction hgt_up_tree hgt_down_tree
-@qmlfunction hgt_is_formula hgt_name_available hgt_save hgt_load hgt_verify
+@qmlfunction hgt_is_formula hgt_name_available hgt_save hgt_load hgt_verify hgt_is_closed
 @qmlfunction mhg_is_formula mhg_name_available mhg_save mhg_load mhg_verify
 
 loadqml(
