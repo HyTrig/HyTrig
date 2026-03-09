@@ -85,7 +85,7 @@ end
 # expr -> number
 function _parse_numeric_expression(left_tokens::ParseVector, token::NumericToken, right_tokens::ParseVector)::ExpressionConstant
     _check_token_count(0, 0, left_tokens, right_tokens)
-    return ExpressionConstant(Real(Base.parse(Float64, token.type)))
+    return ExpressionConstant(Float64(Base.parse(Float64, token.type)))
 end
 
 # constr -> boolean

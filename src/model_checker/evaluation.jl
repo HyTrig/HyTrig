@@ -25,7 +25,7 @@ File description.
 export evaluate, evaluate_state
 export Assignment
 
-function evaluate(expr::ExprLike, valuation::Valuation)::Real
+function evaluate(expr::ExprLike, valuation::Valuation)::Float64
     @match expr begin
         Const(value) => round5(value)
         Var(name) => round5(valuation[name])
@@ -82,7 +82,7 @@ function evaluate_state(formula::State_Formula, config::Configuration)::Bool
 end
 
 function is_closed(assignment::Assignment)::Tuple{Bool, Valuation}
-    valuation = OrderedDict{Variable, Real}()
+    valuation = OrderedDict{Variable, Float64}()
     changed = true
     while changed && ! (Set(keys(assignment)) ⊆ Set(keys(valuation)))
         changed = false

@@ -31,7 +31,7 @@ end
 
 struct RootNode <: Node
     config::Configuration
-    level::Int32
+    level::Int64
     children::Vector{Node}
 end
 
@@ -39,7 +39,7 @@ struct DiscreteTransitionNode <: Node
     parent::Node
     reaching_decision::Pair{Agent, Action}
     config::Configuration
-    level::Int32
+    level::Int64
     zero_loop::Set{Location}
     children::Vector{Node}
 end
@@ -48,7 +48,7 @@ struct TriggerNode <: Node
     parent::Node
     reaching_trigger::Pair{Agent, Constraint}
     config::Configuration
-    level::Int32
+    level::Int64
     zero_loop::Set{Location}
     children::Vector{Node}
 end
@@ -56,13 +56,13 @@ end
 struct PassiveNode <: Node
     parent::Node
     config::Configuration
-    level::Int32
+    level::Int64
 end
 
 struct EndNode <: Node
     parent::Node
     config::Configuration
-    level::Int32
+    level::Int64
 end
 
 function print_tree(root::Node)
@@ -78,7 +78,7 @@ function print_tree(root::Node)
             end
         DiscreteTransitionNode(_, decision, config, level, _, children) =>
             begin
-                res *= "\n$level- Active - Agent: $(decision.first) - Action: $(decision.second) - Location: $(config.location.name)\nValuation: $(round5(config.valuation)), - Time: $(round5(config.global_clock))\nChildren: $(length(children))"
+                res *= "\n$level- Action - Agent: $(decision.first) - Action: $(decision.second) - Location: $(config.location.name)\nValuation: $(round5(config.valuation)), - Time: $(round5(config.global_clock))\nChildren: $(length(children))"
                 res *= "\n--------------\n"
                 for child in children
                     res *= print_tree(child)
@@ -86,7 +86,7 @@ function print_tree(root::Node)
             end
         TriggerNode(_, decision, config, level, _, children) =>
             begin
-                res *= "\n$level- Active - Agent: $(decision.first) - Action: $(decision.second) / $(constraint_to_string(trigger)) - Location: $(config.location.name)\nValuation: $(round5(config.valuation)), - Time: $(round5(config.global_clock))\nChildren: $(length(children))"
+                res *= "\n$level- Trigger - Agent: $(decision.first) - Trigger: $(constraint_to_string(decision.second)) - Location: $(config.location.name)\nValuation: $(round5(config.valuation)), - Time: $(round5(config.global_clock))\nChildren: $(length(children))"
                 res *= "\n--------------\n"
                 for child in children
                     res *= print_tree(child)
@@ -94,24 +94,13 @@ function print_tree(root::Node)
             end
         PassiveNode(_, config, level) =>
             begin
-                if isnothing(decision)
-                    res *= "\n$level- Passive - Location: $(config.location.name)\nValuation: $(config.valuation), - Time: $(config.global_clock)"
+                res *= "\n$level- Passive - Location: $(config.location.name)\nValuation: $(config.valuation), - Time: $(config.global_clock)"
                 res *= "\n--------------\n"
-                else
-                    res *= "\n$level- Passive - Agent: $(decision.first) - Trigger: $(constraint_to_string(decision.second)) - Location: $(config.location.name)\nValuation: $(round5(config.valuation)), - Time: $(round5(config.global_clock))\nChildren: $(length(children))"
-                res *= "\n--------------\n"
-                end
-                for child in children
-                    res *=print_tree(child)
-                end
             end
         EndNode(_, config, level) =>
             begin
                 res *= "\n$level- End - Location: $(config.location.name)\nValuation: $(config.valuation), - Time: $(config.global_clock)"
                 res *= "\n--------------\n"
-                for child in children
-                    res *=print_tree(child)
-                end
             end
     end
     return res

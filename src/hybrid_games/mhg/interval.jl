@@ -27,9 +27,9 @@ export MonotonError, Monoton, positive, negative, not_monoton, monoton_interval
 export IntervalAssignment, constraint_to_assignment
 
 struct Interval
-    left::Real
+    left::Float64
     left_open::Bool
-    right::Real
+    right::Float64
     right_open::Bool
 end
 
@@ -46,7 +46,7 @@ function interval_to_string(interval::Interval)::String
     res
 end
 
-function in_interval(num::Real, interval::Interval)::Bool
+function in_interval(num::Float64, interval::Interval)::Bool
     if num == interval.left 
         !interval.left_open
     elseif num == interval.right

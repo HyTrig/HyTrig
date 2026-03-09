@@ -25,23 +25,23 @@ File description.
 export round5, valuation_from_vector, valuation_from_flow_vector, union_safe
 
 function round5(valuation::Valuation)::Valuation
-    new_valuation::OrderedDict{Symbol, Real} = OrderedDict()
+    new_valuation::OrderedDict{Symbol, Float64} = OrderedDict()
     for (var, value) in valuation
         new_valuation[var] = round5(value)
     end
     return new_valuation
 end
 
-function valuation_from_vector(valuation::Valuation, vector::Vector{Real})::Valuation
-    new_valuation::OrderedDict{Symbol, Real} = OrderedDict()
+function valuation_from_vector(valuation::Valuation, vector::Vector{Float64})::Valuation
+    new_valuation::OrderedDict{Symbol, Float64} = OrderedDict()
     for (i, (var, _)) in enumerate(valuation)
         new_valuation[var] = vector[i]
     end
     return new_valuation
 end
 
-function valuation_from_flow_vector(flow:: Assignment, valuation::Valuation, vector::Vector{<:Real})::Valuation
-    new_valuation::OrderedDict{Symbol, Real} = OrderedDict()
+function valuation_from_flow_vector(flow:: Assignment, valuation::Valuation, vector::Vector{Float64})::Valuation
+    new_valuation::OrderedDict{Symbol, Float64} = OrderedDict()
     i = 1
     for (var, value) in valuation
         if !(var in keys(flow))

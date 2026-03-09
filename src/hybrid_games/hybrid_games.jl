@@ -35,7 +35,7 @@ include("constraint.jl")
 const Agent = Symbol
 const Action = Symbol
 const Assignment = OrderedDict{Variable, ExprLike}
-const Valuation = OrderedDict{Variable, Real}
+const Valuation = OrderedDict{Variable, Float64}
 const Decision = Pair{Agent, Action}
 
 abstract type Location end

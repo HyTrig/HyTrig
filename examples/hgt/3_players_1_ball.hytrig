@@ -1086,13 +1086,13 @@
             "formula": "<<A>> F y > 6"
         },
         {
-            "formula": "<<B, C>> F <<B, C>> G y <= 2"
+            "formula": "<<B, C>> F y <= 2"
         },
         {
-            "formula": "<<B>> G <<B>> F x < -8"
+            "formula": "<<B>> G x < -8"
         },
         {
-            "formula": "[[]] G (not deadlock)"
+            "formula": "<<>> F deadlock"
         }
     ]
 }

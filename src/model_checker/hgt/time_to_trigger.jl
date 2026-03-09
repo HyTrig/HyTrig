@@ -25,16 +25,16 @@ File description.
 struct TriggerPath
     trigger::Constraint
     end_valuation::Valuation
-    ttt::Real
+    ttt::Float64
     path_to_trigger::Vector{Configuration}
 end
 
-function time_to_trigger(config::Configuration, constraints::Vector{Constraint}, max_time::Real)
+function time_to_trigger(config::Configuration, constraints::Set{Constraint}, max_time::Float64)
 
     constraints_val = Dict(constr => evaluate(constr, config.valuation) for constr in constraints)
 
-    zero_constraints::Vector{ExprLike} = get_zero(constraints)
-    zero_invariant::Vector{ExprLike} = get_zero(config.location.invariant)
+    zero_constraints::Set{ExprLike} = get_zero(constraints)
+    zero_invariant::Set{ExprLike} = get_zero(config.location.invariant)
 
     path_to_trigger::Vector{Configuration} = Vector()
     function flowODE!(du, u, p, t)

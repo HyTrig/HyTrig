@@ -74,12 +74,12 @@ end
 
 AST Node for numerical constants.
 
-    ExpressionConstant(value::Real)
+    ExpressionConstant(value::Float64)
 
 Create a ExpressionConstant with value `value`.
 """
 struct ExpressionConstant <: ExpressionNode
-    value::Real
+    value::Float64
 end
 
 """

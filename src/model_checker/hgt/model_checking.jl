@@ -26,12 +26,13 @@ export check_query
 
 
 function get_trigger_children(game::HGT_Game, parent::TriggerNode)::Vector{DiscreteTransitionNode}
+    agent = parent.reaching_trigger.first
     children = DiscreteTransitionNode[]
     for action in game.actions
-        for edge in select_edges(config, agent => action)
+        for edge in select_edges(parent.config, agent => action)
             if ! (edge.target_location in parent.zero_loop)
-                config_after_edge = discrete_transition(config, edge)
-                child_node = DiscreteTransitionNode(parent, parent.reaching_trigger[0] => action, config_after_edge, parent.level, parent.zero_loop, [])
+                config_after_edge = discrete_transition(parent.config, edge)
+                child_node = DiscreteTransitionNode(parent, agent => action, config_after_edge, parent.level, parent.zero_loop, [])
                 push!(children, child_node)
             end
         end
@@ -56,7 +57,7 @@ function evaluate_inner_formula(game, formula::Union{State_Formula, Deadlock_For
     end
 end
 
-function check_termination(config::Configuration, level::Int32, termination_conditions::Termination_Conditions):: Bool
+function check_termination(config::Configuration, level::Int64, termination_conditions::Termination_Conditions):: Bool
     if config.global_clock >= termination_conditions.time_limit || 
         level >= termination_conditions.max_steps ||
         evaluate_state(termination_conditions.state_formula, config)
@@ -67,13 +68,17 @@ function check_termination(config::Configuration, level::Int32, termination_cond
 end
 
 
-function get_children(game::HGT_Game, constraints::Vector{Constraint}, state_formula::State_Formula, parent::Union{RootNode, DiscreteTransitionNode}, termination_conditions::Termination_Conditions, formula_agents::Set{Agent})::Vector{Node}
+function get_children(game::HGT_Game, constraints::Set{Constraint}, query_formula::Union{State_Formula, Deadlock_Formula}, parent::Union{RootNode, DiscreteTransitionNode}, termination_conditions::Termination_Conditions, formula_agents::Vector{Agent})::Vector{Node}
     remaining_time = termination_conditions.time_limit - parent.config.global_clock
     triggers = union_safe(game.triggers[agent] for agent in game.agents)
 
     final_valuation, final_time, path_configs = time_to_trigger(parent.config, constraints ∪ triggers, remaining_time)
 
-    state_formula_status = evaluate_state(state_formula, parent.config)
+    if isa(query_formula, State_Formula)
+        state_formula_status = evaluate_state(query_formula, parent.config)
+    else
+        state_formula_status = true
+    end
     sat_triggers = Set([])
 
     zero_loop = if isa(parent, RootNode) Set([parent.config.location]) else parent.zero_loop ∪ Set([parent.config.location]) end
@@ -82,16 +87,16 @@ function get_children(game::HGT_Game, constraints::Vector{Constraint}, state_for
     for agent in setdiff(game.agents, formula_agents)
         for agent_trigger in game.triggers[agent]
             if evaluate(agent_trigger, parent.config.valuation)
-                push!(sat_triggers, trigger)
-                push!(children, TriggerNode(parent, agent => agent_trigger, path_config, parent.level + 1, zero_loop, []))
+                push!(sat_triggers, agent_trigger)
+                push!(children, TriggerNode(parent, agent => agent_trigger, parent.config, parent.level + 1, zero_loop, []))
             end
         end
     end
     for agent in formula_agents
         for agent_trigger in game.triggers[agent]
             if evaluate(agent_trigger, parent.config.valuation)
-                push!(sat_triggers, trigger)
-                push!(children, TriggerNode(parent, agent => agent_trigger, path_config, parent.level + 1, zero_loop, []))
+                push!(sat_triggers, agent_trigger)
+                push!(children, TriggerNode(parent, agent => agent_trigger, parent.config, parent.level + 1, zero_loop, []))
             end
         end
     end
@@ -99,7 +104,7 @@ function get_children(game::HGT_Game, constraints::Vector{Constraint}, state_for
 
     for path_config in path_configs
         path_node_needed = true
-        if check_termination(path_config, parent.level + 1, termination_conditions)
+        if check_termination(path_config, parent.level, termination_conditions)
             push!(children, EndNode(parent, path_config, parent.level + 1))
             return children
         end
@@ -108,7 +113,7 @@ function get_children(game::HGT_Game, constraints::Vector{Constraint}, state_for
                 for agent in setdiff(game.agents, formula_agents)
                     for agent_trigger in game.triggers[agent]
                         if evaluate(agent_trigger, path_config.valuation)
-                            push!(sat_triggers, trigger)
+                            push!(sat_triggers, agent_trigger)
                             push!(children, TriggerNode(parent, agent => agent_trigger, path_config, parent.level + 1, Set([]), []))
                         end
                     end
@@ -116,7 +121,7 @@ function get_children(game::HGT_Game, constraints::Vector{Constraint}, state_for
                 for agent in formula_agents
                     for agent_trigger in game.triggers[agent]
                         if evaluate(agent_trigger, path_config.valuation)
-                            push!(sat_triggers, trigger)
+                            push!(sat_triggers, agent_trigger)
                             push!(children, TriggerNode(parent, agent => agent_trigger, path_config, parent.level + 1, Set([]), []))
                         end
                     end
@@ -124,8 +129,8 @@ function get_children(game::HGT_Game, constraints::Vector{Constraint}, state_for
                 path_node_needed = false
             end
         end 
-        if path_node_needed
-            new_state_formula_status = evaluate_state(state_formula, path_config)
+        if path_node_needed && isa(query_formula, State_Formula)
+            new_state_formula_status = evaluate_state(query_formula, path_config)
             if state_formula_status != new_state_formula_status
                 state_formula_status = new_state_formula_status
                 push!(children, PassiveNode(parent, path_config, parent.level + 1))
@@ -138,13 +143,14 @@ end
 function build_and_evaluate!(game::HGT_Game,
                              constraints::Set{Constraint},
                              query::Strategy_Formula, 
-                             node::Node,
+                             node::Union{RootNode, DiscreteTransitionNode},
                              termination_conditions::Termination_Conditions)::Bool
+    # println(strategy_to_string(query))
     terminal::Bool = check_termination(node.config, node.level, termination_conditions)
-    @match formula begin
+    @match query begin
         Strategy_to_State(f) => evaluate_state(f, node.config)
         Strategy_to_Deadlock() => begin
-            children = get_children(game, constraints, f, node, termination_conditions, agents)
+            children = get_children(game, constraints, State_Constraint(Truth(true)), node, termination_conditions, game.agents)
             return evaluate_deadlock(game, node, children)
         end
         All_Always(agents, f) => ! build_and_evaluate!(game, constraints, Exist_Eventually(setdiff(game.agents, agents), State_Not(f)), node, termination_conditions)
@@ -154,27 +160,37 @@ function build_and_evaluate!(game::HGT_Game,
             if ! evaluate_inner_formula(game, f, node, children)
                 return false
             end
-            if length(node.children) == 0 || terminal
+            if length(children) == 0 || terminal
                 return true
             end
             # TODO: Review agents_have_active_triggers
             agents_have_active_triggers = false
+            relvant_children = Node[]
             for child in children
-                push!(node.children, child)
-                if ! evaluate_inner_formula(game, f, child, [])
+                push!(relvant_children, child)
+                if ! evaluate_inner_formula(game, f, child, Node[])
+                    for relvant_child in relvant_children
+                        push!(node.children, relvant_child)
+                    end
                     return false
                 end
                 if isa(child, TriggerNode)
                     trigger_children = get_trigger_children(game, child)
-                    for action_child in child.children
-                        if child.trigger.first in agents
+                    for action_child in trigger_children
+                        if child.reaching_trigger.first in agents
                             if build_and_evaluate!(game, constraints, query, action_child, termination_conditions)
+                                for relvant_child in relvant_children
+                                    push!(node.children, relvant_child)
+                                end
                                 push!(child.children, action_child)
                                 return true
                             end
                             agents_have_active_triggers = true
                         else
                             if ! build_and_evaluate!(game, constraints, query, action_child, termination_conditions)
+                                for relvant_child in relvant_children
+                                    push!(node.children, relvant_child)
+                                end
                                 push!(child.children, action_child)
                                 return false
                             end
@@ -186,30 +202,40 @@ function build_and_evaluate!(game::HGT_Game,
         end
         Exist_Eventually(agents, f) => begin
             children = get_children(game, constraints, f, node, termination_conditions, agents)
-            if ! evaluate_inner_formula(game, f, node, children)
+            if evaluate_inner_formula(game, f, node, children)
                 return true
             end
-            if length(node.children) == 0 || terminal
-                return true
+            if length(children) == 0 || terminal
+                return false
             end
             # TODO: Review agents_have_active_triggers
             agents_have_active_triggers = false
+            relvant_children = Node[]
             for child in children
-                push!(node.children, child)
-                if ! evaluate_inner_formula(game, f, child, [])
+                push!(relvant_children, child)
+                if evaluate_inner_formula(game, f, child, Node[])
+                    for relvant_child in relvant_children
+                        push!(node.children, relvant_child)
+                    end
                     return true
                 end
                 if isa(child, TriggerNode)
                     trigger_children = get_trigger_children(game, child)
-                    for action_child in child.children
-                        if child.trigger.first in agents
+                    for action_child in trigger_children
+                        if child.reaching_trigger.first in agents
                             if build_and_evaluate!(game, constraints, query, action_child, termination_conditions)
+                                for relvant_child in relvant_children
+                                    push!(node.children, relvant_child)
+                                end
                                 push!(child.children, action_child)
                                 return true
                             end
                             agents_have_active_triggers = true
                         else
                             if ! build_and_evaluate!(game, constraints, query, action_child, termination_conditions)
+                                for relvant_child in relvant_children
+                                    push!(node.children, relvant_child)
+                                end
                                 push!(child.children, action_child)
                                 return false
                             end

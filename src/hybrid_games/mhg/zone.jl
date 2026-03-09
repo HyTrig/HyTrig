@@ -48,8 +48,8 @@ function zone_to_string(zone::Zone)::String
     text
 end
 
-function time_to_invariant(zone::Zone, max_location_assignment::IntervalAssignment)::Real
-    times = Dict{Variable, Real}()
+function time_to_invariant(zone::Zone, max_location_assignment::IntervalAssignment)::Float64
+    times = Dict{Variable, Float64}()
     for (var, max_interval) in max_location_assignment
         flow = zone.location.flow[var]
         if monoton_interval(flow) == positive

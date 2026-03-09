@@ -89,27 +89,27 @@ end
 
 struct RectLess <: RectConstr
     var::Variable
-    value::Real
+    value::Float64
 end
 
 struct RectLessEq <: RectConstr
     var::Variable
-    value::Real
+    value::Float64
 end
 
 struct RectGrt <: RectConstr
     var::Variable
-    value::Real
+    value::Float64
 end
 
 struct RectGrtEq <: RectConstr
     var::Variable
-    value::Real
+    value::Float64
 end
 
 struct RectEq <: RectConstr
     var::Variable
-    value::Real
+    value::Float64
 end
 
 struct RectAnd <: RectConstr
@@ -128,7 +128,7 @@ function constraint_to_string(constraint::Constraint)::String
         NotEqual(left, right) => "($(expression_to_string(left)) != $(expression_to_string(right)))"
         And(left, right) => "($(constraint_to_string(left))) && ($(constraint_to_string(right)))"
         Or(left, right) => "($(constraint_to_string(left))) || ($(constraint_to_string(right)))"
-        Not(c) => "!$(constraint_to_string(c))"
+        Not(c) => "!($(constraint_to_string(c)))"
         Imply(left, right) => "($(constraint_to_string(left))) -> ($(constraint_to_string(right)))"
     end
 end
@@ -180,16 +180,16 @@ function negation_normal_form(constraint::Constraint)::Constraint
     end
 end
 
-function get_zero(constraint::Constraint)::Vector{ExprLike}
+function get_zero(constraint::Constraint)::Set{ExprLike}
     @match constraint begin
-        Truth(true) => ExprLike[Const(0)]
-        Truth(false) => ExprLike[Const(1)]
-        LeQ(left, right) => ExprLike[Sub(right, left), Sub(left, Add(right, Const(1e-5)))]
-        Less(left, right) => ExprLike[Sub(right, Add(left, Const(1e-5))), Sub(left, right)]
-        GeQ(left, right) => ExprLike[Sub(left, right), Sub(right, Add(left, Const(1e-5)))]
-        Greater(left, right) => ExprLike[Sub(left, Add(right, Const(1e-5))), Sub(right, left)]
-        Equal(left, right) => ExprLike[Sub(left, right)] ∪ get_zero(Greater(left, right)) ∪ get_zero(Less(left, right))
-        NotEqual(left, right) => ExprLike[Sub(left, right)] ∪ get_zero(Greater(left, right)) ∪ get_zero(Less(left, right))
+        Truth(true) => Set([Const(0)])
+        Truth(false) => Set([Const(1)])
+        LeQ(left, right) => Set([Sub(right, left), Sub(left, Add(right, Const(1e-5)))])
+        Less(left, right) => Set([Sub(right, Add(left, Const(1e-5))), Sub(left, right)])
+        GeQ(left, right) => Set([Sub(left, right), Sub(right, Add(left, Const(1e-5)))])
+        Greater(left, right) => Set([Sub(left, Add(right, Const(1e-5))), Sub(right, left)])
+        Equal(left, right) => Set([Sub(left, right)]) ∪ get_zero(Greater(left, right)) ∪ get_zero(Less(left, right))
+        NotEqual(left, right) => Set([Sub(left, right)]) ∪ get_zero(Greater(left, right)) ∪ get_zero(Less(left, right))
         And(left, right) => get_zero(left) ∪ get_zero(right)
         Or(left, right) => get_zero(left) ∪ get_zero(right)
         Not(c) => get_zero(c)
@@ -197,7 +197,7 @@ function get_zero(constraint::Constraint)::Vector{ExprLike}
     end
 end
 
-function get_zero(constraints)::Vector{ExprLike}
+function get_zero(constraints)::Set{ExprLike}
     return union_safe([get_zero(constr) for constr in constraints])
 end
 

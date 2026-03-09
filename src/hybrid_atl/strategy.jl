@@ -25,7 +25,7 @@ File description.
 export Strategy_Formula, Strategy_to_State, Exist_Always, Exist_Eventually, All_Always, All_Eventually
 # export Strategy_And, Strategy_Or, Strategy_Not, Strategy_Imply, Strategy_Deadlock
 export Deadlock_Formula, Strategy_to_Deadlock
-export get_all_constraints, formula_to_rect_formula
+export get_all_constraints, formula_to_rect_formula, strategy_to_string
 
 struct Deadlock_Formula <: Logic_Formula 
 end
@@ -36,62 +36,62 @@ struct Strategy_to_State <: Strategy_Formula
     formula::State_Formula
 end
 
-# # redefine comparison
-# Base.:(==)(x::Strategy_to_State, y::Strategy_to_State) = (
-#     x.formula == y.formula
-# )
+# redefine comparison
+Base.:(==)(x::Strategy_to_State, y::Strategy_to_State) = (
+    x.formula == y.formula
+)
 
 struct Strategy_to_Deadlock <: Strategy_Formula
 end
 
-# # redefine comparison
-# Base.:(==)(x::Strategy_to_Deadlock, y::Strategy_to_Deadlock) = (
-#     true
-# )
+# redefine comparison
+Base.:(==)(x::Strategy_to_Deadlock, y::Strategy_to_Deadlock) = (
+    true
+)
 
 struct Exist_Always <: Strategy_Formula
-    agents::Set{Agent}
+    agents::Vector{Agent}
     formula::Union{State_Formula, Deadlock_Formula}
 end
 
-# # redefine comparison
-# Base.:(==)(x::Exist_Always, y::Exist_Always) = (
-#     x.agents == y.agents &&
-#     x.formula == y.formula
-# )
+# redefine comparison
+Base.:(==)(x::Exist_Always, y::Exist_Always) = (
+    x.agents == y.agents &&
+    x.formula == y.formula
+)
 
 struct Exist_Eventually <: Strategy_Formula
-    agents::Set{Agent}
+    agents::Vector{Agent}
     formula::Union{State_Formula, Deadlock_Formula}
 end
 
-# # redefine comparison
-# Base.:(==)(x::Exist_Eventually, y::Exist_Eventually) = (
-#     x.agents == y.agents &&
-#     x.formula == y.formula
-# )
+# redefine comparison
+Base.:(==)(x::Exist_Eventually, y::Exist_Eventually) = (
+    x.agents == y.agents &&
+    x.formula == y.formula
+)
 
 struct All_Always <: Strategy_Formula
-    agents::Set{Agent}
+    agents::Vector{Agent}
     formula::Union{State_Formula, Deadlock_Formula}
 end
 
-# # redefine comparison
-# Base.:(==)(x::All_Always, y::All_Always) = (
-#     x.agents == y.agents &&
-#     x.formula == y.formula
-# )
+# redefine comparison
+Base.:(==)(x::All_Always, y::All_Always) = (
+    x.agents == y.agents &&
+    x.formula == y.formula
+)
 
 struct All_Eventually <: Strategy_Formula
-    agents::Set{Agent}
+    agents::Vector{Agent}
     formula::Union{State_Formula, Deadlock_Formula}
 end
 
-# # redefine comparison
-# Base.:(==)(x::All_Eventually, y::All_Eventually) = (
-#     x.agents == y.agents &&
-#     x.formula == y.formula
-# )
+# redefine comparison
+Base.:(==)(x::All_Eventually, y::All_Eventually) = (
+    x.agents == y.agents &&
+    x.formula == y.formula
+)
 
 # struct Strategy_And <: Strategy_Formula
 #     left::Strategy_Formula
@@ -190,5 +190,24 @@ function formula_to_rect_formula(formula::Strategy_Formula)::Strategy_Formula
         # Strategy_Not(f) => Strategy_Not(formula_to_rect_formula(f))
         # Strategy_Imply(left, right) => Strategy_Imply(formula_to_rect_formula(left), formula_to_rect_formula(right))
         # Strategy_Deadlock() => Strategy_Deadlock()
+    end
+end
+
+function agents_to_string(agents::Vector{Agent})
+    str = ""
+    for agent in agents
+        str *= String(agent)
+    end
+    str
+end
+
+function strategy_to_string(formula::Strategy_Formula)
+    @match formula begin
+        Strategy_to_State(f) => state_to_string(f)
+        Strategy_to_Deadlock() => "Deadlock"
+        Exist_Always(a, f) => "<<$(agents_to_string(a))>> G $(state_to_string(f))"
+        Exist_Eventually(a, f) => "<<$(agents_to_string(a))>> F $(state_to_string(f))"
+        All_Always(a, f) => "[[$(agents_to_string(a))]] G $(state_to_string(f))"
+        All_Eventually(a, f) => "[[$(agents_to_string(a))]] F $(state_to_string(f))"
     end
 end

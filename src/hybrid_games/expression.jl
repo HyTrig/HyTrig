@@ -31,7 +31,7 @@ const Variable = Symbol
 abstract type ExprLike end
 
 struct Const <: ExprLike
-    value::Real
+    value::Float64
 end
 
 struct Var <: ExprLike
@@ -165,7 +165,7 @@ function is_linear(expr::ExprLike)::Bool
     end
 end
 
-function round5(num::Real)::Real
+function round5(num::Float64)::Float64
     return round(num, digits=5)
 end
 

@@ -22,7 +22,7 @@ File description.
 - Author 2
 """
 
-function continuous_transition(start_config::Configuration, time::Real)::Configuration
+function continuous_transition(start_config::Configuration, time::Float64)::Configuration
     Configuration(start_config.location, 
                   continuous_evolution(start_config.valuation, start_config.location.flow, time),
                     start_config.global_clock + time

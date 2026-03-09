@@ -52,12 +52,15 @@ function READ_USER_FILE()
         t1 = time();
         results = Bool[]
         trees = RootNode[]
-        if game_type == 1
-            result, game_tree = check_query(game, termination_conditions, query)
-            push!(trees, game_tree)
-        else
-            print(initial_zone)
-            return
+        for query in queries
+            if game_type == 1
+                result, game_tree = check_query(game, termination_conditions, query)
+                push!(trees, game_tree)
+                push!(results, result)
+            else
+                print(initial_zone)
+                return
+            end
         end
 
         t2 = time();
@@ -90,7 +93,7 @@ function READ_USER_FILE()
         if tree_answer == "y"
             tree_text = ""
             for (r, game_tree) in enumerate(trees)
-                tree_text *= "$(queries_text[r]): \n"
+                tree_text *= "$(queries_text[r]): $(results[r])\n"
                 tree_text *= print_tree(game_tree)
                 tree_text *= "\n\n\n***************************\n***************************\n***************************\n\n\n"
             end

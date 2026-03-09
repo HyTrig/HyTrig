@@ -3,7 +3,7 @@
     "triggers": [
         {
             "agent": "A",
-            "trigger": "pos == 0"
+            "trigger": "pos == 0 && spd < 0"
         }
     ],
     "locations": [

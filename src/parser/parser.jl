@@ -82,10 +82,10 @@ function parse(str::String, bindings::Bindings, level::ParseLevel)::Union{Strate
     return formula
 end
 
-function _to_logic(node::ConstantOperation)::Union{State_Location, Strategy_Deadlock, Truth, Const, Var}
+function _to_logic(node::ConstantOperation)::Union{State_Location, Deadlock_Formula, Truth, Const, Var}
     @match node begin
         LocationNode(value) => State_Location(Symbol(value))
-        StrategyConstant(value) => Strategy_Deadlock()
+        StrategyConstant(value) => Deadlock_Formula()
         ConstraintConstant(value) => Truth(value)
         ExpressionConstant(value) => Const(value)
         VariableNode(value) => Var(Symbol(value))
@@ -208,9 +208,9 @@ function _to_logic(node::Quantifier)::Strategy_Formula
     if child isa Constraint
         child = State_Constraint(child)
     end
-    if child isa State_Formula
-        child = Strategy_to_State(child)
-    end
+    # if child isa State_Formula
+    #     child = Strategy_to_State(child)
+    # end
     if node.always
         if node.for_all
             return All_Always(_to_logic(node.agents), child)
@@ -231,7 +231,7 @@ function _to_logic(node::Agents)::Vector{Agent}
 end
 
 function _to_logic(node::AgentList)::Vector{Agent}
-    agents::Vector{Agent} = Vector([])
+    agents::Vector{Agent} = Agent[]
     for agent in node.agents
         push!(agents, Agent(Symbol(agent)))
     end
