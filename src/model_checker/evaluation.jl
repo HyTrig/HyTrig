@@ -70,14 +70,14 @@ function get_unsatisfied_constraints(constraints, valuation::Valuation)
     filter(constraint -> ! evaluate(constraint, valuation), constraints)
 end
 
-function evaluate_state(formula::State_Formula, state::State)::Bool
+function evaluate_state(formula::State_Formula, config::Configuration)::Bool
     @match formula begin
-        State_Location(loc) => loc == state.location
-        State_Constraint(constraint) => evaluate(constraint, state.valuation)
-        State_And(left, right) => evaluate_state(left, state) && evaluate_state(right, state)
-        State_Or(left, right) => evaluate_state(left, state) || evaluate_state(right, state)
-        State_Not(f) => ! evaluate_state(f, state)
-        State_Imply(left, right) => ! evaluate_state(left, state) || evaluate_state(right, state)
+        State_Location(loc) => loc == config.location
+        State_Constraint(constraint) => evaluate(constraint, config.valuation)
+        State_And(left, right) => evaluate_state(left, config) && evaluate_state(right, config)
+        State_Or(left, right) => evaluate_state(left, config) || evaluate_state(right, config)
+        State_Not(f) => ! evaluate_state(f, config)
+        State_Imply(left, right) => ! evaluate_state(left, config) || evaluate_state(right, config)
     end
 end
 

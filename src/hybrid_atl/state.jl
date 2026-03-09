@@ -22,7 +22,7 @@ File description.
 - Author 2
 """
 
-export State_Formula, State_Location, State_Constraint, State_And, State_Or, State_Not, State_Imply
+export State_Formula, State_Location, State_Constraint, State_And, State_Or, State_Not, State_Imply, State_Deadlock
 export get_all_constraints, formula_to_rect_formula, state_to_string
 
 abstract type State_Formula <: Logic_Formula end
@@ -54,10 +54,10 @@ struct State_Imply <: State_Formula
     right::State_Formula
 end
 
-function get_all_constraints(formula::State_Formula)::Vector{Constraint}
+function get_all_constraints(formula::State_Formula)::Set{Constraint}
     @match formula begin
-        State_Location(_) => Vector{Constraint}()
-        State_Constraint(constraint) => Vector([constraint])
+        State_Location(_) => Set{Constraint}()
+        State_Constraint(constraint) => Set([constraint])
         State_And(left, right) => get_all_constraints(left) ∪ get_all_constraints(right)
         State_Or(left, right) => get_all_constraints(left) ∪ get_all_constraints(right)
         State_Not(subformula) => get_all_constraints(subformula)
