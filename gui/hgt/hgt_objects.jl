@@ -14,7 +14,7 @@ This file defines the QML objects used in the HyTrig GUI by the HGT game type.
 - `QHGTJump`: Represents a jump in an edge.
 - `QHGTQuery`: Represents a query in a hybrid game.
 - `QHGTBranch`: Represents a tree branch used in QML models.
-- `QHGTActiveNode`: Represents an active tree node used in QML models.
+- `QHGTActionNode`: Represents an active tree node used in QML models.
 - `QHGTPassiveNode`: Represents a passive tree node used in QML models.
 
 # Global variables:
@@ -248,17 +248,17 @@ function QHGTBranch(branch::GUIBranch)::QHGTBranch
             constraint_to_string(branch.reaching_trigger)
         end,
         trunc(branch.config.global_clock, digits=5),
-        JuliaItemModel([QHGTActiveNode(node) for node in branch.active_nodes]),
+        JuliaItemModel([QHGTActionNode(node) for node in branch.active_nodes]),
         JuliaItemModel([QHGTPassiveNode(node) for node in branch.passive_nodes])
     )
 end
 
 """
-    QHGTActiveNode
+    QHGTActionNode
 
 An active tree node used in QML models.
 """
-mutable struct QHGTActiveNode
+mutable struct QHGTActionNode
     location::String
     action::String
     valuation::String
@@ -266,14 +266,14 @@ mutable struct QHGTActiveNode
 end
 
 """
-    QHGTActiveNode(node::GUINode)::QHGTActiveNode
+    QHGTActionNode(node::GUINode)::QHGTActionNode
 
 Create a QAction from the given GUI node `node`.
 # Arguments
 - `node::GUINode`: The GUI node.
 """
-function QHGTActiveNode(node::GUINode)::QHGTActiveNode
-    QHGTActiveNode(
+function QHGTActionNode(node::GUINode)::QHGTActionNode
+    QHGTActionNode(
         string(node.config.location.name),
         if isnothing(node.reaching_decision)
             ""

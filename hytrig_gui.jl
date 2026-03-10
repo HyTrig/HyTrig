@@ -12,7 +12,7 @@ using Pkg
 Pkg.activate(".")
 Pkg.instantiate()
 
-using JSON3, QML, StructTypes
+using JSON3, DataStructures, QML, StructTypes
 
 include("src/hytrig.jl")
 using .HyTrig

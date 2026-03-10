@@ -58,7 +58,7 @@ function build_children!(game::Game,
                             if ! (edge in explored_edges)
                                 push!(explored_edges, edge)
                                 config_after_edge = discrete_transition(node.config, edge)
-                                child_node = ActiveNode(node, agent => action, trigger, config_after_edge, node.level + 1, [])
+                                child_node = ActionNode(node, agent => action, trigger, config_after_edge, node.level + 1, [])
                                 push!(node.children, child_node)
                             end
                         end
@@ -102,7 +102,7 @@ function build_children!(game::Game,
                             if ! (edge in explored_edges)
                                 push!(explored_edges, edge)
                                 config_after_edge = discrete_transition(config, edge)
-                                child_node = ActiveNode(path_node, agent => action, trigger, config_after_edge, path_node.level + 1, [])
+                                child_node = ActionNode(path_node, agent => action, trigger, config_after_edge, path_node.level + 1, [])
                                 push!(path_node.children, child_node)
                             end
                         end

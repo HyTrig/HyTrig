@@ -8,7 +8,7 @@ This file contains all definitions for creating the traversable verification tre
 - `GUINode`: A node in a traversable GUI tree.
 
 # Functions:
-- `build_gui_tree(root::Union{ActiveNode, RootNode})::GUINode`: Build a GUI tree from a game tree.
+- `build_gui_tree(root::Union{ActionNode, RootNode})::GUINode`: Build a GUI tree from a game tree.
 
 # Authors:
 - Moritz Maas
@@ -40,15 +40,15 @@ struct GUINode
 end
 
 """
-    GUINode(node::ActiveNode, parent::Union{GUINode, Nothing})::GUINode
+    GUINode(node::ActionNode, parent::Union{GUINode, Nothing})::GUINode
 
 Create a GUINode from the given active node `node` with the parent `parent`.
 
 # Arguments
-- `node::ActiveNode`: The active node.
+- `node::ActionNode`: The active node.
 - `parent::Union{GUINode, Nothing}`: The nodes next active parent.
 """
-function GUINode(node::ActiveNode, parent::Union{GUINode, Nothing})::GUINode
+function GUINode(node::ActionNode, parent::Union{GUINode, Nothing})::GUINode
     return GUINode(
         parent,
         node.reaching_decision,
@@ -77,16 +77,16 @@ end
 
 
 """
-    GUIBranch(node::ActiveNode, active_nodes::Vector{GUINode}, passive_nodes::Vector{PassiveNode})::GUIBranch
+    GUIBranch(node::ActionNode, active_nodes::Vector{GUINode}, passive_nodes::Vector{PassiveNode})::GUIBranch
 
 Create a GUIBranch from the given active node `node` with the `active_nodes` and `passive_nodes`.
 
 # Arguments
-- `node::ActiveNode`: The active node.
+- `node::ActionNode`: The active node.
 - `active_nodes::Vector{GUINode}`: The branches active nodes.
 - `passive_nodes::Vector{PassiveNode}`: The branches passive nodes.
 """
-function GUIBranch(node::ActiveNode, active_nodes::Vector{GUINode}, passive_nodes::Vector{PassiveNode})::GUIBranch
+function GUIBranch(node::ActionNode, active_nodes::Vector{GUINode}, passive_nodes::Vector{PassiveNode})::GUIBranch
     return GUIBranch(
         node.reaching_decision,
         node.reaching_trigger,
@@ -117,14 +117,14 @@ function GUIBranch(node::Union{RootNode, EndNode}, active_nodes::Vector{GUINode}
 end
 
 """
-    build_gui_tree(root::Union{ActiveNode, RootNode})::GUINode
+    build_gui_tree(root::Union{ActionNode, RootNode})::GUINode
 
 Recursively build the GUI tree from a game tree rooted in `root`.
 
 # Arguments
-- `root::Union{ActiveNode, RootNode}`: The game trees root.
+- `root::Union{ActionNode, RootNode}`: The game trees root.
 """
-function build_gui_tree(root::Union{ActiveNode, RootNode})::GUINode
+function build_gui_tree(root::Union{ActionNode, RootNode})::GUINode
     # Create root node with branches
     gui_root = GUINode(root, nothing)
     push!(gui_root.branches, GUIBranch(root, [GUINode(root, gui_root)], Vector{PassiveNode}()))
@@ -134,7 +134,7 @@ function build_gui_tree(root::Union{ActiveNode, RootNode})::GUINode
     return gui_root
 end
 
-function _get_next_layer(last_node::Union{ActiveNode, RootNode}, parent::GUINode)::Vector{GUIBranch}
+function _get_next_layer(last_node::Union{ActionNode, RootNode}, parent::GUINode)::Vector{GUIBranch}
     branches::Vector{GUIBranch} = []
     last_trigger_time::Float64 = last_node.config.global_clock
 
@@ -144,7 +144,7 @@ function _get_next_layer(last_node::Union{ActiveNode, RootNode}, parent::GUINode
         
         # Collect passive nodes until an active or end node is reached
         passives::Vector{PassiveNode} = []
-        while !(current_node isa ActiveNode || current_node isa EndNode)
+        while !(current_node isa ActionNode || current_node isa EndNode)
             if current_node.config.global_clock >= last_trigger_time
                 push!(passives, current_node)
             end

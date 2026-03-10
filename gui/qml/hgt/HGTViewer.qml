@@ -226,7 +226,7 @@ GameViewer {
                                 orientation: ListView.Horizontal
 
                                 model: active_nodes
-                                delegate: Nodes.ActiveNode {
+                                delegate: Nodes.ActionNode {
                                     width: node_width
                                     height: parent.height
                                 }
