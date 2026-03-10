@@ -28,78 +28,81 @@
             "expression": "0.9"
         }
     ],
-    "locations": [
-        {
-            "flow": [
-                {
-                    "variable": "pos",
-                    "expression": "spd"
-                },
-                {
-                    "variable": "spd",
-                    "expression": "acc"
-                },
-                {
-                    "variable": "acc",
-                    "expression": "0"
-                },
-                {
-                    "variable": "dissipation",
-                    "expression": "0"
-                }
-            ],
-            "initial": true,
-            "name": "falling",
-            "invariant": "0 <= pos && pos <= 1000 && acc == -10"
-        }
-    ],
-    "edges": [
-        {
-            "agent": "A",
-            "action": "up",
-            "guard": "spd < 0",
-            "source": "falling",
-            "target": "falling",
-            "jump": [
-                {
-                    "variable": "pos",
-                    "expression": "pos"
-                },
-                {
-                    "variable": "spd",
-                    "expression": "- dissipation * spd"
-                },
-                {
-                    "variable": "acc",
-                    "expression": "acc"
-                },
-                {
-                    "variable": "dissipation",
-                    "expression": "dissipation"
-                }
-            ]
-        }
-    ],
     "triggers": [
         {
             "agent": "A",
             "trigger": "pos == 0 && spd < 0"
         }
     ],
-    "config": {
-        "state_formula": "pos == 0 && spd^2 < 0.01",
-        "time_bound": "1000",
-        "max_steps": "20"
-    },
+    "locations": [
+        {
+            "name": "falling",
+            "initial": true,
+            "flow": [
+                {
+                    "expression": "spd",
+                    "variable": "pos"
+                },
+                {
+                    "expression": "acc",
+                    "variable": "spd"
+                },
+                {
+                    "expression": "0",
+                    "variable": "acc"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dissipation"
+                }
+            ],
+            "invariant": "0 <= pos && pos <= 1000 && acc == -10"
+        }
+    ],
+    "edges": [
+        {
+            "guard": "spd < 0",
+            "source": "falling",
+            "action": "up",
+            "target": "falling",
+            "agent": "A",
+            "jump": [
+                {
+                    "expression": "pos",
+                    "variable": "pos"
+                },
+                {
+                    "expression": "- dissipation * spd",
+                    "variable": "spd"
+                },
+                {
+                    "expression": "acc",
+                    "variable": "acc"
+                },
+                {
+                    "expression": "dissipation",
+                    "variable": "dissipation"
+                }
+            ]
+        }
+    ],
     "queries": [
         {
-            "formula": "<<A>> F pos < 0 || pos > 1000"
+            "formula": "<<A>> F pos < 0 || pos > 1000",
+            "verified": false
         },
         {
-            "formula": "[[A]] G pos >= 0"
+            "formula": "[[A]] G pos >= 0",
+            "verified": false
         },
         {
-            "formula": "[[A]] F pos == 700 && spd > 0"
+            "formula": "[[A]] F pos == 700 && spd > 0",
+            "verified": false
         }
-    ]
+    ],
+    "config": {
+        "max_steps": "20",
+        "time_bound": "1000",
+        "state_formula": "pos == 0 && spd^2 < 0.01"
+    }
 }

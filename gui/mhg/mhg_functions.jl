@@ -70,7 +70,7 @@ Save the current game to a file given by `path`.
 - `path::QString`: The file path to save to.
 """
 function mhg_save(path::QString)
-    data::Dict{String, Any} = Dict([
+    data::OrderedDict{String, Any} = OrderedDict([
         "game_type" => "MHG",
         "agents" => mhg_agent_list,
         "actions" => mhg_action_list,

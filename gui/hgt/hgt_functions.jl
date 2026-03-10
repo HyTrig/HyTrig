@@ -60,7 +60,7 @@ Save the current game to a file given by `path`.
 - `path::QString`: The file path to save to.
 """
 function hgt_save(path::QString)
-    data::Dict{String, Any} = Dict([
+    data::OrderedDict{String, Any} = OrderedDict([
         "game_type" => "HGT",
         "agents" => hgt_agent_list,
         "actions" => hgt_action_list,
