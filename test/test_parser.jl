@@ -51,44 +51,34 @@ using .Parser: parse
     @test state7 == State_Constraint(Truth(false))
 
     state6 = parse("deadlock", Bindings([], [], []), strategy)
-    @test state6 == Strategy_Deadlock()
+    @test state6 == Strategy_to_Deadlock()
     strategy1 = parse("true", Bindings([], [], []), strategy)
     @test strategy1 == Strategy_to_State(State_Constraint(Truth(true)))
     strategy2 = parse("<<>> F true", Bindings([], [], []), strategy)
-    @test strategy2 == Exist_Eventually([], Strategy_to_State(State_Constraint(Truth(true))))
+    @test strategy2 == Exist_Eventually([], State_Constraint(Truth(true)))
     strategy3 = parse("<<A>> F true", Bindings(["A"], [], []), strategy)
-    @test strategy3 == Exist_Eventually([:A], Strategy_to_State(State_Constraint(Truth(true))))
+    @test strategy3 == Exist_Eventually([:A], State_Constraint(Truth(true)))
     strategy4 = parse("<<A, B, C, D>> F x + y * z > 0 && loc1", Bindings(["A", "B", "C", "D"], ["loc1"], ["x", "y", "z"]), strategy)
-    @test strategy4 == 
-        Exist_Eventually([:A, :B, :C, :D], 
-            Strategy_to_State(State_And(
-                State_Constraint(Greater(Add(Var(:x), Mul(Var(:y), Var(:z))), Const(0.0))), 
-                State_Location(:loc1)
-            )
-        ))
-    strategy5 = parse("<<A, B, C, D>> F x + y * z > 0 and loc1", Bindings(["A", "B", "C", "D"], ["loc1"], ["x", "y", "z"]), strategy)
-    @test strategy5 == 
-        Strategy_And(
-            Exist_Eventually([:A, :B, :C, :D], 
-                Strategy_to_State(State_Constraint(Greater(Add(Var(:x), Mul(Var(:y), Var(:z))), Const(0.0))))), 
-            Strategy_to_State(State_Location(:loc1))
+    @test strategy4 == Exist_Eventually(
+        [:A, :B, :C, :D],
+        State_And(
+            State_Constraint(Greater(Add(Var(:x), Mul(Var(:y), Var(:z))), Const(0.0))), 
+            State_Location(:loc1)
         )
-    strategy6 = parse("<<A, B, C, D>> F <<A, B, C, D>> F x + y * z > 0 and loc1", Bindings(["A", "B", "C", "D"], ["loc1"], ["x", "y", "z"]), strategy)
-    @test strategy6 == 
-        Strategy_And(
-            Exist_Eventually([:A, :B, :C, :D], 
-                Exist_Eventually([:A, :B, :C, :D], 
-                    Strategy_to_State(State_Constraint(Greater(Add(Var(:x), Mul(Var(:y), Var(:z))), Const(0.0)))))), 
-            Strategy_to_State(State_Location(:loc1))
+    )
+    strategy5 = parse("<<A, B, C, D>> F x + y * z > 0 && loc1", Bindings(["A", "B", "C", "D"], ["loc1"], ["x", "y", "z"]), strategy)
+    @test strategy5 == Exist_Eventually([:A, :B, :C, :D], 
+        State_And(
+            State_Constraint(Greater(Add(Var(:x), Mul(Var(:y), Var(:z))), Const(0.0))),                 State_Location(:loc1)
         )
-    strategy7 = parse("loc1 imply <<A, B, C, D>> F <<A, B, C, D>> F x + y * z > 0", Bindings(["A", "B", "C", "D"], ["loc1"], ["x", "y", "z"]), strategy)
-    @test strategy7 == 
-        Strategy_Imply(
-            Strategy_to_State(State_Location(:loc1)), 
-            Exist_Eventually([:A, :B, :C, :D], 
-                Exist_Eventually([:A, :B, :C, :D], 
-                    Strategy_to_State(State_Constraint(Greater(Add(Var(:x), Mul(Var(:y), Var(:z))), Const(0.0))))))
+    )
+    strategy6 = parse("<<A, B, C, D>> F x + y * z > 0 && loc1", Bindings(["A", "B", "C", "D"], ["loc1"], ["x", "y", "z"]), strategy)
+    @test strategy6 == Exist_Eventually([:A, :B, :C, :D], 
+        State_And(
+            State_Constraint(Greater(Add(Var(:x), Mul(Var(:y), Var(:z))), Const(0.0))), 
+            State_Location(:loc1)
         )
+    )     
     @test_throws ParseError("Cannot parse empty expressions or strategies.") parse("", Bindings([], [], []), strategy)
 end
 

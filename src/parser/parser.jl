@@ -38,7 +38,7 @@ julia> parse("a + b", Bindings([], [], ["a", "b"]), expression)
 Add(Var(:a), Var(:b))
 ```
 """
-function parse(str::String, bindings::Bindings, level::ParseLevel)::Union{Strategy_Formula, State_Formula, Constraint, ExprLike}
+function parse(str::String, bindings::Bindings, level::ParseLevel)::Union{Strategy_Formula, Deadlock_Formula, State_Formula, Constraint, ExprLike}
     ast::Union{ASTNode, Nothing} = parse_formula(str, bindings, level)
     if isnothing(ast)
         if level == constraint
@@ -77,12 +77,14 @@ function parse(str::String, bindings::Bindings, level::ParseLevel)::Union{Strate
         return formula
     elseif formula isa State_Formula
         formula = Strategy_to_State(formula)
+    elseif formula isa Deadlock_Formula
+        formula = Strategy_to_Deadlock()
     end
 
     return formula
 end
 
-function _to_logic(node::ConstantOperation)::Union{State_Location, Deadlock_Formula, Truth, Const, Var}
+function _to_logic(node::ConstantOperation)::Union{Deadlock_Formula, State_Location, Truth, Const, Var}
     @match node begin
         LocationNode(value) => State_Location(Symbol(value))
         StrategyConstant(value) => Deadlock_Formula()
@@ -168,49 +170,11 @@ function _to_logic(node::StateBinaryOperation)::State_Formula
     end
 end
 
-function _to_logic(node::StrategyUnaryOperation)::Strategy_Formula
-    child = _to_logic(node.child)
-    if child isa Constraint
-        child = State_Constraint(child)
-    end
-    if child isa State_Formula
-        child = Strategy_to_State(child)
-    end
-    @match node.unary_operation begin
-        "not" => Strategy_Not(child)
-    end
-end
-
-function _to_logic(node::StrategyBinaryOperation)::Strategy_Formula
-    left_child = _to_logic(node.left_child)
-    if left_child isa Constraint
-        left_child = State_Constraint(left_child)
-    end
-    if left_child isa State_Formula
-        left_child = Strategy_to_State(left_child)
-    end
-    right_child = _to_logic(node.right_child)
-    if right_child isa Constraint
-        right_child = State_Constraint(right_child)
-    end
-    if right_child isa State_Formula
-        right_child = Strategy_to_State(right_child)
-    end
-    @match node.binary_operation begin
-        "and" => Strategy_And(left_child, right_child)
-        "or" => Strategy_Or(left_child, right_child)
-        "imply" => Strategy_Imply(left_child, right_child)
-    end
-end
-
 function _to_logic(node::Quantifier)::Strategy_Formula
     child = _to_logic(node.child)
     if child isa Constraint
         child = State_Constraint(child)
     end
-    # if child isa State_Formula
-    #     child = Strategy_to_State(child)
-    # end
     if node.always
         if node.for_all
             return All_Always(_to_logic(node.agents), child)

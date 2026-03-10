@@ -20,8 +20,6 @@ This file contains all token definitions needed to convert a string into an arra
 - `BooleanToken`: Token for all boolean values.
 - `StrategyConstantToken`: Token for deadlocks.
 - `QuantifierToken`: Token for quantifier keywords.
-- `StrategyUnaryOperatorToken`: Token for unary operations on strategies.
-- `StrategyBinaryOperatorToken`: Token for binary operations on strategies.
 - `StateUnaryOperatorToken`: Token for unary operations on states.
 - `StateBinaryOperatorToken`: Token for binary operations on states.
 - `ConstraintUnaryOperatorToken`: Token for unary operations on constraints.
@@ -57,7 +55,7 @@ The types are hierarchically ordered as follows:
 """
 
 export Token, KeywordToken, OperatorToken, SeparatorToken, EmptyListToken, CustomToken, NumericToken
-export AgentToken, StrategyConstantToken, QuantifierToken, StrategyUnaryOperatorToken, StrategyBinaryOperatorToken
+export AgentToken, StrategyConstantToken, QuantifierToken
 export LocationToken, StateUnaryOperatorToken, StateBinaryOperatorToken
 export BooleanToken, ConstraintUnaryOperatorToken, ConstraintBinaryOperatorToken, ConstraintCompareToken
 export VariableToken, ExpressionUnaryOperatorToken, ExpressionBinaryOperatorToken, ExpressionUnBinaryOperatorToken, ExpressionBinaryFunctionToken
@@ -194,32 +192,6 @@ struct QuantifierToken <: KeywordToken
 end
 
 """
-    StrategyUnaryOperatorToken <: OperatorToken
-
-A token for unary operators on strategies.
-
-    StrategyUnaryOperatorToken(type::String)
-
-Create a StrategyUnaryOperatorToken of type `type`.
-"""
-struct StrategyUnaryOperatorToken <: OperatorToken
-    type::String
-end
-
-"""
-    StrategyBinaryOperatorToken <: OperatorToken
-
-A token for binary operators on strategies.
-
-    StrategyBinaryOperatorToken(type::String)
-
-Create a StrategyBinaryOperatorToken of type `type`.
-"""
-struct StrategyBinaryOperatorToken <: OperatorToken
-    type::String
-end
-
-"""
     StateUnaryOperatorToken <: OperatorToken
 
 A token for unary operators on states.
@@ -235,7 +207,7 @@ end
 """
     StateBinaryOperatorToken <: OperatorToken
 
-A token for unary operators on states.
+A token for binary operators on states.
 
     StateBinaryOperatorToken(type::String)
 

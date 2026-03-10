@@ -13,8 +13,6 @@ This file contains all definitions needed to parse tokens to an AST.
 - `StrategyNode`: Abstract type for strategy nodes.
 - `Quantifier`: Node for quantified strategies.
 - `StrategyConstant`: Node for deadlocks.
-- `StrategyUnaryOperation`: Node for unary operations on strategies.
-- `StrategyBinaryOperation`: Node for binary operations on strategies.
 - `StateNode`: Abstract type for state nodes.
 - `LocationNode`: Node for locations.
 - `StateUnaryOperation`: Node for unary operations on states.
@@ -36,8 +34,6 @@ The types are hierarchically ordered as follows:
     |-- StrategyNode
     |   |-- Quantifier
     |   |-- StrategyConstant
-    |   |-- StrategyUnaryOperation
-    |   |-- StrategyBinaryOperation
     |   |-- StateNode
     |       |-- LocationNode
     |       |-- StateUnaryOperation
@@ -54,7 +50,7 @@ The types are hierarchically ordered as follows:
 """
 
 export ASTNode, AgentList, Agents
-export StrategyNode, Quantifier, StrategyConstant, StrategyUnaryOperation, StrategyBinaryOperation
+export StrategyNode, Quantifier, StrategyConstant
 export StateNode, LocationNode, StateUnaryOperation, StateBinaryOperation
 export ConstraintNode, ConstraintConstant, ConstraintUnaryOperation, ConstraintBinaryOperation
 export ExpressionNode, VariableNode, ExpressionConstant, ExpressionUnaryOperation, ExpressionBinaryOperation
@@ -140,48 +136,6 @@ Create a StrategyConstant with value `value`.
 struct StrategyConstant <: StrategyNode
     value::String
 end
-
-"""
-    StrategyUnaryOperation <: StrategyNode
-
-AST Node for unary operations on strategies.
-
-    StrategyUnaryOperation(unary_operation::String, child::StrategyNode)
-
-Create a StrategyUnaryOperation of type `unary_operation` on strategy `child`.
-"""
-struct StrategyUnaryOperation <: StrategyNode
-    unary_operation::String
-    child::StrategyNode
-end
-
-# redefine comparison
-Base.:(==)(x::StrategyUnaryOperation, y::StrategyUnaryOperation) = (
-    x.unary_operation == y.unary_operation 
-    && x.child == y.child
-)
-
-"""
-    StrategyBinaryOperation <: StrategyNode
-
-AST Node for binary operations on strategies.
-
-    StrategyBinaryOperation(binary_operation::String, left_child::StrategyNode, right_child::StrategyNode)
-
-Create a StrategyBinaryOperation of type `binary_operation` on strategies `left_child`, `right_child`.
-"""
-struct StrategyBinaryOperation <: StrategyNode
-    binary_operation::String
-    left_child::StrategyNode
-    right_child::StrategyNode
-end
-
-# redefine comparison
-Base.:(==)(x::StrategyBinaryOperation, y::StrategyBinaryOperation) = (
-    x.binary_operation == y.binary_operation 
-    && x.left_child == y.left_child 
-    && x.right_child == y.right_child
-)
 
 # abstract type for all state nodes
 abstract type StateNode <: StrategyNode
@@ -334,8 +288,8 @@ Base.:(==)(x::Quantifier, y::Quantifier) = (
 
 # group operation types
 const ConstantOperation = Union{LocationNode, StrategyConstant, ConstraintConstant, ExpressionConstant, VariableNode}
-const UnaryOperation = Union{StrategyUnaryOperation, StateUnaryOperation, ConstraintUnaryOperation, ExpressionUnaryOperation}
-const BinaryOperation = Union{StrategyBinaryOperation, StateBinaryOperation, ConstraintBinaryOperation, ExpressionBinaryOperation}
+const UnaryOperation = Union{StateUnaryOperation, ConstraintUnaryOperation, ExpressionUnaryOperation}
+const BinaryOperation = Union{StateBinaryOperation, ConstraintBinaryOperation, ExpressionBinaryOperation}
 
 """
     to_string(node::ConstantOperation)::String

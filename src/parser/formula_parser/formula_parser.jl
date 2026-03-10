@@ -57,9 +57,9 @@ function _parse_tokens(tokens::Vector{Token}, level::ParseLevel = strategy)::Uni
     end
 
     if length(parsed_tokens) > 1
-        throw(ParseError("Cannot parse tokens between '$(to_string(parsed_tokens[1]))' and '$(to_string(parsed_tokens[2]))'."))
+        throw(ParseError("Cannot parse tokens $(_get_token_string(parsed_tokens))."))
     elseif length(parsed_tokens) == 1 && !(parsed_tokens[1] isa ASTNode)
-        throw(ParseError("Unparsed token at '$(to_string(parsed_tokens[1]))'."))
+        throw(ParseError("Unparsed token '$(to_string(parsed_tokens[1]))'."))
     end
     return parsed_tokens[1]
 end
@@ -161,6 +161,11 @@ function _is_strongest_operator(type::Type, i::Int, indexes::Vector{Int}, tokens
         end
     end
     return strongest_index == i
+end
+
+function _get_token_string(tokens::ParseVector)::String
+    token_strings::Vector{String} = ["'$(to_string(token))'" for token in tokens]
+    return String(join(token_strings, ", "))
 end
 
 end

@@ -95,6 +95,7 @@ end
     @test_throws TokenizeError("''' is an invalid starting symbol.") tokenize("a'b", Bindings([], [], ["a", "b"]))
     @test_throws TokenizeError("'_' is an invalid starting symbol.") tokenize("a && _b", Bindings([], [], ["a", "b"]))
     @test_throws TokenizeError("'a' is not defined in bindings.") tokenize("a", Bindings([], [], []))
+    @test_throws TokenizeError("'and' is not defined in bindings.") tokenize("true and false", Bindings([], [], []))
 end
 
 end
