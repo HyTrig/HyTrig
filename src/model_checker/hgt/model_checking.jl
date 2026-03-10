@@ -25,14 +25,14 @@ File description.
 export check_query
 
 
-function get_trigger_children(game::HGT_Game, parent::TriggerNode)::Vector{DiscreteTransitionNode}
+function get_trigger_children(game::HGT_Game, parent::TriggerNode)::Vector{ActionNode}
     agent = parent.reaching_trigger.first
-    children = DiscreteTransitionNode[]
+    children = ActionNode[]
     for action in game.actions
         for edge in select_edges(parent.config, agent => action)
             if ! (edge.target_location in parent.zero_loop)
                 config_after_edge = discrete_transition(parent.config, edge)
-                child_node = DiscreteTransitionNode(parent, agent => action, config_after_edge, parent.level, parent.zero_loop, [])
+                child_node = ActionNode(parent, agent => action, config_after_edge, parent.level, parent.zero_loop, [])
                 push!(children, child_node)
             end
         end
@@ -41,7 +41,7 @@ function get_trigger_children(game::HGT_Game, parent::TriggerNode)::Vector{Discr
 end
 
 function evaluate_deadlock(game::HGT_Game, node::Node, children::Vector{Node})::Bool
-    if isa(node, RootNode) || isa(node, DiscreteTransitionNode)
+    if isa(node, RootNode) || isa(node, ActionNode)
         grand_children = [get_trigger_children(game, trigger_child) for trigger_child in children if isa(trigger_child, TriggerNode)]
         return isempty(grand_children) && ! any(isa(child, EndNode) for child in children)
     else
@@ -68,7 +68,7 @@ function check_termination(config::Configuration, level::Int64, termination_cond
 end
 
 
-function get_children(game::HGT_Game, constraints::Set{Constraint}, query_formula::Union{State_Formula, Deadlock_Formula}, parent::Union{RootNode, DiscreteTransitionNode}, termination_conditions::Termination_Conditions, formula_agents::Vector{Agent})::Vector{Node}
+function get_children(game::HGT_Game, constraints::Set{Constraint}, query_formula::Union{State_Formula, Deadlock_Formula}, parent::Union{RootNode, ActionNode}, termination_conditions::Termination_Conditions, formula_agents::Vector{Agent})::Vector{Node}
     remaining_time = termination_conditions.time_limit - parent.config.global_clock
     triggers = union_safe(game.triggers[agent] for agent in game.agents)
 
@@ -143,7 +143,7 @@ end
 function build_and_evaluate!(game::HGT_Game,
                              constraints::Set{Constraint},
                              query::Strategy_Formula, 
-                             node::Union{RootNode, DiscreteTransitionNode},
+                             node::Union{RootNode, ActionNode},
                              termination_conditions::Termination_Conditions)::Bool
     # println(strategy_to_string(query))
     terminal::Bool = check_termination(node.config, node.level, termination_conditions)

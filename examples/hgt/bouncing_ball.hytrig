@@ -1,9 +1,31 @@
 {
     "game_type": "HGT",
-    "triggers": [
+    "agents": [
         {
-            "agent": "A",
-            "trigger": "pos == 0 && spd < 0"
+            "name": "A"
+        }
+    ],
+    "actions": [
+        {
+            "name": "up"
+        }
+    ],
+    "variables": [
+        {
+            "name": "pos",
+            "expression": "1000"
+        },
+        {
+            "name": "spd",
+            "expression": "0"
+        },
+        {
+            "name": "acc",
+            "expression": "-10"
+        },
+        {
+            "name": "dissipation",
+            "expression": "0.9"
         }
     ],
     "locations": [
@@ -29,40 +51,6 @@
             "initial": true,
             "name": "falling",
             "invariant": "0 <= pos && pos <= 1000 && acc == -10"
-        }
-    ],
-    "queries": [
-        {
-            "formula": "<<A>> F pos < 0 || pos > 1000"
-        },
-        {
-            "formula": "[[A]] G pos >= 0"
-        },
-        {
-            "formula": "[[A]] F pos == 700 && spd > 0"
-        }
-    ],
-    "variables": [
-        {
-            "name": "pos",
-            "expression": "1000"
-        },
-        {
-            "name": "spd",
-            "expression": "0"
-        },
-        {
-            "name": "acc",
-            "expression": "-10"
-        },
-        {
-            "name": "dissipation",
-            "expression": "0.9"
-        }
-    ],
-    "actions": [
-        {
-            "name": "up"
         }
     ],
     "edges": [
@@ -92,14 +80,26 @@
             ]
         }
     ],
-    "agents": [
+    "triggers": [
         {
-            "name": "A"
+            "agent": "A",
+            "trigger": "pos == 0 && spd < 0"
         }
     ],
     "config": {
         "state_formula": "pos == 0 && spd^2 < 0.01",
         "time_bound": "1000",
         "max_steps": "20"
-    }
+    },
+    "queries": [
+        {
+            "formula": "<<A>> F pos < 0 || pos > 1000"
+        },
+        {
+            "formula": "[[A]] G pos >= 0"
+        },
+        {
+            "formula": "[[A]] F pos == 700 && spd > 0"
+        }
+    ]
 }

@@ -22,7 +22,7 @@ File description.
 - Author 2
 """
 
-export Node, RootNode, TriggerNode, PassiveNode, DiscreteTransitionNode, EndNode
+export Node, RootNode, TriggerNode, PassiveNode, ActionNode, EndNode
 export print_tree, count_nodes, depth_of_tree, max_time
 export sort_children_by_clock!, sort_children_by_clock_and_agent
 
@@ -35,13 +35,10 @@ struct RootNode <: Node
     children::Vector{Node}
 end
 
-struct DiscreteTransitionNode <: Node
+struct PassiveNode <: Node
     parent::Node
-    reaching_decision::Pair{Agent, Action}
     config::Configuration
     level::Int64
-    zero_loop::Set{Location}
-    children::Vector{Node}
 end
 
 struct TriggerNode <: Node
@@ -53,11 +50,15 @@ struct TriggerNode <: Node
     children::Vector{Node}
 end
 
-struct PassiveNode <: Node
+struct ActionNode <: Node
     parent::Node
+    reaching_decision::Pair{Agent, Action}
     config::Configuration
     level::Int64
+    zero_loop::Set{Location}
+    children::Vector{Node}
 end
+
 
 struct EndNode <: Node
     parent::Node
@@ -76,7 +77,7 @@ function print_tree(root::Node)
                     res *= print_tree(child)
                 end
             end
-        DiscreteTransitionNode(_, decision, config, level, _, children) =>
+        ActionNode(_, decision, config, level, _, children) =>
             begin
                 res *= "\n$level- Action - Agent: $(decision.first) - Action: $(decision.second) - Location: $(config.location.name)\nValuation: $(round5(config.valuation)), - Time: $(round5(config.global_clock))\nChildren: $(length(children))"
                 res *= "\n--------------\n"
@@ -113,8 +114,8 @@ function count_nodes(root::Node)::Int
         PassiveNode(_, _, _) => 1
         TriggerNode(_, _, _, _, _, []) => 1
         TriggerNode(_, _, _, _, _, children) => 1 + sum(count_nodes(child) for child in children)
-        DiscreteTransitionNode(_, _, _, _, _, []) => 1
-        DiscreteTransitionNode(_, _, _, _, _, children) => 1 + sum(count_nodes(child) for child in children)
+        ActionNode(_, _, _, _, _, []) => 1
+        ActionNode(_, _, _, _, _, children) => 1 + sum(count_nodes(child) for child in children)
         EndNode(_, _, _) => 1
     end
 end
@@ -126,8 +127,8 @@ function depth_of_tree(root::Node)::Int
         PassiveNode(_, _, _) => 1
         TriggerNode(_, _, _, _, _, []) => 1
         TriggerNode(_, _, _, _, _, children) => 1 + maximum(depth_of_tree(child) for child in children)
-        DiscreteTransitionNode(_, _, _, _, _, []) => 1
-        DiscreteTransitionNode(_, _, _, _, _, children) => 1 + maximum(depth_of_tree(child) for child in children)
+        ActionNode(_, _, _, _, _, []) => 1
+        ActionNode(_, _, _, _, _, children) => 1 + maximum(depth_of_tree(child) for child in children)
         EndNode(_, _, _) => 1
     end
 end
@@ -140,8 +141,8 @@ function max_time(root::Node)::Float64
         PassiveNode(_, config, _) => round5(config.global_clock)
         TriggerNode(_, _, config, _, _, []) => round5(config.global_clock)
         TriggerNode(_, _, config, _, _, children) => maximum(max_time(child) for child in children)
-        DiscreteTransitionNode(_, _, config, _, _, []) => round5(config.global_clock)
-        DiscreteTransitionNode(_, _, config, _, _, children) => maximum(max_time(child) for child in children)
+        ActionNode(_, _, config, _, _, []) => round5(config.global_clock)
+        ActionNode(_, _, config, _, _, children) => maximum(max_time(child) for child in children)
         EndNode(_, config, _) => round5(config.global_clock)
     end
 end
