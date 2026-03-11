@@ -189,6 +189,9 @@ GameType {
         reset: function() {
             // Remove when MHG viewer is implemented
         }
+        set: function() {
+            // Remove when MHG viewer is implemented
+        }
     }
 
     clear: function () {

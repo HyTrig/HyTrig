@@ -9,8 +9,10 @@ import QtQuick.Controls.Material
 
 ApplicationWindow {
 
-    /// Function for resetting the game viewer, no return value
+    // Function for resetting the game viewer, no return value
     required property var reset
+    // Function for setting the game viewer to a specific query, no return value
+    required property var set
        
     width: 1500
     height: 1000

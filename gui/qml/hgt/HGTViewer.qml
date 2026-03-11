@@ -27,15 +27,19 @@ GameViewer {
     readonly property real node_width: 400
     readonly property real node_height: 300
     readonly property color passive_node_color: "#4664aa"
-    readonly property color active_node_color: main_window.Material.theme === Material.Dark ? "#004f44" : '#00ceb2'
+    readonly property color action_node_color: main_window.Material.theme === Material.Dark ? "#004f44" : '#00ceb2'
     readonly property color end_node_color: Material.color(Material.Red)
     readonly property color trigger_node_color: "#df9b1b"
 
     reset: function() {
         // Reset tree viewer to root
-        while (Julia.hgt_up_tree()) {
-            level = level - 1;
-        }
+        level = 1;
+        branches.model.clear();
+    }
+
+    set: function(i) {
+        // Set tree viewer to query with index i
+        Julia.hgt_set_tree(i);
         branches.model = [];
         branches.model = hgt_models.branches;
     }
@@ -225,7 +229,7 @@ GameViewer {
 
                                 orientation: ListView.Horizontal
 
-                                model: active_nodes
+                                model: action_nodes
                                 delegate: Nodes.ActionNode {
                                     width: node_width
                                     height: parent.height
@@ -285,7 +289,7 @@ GameViewer {
                 width: passive_legend.width
                 height: parent_button.height
                 radius: 5
-                color: active_node_color
+                color: action_node_color
                 border.color: Material.accent
                 border.width: 2
                 
@@ -302,7 +306,7 @@ GameViewer {
                 height: parent_button.height
                 radius: 5
                 color: light_background_color
-                border.color: Material.accent
+                border.color: end_node_color
                 border.width: 2
                 
                 Title {

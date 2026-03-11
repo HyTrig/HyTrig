@@ -23,7 +23,7 @@ Item {
 
         ShapePath {
             strokeWidth: 4
-            strokeColor: passive_node_color
+            strokeColor: model.is_end ? end_node_color : passive_node_color
             startX: 0
             startY: time_line_connector.height / 2
             PathLine {
@@ -40,7 +40,7 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         radius: 5
         color: light_background_color
-        border.color: passive_node_color
+        border.color: model.is_end ? end_node_color : passive_node_color
         border.width: 2
 
         Label {

@@ -382,31 +382,13 @@ ApplicationWindow {
                 width: parent.width
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.bottom: verified ? tree_button.top : parent.bottom
+                anchors.bottom: parent.bottom
                 anchors.margins: 10
 
                 text: qsTr("Verify")
 
                 onClicked: {
                     verify_action.trigger();
-                }
-
-            }
-
-            Button {
-
-                id: tree_button
-                width: parent.width
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.bottom: parent.bottom
-                anchors.margins: 10
-
-                text: qsTr("View Tree")
-                visible: verified
-
-                onClicked: {
-                    game.show_tree();
                 }
 
             }

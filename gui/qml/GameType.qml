@@ -33,10 +33,12 @@ Item {
 
     /**
     * Show the game viewer for the current game
+    * @param    {number}    i - index of the query for which the tree should be shown
     * @return   void
     */
-    function show_tree() {
+    function show_tree(i) {
         game_viewer.reset();
+        game_viewer.set(i);
         game_viewer.show();
     }
 

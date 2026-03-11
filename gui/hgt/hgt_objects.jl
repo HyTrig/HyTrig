@@ -224,7 +224,7 @@ mutable struct QHGTBranch
     agent::String
     trigger::String
     time::Float64
-    active_nodes::JuliaItemModel
+    action_nodes::JuliaItemModel
     passive_nodes::JuliaItemModel
 end
 
@@ -237,18 +237,18 @@ Create a QHGTBranch from the given branch `branch`.
 """
 function QHGTBranch(branch::GUIBranch)::QHGTBranch
     return QHGTBranch(
-        if isnothing(branch.reaching_decision)
+        if isnothing(branch.reaching_trigger)
             ""
         else
-            string(branch.reaching_decision[1])
+            string(branch.reaching_trigger[1])
         end,
         if isnothing(branch.reaching_trigger)
             ""
         else
-            constraint_to_string(branch.reaching_trigger)
+            constraint_to_string(branch.reaching_trigger[2])
         end,
         trunc(branch.config.global_clock, digits=5),
-        JuliaItemModel([QHGTActionNode(node) for node in branch.active_nodes]),
+        JuliaItemModel([QHGTActionNode(node) for node in branch.action_nodes]),
         JuliaItemModel([QHGTPassiveNode(node) for node in branch.passive_nodes])
     )
 end
@@ -262,7 +262,6 @@ mutable struct QHGTActionNode
     location::String
     action::String
     valuation::String
-    clickable::Bool
 end
 
 """
@@ -280,8 +279,7 @@ function QHGTActionNode(node::GUINode)::QHGTActionNode
         else
             string(node.reaching_decision[2])
         end,
-        _get_valuation_string(node.config.valuation),
-        !isempty(node.branches)
+        _get_valuation_string(node.config.valuation)
     )
 end
 
@@ -293,6 +291,7 @@ A passive tree node used in QML models.
 mutable struct QHGTPassiveNode
     valuation::String
     time::Float64
+    is_end::Bool
 end
 
 """
@@ -305,7 +304,23 @@ Create a QHGTPassiveNode from the given passive node `node`.
 function QHGTPassiveNode(node::PassiveNode)::QHGTPassiveNode
     return QHGTPassiveNode(
         _get_valuation_string(node.config.valuation),
-        trunc(node.config.global_clock, digits=5)
+        trunc(node.config.global_clock, digits=5),
+        false
+    )
+end
+
+"""
+    QHGTPassiveNode(node::EndNode)::QHGTPassiveNode
+
+Create a QHGTPassiveNode from the given end node `node`.
+# Arguments
+- `node::EndNode`: The end node.
+"""
+function QHGTPassiveNode(node::EndNode)::QHGTPassiveNode
+    return QHGTPassiveNode(
+        _get_valuation_string(node.config.valuation),
+        trunc(node.config.global_clock, digits=5),
+        true
     )
 end
 
@@ -388,5 +403,5 @@ hgt_models["queries"] = JuliaItemModel(hgt_query_list)
 
 A list of branches in the current Hybrid Game with Triggers.
 """
-hgt_branch_list::Vector{QHGTBranch} = []
+hgt_branch_list::Vector{QHGTBranch} = QHGTBranch[]
 hgt_models["branches"] = JuliaItemModel(hgt_branch_list)

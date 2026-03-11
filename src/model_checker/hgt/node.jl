@@ -59,7 +59,6 @@ struct ActionNode <: Node
     children::Vector{Node}
 end
 
-
 struct EndNode <: Node
     parent::Node
     config::Configuration

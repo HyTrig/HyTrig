@@ -9,6 +9,7 @@ This file contains all functions related to the Hybrid Games with Triggers (HGT)
 - `hgt_save(path::QString)`: Save the current game to a file.
 - `hgt_load(path::QString)::String`: Load a game from a file.
 - `hgt_verify()::String`: Verify the current game.
+- `hgt_set_tree(i::Int32)`: Set the branch model to query with index `i`.
 - `hgt_up_tree()::Bool`: Set the branch model to the current nodes parent layer.
 - `hgt_down_tree(i::Int32, j::Int32)::Bool`: Set the branch model to the child layer of child `j` of branch `i`.
 
@@ -159,7 +160,7 @@ function hgt_load(path::QString)::String
         end
         empty!(hgt_query_list)
         for query in data["queries"]
-            push!(hgt_query_list, QHGTQuery(query["formula"], false))
+            push!(hgt_query_list, QHGTQuery(query["formula"]))
         end
 
         hgt_models["max_steps"] = data["config"]["max_steps"]
@@ -184,7 +185,7 @@ function hgt_verify()::String
         [x.name for x in hgt_location_list],
         [x.name for x in hgt_variable_list]
     )
-    results::Vector{Bool} = []
+    results::Vector{Bool} = Bool[]
     try
         locations = Vector{HGT_Location}([
             HGT_Location(
@@ -230,16 +231,16 @@ function hgt_verify()::String
             edges,
             triggers
         )
-
-        results, hgt_tree = evaluate_queries(
-            game,
-            Termination_Conditions(
-                Base.parse(Float64, hgt_models["time_bound"]),
-                Base.parse(Int64, hgt_models["max_steps"]),
-                parse(hgt_models["state_formula"], bindings, state)
-            ),
-            Vector{Strategy_Formula}([parse(query.formula, bindings, strategy) for query in hgt_query_list])
+        term_cond = Termination_Conditions(
+            Base.parse(Float64, hgt_models["time_bound"]),
+            Base.parse(Int64, hgt_models["max_steps"]),
+            parse(hgt_models["state_formula"], bindings, state)
         )
+        for query in hgt_query_list
+            result, query_tree = check_query(game, term_cond, parse(query.formula, bindings, strategy))
+            push!(results, result)
+            push!(hgt_tree, query_tree)
+        end
     catch e
         if e isa ParseError
             return "parse error: $(e.msg)"
@@ -249,9 +250,8 @@ function hgt_verify()::String
 
     empty!(hgt_branch_list)
 
-    if !isnothing(hgt_tree)
-        hgt_tree = build_gui_tree(hgt_tree)
-        push!(hgt_branch_list, QHGTBranch(hgt_tree.branches[1]))
+    for (i, query_tree) in enumerate(hgt_tree)
+        hgt_tree[i] = build_gui_tree(query_tree)
     end
 
     for (i, query) in enumerate(hgt_query_list)
@@ -262,21 +262,38 @@ function hgt_verify()::String
 end
 
 """
+    hgt_set_tree(i::Int32)
+
+Set the branch model to query with index `i`.
+
+# Arguments:
+- `i::Int32`: The index of the query to set the tree to.
+"""
+function hgt_set_tree(i::Int32)
+    global hgt_tree, current_query
+    if 0 < i <= length(hgt_tree)
+        current_query = Int(i);
+        empty!(hgt_branch_list)
+        push!(hgt_branch_list, QHGTBranch(hgt_tree[current_query].branches[1]))
+    end
+end
+
+"""
     hgt_up_tree()::Bool
 
 Set the branch model to the current nodes parent layer.
 """
 function hgt_up_tree()::Bool
-    global hgt_tree
-    if isnothing(hgt_tree) || isnothing(hgt_tree.parent)
+    global hgt_tree, current_query
+    if isnothing(hgt_tree[current_query].parent)
         return false
     end
 
     empty!(hgt_branch_list)
 
-    hgt_tree = hgt_tree.parent
+    hgt_tree[current_query] = hgt_tree[current_query].parent
 
-    for branch in hgt_tree.branches
+    for branch in hgt_tree[current_query].branches
         push!(hgt_branch_list, QHGTBranch(branch))
     end
     return true
@@ -292,18 +309,18 @@ Set the branch model to the child layer of child `j` of branch `i`.
 - `j::Int32`: The index of the child to go down to.
 """
 function hgt_down_tree(i::Int32, j::Int32)::Bool
-    global hgt_tree
-    if isempty(hgt_branch_list) || isnothing(hgt_tree)
+    global hgt_tree, current_query
+    if isempty(hgt_branch_list) || isnothing(hgt_tree[current_query])
         return false
     end
 
     i = Int(i) + 1
     j = Int(j) + 1
 
-    if 0 < i <= length(hgt_tree.branches) && 0 < j <= length(hgt_tree.branches[i].active_nodes)
+    if 0 < i <= length(hgt_tree[current_query].branches) && 0 < j <= length(hgt_tree[current_query].branches[i].action_nodes)
         empty!(hgt_branch_list)
-        hgt_tree = hgt_tree.branches[i].active_nodes[j]
-        for branch in hgt_tree.branches
+        hgt_tree[current_query] = hgt_tree[current_query].branches[i].action_nodes[j]
+        for branch in hgt_tree[current_query].branches
             push!(hgt_branch_list, QHGTBranch(branch))
         end
         return true
