@@ -157,7 +157,10 @@ function hgt_load(path::QString)::String
             end
             push!(hgt_edge_list, QHGTEdge(edge["source"], edge["target"], edge["guard"], edge["agent"], edge["action"], JuliaItemModel(jump_list)))
         end
-        load_elements("queries", QHGTQuery, hgt_query_list)
+        empty!(hgt_query_list)
+        for query in data["queries"]
+            push!(hgt_query_list, QHGTQuery(query["formula"], false))
+        end
 
         hgt_models["max_steps"] = data["config"]["max_steps"]
         hgt_models["time_bound"] = data["config"]["time_bound"]
