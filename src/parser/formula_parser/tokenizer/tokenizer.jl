@@ -160,7 +160,7 @@ function tokenize(str::String, bindings::Bindings)::Vector{Token}
     end
 
     # determine current set of symbols
-    current_symbols::Vector{Char} = Vector{Char}([])
+    current_symbols::Vector{Char} = Char[]
     current_type::Type = Nothing
     if str[1] in separator_symbols
         current_symbols = Vector([])

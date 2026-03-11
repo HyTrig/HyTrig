@@ -49,7 +49,7 @@ function build_children!(game::Game,
     triggers = union_safe(game.triggers[agent] for agent in game.agents)
 
     if isa(node, RootNode) 
-        explored_edges = Vector{Edge}()
+        explored_edges = Edge[]
         for agent in game.agents
             for trigger in game.triggers[agent]
                 if evaluate(trigger, node.config.valuation)
@@ -71,7 +71,7 @@ function build_children!(game::Game,
     final_valuation, final_time, path_configs = time_to_trigger(node.config, constraints ∪ triggers, remaining_time)
 
     terminatal_config = nothing
-    passive_configs::Vector{Configuration} = Vector{Configuration}()
+    passive_configs::Vector{Configuration} = Configuration[]
     constraints_val = Dict(constr => evaluate(constr, node.config.valuation) for constr in constraints)
     sat_triggers = Dict(agent => [] for agent in game.agents)
 
@@ -86,7 +86,7 @@ function build_children!(game::Game,
                 constraints_val[constr] = evaluate(constr, config.valuation)
             end
         end
-        explored_edges = Vector{Edge}()
+        explored_edges = Edge[]
         for agent in game.agents
             for trigger in game.triggers[agent]
                 if ! (trigger in sat_triggers[agent]) && evaluate(trigger, config.valuation)
@@ -226,8 +226,8 @@ function evaluate_queries(game::Game, termination_conditions::Termination_Condit
     root = RootNode(initial_config, 0, [])
     constraints = get_all_constraints(queries ∪ State_Formula[termination_conditions.state_formula])
 
-    results = Vector{Bool}()
-    built_nodes = Vector{Node}()
+    results = Bool[]
+    built_nodes = Node[]
     for query in queries
         result = evaluate_and_build!(game, constraints, query, root, termination_conditions, built_nodes)
         push!(results, result)

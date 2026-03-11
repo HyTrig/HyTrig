@@ -69,7 +69,7 @@ function parse_hgt_game(hytrig_file::String)::Tuple{HGT_Game, Termination_Condit
     for trigger in data["triggers"]
         agent = Agent(trigger["agent"])
         if !haskey(triggers, agent)
-            triggers[agent] = Vector{Constraint}()
+            triggers[agent] = Constraint[]
         end
         push!(triggers[agent], parse(trigger["trigger"], bindings, constraint))
     end

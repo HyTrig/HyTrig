@@ -49,7 +49,7 @@ function parse_mhg_game(json_file::String)
         end
         variables = Vector{String}([String(var) for var in keys(initial_valuation)])
         locations = MHG_Location[]
-        locations_names = Vector{String}()
+        locations_names = String[]
         initial_location = nothing
         for loc in GameDict["locations"]
             name = Symbol(loc["name"])

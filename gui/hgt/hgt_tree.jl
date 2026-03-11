@@ -117,24 +117,24 @@ function GUIBranch(node::Union{RootNode, EndNode}, active_nodes::Vector{GUINode}
 end
 
 """
-    build_gui_tree(root::Union{ActionNode, RootNode})::GUINode
+    build_gui_tree(root::RootNode)::GUINode
 
 Recursively build the GUI tree from a game tree rooted in `root`.
 
 # Arguments
-- `root::Union{ActionNode, RootNode}`: The game trees root.
+- `root::RootNode`: The game trees root.
 """
-function build_gui_tree(root::Union{ActionNode, RootNode})::GUINode
+function build_gui_tree(root::RootNode)::GUINode
     # Create root node with branches
     gui_root = GUINode(root, nothing)
-    push!(gui_root.branches, GUIBranch(root, [GUINode(root, gui_root)], Vector{PassiveNode}()))
+    push!(gui_root.branches, GUIBranch(root, [GUINode(root, gui_root)], PassiveNode[]))
 
     # Recursively add all layers
     append!(gui_root.branches[1].active_nodes[1].branches, _get_next_layer(root, gui_root.branches[1].active_nodes[1]))
     return gui_root
 end
 
-function _get_next_layer(last_node::Union{ActionNode, RootNode}, parent::GUINode)::Vector{GUIBranch}
+function _get_next_layer(last_node::ActionNode, parent::GUINode)::Vector{GUIBranch}
     branches::Vector{GUIBranch} = []
     last_trigger_time::Float64 = last_node.config.global_clock
 
