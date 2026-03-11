@@ -165,6 +165,7 @@ function build_and_evaluate!(game::HGT_Game,
             end
             # TODO: Review agents_have_active_triggers
             agents_have_active_triggers = false
+            other_agents_have_active_triggers = false
             relvant_children = Node[]
             for child in children
                 push!(relvant_children, child)
@@ -191,18 +192,24 @@ function build_and_evaluate!(game::HGT_Game,
                                 for relvant_child in relvant_children
                                     push!(node.children, relvant_child)
                                 end
-                                push!(child.children, action_child)
                                 return false
                             end
+                            push!(child.children, action_child)
+                            other_agents_have_active_triggers = true
                         end
                     end
                 end
             end
-            return ! agents_have_active_triggers
+            for relvant_child in relvant_children
+                push!(node.children, relvant_child)
+            end
+            return ! agents_have_active_triggers && other_agents_have_active_triggers
         end
         Exist_Eventually(agents, f) => begin
             children = get_children(game, constraints, f, node, termination_conditions, agents)
             if evaluate_inner_formula(game, f, node, children)
+                if evaluate_deadlock(game, node, children)
+                end
                 return true
             end
             if length(children) == 0 || terminal
@@ -210,6 +217,7 @@ function build_and_evaluate!(game::HGT_Game,
             end
             # TODO: Review agents_have_active_triggers
             agents_have_active_triggers = false
+            other_agents_have_active_triggers = false
             relvant_children = Node[]
             for child in children
                 push!(relvant_children, child)
@@ -236,15 +244,20 @@ function build_and_evaluate!(game::HGT_Game,
                                 for relvant_child in relvant_children
                                     push!(node.children, relvant_child)
                                 end
-                                push!(child.children, action_child)
                                 return false
                             end
+                            push!(child.children, action_child)
+                            other_agents_have_active_triggers = true
                         end
                     end
                 end
             end
-            return ! agents_have_active_triggers
+            for relvant_child in relvant_children
+                push!(node.children, relvant_child)
+            end
+            return ! agents_have_active_triggers && other_agents_have_active_triggers
         end
+
     end
 end
 
