@@ -135,7 +135,7 @@ function build_gui_tree(root::RootNode)::GUINode
 end
 
 function _get_next_layer(last_node::ActionNode, parent::GUINode)::Vector{GUIBranch}
-    branches::Vector{GUIBranch} = []
+    branches::Vector{GUIBranch} = GUIBranch[]
     last_trigger_time::Float64 = last_node.config.global_clock
 
     # Create child branches
@@ -143,7 +143,7 @@ function _get_next_layer(last_node::ActionNode, parent::GUINode)::Vector{GUIBran
         current_node::Node = child
         
         # Collect passive nodes until an active or end node is reached
-        passives::Vector{PassiveNode} = []
+        passives::Vector{PassiveNode} = PassiveNode[]
         while !(current_node isa ActionNode || current_node isa EndNode)
             if current_node.config.global_clock >= last_trigger_time
                 push!(passives, current_node)
@@ -157,7 +157,7 @@ function _get_next_layer(last_node::ActionNode, parent::GUINode)::Vector{GUIBran
         current_node = current_node.parent
         
         # Create active nodes for the current layer
-        actives::Vector{GUINode} = []
+        actives::Vector{GUINode} = GUINode[]
         for active in current_node.children
             gui_node = GUINode(active, parent)
             if !(active isa EndNode)

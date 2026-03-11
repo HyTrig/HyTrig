@@ -181,7 +181,7 @@ function hgt_verify()::String
         [x.name for x in hgt_location_list],
         [x.name for x in hgt_variable_list]
     )
-    results::Vector{Bool} = []
+    results::Vector{Bool} = Bool[]
     try
         locations = Vector{HGT_Location}([
             HGT_Location(

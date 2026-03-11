@@ -388,5 +388,5 @@ hgt_models["queries"] = JuliaItemModel(hgt_query_list)
 
 A list of branches in the current Hybrid Game with Triggers.
 """
-hgt_branch_list::Vector{QHGTBranch} = []
+hgt_branch_list::Vector{QHGTBranch} = QHGTBranch[]
 hgt_models["branches"] = JuliaItemModel(hgt_branch_list)
