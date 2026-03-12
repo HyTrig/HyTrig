@@ -216,6 +216,7 @@ GameViewer {
                                 text: qsTr("→")
                                 horizontalAlignment: Text.AlignHCenter
                                 verticalAlignment: Text.AlignVCenter
+                                visible: action_nodes.rowCount() > 0
                             }
                             
                             // Active nodes in this branch
