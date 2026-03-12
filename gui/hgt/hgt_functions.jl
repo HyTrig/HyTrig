@@ -271,8 +271,8 @@ Set the branch model to query with index `i`.
 """
 function hgt_set_tree(i::Int32)
     global hgt_tree, current_query
-    if 0 < i <= length(hgt_tree)
-        current_query = Int(i);
+    if 0 <= i < length(hgt_tree)
+        current_query = Int(i) + 1;
         empty!(hgt_branch_list)
         push!(hgt_branch_list, QHGTBranch(hgt_tree[current_query].branches[1]))
     end
@@ -285,7 +285,7 @@ Set the branch model to the current nodes parent layer.
 """
 function hgt_up_tree()::Bool
     global hgt_tree, current_query
-    if isnothing(hgt_tree[current_query].parent)
+    if current_query == -1 || isnothing(hgt_tree[current_query].parent)
         return false
     end
 
@@ -310,7 +310,7 @@ Set the branch model to the child layer of child `j` of branch `i`.
 """
 function hgt_down_tree(i::Int32, j::Int32)::Bool
     global hgt_tree, current_query
-    if isempty(hgt_branch_list) || isnothing(hgt_tree[current_query])
+    if current_query == -1 ||isempty(hgt_branch_list) || isnothing(hgt_tree[current_query])
         return false
     end
 
