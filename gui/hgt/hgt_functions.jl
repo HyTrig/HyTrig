@@ -144,7 +144,7 @@ function hgt_load(path::QString)::String
         load_elements("triggers", QHGTTrigger, hgt_trigger_list)
         empty!(hgt_location_list)
         for loc in data["locations"]
-            flow_list::Vector{QHGTFlow} = Vector{QHGTFlow}()
+            flow_list::Vector{QHGTFlow} = QHGTFlow[]
             for flow in loc["flow"]
                 push!(flow_list, StructTypes.constructfrom(QHGTFlow, flow))
             end
@@ -152,7 +152,7 @@ function hgt_load(path::QString)::String
         end
         empty!(hgt_edge_list)
         for edge in data["edges"]
-            jump_list::Vector{QHGTJump} = Vector{QHGTJump}()
+            jump_list::Vector{QHGTJump} = QHGTJump[]
             for jump in edge["jump"]
                 push!(jump_list, StructTypes.constructfrom(QHGTJump, jump))
             end
@@ -218,7 +218,7 @@ function hgt_verify()::String
         for x in hgt_trigger_list
             agent = Agent(x.agent)
             if !haskey(triggers, agent)
-                triggers[agent] = Vector{Constraint}()
+                triggers[agent] = Constraint[]
             end
             push!(triggers[agent], parse(x.trigger, bindings, constraint))
         end    

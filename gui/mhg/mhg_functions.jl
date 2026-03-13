@@ -158,7 +158,7 @@ function mhg_load(path::QString)::String
         load_elements("variables", QMHGVariable, mhg_variable_list)
         empty!(mhg_location_list)
         for loc in data["locations"]
-            flow_list::Vector{QMHGFlow} = Vector{QMHGFlow}()
+            flow_list::Vector{QMHGFlow} = QMHGFlow[]
             for flow in loc["flow"]
                 push!(flow_list, StructTypes.constructfrom(QMHGFlow, flow))
             end
@@ -166,7 +166,7 @@ function mhg_load(path::QString)::String
         end
         empty!(mhg_edge_list)
         for edge in data["edges"]
-            jump_list::Vector{QMHGJump} = Vector{QMHGJump}()
+            jump_list::Vector{QMHGJump} = QMHGJump[]
             for jump in edge["jump"]
                 push!(jump_list, StructTypes.constructfrom(QMHGJump, jump))
             end

@@ -41,7 +41,7 @@ function enabled(edge::HGT_Edge, valuation::Valuation)::Bool
 end
 
 function select_edges(config, decision::Decision)::Vector{HGT_Edge}
-    selected_edges = Vector{HGT_Edge}()
+    selected_edges = HGT_Edge[]
     for edge in config.location.edges
         if edge.decision == decision && enabled(edge, config.valuation) 
             push!(selected_edges, edge)

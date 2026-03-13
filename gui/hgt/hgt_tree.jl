@@ -142,7 +142,7 @@ Recursively build the GUI tree from a game tree rooted in `root`.
 function build_gui_tree(root::RootNode)::GUINode
     # Create root node with branches
     gui_root = GUINode(root, nothing)
-    push!(gui_root.branches, GUIBranch(root, [GUINode(root, gui_root)], Vector{PassiveNode}()))
+    push!(gui_root.branches, GUIBranch(root, [GUINode(root, gui_root)], PassiveNode[]))
 
     # Recursively add all layers
     append!(gui_root.branches[1].action_nodes[1].branches, _get_next_layer(root, gui_root.branches[1].action_nodes[1]))
