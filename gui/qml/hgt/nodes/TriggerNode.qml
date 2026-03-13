@@ -83,7 +83,7 @@ Item {
         readonly property list<Item> initial_node_info: [
             Label {
                 width: node.width
-                text: qsTr("Empty Trigger")
+                text: qsTr("Initial Configuration")
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.Wrap

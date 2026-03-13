@@ -209,6 +209,7 @@ GameViewer {
                                 agent: model.agent
                                 trigger: model.trigger
                                 time: model.time
+                                visible: model.trigger != "" || action_nodes.rowCount() > 0
                             }
 
                             Title {

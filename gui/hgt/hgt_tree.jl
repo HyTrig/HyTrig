@@ -132,6 +132,23 @@ function GUIBranch(node::EndNode, passive_nodes::Vector{PassiveNode})::GUIBranch
 end
 
 """
+    GUIBranch(passive_nodes::Vector{PassiveNode})::GUIBranch
+
+Create a GUIBranch from the given `passive_nodes`.
+
+# Arguments
+- `passive_nodes::Vector{PassiveNode}`: The branches passive nodes.
+"""
+function GUIBranch(passive_nodes::Vector{PassiveNode})::GUIBranch
+    return GUIBranch(
+        nothing,
+        passive_nodes[end].config,
+        [],
+        passive_nodes
+    )
+end
+
+"""
     build_gui_tree(root::RootNode)::GUINode
 
 Recursively build the GUI tree from a game tree rooted in `root`.
@@ -167,9 +184,15 @@ function _get_next_layer(last_node::Union{ActionNode, RootNode}, parent::GUINode
             end
             push!(branches, GUIBranch(child, actives, passives))
             empty!(passives)
+            continue
         else
             push!(passives, child)
+            continue
         end
+    end
+
+    if !isempty(passives)
+        push!(branches, GUIBranch(passives))
     end
 
     return branches
