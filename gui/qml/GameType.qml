@@ -31,6 +31,9 @@ Item {
     // Function called after successful verification, no retrun value
     required property var verification_success
 
+    // Function for generating a free name, returns new name based on an input
+    required property var generate_name
+
     /**
     * Show the game viewer for the current game
     * @param    {number}    i - index of the query for which the tree should be shown

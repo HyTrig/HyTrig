@@ -36,7 +36,7 @@ GameType {
             element_name: "Agent"
 
             add: function() {
-                mhg_models.agents.appendRow({name: ""});
+                mhg_models.agents.appendRow({name: generate_name("agent")});
             }
 
             model: mhg_models.agents
@@ -54,7 +54,7 @@ GameType {
             element_name: "Action"
 
             add: function() {
-                mhg_models.actions.appendRow({name: ""});
+                mhg_models.actions.appendRow({name: generate_name("action")});
             }
 
             model: mhg_models.actions
@@ -73,7 +73,7 @@ GameType {
             element_name: "Variable"
 
             add: function() {
-                mhg_models.variables.appendRow({name: "", lower_open: true, upper_open: true, lower: 0.0, upper: 0.0});
+                mhg_models.variables.appendRow({name: generate_name("v"), lower_open: true, upper_open: true, lower: 0.0, upper: 0.0});
                 variableAdded();
             }
 
@@ -104,7 +104,7 @@ GameType {
                     })
                 }
                 mhg_models.locations.appendRow({
-                    name: "",
+                    name: generate_name("l"),
                     initial: mhg_models.locations.rowCount() == 0,
                     invariant: "",
                     flow: flow
@@ -252,6 +252,14 @@ GameType {
         query_tab.model = mhg_models.queries;
         tab_bar.currentIndex = 6;
         tabs.currentIndex = 6;
+    }
+
+    generate_name: function (base) {
+        var i = 0;
+        while (!Julia.mhg_name_available(base + i.toString())) {
+            i++;
+        }
+        return base + i.toString();
     }
 
     // Signals to notify elements of removals and changes
