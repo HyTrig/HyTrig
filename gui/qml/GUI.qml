@@ -471,9 +471,12 @@ ApplicationWindow {
         defaultSuffix: "hytrig"
 
         onAccepted: {
-            game.save(selectedFile.toString());
-            current_file = selectedFile.toString();
-            action(selectedFile.toString());
+            var path = selectedFile.toString();
+            path = decodeURIComponent(path.replace(/^(file:\/{2})/, ""));
+
+            game.save(path);
+            current_file = path;
+            action(path);
         }
 
     }
@@ -490,13 +493,16 @@ ApplicationWindow {
         defaultSuffix: "hytrig"
 
         onAccepted: {
-            var error = game.load(selectedFile.toString());
+            var path = selectedFile.toString();
+            path = decodeURIComponent(path.replace(/^(file:\/{2})/, ""));
+            
+            var error = game.load(path);
             if (error != "") {
-                error_dialog.text = qsTr("An error occurred while loading " + selectedFile.toString() + ":");
+                error_dialog.text = qsTr("An error occurred while loading " + path + ":");
                 error_dialog.informativeText = error;
                 error_dialog.open();
             } else {
-                current_file = selectedFile.toString();
+                current_file = path;
             }
         }
 

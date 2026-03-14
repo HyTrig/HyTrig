@@ -103,7 +103,7 @@ function hgt_save(path::QString)
         ]),
     ])
 
-    open(replace(String(path), r"^(file:\/{2})" => ""), "w") do f
+    open(String(path)) do f
         JSON3.pretty(f, JSON3.write(data))
     end
 end
@@ -127,7 +127,7 @@ function hgt_load(path::QString)::String
     data = Dict{String, Any}()
 
     try
-        data = open(replace(String(path), r"^(file:\/{2})" => ""), "r") do f
+        data = open(String(path)) do f
             JSON3.read(f)
         end
     catch e
