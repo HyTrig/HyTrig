@@ -111,14 +111,18 @@ function mhg_save(path::QString)
             ) for edge in mhg_edge_list
         ],
         "queries" => mhg_query_list,
-        "termination-conditions" => Dict([
+        "termination_conditions" => Dict([
             "max_steps" => mhg_models["max_steps"],
             "time_bound" => mhg_models["time_bound"],
             "state_formula" => mhg_models["state_formula"],
         ]),
     ])
 
-    open(replace(String(path), r"^(file:\/{2})" => ""), "w") do f
+    if Sys.iswindows()
+        path = replace(String(path), r"^\/" => "")
+    end
+
+    open(String(path), "w") do f
         JSON3.pretty(f, JSON3.write(data))
     end
 end
@@ -142,7 +146,10 @@ function mhg_load(path::QString)::String
     data = Dict{String, Any}()
 
     try
-        data = open(replace(String(path), r"^(file:\/{2})" => ""), "r") do f
+        if Sys.iswindows()
+            path = replace(String(path), r"^\/" => "")
+        end
+        data = open(String(path), "r") do f
             JSON3.read(f)
         end
     catch e
@@ -174,9 +181,9 @@ function mhg_load(path::QString)::String
         end
         load_elements("queries", QMHGQuery, mhg_query_list)
 
-        mhg_models["max_steps"] = data["termination-conditions"]["max_steps"]
-        mhg_models["time_bound"] = data["termination-conditions"]["time_bound"]
-        mhg_models["state_formula"] = data["termination-conditions"]["state_formula"]
+        mhg_models["max_steps"] = data["termination_conditions"]["max_steps"]
+        mhg_models["time_bound"] = data["termination_conditions"]["time_bound"]
+        mhg_models["state_formula"] = data["termination_conditions"]["state_formula"]
     catch e
         return "invalid HYTRIG file for Monotonic Hybrid Games: Missing key $(e.key)"
     end

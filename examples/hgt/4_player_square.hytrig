@@ -729,7 +729,7 @@
             "verified": false
         }
     ],
-    "termination-conditions": {
+    "termination_conditions": {
         "max_steps": "10",
         "time_bound": "300",
         "state_formula": "false"

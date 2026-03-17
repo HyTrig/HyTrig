@@ -5121,7 +5121,7 @@
             "verified": false
         }
     ],
-    "termination-conditions": {
+    "termination_conditions": {
         "max_steps": "8",
         "time_bound": "30",
         "state_formula": "z <= 0 || x < 0 || x > 18 || y < 0 || y > 9"

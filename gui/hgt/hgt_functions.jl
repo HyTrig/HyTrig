@@ -96,14 +96,18 @@ function hgt_save(path::QString)
             ) for edge in hgt_edge_list
         ],
         "queries" => hgt_query_list,
-        "termination-conditions" => Dict([
+        "termination_conditions" => Dict([
             "max_steps" => hgt_models["max_steps"],
             "time_bound" => hgt_models["time_bound"],
             "state_formula" => hgt_models["state_formula"],
         ]),
     ])
 
-    open(String(path)) do f
+    if Sys.iswindows()
+        path = replace(String(path), r"^\/" => "")
+    end
+
+    open(String(path), "w") do f
         JSON3.pretty(f, JSON3.write(data))
     end
 end
@@ -130,7 +134,7 @@ function hgt_load(path::QString)::String
         if Sys.iswindows()
             path = replace(String(path), r"^\/" => "")
         end
-        data = open(String(path)) do f
+        data = open(String(path), "r") do f
             JSON3.read(f)
         end
     catch e
@@ -166,9 +170,9 @@ function hgt_load(path::QString)::String
             push!(hgt_query_list, QHGTQuery(query["formula"]))
         end
 
-        hgt_models["max_steps"] = data["termination-conditions"]["max_steps"]
-        hgt_models["time_bound"] = data["termination-conditions"]["time_bound"]
-        hgt_models["state_formula"] = data["termination-conditions"]["state_formula"]
+        hgt_models["max_steps"] = data["termination_conditions"]["max_steps"]
+        hgt_models["time_bound"] = data["termination_conditions"]["time_bound"]
+        hgt_models["state_formula"] = data["termination_conditions"]["state_formula"]
     catch e
         return "invalid HYTRIG file for Hybrid Games with Triggers: Missing key $(e.key)"
     end
