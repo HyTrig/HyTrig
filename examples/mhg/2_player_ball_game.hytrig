@@ -283,7 +283,7 @@
             "verified": false
         }
     ],
-    "config": {
+    "termination-conditions": {
         "max_steps": "5",
         "time_bound": "120.0",
         "state_formula": "false"

@@ -364,7 +364,7 @@
             "verified": false
         }
     ],
-    "config": {
+    "termination-conditions": {
         "max_steps": "20",
         "time_bound": "1000",
         "state_formula": "Caught"

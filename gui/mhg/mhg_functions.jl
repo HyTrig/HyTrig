@@ -111,7 +111,7 @@ function mhg_save(path::QString)
             ) for edge in mhg_edge_list
         ],
         "queries" => mhg_query_list,
-        "config" => Dict([
+        "termination-conditions" => Dict([
             "max_steps" => mhg_models["max_steps"],
             "time_bound" => mhg_models["time_bound"],
             "state_formula" => mhg_models["state_formula"],
@@ -174,9 +174,9 @@ function mhg_load(path::QString)::String
         end
         load_elements("queries", QMHGQuery, mhg_query_list)
 
-        mhg_models["max_steps"] = data["config"]["max_steps"]
-        mhg_models["time_bound"] = data["config"]["time_bound"]
-        mhg_models["state_formula"] = data["config"]["state_formula"]
+        mhg_models["max_steps"] = data["termination-conditions"]["max_steps"]
+        mhg_models["time_bound"] = data["termination-conditions"]["time_bound"]
+        mhg_models["state_formula"] = data["termination-conditions"]["state_formula"]
     catch e
         return "invalid HYTRIG file for Monotonic Hybrid Games: Missing key $(e.key)"
     end

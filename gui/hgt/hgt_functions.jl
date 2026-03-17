@@ -96,7 +96,7 @@ function hgt_save(path::QString)
             ) for edge in hgt_edge_list
         ],
         "queries" => hgt_query_list,
-        "config" => Dict([
+        "termination-conditions" => Dict([
             "max_steps" => hgt_models["max_steps"],
             "time_bound" => hgt_models["time_bound"],
             "state_formula" => hgt_models["state_formula"],
@@ -163,9 +163,9 @@ function hgt_load(path::QString)::String
             push!(hgt_query_list, QHGTQuery(query["formula"]))
         end
 
-        hgt_models["max_steps"] = data["config"]["max_steps"]
-        hgt_models["time_bound"] = data["config"]["time_bound"]
-        hgt_models["state_formula"] = data["config"]["state_formula"]
+        hgt_models["max_steps"] = data["termination-conditions"]["max_steps"]
+        hgt_models["time_bound"] = data["termination-conditions"]["time_bound"]
+        hgt_models["state_formula"] = data["termination-conditions"]["state_formula"]
     catch e
         return "invalid HYTRIG file for Hybrid Games with Triggers: Missing key $(e.key)"
     end
