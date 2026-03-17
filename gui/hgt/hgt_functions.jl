@@ -127,6 +127,9 @@ function hgt_load(path::QString)::String
     data = Dict{String, Any}()
 
     try
+        if Sys.iswindows()
+            path = replace(String(path), r"^\/" => "")
+        end
         data = open(String(path)) do f
             JSON3.read(f)
         end
@@ -236,6 +239,7 @@ function hgt_verify()::String
             Base.parse(Int64, hgt_models["max_steps"]),
             parse(hgt_models["state_formula"], bindings, state)
         )
+        empty!(hgt_tree)
         for query in hgt_query_list
             result, query_tree = check_query(game, term_cond, parse(query.formula, bindings, strategy))
             push!(results, result)
@@ -244,6 +248,8 @@ function hgt_verify()::String
     catch e
         if e isa ParseError
             return "parse error: $(e.msg)"
+        else e isa TokenizeError
+            return "tokenize error: $(e.msg)"
         end
         throw(e)
     end
