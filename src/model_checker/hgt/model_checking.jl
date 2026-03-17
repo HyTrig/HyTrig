@@ -73,7 +73,7 @@ function get_children(game::HGT_Game, constraints::Set{Constraint}, query_formul
     triggers = union_safe(game.triggers[agent] for agent in game.agents)
 
     final_valuation, final_time, path_configs = time_to_trigger(parent.config, constraints ∪ triggers, remaining_time)
-
+    println("Final Time = $final_time, final spd = $(final_valuation[:spd]), children = $(length(path_configs))")
     if isa(query_formula, State_Formula)
         state_formula_status = evaluate_state(query_formula, parent.config)
     else
@@ -153,111 +153,104 @@ function build_and_evaluate!(game::HGT_Game,
             children = get_children(game, constraints, State_Constraint(Truth(true)), node, termination_conditions, game.agents)
             return evaluate_deadlock(game, node, children)
         end
-        All_Always(agents, f) => ! build_and_evaluate!(game, constraints, Exist_Eventually(setdiff(game.agents, agents), State_Not(f)), node, termination_conditions)
         All_Eventually(agents, f) => ! build_and_evaluate!(game, constraints, Exist_Always(setdiff(game.agents, agents), State_Not(f)), node, termination_conditions)
+        All_Always(agents, f) => ! build_and_evaluate!(game, constraints, Exist_Eventually(setdiff(game.agents, agents), State_Not(f)), node, termination_conditions)
+        Exist_Eventually(agents, f) => begin
+            children = get_children(game, constraints, f, node, termination_conditions, agents)
+            if evaluate_inner_formula(game, f, node, children)
+                return true
+            end
+            if length(children) == 0 || terminal
+                return false
+            end
+            agents_have_valid_decisions = false
+            other_agents_have_valid_decisions = false
+            relvant_children = Node[]
+            for child in children
+                if evaluate_inner_formula(game, f, child, Node[])
+                    push!(relvant_children, child)
+                    append!(node.children, relvant_children)
+                    return true
+                end
+                if isa(child, TriggerNode)
+                    push!(relvant_children, child)
+                    trigger_children = get_trigger_children(game, child)
+                    if child.reaching_trigger.first in agents
+                        for action_child in trigger_children
+                            if build_and_evaluate!(game, constraints, query, action_child, termination_conditions)
+                                push!(child.children, action_child)
+                                append!(node.children, relvant_children)
+                                return true
+                            end
+                            agents_have_valid_decisions = true
+                        end
+                    else
+                        for action_child in trigger_children
+                            if ! build_and_evaluate!(game, constraints, query, action_child, termination_conditions)
+                                return false
+                            end
+                            push!(child.children, action_child)
+                            other_agents_have_valid_decisions = true
+                        end
+                    end
+                end
+            end
+            if ! agents_have_valid_decisions && other_agents_have_valid_decisions
+                append!(node.children, relvant_children)
+                return true
+            else
+                return false
+            end
+        end
         Exist_Always(agents, f) => begin
             children = get_children(game, constraints, f, node, termination_conditions, agents)
             if ! evaluate_inner_formula(game, f, node, children)
                 return false
             end
             if length(children) == 0 || terminal
+                println("length(children) == 0 || terminal")
                 return true
             end
-            # TODO: Review agents_have_active_triggers
-            agents_have_active_triggers = false
-            other_agents_have_active_triggers = false
+            agents_have_valid_decisions = false
+            other_agents_have_valid_decisions = false
             relvant_children = Node[]
             for child in children
-                push!(relvant_children, child)
                 if ! evaluate_inner_formula(game, f, child, Node[])
-                    for relvant_child in relvant_children
-                        push!(node.children, relvant_child)
-                    end
+                    # push!(relvant_children, child)
+                    # append!(node.children, relvant_children)
+                    println("! evaluate_inner_formula(game, f, child, Node[])")
                     return false
                 end
                 if isa(child, TriggerNode)
+                    push!(relvant_children, child)
                     trigger_children = get_trigger_children(game, child)
-                    for action_child in trigger_children
-                        if child.reaching_trigger.first in agents
+                    if child.reaching_trigger.first in agents
+                        for action_child in trigger_children
                             if build_and_evaluate!(game, constraints, query, action_child, termination_conditions)
-                                for relvant_child in relvant_children
-                                    push!(node.children, relvant_child)
-                                end
                                 push!(child.children, action_child)
+                                append!(node.children, relvant_children)
                                 return true
                             end
-                            agents_have_active_triggers = true
-                        else
+                            agents_have_valid_decisions = true
+                        end
+                    else
+                        for action_child in trigger_children
                             if ! build_and_evaluate!(game, constraints, query, action_child, termination_conditions)
-                                for relvant_child in relvant_children
-                                    push!(node.children, relvant_child)
-                                end
                                 return false
                             end
                             push!(child.children, action_child)
-                            other_agents_have_active_triggers = true
+                            other_agents_have_valid_decisions = true
                         end
                     end
                 end
             end
-            for relvant_child in relvant_children
-                push!(node.children, relvant_child)
-            end
-            return ! agents_have_active_triggers && other_agents_have_active_triggers
-        end
-        Exist_Eventually(agents, f) => begin
-            children = get_children(game, constraints, f, node, termination_conditions, agents)
-            if evaluate_inner_formula(game, f, node, children)
-                if evaluate_deadlock(game, node, children)
-                end
+            if ! agents_have_valid_decisions && other_agents_have_valid_decisions
+                append!(node.children, relvant_children)
                 return true
-            end
-            if length(children) == 0 || terminal
+            else
                 return false
             end
-            # TODO: Review agents_have_active_triggers
-            agents_have_active_triggers = false
-            other_agents_have_active_triggers = false
-            relvant_children = Node[]
-            for child in children
-                push!(relvant_children, child)
-                if evaluate_inner_formula(game, f, child, Node[])
-                    for relvant_child in relvant_children
-                        push!(node.children, relvant_child)
-                    end
-                    return true
-                end
-                if isa(child, TriggerNode)
-                    trigger_children = get_trigger_children(game, child)
-                    for action_child in trigger_children
-                        if child.reaching_trigger.first in agents
-                            if build_and_evaluate!(game, constraints, query, action_child, termination_conditions)
-                                for relvant_child in relvant_children
-                                    push!(node.children, relvant_child)
-                                end
-                                push!(child.children, action_child)
-                                return true
-                            end
-                            agents_have_active_triggers = true
-                        else
-                            if ! build_and_evaluate!(game, constraints, query, action_child, termination_conditions)
-                                for relvant_child in relvant_children
-                                    push!(node.children, relvant_child)
-                                end
-                                return false
-                            end
-                            push!(child.children, action_child)
-                            other_agents_have_active_triggers = true
-                        end
-                    end
-                end
-            end
-            for relvant_child in relvant_children
-                push!(node.children, relvant_child)
-            end
-            return ! agents_have_active_triggers && other_agents_have_active_triggers
         end
-
     end
 end
 

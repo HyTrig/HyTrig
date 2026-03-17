@@ -22,7 +22,7 @@ File description.
 - Author 2
 """
 
-export round5, valuation_from_vector, valuation_from_flow_vector, union_safe
+export round5, valuation_from_vector, valuation_from_flow_vector, union_safe, update_list!
 
 function round5(valuation::Valuation)::Valuation
     new_valuation::OrderedDict{Symbol, Float64} = OrderedDict()
@@ -62,5 +62,12 @@ function union_safe(l)
         return eltype(l)[] 
     else
         return union(l...)
+    end
+end
+
+function update_list!(l1, l2)
+    for item in l2
+        empty!(l1)
+        append!(l1, l2)
     end
 end

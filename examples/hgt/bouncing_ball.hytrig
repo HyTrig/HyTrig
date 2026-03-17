@@ -88,21 +88,15 @@
     ],
     "queries": [
         {
-            "formula": "<<A>> F pos < 0 || pos > 1000",
-            "verified": false
+            "formula": "<<A>> G pos >= 0"
         },
         {
-            "formula": "[[A]] G pos >= 0",
-            "verified": false
-        },
-        {
-            "formula": "[[A]] F pos == 700 && spd > 0",
-            "verified": false
+            "formula": "<<A>> F pos == 700 && spd > 0"
         }
     ],
     "config": {
         "max_steps": "20",
-        "time_bound": "1000",
+        "time_bound": "100",
         "state_formula": "pos == 0 && spd^2 < 0.01"
     }
 }
