@@ -100,9 +100,9 @@ function parse_mhg_game(json_file::String)
         game = MHG_Game(locations, initial_location, initial_valuation, agents, actions, edges)
 
         termination_conditions = Termination_Conditions(
-            Float64(FileDict["termination-conditions"]["time-bound"]),
-            Int64(FileDict["termination-conditions"]["max-steps"]),
-            parse(FileDict["termination-conditions"]["state-formula"], Bindings(agents_names, locations_names, variables), state)
+            Float64(FileDict["termination_conditions"]["time-bound"]),
+            Int64(FileDict["termination_conditions"]["max-steps"]),
+            parse(FileDict["termination_conditions"]["state-formula"], Bindings(agents_names, locations_names, variables), state)
         )
         queries::Vector{Strategy_Formula} = Strategy_Formula[parse(query, Bindings(agents_names, locations_names, variables), strategy) for query in FileDict["queries"]]
         return game, termination_conditions, queries, FileDict["queries"]

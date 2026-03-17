@@ -62,7 +62,7 @@
             }
         ]
     },
-    "termination-conditions": {
+    "termination_conditions": {
         "time-bound": 120.0,
         "max-steps": 5,
         "state-formula": "false"

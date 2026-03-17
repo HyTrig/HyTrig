@@ -388,6 +388,7 @@ ApplicationWindow {
                 text: qsTr("Verify")
 
                 onClicked: {
+                    forceActiveFocus();
                     verify_action.trigger();
                 }
 
