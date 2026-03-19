@@ -22,15 +22,24 @@ File description.
 - Author 2
 """
 
-export round5, valuation_from_vector, valuation_from_flow_vector, union_safe, update_list!
+export round5, valuation_from_vector, valuation_from_flow_vector, union_safe, valuation_to_string
 
-function round5(valuation::Valuation)::Valuation
+function round5(valuation::Valuation, digits=5)::Valuation
     new_valuation::OrderedDict{Symbol, Float64} = OrderedDict()
     for (var, value) in valuation
-        new_valuation[var] = round5(value)
+        new_valuation[var] = round5(value, digits)
     end
     return new_valuation
 end
+
+function valuation_to_string(valuation::Valuation, digits = 5)
+    str = "{"
+    for (var, val) in valuation
+        str *= "$var = $(round5(val, digits))   "
+    end
+    str * "}"
+end
+
 
 function valuation_from_vector(valuation::Valuation, vector::Vector{Float64})::Valuation
     new_valuation::OrderedDict{Symbol, Float64} = OrderedDict()
@@ -62,12 +71,5 @@ function union_safe(l)
         return eltype(l)[] 
     else
         return union(l...)
-    end
-end
-
-function update_list!(l1, l2)
-    for item in l2
-        empty!(l1)
-        append!(l1, l2)
     end
 end

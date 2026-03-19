@@ -83,9 +83,9 @@ function parse_hgt_game(hytrig_file::String)::Tuple{HGT_Game, Termination_Condit
         triggers
     )
     termination_conditions = Termination_Conditions(
-        Base.parse(Float64, data["config"]["time_bound"]),
-        Base.parse(Int64, data["config"]["max_steps"]),
-        parse(data["config"]["state_formula"], bindings, state)
+        Base.parse(Float64, data["termination_conditions"]["time_bound"]),
+        Base.parse(Int64, data["termination_conditions"]["max_steps"]),
+        parse(data["termination_conditions"]["state_formula"], bindings, state)
     )
     queries = Strategy_Formula[
         parse(query["formula"], bindings, strategy) for query in data["queries"]

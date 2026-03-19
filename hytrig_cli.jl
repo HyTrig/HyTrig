@@ -87,7 +87,8 @@ function READ_USER_FILE()
 
 
         current_datetime_str = Dates.format(now(), "yyyy-mm-dd_HHMMSS")
-        tree_file_name = "logs/tree-1$(current_datetime_str).md"
+        example_name = replace(examples[example_number], r".hytrig$"=>"")
+        tree_file_name = "logs/$(example_name)-tree-1$(current_datetime_str).md"
         println("Would you like to save the outcome tree in $tree_file_name? (y/n)")
         tree_answer = readline()
         if tree_answer == "y"

@@ -165,20 +165,20 @@ function is_linear(expr::ExprLike)::Bool
     end
 end
 
-function round5(num::Float64)::Float64
-    return round(num, digits=5)
+function round5(num::Float64, digits=5)::Float64
+    return round(num, digits=digits)
 end
 
 # TODO: Fill out this function
-function round5(expr::ExprLike)::ExprLike
+function round5(expr::ExprLike, digits=5)::ExprLike
     @match expr begin
-        Const(value) => Const(round5(value))
+        Const(value) => Const(round5(value, digits))
         Var(name) => Var(name)
-        Neg(expr1) => Neg(round5(expr1))
-        Add(left, right) => Add(round5(left), round5(right))
-        Mul(left, right) => Mul(round5(left), round5(right))
-        Sub(left, right) => Sub(round5(left), round5(right))
-        Div(left, right) => Div(round5(left), round5(right))
-        Expon(base, power) => Expon(round5(base), round5(power))
+        Neg(expr1) => Neg(round5(expr1, digits))
+        Add(left, right) => Add(round5(left, digits), round5(right, digits))
+        Mul(left, right) => Mul(round5(left, digits), round5(right, digits))
+        Sub(left, right) => Sub(round5(left, digits), round5(right, digits))
+        Div(left, right) => Div(round5(left, digits), round5(right, digits))
+        Expon(base, power) => Expon(round5(base, digits), round5(power, digits))
     end
 end

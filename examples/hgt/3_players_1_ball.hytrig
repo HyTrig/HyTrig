@@ -22,19 +22,19 @@
     "variables": [
         {
             "name": "x",
-            "expression": "-5"
+            "expression": "-10"
         },
         {
             "name": "y",
-            "expression": "5"
+            "expression": "0"
         },
         {
             "name": "dir_x",
-            "expression": "-5"
+            "expression": "0"
         },
         {
             "name": "dir_y",
-            "expression": "-5"
+            "expression": "0"
         },
         {
             "name": "spd_A",
@@ -165,7 +165,7 @@
                     "variable": "time"
                 }
             ],
-            "invariant": "-11 <= x && x <= 11 && -1 <= y && y <= 11"
+            "invariant": "time <= 1 && -11 <= x && x <= 11 && -1 <= y && y <= 11"
         },
         {
             "name": "B_Throwing",
@@ -228,7 +228,7 @@
                     "variable": "time"
                 }
             ],
-            "invariant": "-11 <= x && x <= 11 && -1 <= y && y <= 11"
+            "invariant": "time <= 1 && -11 <= x && x <= 11 && -1 <= y && y <= 11"
         },
         {
             "name": "C_Throwing",
@@ -291,7 +291,7 @@
                     "variable": "time"
                 }
             ],
-            "invariant": "-11 <= x && x <= 11 && -1 <= y && y <= 11"
+            "invariant": "time <= 1 && -11 <= x && x <= 11 && -1 <= y && y <= 11"
         }
     ],
     "edges": [
@@ -355,7 +355,7 @@
                     "variable": "C_y"
                 },
                 {
-                    "expression": "time",
+                    "expression": "0",
                     "variable": "time"
                 }
             ]
@@ -420,7 +420,7 @@
                     "variable": "C_y"
                 },
                 {
-                    "expression": "time",
+                    "expression": "0",
                     "variable": "time"
                 }
             ]
@@ -485,7 +485,7 @@
                     "variable": "C_y"
                 },
                 {
-                    "expression": "time",
+                    "expression": "0",
                     "variable": "time"
                 }
             ]
@@ -550,7 +550,7 @@
                     "variable": "C_y"
                 },
                 {
-                    "expression": "time",
+                    "expression": "0",
                     "variable": "time"
                 }
             ]
@@ -615,7 +615,7 @@
                     "variable": "C_y"
                 },
                 {
-                    "expression": "time",
+                    "expression": "0",
                     "variable": "time"
                 }
             ]
@@ -680,7 +680,7 @@
                     "variable": "C_y"
                 },
                 {
-                    "expression": "time",
+                    "expression": "0",
                     "variable": "time"
                 }
             ]
@@ -745,7 +745,7 @@
                     "variable": "C_y"
                 },
                 {
-                    "expression": "time",
+                    "expression": "0",
                     "variable": "time"
                 }
             ]
@@ -810,7 +810,7 @@
                     "variable": "C_y"
                 },
                 {
-                    "expression": "time",
+                    "expression": "0",
                     "variable": "time"
                 }
             ]
@@ -875,7 +875,7 @@
                     "variable": "C_y"
                 },
                 {
-                    "expression": "time",
+                    "expression": "0",
                     "variable": "time"
                 }
             ]
@@ -940,7 +940,7 @@
                     "variable": "C_y"
                 },
                 {
-                    "expression": "time",
+                    "expression": "0",
                     "variable": "time"
                 }
             ]
@@ -1005,7 +1005,7 @@
                     "variable": "C_y"
                 },
                 {
-                    "expression": "time",
+                    "expression": "0",
                     "variable": "time"
                 }
             ]
@@ -1070,7 +1070,7 @@
                     "variable": "C_y"
                 },
                 {
-                    "expression": "time",
+                    "expression": "0",
                     "variable": "time"
                 }
             ]
@@ -1078,20 +1078,16 @@
     ],
     "queries": [
         {
-            "formula": "<<A>> F y > 6",
-            "verified": false
+            "formula": "<<A>> F y > 6"
         },
         {
-            "formula": "<<B, C>> F y <= 2",
-            "verified": false
+            "formula": "<<B, C>> G y <= 2"
         },
         {
-            "formula": "<<B>> G x < -8",
-            "verified": false
+            "formula": "<<B>> G x < 0"
         },
         {
-            "formula": "<<>> F deadlock",
-            "verified": false
+            "formula": "<<>> F deadlock"
         }
     ],
     "termination_conditions": {

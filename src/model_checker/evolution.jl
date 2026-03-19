@@ -49,5 +49,5 @@ function discrete_evolution(valuation::Valuation,
     for (var, expr) in jump
         new_valuation[var] = evaluate(expr, new_valuation)
     end
-    return round5(new_valuation)
+    return new_valuation
 end

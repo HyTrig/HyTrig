@@ -250,18 +250,18 @@ function strip_variables(constr::RectConstr, variables::Vector{Variable})::RectC
     end
 end
 
-function round5(constraint::Constraint)::Constraint
+function round5(constraint::Constraint, digits=5)::Constraint
     @match constraint begin
         Truth(value) => Truth(value)
-        Less(left, right) => Less(round5(left), round5(right))
-        LeQ(left, right) => LeQ(round5(left), round5(right))
-        Greater(left, right) => Greater(round5(left), round5(right))
-        GeQ(left, right) => GeQ(round5(left), round5(right))
-        Equal(left, right) => Equal(round5(left), round5(right))
-        NotEqual(left, right) => NotEqual(round5(left), round5(right))
-        And(left, right) => And(round5(left), round5(right))
-        Or(left, right) => Or(round5(left), round5(right))
-        Not(constraint1) => Not(round5(constraint1))
+        Less(left, right) => Less(round5(left, digits), round5(right, digits))
+        LeQ(left, right) => LeQ(round5(left, digits), round5(right, digits))
+        Greater(left, right) => Greater(round5(left, digits), round5(right))
+        GeQ(left, right) => GeQ(round5(left, digits), round5(right, digits))
+        Equal(left, right) => Equal(round5(left, digits), round5(right, digits))
+        NotEqual(left, right) => NotEqual(round5(left, digits), round5(right, digits))
+        And(left, right) => And(round5(left, digits), round5(right, digits))
+        Or(left, right) => Or(round5(left, digits), round5(right, digits))
+        Not(sub_constraint) => Not(round5(sub_constraint, digits))
     end
 end
 

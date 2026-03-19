@@ -22,27 +22,27 @@ File description.
 - Author 2
 """
 
-export evaluate, evaluate_state
+export evaluate, evaluate_state, get_exact
 export Assignment
 
 function evaluate(expr::ExprLike, valuation::Valuation)::Float64
     @match expr begin
-        Const(value) => round5(value)
-        Var(name) => round5(valuation[name])
-        Neg(expr1) => round5(-1 * evaluate(expr1, valuation))
-        Add(left, right) => round5(evaluate(left, valuation) + evaluate(right, valuation))
-        Mul(left, right) => round5(evaluate(left, valuation) * evaluate(right, valuation))
-        Sub(left, right) => round5(evaluate(left, valuation) - evaluate(right, valuation))
-        Div(left, right) => round5(evaluate(left, valuation) / evaluate(right, valuation))
-        Expon(base, power) => round5(evaluate(base, valuation) ^ evaluate(power, valuation))
-        Modulo(left, right) => round5(evaluate(left, valuation) % evaluate(right, valuation))
-        Abs(base) => round5(abs(evaluate(base, valuation)))
-        Sin(base) => round5(sin(evaluate(base, valuation)))
-        CoSin(base) => round5(cos(evaluate(base, valuation)))
-        Tan(base) => round5(tan(evaluate(base, valuation)))
-        CoTan(base) => round5(cot(evaluate(base, valuation)))
-        Min(left, right) => round5(min(evaluate(left, valuation), evaluate(right, valuation)))
-        Max(left, right) => round5(max(evaluate(left, valuation), evaluate(right, valuation)))
+        Const(value) => value
+        Var(name) => valuation[name]
+        Neg(expr1) => -1 * evaluate(expr1, valuation)
+        Add(left, right) => evaluate(left, valuation) + evaluate(right, valuation)
+        Mul(left, right) => evaluate(left, valuation) * evaluate(right, valuation)
+        Sub(left, right) => evaluate(left, valuation) - evaluate(right, valuation)
+        Div(left, right) => evaluate(left, valuation) / evaluate(right, valuation)
+        Expon(base, power) => evaluate(base, valuation) ^ evaluate(power, valuation)
+        Modulo(left, right) => evaluate(left, valuation) % evaluate(right, valuation)
+        Abs(base) => abs(evaluate(base, valuation))
+        Sin(base) => sin(evaluate(base, valuation))
+        CoSin(base) => cos(evaluate(base, valuation))
+        Tan(base) => tan(evaluate(base, valuation))
+        CoTan(base) => cot(evaluate(base, valuation))
+        Min(left, right) => min(evaluate(left, valuation), evaluate(right, valuation))
+        Max(left, right) => max(evaluate(left, valuation), evaluate(right, valuation))
     end
 end
 
@@ -94,4 +94,55 @@ function is_closed(assignment::Assignment)::Tuple{Bool, Valuation}
         end
     end
     return Set(keys(assignment)) ⊆ Set(keys(valuation)), valuation
+end
+
+
+function get_exact(constraint::Constraint, valuation::Valuation)::Bool
+    @match constraint begin
+        Truth(true) => true
+        Truth(false) => false
+        LeQ(left, right) => evaluate(Equal(left, right), valuation)
+        Less(left, right) => evaluate(Equal(right, Add(left, Const(1e-5))), valuation)
+        GeQ(left, right) => evaluate(Equal(left, right), valuation)
+        Greater(left, right) => evaluate(Equal(left, Add(right, Const(1e-5))), valuation)
+        Equal(left, right) => evaluate(Equal(left, right), valuation)
+        NotEqual(left, right) => get_exact(Greater(left, right), valuation) || get_exact(Less(left, right), valuation)
+        And(left, right) => (get_exact(left, valuation) && evaluate(right, valuation)) || 
+                            (evaluate(left, valuation) && get_exact(right, valuation)) || 
+                            (get_exact(left, valuation) && get_exact(right, valuation))
+        Or(left, right) => get_exact(left, valuation) || get_exact(right, valuation)
+        Not(c) => ! get_exact(c, valuation)
+        Imply(left, right) => begin
+            if evaluate(left, valuation)
+                get_exact(right, valuation)
+            elseif evaluate(right, valuation)
+                get_exact(left, valuation)
+            else
+                get_exact(left, valuation) && get_exact(right, valuation)
+            end
+        end
+    end
+end
+
+
+
+function get_exact_state(formula::State_Formula, config::Configuration)::Bool
+    @match formula begin
+        State_Location(loc) => loc == config.location
+        State_Constraint(constraint) => get_exact(constraint, config.valuation)
+        State_And(left, right) => (get_exact_state(left, config) && evaluate_state(right, config)) || 
+                                  (evaluate_state(left, config) && get_exact_state(right, config)) || 
+                                  (get_exact_state(left, config) && get_exact_state(right, config))
+        State_Or(left, right) => get_exact_state(left, config) || get_exact_state(right, config)
+        State_Not(f) => ! get_exact_state(f, config)
+        State_Imply(left, right) => begin
+            if evaluate_state(left, config)
+                get_exact_state(right, config)
+            elseif evaluate_state(right, config)
+                get_exact_state(left, config)
+            else
+                get_exact_state(left, config) && get_exact_state(right, config)
+            end
+        end
+    end
 end
