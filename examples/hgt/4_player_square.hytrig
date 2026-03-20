@@ -725,7 +725,7 @@
     ],
     "queries": [
         {
-            "formula": "[[]] G (not deadlock)",
+            "formula": "<<>> F deadlock",
             "verified": false
         }
     ],

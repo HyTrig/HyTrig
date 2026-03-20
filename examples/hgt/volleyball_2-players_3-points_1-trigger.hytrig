@@ -2525,11 +2525,11 @@
     ],
     "queries": [
         {
-            "formula": "<<A>> G x < 9 -> z > 0",
+            "formula": "<<A>> G (x < 9 -> z > 0)",
             "verified": false
         },
         {
-            "formula": "<<A>> F x > 9 && z == 0",
+            "formula": "<<A>> F (x > 9 && z == 0)",
             "verified": false
         }
     ],

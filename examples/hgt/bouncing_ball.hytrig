@@ -88,7 +88,13 @@
     ],
     "queries": [
         {
+            "formula": "<<A>> F (pos < 0 || pos > 1000)"
+        },
+        {
             "formula": "<<A>> G pos >= 0"
+        },
+        {
+            "formula": "<<A>> F (pos == 700 && spd > 0)"
         }
     ],
     "termination_conditions": {

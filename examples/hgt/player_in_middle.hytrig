@@ -360,7 +360,7 @@
     ],
     "queries": [
         {
-            "formula": "<<A, B>>G ! Caught",
+            "formula": "<<A, B>> G ! Caught",
             "verified": false
         }
     ],
