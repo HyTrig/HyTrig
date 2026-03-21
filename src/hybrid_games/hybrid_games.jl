@@ -32,15 +32,24 @@ export Location, Edge, Game, State
 include("expression.jl")
 include("constraint.jl")
 
+# TODO: add constant documentation
 const Agent = Symbol
+# TODO: add constant documentation
 const Action = Symbol
+# TODO: add constant documentation
 const Assignment = OrderedDict{Variable, ExprLike}
 const Valuation = OrderedDict{Variable, Float64}
 const Decision = Pair{Agent, Action}
 
+include("evaluation.jl")
+
+#abstract type for locations in games
 abstract type Location end
+# abstract type for edges in games
 abstract type Edge end
+# abstract type for games
 abstract type Game end
+# abstract type for states in games
 abstract type State end
 
 include("helper_functions.jl")

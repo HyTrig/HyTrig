@@ -26,6 +26,7 @@ export Interval, interval_to_string, in_interval, is_empty, empty_interval, full
 export MonotonError, Monoton, positive, negative, not_monoton, monoton_interval
 export IntervalAssignment, constraint_to_assignment
 
+# TODO: add type documentation
 struct Interval
     left::Float64
     left_open::Bool
@@ -39,6 +40,7 @@ Base.:(==)(x::Interval, y::Interval) = (
     x.left_open == y.left_open && x.right_open == y.right_open
 )
 
+# TODO: add function documentation
 function interval_to_string(interval::Interval)::String
     res = if interval.left_open "(" else "[" end
     res *= "$(interval.left), $(interval.right)"
@@ -46,7 +48,8 @@ function interval_to_string(interval::Interval)::String
     res
 end
 
-function in_interval(num::Float64, interval::Interval)::Bool
+# TODO: add function documentation
+function in_interval(num::Real, interval::Interval)::Bool
     if num == interval.left 
         !interval.left_open
     elseif num == interval.right
@@ -56,22 +59,27 @@ function in_interval(num::Float64, interval::Interval)::Bool
     end
 end
 
+# TODO: add function documentation
 function is_empty(interval::Interval)::Bool
     interval.left > interval.right || (interval.left == interval.right && (interval.left_open || interval.right_open))
 end
 
+# TODO: add function documentation
 function empty_interval()::Interval
     return Interval(0, true, 0, true)
 end
 
+# TODO: add function documentation
 function full_interval()::Interval
     return Interval(-Inf, true, Inf, true)
 end
 
+# TODO: add function documentation
 function zero_interval()::Interval
     return Interval(0, false, 0, false)
 end
 
+# TODO: add function documentation
 function intersection(interval_1::Interval, interval_2::Interval)::Interval
     if interval_1.left > interval_2.left 
         left = interval_1.left
@@ -96,6 +104,7 @@ function intersection(interval_1::Interval, interval_2::Interval)::Interval
     return Interval(left, left_open, right, right_open)
 end
 
+# TODO: add function documentation
 function intersection(intervals::Vector{Interval})::Interval
     interval = full_interval()
     for interv in intervals
@@ -105,6 +114,7 @@ function intersection(intervals::Vector{Interval})::Interval
 end
 
 # TODO: rename to monotonic
+# TODO: add type documentation
 struct MonotonError <: Exception
     msg::AbstractString
 end
@@ -115,6 +125,7 @@ end
     not_monoton
 end
 
+# TODO: add function documentation
 function monoton_interval(interval::Interval)::Monoton
     if interval.left <= 0 && interval.right <= 0
         return negative
@@ -125,13 +136,16 @@ function monoton_interval(interval::Interval)::Monoton
     end
 end
 
+# TODO: add constant documentation
 const IntervalAssignment = OrderedDict{Variable, Interval}
 
+# TODO: add function documentation
 function constraint_to_assignment(constr::RectConstr, variables::Vector{Variable})::IntervalAssignment
     assignment = OrderedDict(var => Interval(-Inf, true, Inf, true) for var in variables)
     return _constraint_to_assignment(constr, assignment)
 end
 
+# TODO: add function documentation
 function _constraint_to_assignment(constr::RectConstr, assignment::IntervalAssignment)::IntervalAssignment
     @match constr begin
         RectTrue() => assignment

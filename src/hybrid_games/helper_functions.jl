@@ -63,6 +63,7 @@ function valuation_from_flow_vector(flow:: Assignment, valuation::Valuation, vec
     return new_valuation
 end
 
+# TODO: add function documentation
 # TODO: type this function
 function union_safe(l)
     if isempty(l)

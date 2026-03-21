@@ -32,11 +32,13 @@ import .HybridGames: round5
 
 export Logic_Formula, Termination_Conditions, union_safe
 
+# abstract type for all logic formulas
 abstract type Logic_Formula end
 
 include("state.jl")
 include("strategy.jl")
 
+# TODO: add type documentation
 struct Termination_Conditions
     time_limit::Float64
     max_steps::Int64

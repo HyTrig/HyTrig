@@ -22,6 +22,7 @@ File description.
 - Author 2
 """
 
+# TODO: add type documentation
 struct TriggerPath
     trigger::Constraint
     end_valuation::Valuation
@@ -37,6 +38,7 @@ function time_to_trigger(config::Configuration, constraints::Set{Constraint}, ma
     zero_invariant::Set{ExprLike} = get_zero(config.location.invariant)
 
     path_to_trigger::Vector{Configuration} = Vector()
+    
     function flowODE!(du, u, p, t)
         current_valuation = valuation_from_flow_vector(config.location.flow, config.valuation, u)
         for (i, (_, var_flow)) in enumerate(config.location.flow)

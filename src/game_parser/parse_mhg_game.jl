@@ -24,6 +24,7 @@ File description.
 
 export parse_interval, parse_mhg_game
 
+# TODO: add function documentation
 function parse_interval(interval_text::String)::Interval
     left_open = interval_text[1] == "("
     right_open = interval_text[end] == ")"
@@ -34,7 +35,7 @@ function parse_interval(interval_text::String)::Interval
     Interval(left, left_open, right, right_open)
 end
 
-
+# TODO: add function documentation
 function parse_mhg_game(json_file::String)
     open(json_file,"r") do f
         json_string = read(json_file, String)

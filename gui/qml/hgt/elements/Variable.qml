@@ -81,19 +81,31 @@ Element {
                 width: parent.width - value_label.width - parent.spacing
                 
                 text: qsTr(model.expression)
-                default_text: qsTr("Enter decimal")
-                error_text: qsTr("Invalid decimal")
-                condition_error_text: qsTr("Invalid decimal")
+                default_text: qsTr("Enter expression")
+                error_text: qsTr("Invalid expression")
+                condition_error_text: qsTr("Invalid expression")
 
-                regex: /(^-?(([1-9]\d*(\.\d+)?$)|(0\.\d*[1-9])$))|(^0$)/
+                regex: /^.*?/
 
                 action: function(x) {
                     model.expression = x;
                 }
                 condition: function(x) {
-                    return true;
+                    return Julia.hgt_is_closed(x, index);
                 }
                 error_value: text
+
+                Connections {
+                    target: hgt_game
+                    function onVariableRenamed(index, name) {
+                        value_field.textChanged();
+                        value_field.editingFinished();
+                    }
+                    function onVariableRemoved(index) {
+                        value_field.textChanged();
+                        value_field.editingFinished();
+                    }
+                }
             }
 
         }

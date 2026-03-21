@@ -30,8 +30,10 @@ export get_all_constraints, formula_to_rect_formula, strategy_to_string
 struct Deadlock_Formula <: Logic_Formula 
 end
 
+# abstract type for all strategy formulas
 abstract type Strategy_Formula <: Logic_Formula end
 
+# TODO: add type documentation
 struct Strategy_to_State <: Strategy_Formula
     formula::State_Formula
 end
@@ -60,6 +62,7 @@ Base.:(==)(x::Exist_Always, y::Exist_Always) = (
     x.formula == y.formula
 )
 
+# TODO: add type documentation
 struct Exist_Eventually <: Strategy_Formula
     agents::Vector{Agent}
     formula::Union{State_Formula, Deadlock_Formula}
@@ -71,6 +74,7 @@ Base.:(==)(x::Exist_Eventually, y::Exist_Eventually) = (
     x.formula == y.formula
 )
 
+# TODO: add type documentation
 struct All_Always <: Strategy_Formula
     agents::Vector{Agent}
     formula::Union{State_Formula, Deadlock_Formula}
@@ -82,6 +86,7 @@ Base.:(==)(x::All_Always, y::All_Always) = (
     x.formula == y.formula
 )
 
+# TODO: add type documentation
 struct All_Eventually <: Strategy_Formula
     agents::Vector{Agent}
     formula::Union{State_Formula, Deadlock_Formula}
@@ -177,6 +182,7 @@ function get_all_constraints(formulae::Vector{Logic_Formula})::Set{Constraint}
     return union_safe([get_all_constraints(formula) for formula in formulae])
 end
 
+# TODO: add function documentation
 function formula_to_rect_formula(formula::Strategy_Formula)::Strategy_Formula
     @match formula begin
         Strategy_to_State(f) => Strategy_to_State(formula_to_rect_formula(f))

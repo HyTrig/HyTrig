@@ -24,12 +24,13 @@ File description.
 
 export evaluate_queries
 
+# TODO: add function documentation
 function check_invariant(config::Configuration)::Bool
     return evaluate(config.location.invariant, config.valuation)
 end
 
+# TODO: add function documentation
 function check_termination(node::Node, termination_conditions::Termination_Conditions):: Bool
-    
     if node.config.global_clock >= termination_conditions.time_limit || 
         node.level >= termination_conditions.max_steps ||
         evaluate_state(termination_conditions.state_formula, node.config)
@@ -39,6 +40,7 @@ function check_termination(node::Node, termination_conditions::Termination_Condi
     end
 end
 
+# TODO: add function documentation
 function build_children!(game::Game, 
                         constraints::Vector{Constraint}, 
                         node::Node, 
@@ -137,6 +139,7 @@ function build_children!(game::Game,
     push!(built_nodes, node) 
 end
 
+# TODO: add function documentation
 function evaluate_and_build!(game::Game,
                              constraints::Vector{Constraint}, 
                              formula::Strategy_Formula, 

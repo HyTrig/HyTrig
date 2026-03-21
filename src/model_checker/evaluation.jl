@@ -22,54 +22,20 @@ File description.
 - Author 2
 """
 
-export evaluate, evaluate_state, get_exact
+export evaluate_state
 export Assignment
 
-function evaluate(expr::ExprLike, valuation::Valuation)::Float64
-    @match expr begin
-        Const(value) => value
-        Var(name) => valuation[name]
-        Neg(expr1) => -1 * evaluate(expr1, valuation)
-        Add(left, right) => evaluate(left, valuation) + evaluate(right, valuation)
-        Mul(left, right) => evaluate(left, valuation) * evaluate(right, valuation)
-        Sub(left, right) => evaluate(left, valuation) - evaluate(right, valuation)
-        Div(left, right) => evaluate(left, valuation) / evaluate(right, valuation)
-        Expon(base, power) => evaluate(base, valuation) ^ evaluate(power, valuation)
-        Modulo(left, right) => evaluate(left, valuation) % evaluate(right, valuation)
-        Abs(base) => abs(evaluate(base, valuation))
-        Sin(base) => sin(evaluate(base, valuation))
-        CoSin(base) => cos(evaluate(base, valuation))
-        Tan(base) => tan(evaluate(base, valuation))
-        CoTan(base) => cot(evaluate(base, valuation))
-        Min(left, right) => min(evaluate(left, valuation), evaluate(right, valuation))
-        Max(left, right) => max(evaluate(left, valuation), evaluate(right, valuation))
-    end
-end
-
-function evaluate(constraint::Constraint, valuation::Valuation)::Bool
-    @match constraint begin
-        Truth(value) => value
-        Less(left, right) => evaluate(left, valuation) < evaluate(right, valuation)
-        LeQ(left, right) => evaluate(left, valuation) <= evaluate(right, valuation)
-        Greater(left, right) => evaluate(left, valuation) > evaluate(right, valuation)
-        GeQ(left, right) => evaluate(left, valuation) >= evaluate(right, valuation)
-        Equal(left, right) => evaluate(left, valuation) == evaluate(right, valuation)
-        NotEqual(left, right) => evaluate(left, valuation) != evaluate(right, valuation)
-        And(left, right) => evaluate(left, valuation) && evaluate(right, valuation)
-        Or(left, right) => evaluate(left, valuation) || evaluate(right, valuation)
-        Not(c) => !evaluate(c, valuation)
-        Imply(left, right) => !evaluate(left, valuation) || evaluate(right, valuation)
-    end
-end
-
+# TODO: add function documentation
 function get_satisfied_constraints(constraints, valuation::Valuation)
     filter(constraint -> evaluate(constraint, valuation), constraints)
 end
 
+# TODO: add function documentation
 function get_unsatisfied_constraints(constraints, valuation::Valuation)
     filter(constraint -> ! evaluate(constraint, valuation), constraints)
 end
 
+# TODO: add function documentation
 function evaluate_state(formula::State_Formula, config::Configuration)::Bool
     @match formula begin
         State_Location(loc) => loc == config.location
@@ -81,6 +47,7 @@ function evaluate_state(formula::State_Formula, config::Configuration)::Bool
     end
 end
 
+# TODO: add function documentation
 function is_closed(assignment::Assignment)::Tuple{Bool, Valuation}
     valuation = OrderedDict{Variable, Float64}()
     changed = true

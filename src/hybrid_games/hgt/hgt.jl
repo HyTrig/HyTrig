@@ -24,6 +24,7 @@ File description.
 
 export HGT_Location, HGT_Edge, HGT_Game
 
+# TODO: add type documentation
 struct HGT_Location <: Location
     name::Symbol
     invariant::Constraint
@@ -43,6 +44,7 @@ struct HGT_Location <: Location
     end
 end
 
+# TODO: add type documentation
 struct HGT_Edge <: Edge
     name::Symbol
     start_location::HGT_Location
@@ -67,6 +69,7 @@ struct HGT_Edge <: Edge
     end
 end
 
+# TODO: add type documentation
 struct HGT_Game <: Game
     locations::Vector{HGT_Location}
     initial_location::HGT_Location

@@ -25,30 +25,37 @@ File description.
 export State_Formula, State_Location, State_Constraint, State_And, State_Or, State_Not, State_Imply, State_Deadlock
 export get_all_constraints, formula_to_rect_formula, state_to_string
 
+# abstract type for all state formulas
 abstract type State_Formula <: Logic_Formula end
 
+# TODO: add type documentation
 struct State_Location <: State_Formula
     proposition::Symbol
 end
 
+# TODO: add type documentation
 struct State_Constraint <: State_Formula
     constraint::Constraint
 end
 
+# TODO: add type documentation
 struct State_And <: State_Formula
     left::State_Formula
     right::State_Formula
 end
 
+# TODO: add type documentation
 struct State_Or <: State_Formula
     left::State_Formula
     right::State_Formula
 end
 
+# TODO: add type documentation
 struct State_Not <: State_Formula
     formula::State_Formula
 end
 
+# TODO: add type documentation
 struct State_Imply <: State_Formula
     left::State_Formula
     right::State_Formula
@@ -65,6 +72,7 @@ function get_all_constraints(formula::State_Formula)::Set{Constraint}
     end
 end
 
+# TODO: add function documentation
 function formula_to_rect_formula(formula::State_Formula)::State_Formula
     @match formula begin
         State_Location(_) => formula
@@ -74,6 +82,7 @@ function formula_to_rect_formula(formula::State_Formula)::State_Formula
     end
 end
 
+# TODO: add function documentation
 function state_to_string(formula::State_Formula)::String
     @match formula begin
         State_Location(loc) => String(loc)

@@ -24,12 +24,14 @@ File description.
 
 export Configuration, initial_configuration
 
+# TODO: add type documentation
 struct Configuration <: State
     location::Location
     valuation::Valuation
     global_clock::Float64
 end
 
+# TODO: add function documentation
 function initial_configuration(game::HGT_Game)::Configuration
     Configuration(game.initial_location, 
                   game.initial_valuation,
