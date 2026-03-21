@@ -72,8 +72,10 @@ end
 function print_node(node::Node)
     @match node begin
         RootNode(config, _, children) => "0- RootNode  $(config.location.name) - # Children: $(length(children))\nValuation: $(valuation_to_string(config.valuation))"
-        ActionNode(_, decision, config, level, _, _, children) => "$level- DecisionNode $(config.location.name) - Time: $(round5(config.global_clock)) - Agent: $(decision.first) - Action: $(decision.second) - # Children: $(length(children))\nValuation: $(valuation_to_string(config.valuation))"
-        TriggerNode(_, decision, config, level, _, children) => "$level- TriggerNode $(config.location.name) - Time: $(round5(config.global_clock)) - Agent: $(decision.first) - Trigger: $(constraint_to_string(decision.second)) - # Children: $(length(children))\nValuation: $(valuation_to_string(config.valuation))"
+        ActionNode(_, decision, config, level, _, _, children) => "$level- DecisionNode $(config.location.name) - Time: $(round5(config.global_clock)) - Agent: $(decision.first) - " *
+                                                                 "Action: $(decision.second) - # Children: $(length(children))\nValuation: $(valuation_to_string(config.valuation))"
+        TriggerNode(_, decision, config, level, _, children) => "$level- TriggerNode $(config.location.name) - Time: $(round5(config.global_clock)) - Agent: $(decision.first) - " *
+                                                                "Trigger: $(constraint_to_string(decision.second)) - # Children: $(length(children))\nValuation: $(valuation_to_string(config.valuation))"
         PassiveNode(_, config, level) => "$level- PassiveNode - $(config.location.name) - Time: $(round5(config.global_clock))\nValuation: $(valuation_to_string(config.valuation))"
         EndNode(_, config, level) => "$level- TerminalNode - $(config.location.name) - Time: $(round5(config.global_clock))\nValuation: $(valuation_to_string(config.valuation))"
     end
@@ -81,11 +83,10 @@ end
 
 # TODO: add function documentation
 function print_tree(root::Node)
-    res = "$(print_node(root))\n"
+    res = "$(print_node(root))\n\n"
     if :children in fieldnames(typeof(root))
         for child in root.children
-            res *= print_tree(child)
-            res *= "\n\n"
+            res *= "$(print_tree(child))"
         end
     end
     return res

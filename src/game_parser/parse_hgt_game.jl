@@ -39,7 +39,7 @@ function parse_hgt_game(hytrig_file::String)::Tuple{HGT_Game, Termination_Condit
             Symbol(loc["name"]),
             parse(loc["invariant"], bindings, constraint),
             Assignment(
-                Variable(flow["variable"]) => parse(flow["expression"], bindings, expression) for flow in loc["flow"]
+                Variable(flow["variable"]) => parse(flow["expression"], bindings, expression) for flow in loc["flow"] if flow["expression"] != "0"
             )
         ) for loc in data["locations"]
     ])
@@ -61,7 +61,7 @@ function parse_hgt_game(hytrig_file::String)::Tuple{HGT_Game, Termination_Condit
                 Action(edge["action"])
             ),
             Assignment(
-                Variable(jump["variable"]) => parse(jump["expression"], bindings, expression) for jump in edge["jump"]
+                Variable(jump["variable"]) => parse(jump["expression"], bindings, expression) for jump in edge["jump"] if jump["expression"] != jump["variable"]
             )
         ) for (i, edge) in enumerate(data["edges"])
     ])
