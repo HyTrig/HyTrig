@@ -82,14 +82,6 @@ function get_children(game::HGT_Game, constraints::Set{Constraint}, query_formul
     remaining_time = termination_conditions.time_limit - parent.config.global_clock
     final_config, path_configs = time_to_trigger(parent.config, constraints ∪ triggers, remaining_time)
 
-    # println("-----------------------")
-    # println(print_node(parent))
-    # println("Final Valuation = ", valuation_to_string(final_config.valuation))
-    # for config in path_configs
-    #     println(valuation_to_string(config.valuation))
-    # end
-    # println("************************")
-
     for path_config in path_configs
         if check_termination(path_config, parent.level, termination_conditions)
             push!(children, EndNode(parent, path_config, parent.level))
@@ -143,12 +135,7 @@ function build_and_evaluate!(game::HGT_Game,
         Strategy_to_State(f) => evaluate_state(f, node.config)
         Strategy_to_Deadlock() => begin
             append!(node.children, get_children(game, constraints, State_Constraint(Truth(true)), node, termination_conditions, game.agents))
-            for child in node.children 
-                if isa(child, TriggerNode)
-                    append!(child.children, get_trigger_children(game, child, termination_conditions))
-                end
-            end
-            return ! terminal && all(! isa(child, TriggerNode) || isempty(child.children) for child in node.children)
+            return isempty(node.children)
         end
         All_Eventually(agents, f) => ! build_and_evaluate!(game, constraints, Exist_Always(setdiff(game.agents, agents), State_Not(f)), node, termination_conditions)
         All_Always(agents, f) => ! build_and_evaluate!(game, constraints, Exist_Eventually(setdiff(game.agents, agents), State_Not(f)), node, termination_conditions)
