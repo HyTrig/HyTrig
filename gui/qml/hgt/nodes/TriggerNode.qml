@@ -15,8 +15,6 @@ Item {
     required property string valuation
     required property string time
 
-    height: node.height
-
     Shape {
         id: time_line_connector
         width: time_line_width
@@ -60,6 +58,7 @@ Item {
         width: node_width
         height: node_property_list.height + 2 * node_property_list.spacing
         anchors.left: time_line_connector.right
+        anchors.verticalCenter: parent.verticalCenter
         radius: 5
         color: light_background_color
         border.color: trigger_node_color
@@ -67,6 +66,7 @@ Item {
 
         readonly property list<Item> node_info: [
             Label {
+                id: node_agent_text
                 width: node.width
                 text: qsTr("Agent: " + agent)
                 horizontalAlignment: Text.AlignHCenter
@@ -74,17 +74,26 @@ Item {
                 wrapMode: Text.Wrap
             },
             Label {
+                id: node_trigger_text
                 width: node.width
                 text: qsTr("Trigger: " + trigger)
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.Wrap
             },
-            Label {
+            ScrollView {
+                id: node_valuation_text
                 width: node.width
-                text: qsTr(valuation)
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
+                height: node_height - 4 * node_property_list.spacing - node_agent_text.height - node_trigger_text.height
+                ScrollBar.vertical.policy: ScrollBar.AlwaysOn
+
+                Label {
+                    width: node.width
+                    text: qsTr(valuation)
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    clip: true
+                }
             }
         ]
         readonly property list<Item> initial_node_info: [

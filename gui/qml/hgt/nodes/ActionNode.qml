@@ -13,10 +13,10 @@ Rectangle {
     required property int index
 
     id: action_node
-    width: parent.width
-    height: parent.height
+    height: node_property_list.height
     radius: 5
-    color: action_node_mouse_area.containsMouse ? Material.accent : action_node_color
+    color: (model.terminal ? light_background_color :
+        action_node_mouse_area.containsMouse ? Material.accent : action_node_color)
     border.color: Material.accent
     border.width: 2
 
@@ -44,11 +44,21 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
         },
-        Label {
+        ScrollView {
+            id: node_valuation_text
             width: action_node.width
-            text: qsTr(model.valuation)
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
+            height: (model.action != ""
+            ? action_node.height - 4 * node_property_list.spacing - node_action_text.height - node_arrow_text.height - node_location_text.height
+            : action_node.height - node_property_list.spacing - node_location_text.height)
+            ScrollBar.vertical.policy: ScrollBar.AlwaysOn
+
+            Label {
+                width: node_valuation_text.width
+                text: qsTr(model.valuation)
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                clip: true
+            }
         }
     ]
 
@@ -56,7 +66,6 @@ Rectangle {
 
         id: node_property_list
         width: parent.width
-        height: parent.height
         spacing: 5
 
         children: (model.action != "" ? [
@@ -73,6 +82,7 @@ Rectangle {
         id: action_node_mouse_area
 
         anchors.fill: parent
+        enabled: !model.terminal
         hoverEnabled: true
 
         onClicked: {

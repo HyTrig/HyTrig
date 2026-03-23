@@ -264,6 +264,7 @@ mutable struct QHGTActionNode
     location::String
     action::String
     valuation::String
+    terminal::Bool
 end
 
 """
@@ -281,7 +282,8 @@ function QHGTActionNode(node::GUINode)::QHGTActionNode
         else
             string(node.reaching_decision[2])
         end,
-        _get_valuation_string(node.config.valuation)
+        _get_valuation_string(node.config.valuation),
+        isempty(node.branches)
     )
 end
 
