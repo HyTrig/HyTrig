@@ -127,7 +127,7 @@ function GUIBranch(node::EndNode, passive_nodes::Vector{PassiveNode})::GUIBranch
         nothing,
         node.config,
         [],
-        passive_nodes ++ [node]
+        push!(Vector{Union{PassiveNode, EndNode}}(passive_nodes), node)
     )
 end
 
