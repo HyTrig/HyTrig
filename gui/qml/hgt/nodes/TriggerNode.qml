@@ -12,6 +12,7 @@ Item {
 
     required property string agent
     required property string trigger
+    required property string valuation
     required property string time
 
     height: node.height
@@ -78,6 +79,12 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.Wrap
+            },
+            Label {
+                width: node.width
+                text: qsTr(valuation)
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
             }
         ]
         readonly property list<Item> initial_node_info: [

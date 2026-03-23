@@ -25,7 +25,6 @@ GameViewer {
     readonly property real time_line_width: 200
     readonly property real time_line_spacing: 20
     readonly property real node_width: 400
-    readonly property real node_height: 300
     readonly property color passive_node_color: "#4664aa"
     readonly property color action_node_color: main_window.Material.theme === Material.Dark ? "#004f44" : '#00ceb2'
     readonly property color end_node_color: Material.color(Material.Red)
@@ -208,6 +207,7 @@ GameViewer {
                                 anchors.verticalCenter: parent.verticalCenter
                                 agent: model.agent
                                 trigger: model.trigger
+                                valuation: model.valuation
                                 time: model.time
                                 visible: model.trigger != "" || action_nodes.rowCount() > 0
                             }
@@ -224,7 +224,7 @@ GameViewer {
                             ListView {
                                 id: active_list
                                 width: contentWidth
-                                height: Math.max(node_height, trigger_node.height) 
+                                height: trigger_node.height 
                                 spacing: 5
                                 clip: true
                                 interactive: false

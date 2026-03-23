@@ -223,6 +223,7 @@ A tree branch used in QML models.
 mutable struct QHGTBranch
     agent::String
     trigger::String
+    valuation::String
     time::Float64
     action_nodes::JuliaItemModel
     passive_nodes::JuliaItemModel
@@ -247,6 +248,7 @@ function QHGTBranch(branch::GUIBranch)::QHGTBranch
         else
             constraint_to_string(branch.reaching_trigger[2])
         end,
+        _get_valuation_string(branch.config.valuation),
         trunc(branch.config.global_clock, digits=5),
         JuliaItemModel([QHGTActionNode(node) for node in branch.action_nodes]),
         JuliaItemModel([QHGTPassiveNode(node) for node in branch.passive_nodes])

@@ -44,20 +44,11 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
         },
-        ScrollView {
-            id: node_valuation_text
+        Label {
             width: action_node.width
-            height: (model.action != ""
-            ? action_node.height - 4 * node_property_list.spacing - node_action_text.height - node_arrow_text.height - node_location_text.height
-            : action_node.height - node_property_list.spacing - node_location_text.height)
-            ScrollBar.vertical.policy: ScrollBar.AlwaysOn
-
-            Label {
-                width: node_valuation_text.width
-                text: qsTr(model.valuation)
-                horizontalAlignment: Text.AlignHCenter
-                clip: true
-            }
+            text: qsTr(model.valuation)
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
         }
     ]
 
