@@ -338,6 +338,7 @@ StructTypes.StructType(::Type{QHGTQuery}) = StructTypes.Mutable()
 hgt_models["max_steps"] = "10"
 hgt_models["time_bound"] = "13.37"
 hgt_models["state_formula"] = "!location"
+hgt_models["tree_location"] = ""
 
 """
     hgt_action_list::Vector{QHGTAction}

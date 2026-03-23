@@ -311,6 +311,7 @@ function hgt_set_tree(i::Int32)
         current_query = Int(i) + 1;
         empty!(hgt_branch_list)
         push!(hgt_branch_list, QHGTBranch(hgt_tree[current_query].branches[1]))
+        hgt_models["tree_location"] = string(hgt_tree[current_query].config.location.name)
     end
 end
 
@@ -332,6 +333,8 @@ function hgt_up_tree()::Bool
     for branch in hgt_tree[current_query].branches
         push!(hgt_branch_list, QHGTBranch(branch))
     end
+
+    hgt_models["tree_location"] = string(hgt_tree[current_query].config.location.name)
     return true
 end
 
@@ -359,6 +362,7 @@ function hgt_down_tree(i::Int32, j::Int32)::Bool
         for branch in hgt_tree[current_query].branches
             push!(hgt_branch_list, QHGTBranch(branch))
         end
+        hgt_models["tree_location"] = string(hgt_tree[current_query].config.location.name)
         return true
     else
         return false

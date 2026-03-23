@@ -90,7 +90,7 @@ GameViewer {
             Title {
                 id: level_text
                 height: parent.height
-                text: qsTr("Level " + level)
+                text: qsTr("Level: " + level + " | Location: " + hgt_models.tree_location)
                 verticalAlignment: Text.AlignVCenter
             }
 
