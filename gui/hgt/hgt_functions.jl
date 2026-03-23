@@ -193,7 +193,10 @@ function hgt_load(path::QString)::String
         hgt_models["time_bound"] = data["termination_conditions"]["time_bound"]
         hgt_models["state_formula"] = data["termination_conditions"]["state_formula"]
     catch e
-        return "invalid HYTRIG file for Hybrid Games with Triggers: Missing key $(e.key)"
+        if e isa KeyError
+            return "invalid HYTRIG file for Hybrid Games with Triggers: Missing key $(e.key)"
+        end
+        throw(e)
     end
 
     return ""
@@ -277,8 +280,6 @@ function hgt_verify()::String
             return "tokenize error: $(e.msg)"
         elseif e isa ParseError
             return "parse error: $(e.msg)"
-        else e isa TokenizeError
-            return "tokenize error: $(e.msg)"
         end
         throw(e)
     end
