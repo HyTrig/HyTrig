@@ -60,7 +60,7 @@ Item {
         anchors.left: time_line_connector.right
         radius: 5
         color: light_background_color
-        border.color: passive_node_color
+        border.color: model.is_end ? end_node_color : passive_node_color
         border.width: 2
         
         Column {
