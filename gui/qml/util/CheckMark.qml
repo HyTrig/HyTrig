@@ -19,4 +19,12 @@ Image {
     source: source_url
     fillMode: Image.PreserveAspectFit
 
+    MouseArea {
+        enabled: parent.enabled
+        anchors.fill: parent
+        onClicked: {
+            show_tree(index);
+        }
+    }
+
 }

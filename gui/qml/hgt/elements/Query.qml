@@ -88,16 +88,8 @@ Element {
                 id: query_verified_checkmark
                 height: parent.height
                 width: height
-                enabled: verified
                 checked: model.verified
-
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        show_tree(index);
-                    }
-                }
-
+                enabled: verified
             }
 
         }
