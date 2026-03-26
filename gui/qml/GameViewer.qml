@@ -6,6 +6,7 @@
 
 import QtQuick
 import QtQuick.Controls.Material
+import QtQuick.Dialogs
 
 ApplicationWindow {
 
@@ -13,6 +14,8 @@ ApplicationWindow {
     required property var reset
     // Function for setting the game viewer to a specific query, no return value
     required property var set
+
+    readonly property alias save_tree_dialog: save_tree_dialog
        
     width: 1500
     height: 1000
@@ -29,6 +32,29 @@ ApplicationWindow {
 
     onClosing: {
         reset();
+    }
+
+    FileDialog {
+
+        id: save_tree_dialog
+        parentWindow: parent
+
+        // Function executed after saving, set before opening the dialog
+        property var action: function(x) {}
+        
+        title: qsTr("Select a location to save the game tree")
+        
+        fileMode: FileDialog.SaveFile
+        nameFilters: ["Markdown files (*.md)"]
+        defaultSuffix: "md"
+
+        onAccepted: {
+            var path = selectedFile.toString();
+            game.save(path);
+            current_file = path;
+            action(path);
+        }
+
     }
 
 }

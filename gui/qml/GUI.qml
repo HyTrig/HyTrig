@@ -473,8 +473,6 @@ ApplicationWindow {
 
         onAccepted: {
             var path = selectedFile.toString();
-            path = decodeURIComponent(path.replace(/^(file:\/{2})/, ""));
-
             game.save(path);
             current_file = path;
             action(path);
@@ -495,8 +493,6 @@ ApplicationWindow {
 
         onAccepted: {
             var path = selectedFile.toString();
-            path = decodeURIComponent(path.replace(/^(file:\/{2})/, ""));
-            
             var error = game.load(path);
             if (error != "") {
                 error_dialog.text = qsTr("An error occurred while loading " + path + ":");

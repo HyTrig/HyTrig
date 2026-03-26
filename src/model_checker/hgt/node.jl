@@ -23,7 +23,7 @@ File description.
 """
 
 export Node, RootNode, TriggerNode, PassiveNode, ActionNode, EndNode
-export print_tree, count_nodes, depth_of_tree, max_time, print_node
+export print_trees, print_tree, count_nodes, depth_of_tree, max_time, print_node
 export sort_children_by_clock!, sort_children_by_clock_and_agent
 
 # abstract type for nodes in the game tree
@@ -82,8 +82,29 @@ function print_node(node::Node)
 end
 
 # TODO: add function documentation
-function print_tree(root::Node)
+function print_trees(trees::Vector{RootNode}, queries_text::Vector{String}, results::Vector{Bool})::String
+    tree_text = ""
+    for (i, game_tree) in enumerate(trees)
+        tree_text *= print_tree(game_tree, queries_text[i], results[i])
+        tree_text *= "\n\n\n***************************\n***************************\n***************************\n\n\n"
+    end
+    return tree_text
+end
+
+# TODO: add function documentation
+function print_tree(root::Node)::String
     res = "$(print_node(root))\n\n"
+    if :children in fieldnames(typeof(root))
+        for child in root.children
+            res *= "$(print_tree(child))"
+        end
+    end
+    return res
+end
+
+# TODO: add function documentation
+function print_tree(root::Node, query_text::String, result::Bool)::String
+    res = "$query_text: $result\n$(print_node(root))\n\n"
     if :children in fieldnames(typeof(root))
         for child in root.children
             res *= "$(print_tree(child))"

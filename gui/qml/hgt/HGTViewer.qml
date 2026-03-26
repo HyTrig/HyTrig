@@ -102,6 +102,16 @@ GameViewer {
                 }
             }
 
+            Button {
+                text: qsTr("Save tree")
+                onClicked: {
+                    save_tree_dialog.action = function(path) {
+                        Julia.hgt_save_tree(path);
+                    }
+                    save_tree_dialog.open();
+                }
+            }
+
         }
 
         Rectangle {

@@ -122,11 +122,7 @@ function hgt_save(path::QString)
         ]),
     ])
 
-    if Sys.iswindows()
-        path = replace(String(path), r"^\/" => "")
-    end
-
-    open(String(path), "w") do f
+    open(_get_path(path), "w") do f
         JSON3.pretty(f, JSON3.write(data))
     end
 end
@@ -150,14 +146,11 @@ function hgt_load(path::QString)::String
     data = Dict{String, Any}()
 
     try
-        if Sys.iswindows()
-            path = replace(String(path), r"^\/" => "")
-        end
-        data = open(String(path), "r") do f
+        data = open(_get_path(path), "r") do f
             JSON3.read(f)
         end
     catch e
-        return String(strip(e.msg, ['\n', '\r', ' ']))
+        throw(e)
     end
 
     try
@@ -208,7 +201,7 @@ end
 Verify the current game.
 """
 function hgt_verify()::String
-    global hgt_tree
+    global hgt_tree, hgt_tree_string
     bindings::Bindings = Bindings(
         [x.name for x in hgt_agent_list],
         [x.name for x in hgt_location_list],
@@ -270,10 +263,13 @@ function hgt_verify()::String
             parse(hgt_models["state_formula"], bindings, state)
         )
         empty!(hgt_tree)
+        empty!(hgt_tree_string)
         for query in hgt_query_list
             result, query_tree = check_query(game, term_cond, parse(query.formula, bindings, strategy))
             push!(results, result)
             push!(hgt_tree, query_tree)
+            push!(hgt_tree_string, print_tree(query_tree, query.formula, result))
+
         end
     catch e
         if e isa TokenizeError
@@ -367,4 +363,28 @@ function hgt_down_tree(i::Int32, j::Int32)::Bool
     else
         return false
     end
+end
+
+"""
+    hgt_save_tree()::String
+
+Save the current game tree to a file.
+"""
+function hgt_save_tree(path::QString)::Bool
+    global hgt_tree_string, current_query
+    if current_query == -1 || isnothing(hgt_tree_string[current_query])
+        return false
+    end
+    open(_get_path(path), "w") do f
+        write(f, hgt_tree_string[current_query])
+    end
+    return true
+end
+
+function _get_path(path::QString)::String
+    path = replace(String(path), r"^(file:\/{2})" => "")
+    if Sys.iswindows()
+        path = replace(path, r"^\/" => "")
+    end
+    return path
 end

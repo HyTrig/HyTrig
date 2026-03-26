@@ -92,15 +92,10 @@ function READ_USER_FILE()
         println("Would you like to save the outcome tree in $tree_file_name? (y/n)")
         tree_answer = readline()
         if tree_answer == "y"
-            tree_text = ""
-            for (r, game_tree) in enumerate(trees)
-                tree_text *= "$(queries_text[r]): $(results[r])\n"
-                tree_text *= print_tree(game_tree)
-                tree_text *= "\n\n\n***************************\n***************************\n***************************\n\n\n"
+            tree_text = print_trees(trees, queries_text, results)
+            open(tree_file_name, "w") do f
+                write(f, tree_text)
             end
-            io = open(tree_file_name, "w");                                                                                                                                                                                                                                                                                                                               
-            write(io, tree_text);                                                                                                                                                                                                                                                                                                                                                           
-            close(io); 
         end
 
     catch e
