@@ -468,6 +468,7 @@ ApplicationWindow {
         title: qsTr("Select a location to save the HyTrig file")
         
         fileMode: FileDialog.SaveFile
+        currentFolder: Qt.resolvedUrl("../../examples/")
         nameFilters: ["HyTrig files (*.hytrig)"]
         defaultSuffix: "hytrig"
 
@@ -488,6 +489,7 @@ ApplicationWindow {
         title: qsTr("Select a HyTrig file to load")
 
         fileMode: FileDialog.OpenFile
+        currentFolder: Qt.resolvedUrl("../../examples/")
         nameFilters: ["HyTrig files (*.hytrig)"]
         defaultSuffix: "hytrig"
 

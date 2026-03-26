@@ -45,6 +45,7 @@ ApplicationWindow {
         title: qsTr("Select a location to save the game tree")
         
         fileMode: FileDialog.SaveFile
+        currentFolder: Qt.resolvedUrl("../../logs/")
         nameFilters: ["Markdown files (*.md)"]
         defaultSuffix: "md"
 
