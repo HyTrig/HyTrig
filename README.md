@@ -8,8 +8,6 @@ HyTrig implements a novel model checking algorithm for **Hybrid Games with Trigg
 
 The tool is implemented in the **Julia** programming language.
 
------
-
 ## ⚙️ Installation
 
 HyTrig is a Julia-based tool. To get started, you must first install the Julia programming language.
@@ -18,7 +16,12 @@ HyTrig is a Julia-based tool. To get started, you must first install the Julia p
 Download and install the latest stable version of Julia from the official website:
 [https://julialang.org/downloads/](https://julialang.org/downloads/)
 
------
+**Select correct Julia version:**
+To select the correct Julia version run:
+```bash
+juliaup add 1.10
+juliaup default 1.10
+```
 
 ## 🚀 Usage
 
@@ -29,7 +32,7 @@ HyTrig can be run using either a command-line interface (CLI) or a graphical use
 To start the CLI and follow the text-based instructions for specifying models and properties:
 
 ```bash
-julia hytrig.jl
+julia hytrig_cli.jl
 ```
 
 ### Graphical User Interface (GUI)
@@ -39,6 +42,11 @@ To launch the GUI, which allows users to define the game model, specify Hybrid A
 ```bash
 julia hytrig_gui.jl
 ```
-![Dark Mode](gui/screenshots/gui_screenshot_dark.png) | ![Light Mode](gui/screenshots/gui_screenshot_light.png)
 
-> **Note:** At the moment, the graphical interface (`hytrig_gui.jl`) is **not supported on Windows operating systems**.
+## 🔍 Test
+
+To run all implemented tests run:
+
+```bash
+julia hytrig_test.jl
+```
