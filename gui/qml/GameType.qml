@@ -34,6 +34,9 @@ Item {
     // Function for generating a free name, returns new name based on an input
     required property var generate_name
 
+    // Function for saving the verified queries as a tree, no return value
+    required property var save_trees
+
     /**
     * Show the game viewer for the current game
     * @param    {number}    i - index of the query for which the tree should be shown

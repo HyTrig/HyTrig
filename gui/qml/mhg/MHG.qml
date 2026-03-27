@@ -174,6 +174,7 @@ GameType {
 
             add: function() {
                 mhg_models.queries.appendRow({formula: ""});
+                verified = false;
             }
 
             model: mhg_models.queries
@@ -260,6 +261,10 @@ GameType {
             i++;
         }
         return base + i.toString();
+    }
+
+    save_trees: function() {
+        // TODO: implement saving of trees for MHG
     }
 
     // Signals to notify elements of removals and changes

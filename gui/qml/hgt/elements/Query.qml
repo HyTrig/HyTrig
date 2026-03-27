@@ -18,6 +18,7 @@ Element {
 
     remove: function() {
         hgt_models.queries.removeRow(index);
+        verified = false;
     }
 
     elementContent: [

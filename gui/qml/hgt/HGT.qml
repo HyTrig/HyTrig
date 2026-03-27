@@ -186,6 +186,7 @@ GameType {
 
             add: function() {
                 hgt_models.queries.appendRow({formula: ""});
+                verified = false;
             }
 
             model: hgt_models.queries
@@ -270,6 +271,13 @@ GameType {
             i++;
         }
         return base + i.toString();
+    }
+
+    save_trees: function() {
+        save_tree_dialog.action = function(path) {
+            Julia.hgt_save_trees(path);
+        }
+        save_tree_dialog.open();
     }
 
     // Signals to notify elements of removals and changes

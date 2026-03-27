@@ -366,7 +366,7 @@ function hgt_down_tree(i::Int32, j::Int32)::Bool
 end
 
 """
-    hgt_save_tree()::String
+    hgt_save_tree(path::QString)::Bool
 
 Save the current game tree to a file.
 """
@@ -377,6 +377,19 @@ function hgt_save_tree(path::QString)::Bool
     end
     open(_get_path(path), "w") do f
         write(f, hgt_tree_string[current_query])
+    end
+    return true
+end
+
+"""
+    hgt_save_trees()::Bool
+
+Save all game trees to files.
+"""
+function hgt_save_trees(path::QString)::Bool
+    global hgt_tree_string, current_query
+    open(_get_path(path), "w") do f
+        write(f, print_trees([s for s in hgt_tree_string]))
     end
     return true
 end

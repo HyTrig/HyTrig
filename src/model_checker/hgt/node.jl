@@ -83,9 +83,13 @@ end
 
 # TODO: add function documentation
 function print_trees(trees::Vector{RootNode}, queries_text::Vector{String}, results::Vector{Bool})::String
+    return print_trees([print_tree(game_tree, queries_text[i], results[i]) for (i, game_tree) in enumerate(trees)])
+end
+
+function print_trees(trees::Vector{String})::String
     tree_text = ""
-    for (i, game_tree) in enumerate(trees)
-        tree_text *= print_tree(game_tree, queries_text[i], results[i])
+    for tree in trees
+        tree_text *= tree
         tree_text *= "\n\n\n***************************\n***************************\n***************************\n\n\n"
     end
     return tree_text

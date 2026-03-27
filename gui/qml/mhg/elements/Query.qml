@@ -18,6 +18,7 @@ Element {
 
     remove: function() {
         mhg_models.queries.removeRow(index);
+        verified = false;
     }
 
     elementContent: [

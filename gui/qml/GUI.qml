@@ -31,6 +31,7 @@ ApplicationWindow {
 
     property string current_file: ""
     property bool verified: false
+    property alias save_tree_dialog: save_tree_dialog
 
     readonly property GameType game: game_types[game_type_selector.previous_index]
     readonly property list<GameType> game_types: [
@@ -382,7 +383,7 @@ ApplicationWindow {
                 width: parent.width
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.bottom: parent.bottom
+                anchors.bottom: verified ? save_trees_button.top : parent.bottom
                 anchors.margins: 10
 
                 text: qsTr("Verify")
@@ -390,6 +391,24 @@ ApplicationWindow {
                 onClicked: {
                     forceActiveFocus();
                     verify_action.trigger();
+                }
+
+            }
+
+            Button {
+
+                id: save_trees_button
+                width: parent.width
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.bottom: parent.bottom
+                anchors.margins: 10
+                visible: verified
+
+                text: qsTr("Save trees")
+
+                onClicked: {
+                    game.save_trees();
                 }
 
             }
@@ -519,6 +538,30 @@ ApplicationWindow {
         informativeText: qsTr("")
 
         buttons: MessageDialog.Ok
+
+    }
+
+    FileDialog {
+
+        id: save_tree_dialog
+        parentWindow: main_window
+
+        // Function executed after saving, set before opening the dialog
+        property var action: function(x) {}
+        
+        title: qsTr("Select a location to save the game tree")
+        
+        fileMode: FileDialog.SaveFile
+        currentFolder: Qt.resolvedUrl("../../logs/")
+        nameFilters: ["Markdown files (*.md)"]
+        defaultSuffix: "md"
+
+        onAccepted: {
+            var path = selectedFile.toString();
+            game.save(path);
+            current_file = path;
+            action(path);
+        }
 
     }
 

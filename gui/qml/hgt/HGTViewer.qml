@@ -105,10 +105,12 @@ GameViewer {
             Button {
                 text: qsTr("Save tree")
                 onClicked: {
-                    save_tree_dialog.action = function(path) {
+                    main_window.save_tree_dialog.parentWindow = hgt_viewer;
+                    main_window.save_tree_dialog.action = function(path) {
                         Julia.hgt_save_tree(path);
                     }
-                    save_tree_dialog.open();
+                    main_window.save_tree_dialog.open();
+                    main_window.save_tree_dialog.parentWindow = main_window;
                 }
             }
 
