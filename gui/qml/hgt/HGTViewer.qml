@@ -203,7 +203,7 @@ GameViewer {
                             clip: true
 
                             model: passive_nodes
-                            delegate: Nodes.PassiveNode {
+                            delegate: Nodes.PropertyNode {
                                 width: passive_list.width
                             }
                         }
@@ -246,7 +246,7 @@ GameViewer {
                                 orientation: ListView.Horizontal
 
                                 model: action_nodes
-                                delegate: Nodes.ActionNode {
+                                delegate: Nodes.DecisionNode {
                                     width: node_width
                                     height: node_height
                                 }

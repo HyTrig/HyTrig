@@ -1,5 +1,5 @@
 /**
-* @file ActionNode.qml
+* @file DecisionNode.qml
 * @brief GUI component for an active game tree node.
 * @authors Moritz Maas
 */

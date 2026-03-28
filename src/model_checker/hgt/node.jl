@@ -22,7 +22,7 @@ File description.
 - Author 2
 """
 
-export Node, RootNode, TriggerNode, PassiveNode, ActionNode, EndNode
+export Node, RootNode, TriggerNode, PropertyNode, DecisionNode, FinalNode
 export print_trees, print_tree, count_nodes, depth_of_tree, max_time, print_node
 export sort_children_by_clock!, sort_children_by_clock_and_agent
 
@@ -36,8 +36,7 @@ struct RootNode <: Node
     children::Vector{Node}
 end
 
-# TODO: add type documentation
-struct PassiveNode <: Node
+struct PropertyNode <: Node
     parent::Node
     config::Configuration
     level::Int64
@@ -52,32 +51,37 @@ struct TriggerNode <: Node
     children::Vector{Node}
 end
 
-struct ActionNode <: Node
+struct DecisionNode <: Node
     parent::Node
     reaching_decision::Pair{Agent, Action}
     config::Configuration
     level::Int64
     zero_loop::Set{Location}
-    terminal::Bool
     children::Vector{Node}
 end
 
-# TODO: add type documentation
-struct EndNode <: Node
+struct FinalNode <: Node
     parent::Node
     config::Configuration
     level::Int64
+    deadlock::Bool
 end
 
 function print_node(node::Node)
     @match node begin
         RootNode(config, _, children) => "0- RootNode  $(config.location.name) - # Children: $(length(children))\nValuation: $(valuation_to_string(config.valuation))"
-        ActionNode(_, decision, config, level, _, _, children) => "$level- DecisionNode $(config.location.name) - Time: $(round5(config.global_clock)) - Agent: $(decision.first) - " *
-                                                                 "Action: $(decision.second) - # Children: $(length(children))\nValuation: $(valuation_to_string(config.valuation))"
-        TriggerNode(_, decision, config, level, _, children) => "$level- TriggerNode $(config.location.name) - Time: $(round5(config.global_clock)) - Agent: $(decision.first) - " *
-                                                                "Trigger: $(constraint_to_string(decision.second)) - # Children: $(length(children))\nValuation: $(valuation_to_string(config.valuation))"
-        PassiveNode(_, config, level) => "$level- PassiveNode - $(config.location.name) - Time: $(round5(config.global_clock))\nValuation: $(valuation_to_string(config.valuation))"
-        EndNode(_, config, level) => "$level- TerminalNode - $(config.location.name) - Time: $(round5(config.global_clock))\nValuation: $(valuation_to_string(config.valuation))"
+        DecisionNode(_, decision, config, level, _, children) => ("\t"^level) * "$level- DecisionNode $(config.location.name) - Time: $(round5(config.global_clock)) - Agent: $(decision.first) - " *
+                                                                 "Action: $(decision.second) - # Children: $(length(children))\n" *
+                                                                 ("\t"^level) * "Valuation: $(valuation_to_string(config.valuation))"
+        TriggerNode(_, decision, config, level, _, children) => ("\t"^level) * "$level- TriggerNode $(config.location.name) - Time: $(round5(config.global_clock)) - Agent: $(decision.first) - " *
+                                                                "Trigger: $(constraint_to_string(decision.second)) - # Children: $(length(children))\n" * 
+                                                                ("\t"^level) * "Valuation: $(valuation_to_string(config.valuation))"
+        PropertyNode(_, config, level) => ("\t"^level) * "$level- PropertyNode - $(config.location.name) - Time: $(round5(config.global_clock))\n" * 
+                                                                ("\t"^level) * "Valuation: $(valuation_to_string(config.valuation))"
+        FinalNode(_, config, level, true) => ("\t"^level) * "$level- Deadlock - $(config.location.name) - Time: $(round5(config.global_clock))\n" *
+                                                                ("\t"^level) * "Valuation: $(valuation_to_string(config.valuation))"
+        FinalNode(_, config, level, false) => ("\t"^level) * "$level- TerminalNode - $(config.location.name) - Time: $(round5(config.global_clock))\n" *
+                                                                ("\t"^level) * "Valuation: $(valuation_to_string(config.valuation))"
     end
 end
 
@@ -122,12 +126,12 @@ function count_nodes(root::Node)::Int
     @match root begin
         RootNode(_, _, []) => 1
         RootNode(_, _, children) => 1 + sum(count_nodes(child) for child in children)
-        PassiveNode(_, _, _) => 1
+        PropertyNode(_, _, _) => 1
         TriggerNode(_, _, _, _, _, []) => 1
         TriggerNode(_, _, _, _, _, children) => 1 + sum(count_nodes(child) for child in children)
-        ActionNode(_, _, _, _, _, _, []) => 1
-        ActionNode(_, _, _, _, _, _, children) => 1 + sum(count_nodes(child) for child in children)
-        EndNode(_, _, _) => 1
+        DecisionNode(_, _, _, _, _, []) => 1
+        DecisionNode(_, _, _, _, _, children) => 1 + sum(count_nodes(child) for child in children)
+        FinalNode(_, _, _, _) => 1
     end
 end
 
@@ -136,12 +140,12 @@ function depth_of_tree(root::Node)::Int
     @match root begin
         RootNode(_, _, []) => 1
         RootNode(_, _, children) => 1 + maximum(depth_of_tree(child) for child in children)
-        PassiveNode(_, _, _) => 1
+        PropertyNode(_, _, _) => 1
         TriggerNode(_, _, _, _, _, []) => 1
         TriggerNode(_, _, _, _, _, children) => 1 + maximum(depth_of_tree(child) for child in children)
-        ActionNode(_, _, _, _, _, _, []) => 1
-        ActionNode(_, _, _, _, _, _, children) => 1 + maximum(depth_of_tree(child) for child in children)
-        EndNode(_, _, _) => 1
+        DecisionNode(_, _, _, _, _, []) => 1
+        DecisionNode(_, _, _, _, _, children) => 1 + maximum(depth_of_tree(child) for child in children)
+        FinalNode(_, _, _, _) => 1
     end
 end
 
@@ -150,11 +154,11 @@ function max_time(root::Node)::Float64
     @match root begin
         RootNode(_, _, []) => 0.0
         RootNode(_, _, children) => maximum(max_time(child) for child in children)
-        PassiveNode(_, config, _) => round5(config.global_clock)
+        PropertyNode(_, config, _) => round5(config.global_clock)
         TriggerNode(_, _, config, _, _, []) => round5(config.global_clock)
         TriggerNode(_, _, config, _, _, children) => maximum(max_time(child) for child in children)
-        ActionNode(_, _, config, _, _, _, []) => round5(config.global_clock)
-        ActionNode(_, _, config, _, _, _, children) => maximum(max_time(child) for child in children)
-        EndNode(_, config, _) => round5(config.global_clock)
+        DecisionNode(_, _, config, _, _, []) => round5(config.global_clock)
+        DecisionNode(_, _, config, _, _, children) => maximum(max_time(child) for child in children)
+        FinalNode(_, config, _, _) => round5(config.global_clock)
     end
 end

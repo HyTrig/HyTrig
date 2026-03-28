@@ -14,8 +14,8 @@ This file defines the QML objects used in the HyTrig GUI by the HGT game type.
 - `QHGTJump`: Represents a jump in an edge.
 - `QHGTQuery`: Represents a query in a hybrid game.
 - `QHGTBranch`: Represents a tree branch used in QML models.
-- `QHGTActionNode`: Represents an active tree node used in QML models.
-- `QHGTPassiveNode`: Represents a passive tree node used in QML models.
+- `QHGTDecisionNode`: Represents an active tree node used in QML models.
+- `QHGTPropertyNode`: Represents a passive tree node used in QML models.
 
 # Global variables:
 - `hgt_action_list::Vector{QHGTAction}`: A list of actions
@@ -250,17 +250,17 @@ function QHGTBranch(branch::GUIBranch)::QHGTBranch
         end,
         _get_valuation_string(branch.config.valuation),
         trunc(branch.config.global_clock, digits=5),
-        JuliaItemModel([QHGTActionNode(node) for node in branch.action_nodes]),
-        JuliaItemModel([QHGTPassiveNode(node) for node in branch.passive_nodes])
+        JuliaItemModel([QHGTDecisionNode(node) for node in branch.action_nodes]),
+        JuliaItemModel([QHGTPropertyNode(node) for node in branch.passive_nodes])
     )
 end
 
 """
-    QHGTActionNode
+    QHGTDecisionNode
 
 An active tree node used in QML models.
 """
-mutable struct QHGTActionNode
+mutable struct QHGTDecisionNode
     location::String
     action::String
     valuation::String
@@ -268,14 +268,14 @@ mutable struct QHGTActionNode
 end
 
 """
-    QHGTActionNode(node::GUINode)::QHGTActionNode
+    QHGTDecisionNode(node::GUINode)::QHGTDecisionNode
 
 Create a QAction from the given GUI node `node`.
 # Arguments
 - `node::GUINode`: The GUI node.
 """
-function QHGTActionNode(node::GUINode)::QHGTActionNode
-    QHGTActionNode(
+function QHGTDecisionNode(node::GUINode)::QHGTDecisionNode
+    QHGTDecisionNode(
         string(node.config.location.name),
         if isnothing(node.reaching_decision)
             ""
@@ -288,25 +288,25 @@ function QHGTActionNode(node::GUINode)::QHGTActionNode
 end
 
 """
-    QHGTPassiveNode
+    QHGTPropertyNode
 
 A passive tree node used in QML models.
 """
-mutable struct QHGTPassiveNode
+mutable struct QHGTPropertyNode
     valuation::String
     time::Float64
     is_end::Bool
 end
 
 """
-    QHGTPassiveNode(node::PassiveNode)::QHGTPassiveNode
+    QHGTPropertyNode(node::PropertyNode)::QHGTPropertyNode
 
-Create a QHGTPassiveNode from the given passive node `node`.
+Create a QHGTPropertyNode from the given passive node `node`.
 # Arguments
-- `node::PassiveNode`: The passive node.
+- `node::PropertyNode`: The passive node.
 """
-function QHGTPassiveNode(node::PassiveNode)::QHGTPassiveNode
-    return QHGTPassiveNode(
+function QHGTPropertyNode(node::PropertyNode)::QHGTPropertyNode
+    return QHGTPropertyNode(
         _get_valuation_string(node.config.valuation),
         trunc(node.config.global_clock, digits=5),
         false
@@ -314,14 +314,14 @@ function QHGTPassiveNode(node::PassiveNode)::QHGTPassiveNode
 end
 
 """
-    QHGTPassiveNode(node::EndNode)::QHGTPassiveNode
+    QHGTPropertyNode(node::FinalNode)::QHGTPropertyNode
 
-Create a QHGTPassiveNode from the given end node `node`.
+Create a QHGTPropertyNode from the given end node `node`.
 # Arguments
-- `node::EndNode`: The end node.
+- `node::FinalNode`: The end node.
 """
-function QHGTPassiveNode(node::EndNode)::QHGTPassiveNode
-    return QHGTPassiveNode(
+function QHGTPropertyNode(node::FinalNode)::QHGTPropertyNode
+    return QHGTPropertyNode(
         _get_valuation_string(node.config.valuation),
         trunc(node.config.global_clock, digits=5),
         true

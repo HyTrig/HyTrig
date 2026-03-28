@@ -1,5 +1,5 @@
 /**
-* @file PassiveNode.qml
+* @file PropertyNode.qml
 * @brief GUI component passive game tree nodes.
 * @authors Moritz Maas
 */

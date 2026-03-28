@@ -60,7 +60,7 @@ function build_children!(game::Game,
                             if ! (edge in explored_edges)
                                 push!(explored_edges, edge)
                                 config_after_edge = discrete_transition(node.config, edge)
-                                child_node = ActionNode(node, agent => action, trigger, config_after_edge, node.level + 1, [])
+                                child_node = DecisionNode(node, agent => action, trigger, config_after_edge, node.level + 1, [])
                                 push!(node.children, child_node)
                             end
                         end
@@ -95,7 +95,7 @@ function build_children!(game::Game,
                     push!(sat_triggers[agent], trigger)
                     path_node::Node = node
                     for path_config in passive_configs
-                        child_node = PassiveNode(path_node, agent => trigger, path_config, path_node.level, [])
+                        child_node = PropertyNode(path_node, agent => trigger, path_config, path_node.level, [])
                         push!(path_node.children, child_node)
                         path_node = child_node
                     end
@@ -104,7 +104,7 @@ function build_children!(game::Game,
                             if ! (edge in explored_edges)
                                 push!(explored_edges, edge)
                                 config_after_edge = discrete_transition(config, edge)
-                                child_node = ActionNode(path_node, agent => action, trigger, config_after_edge, path_node.level + 1, [])
+                                child_node = DecisionNode(path_node, agent => action, trigger, config_after_edge, path_node.level + 1, [])
                                 push!(path_node.children, child_node)
                             end
                         end
@@ -119,19 +119,19 @@ function build_children!(game::Game,
             if path_config == terminatal_config
                 break
             end
-            child_node = PassiveNode(path_node, nothing, path_config, path_node.level, [])
+            child_node = PropertyNode(path_node, nothing, path_config, path_node.level, [])
             push!(path_node.children, child_node)
             path_node = child_node
         end
-        end_node = EndNode(path_node, terminatal_config, node.level + 1, [])
+        end_node = FinalNode(path_node, terminatal_config, node.level + 1, [])
         push!(path_node.children, end_node)
     end
     if length(node.children) == 0
         if length(path_configs) > 0
-            end_node = EndNode(node, path_configs[end], node.level + 1, [])
+            end_node = FinalNode(node, path_configs[end], node.level + 1, [])
             push!(node.children, end_node)
         else
-            end_node = EndNode(node, Configuration(node.config.location, final_valuation, node.config.global_clock + final_time), node.level + 1, [])
+            end_node = FinalNode(node, Configuration(node.config.location, final_valuation, node.config.global_clock + final_time), node.level + 1, [])
             push!(node.children, end_node)
         end
     end
@@ -151,7 +151,7 @@ function evaluate_and_build!(game::Game,
         Strategy_to_State(f) => evaluate_state(f, node.config)
         Strategy_Deadlock() => begin
             terminal_node = check_termination(node, termination_conditions)
-            if ! (isa(node, PassiveNode) || terminal_node || (node in built_nodes))
+            if ! (isa(node, PropertyNode) || terminal_node || (node in built_nodes))
                 build_children!(game, constraints, node, termination_conditions, built_nodes)
             end
             return ! terminal_node && length(node.children) == 0
@@ -167,7 +167,7 @@ function evaluate_and_build!(game::Game,
             if ! evaluate_and_build!(game, constraints, f, node, termination_conditions, built_nodes)
                 return false
             end
-            if ! (isa(node, PassiveNode) || terminal_node || (node in built_nodes))
+            if ! (isa(node, PropertyNode) || terminal_node || (node in built_nodes))
                 build_children!(game, constraints, node, termination_conditions, built_nodes)
             end
             if length(node.children) == 0 || terminal_node || (length(node.children) == 1 && ! check_invariant(node.children[1].config))
@@ -176,7 +176,7 @@ function evaluate_and_build!(game::Game,
             children = sort_children_by_clock_agent(node, agents)
             agents_have_children = false
             for child in children
-                if isa(child, EndNode) || isnothing(child.reaching_decision) || child.reaching_decision.first in agents
+                if isa(child, FinalNode) || isnothing(child.reaching_decision) || child.reaching_decision.first in agents
                     if evaluate_and_build!(game, constraints, formula, child, termination_conditions, built_nodes)
                         return true
                     end
@@ -196,7 +196,7 @@ function evaluate_and_build!(game::Game,
             if evaluate_and_build!(game, constraints, f, node, termination_conditions, built_nodes)
                 return true
             end
-            if ! (isa(node, PassiveNode) || terminal_node || (node in built_nodes))
+            if ! (isa(node, PropertyNode) || terminal_node || (node in built_nodes))
                 build_children!(game, constraints, node, termination_conditions, built_nodes)
             end
             if length(node.children) == 0 || terminal_node || (length(node.children) == 1 && ! check_invariant(node.children[1].config))
@@ -205,7 +205,7 @@ function evaluate_and_build!(game::Game,
             children = sort_children_by_clock_agent(node, agents)
             agents_have_children = false
             for child in children
-                if isa(child, EndNode) || isnothing(child.reaching_decision) || child.reaching_decision.first in agents
+                if isa(child, FinalNode) || isnothing(child.reaching_decision) || child.reaching_decision.first in agents
                     if evaluate_and_build!(game, constraints, formula, child, termination_conditions, built_nodes)
                         return true
                     end

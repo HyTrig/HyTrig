@@ -23,7 +23,7 @@ struct GUIBranch
     reaching_trigger::Union{Nothing, Pair{Agent, Constraint}}
     config::Configuration
     action_nodes::Vector
-    passive_nodes::Vector{Union{PassiveNode, EndNode}}
+    passive_nodes::Vector{Union{PropertyNode, FinalNode}}
 end
 
 """
@@ -39,16 +39,16 @@ struct GUINode
 end
 
 """
-    GUINode(node::ActionNode, parent::Union{GUINode, Nothing})::GUINode
+    GUINode(node::DecisionNode, parent::Union{GUINode, Nothing})::GUINode
 
 Create a GUINode from the given active node `node` with the parent `parent`.
 
 # Arguments
-- `node::ActionNode`: The active node.
+- `node::DecisionNode`: The active node.
 - `parent::Union{GUINode, Nothing}`: The nodes next active parent.
 - `branches::Vector{GUIBranch}`: The branches originating from this node.
 """
-function GUINode(node::ActionNode, parent::Union{GUINode, Nothing})::GUINode
+function GUINode(node::DecisionNode, parent::Union{GUINode, Nothing})::GUINode
     return GUINode(
         parent,
         node.reaching_decision,
@@ -58,15 +58,15 @@ function GUINode(node::ActionNode, parent::Union{GUINode, Nothing})::GUINode
 end
 
 """
-    GUINode(node::Union{RootNode, EndNode}, parent::Union{GUINode, Nothing})::GUINode
+    GUINode(node::Union{RootNode, FinalNode}, parent::Union{GUINode, Nothing})::GUINode
 
 Create a GUINode from the given root or end node `node` with the parent `parent`.
 
 # Arguments
-- `node::Union{RootNode, EndNode}`: The root or end node.
+- `node::Union{RootNode, FinalNode}`: The root or end node.
 - `parent::Union{GUINode, Nothing}`: The nodes next active parent.
 """
-function GUINode(node::Union{RootNode, EndNode}, parent::Union{GUINode, Nothing})::GUINode
+function GUINode(node::Union{RootNode, FinalNode}, parent::Union{GUINode, Nothing})::GUINode
     return GUINode(
         parent,
         nothing,
@@ -76,16 +76,16 @@ function GUINode(node::Union{RootNode, EndNode}, parent::Union{GUINode, Nothing}
 end
 
 """
-    GUIBranch(node::RootNode, action_nodes::Vector{GUINode}, passive_nodes::Vector{PassiveNode})::GUIBranch
+    GUIBranch(node::RootNode, action_nodes::Vector{GUINode}, passive_nodes::Vector{PropertyNode})::GUIBranch
 
 Create a GUIBranch from the given root node `node` with the `passive_nodes`.
 
 # Arguments
 - `node::RootNode`: The root node.
-- `passive_nodes::Vector{PassiveNode}`: The branches passive nodes.
+- `passive_nodes::Vector{PropertyNode}`: The branches passive nodes.
 - `parent::GUINode`: The branches parent node.
 """
-function GUIBranch(node::RootNode, action_nodes::Vector{GUINode}, passive_nodes::Vector{PassiveNode})::GUIBranch
+function GUIBranch(node::RootNode, action_nodes::Vector{GUINode}, passive_nodes::Vector{PropertyNode})::GUIBranch
     return GUIBranch(
         nothing,
         node.config,
@@ -95,16 +95,16 @@ function GUIBranch(node::RootNode, action_nodes::Vector{GUINode}, passive_nodes:
 end
 
 """
-    GUIBranch(node::TriggerNode, passive_nodes::Vector{PassiveNode}, parent::GUINode)::GUIBranch
+    GUIBranch(node::TriggerNode, passive_nodes::Vector{PropertyNode}, parent::GUINode)::GUIBranch
 
 Create a GUIBranch from the given trigger node `node` with the `passive_nodes`.
 
 # Arguments
 - `node::TriggerNode`: The trigger node.
 - `action_nodes::Vector{GUINode}`: The branches active nodes.
-- `passive_nodes::Vector{PassiveNode}`: The branches passive nodes.
+- `passive_nodes::Vector{PropertyNode}`: The branches passive nodes.
 """
-function GUIBranch(node::TriggerNode, action_nodes::Vector{GUINode}, passive_nodes::Vector{PassiveNode})::GUIBranch
+function GUIBranch(node::TriggerNode, action_nodes::Vector{GUINode}, passive_nodes::Vector{PropertyNode})::GUIBranch
     return GUIBranch(
         node.reaching_trigger,
         node.config,
@@ -114,32 +114,32 @@ function GUIBranch(node::TriggerNode, action_nodes::Vector{GUINode}, passive_nod
 end
 
 """
-    GUIBranch(node::EndNode, passive_nodes::Vector{PassiveNode})::GUIBranch
+    GUIBranch(node::FinalNode, passive_nodes::Vector{PropertyNode})::GUIBranch
 
 Create a GUIBranch from the given end node `node` with the `passive_nodes`.
 
 # Arguments
-- `node::EndNode`: The end node.
-- `passive_nodes::Vector{PassiveNode}`: The branches passive nodes.
+- `node::FinalNode`: The end node.
+- `passive_nodes::Vector{PropertyNode}`: The branches passive nodes.
 """
-function GUIBranch(node::EndNode, passive_nodes::Vector{PassiveNode})::GUIBranch
+function GUIBranch(node::FinalNode, passive_nodes::Vector{PropertyNode})::GUIBranch
     return GUIBranch(
         nothing,
         node.config,
         [],
-        push!(Vector{Union{PassiveNode, EndNode}}(passive_nodes), node)
+        push!(Vector{Union{PropertyNode, FinalNode}}(passive_nodes), node)
     )
 end
 
 """
-    GUIBranch(passive_nodes::Vector{PassiveNode})::GUIBranch
+    GUIBranch(passive_nodes::Vector{PropertyNode})::GUIBranch
 
 Create a GUIBranch from the given `passive_nodes`.
 
 # Arguments
-- `passive_nodes::Vector{PassiveNode}`: The branches passive nodes.
+- `passive_nodes::Vector{PropertyNode}`: The branches passive nodes.
 """
-function GUIBranch(passive_nodes::Vector{PassiveNode})::GUIBranch
+function GUIBranch(passive_nodes::Vector{PropertyNode})::GUIBranch
     return GUIBranch(
         nothing,
         passive_nodes[end].config,
@@ -159,20 +159,20 @@ Recursively build the GUI tree from a game tree rooted in `root`.
 function build_gui_tree(root::RootNode)::GUINode
     # Create root node with branches
     gui_root = GUINode(root, nothing)
-    push!(gui_root.branches, GUIBranch(root, [GUINode(root, gui_root)], PassiveNode[]))
+    push!(gui_root.branches, GUIBranch(root, [GUINode(root, gui_root)], PropertyNode[]))
 
     # Recursively add all layers
     append!(gui_root.branches[1].action_nodes[1].branches, _get_next_layer(root, gui_root.branches[1].action_nodes[1]))
     return gui_root
 end
 
-function _get_next_layer(last_node::Union{ActionNode, RootNode}, parent::GUINode)::Vector{GUIBranch}
+function _get_next_layer(last_node::Union{DecisionNode, RootNode}, parent::GUINode)::Vector{GUIBranch}
     branches::Vector{GUIBranch} = GUIBranch[]
-    passives::Vector{PassiveNode} = PassiveNode[]
+    passives::Vector{PropertyNode} = PropertyNode[]
 
     # Create child branches
     for child in last_node.children
-        if isa(child, EndNode)
+        if isa(child, FinalNode)
             push!(branches, GUIBranch(child, passives))
             break
         elseif isa(child, TriggerNode)

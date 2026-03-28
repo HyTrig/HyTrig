@@ -30,14 +30,14 @@ struct TriggerPath
     path_to_trigger::Vector{Configuration}
 end
 
-function time_to_trigger(config::Configuration, constraints::Set{Constraint}, max_time::Float64)
+function time_to_trigger(config::Configuration, constraints::Set{Constraint}, max_time::Float64, termination_conditions::Termination_Conditions)::Tuple{Configuration, Vector{Configuration}}
 
     constraints_val = Dict(constr => evaluate(constr, config.valuation) for constr in constraints)
 
     zero_constraints::Set{ExprLike} = get_zero(constraints)
     zero_invariant::Set{ExprLike} = get_zero(config.location.invariant)
 
-    path_to_trigger::Vector{Configuration} = Vector()
+    important_configuration::Vector{Configuration} = Vector()
     
     function flowODE!(du, u, p, t)
         current_valuation = valuation_from_flow_vector(config.location.flow, config.valuation, u)
@@ -58,22 +58,19 @@ function time_to_trigger(config::Configuration, constraints::Set{Constraint}, ma
     end
 
     function affect!(integrator, idx)
-        if round5(integrator.t, 6) == 0.0
+        if round5(integrator.t, 6) < 1e-5
             return # No need to affect the valuation if the trigger was already met at time 0
         end
         current_valuation = round5(valuation_from_flow_vector(config.location.flow, config.valuation, integrator.u), 6)
-        if ! evaluate(config.location.invariant, current_valuation)
+        current_config = Configuration(config.location, current_valuation, config.global_clock + round5(integrator.t))
+        if ! evaluate(config.location.invariant, current_valuation) || evaluate_state(termination_conditions.state_formula, current_config)
             terminate!(integrator) # Stop the integration when the condition is met
             return
         end
-        # if get_exact(config.location.invariant, current_valuation)
-        #     push!(path_to_trigger, current_config)
-        #     return
-        # end
         current_valuation = round5(current_valuation)
         if any(zero_constr -> evaluate(zero_constr, current_valuation) == 0.0, zero_constraints) && 
            any(constr -> evaluate(constr, current_valuation) != constraints_val[constr], constraints)
-            push!(path_to_trigger, Configuration(config.location, current_valuation, config.global_clock + round5(integrator.t)))
+            push!(important_configuration, current_config)
             for constr in constraints
                 constraints_val[constr] = evaluate(constr, current_valuation)
             end
@@ -89,5 +86,5 @@ function time_to_trigger(config::Configuration, constraints::Set{Constraint}, ma
     
     final_valuation = round5(valuation_from_flow_vector(config.location.flow, config.valuation, sol[end]))
     final_config = Configuration(config.location, final_valuation, config.global_clock + round5(sol.t[end]))
-    return final_config, path_to_trigger
+    return final_config, important_configuration
 end
