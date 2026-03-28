@@ -27,27 +27,71 @@
     ],
     "variables": [
         {
-            "name": "x",
-            "expression": "7"
+            "name": "max_height",
+            "expression": "4"
         },
         {
-            "name": "y",
+            "name": "g",
+            "expression": "9.8"
+        },
+        {
+            "name": "p1_2_x",
+            "expression": "1"
+        },
+        {
+            "name": "p1_2_y",
             "expression": "4.5"
         },
         {
-            "name": "z",
+            "name": "p2_2_x",
+            "expression": "4"
+        },
+        {
+            "name": "p2_2_y",
+            "expression": "1"
+        },
+        {
+            "name": "p3_2_x",
+            "expression": "4"
+        },
+        {
+            "name": "p3_2_y",
+            "expression": "8"
+        },
+        {
+            "name": "p1_1_x",
+            "expression": "12"
+        },
+        {
+            "name": "p1_1_y",
             "expression": "2"
         },
         {
-            "name": "spd_x",
-            "expression": "0"
+            "name": "p2_1_x",
+            "expression": "12"
         },
         {
-            "name": "spd_y",
-            "expression": "0"
+            "name": "p2_1_y",
+            "expression": "7"
         },
         {
-            "name": "spd_z",
+            "name": "p3_1_x",
+            "expression": "13"
+        },
+        {
+            "name": "p3_1_y",
+            "expression": "4.5"
+        },
+        {
+            "name": "spd_A",
+            "expression": "4"
+        },
+        {
+            "name": "spd_B",
+            "expression": "4.5"
+        },
+        {
+            "name": "team",
             "expression": "0"
         },
         {
@@ -59,7 +103,19 @@
             "expression": "4.5"
         },
         {
+            "name": "spd_z",
+            "expression": "0"
+        },
+        {
             "name": "flight_time",
+            "expression": "0"
+        },
+        {
+            "name": "spd_x",
+            "expression": "0"
+        },
+        {
+            "name": "spd_y",
             "expression": "0"
         },
         {
@@ -95,86 +151,22 @@
             "expression": "0"
         },
         {
-            "name": "spd_A",
-            "expression": "4"
-        },
-        {
-            "name": "spd_B",
-            "expression": "4.5"
-        },
-        {
-            "name": "team",
-            "expression": "0"
-        },
-        {
-            "name": "max_height",
-            "expression": "4"
-        },
-        {
-            "name": "g",
-            "expression": "9.8"
-        },
-        {
-            "name": "p1_1_x",
-            "expression": "1"
-        },
-        {
-            "name": "p1_1_y",
-            "expression": "4.5"
-        },
-        {
-            "name": "p2_1_x",
-            "expression": "4"
-        },
-        {
-            "name": "p2_1_y",
-            "expression": "1"
-        },
-        {
-            "name": "p3_1_x",
-            "expression": "4"
-        },
-        {
-            "name": "p3_1_y",
-            "expression": "8"
-        },
-        {
-            "name": "p1_2_x",
-            "expression": "12"
-        },
-        {
-            "name": "p1_2_y",
-            "expression": "2"
-        },
-        {
-            "name": "p2_2_x",
-            "expression": "12"
-        },
-        {
-            "name": "p2_2_y",
+            "name": "x",
             "expression": "7"
         },
         {
-            "name": "p3_2_x",
-            "expression": "13"
+            "name": "y",
+            "expression": "4.5"
         },
         {
-            "name": "p3_2_y",
-            "expression": "4.5"
+            "name": "z",
+            "expression": "2"
         }
     ],
     "triggers": [
         {
             "agent": "A",
             "trigger": "(x - A_x)^2 + (y - A_y)^2 <= 1"
-        },
-        {
-            "agent": "A",
-            "trigger": "(x - A_x)^2 + (y - A_y)^2 <= 0.5"
-        },
-        {
-            "agent": "A",
-            "trigger": "(x - A_x)^2 + (y - A_y)^2 <= 0.25"
         },
         {
             "agent": "A",
@@ -190,14 +182,6 @@
         },
         {
             "agent": "B",
-            "trigger": "(x - B_x)^2 + (y - B_y)^2 <= 0.5"
-        },
-        {
-            "agent": "B",
-            "trigger": "(x - B_x)^2 + (y - B_y)^2 <= 0.25"
-        },
-        {
-            "agent": "B",
             "trigger": "team == 1 && x == 9"
         },
         {
@@ -210,86 +194,6 @@
             "name": "initial",
             "initial": true,
             "flow": [
-                {
-                    "expression": "0",
-                    "variable": "x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "z"
-                },
-                {
-                    "expression": "0",
-                    "variable": "spd_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "spd_y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "spd_z"
-                },
-                {
-                    "expression": "0",
-                    "variable": "target_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "target_y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "flight_time"
-                },
-                {
-                    "expression": "0",
-                    "variable": "A_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "A_y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "B_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "B_y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "dir_A_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "dir_A_y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "dir_B_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "dir_B_y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "spd_A"
-                },
-                {
-                    "expression": "0",
-                    "variable": "spd_B"
-                },
-                {
-                    "expression": "0",
-                    "variable": "team"
-                },
                 {
                     "expression": "0",
                     "variable": "max_height"
@@ -345,37 +249,18 @@
                 {
                     "expression": "0",
                     "variable": "p3_2_y"
-                }
-            ],
-            "invariant": ""
-        },
-        {
-            "name": "Team_1_Throwing",
-            "initial": false,
-            "flow": [
-                {
-                    "expression": "spd_x",
-                    "variable": "x"
-                },
-                {
-                    "expression": "spd_y",
-                    "variable": "y"
-                },
-                {
-                    "expression": "spd_z",
-                    "variable": "z"
                 },
                 {
                     "expression": "0",
-                    "variable": "spd_x"
+                    "variable": "spd_A"
                 },
                 {
                     "expression": "0",
-                    "variable": "spd_y"
+                    "variable": "spd_B"
                 },
                 {
-                    "expression": "-10",
-                    "variable": "spd_z"
+                    "expression": "0",
+                    "variable": "team"
                 },
                 {
                     "expression": "0",
@@ -387,7 +272,162 @@
                 },
                 {
                     "expression": "0",
+                    "variable": "spd_z"
+                },
+                {
+                    "expression": "1",
                     "variable": "flight_time"
+                },
+                {
+                    "expression": "0",
+                    "variable": "spd_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "spd_y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "A_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "A_y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "B_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "B_y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_A_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_A_y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_B_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_B_y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "z"
+                }
+            ],
+            "invariant": "flight_time == 0"
+        },
+        {
+            "name": "Team_1_Throwing",
+            "initial": false,
+            "flow": [
+                {
+                    "expression": "0",
+                    "variable": "max_height"
+                },
+                {
+                    "expression": "0",
+                    "variable": "g"
+                },
+                {
+                    "expression": "0",
+                    "variable": "p1_1_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "p1_1_y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "p2_1_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "p2_1_y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "p3_1_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "p3_1_y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "p1_2_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "p1_2_y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "p2_2_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "p2_2_y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "p3_2_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "p3_2_y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "spd_A"
+                },
+                {
+                    "expression": "0",
+                    "variable": "spd_B"
+                },
+                {
+                    "expression": "0",
+                    "variable": "team"
+                },
+                {
+                    "expression": "0",
+                    "variable": "target_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "target_y"
+                },
+                {
+                    "expression": "-10",
+                    "variable": "spd_z"
+                },
+                {
+                    "expression": "0",
+                    "variable": "flight_time"
+                },
+                {
+                    "expression": "0",
+                    "variable": "spd_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "spd_y"
                 },
                 {
                     "expression": "0",
@@ -422,17 +462,24 @@
                     "variable": "dir_B_y"
                 },
                 {
-                    "expression": "0",
-                    "variable": "spd_A"
+                    "expression": "spd_x",
+                    "variable": "x"
                 },
                 {
-                    "expression": "0",
-                    "variable": "spd_B"
+                    "expression": "spd_y",
+                    "variable": "y"
                 },
                 {
-                    "expression": "0",
-                    "variable": "team"
-                },
+                    "expression": "spd_z",
+                    "variable": "z"
+                }
+            ],
+            "invariant": "0 <= z && z <= max_height && 0 <= x && x <= 18 && 0 <= y && y <= 9 && B_x >= 9 && B_x <= 18 && 0 <= A_y && A_y <= 9 && team == 1"
+        },
+        {
+            "name": "Team_2_Throwing",
+            "initial": false,
+            "flow": [
                 {
                     "expression": "0",
                     "variable": "max_height"
@@ -488,37 +535,18 @@
                 {
                     "expression": "0",
                     "variable": "p3_2_y"
-                }
-            ],
-            "invariant": "0 <= z && z <= max_height && 0 <= x && x <= 18 && 0 <= y && y <= 9 && 9 <= B_x && B_x <= 18 && 0 <= B_y && B_y <= 9 && team == 1"
-        },
-        {
-            "name": "Team_2_Throwing",
-            "initial": false,
-            "flow": [
-                {
-                    "expression": "spd_x",
-                    "variable": "x"
-                },
-                {
-                    "expression": "spd_y",
-                    "variable": "y"
-                },
-                {
-                    "expression": "spd_z",
-                    "variable": "z"
                 },
                 {
                     "expression": "0",
-                    "variable": "spd_x"
+                    "variable": "spd_A"
                 },
                 {
                     "expression": "0",
-                    "variable": "spd_y"
+                    "variable": "spd_B"
                 },
                 {
-                    "expression": "-10",
-                    "variable": "spd_z"
+                    "expression": "0",
+                    "variable": "team"
                 },
                 {
                     "expression": "0",
@@ -529,8 +557,20 @@
                     "variable": "target_y"
                 },
                 {
+                    "expression": "-10",
+                    "variable": "spd_z"
+                },
+                {
                     "expression": "0",
                     "variable": "flight_time"
+                },
+                {
+                    "expression": "0",
+                    "variable": "spd_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "spd_y"
                 },
                 {
                     "expression": "spd_A * dir_A_x",
@@ -565,75 +605,19 @@
                     "variable": "dir_B_y"
                 },
                 {
-                    "expression": "0",
-                    "variable": "spd_A"
+                    "expression": "spd_x",
+                    "variable": "x"
                 },
                 {
-                    "expression": "0",
-                    "variable": "spd_B"
+                    "expression": "spd_y",
+                    "variable": "y"
                 },
                 {
-                    "expression": "0",
-                    "variable": "team"
-                },
-                {
-                    "expression": "0",
-                    "variable": "max_height"
-                },
-                {
-                    "expression": "0",
-                    "variable": "g"
-                },
-                {
-                    "expression": "0",
-                    "variable": "p1_1_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "p1_1_y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "p2_1_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "p2_1_y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "p3_1_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "p3_1_y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "p1_2_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "p1_2_y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "p2_2_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "p2_2_y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "p3_2_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "p3_2_y"
+                    "expression": "spd_z",
+                    "variable": "z"
                 }
             ],
-            "invariant": "0 <= z && z <= max_height && 0 <= x && x <= 18 && 0 <= y && y <= 9 && 0 <= A_x && A_x <= 9 && 0 <= A_y && A_y <= 9 && team == 2"
+            "invariant": "0 <= z && z <= max_height && 0 <= x && x <= 18 && 0 <= y && y <= 9 && A_x <= 9 && A_x >= 0 && 0 <= A_y && A_y <= 9 && team == 2"
         }
     ],
     "edges": [
@@ -645,86 +629,6 @@
             "agent": "A",
             "jump": [
                 {
-                    "expression": "x",
-                    "variable": "x"
-                },
-                {
-                    "expression": "y",
-                    "variable": "y"
-                },
-                {
-                    "expression": "z",
-                    "variable": "z"
-                },
-                {
-                    "expression": "(p1_2_x - x)  /  flight_time",
-                    "variable": "spd_x"
-                },
-                {
-                    "expression": "(p1_2_y - y)  /  flight_time",
-                    "variable": "spd_y"
-                },
-                {
-                    "expression": "(2 * g * (max_height - z))^0.5",
-                    "variable": "spd_z"
-                },
-                {
-                    "expression": "p1_2_x",
-                    "variable": "target_x"
-                },
-                {
-                    "expression": "p1_2_y",
-                    "variable": "target_y"
-                },
-                {
-                    "expression": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g",
-                    "variable": "flight_time"
-                },
-                {
-                    "expression": "A_x",
-                    "variable": "A_x"
-                },
-                {
-                    "expression": "A_y",
-                    "variable": "A_y"
-                },
-                {
-                    "expression": "B_x",
-                    "variable": "B_x"
-                },
-                {
-                    "expression": "B_y",
-                    "variable": "B_y"
-                },
-                {
-                    "expression": "dir_A_x",
-                    "variable": "dir_A_x"
-                },
-                {
-                    "expression": "dir_A_y",
-                    "variable": "dir_A_y"
-                },
-                {
-                    "expression": "dir_B_x",
-                    "variable": "dir_B_x"
-                },
-                {
-                    "expression": "dir_B_y",
-                    "variable": "dir_B_y"
-                },
-                {
-                    "expression": "spd_A",
-                    "variable": "spd_A"
-                },
-                {
-                    "expression": "spd_B",
-                    "variable": "spd_B"
-                },
-                {
-                    "expression": "1",
-                    "variable": "team"
-                },
-                {
                     "expression": "max_height",
                     "variable": "max_height"
                 },
@@ -779,6 +683,86 @@
                 {
                     "expression": "p3_2_y",
                     "variable": "p3_2_y"
+                },
+                {
+                    "expression": "spd_A",
+                    "variable": "spd_A"
+                },
+                {
+                    "expression": "spd_B",
+                    "variable": "spd_B"
+                },
+                {
+                    "expression": "1",
+                    "variable": "team"
+                },
+                {
+                    "expression": "p1_1_x",
+                    "variable": "target_x"
+                },
+                {
+                    "expression": "p1_1_y",
+                    "variable": "target_y"
+                },
+                {
+                    "expression": "(2 * g * (max_height - z))^0.5",
+                    "variable": "spd_z"
+                },
+                {
+                    "expression": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g",
+                    "variable": "flight_time"
+                },
+                {
+                    "expression": "(target_x - x)  /  flight_time",
+                    "variable": "spd_x"
+                },
+                {
+                    "expression": "(target_y - y)  /  flight_time",
+                    "variable": "spd_y"
+                },
+                {
+                    "expression": "A_x",
+                    "variable": "A_x"
+                },
+                {
+                    "expression": "A_y",
+                    "variable": "A_y"
+                },
+                {
+                    "expression": "B_x",
+                    "variable": "B_x"
+                },
+                {
+                    "expression": "B_y",
+                    "variable": "B_y"
+                },
+                {
+                    "expression": "dir_A_x",
+                    "variable": "dir_A_x"
+                },
+                {
+                    "expression": "dir_A_y",
+                    "variable": "dir_A_y"
+                },
+                {
+                    "expression": "dir_B_y",
+                    "variable": "dir_B_x"
+                },
+                {
+                    "expression": "dir_B_y",
+                    "variable": "dir_B_y"
+                },
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "z",
+                    "variable": "z"
                 }
             ]
         },
@@ -790,86 +774,6 @@
             "agent": "A",
             "jump": [
                 {
-                    "expression": "x",
-                    "variable": "x"
-                },
-                {
-                    "expression": "y",
-                    "variable": "y"
-                },
-                {
-                    "expression": "z",
-                    "variable": "z"
-                },
-                {
-                    "expression": "(p2_2_x - x)  /  flight_time",
-                    "variable": "spd_x"
-                },
-                {
-                    "expression": "(p2_2_y - y)  /  flight_time",
-                    "variable": "spd_y"
-                },
-                {
-                    "expression": "(2 * g * (max_height - z))^0.5",
-                    "variable": "spd_z"
-                },
-                {
-                    "expression": "p2_2_x",
-                    "variable": "target_x"
-                },
-                {
-                    "expression": "p2_2_y",
-                    "variable": "target_y"
-                },
-                {
-                    "expression": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g",
-                    "variable": "flight_time"
-                },
-                {
-                    "expression": "A_x",
-                    "variable": "A_x"
-                },
-                {
-                    "expression": "A_y",
-                    "variable": "A_y"
-                },
-                {
-                    "expression": "B_x",
-                    "variable": "B_x"
-                },
-                {
-                    "expression": "B_y",
-                    "variable": "B_y"
-                },
-                {
-                    "expression": "dir_A_x",
-                    "variable": "dir_A_x"
-                },
-                {
-                    "expression": "dir_A_y",
-                    "variable": "dir_A_y"
-                },
-                {
-                    "expression": "dir_B_x",
-                    "variable": "dir_B_x"
-                },
-                {
-                    "expression": "dir_B_y",
-                    "variable": "dir_B_y"
-                },
-                {
-                    "expression": "spd_A",
-                    "variable": "spd_A"
-                },
-                {
-                    "expression": "spd_B",
-                    "variable": "spd_B"
-                },
-                {
-                    "expression": "1",
-                    "variable": "team"
-                },
-                {
                     "expression": "max_height",
                     "variable": "max_height"
                 },
@@ -924,6 +828,86 @@
                 {
                     "expression": "p3_2_y",
                     "variable": "p3_2_y"
+                },
+                {
+                    "expression": "spd_A",
+                    "variable": "spd_A"
+                },
+                {
+                    "expression": "spd_B",
+                    "variable": "spd_B"
+                },
+                {
+                    "expression": "1",
+                    "variable": "team"
+                },
+                {
+                    "expression": "p2_1_x",
+                    "variable": "target_x"
+                },
+                {
+                    "expression": "p2_1_y",
+                    "variable": "target_y"
+                },
+                {
+                    "expression": "(2 * g * (max_height - z))^0.5",
+                    "variable": "spd_z"
+                },
+                {
+                    "expression": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g",
+                    "variable": "flight_time"
+                },
+                {
+                    "expression": "(target_x - x)  /  flight_time",
+                    "variable": "spd_x"
+                },
+                {
+                    "expression": "(target_y - y)  /  flight_time",
+                    "variable": "spd_y"
+                },
+                {
+                    "expression": "A_x",
+                    "variable": "A_x"
+                },
+                {
+                    "expression": "A_y",
+                    "variable": "A_y"
+                },
+                {
+                    "expression": "B_x",
+                    "variable": "B_x"
+                },
+                {
+                    "expression": "B_y",
+                    "variable": "B_y"
+                },
+                {
+                    "expression": "dir_A_x",
+                    "variable": "dir_A_x"
+                },
+                {
+                    "expression": "dir_A_y",
+                    "variable": "dir_A_y"
+                },
+                {
+                    "expression": "dir_B_y",
+                    "variable": "dir_B_x"
+                },
+                {
+                    "expression": "dir_B_y",
+                    "variable": "dir_B_y"
+                },
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "z",
+                    "variable": "z"
                 }
             ]
         },
@@ -935,86 +919,6 @@
             "agent": "A",
             "jump": [
                 {
-                    "expression": "x",
-                    "variable": "x"
-                },
-                {
-                    "expression": "y",
-                    "variable": "y"
-                },
-                {
-                    "expression": "z",
-                    "variable": "z"
-                },
-                {
-                    "expression": "(p3_2_x - x)  /  flight_time",
-                    "variable": "spd_x"
-                },
-                {
-                    "expression": "(p3_2_y - y)  /  flight_time",
-                    "variable": "spd_y"
-                },
-                {
-                    "expression": "(2 * g * (max_height - z))^0.5",
-                    "variable": "spd_z"
-                },
-                {
-                    "expression": "p3_2_x",
-                    "variable": "target_x"
-                },
-                {
-                    "expression": "p3_2_y",
-                    "variable": "target_y"
-                },
-                {
-                    "expression": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g",
-                    "variable": "flight_time"
-                },
-                {
-                    "expression": "A_x",
-                    "variable": "A_x"
-                },
-                {
-                    "expression": "A_y",
-                    "variable": "A_y"
-                },
-                {
-                    "expression": "B_x",
-                    "variable": "B_x"
-                },
-                {
-                    "expression": "B_y",
-                    "variable": "B_y"
-                },
-                {
-                    "expression": "dir_A_x",
-                    "variable": "dir_A_x"
-                },
-                {
-                    "expression": "dir_A_y",
-                    "variable": "dir_A_y"
-                },
-                {
-                    "expression": "dir_B_x",
-                    "variable": "dir_B_x"
-                },
-                {
-                    "expression": "dir_B_y",
-                    "variable": "dir_B_y"
-                },
-                {
-                    "expression": "spd_A",
-                    "variable": "spd_A"
-                },
-                {
-                    "expression": "spd_B",
-                    "variable": "spd_B"
-                },
-                {
-                    "expression": "1",
-                    "variable": "team"
-                },
-                {
                     "expression": "max_height",
                     "variable": "max_height"
                 },
@@ -1069,6 +973,86 @@
                 {
                     "expression": "p3_2_y",
                     "variable": "p3_2_y"
+                },
+                {
+                    "expression": "spd_A",
+                    "variable": "spd_A"
+                },
+                {
+                    "expression": "spd_B",
+                    "variable": "spd_B"
+                },
+                {
+                    "expression": "1",
+                    "variable": "team"
+                },
+                {
+                    "expression": "p3_1_x",
+                    "variable": "target_x"
+                },
+                {
+                    "expression": "p3_1_y",
+                    "variable": "target_y"
+                },
+                {
+                    "expression": "(2 * g * (max_height - z))^0.5",
+                    "variable": "spd_z"
+                },
+                {
+                    "expression": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g",
+                    "variable": "flight_time"
+                },
+                {
+                    "expression": "(target_x - x)  /  flight_time",
+                    "variable": "spd_x"
+                },
+                {
+                    "expression": "(target_y - y)  /  flight_time",
+                    "variable": "spd_y"
+                },
+                {
+                    "expression": "A_x",
+                    "variable": "A_x"
+                },
+                {
+                    "expression": "A_y",
+                    "variable": "A_y"
+                },
+                {
+                    "expression": "B_x",
+                    "variable": "B_x"
+                },
+                {
+                    "expression": "B_y",
+                    "variable": "B_y"
+                },
+                {
+                    "expression": "dir_A_x",
+                    "variable": "dir_A_x"
+                },
+                {
+                    "expression": "dir_A_y",
+                    "variable": "dir_A_y"
+                },
+                {
+                    "expression": "dir_B_y",
+                    "variable": "dir_B_x"
+                },
+                {
+                    "expression": "dir_B_y",
+                    "variable": "dir_B_y"
+                },
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "z",
+                    "variable": "z"
                 }
             ]
         },
@@ -1080,86 +1064,6 @@
             "agent": "A",
             "jump": [
                 {
-                    "expression": "x",
-                    "variable": "x"
-                },
-                {
-                    "expression": "y",
-                    "variable": "y"
-                },
-                {
-                    "expression": "z",
-                    "variable": "z"
-                },
-                {
-                    "expression": "(p1_2_x - x)  /  flight_time",
-                    "variable": "spd_x"
-                },
-                {
-                    "expression": "(p1_2_y - y)  /  flight_time",
-                    "variable": "spd_y"
-                },
-                {
-                    "expression": "(2 * g * (max_height - z))^0.5",
-                    "variable": "spd_z"
-                },
-                {
-                    "expression": "p1_2_x",
-                    "variable": "target_x"
-                },
-                {
-                    "expression": "p1_2_y",
-                    "variable": "target_y"
-                },
-                {
-                    "expression": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g",
-                    "variable": "flight_time"
-                },
-                {
-                    "expression": "A_x",
-                    "variable": "A_x"
-                },
-                {
-                    "expression": "A_y",
-                    "variable": "A_y"
-                },
-                {
-                    "expression": "B_x",
-                    "variable": "B_x"
-                },
-                {
-                    "expression": "B_y",
-                    "variable": "B_y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "dir_A_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "dir_A_y"
-                },
-                {
-                    "expression": "dir_B_x",
-                    "variable": "dir_B_x"
-                },
-                {
-                    "expression": "dir_B_y",
-                    "variable": "dir_B_y"
-                },
-                {
-                    "expression": "spd_A",
-                    "variable": "spd_A"
-                },
-                {
-                    "expression": "spd_B",
-                    "variable": "spd_B"
-                },
-                {
-                    "expression": "1",
-                    "variable": "team"
-                },
-                {
                     "expression": "max_height",
                     "variable": "max_height"
                 },
@@ -1214,6 +1118,86 @@
                 {
                     "expression": "p3_2_y",
                     "variable": "p3_2_y"
+                },
+                {
+                    "expression": "spd_A",
+                    "variable": "spd_A"
+                },
+                {
+                    "expression": "spd_B",
+                    "variable": "spd_B"
+                },
+                {
+                    "expression": "1",
+                    "variable": "team"
+                },
+                {
+                    "expression": "p1_1_x",
+                    "variable": "target_x"
+                },
+                {
+                    "expression": "p1_1_y",
+                    "variable": "target_y"
+                },
+                {
+                    "expression": "(2 * g * (max_height - z))^0.5",
+                    "variable": "spd_z"
+                },
+                {
+                    "expression": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g",
+                    "variable": "flight_time"
+                },
+                {
+                    "expression": "(target_x - x)  /  flight_time",
+                    "variable": "spd_x"
+                },
+                {
+                    "expression": "(target_y - y)  /  flight_time",
+                    "variable": "spd_y"
+                },
+                {
+                    "expression": "A_x",
+                    "variable": "A_x"
+                },
+                {
+                    "expression": "A_y",
+                    "variable": "A_y"
+                },
+                {
+                    "expression": "B_x",
+                    "variable": "B_x"
+                },
+                {
+                    "expression": "B_y",
+                    "variable": "B_y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_A_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_A_y"
+                },
+                {
+                    "expression": "dir_B_y",
+                    "variable": "dir_B_x"
+                },
+                {
+                    "expression": "dir_B_y",
+                    "variable": "dir_B_y"
+                },
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "z",
+                    "variable": "z"
                 }
             ]
         },
@@ -1225,86 +1209,6 @@
             "agent": "A",
             "jump": [
                 {
-                    "expression": "x",
-                    "variable": "x"
-                },
-                {
-                    "expression": "y",
-                    "variable": "y"
-                },
-                {
-                    "expression": "z",
-                    "variable": "z"
-                },
-                {
-                    "expression": "(p2_2_x - x)  /  flight_time",
-                    "variable": "spd_x"
-                },
-                {
-                    "expression": "(p2_2_y - y)  /  flight_time",
-                    "variable": "spd_y"
-                },
-                {
-                    "expression": "(2 * g * (max_height - z))^0.5",
-                    "variable": "spd_z"
-                },
-                {
-                    "expression": "p2_2_x",
-                    "variable": "target_x"
-                },
-                {
-                    "expression": "p2_2_y",
-                    "variable": "target_y"
-                },
-                {
-                    "expression": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g",
-                    "variable": "flight_time"
-                },
-                {
-                    "expression": "A_x",
-                    "variable": "A_x"
-                },
-                {
-                    "expression": "A_y",
-                    "variable": "A_y"
-                },
-                {
-                    "expression": "B_x",
-                    "variable": "B_x"
-                },
-                {
-                    "expression": "B_y",
-                    "variable": "B_y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "dir_A_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "dir_A_y"
-                },
-                {
-                    "expression": "dir_B_x",
-                    "variable": "dir_B_x"
-                },
-                {
-                    "expression": "dir_B_y",
-                    "variable": "dir_B_y"
-                },
-                {
-                    "expression": "spd_A",
-                    "variable": "spd_A"
-                },
-                {
-                    "expression": "spd_B",
-                    "variable": "spd_B"
-                },
-                {
-                    "expression": "1",
-                    "variable": "team"
-                },
-                {
                     "expression": "max_height",
                     "variable": "max_height"
                 },
@@ -1359,6 +1263,86 @@
                 {
                     "expression": "p3_2_y",
                     "variable": "p3_2_y"
+                },
+                {
+                    "expression": "spd_A",
+                    "variable": "spd_A"
+                },
+                {
+                    "expression": "spd_B",
+                    "variable": "spd_B"
+                },
+                {
+                    "expression": "1",
+                    "variable": "team"
+                },
+                {
+                    "expression": "p2_1_x",
+                    "variable": "target_x"
+                },
+                {
+                    "expression": "p2_1_y",
+                    "variable": "target_y"
+                },
+                {
+                    "expression": "(2 * g * (max_height - z))^0.5",
+                    "variable": "spd_z"
+                },
+                {
+                    "expression": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g",
+                    "variable": "flight_time"
+                },
+                {
+                    "expression": "(target_x - x)  /  flight_time",
+                    "variable": "spd_x"
+                },
+                {
+                    "expression": "(target_y - y)  /  flight_time",
+                    "variable": "spd_y"
+                },
+                {
+                    "expression": "A_x",
+                    "variable": "A_x"
+                },
+                {
+                    "expression": "A_y",
+                    "variable": "A_y"
+                },
+                {
+                    "expression": "B_x",
+                    "variable": "B_x"
+                },
+                {
+                    "expression": "B_y",
+                    "variable": "B_y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_A_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_A_y"
+                },
+                {
+                    "expression": "dir_B_y",
+                    "variable": "dir_B_x"
+                },
+                {
+                    "expression": "dir_B_y",
+                    "variable": "dir_B_y"
+                },
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "z",
+                    "variable": "z"
                 }
             ]
         },
@@ -1370,86 +1354,6 @@
             "agent": "A",
             "jump": [
                 {
-                    "expression": "x",
-                    "variable": "x"
-                },
-                {
-                    "expression": "y",
-                    "variable": "y"
-                },
-                {
-                    "expression": "z",
-                    "variable": "z"
-                },
-                {
-                    "expression": "(p3_2_x - x)  /  flight_time",
-                    "variable": "spd_x"
-                },
-                {
-                    "expression": "(p3_2_y - y)  /  flight_time",
-                    "variable": "spd_y"
-                },
-                {
-                    "expression": "(2 * g * (max_height - z))^0.5",
-                    "variable": "spd_z"
-                },
-                {
-                    "expression": "p3_2_x",
-                    "variable": "target_x"
-                },
-                {
-                    "expression": "p3_2_y",
-                    "variable": "target_y"
-                },
-                {
-                    "expression": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g",
-                    "variable": "flight_time"
-                },
-                {
-                    "expression": "A_x",
-                    "variable": "A_x"
-                },
-                {
-                    "expression": "A_y",
-                    "variable": "A_y"
-                },
-                {
-                    "expression": "B_x",
-                    "variable": "B_x"
-                },
-                {
-                    "expression": "B_y",
-                    "variable": "B_y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "dir_A_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "dir_A_y"
-                },
-                {
-                    "expression": "dir_B_x",
-                    "variable": "dir_B_x"
-                },
-                {
-                    "expression": "dir_B_y",
-                    "variable": "dir_B_y"
-                },
-                {
-                    "expression": "spd_A",
-                    "variable": "spd_A"
-                },
-                {
-                    "expression": "spd_B",
-                    "variable": "spd_B"
-                },
-                {
-                    "expression": "1",
-                    "variable": "team"
-                },
-                {
                     "expression": "max_height",
                     "variable": "max_height"
                 },
@@ -1504,6 +1408,86 @@
                 {
                     "expression": "p3_2_y",
                     "variable": "p3_2_y"
+                },
+                {
+                    "expression": "spd_A",
+                    "variable": "spd_A"
+                },
+                {
+                    "expression": "spd_B",
+                    "variable": "spd_B"
+                },
+                {
+                    "expression": "1",
+                    "variable": "team"
+                },
+                {
+                    "expression": "p3_1_x",
+                    "variable": "target_x"
+                },
+                {
+                    "expression": "p3_1_y",
+                    "variable": "target_y"
+                },
+                {
+                    "expression": "(2 * g * (max_height - z))^0.5",
+                    "variable": "spd_z"
+                },
+                {
+                    "expression": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g",
+                    "variable": "flight_time"
+                },
+                {
+                    "expression": "(target_x - x)  /  flight_time",
+                    "variable": "spd_x"
+                },
+                {
+                    "expression": "(target_y - y)  /  flight_time",
+                    "variable": "spd_y"
+                },
+                {
+                    "expression": "A_x",
+                    "variable": "A_x"
+                },
+                {
+                    "expression": "A_y",
+                    "variable": "A_y"
+                },
+                {
+                    "expression": "B_x",
+                    "variable": "B_x"
+                },
+                {
+                    "expression": "B_y",
+                    "variable": "B_y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_A_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_A_y"
+                },
+                {
+                    "expression": "dir_B_y",
+                    "variable": "dir_B_x"
+                },
+                {
+                    "expression": "dir_B_y",
+                    "variable": "dir_B_y"
+                },
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "z",
+                    "variable": "z"
                 }
             ]
         },
@@ -1515,86 +1499,6 @@
             "agent": "B",
             "jump": [
                 {
-                    "expression": "x",
-                    "variable": "x"
-                },
-                {
-                    "expression": "y",
-                    "variable": "y"
-                },
-                {
-                    "expression": "z",
-                    "variable": "z"
-                },
-                {
-                    "expression": "(p1_1_x - x)  /  flight_time",
-                    "variable": "spd_x"
-                },
-                {
-                    "expression": "(p1_1_y - y)  /  flight_time",
-                    "variable": "spd_y"
-                },
-                {
-                    "expression": "(2 * g * (max_height - z))^0.5",
-                    "variable": "spd_z"
-                },
-                {
-                    "expression": "p1_1_x",
-                    "variable": "target_x"
-                },
-                {
-                    "expression": "p1_1_y",
-                    "variable": "target_y"
-                },
-                {
-                    "expression": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g",
-                    "variable": "flight_time"
-                },
-                {
-                    "expression": "A_x",
-                    "variable": "A_x"
-                },
-                {
-                    "expression": "A_y",
-                    "variable": "A_y"
-                },
-                {
-                    "expression": "B_x",
-                    "variable": "B_x"
-                },
-                {
-                    "expression": "B_y",
-                    "variable": "B_y"
-                },
-                {
-                    "expression": "dir_A_x",
-                    "variable": "dir_A_x"
-                },
-                {
-                    "expression": "dir_A_y",
-                    "variable": "dir_A_y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "dir_B_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "dir_B_y"
-                },
-                {
-                    "expression": "spd_A",
-                    "variable": "spd_A"
-                },
-                {
-                    "expression": "spd_B",
-                    "variable": "spd_B"
-                },
-                {
-                    "expression": "2",
-                    "variable": "team"
-                },
-                {
                     "expression": "max_height",
                     "variable": "max_height"
                 },
@@ -1649,6 +1553,86 @@
                 {
                     "expression": "p3_2_y",
                     "variable": "p3_2_y"
+                },
+                {
+                    "expression": "spd_A",
+                    "variable": "spd_A"
+                },
+                {
+                    "expression": "spd_B",
+                    "variable": "spd_B"
+                },
+                {
+                    "expression": "2",
+                    "variable": "team"
+                },
+                {
+                    "expression": "p1_2_x",
+                    "variable": "target_x"
+                },
+                {
+                    "expression": "p1_2_y",
+                    "variable": "target_y"
+                },
+                {
+                    "expression": "(2 * g * (max_height - z))^0.5",
+                    "variable": "spd_z"
+                },
+                {
+                    "expression": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g",
+                    "variable": "flight_time"
+                },
+                {
+                    "expression": "(target_x - x)  /  flight_time",
+                    "variable": "spd_x"
+                },
+                {
+                    "expression": "(target_y - y)  /  flight_time",
+                    "variable": "spd_y"
+                },
+                {
+                    "expression": "A_x",
+                    "variable": "A_x"
+                },
+                {
+                    "expression": "A_y",
+                    "variable": "A_y"
+                },
+                {
+                    "expression": "B_x",
+                    "variable": "B_x"
+                },
+                {
+                    "expression": "B_y",
+                    "variable": "B_y"
+                },
+                {
+                    "expression": "dir_A_x",
+                    "variable": "dir_A_x"
+                },
+                {
+                    "expression": "dir_A_y",
+                    "variable": "dir_A_y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_B_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_B_y"
+                },
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "z",
+                    "variable": "z"
                 }
             ]
         },
@@ -1660,86 +1644,6 @@
             "agent": "B",
             "jump": [
                 {
-                    "expression": "x",
-                    "variable": "x"
-                },
-                {
-                    "expression": "y",
-                    "variable": "y"
-                },
-                {
-                    "expression": "z",
-                    "variable": "z"
-                },
-                {
-                    "expression": "(p2_1_x - x)  /  flight_time",
-                    "variable": "spd_x"
-                },
-                {
-                    "expression": "(p2_1_y - y)  /  flight_time",
-                    "variable": "spd_y"
-                },
-                {
-                    "expression": "(2 * g * (max_height - z))^0.5",
-                    "variable": "spd_z"
-                },
-                {
-                    "expression": "p2_1_x",
-                    "variable": "target_x"
-                },
-                {
-                    "expression": "p2_1_y",
-                    "variable": "target_y"
-                },
-                {
-                    "expression": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g",
-                    "variable": "flight_time"
-                },
-                {
-                    "expression": "A_x",
-                    "variable": "A_x"
-                },
-                {
-                    "expression": "A_y",
-                    "variable": "A_y"
-                },
-                {
-                    "expression": "B_x",
-                    "variable": "B_x"
-                },
-                {
-                    "expression": "B_y",
-                    "variable": "B_y"
-                },
-                {
-                    "expression": "dir_A_x",
-                    "variable": "dir_A_x"
-                },
-                {
-                    "expression": "dir_A_y",
-                    "variable": "dir_A_y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "dir_B_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "dir_B_y"
-                },
-                {
-                    "expression": "spd_A",
-                    "variable": "spd_A"
-                },
-                {
-                    "expression": "spd_B",
-                    "variable": "spd_B"
-                },
-                {
-                    "expression": "2",
-                    "variable": "team"
-                },
-                {
                     "expression": "max_height",
                     "variable": "max_height"
                 },
@@ -1794,6 +1698,86 @@
                 {
                     "expression": "p3_2_y",
                     "variable": "p3_2_y"
+                },
+                {
+                    "expression": "spd_A",
+                    "variable": "spd_A"
+                },
+                {
+                    "expression": "spd_B",
+                    "variable": "spd_B"
+                },
+                {
+                    "expression": "2",
+                    "variable": "team"
+                },
+                {
+                    "expression": "p2_2_x",
+                    "variable": "target_x"
+                },
+                {
+                    "expression": "p2_2_y",
+                    "variable": "target_y"
+                },
+                {
+                    "expression": "(2 * g * (max_height - z))^0.5",
+                    "variable": "spd_z"
+                },
+                {
+                    "expression": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g",
+                    "variable": "flight_time"
+                },
+                {
+                    "expression": "(target_x - x)  /  flight_time",
+                    "variable": "spd_x"
+                },
+                {
+                    "expression": "(target_y - y)  /  flight_time",
+                    "variable": "spd_y"
+                },
+                {
+                    "expression": "A_x",
+                    "variable": "A_x"
+                },
+                {
+                    "expression": "A_y",
+                    "variable": "A_y"
+                },
+                {
+                    "expression": "B_x",
+                    "variable": "B_x"
+                },
+                {
+                    "expression": "B_y",
+                    "variable": "B_y"
+                },
+                {
+                    "expression": "dir_A_x",
+                    "variable": "dir_A_x"
+                },
+                {
+                    "expression": "dir_A_y",
+                    "variable": "dir_A_y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_B_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_B_y"
+                },
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "z",
+                    "variable": "z"
                 }
             ]
         },
@@ -1805,86 +1789,6 @@
             "agent": "B",
             "jump": [
                 {
-                    "expression": "x",
-                    "variable": "x"
-                },
-                {
-                    "expression": "y",
-                    "variable": "y"
-                },
-                {
-                    "expression": "z",
-                    "variable": "z"
-                },
-                {
-                    "expression": "(p3_1_x - x)  /  flight_time",
-                    "variable": "spd_x"
-                },
-                {
-                    "expression": "(p3_1_y - y)  /  flight_time",
-                    "variable": "spd_y"
-                },
-                {
-                    "expression": "(2 * g * (max_height - z))^0.5",
-                    "variable": "spd_z"
-                },
-                {
-                    "expression": "p3_1_x",
-                    "variable": "target_x"
-                },
-                {
-                    "expression": "p3_1_y",
-                    "variable": "target_y"
-                },
-                {
-                    "expression": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g",
-                    "variable": "flight_time"
-                },
-                {
-                    "expression": "A_x",
-                    "variable": "A_x"
-                },
-                {
-                    "expression": "A_y",
-                    "variable": "A_y"
-                },
-                {
-                    "expression": "B_x",
-                    "variable": "B_x"
-                },
-                {
-                    "expression": "B_y",
-                    "variable": "B_y"
-                },
-                {
-                    "expression": "dir_A_x",
-                    "variable": "dir_A_x"
-                },
-                {
-                    "expression": "dir_A_y",
-                    "variable": "dir_A_y"
-                },
-                {
-                    "expression": "0",
-                    "variable": "dir_B_x"
-                },
-                {
-                    "expression": "0",
-                    "variable": "dir_B_y"
-                },
-                {
-                    "expression": "spd_A",
-                    "variable": "spd_A"
-                },
-                {
-                    "expression": "spd_B",
-                    "variable": "spd_B"
-                },
-                {
-                    "expression": "2",
-                    "variable": "team"
-                },
-                {
                     "expression": "max_height",
                     "variable": "max_height"
                 },
@@ -1939,39 +1843,163 @@
                 {
                     "expression": "p3_2_y",
                     "variable": "p3_2_y"
+                },
+                {
+                    "expression": "spd_A",
+                    "variable": "spd_A"
+                },
+                {
+                    "expression": "spd_B",
+                    "variable": "spd_B"
+                },
+                {
+                    "expression": "2",
+                    "variable": "team"
+                },
+                {
+                    "expression": "p3_2_x",
+                    "variable": "target_x"
+                },
+                {
+                    "expression": "p3_2_y",
+                    "variable": "target_y"
+                },
+                {
+                    "expression": "(2 * g * (max_height - z))^0.5",
+                    "variable": "spd_z"
+                },
+                {
+                    "expression": "(spd_z + ( spd_z^2 + 2 * g * z)^0.5) / g",
+                    "variable": "flight_time"
+                },
+                {
+                    "expression": "(target_x - x)  /  flight_time",
+                    "variable": "spd_x"
+                },
+                {
+                    "expression": "(target_y - y)  /  flight_time",
+                    "variable": "spd_y"
+                },
+                {
+                    "expression": "A_x",
+                    "variable": "A_x"
+                },
+                {
+                    "expression": "A_y",
+                    "variable": "A_y"
+                },
+                {
+                    "expression": "B_x",
+                    "variable": "B_x"
+                },
+                {
+                    "expression": "B_y",
+                    "variable": "B_y"
+                },
+                {
+                    "expression": "dir_A_x",
+                    "variable": "dir_A_x"
+                },
+                {
+                    "expression": "dir_A_y",
+                    "variable": "dir_A_y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_B_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_B_y"
+                },
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "z",
+                    "variable": "z"
                 }
             ]
         },
         {
-            "guard": "team == 2 && x == 9",
+            "guard": "team == 2 && x <= 9",
             "source": "Team_2_Throwing",
             "action": "move",
             "target": "Team_2_Throwing",
             "agent": "A",
             "jump": [
                 {
-                    "expression": "x",
-                    "variable": "x"
+                    "expression": "max_height",
+                    "variable": "max_height"
                 },
                 {
-                    "expression": "y",
-                    "variable": "y"
+                    "expression": "g",
+                    "variable": "g"
                 },
                 {
-                    "expression": "z",
-                    "variable": "z"
+                    "expression": "p1_1_x",
+                    "variable": "p1_1_x"
                 },
                 {
-                    "expression": "spd_x",
-                    "variable": "spd_x"
+                    "expression": "p1_1_y",
+                    "variable": "p1_1_y"
                 },
                 {
-                    "expression": "spd_y",
-                    "variable": "spd_y"
+                    "expression": "p2_1_x",
+                    "variable": "p2_1_x"
                 },
                 {
-                    "expression": "spd_z",
-                    "variable": "spd_z"
+                    "expression": "p2_1_y",
+                    "variable": "p2_1_y"
+                },
+                {
+                    "expression": "p3_1_x",
+                    "variable": "p3_1_x"
+                },
+                {
+                    "expression": "p3_1_y",
+                    "variable": "p3_1_y"
+                },
+                {
+                    "expression": "p1_2_x",
+                    "variable": "p1_2_x"
+                },
+                {
+                    "expression": "p1_2_y",
+                    "variable": "p1_2_y"
+                },
+                {
+                    "expression": "p2_2_x",
+                    "variable": "p2_2_x"
+                },
+                {
+                    "expression": "p2_2_y",
+                    "variable": "p2_2_y"
+                },
+                {
+                    "expression": "p3_2_x",
+                    "variable": "p3_2_x"
+                },
+                {
+                    "expression": "p3_2_y",
+                    "variable": "p3_2_y"
+                },
+                {
+                    "expression": "spd_A",
+                    "variable": "spd_A"
+                },
+                {
+                    "expression": "spd_B",
+                    "variable": "spd_B"
+                },
+                {
+                    "expression": "team",
+                    "variable": "team"
                 },
                 {
                     "expression": "target_x",
@@ -1982,8 +2010,20 @@
                     "variable": "target_y"
                 },
                 {
+                    "expression": "spd_z",
+                    "variable": "spd_z"
+                },
+                {
                     "expression": "flight_time",
                     "variable": "flight_time"
+                },
+                {
+                    "expression": "spd_x",
+                    "variable": "spd_x"
+                },
+                {
+                    "expression": "spd_y",
+                    "variable": "spd_y"
                 },
                 {
                     "expression": "A_x",
@@ -2018,83 +2058,6 @@
                     "variable": "dir_B_y"
                 },
                 {
-                    "expression": "spd_A",
-                    "variable": "spd_A"
-                },
-                {
-                    "expression": "spd_B",
-                    "variable": "spd_B"
-                },
-                {
-                    "expression": "team",
-                    "variable": "team"
-                },
-                {
-                    "expression": "max_height",
-                    "variable": "max_height"
-                },
-                {
-                    "expression": "g",
-                    "variable": "g"
-                },
-                {
-                    "expression": "p1_1_x",
-                    "variable": "p1_1_x"
-                },
-                {
-                    "expression": "p1_1_y",
-                    "variable": "p1_1_y"
-                },
-                {
-                    "expression": "p2_1_x",
-                    "variable": "p2_1_x"
-                },
-                {
-                    "expression": "p2_1_y",
-                    "variable": "p2_1_y"
-                },
-                {
-                    "expression": "p3_1_x",
-                    "variable": "p3_1_x"
-                },
-                {
-                    "expression": "p3_1_y",
-                    "variable": "p3_1_y"
-                },
-                {
-                    "expression": "p1_2_x",
-                    "variable": "p1_2_x"
-                },
-                {
-                    "expression": "p1_2_y",
-                    "variable": "p1_2_y"
-                },
-                {
-                    "expression": "p2_2_x",
-                    "variable": "p2_2_x"
-                },
-                {
-                    "expression": "p2_2_y",
-                    "variable": "p2_2_y"
-                },
-                {
-                    "expression": "p3_2_x",
-                    "variable": "p3_2_x"
-                },
-                {
-                    "expression": "p3_2_y",
-                    "variable": "p3_2_y"
-                }
-            ]
-        },
-        {
-            "guard": "team == 1 && x == 9",
-            "source": "Team_1_Throwing",
-            "action": "move",
-            "target": "Team_1_Throwing",
-            "agent": "B",
-            "jump": [
-                {
                     "expression": "x",
                     "variable": "x"
                 },
@@ -2105,130 +2068,6 @@
                 {
                     "expression": "z",
                     "variable": "z"
-                },
-                {
-                    "expression": "spd_x",
-                    "variable": "spd_x"
-                },
-                {
-                    "expression": "spd_y",
-                    "variable": "spd_y"
-                },
-                {
-                    "expression": "spd_z",
-                    "variable": "spd_z"
-                },
-                {
-                    "expression": "target_x",
-                    "variable": "target_x"
-                },
-                {
-                    "expression": "target_y",
-                    "variable": "target_y"
-                },
-                {
-                    "expression": "flight_time",
-                    "variable": "flight_time"
-                },
-                {
-                    "expression": "A_x",
-                    "variable": "A_x"
-                },
-                {
-                    "expression": "A_y",
-                    "variable": "A_y"
-                },
-                {
-                    "expression": "B_x",
-                    "variable": "B_x"
-                },
-                {
-                    "expression": "B_y",
-                    "variable": "B_y"
-                },
-                {
-                    "expression": "dir_A_x",
-                    "variable": "dir_A_x"
-                },
-                {
-                    "expression": "dir_A_y",
-                    "variable": "dir_A_y"
-                },
-                {
-                    "expression": "(target_x - B_x) / ((target_x - B_x)^2 + (target_y - B_y)^2)^0.5",
-                    "variable": "dir_B_x"
-                },
-                {
-                    "expression": "(target_y - B_y) / ((target_x - B_x)^2 + (target_y - B_y)^2)^0.5",
-                    "variable": "dir_B_y"
-                },
-                {
-                    "expression": "spd_A",
-                    "variable": "spd_A"
-                },
-                {
-                    "expression": "spd_B",
-                    "variable": "spd_B"
-                },
-                {
-                    "expression": "team",
-                    "variable": "team"
-                },
-                {
-                    "expression": "max_height",
-                    "variable": "max_height"
-                },
-                {
-                    "expression": "g",
-                    "variable": "g"
-                },
-                {
-                    "expression": "p1_1_x",
-                    "variable": "p1_1_x"
-                },
-                {
-                    "expression": "p1_1_y",
-                    "variable": "p1_1_y"
-                },
-                {
-                    "expression": "p2_1_x",
-                    "variable": "p2_1_x"
-                },
-                {
-                    "expression": "p2_1_y",
-                    "variable": "p2_1_y"
-                },
-                {
-                    "expression": "p3_1_x",
-                    "variable": "p3_1_x"
-                },
-                {
-                    "expression": "p3_1_y",
-                    "variable": "p3_1_y"
-                },
-                {
-                    "expression": "p1_2_x",
-                    "variable": "p1_2_x"
-                },
-                {
-                    "expression": "p1_2_y",
-                    "variable": "p1_2_y"
-                },
-                {
-                    "expression": "p2_2_x",
-                    "variable": "p2_2_x"
-                },
-                {
-                    "expression": "p2_2_y",
-                    "variable": "p2_2_y"
-                },
-                {
-                    "expression": "p3_2_x",
-                    "variable": "p3_2_x"
-                },
-                {
-                    "expression": "p3_2_y",
-                    "variable": "p3_2_y"
                 }
             ]
         },
@@ -2240,28 +2079,72 @@
             "agent": "A",
             "jump": [
                 {
-                    "expression": "x",
-                    "variable": "x"
+                    "expression": "max_height",
+                    "variable": "max_height"
                 },
                 {
-                    "expression": "y",
-                    "variable": "y"
+                    "expression": "g",
+                    "variable": "g"
                 },
                 {
-                    "expression": "z",
-                    "variable": "z"
+                    "expression": "p1_1_x",
+                    "variable": "p1_1_x"
                 },
                 {
-                    "expression": "spd_x",
-                    "variable": "spd_x"
+                    "expression": "p1_1_y",
+                    "variable": "p1_1_y"
                 },
                 {
-                    "expression": "spd_y",
-                    "variable": "spd_y"
+                    "expression": "p2_1_x",
+                    "variable": "p2_1_x"
                 },
                 {
-                    "expression": "spd_z",
-                    "variable": "spd_z"
+                    "expression": "p2_1_y",
+                    "variable": "p2_1_y"
+                },
+                {
+                    "expression": "p3_1_x",
+                    "variable": "p3_1_x"
+                },
+                {
+                    "expression": "p3_1_y",
+                    "variable": "p3_1_y"
+                },
+                {
+                    "expression": "p1_2_x",
+                    "variable": "p1_2_x"
+                },
+                {
+                    "expression": "p1_2_y",
+                    "variable": "p1_2_y"
+                },
+                {
+                    "expression": "p2_2_x",
+                    "variable": "p2_2_x"
+                },
+                {
+                    "expression": "p2_2_y",
+                    "variable": "p2_2_y"
+                },
+                {
+                    "expression": "p3_2_x",
+                    "variable": "p3_2_x"
+                },
+                {
+                    "expression": "p3_2_y",
+                    "variable": "p3_2_y"
+                },
+                {
+                    "expression": "spd_A",
+                    "variable": "spd_A"
+                },
+                {
+                    "expression": "spd_B",
+                    "variable": "spd_B"
+                },
+                {
+                    "expression": "team",
+                    "variable": "team"
                 },
                 {
                     "expression": "target_x",
@@ -2272,8 +2155,20 @@
                     "variable": "target_y"
                 },
                 {
+                    "expression": "spd_z",
+                    "variable": "spd_z"
+                },
+                {
                     "expression": "flight_time",
                     "variable": "flight_time"
+                },
+                {
+                    "expression": "spd_x",
+                    "variable": "spd_x"
+                },
+                {
+                    "expression": "spd_y",
+                    "variable": "spd_y"
                 },
                 {
                     "expression": "A_x",
@@ -2308,17 +2203,26 @@
                     "variable": "dir_B_y"
                 },
                 {
-                    "expression": "spd_A",
-                    "variable": "spd_A"
+                    "expression": "x",
+                    "variable": "x"
                 },
                 {
-                    "expression": "spd_B",
-                    "variable": "spd_B"
+                    "expression": "y",
+                    "variable": "y"
                 },
                 {
-                    "expression": "team",
-                    "variable": "team"
-                },
+                    "expression": "z",
+                    "variable": "z"
+                }
+            ]
+        },
+        {
+            "guard": "team == 1 && x == 9",
+            "source": "Team_1_Throwing",
+            "action": "move",
+            "target": "Team_1_Throwing",
+            "agent": "B",
+            "jump": [
                 {
                     "expression": "max_height",
                     "variable": "max_height"
@@ -2374,16 +2278,75 @@
                 {
                     "expression": "p3_2_y",
                     "variable": "p3_2_y"
-                }
-            ]
-        },
-        {
-            "guard": "dir_B_x != 0 || dir_B_y != 0",
-            "source": "Team_1_Throwing",
-            "action": "stop",
-            "target": "Team_1_Throwing",
-            "agent": "B",
-            "jump": [
+                },
+                {
+                    "expression": "spd_A",
+                    "variable": "spd_A"
+                },
+                {
+                    "expression": "spd_B",
+                    "variable": "spd_B"
+                },
+                {
+                    "expression": "team",
+                    "variable": "team"
+                },
+                {
+                    "expression": "target_x",
+                    "variable": "target_x"
+                },
+                {
+                    "expression": "target_y",
+                    "variable": "target_y"
+                },
+                {
+                    "expression": "spd_z",
+                    "variable": "spd_z"
+                },
+                {
+                    "expression": "flight_time",
+                    "variable": "flight_time"
+                },
+                {
+                    "expression": "spd_x",
+                    "variable": "spd_x"
+                },
+                {
+                    "expression": "spd_y",
+                    "variable": "spd_y"
+                },
+                {
+                    "expression": "A_x",
+                    "variable": "A_x"
+                },
+                {
+                    "expression": "A_y",
+                    "variable": "A_y"
+                },
+                {
+                    "expression": "B_x",
+                    "variable": "B_x"
+                },
+                {
+                    "expression": "B_y",
+                    "variable": "B_y"
+                },
+                {
+                    "expression": "dir_A_x",
+                    "variable": "dir_A_x"
+                },
+                {
+                    "expression": "dir_A_y",
+                    "variable": "dir_A_y"
+                },
+                {
+                    "expression": "(target_x - B_x) / ((target_x - B_x)^2 + (target_y - B_y)^2)^0.5",
+                    "variable": "dir_B_x"
+                },
+                {
+                    "expression": "(target_y - B_y) / ((target_x - B_x)^2 + (target_y - B_y)^2)^0.5",
+                    "variable": "dir_B_y"
+                },
                 {
                     "expression": "x",
                     "variable": "x"
@@ -2395,18 +2358,83 @@
                 {
                     "expression": "z",
                     "variable": "z"
+                }
+            ]
+        },
+        {
+            "guard": "dir_B_x != 0 || dir_B_y != 0",
+            "source": "Team_1_Throwing",
+            "action": "stop",
+            "target": "Team_1_Throwing",
+            "agent": "B",
+            "jump": [
+                {
+                    "expression": "max_height",
+                    "variable": "max_height"
                 },
                 {
-                    "expression": "spd_x",
-                    "variable": "spd_x"
+                    "expression": "g",
+                    "variable": "g"
                 },
                 {
-                    "expression": "spd_y",
-                    "variable": "spd_y"
+                    "expression": "p1_1_x",
+                    "variable": "p1_1_x"
                 },
                 {
-                    "expression": "spd_z",
-                    "variable": "spd_z"
+                    "expression": "p1_1_y",
+                    "variable": "p1_1_y"
+                },
+                {
+                    "expression": "p2_1_x",
+                    "variable": "p2_1_x"
+                },
+                {
+                    "expression": "p2_1_y",
+                    "variable": "p2_1_y"
+                },
+                {
+                    "expression": "p3_1_x",
+                    "variable": "p3_1_x"
+                },
+                {
+                    "expression": "p3_1_y",
+                    "variable": "p3_1_y"
+                },
+                {
+                    "expression": "p1_2_x",
+                    "variable": "p1_2_x"
+                },
+                {
+                    "expression": "p1_2_y",
+                    "variable": "p1_2_y"
+                },
+                {
+                    "expression": "p2_2_x",
+                    "variable": "p2_2_x"
+                },
+                {
+                    "expression": "p2_2_y",
+                    "variable": "p2_2_y"
+                },
+                {
+                    "expression": "p3_2_x",
+                    "variable": "p3_2_x"
+                },
+                {
+                    "expression": "p3_2_y",
+                    "variable": "p3_2_y"
+                },
+                {
+                    "expression": "spd_A",
+                    "variable": "spd_A"
+                },
+                {
+                    "expression": "spd_B",
+                    "variable": "spd_B"
+                },
+                {
+                    "expression": "team",
+                    "variable": "team"
                 },
                 {
                     "expression": "target_x",
@@ -2417,8 +2445,20 @@
                     "variable": "target_y"
                 },
                 {
+                    "expression": "spd_z",
+                    "variable": "spd_z"
+                },
+                {
                     "expression": "flight_time",
                     "variable": "flight_time"
+                },
+                {
+                    "expression": "spd_x",
+                    "variable": "spd_x"
+                },
+                {
+                    "expression": "spd_y",
+                    "variable": "spd_y"
                 },
                 {
                     "expression": "A_x",
@@ -2453,79 +2493,23 @@
                     "variable": "dir_B_y"
                 },
                 {
-                    "expression": "spd_A",
-                    "variable": "spd_A"
+                    "expression": "x",
+                    "variable": "x"
                 },
                 {
-                    "expression": "spd_B",
-                    "variable": "spd_B"
+                    "expression": "y",
+                    "variable": "y"
                 },
                 {
-                    "expression": "team",
-                    "variable": "team"
-                },
-                {
-                    "expression": "max_height",
-                    "variable": "max_height"
-                },
-                {
-                    "expression": "g",
-                    "variable": "g"
-                },
-                {
-                    "expression": "p1_1_x",
-                    "variable": "p1_1_x"
-                },
-                {
-                    "expression": "p1_1_y",
-                    "variable": "p1_1_y"
-                },
-                {
-                    "expression": "p2_1_x",
-                    "variable": "p2_1_x"
-                },
-                {
-                    "expression": "p2_1_y",
-                    "variable": "p2_1_y"
-                },
-                {
-                    "expression": "p3_1_x",
-                    "variable": "p3_1_x"
-                },
-                {
-                    "expression": "p3_1_y",
-                    "variable": "p3_1_y"
-                },
-                {
-                    "expression": "p1_2_x",
-                    "variable": "p1_2_x"
-                },
-                {
-                    "expression": "p1_2_y",
-                    "variable": "p1_2_y"
-                },
-                {
-                    "expression": "p2_2_x",
-                    "variable": "p2_2_x"
-                },
-                {
-                    "expression": "p2_2_y",
-                    "variable": "p2_2_y"
-                },
-                {
-                    "expression": "p3_2_x",
-                    "variable": "p3_2_x"
-                },
-                {
-                    "expression": "p3_2_y",
-                    "variable": "p3_2_y"
+                    "expression": "z",
+                    "variable": "z"
                 }
             ]
         }
     ],
     "queries": [
         {
-            "formula": "<<A>> G (x < 9 -> z > 0)",
+            "formula": "<<A>> G (x < 9 -> z > 0) || ((x == 0 || x == 18 || y == 0 || y == 9) -> team == 2)",
             "verified": false
         },
         {

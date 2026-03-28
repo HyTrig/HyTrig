@@ -67,20 +67,20 @@ struct FinalNode <: Node
     deadlock::Bool
 end
 
-function print_node(node::Node)
+function print_node(node::Node, level=0)
     @match node begin
         RootNode(config, _, children) => "0- RootNode  $(config.location.name) - # Children: $(length(children))\nValuation: $(valuation_to_string(config.valuation))"
-        DecisionNode(_, decision, config, level, _, children) => ("\t"^level) * "$level- DecisionNode $(config.location.name) - Time: $(round5(config.global_clock)) - Agent: $(decision.first) - " *
+        DecisionNode(_, decision, config, _, _, children) => ("\t"^level) * "$level- DecisionNode $(config.location.name) - Time: $(round5(config.global_clock)) - Agent: $(decision.first) - " *
                                                                  "Action: $(decision.second) - # Children: $(length(children))\n" *
                                                                  ("\t"^level) * "Valuation: $(valuation_to_string(config.valuation))"
-        TriggerNode(_, decision, config, level, _, children) => ("\t"^level) * "$level- TriggerNode $(config.location.name) - Time: $(round5(config.global_clock)) - Agent: $(decision.first) - " *
+        TriggerNode(_, decision, config, _, _, children) => ("\t"^level) * "$level- TriggerNode $(config.location.name) - Time: $(round5(config.global_clock)) - Agent: $(decision.first) - " *
                                                                 "Trigger: $(constraint_to_string(decision.second)) - # Children: $(length(children))\n" * 
                                                                 ("\t"^level) * "Valuation: $(valuation_to_string(config.valuation))"
-        PropertyNode(_, config, level) => ("\t"^level) * "$level- PropertyNode - $(config.location.name) - Time: $(round5(config.global_clock))\n" * 
+        PropertyNode(_, config, _) => ("\t"^level) * "$level- PropertyNode - $(config.location.name) - Time: $(round5(config.global_clock))\n" * 
                                                                 ("\t"^level) * "Valuation: $(valuation_to_string(config.valuation))"
-        FinalNode(_, config, level, true) => ("\t"^level) * "$level- Deadlock - $(config.location.name) - Time: $(round5(config.global_clock))\n" *
+        FinalNode(_, config, _, true) => ("\t"^level) * "$level- Deadlock - $(config.location.name) - Time: $(round5(config.global_clock))\n" *
                                                                 ("\t"^level) * "Valuation: $(valuation_to_string(config.valuation))"
-        FinalNode(_, config, level, false) => ("\t"^level) * "$level- TerminalNode - $(config.location.name) - Time: $(round5(config.global_clock))\n" *
+        FinalNode(_, config, _, false) => ("\t"^level) * "$level- TerminalNode - $(config.location.name) - Time: $(round5(config.global_clock))\n" *
                                                                 ("\t"^level) * "Valuation: $(valuation_to_string(config.valuation))"
     end
 end
@@ -100,11 +100,11 @@ function print_trees(trees::Vector{String})::String
 end
 
 # TODO: add function documentation
-function print_tree(root::Node)::String
-    res = "$(print_node(root))\n\n"
+function print_tree(root::Node, level=0)::String
+    res = "$(print_node(root, level))\n\n"
     if :children in fieldnames(typeof(root))
         for child in root.children
-            res *= "$(print_tree(child))"
+            res *= "$(print_tree(child, level+1))"
         end
     end
     return res

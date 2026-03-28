@@ -74,7 +74,7 @@ function get_time_children(game::HGT_Game,
 
     path_configs = [parent.config] ∪ path_configs ∪ [final_config]
 
-    for path_config in path_configs
+    for (i, path_config) in enumerate(path_configs)
         if path_config.global_clock - parent.config.global_clock >= 1e-5
             zero_loop = Set([])
         end
@@ -118,8 +118,10 @@ function get_time_children(game::HGT_Game,
                     end
                 end
             end
-            if final_config.global_clock - path_config.global_clock <= 1e-5 && ! active_trigger
-                # Deadlock
+            if length(path_configs) > i &&
+                ! evaluate(parent.config.location.invariant, path_configs[i + 1].valuation) && 
+                path_configs[i + 1].global_clock - path_config.global_clock < 1e-5 && 
+                ! active_trigger        # Deadlock
                 children[FinalNode(parent, path_config, parent.level, true)] = DecisionNode[]
                 return children
             end
