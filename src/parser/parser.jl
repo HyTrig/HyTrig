@@ -38,7 +38,7 @@ julia> parse("a + b", Bindings([], [], ["a", "b"]), expression)
 Add(Var(:a), Var(:b))
 ```
 """
-function parse(str::String, bindings::Bindings, level::ParseLevel)::Union{Strategy_Formula, Deadlock_Formula, State_Formula, Constraint, ExprLike}
+function parse(str::String, bindings::Bindings, level::ParseLevel)::Union{Strategy_Formula, State_Formula, Constraint, ExprLike}
     ast::Union{ASTNode, Nothing} = parse_formula(str, bindings, level)
     if isnothing(ast)
         if level == constraint
@@ -77,17 +77,15 @@ function parse(str::String, bindings::Bindings, level::ParseLevel)::Union{Strate
         return formula
     elseif formula isa State_Formula
         formula = Strategy_to_State(formula)
-    elseif formula isa Deadlock_Formula
-        formula = Strategy_to_Deadlock()
     end
 
     return formula
 end
 
-function _to_logic(node::ConstantOperation)::Union{Deadlock_Formula, State_Location, Truth, Const, Var}
+function _to_logic(node::ConstantOperation)::Union{State_Location, State_Deadlock, Truth, Const, Var}
     @match node begin
         LocationNode(value) => State_Location(Symbol(value))
-        StrategyConstant(value) => Deadlock_Formula()
+        StateConstant(value) => State_Deadlock()
         ConstraintConstant(value) => Truth(value)
         ExpressionConstant(value) => Const(value)
         VariableNode(value) => Var(Symbol(value))

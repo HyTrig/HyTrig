@@ -51,7 +51,7 @@ using .Parser: parse
     @test state7 == State_Constraint(Truth(false))
 
     state6 = parse("deadlock", Bindings([], [], []), strategy)
-    @test state6 == Strategy_to_Deadlock()
+    @test state6 == Strategy_to_State(State_Deadlock())
     strategy1 = parse("true", Bindings([], [], []), strategy)
     @test strategy1 == Strategy_to_State(State_Constraint(Truth(true)))
     strategy2 = parse("<<>> F true", Bindings([], [], []), strategy)

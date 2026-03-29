@@ -131,13 +131,13 @@ using .FormulaParser
     @test to_string(ast) == "(true)&&(loc)"
 
     bindings = Bindings([], ["loc1", "loc2"], [])
-    ast = parse_formula("true || false || loc1 && loc2", bindings, state)
+    ast = parse_formula("true || false || !loc1 && loc2", bindings, state)
     @test ast == StateBinaryOperation(
         "||",
         ConstraintBinaryOperation("||", ConstraintConstant(true), ConstraintConstant(false)),
-        StateBinaryOperation("&&", LocationNode("loc1"), LocationNode("loc2"))
+        StateBinaryOperation("&&", StateUnaryOperation("!", LocationNode("loc1")), LocationNode("loc2"))
     )
-    @test to_string(ast) == "((true)||(false))||((loc1)&&(loc2))"
+    @test to_string(ast) == "((true)||(false))||((!(loc1))&&(loc2))"
 
     # test strategies
 
@@ -181,14 +181,14 @@ using .FormulaParser
         false,
         false,
         Agents(false, AgentList([])),
-        StrategyConstant("deadlock")
+        StateConstant("deadlock")
     )
     @test to_string(ast) == "<<>>F(deadlock)"
     @test ast == parse_formula("(<< >> F (deadlock))", bindings, strategy)
 
     bindings = Bindings([], [], [])
     ast = parse_formula("deadlock", bindings, strategy)
-    @test ast == StrategyConstant("deadlock")
+    @test ast == StateConstant("deadlock")
     @test to_string(ast) == "deadlock"
 
     # test error handling
@@ -200,7 +200,6 @@ using .FormulaParser
     @test_throws ParseError("Cannot parse tokens '<<', 'a', ',', '>>', 'F', 'true'.") parse_formula("<<a, >> F true", Bindings(["a"], [], []), strategy)
     @test_throws ParseError("Cannot parse tokens 'true', '&&', 'var'.") parse_formula("true && var", Bindings([], [], ["var"]), strategy)
     @test_throws ParseError("Cannot parse tokens '<<>>', 'F', '<<>>G(true)'.") parse_formula("<<>> F (<<>> G true)", Bindings([], [], []), strategy)
-    @test_throws ParseError("Cannot parse tokens '<<>>F(deadlock)', '&&', 'true'.") parse_formula("<<>> F deadlock && true", Bindings([], [], []), strategy)
 
 end
 

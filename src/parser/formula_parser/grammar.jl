@@ -101,10 +101,10 @@ function _parse_boolean_constraint(left_tokens::ParseVector, token::BooleanToken
     return ConstraintConstant(token.type == "true")
 end
 
-# strategy -> deadlock
-function _parse_deadlock_strategy(left_tokens::ParseVector, token::StrategyConstantToken, right_tokens::ParseVector)::StrategyConstant
+# state -> deadlock
+function _parse_state_constant(left_tokens::ParseVector, token::StateConstantToken, right_tokens::ParseVector)::StateConstant
     _check_token_count(0, 0, left_tokens, right_tokens)
-    return StrategyConstant(token.type)
+    return StateConstant(token.type)
 end
 
 """
@@ -121,8 +121,8 @@ pre_parse_grammar::Grammar = Dict([
     (NumericToken, [GrammarRule([], [], _parse_numeric_expression)]),
     # constr -> boolean
     (BooleanToken, [GrammarRule([], [], _parse_boolean_constraint)]),
-    # strategy -> deadlock
-    (StrategyConstantToken, [GrammarRule([], [], _parse_deadlock_strategy)])
+    # state -> deadlock
+    (StateConstantToken, [GrammarRule([], [], _parse_state_constant)])
 ])
 
 
@@ -233,6 +233,8 @@ const state_grammar::Grammar = Dict([
     # state -> ( state )
     (LocationNode, [GrammarRule([SeparatorToken("(")], [SeparatorToken(")")], _parse_bracket)]),
     # state -> ( state )
+    (StateConstant, [GrammarRule([SeparatorToken("(")], [SeparatorToken(")")], _parse_bracket)]),
+    # state -> ( state )
     (StateUnaryOperation, [GrammarRule([SeparatorToken("(")], [SeparatorToken(")")], _parse_bracket)]),
     # state -> ( state )
     (StateBinaryOperation, [GrammarRule([SeparatorToken("(")], [SeparatorToken(")")], _parse_bracket)]),
@@ -291,17 +293,9 @@ end
 
 const strategy_grammar::Grammar = Dict([
     # strat -> ( strat )
-    (StrategyConstant, [GrammarRule([SeparatorToken("(")], [SeparatorToken(")")], _parse_bracket)]),
-    # strat -> ( strat )
     (Quantifier, [GrammarRule([SeparatorToken("(")], [SeparatorToken(")")], _parse_bracket)]),
-    # strat -> agent_list F deadlock | agent_list G deadlock
-    (QuantifierToken, [GrammarRule([Agents], [StrategyConstant], _parse_quantifier_strategy),
-    # strat -> << >> F deadlock | << >> G deadlock
-                    GrammarRule([SeparatorToken("<<"), SeparatorToken(">>")], [StrategyConstant], _parse_empty_quantifier_strategy),
-    # strat -> [[ ]] F deadlock | [[ ]] G deadlock
-                    GrammarRule([SeparatorToken("[["), SeparatorToken("]]")], [StrategyConstant], _parse_empty_quantifier_strategy),
     # strat -> agent_list F state | agent_list G state
-                    GrammarRule([Agents], [StateNode], _parse_quantifier_strategy),
+    (QuantifierToken, [GrammarRule([Agents], [StateNode], _parse_quantifier_strategy),
     # strat -> << >> F state | << >> G state
                     GrammarRule([SeparatorToken("<<"), SeparatorToken(">>")], [StateNode], _parse_empty_quantifier_strategy),
     # strat -> [[ ]] F state | [[ ]] G state

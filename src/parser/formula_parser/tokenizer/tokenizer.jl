@@ -59,7 +59,7 @@ keywords::Dict{String, Type} = Dict([
     ("F",     QuantifierToken),
     ("G",     QuantifierToken),
 
-    ("deadlock", StrategyConstantToken),
+    ("deadlock", StateConstantToken),
 
     ("true",  BooleanToken),
     ("false", BooleanToken),

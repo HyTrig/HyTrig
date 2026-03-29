@@ -12,7 +12,7 @@ This file contains all definitions needed to parse tokens to an AST.
 - `Agents`: Node for agent lists.
 - `StrategyNode`: Abstract type for strategy nodes.
 - `Quantifier`: Node for quantified strategies.
-- `StrategyConstant`: Node for deadlocks.
+- `StateConstant`: Node for deadlocks.
 - `StateNode`: Abstract type for state nodes.
 - `LocationNode`: Node for locations.
 - `StateUnaryOperation`: Node for unary operations on states.
@@ -38,7 +38,7 @@ The types are hierarchically ordered as follows:
     |-- Agents
     |-- StrategyNode
     |   |-- Quantifier
-    |   |-- StrategyConstant
+    |   |-- StateConstant
     |   |-- StateNode
     |       |-- LocationNode
     |       |-- StateUnaryOperation
@@ -55,7 +55,7 @@ The types are hierarchically ordered as follows:
 """
 
 export ASTNode, AgentList, Agents
-export StrategyNode, Quantifier, StrategyConstant
+export StrategyNode, Quantifier, StateConstant
 export StateNode, LocationNode, StateUnaryOperation, StateBinaryOperation
 export ConstraintNode, ConstraintConstant, ConstraintUnaryOperation, ConstraintBinaryOperation
 export ExpressionNode, VariableNode, ExpressionConstant, ExpressionUnaryOperation, ExpressionBinaryOperation
@@ -129,19 +129,6 @@ end
 abstract type StrategyNode <: ASTNode
 end
 
-"""
-    StrategyConstant <: StateNode
-
-AST Node for deadlocks.
-
-    StrategyConstant(value::String)
-
-Create a StrategyConstant with value `value`.
-"""
-struct StrategyConstant <: StrategyNode
-    value::String
-end
-
 # abstract type for all state nodes
 abstract type StateNode <: StrategyNode
 end
@@ -156,6 +143,19 @@ AST Node for locations.
 Create a LocationNode for a location with name `value`.
 """
 struct LocationNode <: StateNode
+    value::String
+end
+
+"""
+    StateConstant <: StateNode
+
+AST Node for deadlocks.
+
+    StateConstant(value::String)
+
+Create a StateConstant with value `value`.
+"""
+struct StateConstant <: StateNode
     value::String
 end
 
@@ -295,7 +295,7 @@ Base.:(==)(x::Quantifier, y::Quantifier) = (
 """
 All types of operations with arity 0.
 """
-const ConstantOperation = Union{LocationNode, StrategyConstant, ConstraintConstant, ExpressionConstant, VariableNode}
+const ConstantOperation = Union{LocationNode, StateConstant, ConstraintConstant, ExpressionConstant, VariableNode}
 const UnaryOperation = Union{StateUnaryOperation, ConstraintUnaryOperation, ExpressionUnaryOperation}
 const BinaryOperation = Union{StateBinaryOperation, ConstraintBinaryOperation, ExpressionBinaryOperation}
 

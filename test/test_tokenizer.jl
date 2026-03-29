@@ -34,7 +34,7 @@ end
     @test test_tokens[1].type == "true"
     @test test_tokens[2] isa ConstraintBinaryOperatorToken
     @test test_tokens[2].type == "&&"
-    @test test_tokens[3] isa StrategyConstantToken
+    @test test_tokens[3] isa StateConstantToken
     @test test_tokens[3].type == "deadlock"
 
     # test comparison tokenization
