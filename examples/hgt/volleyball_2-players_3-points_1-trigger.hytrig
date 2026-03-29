@@ -414,7 +414,7 @@
                     "variable": "target_y"
                 },
                 {
-                    "expression": "-10",
+                    "expression": "- g",
                     "variable": "spd_z"
                 },
                 {
@@ -557,7 +557,7 @@
                     "variable": "target_y"
                 },
                 {
-                    "expression": "-10",
+                    "expression": "- g",
                     "variable": "spd_z"
                 },
                 {
