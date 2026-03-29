@@ -60,10 +60,10 @@ end
 """
     GUINode(node::Union{RootNode, FinalNode}, parent::Union{GUINode, Nothing})::GUINode
 
-Create a GUINode from the given root or end node `node` with the parent `parent`.
+Create a GUINode from the given root or final node `node` with the parent `parent`.
 
 # Arguments
-- `node::Union{RootNode, FinalNode}`: The root or end node.
+- `node::Union{RootNode, FinalNode}`: The root or final node.
 - `parent::Union{GUINode, Nothing}`: The nodes next active parent.
 """
 function GUINode(node::Union{RootNode, FinalNode}, parent::Union{GUINode, Nothing})::GUINode

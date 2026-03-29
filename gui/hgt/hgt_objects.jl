@@ -316,9 +316,9 @@ end
 """
     QHGTPropertyNode(node::FinalNode)::QHGTPropertyNode
 
-Create a QHGTPropertyNode from the given end node `node`.
+Create a QHGTPropertyNode from the given final node `node`.
 # Arguments
-- `node::FinalNode`: The end node.
+- `node::FinalNode`: The final node.
 """
 function QHGTPropertyNode(node::FinalNode)::QHGTPropertyNode
     return QHGTPropertyNode(

@@ -27,7 +27,7 @@ export check_query
 function check_termination(config::Configuration, level::Int64, termination_conditions::Termination_Conditions):: Bool
     if config.global_clock >= termination_conditions.time_limit || 
         level >= termination_conditions.max_steps ||
-        evaluate_state(termination_conditions.state_formula, config)
+        evaluate_state(termination_conditions.state_formula, config, false)
         return true
     else
         return false
@@ -51,18 +51,14 @@ end
 
 function get_time_children(game::HGT_Game, 
                            constraints::Set{Constraint}, 
-                           query_formula::Union{State_Formula, Deadlock_Formula}, 
+                           query_formula::State_Formula, 
                            parent::Union{RootNode, DecisionNode}, 
                            termination_conditions::Termination_Conditions, 
                            formula_agents::Vector{Agent})::OrderedDict{Node, Vector{DecisionNode}}
 
     triggers = union_safe(game.triggers[agent] for agent in game.agents)
 
-    if isa(query_formula, State_Formula)
-        state_formula_status = evaluate_state(query_formula, parent.config)
-    else
-        state_formula_status = true
-    end
+    state_formula_status = evaluate_state(query_formula, parent.config, false)
 
     zero_loop = if isa(parent, RootNode) Set([parent.config.location]) else parent.zero_loop ∪ Set([parent.config.location]) end
 
@@ -80,7 +76,7 @@ function get_time_children(game::HGT_Game,
         end
         if evaluate(parent.config.location.invariant, path_config.valuation) 
             if isa(query_formula, State_Formula)
-                new_state_formula_status = evaluate_state(query_formula, path_config)
+                new_state_formula_status = evaluate_state(query_formula, path_config, false)
                 if state_formula_status != new_state_formula_status
                     state_formula_status = new_state_formula_status
                     children[PropertyNode(parent, path_config, parent.level)] = DecisionNode[]
@@ -136,28 +132,17 @@ function build_and_evaluate!(game::HGT_Game,
                              node::Union{RootNode, DecisionNode},
                              termination_conditions::Termination_Conditions)::Bool
     terminal::Bool = check_termination(node.config, node.level, termination_conditions)
+    children = get_time_children(game, constraints, f, node, termination_conditions, agents)
     @match query begin
-        Strategy_to_State(f) => evaluate_state(f, node.config)
-        Strategy_to_Deadlock() => begin
-            append!(node.children, get_time_children(game, constraints, State_Constraint(Truth(true)), node, termination_conditions, game.agents))
-            return isempty(node.children)
-        end
+        Strategy_to_State(f) => evaluate_state(f, node.config, length(children) == 1 && isa(children[1], FinalNode) && ! children[1].terminal)
         All_Eventually(agents, f) => ! build_and_evaluate!(game, constraints, Exist_Always(setdiff(game.agents, agents), State_Not(f)), node, termination_conditions)
         All_Always(agents, f) => ! build_and_evaluate!(game, constraints, Exist_Eventually(setdiff(game.agents, agents), State_Not(f)), node, termination_conditions)
         Exist_Eventually(agents, f) => begin
-            children = get_time_children(game, constraints, f, node, termination_conditions, agents)
-            if isa(f, State_Formula) && evaluate_state(f, node.config)
+            if evaluate_state(f, node.config, length(children) == 1 && isa(children[1], FinalNode) && ! children[1].terminal)
                 push!(node.children, PropertyNode(node, node.config, node.level))
                 return true
             end
-            if terminal
-                return false
-            end
-            if length(children) == 0
-                if isa(f, Deadlock_Formula)
-                    push!(node.children, FinalNode(node, node.config, node.level, true))
-                    return true
-                end
+            if terminal || length(children) == 0
                 return false
             end
             child_results = false
@@ -192,8 +177,7 @@ function build_and_evaluate!(game::HGT_Game,
             return child_results
         end
         Exist_Always(agents, f) => begin
-            children = get_time_children(game, constraints, f, node, termination_conditions, agents)
-            if isa(f, State_Formula) && ! evaluate_state(f, node.config)
+            if evaluate_state(f, node.config, length(children) == 1 && isa(children[1], FinalNode) && ! children[1].terminal)
                 return false
             end
             if length(children) == 0 || terminal

@@ -194,7 +194,7 @@ GameViewer {
                             hgt_viewer.down(index, i);
                         }
 
-                        // Passive nodes in this branch
+                        // Property nodes in this branch
                         ListView {
                             id: passive_list
                             width: time_line_width + node_width
@@ -326,7 +326,7 @@ GameViewer {
                 border.width: 2
                 
                 Title {
-                    text: qsTr("End node")
+                    text: qsTr("Final node")
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
                 }

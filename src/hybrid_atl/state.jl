@@ -61,6 +61,9 @@ struct State_Imply <: State_Formula
     right::State_Formula
 end
 
+struct State_Deadlock <: State_Formula 
+end
+
 function get_all_constraints(formula::State_Formula)::Set{Constraint}
     @match formula begin
         State_Location(_) => Set{Constraint}()
@@ -69,6 +72,7 @@ function get_all_constraints(formula::State_Formula)::Set{Constraint}
         State_Or(left, right) => get_all_constraints(left) ∪ get_all_constraints(right)
         State_Not(subformula) => get_all_constraints(subformula)
         State_Imply(left, right) => get_all_constraints(left) ∪ get_all_constraints(right)
+        State_Deadlock() => Set{Constraint}()
     end
 end
 
@@ -91,5 +95,6 @@ function state_to_string(formula::State_Formula)::String
         State_Or(left, right) => "($(state_to_string(left)) || $(state_to_string(right)))"
         State_Not(subformula) => "!$(state_to_string(subformula))"
         State_Imply(left, right) => "($(state_to_string(left)) -> $(state_to_string(right)))"
+        State_Deadlock() => "Deadlock"
     end
 end
