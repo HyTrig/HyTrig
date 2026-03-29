@@ -725,13 +725,15 @@
     ],
     "queries": [
         {
-            "formula": "<<>> F deadlock",
-            "verified": false
+            "formula": "<<>> F deadlock"
+        },
+        {
+            "formula": "<<A,B,C,D>> G ! deadlock"
         }
     ],
     "termination_conditions": {
-        "max_steps": "10",
-        "time_bound": "300",
+        "max_steps": "20",
+        "time_bound": "120",
         "state_formula": "false"
     }
 }

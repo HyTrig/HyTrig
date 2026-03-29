@@ -80,7 +80,7 @@ function print_node(node::Node, level=0)
                                                                 ("\t"^level) * "Valuation: $(valuation_to_string(config.valuation))"
         FinalNode(_, config, _, true) => ("\t"^level) * "$level- Deadlock - $(config.location.name) - Time: $(round5(config.global_clock))\n" *
                                                                 ("\t"^level) * "Valuation: $(valuation_to_string(config.valuation))"
-        FinalNode(_, config, _, false) => ("\t"^level) * "$level- TerminalNode - $(config.location.name) - Time: $(round5(config.global_clock))\n" *
+        FinalNode(_, config, _, false) => ("\t"^level) * "$level- FinalNode - $(config.location.name) - Time: $(round5(config.global_clock))\n" *
                                                                 ("\t"^level) * "Valuation: $(valuation_to_string(config.valuation))"
     end
 end

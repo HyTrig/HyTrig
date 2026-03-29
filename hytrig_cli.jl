@@ -67,22 +67,8 @@ function READ_USER_FILE()
 
 
         println("*************************")
-        for (r, result) in enumerate(results)
-            nodes_count = count_nodes(trees[r])
-            tree_depth = depth_of_tree(trees[r])
-            game_time = max_time(trees[r])
-            print("$(queries_text[r]): ")
-            if result
-                print("True\n")
-            else
-                print("False\n")
-            end
-            println("Nodes = ", nodes_count, " Depth = ", tree_depth, " Max Time = ", game_time)
-        end
-
         println("*************************")
-        println("Evaluattion Time = $(t2 - t1)")
-        println("*** For a full view of the game tree, please use hytrig-gui.jl. ***")
+        println("Total Evaluattion Time = $(t2 - t1)")
         println("*************************")
 
 
@@ -107,10 +93,6 @@ function READ_USER_FILE()
             println("Please create this file in the same directory as the script to test the success case.")
             println("!!! ---------------------- !!!")
         else
-            # Handle other unexpected errors (e.g., permission issues)
-            # println("\n!!! UNEXPECTED ERROR OCCURRED !!!")
-            # showerror(stdout, e)
-            # println("\n!!! --------------------------- !!!")
             throw(e)
         end
     end

@@ -135,17 +135,17 @@ function build_and_evaluate!(game::HGT_Game,
     @match query begin
         Strategy_to_State(f) => begin
             children = get_time_children(game, constraints, State_Deadlock(), node, termination_conditions, agents)
-            return evaluate_state(f, node.config, length(children) >= 1 && isa(first(children).first, FinalNode) && ! first(children).first.deadlock)
+            return evaluate_state(f, node.config, length(children) == 1 && isa(first(children).first, FinalNode) && first(children).first.deadlock)
         end
         All_Eventually(agents, f) => ! build_and_evaluate!(game, constraints, Exist_Always(setdiff(game.agents, agents), State_Not(f)), node, termination_conditions)
         All_Always(agents, f) => ! build_and_evaluate!(game, constraints, Exist_Eventually(setdiff(game.agents, agents), State_Not(f)), node, termination_conditions)
         Exist_Eventually(agents, f) => begin
             children = get_time_children(game, constraints, f, node, termination_conditions, agents)
-            if evaluate_state(f, node.config, length(children) == 1 && isa(first(children).first, FinalNode) && ! first(children).first.deadlock)
+            if evaluate_state(f, node.config, false)
                 push!(node.children, PropertyNode(node, node.config, node.level))
                 return true
             end
-            if terminal || length(children) == 0
+            if length(children) == 0 || terminal
                 return false
             end
             child_results = false
@@ -183,7 +183,7 @@ function build_and_evaluate!(game::HGT_Game,
         end
         Exist_Always(agents, f) => begin
             children = get_time_children(game, constraints, f, node, termination_conditions, agents)
-            if ! evaluate_state(f, node.config, length(children) == 1 && isa(first(children).first, FinalNode) && ! first(children).first.deadlock)
+            if ! evaluate_state(f, node.config, false)
                 return false
             end
             if length(children) == 0 || terminal
@@ -227,11 +227,24 @@ function build_and_evaluate!(game::HGT_Game,
 end
 
 function check_query(game::Game, termination_conditions::Termination_Conditions, query::Strategy_Formula) 
+    t0 = time();
     initial_config = initial_configuration(game)
     root = RootNode(initial_config, 0, [])
     constraints = get_all_constraints(Logic_Formula[query, termination_conditions.state_formula])
 
     result = build_and_evaluate!(game, constraints, query, root, termination_conditions)
+
+    t1 = time();
+    evaluation_time = t1 - t0
+
+    print("$(strategy_to_string(query)): ")
+    if result
+        print("True\n")
+    else
+        print("False\n")
+    end
+    println("Nodes = ", count_nodes(root), " - Tree Depth = ", depth_of_tree(root), " - Max Game Time = ", max_time(root))
+    println("Evaluation Time = ", round5(evaluation_time))
 
     return result, root
 end
