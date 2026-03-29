@@ -1,115 +1,72 @@
+<<A>> F (pos < 0 || pos > 1000): false
+0- RootNode  falling - # Children: 0
+Valuation: {pos = 1000.0   spd = 0.0   acc = -10.0   dissipation = 0.9   }
 
-Root  falling
-Valuation: OrderedDict(:pos => 1000.0, :spd => 0.0, :acc => -10.0, :dissipation => 0.9)
-Children: 1
---------------
 
-1- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => -0.0, :spd => 127.27922, :acc => -10.0, :dissipation => 0.9), - Time: 14.14214
-Children: 1
---------------
 
-1- Passive - Agent: A - Trigger: pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => 700.0, :spd => 46.90414, :acc => -10.0, :dissipation => 0.9), - Time: 22.17964
-Children: 1
---------------
 
-1- Passive - Agent: A - Trigger: pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => 700.00001, :spd => 46.90414, :acc => -10.0, :dissipation => 0.9), - Time: 22.17964
-Children: 1
---------------
+***************************
+***************************
+***************************
 
-2- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => -0.0, :spd => 114.55129, :acc => -10.0, :dissipation => 0.9), - Time: 39.59798
-Children: 1
---------------
 
-3- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => -0.0, :spd => 103.09616, :acc => -10.0, :dissipation => 0.9), - Time: 62.50824
-Children: 1
---------------
+<<A>> G pos >= 0: true
+0- RootNode  falling - # Children: 1
+Valuation: {pos = 1000.0   spd = 0.0   acc = -10.0   dissipation = 0.9   }
 
-4- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => -0.0, :spd => 92.78654, :acc => -10.0, :dissipation => 0.9), - Time: 83.12747
-Children: 1
---------------
+0- TriggerNode falling - Time: 14.14214 - Agent: A - Trigger: ((pos == 0.0)) && ((spd < 0.0)) - # Children: 1
+Valuation: {pos = 0.0   spd = -141.42136   acc = -10.0   dissipation = 0.9   }
 
-5- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => 0.0, :spd => 83.50788, :acc => -10.0, :dissipation => 0.9), - Time: 101.68478
-Children: 1
---------------
+	1- DecisionNode falling - Time: 14.14214 - Agent: A - Action: up - # Children: 1
+	Valuation: {pos = 0.0   spd = 127.27922   acc = -10.0   dissipation = 0.9   }
 
-6- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => -0.0, :spd => 75.15709, :acc => -10.0, :dissipation => 0.9), - Time: 118.38635
-Children: 1
---------------
+		2- TriggerNode falling - Time: 39.59798 - Agent: A - Trigger: ((pos == 0.0)) && ((spd < 0.0)) - # Children: 1
+		Valuation: {pos = -0.0   spd = -127.27922   acc = -10.0   dissipation = 0.9   }
 
-7- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => 0.0, :spd => 67.64138, :acc => -10.0, :dissipation => 0.9), - Time: 133.41777
-Children: 1
---------------
+			3- DecisionNode falling - Time: 39.59798 - Agent: A - Action: up - # Children: 1
+			Valuation: {pos = -0.0   spd = 114.5513   acc = -10.0   dissipation = 0.9   }
 
-8- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => -0.0, :spd => 60.87723, :acc => -10.0, :dissipation => 0.9), - Time: 146.94605
-Children: 1
---------------
+				4- TriggerNode falling - Time: 62.50824 - Agent: A - Trigger: ((pos == 0.0)) && ((spd < 0.0)) - # Children: 1
+				Valuation: {pos = 0.0   spd = -114.55129   acc = -10.0   dissipation = 0.9   }
 
-9- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => 0.0, :spd => 54.78951, :acc => -10.0, :dissipation => 0.9), - Time: 159.12149
-Children: 1
---------------
+					5- DecisionNode falling - Time: 62.50824 - Agent: A - Action: up - # Children: 1
+					Valuation: {pos = 0.0   spd = 103.09616   acc = -10.0   dissipation = 0.9   }
 
-10- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => -0.0, :spd => 49.31056, :acc => -10.0, :dissipation => 0.9), - Time: 170.0794
-Children: 1
---------------
+						6- TriggerNode falling - Time: 83.12747 - Agent: A - Trigger: ((pos == 0.0)) && ((spd < 0.0)) - # Children: 1
+						Valuation: {pos = -0.0   spd = -103.09615   acc = -10.0   dissipation = 0.9   }
 
-11- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => -0.0, :spd => 44.3795, :acc => -10.0, :dissipation => 0.9), - Time: 179.94151
-Children: 1
---------------
+							7- DecisionNode falling - Time: 83.12747 - Agent: A - Action: up - # Children: 1
+							Valuation: {pos = -0.0   spd = 92.78654   acc = -10.0   dissipation = 0.9   }
 
-12- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => 0.0, :spd => 39.94154, :acc => -10.0, :dissipation => 0.9), - Time: 188.81741
-Children: 1
---------------
+								8- TerminalNode - falling - Time: 100.0
+								Valuation: {pos = 142.13223   spd = -75.93877   acc = -10.0   dissipation = 0.9   }
 
-13- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => 0.0, :spd => 35.94739, :acc => -10.0, :dissipation => 0.9), - Time: 196.80571
-Children: 1
---------------
 
-14- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => -0.0, :spd => 32.35264, :acc => -10.0, :dissipation => 0.9), - Time: 203.99519
-Children: 1
---------------
 
-15- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => 0.0, :spd => 29.11738, :acc => -10.0, :dissipation => 0.9), - Time: 210.46572
-Children: 1
---------------
 
-16- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => -0.0, :spd => 26.20564, :acc => -10.0, :dissipation => 0.9), - Time: 216.28919
-Children: 1
---------------
+***************************
+***************************
+***************************
 
-17- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => 0.0, :spd => 23.58508, :acc => -10.0, :dissipation => 0.9), - Time: 221.53032
-Children: 1
---------------
 
-18- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => -0.0, :spd => 21.22657, :acc => -10.0, :dissipation => 0.9), - Time: 226.24734
-Children: 1
---------------
+<<A>> F (pos == 700 && spd > 0): true
+0- RootNode  falling - # Children: 1
+Valuation: {pos = 1000.0   spd = 0.0   acc = -10.0   dissipation = 0.9   }
 
-19- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => 0.0, :spd => 19.10391, :acc => -10.0, :dissipation => 0.9), - Time: 230.49265
-Children: 1
---------------
+0- TriggerNode falling - Time: 14.14214 - Agent: A - Trigger: ((pos == 0.0)) && ((spd < 0.0)) - # Children: 1
+Valuation: {pos = 0.0   spd = -141.42136   acc = -10.0   dissipation = 0.9   }
 
-20- Active - Agent: A - Action: up / pos == 0.0 - Location: falling
-Valuation: OrderedDict(:pos => -0.0, :spd => 17.19352, :acc => -10.0, :dissipation => 0.9), - Time: 234.31343
-Children: 0
---------------
+	1- DecisionNode falling - Time: 14.14214 - Agent: A - Action: up - # Children: 1
+	Valuation: {pos = 0.0   spd = 127.27922   acc = -10.0   dissipation = 0.9   }
+
+		2- PropertyNode - falling - Time: 22.17965
+		Valuation: {pos = 700.0   spd = 46.90416   acc = -10.0   dissipation = 0.9   }
+
+
+
+
+***************************
+***************************
+***************************
+
+

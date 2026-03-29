@@ -132,13 +132,16 @@ function build_and_evaluate!(game::HGT_Game,
                              node::Union{RootNode, DecisionNode},
                              termination_conditions::Termination_Conditions)::Bool
     terminal::Bool = check_termination(node.config, node.level, termination_conditions)
-    children = get_time_children(game, constraints, f, node, termination_conditions, agents)
     @match query begin
-        Strategy_to_State(f) => evaluate_state(f, node.config, length(children) == 1 && isa(children[1], FinalNode) && ! children[1].terminal)
+        Strategy_to_State(f) => begin
+            children = get_time_children(game, constraints, State_Deadlock(), node, termination_conditions, agents)
+            return evaluate_state(f, node.config, length(children) >= 1 && isa(first(children).first, FinalNode) && ! first(children).first.deadlock)
+        end
         All_Eventually(agents, f) => ! build_and_evaluate!(game, constraints, Exist_Always(setdiff(game.agents, agents), State_Not(f)), node, termination_conditions)
         All_Always(agents, f) => ! build_and_evaluate!(game, constraints, Exist_Eventually(setdiff(game.agents, agents), State_Not(f)), node, termination_conditions)
         Exist_Eventually(agents, f) => begin
-            if evaluate_state(f, node.config, length(children) == 1 && isa(children[1], FinalNode) && ! children[1].terminal)
+            children = get_time_children(game, constraints, f, node, termination_conditions, agents)
+            if evaluate_state(f, node.config, length(children) == 1 && isa(first(children).first, FinalNode) && ! first(children).first.deadlock)
                 push!(node.children, PropertyNode(node, node.config, node.level))
                 return true
             end
@@ -147,12 +150,14 @@ function build_and_evaluate!(game::HGT_Game,
             end
             child_results = false
             for (child, action_children) in children
-                if isa(child, PropertyNode)
-                    push!(node.children, child)
-                    return true
-                elseif isa(child, FinalNode)
-                    return false
-                elseif isa(child, TriggerNode)
+                if ! isa(child, TriggerNode)
+                    if evaluate_state(f, child.config, isa(child, FinalNode) && child.deadlock)
+                        push!(node.children, child)
+                        return true
+                    else
+                        return false
+                    end
+                else
                     for action_child in action_children
                         if child.reaching_trigger.first in agents
                             if build_and_evaluate!(game, constraints, query, action_child, termination_conditions)
@@ -177,7 +182,8 @@ function build_and_evaluate!(game::HGT_Game,
             return child_results
         end
         Exist_Always(agents, f) => begin
-            if evaluate_state(f, node.config, length(children) == 1 && isa(children[1], FinalNode) && ! children[1].terminal)
+            children = get_time_children(game, constraints, f, node, termination_conditions, agents)
+            if ! evaluate_state(f, node.config, length(children) == 1 && isa(first(children).first, FinalNode) && ! first(children).first.deadlock)
                 return false
             end
             if length(children) == 0 || terminal
@@ -186,12 +192,14 @@ function build_and_evaluate!(game::HGT_Game,
             end
             child_results = false
             for (child, action_children) in children
-                if isa(child, PropertyNode)
-                    return false
-                elseif isa(child, FinalNode)
-                    push!(node.children, child)
-                    return true
-                elseif isa(child, TriggerNode)
+                if ! isa(child, TriggerNode)
+                    if ! evaluate_state(f, child.config, isa(child, FinalNode) && child.deadlock)
+                        return false
+                    else
+                        push!(node.children, child)
+                        return true
+                    end
+                else
                     for action_child in action_children
                         if child.reaching_trigger.first in agents
                             if build_and_evaluate!(game, constraints, query, action_child, termination_conditions)

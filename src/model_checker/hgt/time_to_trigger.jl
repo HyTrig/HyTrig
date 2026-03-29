@@ -63,7 +63,7 @@ function time_to_trigger(config::Configuration, constraints::Set{Constraint}, ma
         end
         current_valuation = round5(valuation_from_flow_vector(config.location.flow, config.valuation, integrator.u), 6)
         current_config = Configuration(config.location, current_valuation, config.global_clock + round5(integrator.t))
-        if ! evaluate(config.location.invariant, current_valuation) || evaluate_state(termination_conditions.state_formula, current_config)
+        if ! evaluate(config.location.invariant, current_valuation) || evaluate_state(termination_conditions.state_formula, current_config, false)
             terminate!(integrator) # Stop the integration when the condition is met
             return
         end
