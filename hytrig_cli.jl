@@ -54,7 +54,21 @@ function READ_USER_FILE()
         trees = RootNode[]
         for query in queries
             if game_type == 1
-                result, game_tree = check_query(game, termination_conditions, query)
+                result, game_tree, evaluation_time = check_query(game, termination_conditions, query)
+                print("$(strategy_to_string(query)): ")
+                if result
+                    print("True\n")
+                else
+                    print("False\n")
+                end
+                println("Nodes = ",
+                    count_nodes(game_tree),
+                    " - Tree Depth = ",
+                    depth_of_tree(game_tree),
+                    " - Max Game Time = ",
+                    max_time(game_tree)
+                )
+                println("Evaluation Time = ", evaluation_time)
                 push!(trees, game_tree)
                 push!(results, result)
             else

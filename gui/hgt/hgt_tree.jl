@@ -23,7 +23,7 @@ struct GUIBranch
     reaching_trigger::Union{Nothing, Pair{Agent, Constraint}}
     config::Configuration
     action_nodes::Vector
-    passive_nodes::Vector{Union{PropertyNode, FinalNode}}
+    property_nodes::Vector{Union{PropertyNode, FinalNode}}
 end
 
 """
@@ -76,16 +76,16 @@ function GUINode(node::Union{RootNode, FinalNode}, parent::Union{GUINode, Nothin
 end
 
 """
-    GUIBranch(node::RootNode, action_nodes::Vector{GUINode}, passive_nodes::Vector{PropertyNode})::GUIBranch
+    GUIBranch(node::RootNode, action_nodes::Vector{GUINode}, property_nodes::Vector{PropertyNode})::GUIBranch
 
-Create a GUIBranch from the given root node `node` with the `passive_nodes`.
+Create a GUIBranch from the given root node `node` with the `property_nodes`.
 
 # Arguments
 - `node::RootNode`: The root node.
-- `passive_nodes::Vector{PropertyNode}`: The branches passive nodes.
+- `property_nodes::Vector{PropertyNode}`: The branches property nodes.
 - `parent::GUINode`: The branches parent node.
 """
-function GUIBranch(node::RootNode, action_nodes::Vector{GUINode}, passive_nodes::Vector{PropertyNode})::GUIBranch
+function GUIBranch(node::RootNode, action_nodes::Vector{GUINode}, property_nodes::Vector{PropertyNode})::GUIBranch
     return GUIBranch(
         nothing,
         node.config,
@@ -95,56 +95,56 @@ function GUIBranch(node::RootNode, action_nodes::Vector{GUINode}, passive_nodes:
 end
 
 """
-    GUIBranch(node::TriggerNode, passive_nodes::Vector{PropertyNode}, parent::GUINode)::GUIBranch
+    GUIBranch(node::TriggerNode, property_nodes::Vector{PropertyNode}, parent::GUINode)::GUIBranch
 
-Create a GUIBranch from the given trigger node `node` with the `passive_nodes`.
+Create a GUIBranch from the given trigger node `node` with the `property_nodes`.
 
 # Arguments
 - `node::TriggerNode`: The trigger node.
 - `action_nodes::Vector{GUINode}`: The branches active nodes.
-- `passive_nodes::Vector{PropertyNode}`: The branches passive nodes.
+- `property_nodes::Vector{PropertyNode}`: The branches property nodes.
 """
-function GUIBranch(node::TriggerNode, action_nodes::Vector{GUINode}, passive_nodes::Vector{PropertyNode})::GUIBranch
+function GUIBranch(node::TriggerNode, action_nodes::Vector{GUINode}, property_nodes::Vector{PropertyNode})::GUIBranch
     return GUIBranch(
         node.reaching_trigger,
         node.config,
         action_nodes,
-        passive_nodes
+        property_nodes
     )
 end
 
 """
-    GUIBranch(node::FinalNode, passive_nodes::Vector{PropertyNode})::GUIBranch
+    GUIBranch(node::FinalNode, property_nodes::Vector{PropertyNode})::GUIBranch
 
-Create a GUIBranch from the given end node `node` with the `passive_nodes`.
+Create a GUIBranch from the given final node `node` with the `property_nodes`.
 
 # Arguments
-- `node::FinalNode`: The end node.
-- `passive_nodes::Vector{PropertyNode}`: The branches passive nodes.
+- `node::FinalNode`: The final node.
+- `property_nodes::Vector{PropertyNode}`: The branches property nodes.
 """
-function GUIBranch(node::FinalNode, passive_nodes::Vector{PropertyNode})::GUIBranch
+function GUIBranch(node::FinalNode, property_nodes::Vector{PropertyNode})::GUIBranch
     return GUIBranch(
         nothing,
         node.config,
         [],
-        push!(Vector{Union{PropertyNode, FinalNode}}(passive_nodes), node)
+        push!(Vector{Union{PropertyNode, FinalNode}}(property_nodes), node)
     )
 end
 
 """
-    GUIBranch(passive_nodes::Vector{PropertyNode})::GUIBranch
+    GUIBranch(property_nodes::Vector{PropertyNode})::GUIBranch
 
-Create a GUIBranch from the given `passive_nodes`.
+Create a GUIBranch from the given `property_nodes`.
 
 # Arguments
-- `passive_nodes::Vector{PropertyNode}`: The branches passive nodes.
+- `property_nodes::Vector{PropertyNode}`: The branches property nodes.
 """
-function GUIBranch(passive_nodes::Vector{PropertyNode})::GUIBranch
+function GUIBranch(property_nodes::Vector{PropertyNode})::GUIBranch
     return GUIBranch(
         nothing,
-        passive_nodes[end].config,
+        property_nodes[end].config,
         [],
-        passive_nodes
+        property_nodes
     )
 end
 

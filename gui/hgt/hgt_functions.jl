@@ -265,11 +265,10 @@ function hgt_verify()::String
         empty!(hgt_tree)
         empty!(hgt_tree_string)
         for query in hgt_query_list
-            result, query_tree = check_query(game, term_cond, parse(query.formula, bindings, strategy))
+            result, query_tree, _ = check_query(game, term_cond, parse(query.formula, bindings, strategy))
             push!(results, result)
             push!(hgt_tree, query_tree)
             push!(hgt_tree_string, print_tree(query_tree, query.formula, result))
-
         end
     catch e
         if e isa TokenizeError

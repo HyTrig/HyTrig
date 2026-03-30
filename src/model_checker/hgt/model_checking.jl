@@ -24,6 +24,7 @@ File description.
 
 export check_query
 
+# TODO: make unexported functions private by prefixing with '_'
 function check_termination(config::Configuration, level::Int64, termination_conditions::Termination_Conditions):: Bool
     if config.global_clock >= termination_conditions.time_limit || 
         level >= termination_conditions.max_steps ||
@@ -34,6 +35,7 @@ function check_termination(config::Configuration, level::Int64, termination_cond
     end
 end
 
+# TODO: make unexported functions private by prefixing with '_'
 function get_action_children(game::HGT_Game, parent::TriggerNode)::Vector{DecisionNode}
     agent = parent.reaching_trigger.first
     children = DecisionNode[]
@@ -49,6 +51,7 @@ function get_action_children(game::HGT_Game, parent::TriggerNode)::Vector{Decisi
     return children
 end
 
+# TODO: make unexported functions private by prefixing with '_'
 function get_time_children(game::HGT_Game, 
                            constraints::Set{Constraint}, 
                            query_formula::State_Formula, 
@@ -124,6 +127,7 @@ function get_time_children(game::HGT_Game,
     return children
 end
 
+# TODO: make unexported functions private by prefixing with '_'
 function build_and_evaluate!(game::HGT_Game,
                              constraints::Set{Constraint},
                              query::Strategy_Formula, 
@@ -224,7 +228,8 @@ function build_and_evaluate!(game::HGT_Game,
     end
 end
 
-function check_query(game::Game, termination_conditions::Termination_Conditions, query::Strategy_Formula) 
+# TODO: write documentation for this function
+function check_query(game::Game, termination_conditions::Termination_Conditions, query::Strategy_Formula)::Tuple{Bool, RootNode, Float64}
     t0 = time();
     initial_config = initial_configuration(game)
     root = RootNode(initial_config, 0, [])
@@ -234,15 +239,5 @@ function check_query(game::Game, termination_conditions::Termination_Conditions,
 
     t1 = time();
     evaluation_time = t1 - t0
-
-    print("$(strategy_to_string(query)): ")
-    if result
-        print("$result\n")
-    else
-        print("False\n")
-    end
-    println("Nodes = ", count_nodes(root), " - Tree Depth = ", depth_of_tree(root), " - Max Game Time = ", max_time(root))
-    println("Evaluation Time = ", round5(evaluation_time))
-
-    return result, root
+    return result, root, round5(evaluation_time)
 end
