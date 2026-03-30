@@ -26,9 +26,10 @@ GameViewer {
     readonly property real time_line_spacing: 20
     readonly property real node_width: 400
     readonly property real node_height: 300
-    readonly property color passive_node_color: "#4664aa"
+    readonly property color property_node_color: "#4664aa"
     readonly property color action_node_color: main_window.Material.theme === Material.Dark ? "#004f44" : '#00ceb2'
     readonly property color end_node_color: Material.color(Material.Red)
+    readonly property color deadlock_color: Material.color(Material.Purple)
     readonly property color trigger_node_color: "#df9b1b"
 
     reset: function() {
@@ -202,7 +203,7 @@ GameViewer {
                             spacing: 5
                             clip: true
 
-                            model: passive_nodes
+                            model: property_nodes
                             delegate: Nodes.PropertyNode {
                                 width: passive_list.width
                             }
@@ -274,11 +275,11 @@ GameViewer {
                 height: parent_button.height
                 radius: 5
                 color: light_background_color
-                border.color: passive_node_color
+                border.color: property_node_color
                 border.width: 2
                 
                 Title {
-                    text: qsTr("Passive node")
+                    text: qsTr("Property node")
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
                 }
@@ -294,7 +295,7 @@ GameViewer {
                 border.width: 2
                 
                 Title {
-                    text: qsTr("Trigger")
+                    text: qsTr("Decision node")
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
                 }
@@ -327,6 +328,22 @@ GameViewer {
                 
                 Title {
                     text: qsTr("Final node")
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+            }
+
+            Rectangle {
+                id: deadlock_legend
+                width: passive_legend.width
+                height: parent_button.height
+                radius: 5
+                color: light_background_color
+                border.color: deadlock_color
+                border.width: 2
+                
+                Title {
+                    text: qsTr("Deadlock")
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
                 }

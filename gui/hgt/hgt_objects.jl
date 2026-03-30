@@ -226,7 +226,7 @@ mutable struct QHGTBranch
     valuation::String
     time::Float64
     action_nodes::JuliaItemModel
-    passive_nodes::JuliaItemModel
+    property_nodes::JuliaItemModel
 end
 
 """
@@ -251,7 +251,7 @@ function QHGTBranch(branch::GUIBranch)::QHGTBranch
         _get_valuation_string(branch.config.valuation),
         trunc(branch.config.global_clock, digits=5),
         JuliaItemModel([QHGTDecisionNode(node) for node in branch.action_nodes]),
-        JuliaItemModel([QHGTPropertyNode(node) for node in branch.passive_nodes])
+        JuliaItemModel([QHGTPropertyNode(node) for node in branch.property_nodes])
     )
 end
 
@@ -270,7 +270,7 @@ end
 """
     QHGTDecisionNode(node::GUINode)::QHGTDecisionNode
 
-Create a QAction from the given GUI node `node`.
+Create a decision node from the given GUI node `node`.
 # Arguments
 - `node::GUINode`: The GUI node.
 """
@@ -296,19 +296,21 @@ mutable struct QHGTPropertyNode
     valuation::String
     time::Float64
     is_end::Bool
+    deadlock::Bool
 end
 
 """
     QHGTPropertyNode(node::PropertyNode)::QHGTPropertyNode
 
-Create a QHGTPropertyNode from the given passive node `node`.
+Create a QHGTPropertyNode from the given property node `node`.
 # Arguments
-- `node::PropertyNode`: The passive node.
+- `node::PropertyNode`: The property node.
 """
 function QHGTPropertyNode(node::PropertyNode)::QHGTPropertyNode
     return QHGTPropertyNode(
         _get_valuation_string(node.config.valuation),
         trunc(node.config.global_clock, digits=5),
+        false,
         false
     )
 end
@@ -324,7 +326,8 @@ function QHGTPropertyNode(node::FinalNode)::QHGTPropertyNode
     return QHGTPropertyNode(
         _get_valuation_string(node.config.valuation),
         trunc(node.config.global_clock, digits=5),
-        true
+        true,
+        node.deadlock
     )
 end
 
