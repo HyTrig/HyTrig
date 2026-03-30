@@ -5105,11 +5105,11 @@
             "verified": false
         },
         {
-            "formula": "<<A, B>>G (x < 9 -> z >  0) || ((x == 0 || x == 18 || y == 0 || y == 9) -> hitter > 2)",
+            "formula": "<<A, B>>G (x < 9 -> z >  0) && ((x == 0 || x == 18 || y == 0 || y == 9) -> hitter > 2)",
             "verified": false
         },
         {
-            "formula": "<<C, D>>G (x > 9 -> z >  0) || ((x == 0 || x == 18 || y == 0 || y == 9) -> hitter <= 2)",
+            "formula": "<<C, D>>G (x > 9 -> z >  0) && ((x == 0 || x == 18 || y == 0 || y == 9) -> hitter <= 2)",
             "verified": false
         },
         {

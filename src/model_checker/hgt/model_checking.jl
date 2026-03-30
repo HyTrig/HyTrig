@@ -69,19 +69,17 @@ function get_time_children(game::HGT_Game,
     final_config, path_configs = time_to_trigger(parent.config, constraints ∪ triggers, remaining_time, termination_conditions)
 
     path_configs = [parent.config] ∪ path_configs ∪ [final_config]
-
     for (i, path_config) in enumerate(path_configs)
+        # println(valuation_to_string(path_config.valuation))
         if path_config.global_clock - parent.config.global_clock >= 1e-5
             zero_loop = Set([])
         end
         if evaluate(parent.config.location.invariant, path_config.valuation) 
-            if isa(query_formula, State_Formula)
-                new_state_formula_status = evaluate_state(query_formula, path_config, false)
-                if state_formula_status != new_state_formula_status
-                    state_formula_status = new_state_formula_status
-                    children[PropertyNode(parent, path_config, parent.level)] = DecisionNode[]
-                    return children
-                end
+            new_state_formula_status = evaluate_state(query_formula, path_config, false)
+            if state_formula_status != new_state_formula_status
+                state_formula_status = new_state_formula_status
+                children[PropertyNode(parent, path_config, parent.level)] = DecisionNode[]
+                return children
             end
             if check_termination(path_config, parent.level, termination_conditions)
                 children[FinalNode(parent, path_config, parent.level, false)] = DecisionNode[]
@@ -239,7 +237,7 @@ function check_query(game::Game, termination_conditions::Termination_Conditions,
 
     print("$(strategy_to_string(query)): ")
     if result
-        print("True\n")
+        print("$result\n")
     else
         print("False\n")
     end

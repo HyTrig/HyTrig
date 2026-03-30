@@ -35,7 +35,7 @@ function time_to_trigger(config::Configuration, constraints::Set{Constraint}, ma
     constraints_val = Dict(constr => evaluate(constr, config.valuation) for constr in constraints)
 
     zero_constraints::Set{ExprLike} = get_zero(constraints)
-    zero_invariant::Set{ExprLike} = get_zero(config.location.invariant)
+    zero_invariant::Set{ExprLike} = get_zero([config.location.invariant])
 
     important_configuration::Vector{Configuration} = Vector()
     
@@ -68,13 +68,14 @@ function time_to_trigger(config::Configuration, constraints::Set{Constraint}, ma
             return
         end
         current_valuation = round5(current_valuation)
-        if any(zero_constr -> evaluate(zero_constr, current_valuation) == 0.0, zero_constraints) && 
-           any(constr -> evaluate(constr, current_valuation) != constraints_val[constr], constraints)
-            push!(important_configuration, current_config)
-            for constr in constraints
-                constraints_val[constr] = evaluate(constr, current_valuation)
-            end
-        end
+        push!(important_configuration, current_config)
+        # if any(zero_constr -> evaluate(zero_constr, current_valuation) == 0.0, zero_constraints) && 
+        #    any(constr -> evaluate(constr, current_valuation) != constraints_val[constr], constraints)
+        #     push!(important_configuration, current_config)
+        #     for constr in constraints
+        #         constraints_val[constr] = evaluate(constr, current_valuation)
+        #     end
+        # end
     end
 
     cbv = VectorContinuousCallback(condition, affect!, length(zero_constraints) + length(zero_invariant))

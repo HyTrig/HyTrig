@@ -1,0 +1,212 @@
+{
+    "variables": [
+        {
+            "name": "max_height",
+            "expression": "4"
+        },
+        {
+            "name": "g",
+            "expression": "9.8"
+        },
+        {
+            "name": "p1_1_x",
+            "expression": "1"
+        },
+        {
+            "name": "p1_1_y",
+            "expression": "4.5"
+        },
+        {
+            "name": "p2_1_x",
+            "expression": "4"
+        },
+        {
+            "name": "p2_1_y",
+            "expression": "1"
+        },
+        {
+            "name": "p3_1_x",
+            "expression": "4"
+        },
+        {
+            "name": "p3_1_y",
+            "expression": "8"
+        },
+        {
+            "name": "p4_1_x",
+            "expression": "8"
+        },
+        {
+            "name": "p4_1_y",
+            "expression": "3"
+        },
+        {
+            "name": "p5_1_x",
+            "expression": "8"
+        },
+        {
+            "name": "p5_1_y",
+            "expression": "6"
+        },
+        {
+            "name": "p1_2_x",
+            "expression": "12"
+        },
+        {
+            "name": "p1_2_y",
+            "expression": "2"
+        },
+        {
+            "name": "p2_2_x",
+            "expression": "12"
+        },
+        {
+            "name": "p2_2_y",
+            "expression": "7"
+        },
+        {
+            "name": "p3_2_x",
+            "expression": "13"
+        },
+        {
+            "name": "p3_2_y",
+            "expression": "4.5"
+        },
+        {
+            "name": "p4_2_x",
+            "expression": "16"
+        },
+        {
+            "name": "p4_2_y",
+            "expression": "1"
+        },
+        {
+            "name": "p5_2_x",
+            "expression": "16"
+        },
+        {
+            "name": "p5_2_y",
+            "expression": "8"
+        },
+        {
+            "name": "spd_A",
+            "expression": "3.5"
+        },
+        {
+            "name": "spd_B",
+            "expression": "4"
+        },
+        {
+            "name": "spd_C",
+            "expression": "4"
+        },
+        {
+            "name": "spd_D",
+            "expression": "4.5"
+        },
+        {
+            "name": "hitter",
+            "expression": "1"
+        },
+        {
+            "name": "target_x",
+            "expression": "13"
+        },
+        {
+            "name": "target_y",
+            "expression": "4.5"
+        },
+        {
+            "name": "spd_z",
+            "expression": "0"
+        },
+        {
+            "name": "flight_time",
+            "expression": "0"
+        },
+        {
+            "name": "spd_x",
+            "expression": "0"
+        },
+        {
+            "name": "spd_y",
+            "expression": "0"
+        },
+        {
+            "name": "A_x",
+            "expression": "7"
+        },
+        {
+            "name": "A_y",
+            "expression": "2"
+        },
+        {
+            "name": "B_x",
+            "expression": "7"
+        },
+        {
+            "name": "B_y",
+            "expression": "7"
+        },
+        {
+            "name": "C_x",
+            "expression": "16"
+        },
+        {
+            "name": "C_y",
+            "expression": "2"
+        },
+        {
+            "name": "D_x",
+            "expression": "16"
+        },
+        {
+            "name": "D_y",
+            "expression": "7"
+        },
+        {
+            "name": "dir_A_x",
+            "expression": "0"
+        },
+        {
+            "name": "dir_A_y",
+            "expression": "0"
+        },
+        {
+            "name": "dir_B_x",
+            "expression": "0"
+        },
+        {
+            "name": "dir_B_y",
+            "expression": "0"
+        },
+        {
+            "name": "dir_C_x",
+            "expression": "0"
+        },
+        {
+            "name": "dir_C_y",
+            "expression": "0"
+        },
+        {
+            "name": "dir_D_x",
+            "expression": "0"
+        },
+        {
+            "name": "dir_D_y",
+            "expression": "0"
+        },
+        {
+            "name": "x",
+            "expression": "7"
+        },
+        {
+            "name": "y",
+            "expression": "2"
+        },
+        {
+            "name": "z",
+            "expression": "2"
+        }
+    ]
+}

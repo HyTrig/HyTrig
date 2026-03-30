@@ -189,7 +189,7 @@ end
 function agents_to_string(agents::Vector{Agent})
     str = ""
     for agent in agents
-        str *= String(agent)
+        str *= String(agent) * " "
     end
     str
 end
