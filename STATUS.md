@@ -11,7 +11,10 @@ each.
 The complete artifact source code, bundled example models, and documentation is 
 provided in full, with no proprietary or missing components. It is released
 as open source on GitHub at
-[https://github.com/HyTrig/HyTrig](https://github.com/HyTrig/HyTrig).
+[https://github.com/HyTrig/HyTrig](https://github.com/HyTrig/HyTrig) and
+permanently archived on Zenodo with the DOI
+[10.5281/zenodo.21517140](https://doi.org/10.5281/zenodo.21517140)
+(see [`CITATION.cff`](CITATION.cff)).
 
 The artifact is reasonable and complete: it includes the full implementation of
 the model checker, a command-line and a graphical interface, a suite of example
