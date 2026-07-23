@@ -1,7 +1,7 @@
 /**
 * @file GameType.qml
 * @brief Abstract class for types of games in the HyTrig GUI
-* @authors Moritz Maas
+* @authors 
 */
 
 import QtQuick
@@ -31,12 +31,20 @@ Item {
     // Function called after successful verification, no retrun value
     required property var verification_success
 
+    // Function for generating a free name, returns new name based on an input
+    required property var generate_name
+
+    // Function for saving the verified queries as a tree, no return value
+    required property var save_trees
+
     /**
     * Show the game viewer for the current game
+    * @param    {number}    i - index of the query for which the tree should be shown
     * @return   void
     */
-    function show_tree() {
+    function show_tree(i) {
         game_viewer.reset();
+        game_viewer.set(i);
         game_viewer.show();
     }
 

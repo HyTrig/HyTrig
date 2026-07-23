@@ -28,9 +28,9 @@ using DataStructures, Match, Reexport
 
 include("../hybrid_games/hybrid_games.jl")
 @reexport using .HybridGames
-import .HybridGames: round5
+import .HybridGames: round4
 
-export Logic_Formula, Termination_Conditions, union_safe
+export Logic_Formula, Termination_Conditions
 
 # abstract type for all logic formulas
 abstract type Logic_Formula end
@@ -40,7 +40,7 @@ include("strategy.jl")
 
 # TODO: add type documentation
 struct Termination_Conditions
-    time_limit::Real
+    time_limit::Float64
     max_steps::Int64
     state_formula::State_Formula
 end

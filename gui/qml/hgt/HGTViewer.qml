@@ -1,7 +1,7 @@
 /**
 * @file HGTViewer.qml
 * @brief GUI component for a window dedicated to traversing a verified game tree of HGT games.
-* @authors Moritz Maas
+* @authors 
 */
 
 import QtQml.Models
@@ -26,16 +26,21 @@ GameViewer {
     readonly property real time_line_spacing: 20
     readonly property real node_width: 400
     readonly property real node_height: 300
-    readonly property color passive_node_color: "#4664aa"
-    readonly property color active_node_color: main_window.Material.theme === Material.Dark ? "#004f44" : '#00ceb2'
+    readonly property color property_node_color: "#4664aa"
+    readonly property color action_node_color: main_window.Material.theme === Material.Dark ? "#004f44" : '#00ceb2'
     readonly property color end_node_color: Material.color(Material.Red)
+    readonly property color deadlock_color: Material.color(Material.Purple)
     readonly property color trigger_node_color: "#df9b1b"
 
     reset: function() {
         // Reset tree viewer to root
-        while (Julia.hgt_up_tree()) {
-            level = level - 1;
-        }
+        level = 1;
+        branches.model.clear();
+    }
+
+    set: function(i) {
+        // Set tree viewer to query with index i
+        Julia.hgt_set_tree(i);
         branches.model = [];
         branches.model = hgt_models.branches;
     }
@@ -86,7 +91,7 @@ GameViewer {
             Title {
                 id: level_text
                 height: parent.height
-                text: qsTr("Level " + level)
+                text: qsTr("Level: " + level + " | Location: " + hgt_models.tree_location)
                 verticalAlignment: Text.AlignVCenter
             }
 
@@ -95,6 +100,18 @@ GameViewer {
                 text: qsTr("Go up")
                 onClicked: {
                     hgt_viewer.up();
+                }
+            }
+
+            Button {
+                text: qsTr("Save tree")
+                onClicked: {
+                    main_window.save_tree_dialog.parentWindow = hgt_viewer;
+                    main_window.save_tree_dialog.action = function(path) {
+                        Julia.hgt_save_tree(path);
+                    }
+                    main_window.save_tree_dialog.open();
+                    main_window.save_tree_dialog.parentWindow = main_window;
                 }
             }
 
@@ -178,7 +195,7 @@ GameViewer {
                             hgt_viewer.down(index, i);
                         }
 
-                        // Passive nodes in this branch
+                        // Property nodes in this branch
                         ListView {
                             id: passive_list
                             width: time_line_width + node_width
@@ -186,8 +203,8 @@ GameViewer {
                             spacing: 5
                             clip: true
 
-                            model: passive_nodes
-                            delegate: Nodes.PassiveNode {
+                            model: property_nodes
+                            delegate: Nodes.PropertyNode {
                                 width: passive_list.width
                             }
                         }
@@ -195,16 +212,19 @@ GameViewer {
                         Row {
 
                             width: parent.width
-                            height: active_list.height
+                            height: node_height
                             spacing: 10
 
                             Nodes.TriggerNode {
                                 id: trigger_node
                                 width: time_line_width + node_width
+                                height: parent.height
                                 anchors.verticalCenter: parent.verticalCenter
                                 agent: model.agent
                                 trigger: model.trigger
+                                valuation: model.valuation
                                 time: model.time
+                                visible: model.trigger != "" || action_nodes.rowCount() > 0
                             }
 
                             Title {
@@ -212,23 +232,24 @@ GameViewer {
                                 text: qsTr("→")
                                 horizontalAlignment: Text.AlignHCenter
                                 verticalAlignment: Text.AlignVCenter
+                                visible: action_nodes.rowCount() > 0
                             }
                             
                             // Active nodes in this branch
                             ListView {
                                 id: active_list
                                 width: contentWidth
-                                height: Math.max(node_height, trigger_node.height) 
+                                height: parent.height
                                 spacing: 5
                                 clip: true
                                 interactive: false
 
                                 orientation: ListView.Horizontal
 
-                                model: active_nodes
-                                delegate: Nodes.ActiveNode {
+                                model: action_nodes
+                                delegate: Nodes.DecisionNode {
                                     width: node_width
-                                    height: parent.height
+                                    height: node_height
                                 }
                             }
 
@@ -254,11 +275,11 @@ GameViewer {
                 height: parent_button.height
                 radius: 5
                 color: light_background_color
-                border.color: passive_node_color
+                border.color: property_node_color
                 border.width: 2
                 
                 Title {
-                    text: qsTr("Passive node")
+                    text: qsTr("Property node")
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
                 }
@@ -274,7 +295,7 @@ GameViewer {
                 border.width: 2
                 
                 Title {
-                    text: qsTr("Trigger")
+                    text: qsTr("Decision node")
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
                 }
@@ -285,7 +306,7 @@ GameViewer {
                 width: passive_legend.width
                 height: parent_button.height
                 radius: 5
-                color: active_node_color
+                color: action_node_color
                 border.color: Material.accent
                 border.width: 2
                 
@@ -306,7 +327,23 @@ GameViewer {
                 border.width: 2
                 
                 Title {
-                    text: qsTr("End node")
+                    text: qsTr("Final node")
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+            }
+
+            Rectangle {
+                id: deadlock_legend
+                width: passive_legend.width
+                height: parent_button.height
+                radius: 5
+                color: light_background_color
+                border.color: deadlock_color
+                border.width: 2
+                
+                Title {
+                    text: qsTr("Deadlock")
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
                 }

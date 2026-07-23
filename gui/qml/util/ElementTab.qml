@@ -1,7 +1,7 @@
 /**
 * @file ElementTab.qml
 * @brief GUI component for a tab of elements of the HyTrig GUI
-* @authors Moritz Maas
+* @authors 
 */
 
 import QtQuick

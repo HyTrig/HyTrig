@@ -24,7 +24,7 @@ File description.
 
 export Variable
 export ExprLike, Const, Var, Neg, Add, Mul, Sub, Div, Expon, Modulo, Abs, Sin, CoSin, Tan, CoTan, Min, Max
-export expression_to_string, is_constant, is_linear, get_all_variables, round5
+export expression_to_string, is_constant, is_linear, get_all_variables
 
 # TODO: add constant documentation
 const Variable = Symbol
@@ -34,7 +34,7 @@ abstract type ExprLike end
 
 # TODO: add type documentation
 struct Const <: ExprLike
-    value::Real
+    value::Float64
 end
 
 # TODO: add type documentation
@@ -183,24 +183,5 @@ function is_linear(expr::ExprLike)::Bool
         CoTan(base) => is_constant(base)
         Min(left, right) => is_linear(left) && is_linear(right)
         Max(left, right) => is_linear(left) && is_linear(right)
-    end
-end
-
-# TODO: add function documentation
-function round5(num::Real)::Real
-    return round(num, digits=5)
-end
-
-# TODO: add function documentation
-function round5(expr::ExprLike)::ExprLike
-    @match expr begin
-        Const(value) => Const(round5(value))
-        Var(name) => Var(name)
-        Neg(expr1) => Neg(round5(expr1))
-        Add(left, right) => Add(round5(left), round5(right))
-        Mul(left, right) => Mul(round5(left), round5(right))
-        Sub(left, right) => Sub(round5(left), round5(right))
-        Div(left, right) => Div(round5(left), round5(right))
-        Expon(base, power) => Expon(round5(base), round5(power))
     end
 end

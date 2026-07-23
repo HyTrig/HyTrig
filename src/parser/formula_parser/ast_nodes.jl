@@ -12,9 +12,7 @@ This file contains all definitions needed to parse tokens to an AST.
 - `Agents`: Node for agent lists.
 - `StrategyNode`: Abstract type for strategy nodes.
 - `Quantifier`: Node for quantified strategies.
-- `StrategyConstant`: Node for deadlocks.
-- `StrategyUnaryOperation`: Node for unary operations on strategies.
-- `StrategyBinaryOperation`: Node for binary operations on strategies.
+- `StateConstant`: Node for deadlocks.
 - `StateNode`: Abstract type for state nodes.
 - `LocationNode`: Node for locations.
 - `StateUnaryOperation`: Node for unary operations on states.
@@ -40,9 +38,7 @@ The types are hierarchically ordered as follows:
     |-- Agents
     |-- StrategyNode
     |   |-- Quantifier
-    |   |-- StrategyConstant
-    |   |-- StrategyUnaryOperation
-    |   |-- StrategyBinaryOperation
+    |   |-- StateConstant
     |   |-- StateNode
     |       |-- LocationNode
     |       |-- StateUnaryOperation
@@ -59,7 +55,7 @@ The types are hierarchically ordered as follows:
 """
 
 export ASTNode, AgentList, Agents
-export StrategyNode, Quantifier, StrategyConstant, StrategyUnaryOperation, StrategyBinaryOperation
+export StrategyNode, Quantifier, StateConstant
 export StateNode, LocationNode, StateUnaryOperation, StateBinaryOperation
 export ConstraintNode, ConstraintConstant, ConstraintUnaryOperation, ConstraintBinaryOperation
 export ExpressionNode, VariableNode, ExpressionConstant, ExpressionUnaryOperation, ExpressionBinaryOperation
@@ -79,12 +75,12 @@ end
 
 AST Node for numerical constants.
 
-    ExpressionConstant(value::Real)
+    ExpressionConstant(value::Float64)
 
 Create a ExpressionConstant with value `value`.
 """
 struct ExpressionConstant <: ExpressionNode
-    value::Real
+    value::Float64
 end
 
 """
@@ -133,61 +129,6 @@ end
 abstract type StrategyNode <: ASTNode
 end
 
-"""
-    StrategyConstant <: StateNode
-
-AST Node for deadlocks.
-
-    StrategyConstant(value::String)
-
-Create a StrategyConstant with value `value`.
-"""
-struct StrategyConstant <: StrategyNode
-    value::String
-end
-
-"""
-    StrategyUnaryOperation <: StrategyNode
-
-AST Node for unary operations on strategies.
-
-    StrategyUnaryOperation(unary_operation::String, child::StrategyNode)
-
-Create a StrategyUnaryOperation of type `unary_operation` on strategy `child`.
-"""
-struct StrategyUnaryOperation <: StrategyNode
-    unary_operation::String
-    child::StrategyNode
-end
-
-# redefine comparison
-Base.:(==)(x::StrategyUnaryOperation, y::StrategyUnaryOperation) = (
-    x.unary_operation == y.unary_operation 
-    && x.child == y.child
-)
-
-"""
-    StrategyBinaryOperation <: StrategyNode
-
-AST Node for binary operations on strategies.
-
-    StrategyBinaryOperation(binary_operation::String, left_child::StrategyNode, right_child::StrategyNode)
-
-Create a StrategyBinaryOperation of type `binary_operation` on strategies `left_child`, `right_child`.
-"""
-struct StrategyBinaryOperation <: StrategyNode
-    binary_operation::String
-    left_child::StrategyNode
-    right_child::StrategyNode
-end
-
-# redefine comparison
-Base.:(==)(x::StrategyBinaryOperation, y::StrategyBinaryOperation) = (
-    x.binary_operation == y.binary_operation 
-    && x.left_child == y.left_child 
-    && x.right_child == y.right_child
-)
-
 # abstract type for all state nodes
 abstract type StateNode <: StrategyNode
 end
@@ -202,6 +143,19 @@ AST Node for locations.
 Create a LocationNode for a location with name `value`.
 """
 struct LocationNode <: StateNode
+    value::String
+end
+
+"""
+    StateConstant <: StateNode
+
+AST Node for deadlocks.
+
+    StateConstant(value::String)
+
+Create a StateConstant with value `value`.
+"""
+struct StateConstant <: StateNode
     value::String
 end
 
@@ -341,17 +295,9 @@ Base.:(==)(x::Quantifier, y::Quantifier) = (
 """
 All types of operations with arity 0.
 """
-const ConstantOperation = Union{LocationNode, StrategyConstant, ConstraintConstant, ExpressionConstant, VariableNode}
-
-"""
-All types of operations with arity 1.
-"""
-const UnaryOperation = Union{StrategyUnaryOperation, StateUnaryOperation, ConstraintUnaryOperation, ExpressionUnaryOperation}
-
-"""
-All types of operations with arity 2.
-"""
-const BinaryOperation = Union{StrategyBinaryOperation, StateBinaryOperation, ConstraintBinaryOperation, ExpressionBinaryOperation}
+const ConstantOperation = Union{LocationNode, StateConstant, ConstraintConstant, ExpressionConstant, VariableNode}
+const UnaryOperation = Union{StateUnaryOperation, ConstraintUnaryOperation, ExpressionUnaryOperation}
+const BinaryOperation = Union{StateBinaryOperation, ConstraintBinaryOperation, ExpressionBinaryOperation}
 
 """
     to_string(node::ConstantOperation)::String

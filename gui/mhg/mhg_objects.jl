@@ -22,7 +22,7 @@ This file defines the QML objects used in the HyTrig GUI by the MHG game type.
 - `mhg_query_list::Vector{QMHGQuery}`: A list of queries
 
 # Authors:
-- Moritz Maas
+- 
 """
 
 """

@@ -1,7 +1,7 @@
 /**
 * @file Variable.qml
 * @brief GUI component for a variable of the HyTrig GUI
-* @authors Moritz Maas
+* @authors 
 */
 
 import org.julialang

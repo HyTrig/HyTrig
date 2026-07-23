@@ -20,9 +20,9 @@ using .FormulaParser
     @test ast == parse_formula("(a+(b))", bindings, state)
     @test ast == parse_formula("((a)+(b))", bindings, strategy)
     @test ast == parse_formula("(a)+(b)", bindings, strategy)
-    @test_throws ParseError("Cannot parse tokens between 'a' and '('.") parse_formula("a(+)b", bindings, expression)
-    @test_throws ParseError("Cannot parse tokens between 'a' and '('.") parse_formula("a()+b", bindings, expression)
-    @test_throws ParseError("Cannot parse tokens between '(a)+(b)' and ')'.") parse_formula("a+b)", bindings, expression)
+    @test_throws ParseError("Cannot parse tokens 'a', '(', '+', ')', 'b'.") parse_formula("a(+)b", bindings, expression)
+    @test_throws ParseError("Cannot parse tokens 'a', '(', ')', '+', 'b'.") parse_formula("a()+b", bindings, expression)
+    @test_throws ParseError("Cannot parse tokens '(a)+(b)', ')'.") parse_formula("a+b)", bindings, expression)
 
     bindings = Bindings([], [], ["a"])
     ast = parse_formula("-a", bindings, expression)
@@ -30,7 +30,7 @@ using .FormulaParser
     @test to_string(ast) == "-(a)"
     @test ast == parse_formula("-(a)", bindings, expression)
     @test ast == parse_formula("(-(a))", bindings, constraint)
-    @test_throws ParseError("Cannot parse tokens between '(' and '-'.") parse_formula("(-)(a)", bindings, expression)
+    @test_throws ParseError("Cannot parse tokens '(', '-', ')', 'a'.") parse_formula("(-)(a)", bindings, expression)
 
     bindings = Bindings([], [], ["a", "b"])
     ast = parse_formula("b+(-a)", bindings, expression)
@@ -105,13 +105,13 @@ using .FormulaParser
     @test ast == parse_formula("(x < (y + 10))", bindings, state)
     @test ast == parse_formula("(x) < (y + 10)", bindings, strategy)
     @test ast == parse_formula("((x) < (y + 10))", bindings, strategy)
-    @test_throws ParseError("Cannot parse tokens between '(x)<(y)' and '+'.") parse_formula("(x < y) + 10", bindings, constraint)
+    @test_throws ParseError("Cannot parse tokens '(x)<(y)', '+', '10.0'.") parse_formula("(x < y) + 10", bindings, constraint)
 
     ast = parse_formula("true && x < y", bindings, constraint)
     @test ast == ConstraintBinaryOperation("&&", ConstraintConstant(true), ConstraintBinaryOperation("<", VariableNode("x"), VariableNode("y")))
     @test to_string(ast) == "(true)&&((x)<(y))"
     @test ast == parse_formula("(true) && (x < y)", bindings, constraint)
-    @test_throws ParseError("Cannot parse tokens between '(' and 'true'.") parse_formula("(true && x) < y", bindings, constraint)
+    @test_throws ParseError("Cannot parse tokens '(', 'true', '&&', 'x', ')', '<', 'y'.") parse_formula("(true && x) < y", bindings, constraint)
 
     bindings = Bindings([], [], ["x"])
     ast = parse_formula("x < 10 && false", bindings, constraint)
@@ -131,13 +131,13 @@ using .FormulaParser
     @test to_string(ast) == "(true)&&(loc)"
 
     bindings = Bindings([], ["loc1", "loc2"], [])
-    ast = parse_formula("true || false || loc1 && loc2", bindings, state)
+    ast = parse_formula("true || false || !loc1 && loc2", bindings, state)
     @test ast == StateBinaryOperation(
         "||",
         ConstraintBinaryOperation("||", ConstraintConstant(true), ConstraintConstant(false)),
-        StateBinaryOperation("&&", LocationNode("loc1"), LocationNode("loc2"))
+        StateBinaryOperation("&&", StateUnaryOperation("!", LocationNode("loc1")), LocationNode("loc2"))
     )
-    @test to_string(ast) == "((true)||(false))||((loc1)&&(loc2))"
+    @test to_string(ast) == "((true)||(false))||((!(loc1))&&(loc2))"
 
     # test strategies
 
@@ -146,22 +146,18 @@ using .FormulaParser
     @test ast == Quantifier(false, false, Agents(false, AgentList(["a", "b"])), ConstraintConstant(true))
     @test to_string(ast) == "<<a,b>>F(true)"
     @test ast == parse_formula("(<<a,b>> F (true))", bindings, strategy)
-    @test_throws ParseError("Cannot parse tokens between '<<' and '('.") parse_formula("<<(a,b)>> F true", bindings, strategy)
-    @test_throws ParseError("Cannot parse tokens between '(' and '<<'.") parse_formula("(<<(a),(b)>> F (true))", bindings, strategy)
+    @test_throws ParseError("Cannot parse tokens '<<', '(', 'a,b', ')', '>>', 'F', 'true'.") parse_formula("<<(a,b)>> F true", bindings, strategy)
+    @test_throws ParseError("Cannot parse tokens '(', '<<', '(', 'a', ')', ',', '(', 'b', ')', '>>', 'F', 'true', ')'.") parse_formula("(<<(a),(b)>> F (true))", bindings, strategy)
 
     bindings = Bindings(["a"], [], ["x", "y"])
-    ast = parse_formula("<<a>> F x>5 and y<10", bindings, strategy)
-    @test ast == StrategyBinaryOperation(
-        "and",
-        Quantifier(
-            false, false, Agents(false, AgentList(["a"])),
-            ConstraintBinaryOperation(">", VariableNode("x"), ExpressionConstant(5.0))
-        ),
-        ConstraintBinaryOperation("<", VariableNode("y"), ExpressionConstant(10.0))
+    ast = parse_formula("<<a>> F x>5", bindings, strategy)
+    @test ast == Quantifier(
+        false, false, Agents(false, AgentList(["a"])),
+        ConstraintBinaryOperation(">", VariableNode("x"), ExpressionConstant(5.0))
     )
-    @test to_string(ast) == "(<<a>>F((x)>(5.0)))and((y)<(10.0))"
-    @test ast == parse_formula("((<< a >> F x>5) and (y<10))", bindings, strategy)
-    @test ast == parse_formula("((<<a>> F x>5) and (y<10))", bindings, strategy)
+    @test to_string(ast) == "<<a>>F((x)>(5.0))"
+    @test ast == parse_formula("((<< a >> F x>5))", bindings, strategy)
+    @test ast == parse_formula("(<<a>> F x>5)", bindings, strategy)
 
     bindings = Bindings([], [], ["x", "y"])
     ast = parse_formula("<< >> F x>5 && y<10", bindings, strategy)
@@ -180,24 +176,31 @@ using .FormulaParser
     @test ast == parse_formula("(<<>> F (x>5 && y<10))", bindings, strategy)
 
     bindings = Bindings([], [], [])
-    ast = parse_formula("not << >> F true", bindings, strategy)
-    @test ast == StrategyUnaryOperation("not", parse_formula("<< >> F true", bindings, strategy))
-    @test to_string(ast) == "not(<<>>F(true))"
-    @test ast == parse_formula("(not (<< >> F (true)))", bindings, strategy)
+    ast = parse_formula("<< >> F deadlock", bindings, strategy)
+    @test ast ==Quantifier(
+        false,
+        false,
+        Agents(false, AgentList([])),
+        StateConstant("deadlock")
+    )
+    @test to_string(ast) == "<<>>F(deadlock)"
+    @test ast == parse_formula("(<< >> F (deadlock))", bindings, strategy)
 
-    bindings = Bindings([], ["p", "q", "w"], [])
-    ast = parse_formula("p or q and w", bindings, strategy)
-    @test ast == StrategyBinaryOperation("or", LocationNode("p"), StrategyBinaryOperation("and", LocationNode("q"), LocationNode("w")))
-    @test to_string(ast) == "(p)or((q)and(w))"
+    bindings = Bindings([], [], [])
+    ast = parse_formula("deadlock", bindings, strategy)
+    @test ast == StateConstant("deadlock")
+    @test to_string(ast) == "deadlock"
 
     # test error handling
 
-    @test_throws ParseError("Unparsed token at 'not'.") parse_formula("not", Bindings([], [], []), strategy)
-    @test_throws ParseError("Cannot parse tokens between '14.0' and '&&'.") parse_formula("14 && true", Bindings([], [], []), strategy)
-    @test_throws ParseError("Cannot parse tokens between '<<' and 'a'.") parse_formula("<<a, >> F true", Bindings(["a"], [], []), strategy)
-    @test_throws ParseError("Cannot parse tokens between 'true' and '&&'.") parse_formula("true && false", Bindings([], [], []), expression)
-    @test_throws ParseError("Cannot parse tokens between 'true' and '&&'.") parse_formula("true && var", Bindings([], [], ["var"]), strategy)
-    
+    @test_throws ParseError("Cannot parse tokens 'true', '&&', 'false'.") parse_formula("true && false", Bindings([], [], []), expression)
+    @test_throws ParseError("Cannot parse tokens '3.0', '+', '(true)&&(false)'.") parse_formula("3 + true && false", Bindings([], [], []), constraint)
+    @test_throws ParseError("Unparsed token 'F'.") parse_formula("F", Bindings([], [], []), strategy)
+    @test_throws ParseError("Cannot parse tokens '14.0', '&&', 'true'.") parse_formula("14 && true", Bindings([], [], []), strategy)
+    @test_throws ParseError("Cannot parse tokens '<<', 'a', ',', '>>', 'F', 'true'.") parse_formula("<<a, >> F true", Bindings(["a"], [], []), strategy)
+    @test_throws ParseError("Cannot parse tokens 'true', '&&', 'var'.") parse_formula("true && var", Bindings([], [], ["var"]), strategy)
+    @test_throws ParseError("Cannot parse tokens '<<>>', 'F', '<<>>G(true)'.") parse_formula("<<>> F (<<>> G true)", Bindings([], [], []), strategy)
+
 end
 
 end

@@ -25,7 +25,7 @@ File description.
 export Constraint, Truth, Less, LeQ, Greater, GeQ, Equal, NotEqual, And, Or, Not, Imply
 export RectConstr, RectTrue, RectLess, RectLessEq, RectGrt, RectGrtEq, RectEq, RectAnd
 export constraint_to_string, is_closed, get_atomic_constraints, negation_normal_form, get_zero
-export constraint_to_rect_constraint, strip_variables, round5
+export constraint_to_rect_constraint, strip_variables
 
 # abstract type for all constraints
 abstract type Constraint end
@@ -104,31 +104,31 @@ end
 # TODO: add type documentation
 struct RectLess <: RectConstr
     var::Variable
-    value::Real
+    value::Float64
 end
 
 # TODO: add type documentation
 struct RectLessEq <: RectConstr
     var::Variable
-    value::Real
+    value::Float64
 end
 
 # TODO: add type documentation
 struct RectGrt <: RectConstr
     var::Variable
-    value::Real
+    value::Float64
 end
 
 # TODO: add type documentation
 struct RectGrtEq <: RectConstr
     var::Variable
-    value::Real
+    value::Float64
 end
 
 # TODO: add type documentation
 struct RectEq <: RectConstr
     var::Variable
-    value::Real
+    value::Float64
 end
 
 # TODO: add type documentation
@@ -149,7 +149,7 @@ function constraint_to_string(constraint::Constraint)::String
         NotEqual(left, right) => "($(expression_to_string(left)) != $(expression_to_string(right)))"
         And(left, right) => "($(constraint_to_string(left))) && ($(constraint_to_string(right)))"
         Or(left, right) => "($(constraint_to_string(left))) || ($(constraint_to_string(right)))"
-        Not(c) => "!$(constraint_to_string(c))"
+        Not(c) => "!($(constraint_to_string(c)))"
         Imply(left, right) => "($(constraint_to_string(left))) -> ($(constraint_to_string(right)))"
     end
 end
@@ -181,10 +181,10 @@ function get_atomic_constraints(constraint::Constraint)::Vector{Constraint}
         GeQ(left, right) => [constraint]
         Equal(left, right) => [constraint]
         NotEqual(left, right) => [constraint]
-        And(left, right) => get_atomic_constraints(left) ∪ get_atomic_constraints(right)
-        Or(left, right) => get_atomic_constraints(left) ∪ get_atomic_constraints(right)
+        And(left, right) => [get_atomic_constraints(left); get_atomic_constraints(right)]
+        Or(left, right) => [get_atomic_constraints(left); get_atomic_constraints(right)]
         Not(c) => get_atomic_constraints(c)
-        Imply(left, right) => get_atomic_constraints(left) ∪ get_atomic_constraints(right)
+        Imply(left, right) => [get_atomic_constraints(left); get_atomic_constraints(right)]
     end
 end
 
@@ -209,22 +209,22 @@ function get_zero(constraint::Constraint)::Vector{ExprLike}
     @match constraint begin
         Truth(true) => ExprLike[Const(0)]
         Truth(false) => ExprLike[Const(1)]
-        LeQ(left, right) => ExprLike[Sub(right, left), Sub(left, Add(right, Const(1e-5)))]
-        Less(left, right) => ExprLike[Sub(right, Add(left, Const(1e-5))), Sub(left, right)]
-        GeQ(left, right) => ExprLike[Sub(left, right), Sub(right, Add(left, Const(1e-5)))]
-        Greater(left, right) => ExprLike[Sub(left, Add(right, Const(1e-5))), Sub(right, left)]
-        Equal(left, right) => ExprLike[Sub(left, right)] ∪ get_zero(Greater(left, right)) ∪ get_zero(Less(left, right))
-        NotEqual(left, right) => ExprLike[Sub(left, right)] ∪ get_zero(Greater(left, right)) ∪ get_zero(Less(left, right))
-        And(left, right) => get_zero(left) ∪ get_zero(right)
-        Or(left, right) => get_zero(left) ∪ get_zero(right)
+        LeQ(left, right) => ExprLike[Sub(right, left), Sub(left, Add(right, Const(1e-4))), Sub(right, Add(left, Const(1e-4)))]
+        Less(left, right) => ExprLike[Sub(right, left), Sub(left, Add(right, Const(1e-4))), Sub(right, Add(left, Const(1e-4)))]
+        GeQ(left, right) => ExprLike[Sub(right, left), Sub(left, Add(right, Const(1e-4))), Sub(right, Add(left, Const(1e-4)))]
+        Greater(left, right) => ExprLike[Sub(right, left), Sub(left, Add(right, Const(1e-4))), Sub(right, Add(left, Const(1e-4)))]
+        Equal(left, right) => ExprLike[Sub(right, left), Sub(left, Add(right, Const(1e-4))), Sub(right, Add(left, Const(1e-4)))]
+        NotEqual(left, right) => ExprLike[Sub(right, left), Sub(left, Add(right, Const(1e-4))), Sub(right, Add(left, Const(1e-4)))]
+        And(left, right) => reduce(union, [get_zero(left), get_zero(right)], init=ExprLike[]) 
+        Or(left, right) =>reduce(union, [get_zero(left), get_zero(right)], init=ExprLike[])
         Not(c) => get_zero(c)
-        Imply(left, right) => get_zero(left) ∪ get_zero(right)
+        Imply(left, right) => reduce(union, [get_zero(left), get_zero(right)], init=ExprLike[])
     end
 end
 
 # TODO: add function documentation
 function get_zero(constraints)::Vector{ExprLike}
-    return union_safe([get_zero(constr) for constr in constraints])
+    return reduce(union, [get_zero(constr) for constr in constraints], init=ExprLike[])
 end
 
 # TODO: add type documentation
@@ -279,18 +279,3 @@ function strip_variables(constr::RectConstr, variables::Vector{Variable})::RectC
     end
 end
 
-# TODO: add function documentation
-function round5(constraint::Constraint)::Constraint
-    @match constraint begin
-        Truth(value) => Truth(value)
-        Less(left, right) => Less(round5(left), round5(right))
-        LeQ(left, right) => LeQ(round5(left), round5(right))
-        Greater(left, right) => Greater(round5(left), round5(right))
-        GeQ(left, right) => GeQ(round5(left), round5(right))
-        Equal(left, right) => Equal(round5(left), round5(right))
-        NotEqual(left, right) => NotEqual(round5(left), round5(right))
-        And(left, right) => And(round5(left), round5(right))
-        Or(left, right) => Or(round5(left), round5(right))
-        Not(constraint1) => Not(round5(constraint1))
-    end
-end

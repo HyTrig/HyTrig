@@ -22,9 +22,9 @@ File description.
 - Author 2
 """
 
-export Node, RootNode, ActiveNode, PassiveNode, EndNode
-export print_tree, count_nodes, count_passive_nodes, depth_of_tree, max_time
-export sort_children_by_clock!, sort_children_by_clock_agent
+export Node, RootNode, TriggerNode, PropertyNode, DecisionNode, FinalNode
+export print_trees, print_tree, count_nodes, depth_of_tree, max_time, print_node
+export sort_children_by_clock!, sort_children_by_clock_and_agent
 
 # abstract type for nodes in the game tree
 abstract type Node end
@@ -32,78 +32,91 @@ abstract type Node end
 # TODO: add type documentation
 struct RootNode <: Node
     config::Configuration
-    level::Int32
+    level::Int64
+    zero_loop::Set{Pair{Agent, Action}}
     children::Vector{Node}
 end
 
-# TODO: add type documentation
-struct ActiveNode <: Node
+struct DecisionNode <: Node
     parent::Node
     reaching_decision::Pair{Agent, Action}
-    reaching_trigger::Constraint
     config::Configuration
-    level::Int32
+    level::Int64
+    zero_loop::Set{Pair{Agent, Action}}
     children::Vector{Node}
 end
 
-# TODO: add type documentation
-struct PassiveNode <: Node
+struct PropertyNode <: Node
     parent::Node
-    reaching_decision::Union{Pair{Agent, Constraint}, Nothing}
     config::Configuration
-    level::Int32
+    level::Int64
+end
+
+struct TriggerNode <: Node
+    parent::Node
+    reaching_trigger::Pair{Agent, Constraint}
+    config::Configuration
+    level::Int64
     children::Vector{Node}
 end
 
-# TODO: add type documentation
-struct EndNode <: Node
+struct FinalNode <: Node
     parent::Node
     config::Configuration
-    level::Int32
-    children::Vector{Node}
+    level::Int64
+    deadlock::Bool
+end
+
+function print_node(node::Node, level=0)
+    @match node begin
+        RootNode(config, _, _, children) => "0- RootNode  $(config.location.name) - # Children: $(length(children))\nValuation: $(valuation_to_string(config.valuation))"
+        DecisionNode(_, decision, config, _, _, children) => ("\t"^level) * "$level- DecisionNode $(config.location.name) - Time: $(round4(config.global_clock)) - Agent: $(decision.first) - " *
+                                                                 "Action: $(decision.second) - # Children: $(length(children))\n" *
+                                                                 ("\t"^level) * "Valuation: $(valuation_to_string(config.valuation))"
+        TriggerNode(_, decision, config, _, children) => ("\t"^level) * "$level- TriggerNode $(config.location.name) - Time: $(round4(config.global_clock)) - Agent: $(decision.first) - " *
+                                                                "Trigger: $(constraint_to_string(decision.second)) - # Children: $(length(children))\n" * 
+                                                                ("\t"^level) * "Valuation: $(valuation_to_string(config.valuation))"
+        PropertyNode(_, config, _) => ("\t"^level) * "$level- PropertyNode - $(config.location.name) - Time: $(round4(config.global_clock))\n" * 
+                                                                ("\t"^level) * "Valuation: $(valuation_to_string(config.valuation))"
+        FinalNode(_, config, _, true) => ("\t"^level) * "$level- Deadlock - $(config.location.name) - Time: $(round4(config.global_clock))\n" *
+                                                                ("\t"^level) * "Valuation: $(valuation_to_string(config.valuation))"
+        FinalNode(_, config, _, false) => ("\t"^level) * "$level- TerminalNode - $(config.location.name) - Time: $(round4(config.global_clock))\n" *
+                                                                ("\t"^level) * "Valuation: $(valuation_to_string(config.valuation))"
+    end
 end
 
 # TODO: add function documentation
-function print_tree(root::Node)
-    res = ""
-    @match root begin
-        RootNode(_, _, children) =>
-            begin
-                res *= "\nRoot  $(root.config.location.name)\nValuation: $(root.config.valuation)\nChildren: $(length(children))"
-                res *= "\n--------------\n"
-                for child in children
-                    res *= print_tree(child)
-                end
-            end
-        ActiveNode(_, decision, trigger, _, level, children) =>
-            begin
-                res *= "\n$level- Active - Agent: $(decision.first) - Action: $(decision.second) / $(constraint_to_string(trigger)) - Location: $(root.config.location.name)\nValuation: $(round5(root.config.valuation)), - Time: $(round5(root.config.global_clock))\nChildren: $(length(children))"
-                res *= "\n--------------\n"
-                for child in children
-                    res *= print_tree(child)
-                end
-            end
-        PassiveNode(_, decision, _, level, children) =>
-            begin
-                if isnothing(decision)
-                    res *= "\n$level- Passive - Location: $(root.config.location.name)\nValuation: $(root.config.valuation), - Time: $(root.config.global_clock)"
-                res *= "\n--------------\n"
-                else
-                    res *= "\n$level- Passive - Agent: $(decision.first) - Trigger: $(constraint_to_string(decision.second)) - Location: $(root.config.location.name)\nValuation: $(round5(root.config.valuation)), - Time: $(round5(root.config.global_clock))\nChildren: $(length(children))"
-                res *= "\n--------------\n"
-                end
-                for child in children
-                    res *=print_tree(child)
-                end
-            end
-        EndNode(_, _, level, children) =>
-            begin
-                res *= "\n$level- End - Location: $(root.config.location.name)\nValuation: $(root.config.valuation), - Time: $(root.config.global_clock)"
-                res *= "\n--------------\n"
-                for child in children
-                    res *=print_tree(child)
-                end
-            end
+function print_trees(trees::Vector{RootNode}, queries_text::Vector{String}, results::Vector{Bool})::String
+    return print_trees([print_tree(game_tree, queries_text[i], results[i]) for (i, game_tree) in enumerate(trees)])
+end
+
+function print_trees(trees::Vector{String})::String
+    tree_text = ""
+    for tree in trees
+        tree_text *= tree
+        tree_text *= "\n\n\n***************************\n***************************\n***************************\n\n\n"
+    end
+    return tree_text
+end
+
+# TODO: add function documentation
+function print_tree(root::Node, level=0)::String
+    res = "$(print_node(root, level))\n\n"
+    if :children in fieldnames(typeof(root))
+        for child in root.children
+            res *= "$(print_tree(child, level+1))"
+        end
+    end
+    return res
+end
+
+# TODO: add function documentation
+function print_tree(root::Node, query_text::String, result::Bool)::String
+    res = "$query_text: $result\n$(print_node(root))\n\n"
+    if :children in fieldnames(typeof(root))
+        for child in root.children
+            res *= "$(print_tree(child))"
+        end
     end
     return res
 end
@@ -111,78 +124,41 @@ end
 # TODO: add function documentation
 function count_nodes(root::Node)::Int
     @match root begin
-        RootNode(_, _, []) => 1
-        RootNode(_, _, children) => 1 + sum(count_nodes(child) for child in children)
-        ActiveNode(_, _, _, _, _, []) => 1
-        ActiveNode(_, _, _, _, _, children) => 1 + sum(count_nodes(child) for child in children)
-        PassiveNode(_, _, _, _, []) => 1
-        PassiveNode(_, _, _, _, children) => 1 + sum(count_nodes(child) for child in children)
-        EndNode(_, _, _, []) => 1
-        EndNode(_, _, _, children) => 1 + sum(count_nodes(child) for child in children)
-    end
-end
-
-# TODO: add function documentation
-function count_passive_nodes(root::Node)::Int
-    @match root begin
-        RootNode(_, _, []) => 0
-        RootNode(_, _, children) => sum(count_passive_nodes(child) for child in children)
-        ActiveNode(_, _, _, _, _, []) => 0
-        ActiveNode(_, _, _, _, _, children) => sum(count_passive_nodes(child) for child in children)
-        PassiveNode(_, _, _, _, []) => 1
-        PassiveNode(_, _, _, _, children) => 1 + sum(count_passive_nodes(child) for child in children)
-        EndNode(_, _, _, []) => 1
-        EndNode(_, _, _, children) => 1 + sum(count_nodes(child) for child in children)
+        RootNode(_, _, _, []) => 1
+        RootNode(_, _, _, children) => 1 + sum(count_nodes(child) for child in children)
+        PropertyNode(_, _, _) => 1
+        TriggerNode(_, _, _, _, []) => 1
+        TriggerNode(_, _, _, _, children) => 1 + sum(count_nodes(child) for child in children)
+        DecisionNode(_, _, _, _, _, []) => 1
+        DecisionNode(_, _, _, _, _, children) => 1 + sum(count_nodes(child) for child in children)
+        FinalNode(_, _, _, _) => 1
     end
 end
 
 # TODO: add function documentation
 function depth_of_tree(root::Node)::Int
     @match root begin
-        RootNode(_, _, []) => 1
-        RootNode(_, _, children) => maximum(depth_of_tree(child) for child in children)
-        ActiveNode(_, _, _, _, _, []) => root.level
-        ActiveNode(_, _, _, _, _, children) => maximum(depth_of_tree(child) for child in children)
-        PassiveNode(_, _, _, _, []) => root.level
-        PassiveNode(_, _, _, _, children) => maximum(depth_of_tree(child) for child in children)
-        EndNode(_, _, _, []) => root.level
-        EndNode(_, _, _, children) => maximum(depth_of_tree(child) for child in children)
+        RootNode(_, _, _, []) => 1
+        RootNode(_, _, _, children) => 1 + maximum(depth_of_tree(child) for child in children)
+        PropertyNode(_, _, _) => 1
+        TriggerNode(_, _, _, _, []) => 1
+        TriggerNode(_, _, _, _, children) => 1 + maximum(depth_of_tree(child) for child in children)
+        DecisionNode(_, _, _, _, _, []) => 1
+        DecisionNode(_, _, _, _, _, children) => 1 + maximum(depth_of_tree(child) for child in children)
+        FinalNode(_, _, _, _) => 1
     end
 end
 
-# TODO: add function documentation
-function max_time(root::Node)::Real
+
+function max_time(root::Node)::Float64
     @match root begin
-        RootNode(_, _, []) => round5(root.config.global_clock)
-        RootNode(_, _, children) => maximum(max_time(child) for child in children)
-        ActiveNode(_, _, _, _, _, []) => round5(root.config.global_clock)
-        ActiveNode(_, _, _, _, _, children) => maximum(max_time(child) for child in children)
-        PassiveNode(_, _, _, _, []) => round5(root.config.global_clock)
-        PassiveNode(_, _, _, _, children) => maximum(max_time(child) for child in children)
-        EndNode(_, _, _, []) => round5(root.config.global_clock)
-        EndNode(_, _, _, children) => maximum(max_time(child) for child in children)
+        RootNode(_, _, _, []) => 0.0
+        RootNode(_, _, _, children) => maximum(max_time(child) for child in children)
+        PropertyNode(_, config, _) => round4(config.global_clock)
+        TriggerNode(_, _, config, _, []) => round4(config.global_clock)
+        TriggerNode(_, _, config, _, children) => maximum(max_time(child) for child in children)
+        DecisionNode(_, _, config, _, _, []) => round4(config.global_clock)
+        DecisionNode(_, _, config, _, _, children) => maximum(max_time(child) for child in children)
+        FinalNode(_, config, _, _) => round4(config.global_clock)
     end
-end
-
-# TODO: add function documentation
-function child_time(child::Node)::Real
-    @match child begin
-        RootNode(_, _, _) => 0
-        ActiveNode(_, _, _, _, _, _) => child.config.global_clock
-        PassiveNode(_, _, _, _, []) => child.config.global_clock
-        PassiveNode(_, _, _, _, children) => child_time(children[1])
-        EndNode(_, _, _, children) => child.config.global_clock
-    end
-end
-
-# TODO: add function documentation
-function sort_children_by_clock!(root::Node)
-    # sorts children by global clock, and if two children have the same clock, the one with the agent's decision comes last
-    sort!(root.children, by = child -> child_time(child))
-end
-
-# TODO: add function documentation
-function sort_children_by_clock_agent(root::Node, agents::Vector{Agent})
-    # sorts children by global clock, and if two children have the same clock, the one with the agent's decision comes last
-    sort(root.children, by = child -> (child_time(child), child.reaching_decision.first in agents))
 end

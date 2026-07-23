@@ -23,8 +23,9 @@ File description.
 """
 
 export Strategy_Formula, Strategy_to_State, Exist_Always, Exist_Eventually, All_Always, All_Eventually
-export Strategy_And, Strategy_Or, Strategy_Not, Strategy_Imply, Strategy_Deadlock
-export get_all_constraints, formula_to_rect_formula
+# export Strategy_And, Strategy_Or, Strategy_Not, Strategy_Imply, Strategy_Deadlock
+export get_all_constraints, formula_to_rect_formula, strategy_to_string
+
 
 # abstract type for all strategy formulas
 abstract type Strategy_Formula <: Logic_Formula end
@@ -39,10 +40,9 @@ Base.:(==)(x::Strategy_to_State, y::Strategy_to_State) = (
     x.formula == y.formula
 )
 
-# TODO: add type documentation
 struct Exist_Always <: Strategy_Formula
     agents::Vector{Agent}
-    formula::Strategy_Formula
+    formula::State_Formula
 end
 
 # redefine comparison
@@ -54,7 +54,7 @@ Base.:(==)(x::Exist_Always, y::Exist_Always) = (
 # TODO: add type documentation
 struct Exist_Eventually <: Strategy_Formula
     agents::Vector{Agent}
-    formula::Strategy_Formula
+    formula::State_Formula
 end
 
 # redefine comparison
@@ -66,7 +66,7 @@ Base.:(==)(x::Exist_Eventually, y::Exist_Eventually) = (
 # TODO: add type documentation
 struct All_Always <: Strategy_Formula
     agents::Vector{Agent}
-    formula::Strategy_Formula
+    formula::State_Formula
 end
 
 # redefine comparison
@@ -78,7 +78,7 @@ Base.:(==)(x::All_Always, y::All_Always) = (
 # TODO: add type documentation
 struct All_Eventually <: Strategy_Formula
     agents::Vector{Agent}
-    formula::Strategy_Formula
+    formula::State_Formula
 end
 
 # redefine comparison
@@ -87,69 +87,19 @@ Base.:(==)(x::All_Eventually, y::All_Eventually) = (
     x.formula == y.formula
 )
 
-# TODO: add type documentation
-struct Strategy_And <: Strategy_Formula
-    left::Strategy_Formula
-    right::Strategy_Formula
-end
 
-# redefine comparison
-Base.:(==)(x::Strategy_And, y::Strategy_And) = (
-    x.left == y.left &&
-    x.right == y.right
-)
-
-# TODO: add type documentation
-struct Strategy_Or <: Strategy_Formula
-    left::Strategy_Formula
-    right::Strategy_Formula
-end
-
-# TODO: add type documentation
-struct Strategy_Not <: Strategy_Formula
-    formula::Strategy_Formula
-end
-
-# redefine comparison
-Base.:(==)(x::Strategy_Not, y::Strategy_Not) = (
-    x.formula == y.formula
-)
-
-# TODO: add type documentation
-struct Strategy_Imply <: Strategy_Formula
-    left::Strategy_Formula
-    right::Strategy_Formula
-end
-
-# redefine comparison
-Base.:(==)(x::Strategy_Imply, y::Strategy_Imply) = (
-    x.left == y.left &&
-    x.right == y.right
-)
-
-# TODO: add type documentation
-struct Strategy_Deadlock <: Strategy_Formula
-end
-
-# TODO: add function documentation
-function get_all_constraints(formula::Strategy_Formula)::Vector{Constraint}
+function get_all_constraints(formula::Strategy_Formula)::Set{Constraint}
     @match formula begin
         Strategy_to_State(f) => get_all_constraints(f)
         Exist_Always(_, f) => get_all_constraints(f)
         Exist_Eventually(_, f) => get_all_constraints(f)
         All_Always(_, f) => get_all_constraints(f)
         All_Eventually(_, f) => get_all_constraints(f)
-        Strategy_And(left, right) => get_all_constraints(left) ∪ get_all_constraints(right)
-        Strategy_Or(left, right) => get_all_constraints(left) ∪ get_all_constraints(right)
-        Strategy_Not(f) => get_all_constraints(f)
-        Strategy_Imply(left, right) => get_all_constraints(left) ∪ get_all_constraints(right)
-        Strategy_Deadlock() => Vector{Constraint}()
     end
 end
 
-# TODO: add function documentation
-function get_all_constraints(formulae::Vector{Logic_Formula})::Vector{Constraint}
-    return union_safe([get_all_constraints(formula) for formula in formulae])
+function get_all_constraints(formulae::Vector{Logic_Formula})::Set{Constraint}
+    return reduce(union, Set([get_all_constraints(formula) for formula in formulae]), init=Set{Constraint}())
 end
 
 # TODO: add function documentation
@@ -160,10 +110,23 @@ function formula_to_rect_formula(formula::Strategy_Formula)::Strategy_Formula
         Exist_Eventually(a, f) => Exist_Eventually(a, formula_to_rect_formula(f))
         All_Always(a, f) => All_Always(a, formula_to_rect_formula(f))
         All_Eventually(a, f) => All_Eventually(a, formula_to_rect_formula(f))
-        Strategy_And(left, right) => Strategy_And(formula_to_rect_formula(left), formula_to_rect_formula(right))
-        Strategy_Or(left, right) => Strategy_Or(formula_to_rect_formula(left), formula_to_rect_formula(right))
-        Strategy_Not(f) => Strategy_Not(formula_to_rect_formula(f))
-        Strategy_Imply(left, right) => Strategy_Imply(formula_to_rect_formula(left), formula_to_rect_formula(right))
-        Strategy_Deadlock() => Strategy_Deadlock()
+    end
+end
+
+function agents_to_string(agents::Vector{Agent})
+    str = ""
+    for agent in agents
+        str *= String(agent) * " "
+    end
+    str
+end
+
+function strategy_to_string(formula::Strategy_Formula)
+    @match formula begin
+        Strategy_to_State(f) => state_to_string(f)
+        Exist_Always(a, f) => "<<$(agents_to_string(a))>> G $(state_to_string(f))"
+        Exist_Eventually(a, f) => "<<$(agents_to_string(a))>> F $(state_to_string(f))"
+        All_Always(a, f) => "[[$(agents_to_string(a))]] G $(state_to_string(f))"
+        All_Eventually(a, f) => "[[$(agents_to_string(a))]] F $(state_to_string(f))"
     end
 end

@@ -24,7 +24,8 @@ File description.
 
 module HybridGames
 
-using DataStructures, DifferentialEquations, Match
+using DataStructures, DifferentialEquations, Match, FunctionWrappers
+using FunctionWrappers: FunctionWrapper
 
 export Agent, Action, Assignment, Valuation, Decision
 export Location, Edge, Game, State
@@ -38,9 +39,7 @@ const Agent = Symbol
 const Action = Symbol
 # TODO: add constant documentation
 const Assignment = OrderedDict{Variable, ExprLike}
-# TODO: add constant documentation
-const Valuation = OrderedDict{Variable, Real}
-# TODO: add constant documentation
+const Valuation = OrderedDict{Variable, Float64}
 const Decision = Pair{Agent, Action}
 
 include("evaluation.jl")

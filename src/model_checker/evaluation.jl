@@ -36,20 +36,21 @@ function get_unsatisfied_constraints(constraints, valuation::Valuation)
 end
 
 # TODO: add function documentation
-function evaluate_state(formula::State_Formula, state::State)::Bool
+function evaluate_state(formula::State_Formula, config::Configuration, deadlock::Bool)::Bool
     @match formula begin
-        State_Location(loc) => loc == state.location
-        State_Constraint(constraint) => evaluate(constraint, state.valuation)
-        State_And(left, right) => evaluate_state(left, state) && evaluate_state(right, state)
-        State_Or(left, right) => evaluate_state(left, state) || evaluate_state(right, state)
-        State_Not(f) => ! evaluate_state(f, state)
-        State_Imply(left, right) => ! evaluate_state(left, state) || evaluate_state(right, state)
+        State_Location(loc) => loc == config.location
+        State_Constraint(constraint) => evaluate(constraint, config.valuation)
+        State_And(left, right) => evaluate_state(left, config, deadlock) && evaluate_state(right, config, deadlock)
+        State_Or(left, right) => evaluate_state(left, config, deadlock) || evaluate_state(right, config, deadlock)
+        State_Not(f) => ! evaluate_state(f, config, deadlock)
+        State_Imply(left, right) => ! evaluate_state(left, config, deadlock) || evaluate_state(right, config, deadlock)
+        State_Deadlock() => deadlock
     end
 end
 
 # TODO: add function documentation
 function is_closed(assignment::Assignment)::Tuple{Bool, Valuation}
-    valuation = OrderedDict{Variable, Real}()
+    valuation = OrderedDict{Variable, Float64}()
     changed = true
     while changed && ! (Set(keys(assignment)) ⊆ Set(keys(valuation)))
         changed = false

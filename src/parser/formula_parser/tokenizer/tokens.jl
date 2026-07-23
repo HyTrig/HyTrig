@@ -18,10 +18,8 @@ This file contains all token definitions needed to convert a string into an arra
 - `VariableToken`: Token for all user defined variables.
 - `NumericToken`: Token for all numeric values.
 - `BooleanToken`: Token for all boolean values.
-- `StrategyConstantToken`: Token for deadlocks.
+- `StateConstantToken`: Token for deadlocks.
 - `QuantifierToken`: Token for quantifier keywords.
-- `StrategyUnaryOperatorToken`: Token for unary operations on strategies.
-- `StrategyBinaryOperatorToken`: Token for binary operations on strategies.
 - `StateUnaryOperatorToken`: Token for unary operations on states.
 - `StateBinaryOperatorToken`: Token for binary operations on states.
 - `ConstraintUnaryOperatorToken`: Token for unary operations on constraints.
@@ -43,7 +41,7 @@ The types are hierarchically ordered as follows:
     |-- NumericToken
     |-- KeywordToken
     |   |-- BooleanToken
-    |   |-- StrategyConstantToken
+    |   |-- StateConstantToken
     |   |-- QuantifierToken
     |-- OperatorToken
         |-- ...UnaryOperatorToken
@@ -53,11 +51,11 @@ The types are hierarchically ordered as follows:
         |-- ExpressionBinaryFunctionToken
 
 # Authors:
-- Moritz Maas
+- 
 """
 
 export Token, KeywordToken, OperatorToken, SeparatorToken, EmptyListToken, CustomToken, NumericToken
-export AgentToken, StrategyConstantToken, QuantifierToken, StrategyUnaryOperatorToken, StrategyBinaryOperatorToken
+export AgentToken, StateConstantToken, QuantifierToken
 export LocationToken, StateUnaryOperatorToken, StateBinaryOperatorToken
 export BooleanToken, ConstraintUnaryOperatorToken, ConstraintBinaryOperatorToken, ConstraintCompareToken
 export VariableToken, ExpressionUnaryOperatorToken, ExpressionBinaryOperatorToken, ExpressionUnBinaryOperatorToken, ExpressionBinaryFunctionToken
@@ -168,19 +166,6 @@ struct BooleanToken <: KeywordToken
 end
 
 """
-    StrategyConstantToken <: KeywordToken
-
-A token for strategy constants like `deadlock`.
-
-    StrategyConstantToken(type::String)
-
-Create a StrategyConstantToken of type `type`.
-"""
-struct StrategyConstantToken <: KeywordToken
-    type::String
-end
-
-"""
     QuantifierToken <: KeywordToken
 
 A token for quantifier keywords.
@@ -194,28 +179,15 @@ struct QuantifierToken <: KeywordToken
 end
 
 """
-    StrategyUnaryOperatorToken <: OperatorToken
+    StateConstantToken <: KeywordToken
 
-A token for unary operators on strategies.
+A token for state constants like `deadlock`.
 
-    StrategyUnaryOperatorToken(type::String)
+    StateConstantToken(type::String)
 
-Create a StrategyUnaryOperatorToken of type `type`.
+Create a StateConstantToken of type `type`.
 """
-struct StrategyUnaryOperatorToken <: OperatorToken
-    type::String
-end
-
-"""
-    StrategyBinaryOperatorToken <: OperatorToken
-
-A token for binary operators on strategies.
-
-    StrategyBinaryOperatorToken(type::String)
-
-Create a StrategyBinaryOperatorToken of type `type`.
-"""
-struct StrategyBinaryOperatorToken <: OperatorToken
+struct StateConstantToken <: KeywordToken
     type::String
 end
 
@@ -235,7 +207,7 @@ end
 """
     StateBinaryOperatorToken <: OperatorToken
 
-A token for unary operators on states.
+A token for binary operators on states.
 
     StateBinaryOperatorToken(type::String)
 

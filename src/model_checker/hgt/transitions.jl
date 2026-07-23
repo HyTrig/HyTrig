@@ -23,14 +23,6 @@ File description.
 """
 
 # TODO: add function documentation
-function continuous_transition(start_config::Configuration, time::Real)::Configuration
-    Configuration(start_config.location, 
-                  continuous_evolution(start_config.valuation, start_config.location.flow, time),
-                    start_config.global_clock + time
-                 )
-end
-
-# TODO: add function documentation
 function discrete_transition(start_config::Configuration, edge::Edge)::Configuration
     Configuration(edge.target_location, 
                   discrete_evolution(start_config.valuation, edge.jump),
@@ -45,7 +37,7 @@ end
 
 # TODO: add function documentation
 function select_edges(config, decision::Decision)::Vector{HGT_Edge}
-    selected_edges = Vector{HGT_Edge}()
+    selected_edges = HGT_Edge[]
     for edge in config.location.edges
         if edge.decision == decision && enabled(edge, config.valuation) 
             push!(selected_edges, edge)

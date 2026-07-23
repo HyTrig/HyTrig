@@ -11,7 +11,7 @@ This file contains all functions related to the Monotonic Hybrid Games (MHG) edi
 - `mhg_verify()::String`: Verify the current game.
 
 # Authors:
-- Moritz Maas
+- 
 """
 
 
@@ -70,7 +70,7 @@ Save the current game to a file given by `path`.
 - `path::QString`: The file path to save to.
 """
 function mhg_save(path::QString)
-    data::Dict{String, Any} = Dict([
+    data::OrderedDict{String, Any} = OrderedDict([
         "game_type" => "MHG",
         "agents" => mhg_agent_list,
         "actions" => mhg_action_list,
@@ -111,14 +111,18 @@ function mhg_save(path::QString)
             ) for edge in mhg_edge_list
         ],
         "queries" => mhg_query_list,
-        "config" => Dict([
+        "termination_conditions" => Dict([
             "max_steps" => mhg_models["max_steps"],
             "time_bound" => mhg_models["time_bound"],
             "state_formula" => mhg_models["state_formula"],
         ]),
     ])
 
-    open(replace(String(path), r"^(file:\/{2})" => ""), "w") do f
+    if Sys.iswindows()
+        path = replace(String(path), r"^\/" => "")
+    end
+
+    open(String(path), "w") do f
         JSON3.pretty(f, JSON3.write(data))
     end
 end
@@ -142,7 +146,10 @@ function mhg_load(path::QString)::String
     data = Dict{String, Any}()
 
     try
-        data = open(replace(String(path), r"^(file:\/{2})" => ""), "r") do f
+        if Sys.iswindows()
+            path = replace(String(path), r"^\/" => "")
+        end
+        data = open(String(path), "r") do f
             JSON3.read(f)
         end
     catch e
@@ -158,7 +165,7 @@ function mhg_load(path::QString)::String
         load_elements("variables", QMHGVariable, mhg_variable_list)
         empty!(mhg_location_list)
         for loc in data["locations"]
-            flow_list::Vector{QMHGFlow} = Vector{QMHGFlow}()
+            flow_list::Vector{QMHGFlow} = QMHGFlow[]
             for flow in loc["flow"]
                 push!(flow_list, StructTypes.constructfrom(QMHGFlow, flow))
             end
@@ -166,7 +173,7 @@ function mhg_load(path::QString)::String
         end
         empty!(mhg_edge_list)
         for edge in data["edges"]
-            jump_list::Vector{QMHGJump} = Vector{QMHGJump}()
+            jump_list::Vector{QMHGJump} = QMHGJump[]
             for jump in edge["jump"]
                 push!(jump_list, StructTypes.constructfrom(QMHGJump, jump))
             end
@@ -174,11 +181,11 @@ function mhg_load(path::QString)::String
         end
         load_elements("queries", QMHGQuery, mhg_query_list)
 
-        mhg_models["max_steps"] = data["config"]["max_steps"]
-        mhg_models["time_bound"] = data["config"]["time_bound"]
-        mhg_models["state_formula"] = data["config"]["state_formula"]
+        mhg_models["max_steps"] = data["termination_conditions"]["max_steps"]
+        mhg_models["time_bound"] = data["termination_conditions"]["time_bound"]
+        mhg_models["state_formula"] = data["termination_conditions"]["state_formula"]
     catch e
-        return "invalid HYTRIG file for Monotonic Hybrid Games: Missing key $(e.key)"
+        return "invalid JSON file for Monotonic Hybrid Games: Missing key $(e.key)"
     end
 
     return ""

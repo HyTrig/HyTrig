@@ -1,7 +1,7 @@
 /**
 * @file Agent.qml
 * @brief GUI component for an agent of the HyTrig GUI
-* @authors Moritz Maas
+* @authors 
 */
 
 import org.julialang

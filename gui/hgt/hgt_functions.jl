@@ -1,7 +1,7 @@
 """
     HGT Functions
     
-This file contains all functions related to the Hybrid Games with Triggers (HGT) editor in the HyTrig GUI.
+This file contains all functions related to the Hybrid Games with Triggers (HGT) editor in the HGH-MC GUI.
 
 # Functions:
 - `hgt_name_available(name::QString)::Bool`: Check whether a name is available.
@@ -9,11 +9,11 @@ This file contains all functions related to the Hybrid Games with Triggers (HGT)
 - `hgt_save(path::QString)`: Save the current game to a file.
 - `hgt_load(path::QString)::String`: Load a game from a file.
 - `hgt_verify()::String`: Verify the current game.
+- `hgt_set_tree(i::Int32)`: Set the branch model to query with index `i`.
 - `hgt_up_tree()::Bool`: Set the branch model to the current nodes parent layer.
 - `hgt_down_tree(i::Int32, j::Int32)::Bool`: Set the branch model to the child layer of child `j` of branch `i`.
 
 # Authors:
-- Moritz Maas
 """
 
 """
@@ -79,7 +79,7 @@ Save the current game to a file given by `path`.
 - `path::QString`: The file path to save to.
 """
 function hgt_save(path::QString)
-    data::Dict{String, Any} = Dict([
+    data::OrderedDict{String, Any} = OrderedDict([
         "game_type" => "HGT",
         "agents" => hgt_agent_list,
         "actions" => hgt_action_list,
@@ -114,14 +114,14 @@ function hgt_save(path::QString)
             ) for edge in hgt_edge_list
         ],
         "queries" => hgt_query_list,
-        "config" => Dict([
+        "termination_conditions" => Dict([
             "max_steps" => hgt_models["max_steps"],
             "time_bound" => hgt_models["time_bound"],
             "state_formula" => hgt_models["state_formula"],
         ]),
     ])
 
-    open(replace(String(path), r"^(file:\/{2})" => ""), "w") do f
+    open(_get_path(path), "w") do f
         JSON3.pretty(f, JSON3.write(data))
     end
 end
@@ -145,11 +145,11 @@ function hgt_load(path::QString)::String
     data = Dict{String, Any}()
 
     try
-        data = open(replace(String(path), r"^(file:\/{2})" => ""), "r") do f
+        data = open(_get_path(path), "r") do f
             JSON3.read(f)
         end
     catch e
-        return String(strip(e.msg, ['\n', '\r', ' ']))
+        throw(e)
     end
 
     try
@@ -162,7 +162,7 @@ function hgt_load(path::QString)::String
         load_elements("triggers", QHGTTrigger, hgt_trigger_list)
         empty!(hgt_location_list)
         for loc in data["locations"]
-            flow_list::Vector{QHGTFlow} = Vector{QHGTFlow}()
+            flow_list::Vector{QHGTFlow} = QHGTFlow[]
             for flow in loc["flow"]
                 push!(flow_list, StructTypes.constructfrom(QHGTFlow, flow))
             end
@@ -170,19 +170,25 @@ function hgt_load(path::QString)::String
         end
         empty!(hgt_edge_list)
         for edge in data["edges"]
-            jump_list::Vector{QHGTJump} = Vector{QHGTJump}()
+            jump_list::Vector{QHGTJump} = QHGTJump[]
             for jump in edge["jump"]
                 push!(jump_list, StructTypes.constructfrom(QHGTJump, jump))
             end
             push!(hgt_edge_list, QHGTEdge(edge["source"], edge["target"], edge["guard"], edge["agent"], edge["action"], JuliaItemModel(jump_list)))
         end
-        load_elements("queries", QHGTQuery, hgt_query_list)
+        empty!(hgt_query_list)
+        for query in data["queries"]
+            push!(hgt_query_list, QHGTQuery(query["formula"]))
+        end
 
-        hgt_models["max_steps"] = data["config"]["max_steps"]
-        hgt_models["time_bound"] = data["config"]["time_bound"]
-        hgt_models["state_formula"] = data["config"]["state_formula"]
+        hgt_models["max_steps"] = data["termination_conditions"]["max_steps"]
+        hgt_models["time_bound"] = data["termination_conditions"]["time_bound"]
+        hgt_models["state_formula"] = data["termination_conditions"]["state_formula"]
     catch e
-        return "invalid HYTRIG file for Hybrid Games with Triggers: Missing key $(e.key)"
+        if e isa KeyError
+            return "invalid JSON file for Hybrid Games with Triggers: Missing key $(e.key)"
+        end
+        throw(e)
     end
 
     return ""
@@ -194,13 +200,13 @@ end
 Verify the current game.
 """
 function hgt_verify()::String
-    global hgt_tree
+    global hgt_tree, hgt_tree_string
     bindings::Bindings = Bindings(
         [x.name for x in hgt_agent_list],
         [x.name for x in hgt_location_list],
         [x.name for x in hgt_variable_list]
     )
-    results::Vector{Bool} = []
+    results::Vector{Bool} = Bool[]
     try
         locations = Vector{HGT_Location}([
             HGT_Location(
@@ -237,7 +243,7 @@ function hgt_verify()::String
         for x in hgt_trigger_list
             agent = Agent(x.agent)
             if !haskey(triggers, agent)
-                triggers[agent] = Vector{Constraint}()
+                triggers[agent] = Constraint[]
             end
             push!(triggers[agent], parse(x.trigger, bindings, constraint))
         end    
@@ -250,32 +256,32 @@ function hgt_verify()::String
             edges,
             triggers
         )
-
-        results, hgt_tree = evaluate_queries(
-            game,
-            Termination_Conditions(
-                Base.parse(Float64, hgt_models["time_bound"]),
-                Base.parse(Int64, hgt_models["max_steps"]),
-                parse(hgt_models["state_formula"], bindings, state)
-            ),
-            Vector{Strategy_Formula}([parse(query.formula, bindings, strategy) for query in hgt_query_list])
+        term_cond = Termination_Conditions(
+            Base.parse(Float64, hgt_models["time_bound"]),
+            Base.parse(Int64, hgt_models["max_steps"]),
+            parse(hgt_models["state_formula"], bindings, state)
         )
+        empty!(hgt_tree)
+        empty!(hgt_tree_string)
+        for query in hgt_query_list
+            result, query_tree, _ = check_query(game, term_cond, parse(query.formula, bindings, strategy))
+            push!(results, result)
+            push!(hgt_tree, query_tree)
+            push!(hgt_tree_string, print_tree(query_tree, query.formula, result))
+        end
     catch e
         if e isa TokenizeError
             return "tokenize error: $(e.msg)"
         elseif e isa ParseError
             return "parse error: $(e.msg)"
-        elseif e isa KeyError
-            return "key error: undefined variable '$(e.key)'"
         end
         throw(e)
     end
 
     empty!(hgt_branch_list)
 
-    if !isnothing(hgt_tree)
-        hgt_tree = build_gui_tree(hgt_tree)
-        push!(hgt_branch_list, QHGTBranch(hgt_tree.branches[1]))
+    for (i, query_tree) in enumerate(hgt_tree)
+        hgt_tree[i] = build_gui_tree(query_tree)
     end
 
     for (i, query) in enumerate(hgt_query_list)
@@ -286,23 +292,43 @@ function hgt_verify()::String
 end
 
 """
+    hgt_set_tree(i::Int32)
+
+Set the branch model to query with index `i`.
+
+# Arguments:
+- `i::Int32`: The index of the query to set the tree to.
+"""
+function hgt_set_tree(i::Int32)
+    global hgt_tree, current_query
+    if 0 <= i < length(hgt_tree)
+        current_query = Int(i) + 1;
+        empty!(hgt_branch_list)
+        push!(hgt_branch_list, QHGTBranch(hgt_tree[current_query].branches[1]))
+        hgt_models["tree_location"] = string(hgt_tree[current_query].config.location.name)
+    end
+end
+
+"""
     hgt_up_tree()::Bool
 
 Set the branch model to the current nodes parent layer.
 """
 function hgt_up_tree()::Bool
-    global hgt_tree
-    if isnothing(hgt_tree) || isnothing(hgt_tree.parent)
+    global hgt_tree, current_query
+    if current_query == -1 || isnothing(hgt_tree[current_query].parent)
         return false
     end
 
     empty!(hgt_branch_list)
 
-    hgt_tree = hgt_tree.parent
+    hgt_tree[current_query] = hgt_tree[current_query].parent
 
-    for branch in hgt_tree.branches
+    for branch in hgt_tree[current_query].branches
         push!(hgt_branch_list, QHGTBranch(branch))
     end
+
+    hgt_models["tree_location"] = string(hgt_tree[current_query].config.location.name)
     return true
 end
 
@@ -316,22 +342,60 @@ Set the branch model to the child layer of child `j` of branch `i`.
 - `j::Int32`: The index of the child to go down to.
 """
 function hgt_down_tree(i::Int32, j::Int32)::Bool
-    global hgt_tree
-    if isempty(hgt_branch_list) || isnothing(hgt_tree)
+    global hgt_tree, current_query
+    if current_query == -1 ||isempty(hgt_branch_list) || isnothing(hgt_tree[current_query])
         return false
     end
 
     i = Int(i) + 1
     j = Int(j) + 1
 
-    if 0 < i <= length(hgt_tree.branches) && 0 < j <= length(hgt_tree.branches[i].active_nodes)
+    if 0 < i <= length(hgt_tree[current_query].branches) && 0 < j <= length(hgt_tree[current_query].branches[i].action_nodes)
         empty!(hgt_branch_list)
-        hgt_tree = hgt_tree.branches[i].active_nodes[j]
-        for branch in hgt_tree.branches
+        hgt_tree[current_query] = hgt_tree[current_query].branches[i].action_nodes[j]
+        for branch in hgt_tree[current_query].branches
             push!(hgt_branch_list, QHGTBranch(branch))
         end
+        hgt_models["tree_location"] = string(hgt_tree[current_query].config.location.name)
         return true
     else
         return false
     end
+end
+
+"""
+    hgt_save_tree(path::QString)::Bool
+
+Save the current game tree to a file.
+"""
+function hgt_save_tree(path::QString)::Bool
+    global hgt_tree_string, current_query
+    if current_query == -1 || isnothing(hgt_tree_string[current_query])
+        return false
+    end
+    open(_get_path(path), "w") do f
+        write(f, hgt_tree_string[current_query])
+    end
+    return true
+end
+
+"""
+    hgt_save_trees()::Bool
+
+Save all game trees to files.
+"""
+function hgt_save_trees(path::QString)::Bool
+    global hgt_tree_string, current_query
+    open(_get_path(path), "w") do f
+        write(f, print_trees([s for s in hgt_tree_string]))
+    end
+    return true
+end
+
+function _get_path(path::QString)::String
+    path = replace(String(path), r"^(file:\/{2})" => "")
+    if Sys.iswindows()
+        path = replace(path, r"^\/" => "")
+    end
+    return path
 end

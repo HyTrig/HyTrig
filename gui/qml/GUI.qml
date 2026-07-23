@@ -1,7 +1,7 @@
 /**
 * @file GUI.qml
 * @brief Main GUI component for the HyTrig GUI
-* @authors Moritz Maas
+* @authors 
 */
 
 import org.julialang
@@ -31,6 +31,7 @@ ApplicationWindow {
 
     property string current_file: ""
     property bool verified: false
+    property alias save_tree_dialog: save_tree_dialog
 
     readonly property GameType game: game_types[game_type_selector.previous_index]
     readonly property list<GameType> game_types: [
@@ -382,12 +383,13 @@ ApplicationWindow {
                 width: parent.width
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.bottom: verified ? tree_button.top : parent.bottom
+                anchors.bottom: verified ? save_trees_button.top : parent.bottom
                 anchors.margins: 10
 
                 text: qsTr("Verify")
 
                 onClicked: {
+                    forceActiveFocus();
                     verify_action.trigger();
                 }
 
@@ -395,18 +397,18 @@ ApplicationWindow {
 
             Button {
 
-                id: tree_button
+                id: save_trees_button
                 width: parent.width
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.bottom: parent.bottom
                 anchors.margins: 10
-
-                text: qsTr("View Tree")
                 visible: verified
 
+                text: qsTr("Save trees")
+
                 onClicked: {
-                    game.show_tree();
+                    game.save_trees();
                 }
 
             }
@@ -482,16 +484,18 @@ ApplicationWindow {
         // Function executed after saving, set before opening the dialog
         property var action: function(x) {}
         
-        title: qsTr("Select a location to save the HyTrig file")
+        title: qsTr("Select a location to save the JSON file")
         
         fileMode: FileDialog.SaveFile
-        nameFilters: ["HyTrig files (*.hytrig)"]
-        defaultSuffix: "hytrig"
+        currentFolder: Qt.resolvedUrl("../../examples/")
+        nameFilters: ["JSON files (*.json)"]
+        defaultSuffix: "json"
 
         onAccepted: {
-            game.save(selectedFile.toString());
-            current_file = selectedFile.toString();
-            action(selectedFile.toString());
+            var path = selectedFile.toString();
+            game.save(path);
+            current_file = path;
+            action(path);
         }
 
     }
@@ -501,20 +505,22 @@ ApplicationWindow {
         id: load_dialog
         parentWindow: main_window
 
-        title: qsTr("Select a HyTrig file to load")
+        title: qsTr("Select a JSON file to load")
 
         fileMode: FileDialog.OpenFile
-        nameFilters: ["HyTrig files (*.hytrig)"]
-        defaultSuffix: "hytrig"
+        currentFolder: Qt.resolvedUrl("../../examples/")
+        nameFilters: ["JSON files (*.json)"]
+        defaultSuffix: "json"
 
         onAccepted: {
-            var error = game.load(selectedFile.toString());
+            var path = selectedFile.toString();
+            var error = game.load(path);
             if (error != "") {
-                error_dialog.text = qsTr("An error occurred while loading " + selectedFile.toString() + ":");
+                error_dialog.text = qsTr("An error occurred while loading " + path + ":");
                 error_dialog.informativeText = error;
                 error_dialog.open();
             } else {
-                current_file = selectedFile.toString();
+                current_file = path;
             }
         }
 
@@ -532,6 +538,30 @@ ApplicationWindow {
         informativeText: qsTr("")
 
         buttons: MessageDialog.Ok
+
+    }
+
+    FileDialog {
+
+        id: save_tree_dialog
+        parentWindow: main_window
+
+        // Function executed after saving, set before opening the dialog
+        property var action: function(x) {}
+        
+        title: qsTr("Select a location to save the game tree")
+        
+        fileMode: FileDialog.SaveFile
+        currentFolder: Qt.resolvedUrl("../../logs/")
+        nameFilters: ["Markdown files (*.md)"]
+        defaultSuffix: "md"
+
+        onAccepted: {
+            var path = selectedFile.toString();
+            game.save(path);
+            current_file = path;
+            action(path);
+        }
 
     }
 

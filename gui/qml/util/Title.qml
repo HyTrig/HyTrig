@@ -1,7 +1,7 @@
 /**
 * @file Title.qml
 * @brief GUI component for a title text of the HyTrig GUI
-* @authors Moritz Maas
+* @authors 
 */
 
 import QtQuick

@@ -34,7 +34,7 @@ end
     @test test_tokens[1].type == "true"
     @test test_tokens[2] isa ConstraintBinaryOperatorToken
     @test test_tokens[2].type == "&&"
-    @test test_tokens[3] isa StrategyConstantToken
+    @test test_tokens[3] isa StateConstantToken
     @test test_tokens[3].type == "deadlock"
 
     # test comparison tokenization
@@ -95,6 +95,7 @@ end
     @test_throws TokenizeError("''' is an invalid starting symbol.") tokenize("a'b", Bindings([], [], ["a", "b"]))
     @test_throws TokenizeError("'_' is an invalid starting symbol.") tokenize("a && _b", Bindings([], [], ["a", "b"]))
     @test_throws TokenizeError("'a' is not defined in bindings.") tokenize("a", Bindings([], [], []))
+    @test_throws TokenizeError("'and' is not defined in bindings.") tokenize("true and false", Bindings([], [], []))
 end
 
 end

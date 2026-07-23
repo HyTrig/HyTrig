@@ -1,7 +1,7 @@
 /**
 * @file ContentFrame.qml
 * @brief GUI component for a content frame of the HyTrig GUI
-* @authors Moritz Maas
+* @authors 
 */
 
 import QtQuick

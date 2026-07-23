@@ -7,7 +7,7 @@ This file contains all definitions related to Monotonic Hybrid Games in the GUI 
 - `mhg_models::JuliaPropertyMap`: A map to store item models of MHG objects.
 
 # Authors:
-- Moritz Maas
+- 
 """
 
 """

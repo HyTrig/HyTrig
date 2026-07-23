@@ -1,7 +1,7 @@
 /**
 * @file BracketSelector.qml
 * @brief GUI component for selecting an interval bracket of the HyTrig GUI
-* @authors Moritz Maas
+* @authors 
 */
 
 import QtQuick

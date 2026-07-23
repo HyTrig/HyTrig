@@ -14,8 +14,8 @@ This file defines the QML objects used in the HyTrig GUI by the HGT game type.
 - `QHGTJump`: Represents a jump in an edge.
 - `QHGTQuery`: Represents a query in a hybrid game.
 - `QHGTBranch`: Represents a tree branch used in QML models.
-- `QHGTActiveNode`: Represents an active tree node used in QML models.
-- `QHGTPassiveNode`: Represents a passive tree node used in QML models.
+- `QHGTDecisionNode`: Represents an active tree node used in QML models.
+- `QHGTPropertyNode`: Represents a passive tree node used in QML models.
 
 # Global variables:
 - `hgt_action_list::Vector{QHGTAction}`: A list of actions
@@ -28,7 +28,6 @@ This file defines the QML objects used in the HyTrig GUI by the HGT game type.
 - `hgt_branch_list::Vector{QHGTBranch}`: A list of tree
 
 # Authors:
-- Moritz Maas
 """
 
 """
@@ -223,9 +222,10 @@ A tree branch used in QML models.
 mutable struct QHGTBranch
     agent::String
     trigger::String
+    valuation::String
     time::Float64
-    active_nodes::JuliaItemModel
-    passive_nodes::JuliaItemModel
+    action_nodes::JuliaItemModel
+    property_nodes::JuliaItemModel
 end
 
 """
@@ -237,43 +237,44 @@ Create a QHGTBranch from the given branch `branch`.
 """
 function QHGTBranch(branch::GUIBranch)::QHGTBranch
     return QHGTBranch(
-        if isnothing(branch.reaching_decision)
+        if isnothing(branch.reaching_trigger)
             ""
         else
-            string(branch.reaching_decision[1])
+            string(branch.reaching_trigger[1])
         end,
         if isnothing(branch.reaching_trigger)
             ""
         else
-            constraint_to_string(branch.reaching_trigger)
+            constraint_to_string(branch.reaching_trigger[2])
         end,
-        trunc(branch.config.global_clock, digits=5),
-        JuliaItemModel([QHGTActiveNode(node) for node in branch.active_nodes]),
-        JuliaItemModel([QHGTPassiveNode(node) for node in branch.passive_nodes])
+        _get_valuation_string(branch.config.valuation),
+        trunc(branch.config.global_clock, digits=4),
+        JuliaItemModel([QHGTDecisionNode(node) for node in branch.action_nodes]),
+        JuliaItemModel([QHGTPropertyNode(node) for node in branch.property_nodes])
     )
 end
 
 """
-    QHGTActiveNode
+    QHGTDecisionNode
 
 An active tree node used in QML models.
 """
-mutable struct QHGTActiveNode
+mutable struct QHGTDecisionNode
     location::String
     action::String
     valuation::String
-    clickable::Bool
+    terminal::Bool
 end
 
 """
-    QHGTActiveNode(node::GUINode)::QHGTActiveNode
+    QHGTDecisionNode(node::GUINode)::QHGTDecisionNode
 
-Create a QAction from the given GUI node `node`.
+Create a decision node from the given GUI node `node`.
 # Arguments
 - `node::GUINode`: The GUI node.
 """
-function QHGTActiveNode(node::GUINode)::QHGTActiveNode
-    QHGTActiveNode(
+function QHGTDecisionNode(node::GUINode)::QHGTDecisionNode
+    QHGTDecisionNode(
         string(node.config.location.name),
         if isnothing(node.reaching_decision)
             ""
@@ -281,31 +282,51 @@ function QHGTActiveNode(node::GUINode)::QHGTActiveNode
             string(node.reaching_decision[2])
         end,
         _get_valuation_string(node.config.valuation),
-        !isempty(node.branches)
+        isempty(node.branches)
     )
 end
 
 """
-    QHGTPassiveNode
+    QHGTPropertyNode
 
 A passive tree node used in QML models.
 """
-mutable struct QHGTPassiveNode
+mutable struct QHGTPropertyNode
     valuation::String
     time::Float64
+    is_end::Bool
+    deadlock::Bool
 end
 
 """
-    QHGTPassiveNode(node::PassiveNode)::QHGTPassiveNode
+    QHGTPropertyNode(node::PropertyNode)::QHGTPropertyNode
 
-Create a QHGTPassiveNode from the given passive node `node`.
+Create a QHGTPropertyNode from the given property node `node`.
 # Arguments
-- `node::PassiveNode`: The passive node.
+- `node::PropertyNode`: The property node.
 """
-function QHGTPassiveNode(node::PassiveNode)::QHGTPassiveNode
-    return QHGTPassiveNode(
+function QHGTPropertyNode(node::PropertyNode)::QHGTPropertyNode
+    return QHGTPropertyNode(
         _get_valuation_string(node.config.valuation),
-        trunc(node.config.global_clock, digits=5)
+        trunc(node.config.global_clock, digits=4),
+        false,
+        false
+    )
+end
+
+"""
+    QHGTPropertyNode(node::FinalNode)::QHGTPropertyNode
+
+Create a QHGTPropertyNode from the given final node `node`.
+# Arguments
+- `node::FinalNode`: The final node.
+"""
+function QHGTPropertyNode(node::FinalNode)::QHGTPropertyNode
+    return QHGTPropertyNode(
+        _get_valuation_string(node.config.valuation),
+        trunc(node.config.global_clock, digits=4),
+        true,
+        node.deadlock
     )
 end
 
@@ -323,6 +344,7 @@ StructTypes.StructType(::Type{QHGTQuery}) = StructTypes.Mutable()
 hgt_models["max_steps"] = "10"
 hgt_models["time_bound"] = "13.37"
 hgt_models["state_formula"] = "!location"
+hgt_models["tree_location"] = ""
 
 """
     hgt_action_list::Vector{QHGTAction}
@@ -388,5 +410,5 @@ hgt_models["queries"] = JuliaItemModel(hgt_query_list)
 
 A list of branches in the current Hybrid Game with Triggers.
 """
-hgt_branch_list::Vector{QHGTBranch} = []
+hgt_branch_list::Vector{QHGTBranch} = QHGTBranch[]
 hgt_models["branches"] = JuliaItemModel(hgt_branch_list)

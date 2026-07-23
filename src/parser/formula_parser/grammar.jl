@@ -26,7 +26,7 @@ This file contains all grammar rules needed to parse a strategy formula.
 - `level_to_grammar`: A map from parse levels to their corresponding grammars.
 
 # Authors:
-- Moritz Maas
+- 
 """
 
 export ParseError, ParseLevel, expression, constraint, state, strategy
@@ -92,7 +92,7 @@ end
 # expr -> number
 function _parse_numeric_expression(left_tokens::ParseVector, token::NumericToken, right_tokens::ParseVector)::ExpressionConstant
     _check_token_count(0, 0, left_tokens, right_tokens)
-    return ExpressionConstant(Real(Base.parse(Float64, token.type)))
+    return ExpressionConstant(Float64(Base.parse(Float64, token.type)))
 end
 
 # constr -> boolean
@@ -101,9 +101,10 @@ function _parse_boolean_constraint(left_tokens::ParseVector, token::BooleanToken
     return ConstraintConstant(token.type == "true")
 end
 
-# strategy -> deadlock
-function _parse_deadlock_strategy(left_tokens::ParseVector, token::StrategyConstantToken, right_tokens::ParseVector)::StrategyConstant
-    return StrategyConstant(token.type)
+# state -> deadlock
+function _parse_state_constant(left_tokens::ParseVector, token::StateConstantToken, right_tokens::ParseVector)::StateConstant
+    _check_token_count(0, 0, left_tokens, right_tokens)
+    return StateConstant(token.type)
 end
 
 """
@@ -120,8 +121,8 @@ pre_parse_grammar::Grammar = Dict([
     (NumericToken, [GrammarRule([], [], _parse_numeric_expression)]),
     # constr -> boolean
     (BooleanToken, [GrammarRule([], [], _parse_boolean_constraint)]),
-    # strategy -> deadlock
-    (StrategyConstantToken, [GrammarRule([], [], _parse_deadlock_strategy)])
+    # state -> deadlock
+    (StateConstantToken, [GrammarRule([], [], _parse_state_constant)])
 ])
 
 
@@ -232,6 +233,8 @@ const state_grammar::Grammar = Dict([
     # state -> ( state )
     (LocationNode, [GrammarRule([SeparatorToken("(")], [SeparatorToken(")")], _parse_bracket)]),
     # state -> ( state )
+    (StateConstant, [GrammarRule([SeparatorToken("(")], [SeparatorToken(")")], _parse_bracket)]),
+    # state -> ( state )
     (StateUnaryOperation, [GrammarRule([SeparatorToken("(")], [SeparatorToken(")")], _parse_bracket)]),
     # state -> ( state )
     (StateBinaryOperation, [GrammarRule([SeparatorToken("(")], [SeparatorToken(")")], _parse_bracket)]),
@@ -288,38 +291,15 @@ function _parse_empty_quantifier_strategy(left_tokens::ParseVector, token::Quant
     return Quantifier(left_tokens[1].type == "[[", token.type == "G", Agents(left_tokens[1].type == "[[", AgentList([])), right_tokens[1])
 end
 
-# strat -> strat_unary_op strat
-function _parse_unary_strategy(left_tokens::ParseVector, token::StrategyUnaryOperatorToken, right_tokens::ParseVector)::StrategyUnaryOperation
-    _check_token_count(0, 1, left_tokens, right_tokens)
-    return StrategyUnaryOperation(token.type, right_tokens[1])
-end
-
-# strat -> strat strat_binary_op strat
-function _parse_binary_strategy(left_tokens::ParseVector, token::StrategyBinaryOperatorToken, right_tokens::ParseVector)::StrategyBinaryOperation
-    _check_token_count(1, 1, left_tokens, right_tokens)
-    return StrategyBinaryOperation(token.type, left_tokens[1], right_tokens[1])
-end
-
-"""
-The grammar for parsing strategy formulas.
-"""
 const strategy_grammar::Grammar = Dict([
     # strat -> ( strat )
     (Quantifier, [GrammarRule([SeparatorToken("(")], [SeparatorToken(")")], _parse_bracket)]),
-    # strat -> ( strat )
-    (StrategyUnaryOperation, [GrammarRule([SeparatorToken("(")], [SeparatorToken(")")], _parse_bracket)]),
-    # strat -> ( strat )
-    (StrategyBinaryOperation, [GrammarRule([SeparatorToken("(")], [SeparatorToken(")")], _parse_bracket)]),
-    # strat -> agent_list F strat | agent_list G strat
-    (QuantifierToken, [GrammarRule([Agents], [StrategyNode], _parse_quantifier_strategy),
-    # strat -> << >> F strat | << >> G strat
-                    GrammarRule([SeparatorToken("<<"), SeparatorToken(">>")], [StrategyNode], _parse_empty_quantifier_strategy),
-    # strat -> [[ ]] F strat | [[ ]] G strat
-                    GrammarRule([SeparatorToken("[["), SeparatorToken("]]")], [StrategyNode], _parse_empty_quantifier_strategy)]),
-    # strat -> strat_unary_op strat
-    (StrategyUnaryOperatorToken, [GrammarRule([], [StrategyNode], _parse_unary_strategy)]),
-    # strat -> strat strat_binary_op strat
-    (StrategyBinaryOperatorToken, [GrammarRule([StrategyNode], [StrategyNode], _parse_binary_strategy)])
+    # strat -> agent_list F state | agent_list G state
+    (QuantifierToken, [GrammarRule([Agents], [StateNode], _parse_quantifier_strategy),
+    # strat -> << >> F state | << >> G state
+                    GrammarRule([SeparatorToken("<<"), SeparatorToken(">>")], [StateNode], _parse_empty_quantifier_strategy),
+    # strat -> [[ ]] F state | [[ ]] G state
+                    GrammarRule([SeparatorToken("[["), SeparatorToken("]]")], [StateNode], _parse_empty_quantifier_strategy)])
 ])
 
 
@@ -369,8 +349,7 @@ const operator_type_to_strength::Dict{Type, Dict{String, Int}} = Dict([
     (ExpressionUnBinaryOperatorToken, expression_operator_strength),
     (ExpressionBinaryOperatorToken, expression_operator_strength),
     (ConstraintBinaryOperatorToken, constraint_operator_strength),
-    (StateBinaryOperatorToken, constraint_operator_strength),
-    (StrategyBinaryOperatorToken, strategy_operator_strength)
+    (StateBinaryOperatorToken, constraint_operator_strength)
 ])
 
 

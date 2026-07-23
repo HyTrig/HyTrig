@@ -7,7 +7,7 @@ This file contains all definitions related to the GUI of HyTrig.
 - `roles::JuliaPropertyMap`: A map to store the index of object roles.
 
 # Authors:
-- Moritz Maas
+- 
 """
 
 """

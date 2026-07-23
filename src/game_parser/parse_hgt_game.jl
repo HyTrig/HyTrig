@@ -4,24 +4,24 @@
 This file contains the functions to parse a JSON file containing a game description of a Hybrid Game with Triggers.
 
 # Functions:
-- `parse_hgt_game(hytrig_file::String)::Tuple{HGT_Game, Termination_Conditions, Vector{Strategy_Formula}, Vector{String}}`: Parse a HGT game from a JSON file.
+- `parse_hgt_game(json_file::String)::Tuple{HGT_Game, Termination_Conditions, Vector{Strategy_Formula}, Vector{String}}`: Parse a HGT game from a JSON file.
 
 # Authors:
-- Moritz Maas
+- 
 """
 
 export parse_hgt_game
 
 """
-    parse_hgt_game(hytrig_file::String)::Tuple{HGT_Game, Termination_Conditions, Vector{Strategy_Formula}, Vector{String}}
+    parse_hgt_game(json_file::String)::Tuple{HGT_Game, Termination_Conditions, Vector{Strategy_Formula}, Vector{String}}
 
 Parse a HGT game from a JSON file.
 
 # Arguments
-- `hytrig_file::String`: Path to the JSON file containing the game description.
+- `json_file::String`: Path to the JSON file containing the game description.
 """
-function parse_hgt_game(hytrig_file::String)::Tuple{HGT_Game, Termination_Conditions, Vector{Strategy_Formula}, Vector{String}}
-    data = open(hytrig_file,"r") do f
+function parse_hgt_game(json_file::String)::Tuple{HGT_Game, Termination_Conditions, Vector{Strategy_Formula}, Vector{String}}
+    data = open(json_file,"r") do f
         JSON3.read(f)
     end
     agents = Vector{Agent}([Agent(agent["name"]) for agent in data["agents"]])
@@ -39,7 +39,7 @@ function parse_hgt_game(hytrig_file::String)::Tuple{HGT_Game, Termination_Condit
             Symbol(loc["name"]),
             parse(loc["invariant"], bindings, constraint),
             Assignment(
-                Variable(flow["variable"]) => parse(flow["expression"], bindings, expression) for flow in loc["flow"]
+                Variable(flow["variable"]) => parse(flow["expression"], bindings, expression) for flow in loc["flow"] if flow["expression"] != "0"
             )
         ) for loc in data["locations"]
     ])
@@ -61,7 +61,7 @@ function parse_hgt_game(hytrig_file::String)::Tuple{HGT_Game, Termination_Condit
                 Action(edge["action"])
             ),
             Assignment(
-                Variable(jump["variable"]) => parse(jump["expression"], bindings, expression) for jump in edge["jump"]
+                Variable(jump["variable"]) => parse(jump["expression"], bindings, expression) for jump in edge["jump"] if jump["expression"] != jump["variable"]
             )
         ) for (i, edge) in enumerate(data["edges"])
     ])
@@ -69,7 +69,7 @@ function parse_hgt_game(hytrig_file::String)::Tuple{HGT_Game, Termination_Condit
     for trigger in data["triggers"]
         agent = Agent(trigger["agent"])
         if !haskey(triggers, agent)
-            triggers[agent] = Vector{Constraint}()
+            triggers[agent] = Constraint[]
         end
         push!(triggers[agent], parse(trigger["trigger"], bindings, constraint))
     end
@@ -83,9 +83,9 @@ function parse_hgt_game(hytrig_file::String)::Tuple{HGT_Game, Termination_Condit
         triggers
     )
     termination_conditions = Termination_Conditions(
-        Base.parse(Float64, data["config"]["time_bound"]),
-        Base.parse(Int64, data["config"]["max_steps"]),
-        parse(data["config"]["state_formula"], bindings, state)
+        Base.parse(Float64, data["termination_conditions"]["time_bound"]),
+        Base.parse(Int64, data["termination_conditions"]["max_steps"]),
+        parse(data["termination_conditions"]["state_formula"], bindings, state)
     )
     queries = Strategy_Formula[
         parse(query["formula"], bindings, strategy) for query in data["queries"]

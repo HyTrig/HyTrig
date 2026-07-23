@@ -1,7 +1,7 @@
 /**
 * @file RegexField.qml
 * @brief GUI component for an input field that uses a regex for validation.
-* @authors Moritz Maas
+* @authors 
 */
 
 import QtQuick

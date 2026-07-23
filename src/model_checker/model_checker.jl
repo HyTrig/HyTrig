@@ -24,7 +24,7 @@ File description.
 
 module ModelChecker
 
-using DifferentialEquations, Match, Reexport
+using DifferentialEquations, Match, Reexport, DataStructures
 
 include("../hybrid_atl/hybrid_atl.jl")
 @reexport using .HybridATL

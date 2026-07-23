@@ -28,15 +28,15 @@ export IntervalAssignment, constraint_to_assignment
 
 # TODO: add type documentation
 struct Interval
-    left::Real
+    left::Float64
     left_open::Bool
-    right::Real
+    right::Float64
     right_open::Bool
 end
 
 # redefine comparison
 Base.:(==)(x::Interval, y::Interval) = (
-    round5(x.left) == round5(y.left) && round5(x.right) == round5(y.right) &&
+    round4(x.left) == round4(y.left) && round4(x.right) == round4(y.right) &&
     x.left_open == y.left_open && x.right_open == y.right_open
 )
 

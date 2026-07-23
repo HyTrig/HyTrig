@@ -1,7 +1,7 @@
 /**
 * @file Query.qml
 * @brief GUI component for a query of the HyTrig GUI
-* @authors Moritz Maas
+* @authors 
 */
 
 import org.julialang
@@ -18,6 +18,7 @@ Element {
 
     remove: function() {
         hgt_models.queries.removeRow(index);
+        verified = false;
     }
 
     elementContent: [
@@ -88,8 +89,8 @@ Element {
                 id: query_verified_checkmark
                 height: parent.height
                 width: height
-                enabled: verified
                 checked: model.verified
+                enabled: verified
             }
 
         }

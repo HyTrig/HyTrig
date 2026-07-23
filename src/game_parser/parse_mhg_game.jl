@@ -29,7 +29,7 @@ function parse_interval(interval_text::String)::Interval
     left_open = interval_text[1] == "("
     right_open = interval_text[end] == ")"
     content = interval_text[2:end-1]
-    numbers = [tryparse(Real, number) for number in split(content, ',')]
+    numbers = [tryparse(Float64, number) for number in split(content, ',')]
     left = numbers[1]
     right = numbers[2]
     Interval(left, left_open, right, right_open)
@@ -50,7 +50,7 @@ function parse_mhg_game(json_file::String)
         end
         variables = Vector{String}([String(var) for var in keys(initial_valuation)])
         locations = MHG_Location[]
-        locations_names = Vector{String}()
+        locations_names = String[]
         initial_location = nothing
         for loc in GameDict["locations"]
             name = Symbol(loc["name"])
@@ -101,9 +101,9 @@ function parse_mhg_game(json_file::String)
         game = MHG_Game(locations, initial_location, initial_valuation, agents, actions, edges)
 
         termination_conditions = Termination_Conditions(
-            Real(FileDict["termination-conditions"]["time-bound"]),
-            Int64(FileDict["termination-conditions"]["max-steps"]),
-            parse(FileDict["termination-conditions"]["state-formula"], Bindings(agents_names, locations_names, variables), state)
+            Float64(FileDict["termination_conditions"]["time-bound"]),
+            Int64(FileDict["termination_conditions"]["max-steps"]),
+            parse(FileDict["termination_conditions"]["state-formula"], Bindings(agents_names, locations_names, variables), state)
         )
         queries::Vector{Strategy_Formula} = Strategy_Formula[parse(query, Bindings(agents_names, locations_names, variables), strategy) for query in FileDict["queries"]]
         return game, termination_conditions, queries, FileDict["queries"]

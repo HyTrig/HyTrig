@@ -30,6 +30,7 @@ struct HGT_Location <: Location
     invariant::Constraint
     flow::Assignment
     edges::Vector
+    invariant_zeros::Vector{ExprLike}
 
     function HGT_Location(name::Symbol,
                     invariant::Constraint,
@@ -40,7 +41,7 @@ struct HGT_Location <: Location
                 filtered_flow[var] = val
             end
         end
-        new(name, invariant, filtered_flow, [])
+        new(name, invariant, filtered_flow, [], get_zero([invariant]))
     end
 end
 
@@ -78,6 +79,7 @@ struct HGT_Game <: Game
     actions::Vector{Action}
     edges:: Vector{HGT_Edge}
     triggers:: Dict{Agent, Vector{Constraint}}
+    all_triggers::Vector{Constraint}
 
     function HGT_Game(locations::Vector{HGT_Location}, 
                     initial_location::HGT_Location, 
@@ -97,7 +99,9 @@ struct HGT_Game <: Game
             agents, 
             actions, 
             edges, 
-            triggers)
+            triggers,
+            vcat(values(triggers)...)
+        )
     end
 end
 

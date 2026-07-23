@@ -1,7 +1,7 @@
 /**
 * @file Trigger.qml
 * @brief GUI component for a trigger of the HyTrig GUI
-* @authors Moritz Maas
+* @authors 
 */
 
 import org.julialang

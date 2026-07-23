@@ -1,7 +1,7 @@
 /**
 * @file TerminationConditions.qml
 * @brief GUI component for the termination conditions of the HyTrig GUI
-* @authors Moritz Maas
+* @authors 
 */
 
 import org.julialang

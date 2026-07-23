@@ -1,7 +1,7 @@
 /**
 * @file Interval.qml
 * @brief GUI component for an interval of the HyTrig GUI
-* @authors Moritz Maas
+* @authors 
 */
 
 import QtQuick

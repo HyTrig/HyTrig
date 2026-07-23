@@ -1,0 +1,1066 @@
+{
+    "game_type": "HGT",
+    "description": "A cop-and-robber pursuit game on a 8-vertex graph. Both run along edges at different speeds. The cops win by reaching the robber's position.",
+    "agents": [
+        {
+            "name": "cop_0"
+        },
+        {
+            "name": "robber"
+        }
+    ],
+    "actions": [
+        {
+            "name": "v0"
+        },
+        {
+            "name": "v1"
+        },
+        {
+            "name": "v2"
+        },
+        {
+            "name": "v3"
+        },
+        {
+            "name": "v4"
+        },
+        {
+            "name": "v5"
+        },
+        {
+            "name": "v6"
+        },
+        {
+            "name": "v7"
+        }
+    ],
+    "variables": [
+        {
+            "name": "v0_x",
+            "expression": "3"
+        },
+        {
+            "name": "v0_y",
+            "expression": "0"
+        },
+        {
+            "name": "v1_x",
+            "expression": "2.121"
+        },
+        {
+            "name": "v1_y",
+            "expression": "2.121"
+        },
+        {
+            "name": "v2_x",
+            "expression": "0"
+        },
+        {
+            "name": "v2_y",
+            "expression": "3"
+        },
+        {
+            "name": "v3_x",
+            "expression": "-2.121"
+        },
+        {
+            "name": "v3_y",
+            "expression": "2.121"
+        },
+        {
+            "name": "v4_x",
+            "expression": "-3"
+        },
+        {
+            "name": "v4_y",
+            "expression": "0"
+        },
+        {
+            "name": "v5_x",
+            "expression": "-2.121"
+        },
+        {
+            "name": "v5_y",
+            "expression": "-2.121"
+        },
+        {
+            "name": "v6_x",
+            "expression": "0"
+        },
+        {
+            "name": "v6_y",
+            "expression": "-3"
+        },
+        {
+            "name": "v7_x",
+            "expression": "2.121"
+        },
+        {
+            "name": "v7_y",
+            "expression": "-2.121"
+        },
+        {
+            "name": "cop_speed",
+            "expression": "2.5"
+        },
+        {
+            "name": "robber_speed",
+            "expression": "1"
+        },
+        {
+            "name": "cop_0_x",
+            "expression": "3"
+        },
+        {
+            "name": "cop_0_y",
+            "expression": "0"
+        },
+        {
+            "name": "target_cop_0_x",
+            "expression": "3"
+        },
+        {
+            "name": "target_cop_0_y",
+            "expression": "0"
+        },
+        {
+            "name": "cop_0_dir_x",
+            "expression": "0"
+        },
+        {
+            "name": "cop_0_dir_y",
+            "expression": "0"
+        },
+        {
+            "name": "robber_x",
+            "expression": "-3"
+        },
+        {
+            "name": "robber_y",
+            "expression": "0"
+        },
+        {
+            "name": "target_robber_x",
+            "expression": "-3"
+        },
+        {
+            "name": "target_robber_y",
+            "expression": "0"
+        },
+        {
+            "name": "robber_dir_x",
+            "expression": "0"
+        },
+        {
+            "name": "robber_dir_y",
+            "expression": "0"
+        }
+    ],
+    "triggers": [
+        {
+            "agent": "cop_0",
+            "trigger": "target_cop_0_x == v0_x && target_cop_0_y == v0_y && cop_0_x == v0_x && cop_0_y == v0_y"
+        },
+        {
+            "agent": "cop_0",
+            "trigger": "target_cop_0_x == v1_x && target_cop_0_y == v1_y && cop_0_x == v1_x && cop_0_y == v1_y"
+        },
+        {
+            "agent": "cop_0",
+            "trigger": "target_cop_0_x == v2_x && target_cop_0_y == v2_y && cop_0_x == v2_x && cop_0_y == v2_y"
+        },
+        {
+            "agent": "cop_0",
+            "trigger": "target_cop_0_x == v3_x && target_cop_0_y == v3_y && cop_0_x == v3_x && cop_0_y == v3_y"
+        },
+        {
+            "agent": "cop_0",
+            "trigger": "target_cop_0_x == v4_x && target_cop_0_y == v4_y && cop_0_x == v4_x && cop_0_y == v4_y"
+        },
+        {
+            "agent": "cop_0",
+            "trigger": "target_cop_0_x == v5_x && target_cop_0_y == v5_y && cop_0_x == v5_x && cop_0_y == v5_y"
+        },
+        {
+            "agent": "cop_0",
+            "trigger": "target_cop_0_x == v6_x && target_cop_0_y == v6_y && cop_0_x == v6_x && cop_0_y == v6_y"
+        },
+        {
+            "agent": "cop_0",
+            "trigger": "target_cop_0_x == v7_x && target_cop_0_y == v7_y && cop_0_x == v7_x && cop_0_y == v7_y"
+        },
+        {
+            "agent": "robber",
+            "trigger": "target_robber_x == v0_x && target_robber_y == v0_y && robber_x == v0_x && robber_y == v0_y"
+        },
+        {
+            "agent": "robber",
+            "trigger": "target_robber_x == v1_x && target_robber_y == v1_y && robber_x == v1_x && robber_y == v1_y"
+        },
+        {
+            "agent": "robber",
+            "trigger": "target_robber_x == v2_x && target_robber_y == v2_y && robber_x == v2_x && robber_y == v2_y"
+        },
+        {
+            "agent": "robber",
+            "trigger": "target_robber_x == v3_x && target_robber_y == v3_y && robber_x == v3_x && robber_y == v3_y"
+        },
+        {
+            "agent": "robber",
+            "trigger": "target_robber_x == v4_x && target_robber_y == v4_y && robber_x == v4_x && robber_y == v4_y"
+        },
+        {
+            "agent": "robber",
+            "trigger": "target_robber_x == v5_x && target_robber_y == v5_y && robber_x == v5_x && robber_y == v5_y"
+        },
+        {
+            "agent": "robber",
+            "trigger": "target_robber_x == v6_x && target_robber_y == v6_y && robber_x == v6_x && robber_y == v6_y"
+        },
+        {
+            "agent": "robber",
+            "trigger": "target_robber_x == v7_x && target_robber_y == v7_y && robber_x == v7_x && robber_y == v7_y"
+        }
+    ],
+    "locations": [
+        {
+            "name": "running",
+            "initial": true,
+            "flow": [
+                {
+                    "expression": "cop_speed * cop_0_dir_x",
+                    "variable": "cop_0_x"
+                },
+                {
+                    "expression": "cop_speed * cop_0_dir_y",
+                    "variable": "cop_0_y"
+                },
+                {
+                    "expression": "robber_speed * robber_dir_x",
+                    "variable": "robber_x"
+                },
+                {
+                    "expression": "robber_speed * robber_dir_y",
+                    "variable": "robber_y"
+                }
+            ],
+            "invariant": "(cop_0_x >= -3 && cop_0_x <= 3 && cop_0_y >= -3 && cop_0_y <= 3) && (robber_x >= -3 && robber_x <= 3 && robber_y >= -3 && robber_y <= 3)"
+        }
+    ],
+    "edges": [
+        {
+            "guard": "robber_x == v0_x && robber_y == v0_y",
+            "source": "running",
+            "action": "v1",
+            "target": "running",
+            "agent": "robber",
+            "jump": [
+                {
+                    "expression": "(v1_x - robber_x) / ((v1_x - robber_x)^2 + (v1_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_x"
+                },
+                {
+                    "expression": "(v1_y - robber_y) / ((v1_x - robber_x)^2 + (v1_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_y"
+                },
+                {
+                    "expression": "v1_x",
+                    "variable": "target_robber_x"
+                },
+                {
+                    "expression": "v1_y",
+                    "variable": "target_robber_y"
+                }
+            ]
+        },
+        {
+            "guard": "cop_0_x == v0_x && cop_0_y == v0_y",
+            "source": "running",
+            "action": "v1",
+            "target": "running",
+            "agent": "cop_0",
+            "jump": [
+                {
+                    "expression": "(v1_x - cop_0_x) / ((v1_x - cop_0_x)^2 + (v1_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_x"
+                },
+                {
+                    "expression": "(v1_y - cop_0_y) / ((v1_x - cop_0_x)^2 + (v1_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_y"
+                },
+                {
+                    "expression": "v1_x",
+                    "variable": "target_cop_0_x"
+                },
+                {
+                    "expression": "v1_y",
+                    "variable": "target_cop_0_y"
+                }
+            ]
+        },
+        {
+            "guard": "robber_x == v1_x && robber_y == v1_y",
+            "source": "running",
+            "action": "v0",
+            "target": "running",
+            "agent": "robber",
+            "jump": [
+                {
+                    "expression": "(v0_x - robber_x) / ((v0_x - robber_x)^2 + (v0_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_x"
+                },
+                {
+                    "expression": "(v0_y - robber_y) / ((v0_x - robber_x)^2 + (v0_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_y"
+                },
+                {
+                    "expression": "v0_x",
+                    "variable": "target_robber_x"
+                },
+                {
+                    "expression": "v0_y",
+                    "variable": "target_robber_y"
+                }
+            ]
+        },
+        {
+            "guard": "cop_0_x == v1_x && cop_0_y == v1_y",
+            "source": "running",
+            "action": "v0",
+            "target": "running",
+            "agent": "cop_0",
+            "jump": [
+                {
+                    "expression": "(v0_x - cop_0_x) / ((v0_x - cop_0_x)^2 + (v0_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_x"
+                },
+                {
+                    "expression": "(v0_y - cop_0_y) / ((v0_x - cop_0_x)^2 + (v0_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_y"
+                },
+                {
+                    "expression": "v0_x",
+                    "variable": "target_cop_0_x"
+                },
+                {
+                    "expression": "v0_y",
+                    "variable": "target_cop_0_y"
+                }
+            ]
+        },
+        {
+            "guard": "robber_x == v1_x && robber_y == v1_y",
+            "source": "running",
+            "action": "v2",
+            "target": "running",
+            "agent": "robber",
+            "jump": [
+                {
+                    "expression": "(v2_x - robber_x) / ((v2_x - robber_x)^2 + (v2_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_x"
+                },
+                {
+                    "expression": "(v2_y - robber_y) / ((v2_x - robber_x)^2 + (v2_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_y"
+                },
+                {
+                    "expression": "v2_x",
+                    "variable": "target_robber_x"
+                },
+                {
+                    "expression": "v2_y",
+                    "variable": "target_robber_y"
+                }
+            ]
+        },
+        {
+            "guard": "cop_0_x == v1_x && cop_0_y == v1_y",
+            "source": "running",
+            "action": "v2",
+            "target": "running",
+            "agent": "cop_0",
+            "jump": [
+                {
+                    "expression": "(v2_x - cop_0_x) / ((v2_x - cop_0_x)^2 + (v2_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_x"
+                },
+                {
+                    "expression": "(v2_y - cop_0_y) / ((v2_x - cop_0_x)^2 + (v2_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_y"
+                },
+                {
+                    "expression": "v2_x",
+                    "variable": "target_cop_0_x"
+                },
+                {
+                    "expression": "v2_y",
+                    "variable": "target_cop_0_y"
+                }
+            ]
+        },
+        {
+            "guard": "robber_x == v2_x && robber_y == v2_y",
+            "source": "running",
+            "action": "v1",
+            "target": "running",
+            "agent": "robber",
+            "jump": [
+                {
+                    "expression": "(v1_x - robber_x) / ((v1_x - robber_x)^2 + (v1_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_x"
+                },
+                {
+                    "expression": "(v1_y - robber_y) / ((v1_x - robber_x)^2 + (v1_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_y"
+                },
+                {
+                    "expression": "v1_x",
+                    "variable": "target_robber_x"
+                },
+                {
+                    "expression": "v1_y",
+                    "variable": "target_robber_y"
+                }
+            ]
+        },
+        {
+            "guard": "cop_0_x == v2_x && cop_0_y == v2_y",
+            "source": "running",
+            "action": "v1",
+            "target": "running",
+            "agent": "cop_0",
+            "jump": [
+                {
+                    "expression": "(v1_x - cop_0_x) / ((v1_x - cop_0_x)^2 + (v1_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_x"
+                },
+                {
+                    "expression": "(v1_y - cop_0_y) / ((v1_x - cop_0_x)^2 + (v1_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_y"
+                },
+                {
+                    "expression": "v1_x",
+                    "variable": "target_cop_0_x"
+                },
+                {
+                    "expression": "v1_y",
+                    "variable": "target_cop_0_y"
+                }
+            ]
+        },
+        {
+            "guard": "robber_x == v2_x && robber_y == v2_y",
+            "source": "running",
+            "action": "v3",
+            "target": "running",
+            "agent": "robber",
+            "jump": [
+                {
+                    "expression": "(v3_x - robber_x) / ((v3_x - robber_x)^2 + (v3_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_x"
+                },
+                {
+                    "expression": "(v3_y - robber_y) / ((v3_x - robber_x)^2 + (v3_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_y"
+                },
+                {
+                    "expression": "v3_x",
+                    "variable": "target_robber_x"
+                },
+                {
+                    "expression": "v3_y",
+                    "variable": "target_robber_y"
+                }
+            ]
+        },
+        {
+            "guard": "cop_0_x == v2_x && cop_0_y == v2_y",
+            "source": "running",
+            "action": "v3",
+            "target": "running",
+            "agent": "cop_0",
+            "jump": [
+                {
+                    "expression": "(v3_x - cop_0_x) / ((v3_x - cop_0_x)^2 + (v3_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_x"
+                },
+                {
+                    "expression": "(v3_y - cop_0_y) / ((v3_x - cop_0_x)^2 + (v3_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_y"
+                },
+                {
+                    "expression": "v3_x",
+                    "variable": "target_cop_0_x"
+                },
+                {
+                    "expression": "v3_y",
+                    "variable": "target_cop_0_y"
+                }
+            ]
+        },
+        {
+            "guard": "robber_x == v3_x && robber_y == v3_y",
+            "source": "running",
+            "action": "v2",
+            "target": "running",
+            "agent": "robber",
+            "jump": [
+                {
+                    "expression": "(v2_x - robber_x) / ((v2_x - robber_x)^2 + (v2_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_x"
+                },
+                {
+                    "expression": "(v2_y - robber_y) / ((v2_x - robber_x)^2 + (v2_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_y"
+                },
+                {
+                    "expression": "v2_x",
+                    "variable": "target_robber_x"
+                },
+                {
+                    "expression": "v2_y",
+                    "variable": "target_robber_y"
+                }
+            ]
+        },
+        {
+            "guard": "cop_0_x == v3_x && cop_0_y == v3_y",
+            "source": "running",
+            "action": "v2",
+            "target": "running",
+            "agent": "cop_0",
+            "jump": [
+                {
+                    "expression": "(v2_x - cop_0_x) / ((v2_x - cop_0_x)^2 + (v2_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_x"
+                },
+                {
+                    "expression": "(v2_y - cop_0_y) / ((v2_x - cop_0_x)^2 + (v2_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_y"
+                },
+                {
+                    "expression": "v2_x",
+                    "variable": "target_cop_0_x"
+                },
+                {
+                    "expression": "v2_y",
+                    "variable": "target_cop_0_y"
+                }
+            ]
+        },
+        {
+            "guard": "robber_x == v3_x && robber_y == v3_y",
+            "source": "running",
+            "action": "v4",
+            "target": "running",
+            "agent": "robber",
+            "jump": [
+                {
+                    "expression": "(v4_x - robber_x) / ((v4_x - robber_x)^2 + (v4_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_x"
+                },
+                {
+                    "expression": "(v4_y - robber_y) / ((v4_x - robber_x)^2 + (v4_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_y"
+                },
+                {
+                    "expression": "v4_x",
+                    "variable": "target_robber_x"
+                },
+                {
+                    "expression": "v4_y",
+                    "variable": "target_robber_y"
+                }
+            ]
+        },
+        {
+            "guard": "cop_0_x == v3_x && cop_0_y == v3_y",
+            "source": "running",
+            "action": "v4",
+            "target": "running",
+            "agent": "cop_0",
+            "jump": [
+                {
+                    "expression": "(v4_x - cop_0_x) / ((v4_x - cop_0_x)^2 + (v4_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_x"
+                },
+                {
+                    "expression": "(v4_y - cop_0_y) / ((v4_x - cop_0_x)^2 + (v4_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_y"
+                },
+                {
+                    "expression": "v4_x",
+                    "variable": "target_cop_0_x"
+                },
+                {
+                    "expression": "v4_y",
+                    "variable": "target_cop_0_y"
+                }
+            ]
+        },
+        {
+            "guard": "robber_x == v4_x && robber_y == v4_y",
+            "source": "running",
+            "action": "v3",
+            "target": "running",
+            "agent": "robber",
+            "jump": [
+                {
+                    "expression": "(v3_x - robber_x) / ((v3_x - robber_x)^2 + (v3_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_x"
+                },
+                {
+                    "expression": "(v3_y - robber_y) / ((v3_x - robber_x)^2 + (v3_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_y"
+                },
+                {
+                    "expression": "v3_x",
+                    "variable": "target_robber_x"
+                },
+                {
+                    "expression": "v3_y",
+                    "variable": "target_robber_y"
+                }
+            ]
+        },
+        {
+            "guard": "cop_0_x == v4_x && cop_0_y == v4_y",
+            "source": "running",
+            "action": "v3",
+            "target": "running",
+            "agent": "cop_0",
+            "jump": [
+                {
+                    "expression": "(v3_x - cop_0_x) / ((v3_x - cop_0_x)^2 + (v3_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_x"
+                },
+                {
+                    "expression": "(v3_y - cop_0_y) / ((v3_x - cop_0_x)^2 + (v3_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_y"
+                },
+                {
+                    "expression": "v3_x",
+                    "variable": "target_cop_0_x"
+                },
+                {
+                    "expression": "v3_y",
+                    "variable": "target_cop_0_y"
+                }
+            ]
+        },
+        {
+            "guard": "robber_x == v4_x && robber_y == v4_y",
+            "source": "running",
+            "action": "v5",
+            "target": "running",
+            "agent": "robber",
+            "jump": [
+                {
+                    "expression": "(v5_x - robber_x) / ((v5_x - robber_x)^2 + (v5_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_x"
+                },
+                {
+                    "expression": "(v5_y - robber_y) / ((v5_x - robber_x)^2 + (v5_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_y"
+                },
+                {
+                    "expression": "v5_x",
+                    "variable": "target_robber_x"
+                },
+                {
+                    "expression": "v5_y",
+                    "variable": "target_robber_y"
+                }
+            ]
+        },
+        {
+            "guard": "cop_0_x == v4_x && cop_0_y == v4_y",
+            "source": "running",
+            "action": "v5",
+            "target": "running",
+            "agent": "cop_0",
+            "jump": [
+                {
+                    "expression": "(v5_x - cop_0_x) / ((v5_x - cop_0_x)^2 + (v5_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_x"
+                },
+                {
+                    "expression": "(v5_y - cop_0_y) / ((v5_x - cop_0_x)^2 + (v5_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_y"
+                },
+                {
+                    "expression": "v5_x",
+                    "variable": "target_cop_0_x"
+                },
+                {
+                    "expression": "v5_y",
+                    "variable": "target_cop_0_y"
+                }
+            ]
+        },
+        {
+            "guard": "robber_x == v5_x && robber_y == v5_y",
+            "source": "running",
+            "action": "v4",
+            "target": "running",
+            "agent": "robber",
+            "jump": [
+                {
+                    "expression": "(v4_x - robber_x) / ((v4_x - robber_x)^2 + (v4_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_x"
+                },
+                {
+                    "expression": "(v4_y - robber_y) / ((v4_x - robber_x)^2 + (v4_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_y"
+                },
+                {
+                    "expression": "v4_x",
+                    "variable": "target_robber_x"
+                },
+                {
+                    "expression": "v4_y",
+                    "variable": "target_robber_y"
+                }
+            ]
+        },
+        {
+            "guard": "cop_0_x == v5_x && cop_0_y == v5_y",
+            "source": "running",
+            "action": "v4",
+            "target": "running",
+            "agent": "cop_0",
+            "jump": [
+                {
+                    "expression": "(v4_x - cop_0_x) / ((v4_x - cop_0_x)^2 + (v4_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_x"
+                },
+                {
+                    "expression": "(v4_y - cop_0_y) / ((v4_x - cop_0_x)^2 + (v4_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_y"
+                },
+                {
+                    "expression": "v4_x",
+                    "variable": "target_cop_0_x"
+                },
+                {
+                    "expression": "v4_y",
+                    "variable": "target_cop_0_y"
+                }
+            ]
+        },
+        {
+            "guard": "robber_x == v5_x && robber_y == v5_y",
+            "source": "running",
+            "action": "v6",
+            "target": "running",
+            "agent": "robber",
+            "jump": [
+                {
+                    "expression": "(v6_x - robber_x) / ((v6_x - robber_x)^2 + (v6_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_x"
+                },
+                {
+                    "expression": "(v6_y - robber_y) / ((v6_x - robber_x)^2 + (v6_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_y"
+                },
+                {
+                    "expression": "v6_x",
+                    "variable": "target_robber_x"
+                },
+                {
+                    "expression": "v6_y",
+                    "variable": "target_robber_y"
+                }
+            ]
+        },
+        {
+            "guard": "cop_0_x == v5_x && cop_0_y == v5_y",
+            "source": "running",
+            "action": "v6",
+            "target": "running",
+            "agent": "cop_0",
+            "jump": [
+                {
+                    "expression": "(v6_x - cop_0_x) / ((v6_x - cop_0_x)^2 + (v6_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_x"
+                },
+                {
+                    "expression": "(v6_y - cop_0_y) / ((v6_x - cop_0_x)^2 + (v6_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_y"
+                },
+                {
+                    "expression": "v6_x",
+                    "variable": "target_cop_0_x"
+                },
+                {
+                    "expression": "v6_y",
+                    "variable": "target_cop_0_y"
+                }
+            ]
+        },
+        {
+            "guard": "robber_x == v6_x && robber_y == v6_y",
+            "source": "running",
+            "action": "v5",
+            "target": "running",
+            "agent": "robber",
+            "jump": [
+                {
+                    "expression": "(v5_x - robber_x) / ((v5_x - robber_x)^2 + (v5_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_x"
+                },
+                {
+                    "expression": "(v5_y - robber_y) / ((v5_x - robber_x)^2 + (v5_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_y"
+                },
+                {
+                    "expression": "v5_x",
+                    "variable": "target_robber_x"
+                },
+                {
+                    "expression": "v5_y",
+                    "variable": "target_robber_y"
+                }
+            ]
+        },
+        {
+            "guard": "cop_0_x == v6_x && cop_0_y == v6_y",
+            "source": "running",
+            "action": "v5",
+            "target": "running",
+            "agent": "cop_0",
+            "jump": [
+                {
+                    "expression": "(v5_x - cop_0_x) / ((v5_x - cop_0_x)^2 + (v5_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_x"
+                },
+                {
+                    "expression": "(v5_y - cop_0_y) / ((v5_x - cop_0_x)^2 + (v5_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_y"
+                },
+                {
+                    "expression": "v5_x",
+                    "variable": "target_cop_0_x"
+                },
+                {
+                    "expression": "v5_y",
+                    "variable": "target_cop_0_y"
+                }
+            ]
+        },
+        {
+            "guard": "robber_x == v6_x && robber_y == v6_y",
+            "source": "running",
+            "action": "v7",
+            "target": "running",
+            "agent": "robber",
+            "jump": [
+                {
+                    "expression": "(v7_x - robber_x) / ((v7_x - robber_x)^2 + (v7_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_x"
+                },
+                {
+                    "expression": "(v7_y - robber_y) / ((v7_x - robber_x)^2 + (v7_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_y"
+                },
+                {
+                    "expression": "v7_x",
+                    "variable": "target_robber_x"
+                },
+                {
+                    "expression": "v7_y",
+                    "variable": "target_robber_y"
+                }
+            ]
+        },
+        {
+            "guard": "cop_0_x == v6_x && cop_0_y == v6_y",
+            "source": "running",
+            "action": "v7",
+            "target": "running",
+            "agent": "cop_0",
+            "jump": [
+                {
+                    "expression": "(v7_x - cop_0_x) / ((v7_x - cop_0_x)^2 + (v7_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_x"
+                },
+                {
+                    "expression": "(v7_y - cop_0_y) / ((v7_x - cop_0_x)^2 + (v7_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_y"
+                },
+                {
+                    "expression": "v7_x",
+                    "variable": "target_cop_0_x"
+                },
+                {
+                    "expression": "v7_y",
+                    "variable": "target_cop_0_y"
+                }
+            ]
+        },
+        {
+            "guard": "robber_x == v7_x && robber_y == v7_y",
+            "source": "running",
+            "action": "v6",
+            "target": "running",
+            "agent": "robber",
+            "jump": [
+                {
+                    "expression": "(v6_x - robber_x) / ((v6_x - robber_x)^2 + (v6_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_x"
+                },
+                {
+                    "expression": "(v6_y - robber_y) / ((v6_x - robber_x)^2 + (v6_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_y"
+                },
+                {
+                    "expression": "v6_x",
+                    "variable": "target_robber_x"
+                },
+                {
+                    "expression": "v6_y",
+                    "variable": "target_robber_y"
+                }
+            ]
+        },
+        {
+            "guard": "cop_0_x == v7_x && cop_0_y == v7_y",
+            "source": "running",
+            "action": "v6",
+            "target": "running",
+            "agent": "cop_0",
+            "jump": [
+                {
+                    "expression": "(v6_x - cop_0_x) / ((v6_x - cop_0_x)^2 + (v6_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_x"
+                },
+                {
+                    "expression": "(v6_y - cop_0_y) / ((v6_x - cop_0_x)^2 + (v6_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_y"
+                },
+                {
+                    "expression": "v6_x",
+                    "variable": "target_cop_0_x"
+                },
+                {
+                    "expression": "v6_y",
+                    "variable": "target_cop_0_y"
+                }
+            ]
+        },
+        {
+            "guard": "robber_x == v7_x && robber_y == v7_y",
+            "source": "running",
+            "action": "v0",
+            "target": "running",
+            "agent": "robber",
+            "jump": [
+                {
+                    "expression": "(v0_x - robber_x) / ((v0_x - robber_x)^2 + (v0_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_x"
+                },
+                {
+                    "expression": "(v0_y - robber_y) / ((v0_x - robber_x)^2 + (v0_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_y"
+                },
+                {
+                    "expression": "v0_x",
+                    "variable": "target_robber_x"
+                },
+                {
+                    "expression": "v0_y",
+                    "variable": "target_robber_y"
+                }
+            ]
+        },
+        {
+            "guard": "cop_0_x == v7_x && cop_0_y == v7_y",
+            "source": "running",
+            "action": "v0",
+            "target": "running",
+            "agent": "cop_0",
+            "jump": [
+                {
+                    "expression": "(v0_x - cop_0_x) / ((v0_x - cop_0_x)^2 + (v0_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_x"
+                },
+                {
+                    "expression": "(v0_y - cop_0_y) / ((v0_x - cop_0_x)^2 + (v0_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_y"
+                },
+                {
+                    "expression": "v0_x",
+                    "variable": "target_cop_0_x"
+                },
+                {
+                    "expression": "v0_y",
+                    "variable": "target_cop_0_y"
+                }
+            ]
+        },
+        {
+            "guard": "robber_x == v0_x && robber_y == v0_y",
+            "source": "running",
+            "action": "v7",
+            "target": "running",
+            "agent": "robber",
+            "jump": [
+                {
+                    "expression": "(v7_x - robber_x) / ((v7_x - robber_x)^2 + (v7_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_x"
+                },
+                {
+                    "expression": "(v7_y - robber_y) / ((v7_x - robber_x)^2 + (v7_y - robber_y)^2)^0.5",
+                    "variable": "robber_dir_y"
+                },
+                {
+                    "expression": "v7_x",
+                    "variable": "target_robber_x"
+                },
+                {
+                    "expression": "v7_y",
+                    "variable": "target_robber_y"
+                }
+            ]
+        },
+        {
+            "guard": "cop_0_x == v0_x && cop_0_y == v0_y",
+            "source": "running",
+            "action": "v7",
+            "target": "running",
+            "agent": "cop_0",
+            "jump": [
+                {
+                    "expression": "(v7_x - cop_0_x) / ((v7_x - cop_0_x)^2 + (v7_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_x"
+                },
+                {
+                    "expression": "(v7_y - cop_0_y) / ((v7_x - cop_0_x)^2 + (v7_y - cop_0_y)^2)^0.5",
+                    "variable": "cop_0_dir_y"
+                },
+                {
+                    "expression": "v7_x",
+                    "variable": "target_cop_0_x"
+                },
+                {
+                    "expression": "v7_y",
+                    "variable": "target_cop_0_y"
+                }
+            ]
+        }
+    ],
+    "queries": [
+        {
+            "formula": "<<cop_0>> F ((cop_0_x == robber_x && cop_0_y == robber_y))"
+        },
+        {
+            "formula": "<<robber>> G ! ((cop_0_x == robber_x && cop_0_y == robber_y))"
+        }
+    ],
+    "termination_conditions": {
+        "max_steps": "15",
+        "time_bound": "90",
+        "state_formula": "(cop_0_x == robber_x && cop_0_y == robber_y)"
+    }
+}

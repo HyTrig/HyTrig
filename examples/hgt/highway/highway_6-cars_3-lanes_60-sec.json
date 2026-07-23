@@ -1,0 +1,1113 @@
+{
+    "game_type": "HGT",
+    "description": "A one-way 3-lane highway with 6 car(s) (C_1, C_2, C_3, C_4, C_5, C_6). Lanes are 10 wide with centers y in {10, 20, 30}. Cars accelerate/decelerate longitudinally and perform quintic (min-jerk) lane changes that move exactly one lane over tau=3 s. Triggers (tailing, speed-limit, end-of-maneuver) give a car a decision point; guarded edges supply the available maneuvers. Initial placement (safe, no triggers at t=0): C_1 lane 2 x=5 vx=1.4; C_2 lane 2 x=17 vx=6.4; C_3 lane 3 x=0 vx=7.0; C_4 lane 1 x=6 vx=1.0; C_5 lane 1 x=23 vx=2.2; C_6 lane 3 x=17 vx=3.8. The coalition of all cars looks for a jointly safe strategy in which every car advances 40 beyond its starting x.",
+    "agents": [
+        {
+            "name": "C_1"
+        },
+        {
+            "name": "C_2"
+        },
+        {
+            "name": "C_3"
+        },
+        {
+            "name": "C_4"
+        },
+        {
+            "name": "C_5"
+        },
+        {
+            "name": "C_6"
+        }
+    ],
+    "actions": [
+        {
+            "name": "cruise"
+        },
+        {
+            "name": "acc"
+        },
+        {
+            "name": "dec"
+        },
+        {
+            "name": "left"
+        },
+        {
+            "name": "right"
+        },
+        {
+            "name": "end_lc"
+        }
+    ],
+    "variables": [
+        {
+            "name": "x_C_1",
+            "expression": "5"
+        },
+        {
+            "name": "vx_C_1",
+            "expression": "1.4"
+        },
+        {
+            "name": "acc_C_1",
+            "expression": "0.2"
+        },
+        {
+            "name": "y_C_1",
+            "expression": "20"
+        },
+        {
+            "name": "vy_C_1",
+            "expression": "0"
+        },
+        {
+            "name": "tau_C_1",
+            "expression": "0"
+        },
+        {
+            "name": "lc_dir_C_1",
+            "expression": "0"
+        },
+        {
+            "name": "cy_C_1",
+            "expression": "20"
+        },
+        {
+            "name": "x_C_2",
+            "expression": "17"
+        },
+        {
+            "name": "vx_C_2",
+            "expression": "6.4"
+        },
+        {
+            "name": "acc_C_2",
+            "expression": "0.2"
+        },
+        {
+            "name": "y_C_2",
+            "expression": "20"
+        },
+        {
+            "name": "vy_C_2",
+            "expression": "0"
+        },
+        {
+            "name": "tau_C_2",
+            "expression": "0"
+        },
+        {
+            "name": "lc_dir_C_2",
+            "expression": "0"
+        },
+        {
+            "name": "cy_C_2",
+            "expression": "20"
+        },
+        {
+            "name": "x_C_3",
+            "expression": "0"
+        },
+        {
+            "name": "vx_C_3",
+            "expression": "7.0"
+        },
+        {
+            "name": "acc_C_3",
+            "expression": "0.2"
+        },
+        {
+            "name": "y_C_3",
+            "expression": "30"
+        },
+        {
+            "name": "vy_C_3",
+            "expression": "0"
+        },
+        {
+            "name": "tau_C_3",
+            "expression": "0"
+        },
+        {
+            "name": "lc_dir_C_3",
+            "expression": "0"
+        },
+        {
+            "name": "cy_C_3",
+            "expression": "30"
+        },
+        {
+            "name": "x_C_4",
+            "expression": "6"
+        },
+        {
+            "name": "vx_C_4",
+            "expression": "1.0"
+        },
+        {
+            "name": "acc_C_4",
+            "expression": "0.2"
+        },
+        {
+            "name": "y_C_4",
+            "expression": "10"
+        },
+        {
+            "name": "vy_C_4",
+            "expression": "0"
+        },
+        {
+            "name": "tau_C_4",
+            "expression": "0"
+        },
+        {
+            "name": "lc_dir_C_4",
+            "expression": "0"
+        },
+        {
+            "name": "cy_C_4",
+            "expression": "10"
+        },
+        {
+            "name": "x_C_5",
+            "expression": "23"
+        },
+        {
+            "name": "vx_C_5",
+            "expression": "2.2"
+        },
+        {
+            "name": "acc_C_5",
+            "expression": "0.2"
+        },
+        {
+            "name": "y_C_5",
+            "expression": "10"
+        },
+        {
+            "name": "vy_C_5",
+            "expression": "0"
+        },
+        {
+            "name": "tau_C_5",
+            "expression": "0"
+        },
+        {
+            "name": "lc_dir_C_5",
+            "expression": "0"
+        },
+        {
+            "name": "cy_C_5",
+            "expression": "10"
+        },
+        {
+            "name": "x_C_6",
+            "expression": "17"
+        },
+        {
+            "name": "vx_C_6",
+            "expression": "3.8"
+        },
+        {
+            "name": "acc_C_6",
+            "expression": "0.2"
+        },
+        {
+            "name": "y_C_6",
+            "expression": "30"
+        },
+        {
+            "name": "vy_C_6",
+            "expression": "0"
+        },
+        {
+            "name": "tau_C_6",
+            "expression": "0"
+        },
+        {
+            "name": "lc_dir_C_6",
+            "expression": "0"
+        },
+        {
+            "name": "cy_C_6",
+            "expression": "30"
+        }
+    ],
+    "triggers": [
+        {
+            "agent": "C_1",
+            "trigger": "(abs(y_C_1 - y_C_2) < 5 && x_C_2 - x_C_1 > 0 && x_C_2 - x_C_1 <= 10 && vx_C_1 > vx_C_2) || (abs(y_C_1 - y_C_3) < 5 && x_C_3 - x_C_1 > 0 && x_C_3 - x_C_1 <= 10 && vx_C_1 > vx_C_3) || (abs(y_C_1 - y_C_4) < 5 && x_C_4 - x_C_1 > 0 && x_C_4 - x_C_1 <= 10 && vx_C_1 > vx_C_4) || (abs(y_C_1 - y_C_5) < 5 && x_C_5 - x_C_1 > 0 && x_C_5 - x_C_1 <= 10 && vx_C_1 > vx_C_5) || (abs(y_C_1 - y_C_6) < 5 && x_C_6 - x_C_1 > 0 && x_C_6 - x_C_1 <= 10 && vx_C_1 > vx_C_6)"
+        },
+        {
+            "agent": "C_1",
+            "trigger": "vx_C_1 >= 8 && acc_C_1 > 0"
+        },
+        {
+            "agent": "C_1",
+            "trigger": "vx_C_1 <= 1 && acc_C_1 < 0"
+        },
+        {
+            "agent": "C_1",
+            "trigger": "tau_C_1 >= 3"
+        },
+        {
+            "agent": "C_2",
+            "trigger": "(abs(y_C_2 - y_C_1) < 5 && x_C_1 - x_C_2 > 0 && x_C_1 - x_C_2 <= 10 && vx_C_2 > vx_C_1) || (abs(y_C_2 - y_C_3) < 5 && x_C_3 - x_C_2 > 0 && x_C_3 - x_C_2 <= 10 && vx_C_2 > vx_C_3) || (abs(y_C_2 - y_C_4) < 5 && x_C_4 - x_C_2 > 0 && x_C_4 - x_C_2 <= 10 && vx_C_2 > vx_C_4) || (abs(y_C_2 - y_C_5) < 5 && x_C_5 - x_C_2 > 0 && x_C_5 - x_C_2 <= 10 && vx_C_2 > vx_C_5) || (abs(y_C_2 - y_C_6) < 5 && x_C_6 - x_C_2 > 0 && x_C_6 - x_C_2 <= 10 && vx_C_2 > vx_C_6)"
+        },
+        {
+            "agent": "C_2",
+            "trigger": "vx_C_2 >= 8 && acc_C_2 > 0"
+        },
+        {
+            "agent": "C_2",
+            "trigger": "vx_C_2 <= 1 && acc_C_2 < 0"
+        },
+        {
+            "agent": "C_2",
+            "trigger": "tau_C_2 >= 3"
+        },
+        {
+            "agent": "C_3",
+            "trigger": "(abs(y_C_3 - y_C_1) < 5 && x_C_1 - x_C_3 > 0 && x_C_1 - x_C_3 <= 10 && vx_C_3 > vx_C_1) || (abs(y_C_3 - y_C_2) < 5 && x_C_2 - x_C_3 > 0 && x_C_2 - x_C_3 <= 10 && vx_C_3 > vx_C_2) || (abs(y_C_3 - y_C_4) < 5 && x_C_4 - x_C_3 > 0 && x_C_4 - x_C_3 <= 10 && vx_C_3 > vx_C_4) || (abs(y_C_3 - y_C_5) < 5 && x_C_5 - x_C_3 > 0 && x_C_5 - x_C_3 <= 10 && vx_C_3 > vx_C_5) || (abs(y_C_3 - y_C_6) < 5 && x_C_6 - x_C_3 > 0 && x_C_6 - x_C_3 <= 10 && vx_C_3 > vx_C_6)"
+        },
+        {
+            "agent": "C_3",
+            "trigger": "vx_C_3 >= 8 && acc_C_3 > 0"
+        },
+        {
+            "agent": "C_3",
+            "trigger": "vx_C_3 <= 1 && acc_C_3 < 0"
+        },
+        {
+            "agent": "C_3",
+            "trigger": "tau_C_3 >= 3"
+        },
+        {
+            "agent": "C_4",
+            "trigger": "(abs(y_C_4 - y_C_1) < 5 && x_C_1 - x_C_4 > 0 && x_C_1 - x_C_4 <= 10 && vx_C_4 > vx_C_1) || (abs(y_C_4 - y_C_2) < 5 && x_C_2 - x_C_4 > 0 && x_C_2 - x_C_4 <= 10 && vx_C_4 > vx_C_2) || (abs(y_C_4 - y_C_3) < 5 && x_C_3 - x_C_4 > 0 && x_C_3 - x_C_4 <= 10 && vx_C_4 > vx_C_3) || (abs(y_C_4 - y_C_5) < 5 && x_C_5 - x_C_4 > 0 && x_C_5 - x_C_4 <= 10 && vx_C_4 > vx_C_5) || (abs(y_C_4 - y_C_6) < 5 && x_C_6 - x_C_4 > 0 && x_C_6 - x_C_4 <= 10 && vx_C_4 > vx_C_6)"
+        },
+        {
+            "agent": "C_4",
+            "trigger": "vx_C_4 >= 8 && acc_C_4 > 0"
+        },
+        {
+            "agent": "C_4",
+            "trigger": "vx_C_4 <= 1 && acc_C_4 < 0"
+        },
+        {
+            "agent": "C_4",
+            "trigger": "tau_C_4 >= 3"
+        },
+        {
+            "agent": "C_5",
+            "trigger": "(abs(y_C_5 - y_C_1) < 5 && x_C_1 - x_C_5 > 0 && x_C_1 - x_C_5 <= 10 && vx_C_5 > vx_C_1) || (abs(y_C_5 - y_C_2) < 5 && x_C_2 - x_C_5 > 0 && x_C_2 - x_C_5 <= 10 && vx_C_5 > vx_C_2) || (abs(y_C_5 - y_C_3) < 5 && x_C_3 - x_C_5 > 0 && x_C_3 - x_C_5 <= 10 && vx_C_5 > vx_C_3) || (abs(y_C_5 - y_C_4) < 5 && x_C_4 - x_C_5 > 0 && x_C_4 - x_C_5 <= 10 && vx_C_5 > vx_C_4) || (abs(y_C_5 - y_C_6) < 5 && x_C_6 - x_C_5 > 0 && x_C_6 - x_C_5 <= 10 && vx_C_5 > vx_C_6)"
+        },
+        {
+            "agent": "C_5",
+            "trigger": "vx_C_5 >= 8 && acc_C_5 > 0"
+        },
+        {
+            "agent": "C_5",
+            "trigger": "vx_C_5 <= 1 && acc_C_5 < 0"
+        },
+        {
+            "agent": "C_5",
+            "trigger": "tau_C_5 >= 3"
+        },
+        {
+            "agent": "C_6",
+            "trigger": "(abs(y_C_6 - y_C_1) < 5 && x_C_1 - x_C_6 > 0 && x_C_1 - x_C_6 <= 10 && vx_C_6 > vx_C_1) || (abs(y_C_6 - y_C_2) < 5 && x_C_2 - x_C_6 > 0 && x_C_2 - x_C_6 <= 10 && vx_C_6 > vx_C_2) || (abs(y_C_6 - y_C_3) < 5 && x_C_3 - x_C_6 > 0 && x_C_3 - x_C_6 <= 10 && vx_C_6 > vx_C_3) || (abs(y_C_6 - y_C_4) < 5 && x_C_4 - x_C_6 > 0 && x_C_4 - x_C_6 <= 10 && vx_C_6 > vx_C_4) || (abs(y_C_6 - y_C_5) < 5 && x_C_5 - x_C_6 > 0 && x_C_5 - x_C_6 <= 10 && vx_C_6 > vx_C_5)"
+        },
+        {
+            "agent": "C_6",
+            "trigger": "vx_C_6 >= 8 && acc_C_6 > 0"
+        },
+        {
+            "agent": "C_6",
+            "trigger": "vx_C_6 <= 1 && acc_C_6 < 0"
+        },
+        {
+            "agent": "C_6",
+            "trigger": "tau_C_6 >= 3"
+        }
+    ],
+    "locations": [
+        {
+            "name": "drive",
+            "initial": true,
+            "flow": [
+                {
+                    "expression": "vx_C_1",
+                    "variable": "x_C_1"
+                },
+                {
+                    "expression": "acc_C_1",
+                    "variable": "vx_C_1"
+                },
+                {
+                    "expression": "vy_C_1",
+                    "variable": "y_C_1"
+                },
+                {
+                    "expression": "lc_dir_C_1 * ((200 / 9) * tau_C_1 - (200 / 9) * tau_C_1 ^ 2 + (400 / 81) * tau_C_1 ^ 3)",
+                    "variable": "vy_C_1"
+                },
+                {
+                    "expression": "abs(lc_dir_C_1)",
+                    "variable": "tau_C_1"
+                },
+                {
+                    "expression": "vx_C_2",
+                    "variable": "x_C_2"
+                },
+                {
+                    "expression": "acc_C_2",
+                    "variable": "vx_C_2"
+                },
+                {
+                    "expression": "vy_C_2",
+                    "variable": "y_C_2"
+                },
+                {
+                    "expression": "lc_dir_C_2 * ((200 / 9) * tau_C_2 - (200 / 9) * tau_C_2 ^ 2 + (400 / 81) * tau_C_2 ^ 3)",
+                    "variable": "vy_C_2"
+                },
+                {
+                    "expression": "abs(lc_dir_C_2)",
+                    "variable": "tau_C_2"
+                },
+                {
+                    "expression": "vx_C_3",
+                    "variable": "x_C_3"
+                },
+                {
+                    "expression": "acc_C_3",
+                    "variable": "vx_C_3"
+                },
+                {
+                    "expression": "vy_C_3",
+                    "variable": "y_C_3"
+                },
+                {
+                    "expression": "lc_dir_C_3 * ((200 / 9) * tau_C_3 - (200 / 9) * tau_C_3 ^ 2 + (400 / 81) * tau_C_3 ^ 3)",
+                    "variable": "vy_C_3"
+                },
+                {
+                    "expression": "abs(lc_dir_C_3)",
+                    "variable": "tau_C_3"
+                },
+                {
+                    "expression": "vx_C_4",
+                    "variable": "x_C_4"
+                },
+                {
+                    "expression": "acc_C_4",
+                    "variable": "vx_C_4"
+                },
+                {
+                    "expression": "vy_C_4",
+                    "variable": "y_C_4"
+                },
+                {
+                    "expression": "lc_dir_C_4 * ((200 / 9) * tau_C_4 - (200 / 9) * tau_C_4 ^ 2 + (400 / 81) * tau_C_4 ^ 3)",
+                    "variable": "vy_C_4"
+                },
+                {
+                    "expression": "abs(lc_dir_C_4)",
+                    "variable": "tau_C_4"
+                },
+                {
+                    "expression": "vx_C_5",
+                    "variable": "x_C_5"
+                },
+                {
+                    "expression": "acc_C_5",
+                    "variable": "vx_C_5"
+                },
+                {
+                    "expression": "vy_C_5",
+                    "variable": "y_C_5"
+                },
+                {
+                    "expression": "lc_dir_C_5 * ((200 / 9) * tau_C_5 - (200 / 9) * tau_C_5 ^ 2 + (400 / 81) * tau_C_5 ^ 3)",
+                    "variable": "vy_C_5"
+                },
+                {
+                    "expression": "abs(lc_dir_C_5)",
+                    "variable": "tau_C_5"
+                },
+                {
+                    "expression": "vx_C_6",
+                    "variable": "x_C_6"
+                },
+                {
+                    "expression": "acc_C_6",
+                    "variable": "vx_C_6"
+                },
+                {
+                    "expression": "vy_C_6",
+                    "variable": "y_C_6"
+                },
+                {
+                    "expression": "lc_dir_C_6 * ((200 / 9) * tau_C_6 - (200 / 9) * tau_C_6 ^ 2 + (400 / 81) * tau_C_6 ^ 3)",
+                    "variable": "vy_C_6"
+                },
+                {
+                    "expression": "abs(lc_dir_C_6)",
+                    "variable": "tau_C_6"
+                }
+            ],
+            "invariant": "(vx_C_1 >= 1 && vx_C_1 <= 8 && tau_C_1 <= 3) && (vx_C_2 >= 1 && vx_C_2 <= 8 && tau_C_2 <= 3) && (vx_C_3 >= 1 && vx_C_3 <= 8 && tau_C_3 <= 3) && (vx_C_4 >= 1 && vx_C_4 <= 8 && tau_C_4 <= 3) && (vx_C_5 >= 1 && vx_C_5 <= 8 && tau_C_5 <= 3) && (vx_C_6 >= 1 && vx_C_6 <= 8 && tau_C_6 <= 3)"
+        }
+    ],
+    "edges": [
+        {
+            "guard": "vx_C_1 < 8",
+            "source": "drive",
+            "action": "acc",
+            "target": "drive",
+            "agent": "C_1",
+            "jump": [
+                {
+                    "expression": "0.2",
+                    "variable": "acc_C_1"
+                }
+            ]
+        },
+        {
+            "guard": "vx_C_1 > 1",
+            "source": "drive",
+            "action": "dec",
+            "target": "drive",
+            "agent": "C_1",
+            "jump": [
+                {
+                    "expression": "-0.2",
+                    "variable": "acc_C_1"
+                }
+            ]
+        },
+        {
+            "guard": "true",
+            "source": "drive",
+            "action": "cruise",
+            "target": "drive",
+            "agent": "C_1",
+            "jump": [
+                {
+                    "expression": "0",
+                    "variable": "acc_C_1"
+                }
+            ]
+        },
+        {
+            "guard": "lc_dir_C_1 == 0 && cy_C_1 <= 20",
+            "source": "drive",
+            "action": "left",
+            "target": "drive",
+            "agent": "C_1",
+            "jump": [
+                {
+                    "expression": "1",
+                    "variable": "lc_dir_C_1"
+                },
+                {
+                    "expression": "0",
+                    "variable": "tau_C_1"
+                },
+                {
+                    "expression": "cy_C_1 + 10",
+                    "variable": "cy_C_1"
+                }
+            ]
+        },
+        {
+            "guard": "lc_dir_C_1 == 0 && cy_C_1 >= 20",
+            "source": "drive",
+            "action": "right",
+            "target": "drive",
+            "agent": "C_1",
+            "jump": [
+                {
+                    "expression": "-1",
+                    "variable": "lc_dir_C_1"
+                },
+                {
+                    "expression": "0",
+                    "variable": "tau_C_1"
+                },
+                {
+                    "expression": "cy_C_1 - 10",
+                    "variable": "cy_C_1"
+                }
+            ]
+        },
+        {
+            "guard": "lc_dir_C_1 != 0 && tau_C_1 >= 3",
+            "source": "drive",
+            "action": "end_lc",
+            "target": "drive",
+            "agent": "C_1",
+            "jump": [
+                {
+                    "expression": "0",
+                    "variable": "lc_dir_C_1"
+                },
+                {
+                    "expression": "0",
+                    "variable": "tau_C_1"
+                },
+                {
+                    "expression": "0",
+                    "variable": "vy_C_1"
+                },
+                {
+                    "expression": "cy_C_1",
+                    "variable": "y_C_1"
+                }
+            ]
+        },
+        {
+            "guard": "vx_C_2 < 8",
+            "source": "drive",
+            "action": "acc",
+            "target": "drive",
+            "agent": "C_2",
+            "jump": [
+                {
+                    "expression": "0.2",
+                    "variable": "acc_C_2"
+                }
+            ]
+        },
+        {
+            "guard": "vx_C_2 > 1",
+            "source": "drive",
+            "action": "dec",
+            "target": "drive",
+            "agent": "C_2",
+            "jump": [
+                {
+                    "expression": "-0.2",
+                    "variable": "acc_C_2"
+                }
+            ]
+        },
+        {
+            "guard": "true",
+            "source": "drive",
+            "action": "cruise",
+            "target": "drive",
+            "agent": "C_2",
+            "jump": [
+                {
+                    "expression": "0",
+                    "variable": "acc_C_2"
+                }
+            ]
+        },
+        {
+            "guard": "lc_dir_C_2 == 0 && cy_C_2 <= 20",
+            "source": "drive",
+            "action": "left",
+            "target": "drive",
+            "agent": "C_2",
+            "jump": [
+                {
+                    "expression": "1",
+                    "variable": "lc_dir_C_2"
+                },
+                {
+                    "expression": "0",
+                    "variable": "tau_C_2"
+                },
+                {
+                    "expression": "cy_C_2 + 10",
+                    "variable": "cy_C_2"
+                }
+            ]
+        },
+        {
+            "guard": "lc_dir_C_2 == 0 && cy_C_2 >= 20",
+            "source": "drive",
+            "action": "right",
+            "target": "drive",
+            "agent": "C_2",
+            "jump": [
+                {
+                    "expression": "-1",
+                    "variable": "lc_dir_C_2"
+                },
+                {
+                    "expression": "0",
+                    "variable": "tau_C_2"
+                },
+                {
+                    "expression": "cy_C_2 - 10",
+                    "variable": "cy_C_2"
+                }
+            ]
+        },
+        {
+            "guard": "lc_dir_C_2 != 0 && tau_C_2 >= 3",
+            "source": "drive",
+            "action": "end_lc",
+            "target": "drive",
+            "agent": "C_2",
+            "jump": [
+                {
+                    "expression": "0",
+                    "variable": "lc_dir_C_2"
+                },
+                {
+                    "expression": "0",
+                    "variable": "tau_C_2"
+                },
+                {
+                    "expression": "0",
+                    "variable": "vy_C_2"
+                },
+                {
+                    "expression": "cy_C_2",
+                    "variable": "y_C_2"
+                }
+            ]
+        },
+        {
+            "guard": "vx_C_3 < 8",
+            "source": "drive",
+            "action": "acc",
+            "target": "drive",
+            "agent": "C_3",
+            "jump": [
+                {
+                    "expression": "0.2",
+                    "variable": "acc_C_3"
+                }
+            ]
+        },
+        {
+            "guard": "vx_C_3 > 1",
+            "source": "drive",
+            "action": "dec",
+            "target": "drive",
+            "agent": "C_3",
+            "jump": [
+                {
+                    "expression": "-0.2",
+                    "variable": "acc_C_3"
+                }
+            ]
+        },
+        {
+            "guard": "true",
+            "source": "drive",
+            "action": "cruise",
+            "target": "drive",
+            "agent": "C_3",
+            "jump": [
+                {
+                    "expression": "0",
+                    "variable": "acc_C_3"
+                }
+            ]
+        },
+        {
+            "guard": "lc_dir_C_3 == 0 && cy_C_3 <= 20",
+            "source": "drive",
+            "action": "left",
+            "target": "drive",
+            "agent": "C_3",
+            "jump": [
+                {
+                    "expression": "1",
+                    "variable": "lc_dir_C_3"
+                },
+                {
+                    "expression": "0",
+                    "variable": "tau_C_3"
+                },
+                {
+                    "expression": "cy_C_3 + 10",
+                    "variable": "cy_C_3"
+                }
+            ]
+        },
+        {
+            "guard": "lc_dir_C_3 == 0 && cy_C_3 >= 20",
+            "source": "drive",
+            "action": "right",
+            "target": "drive",
+            "agent": "C_3",
+            "jump": [
+                {
+                    "expression": "-1",
+                    "variable": "lc_dir_C_3"
+                },
+                {
+                    "expression": "0",
+                    "variable": "tau_C_3"
+                },
+                {
+                    "expression": "cy_C_3 - 10",
+                    "variable": "cy_C_3"
+                }
+            ]
+        },
+        {
+            "guard": "lc_dir_C_3 != 0 && tau_C_3 >= 3",
+            "source": "drive",
+            "action": "end_lc",
+            "target": "drive",
+            "agent": "C_3",
+            "jump": [
+                {
+                    "expression": "0",
+                    "variable": "lc_dir_C_3"
+                },
+                {
+                    "expression": "0",
+                    "variable": "tau_C_3"
+                },
+                {
+                    "expression": "0",
+                    "variable": "vy_C_3"
+                },
+                {
+                    "expression": "cy_C_3",
+                    "variable": "y_C_3"
+                }
+            ]
+        },
+        {
+            "guard": "vx_C_4 < 8",
+            "source": "drive",
+            "action": "acc",
+            "target": "drive",
+            "agent": "C_4",
+            "jump": [
+                {
+                    "expression": "0.2",
+                    "variable": "acc_C_4"
+                }
+            ]
+        },
+        {
+            "guard": "vx_C_4 > 1",
+            "source": "drive",
+            "action": "dec",
+            "target": "drive",
+            "agent": "C_4",
+            "jump": [
+                {
+                    "expression": "-0.2",
+                    "variable": "acc_C_4"
+                }
+            ]
+        },
+        {
+            "guard": "true",
+            "source": "drive",
+            "action": "cruise",
+            "target": "drive",
+            "agent": "C_4",
+            "jump": [
+                {
+                    "expression": "0",
+                    "variable": "acc_C_4"
+                }
+            ]
+        },
+        {
+            "guard": "lc_dir_C_4 == 0 && cy_C_4 <= 20",
+            "source": "drive",
+            "action": "left",
+            "target": "drive",
+            "agent": "C_4",
+            "jump": [
+                {
+                    "expression": "1",
+                    "variable": "lc_dir_C_4"
+                },
+                {
+                    "expression": "0",
+                    "variable": "tau_C_4"
+                },
+                {
+                    "expression": "cy_C_4 + 10",
+                    "variable": "cy_C_4"
+                }
+            ]
+        },
+        {
+            "guard": "lc_dir_C_4 == 0 && cy_C_4 >= 20",
+            "source": "drive",
+            "action": "right",
+            "target": "drive",
+            "agent": "C_4",
+            "jump": [
+                {
+                    "expression": "-1",
+                    "variable": "lc_dir_C_4"
+                },
+                {
+                    "expression": "0",
+                    "variable": "tau_C_4"
+                },
+                {
+                    "expression": "cy_C_4 - 10",
+                    "variable": "cy_C_4"
+                }
+            ]
+        },
+        {
+            "guard": "lc_dir_C_4 != 0 && tau_C_4 >= 3",
+            "source": "drive",
+            "action": "end_lc",
+            "target": "drive",
+            "agent": "C_4",
+            "jump": [
+                {
+                    "expression": "0",
+                    "variable": "lc_dir_C_4"
+                },
+                {
+                    "expression": "0",
+                    "variable": "tau_C_4"
+                },
+                {
+                    "expression": "0",
+                    "variable": "vy_C_4"
+                },
+                {
+                    "expression": "cy_C_4",
+                    "variable": "y_C_4"
+                }
+            ]
+        },
+        {
+            "guard": "vx_C_5 < 8",
+            "source": "drive",
+            "action": "acc",
+            "target": "drive",
+            "agent": "C_5",
+            "jump": [
+                {
+                    "expression": "0.2",
+                    "variable": "acc_C_5"
+                }
+            ]
+        },
+        {
+            "guard": "vx_C_5 > 1",
+            "source": "drive",
+            "action": "dec",
+            "target": "drive",
+            "agent": "C_5",
+            "jump": [
+                {
+                    "expression": "-0.2",
+                    "variable": "acc_C_5"
+                }
+            ]
+        },
+        {
+            "guard": "true",
+            "source": "drive",
+            "action": "cruise",
+            "target": "drive",
+            "agent": "C_5",
+            "jump": [
+                {
+                    "expression": "0",
+                    "variable": "acc_C_5"
+                }
+            ]
+        },
+        {
+            "guard": "lc_dir_C_5 == 0 && cy_C_5 <= 20",
+            "source": "drive",
+            "action": "left",
+            "target": "drive",
+            "agent": "C_5",
+            "jump": [
+                {
+                    "expression": "1",
+                    "variable": "lc_dir_C_5"
+                },
+                {
+                    "expression": "0",
+                    "variable": "tau_C_5"
+                },
+                {
+                    "expression": "cy_C_5 + 10",
+                    "variable": "cy_C_5"
+                }
+            ]
+        },
+        {
+            "guard": "lc_dir_C_5 == 0 && cy_C_5 >= 20",
+            "source": "drive",
+            "action": "right",
+            "target": "drive",
+            "agent": "C_5",
+            "jump": [
+                {
+                    "expression": "-1",
+                    "variable": "lc_dir_C_5"
+                },
+                {
+                    "expression": "0",
+                    "variable": "tau_C_5"
+                },
+                {
+                    "expression": "cy_C_5 - 10",
+                    "variable": "cy_C_5"
+                }
+            ]
+        },
+        {
+            "guard": "lc_dir_C_5 != 0 && tau_C_5 >= 3",
+            "source": "drive",
+            "action": "end_lc",
+            "target": "drive",
+            "agent": "C_5",
+            "jump": [
+                {
+                    "expression": "0",
+                    "variable": "lc_dir_C_5"
+                },
+                {
+                    "expression": "0",
+                    "variable": "tau_C_5"
+                },
+                {
+                    "expression": "0",
+                    "variable": "vy_C_5"
+                },
+                {
+                    "expression": "cy_C_5",
+                    "variable": "y_C_5"
+                }
+            ]
+        },
+        {
+            "guard": "vx_C_6 < 8",
+            "source": "drive",
+            "action": "acc",
+            "target": "drive",
+            "agent": "C_6",
+            "jump": [
+                {
+                    "expression": "0.2",
+                    "variable": "acc_C_6"
+                }
+            ]
+        },
+        {
+            "guard": "vx_C_6 > 1",
+            "source": "drive",
+            "action": "dec",
+            "target": "drive",
+            "agent": "C_6",
+            "jump": [
+                {
+                    "expression": "-0.2",
+                    "variable": "acc_C_6"
+                }
+            ]
+        },
+        {
+            "guard": "true",
+            "source": "drive",
+            "action": "cruise",
+            "target": "drive",
+            "agent": "C_6",
+            "jump": [
+                {
+                    "expression": "0",
+                    "variable": "acc_C_6"
+                }
+            ]
+        },
+        {
+            "guard": "lc_dir_C_6 == 0 && cy_C_6 <= 20",
+            "source": "drive",
+            "action": "left",
+            "target": "drive",
+            "agent": "C_6",
+            "jump": [
+                {
+                    "expression": "1",
+                    "variable": "lc_dir_C_6"
+                },
+                {
+                    "expression": "0",
+                    "variable": "tau_C_6"
+                },
+                {
+                    "expression": "cy_C_6 + 10",
+                    "variable": "cy_C_6"
+                }
+            ]
+        },
+        {
+            "guard": "lc_dir_C_6 == 0 && cy_C_6 >= 20",
+            "source": "drive",
+            "action": "right",
+            "target": "drive",
+            "agent": "C_6",
+            "jump": [
+                {
+                    "expression": "-1",
+                    "variable": "lc_dir_C_6"
+                },
+                {
+                    "expression": "0",
+                    "variable": "tau_C_6"
+                },
+                {
+                    "expression": "cy_C_6 - 10",
+                    "variable": "cy_C_6"
+                }
+            ]
+        },
+        {
+            "guard": "lc_dir_C_6 != 0 && tau_C_6 >= 3",
+            "source": "drive",
+            "action": "end_lc",
+            "target": "drive",
+            "agent": "C_6",
+            "jump": [
+                {
+                    "expression": "0",
+                    "variable": "lc_dir_C_6"
+                },
+                {
+                    "expression": "0",
+                    "variable": "tau_C_6"
+                },
+                {
+                    "expression": "0",
+                    "variable": "vy_C_6"
+                },
+                {
+                    "expression": "cy_C_6",
+                    "variable": "y_C_6"
+                }
+            ]
+        }
+    ],
+    "queries": [
+        {
+            "formula": "<<C_1, C_2, C_3, C_4, C_5, C_6>> F (x_C_1 >= 45) && (x_C_2 >= 57) && (x_C_3 >= 40) && (x_C_4 >= 46) && (x_C_5 >= 63) && (x_C_6 >= 57)"
+        }
+    ],
+    "termination_conditions": {
+        "max_steps": "10",
+        "time_bound": "60",
+        "state_formula": "(abs(x_C_1 - x_C_2) < 2 && abs(y_C_1 - y_C_2) < 5) || (abs(x_C_1 - x_C_3) < 2 && abs(y_C_1 - y_C_3) < 5) || (abs(x_C_1 - x_C_4) < 2 && abs(y_C_1 - y_C_4) < 5) || (abs(x_C_1 - x_C_5) < 2 && abs(y_C_1 - y_C_5) < 5) || (abs(x_C_1 - x_C_6) < 2 && abs(y_C_1 - y_C_6) < 5) || (abs(x_C_2 - x_C_3) < 2 && abs(y_C_2 - y_C_3) < 5) || (abs(x_C_2 - x_C_4) < 2 && abs(y_C_2 - y_C_4) < 5) || (abs(x_C_2 - x_C_5) < 2 && abs(y_C_2 - y_C_5) < 5) || (abs(x_C_2 - x_C_6) < 2 && abs(y_C_2 - y_C_6) < 5) || (abs(x_C_3 - x_C_4) < 2 && abs(y_C_3 - y_C_4) < 5) || (abs(x_C_3 - x_C_5) < 2 && abs(y_C_3 - y_C_5) < 5) || (abs(x_C_3 - x_C_6) < 2 && abs(y_C_3 - y_C_6) < 5) || (abs(x_C_4 - x_C_5) < 2 && abs(y_C_4 - y_C_5) < 5) || (abs(x_C_4 - x_C_6) < 2 && abs(y_C_4 - y_C_6) < 5) || (abs(x_C_5 - x_C_6) < 2 && abs(y_C_5 - y_C_6) < 5) || (y_C_1 < 5 || y_C_1 > 35) || (y_C_2 < 5 || y_C_2 > 35) || (y_C_3 < 5 || y_C_3 > 35) || (y_C_4 < 5 || y_C_4 > 35) || (y_C_5 < 5 || y_C_5 > 35) || (y_C_6 < 5 || y_C_6 > 35)"
+    }
+}

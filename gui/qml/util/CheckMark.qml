@@ -1,7 +1,7 @@
 /**
 * @file CheckMark.qml
 * @brief GUI component for displaying a tristate checkbox
-* @authors Moritz Maas
+* @authors 
 */
 
 import QtQml
@@ -18,5 +18,13 @@ Image {
 
     source: source_url
     fillMode: Image.PreserveAspectFit
+
+    MouseArea {
+        enabled: parent.enabled
+        anchors.fill: parent
+        onClicked: {
+            show_tree(index);
+        }
+    }
 
 }

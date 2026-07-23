@@ -1,7 +1,7 @@
 /**
 * @file Location.qml
 * @brief GUI component for a location of the HyTrig GUI
-* @authors Moritz Maas
+* @authors 
 */
 
 import org.julialang

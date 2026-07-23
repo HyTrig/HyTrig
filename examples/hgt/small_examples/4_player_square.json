@@ -1,0 +1,740 @@
+{
+    "game_type": "HGT",
+    "description": "Four players (A, B, C, D) sit at the corners of a 10x10 square and pass a ball. At each corner the holder can shoot clockwise (R) or counter-clockwise (L) to the adjacent corner.",
+    "agents": [
+        {
+            "name": "A"
+        },
+        {
+            "name": "B"
+        },
+        {
+            "name": "C"
+        },
+        {
+            "name": "D"
+        }
+    ],
+    "actions": [
+        {
+            "name": "R"
+        },
+        {
+            "name": "L"
+        }
+    ],
+    "variables": [
+        {
+            "name": "x",
+            "expression": "-5"
+        },
+        {
+            "name": "y",
+            "expression": "-5"
+        },
+        {
+            "name": "dir_x",
+            "expression": "0"
+        },
+        {
+            "name": "dir_y",
+            "expression": "0"
+        },
+        {
+            "name": "shooter",
+            "expression": "0"
+        }
+    ],
+    "triggers": [
+        {
+            "agent": "A",
+            "trigger": "x == -5 && y == -5 && shooter != 1"
+        },
+        {
+            "agent": "B",
+            "trigger": "x == 5  && y == -5 && shooter != 2"
+        },
+        {
+            "agent": "C",
+            "trigger": "x == 5  && y == 5  && shooter != 3"
+        },
+        {
+            "agent": "D",
+            "trigger": "x == -5 && y == 5  && shooter != 4"
+        }
+    ],
+    "locations": [
+        {
+            "name": "initial",
+            "initial": true,
+            "flow": [
+                {
+                    "expression": "0",
+                    "variable": "x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "shooter"
+                }
+            ],
+            "invariant": ""
+        },
+        {
+            "name": "A_Throwing",
+            "initial": false,
+            "flow": [
+                {
+                    "expression": "dir_x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "dir_y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "shooter"
+                }
+            ],
+            "invariant": "-5 <= x && x <= 5 && -5 <= y && y <= 5"
+        },
+        {
+            "name": "B_Throwing",
+            "initial": false,
+            "flow": [
+                {
+                    "expression": "dir_x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "dir_y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "shooter"
+                }
+            ],
+            "invariant": "-5 <= x && x <= 5 && -5 <= y && y <= 5"
+        },
+        {
+            "name": "C_Throwing",
+            "initial": false,
+            "flow": [
+                {
+                    "expression": "dir_x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "dir_y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "shooter"
+                }
+            ],
+            "invariant": "-5 <= x && x <= 5 && -5 <= y && y <= 5"
+        },
+        {
+            "name": "D_Throwing",
+            "initial": false,
+            "flow": [
+                {
+                    "expression": "dir_x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "dir_y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "shooter"
+                }
+            ],
+            "invariant": "-5 <= x && x <= 5 && -5 <= y && y <= 5"
+        }
+    ],
+    "edges": [
+        {
+            "guard": "(x + 5)^2 + (y + 5)^2 <= 1",
+            "source": "initial",
+            "action": "R",
+            "target": "A_Throwing",
+            "agent": "A",
+            "jump": [
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "1",
+                    "variable": "dir_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_y"
+                },
+                {
+                    "expression": "1",
+                    "variable": "shooter"
+                }
+            ]
+        },
+        {
+            "guard": "(x + 5)^2 + (y + 5)^2 <= 1",
+            "source": "initial",
+            "action": "L",
+            "target": "A_Throwing",
+            "agent": "A",
+            "jump": [
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_x"
+                },
+                {
+                    "expression": "1",
+                    "variable": "dir_y"
+                },
+                {
+                    "expression": "1",
+                    "variable": "shooter"
+                }
+            ]
+        },
+        {
+            "guard": "(x + 5)^2 + (y + 5)^2 <= 1",
+            "source": "D_Throwing",
+            "action": "R",
+            "target": "A_Throwing",
+            "agent": "A",
+            "jump": [
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "1",
+                    "variable": "dir_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_y"
+                },
+                {
+                    "expression": "1",
+                    "variable": "shooter"
+                }
+            ]
+        },
+        {
+            "guard": "(x + 5)^2 + (y + 5)^2 <= 1",
+            "source": "D_Throwing",
+            "action": "L",
+            "target": "A_Throwing",
+            "agent": "A",
+            "jump": [
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_x"
+                },
+                {
+                    "expression": "1",
+                    "variable": "dir_y"
+                },
+                {
+                    "expression": "1",
+                    "variable": "shooter"
+                }
+            ]
+        },
+        {
+            "guard": "(x + 5)^2 + (y + 5)^2 <= 1",
+            "source": "B_Throwing",
+            "action": "R",
+            "target": "A_Throwing",
+            "agent": "A",
+            "jump": [
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "1",
+                    "variable": "dir_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_y"
+                },
+                {
+                    "expression": "1",
+                    "variable": "shooter"
+                }
+            ]
+        },
+        {
+            "guard": "(x + 5)^2 + (y + 5)^2 <= 1",
+            "source": "B_Throwing",
+            "action": "L",
+            "target": "A_Throwing",
+            "agent": "A",
+            "jump": [
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_x"
+                },
+                {
+                    "expression": "1",
+                    "variable": "dir_y"
+                },
+                {
+                    "expression": "1",
+                    "variable": "shooter"
+                }
+            ]
+        },
+        {
+            "guard": "(x - 5)^2 + (y + 5)^2 <= 1",
+            "source": "A_Throwing",
+            "action": "R",
+            "target": "B_Throwing",
+            "agent": "B",
+            "jump": [
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_x"
+                },
+                {
+                    "expression": "1",
+                    "variable": "dir_y"
+                },
+                {
+                    "expression": "2",
+                    "variable": "shooter"
+                }
+            ]
+        },
+        {
+            "guard": "(x - 5)^2 + (y + 5)^2 <= 1",
+            "source": "A_Throwing",
+            "action": "L",
+            "target": "B_Throwing",
+            "agent": "B",
+            "jump": [
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "-1",
+                    "variable": "dir_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_y"
+                },
+                {
+                    "expression": "2",
+                    "variable": "shooter"
+                }
+            ]
+        },
+        {
+            "guard": "(x - 5)^2 + (y + 5)^2 <= 1",
+            "source": "C_Throwing",
+            "action": "R",
+            "target": "B_Throwing",
+            "agent": "B",
+            "jump": [
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_x"
+                },
+                {
+                    "expression": "1",
+                    "variable": "dir_y"
+                },
+                {
+                    "expression": "2",
+                    "variable": "shooter"
+                }
+            ]
+        },
+        {
+            "guard": "(x - 5)^2 + (y + 5)^2 <= 1",
+            "source": "C_Throwing",
+            "action": "L",
+            "target": "B_Throwing",
+            "agent": "B",
+            "jump": [
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "-1",
+                    "variable": "dir_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_y"
+                },
+                {
+                    "expression": "2",
+                    "variable": "shooter"
+                }
+            ]
+        },
+        {
+            "guard": "(x - 5)^2 + (y - 5)^2 <= 1",
+            "source": "B_Throwing",
+            "action": "R",
+            "target": "C_Throwing",
+            "agent": "C",
+            "jump": [
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "-1",
+                    "variable": "dir_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_y"
+                },
+                {
+                    "expression": "3",
+                    "variable": "shooter"
+                }
+            ]
+        },
+        {
+            "guard": "(x - 5)^2 + (y - 5)^2 <= 1",
+            "source": "B_Throwing",
+            "action": "L",
+            "target": "C_Throwing",
+            "agent": "C",
+            "jump": [
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_x"
+                },
+                {
+                    "expression": "-1",
+                    "variable": "dir_y"
+                },
+                {
+                    "expression": "3",
+                    "variable": "shooter"
+                }
+            ]
+        },
+        {
+            "guard": "(x - 5)^2 + (y - 5)^2 <= 1",
+            "source": "D_Throwing",
+            "action": "R",
+            "target": "C_Throwing",
+            "agent": "C",
+            "jump": [
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "-1",
+                    "variable": "dir_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_y"
+                },
+                {
+                    "expression": "3",
+                    "variable": "shooter"
+                }
+            ]
+        },
+        {
+            "guard": "(x - 5)^2 + (y - 5)^2 <= 1",
+            "source": "D_Throwing",
+            "action": "L",
+            "target": "C_Throwing",
+            "agent": "C",
+            "jump": [
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_x"
+                },
+                {
+                    "expression": "-1",
+                    "variable": "dir_y"
+                },
+                {
+                    "expression": "3",
+                    "variable": "shooter"
+                }
+            ]
+        },
+        {
+            "guard": "(x + 5)^2 + (y - 5)^2 <= 1",
+            "source": "C_Throwing",
+            "action": "R",
+            "target": "D_Throwing",
+            "agent": "D",
+            "jump": [
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_x"
+                },
+                {
+                    "expression": "-1",
+                    "variable": "dir_y"
+                },
+                {
+                    "expression": "4",
+                    "variable": "shooter"
+                }
+            ]
+        },
+        {
+            "guard": "(x + 5)^2 + (y - 5)^2 <= 1",
+            "source": "C_Throwing",
+            "action": "L",
+            "target": "D_Throwing",
+            "agent": "D",
+            "jump": [
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "1",
+                    "variable": "dir_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_y"
+                },
+                {
+                    "expression": "4",
+                    "variable": "shooter"
+                }
+            ]
+        },
+        {
+            "guard": "(x + 5)^2 + (y - 5)^2 <= 1",
+            "source": "A_Throwing",
+            "action": "R",
+            "target": "D_Throwing",
+            "agent": "D",
+            "jump": [
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_x"
+                },
+                {
+                    "expression": "-1",
+                    "variable": "dir_y"
+                },
+                {
+                    "expression": "4",
+                    "variable": "shooter"
+                }
+            ]
+        },
+        {
+            "guard": "(x + 5)^2 + (y - 5)^2 <= 1",
+            "source": "A_Throwing",
+            "action": "L",
+            "target": "D_Throwing",
+            "agent": "D",
+            "jump": [
+                {
+                    "expression": "x",
+                    "variable": "x"
+                },
+                {
+                    "expression": "y",
+                    "variable": "y"
+                },
+                {
+                    "expression": "1",
+                    "variable": "dir_x"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dir_y"
+                },
+                {
+                    "expression": "4",
+                    "variable": "shooter"
+                }
+            ]
+        }
+    ],
+    "queries": [
+        {
+            "formula": "<<>> F deadlock"
+        },
+        {
+            "formula": "<<A,B,C,D>> G ! deadlock"
+        }
+    ],
+    "termination_conditions": {
+        "max_steps": "20",
+        "time_bound": "120",
+        "state_formula": "false"
+    }
+}

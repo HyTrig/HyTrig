@@ -1,7 +1,7 @@
 /**
 * @file Edge.qml
 * @brief GUI component for an edge of the HyTrig GUI
-* @authors Moritz Maas
+* @authors 
 */
 
 import org.julialang

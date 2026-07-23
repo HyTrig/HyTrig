@@ -1,7 +1,7 @@
 /**
 * @file Action.qml
 * @brief GUI component for an action of the HyTrig GUI
-* @authors Moritz Maas
+* @authors 
 */
 
 import org.julialang

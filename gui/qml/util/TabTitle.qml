@@ -1,7 +1,7 @@
 /**
 * @file TabTitle.qml
 * @brief GUI component for a tab title text of the HyTrig GUI
-* @authors Moritz Maas
+* @authors 
 */
 
 import QtQuick

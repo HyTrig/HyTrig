@@ -22,26 +22,17 @@ File description.
 - Author 2
 """
 
-# TODO: add function documentation
-function continuous_evolution(valuation::Valuation, 
-                              flow::Assignment,
-                              time::Float64)::Valuation
-
-    function flowODE!(du, u, p, t)
-        current_valuation = valuation_from_flow_vector(flow, valuation, u)
-        for (i, (_, var_flow)) in enumerate(flow)
-            # Evaluate the flow for the variable
-            du[i] = evaluate(var_flow, current_valuation)
-        end
+# Shared ODE right-hand side for a flow whose variable derivatives have been
+# precompiled into a `Vector{PartialFn}`. `p` carries the constant base valuation
+# (`p.full`, in valuation order) and the compiled flow functions (`p.flow_fns`,
+# in flow order, matching `u`). `PartialFn` is a concrete type, so the loop is
+# type-stable and allocation-free regardless of how many flow variables there are.
+function _flow_rhs!(du, u, p, t)
+    flow_fns = p.flow_fns
+    @inbounds for i in eachindex(flow_fns)
+        du[i] = flow_fns[i](p.full, u)
     end
-
-    u0 = Float64[round5(valuation[var]) for (var, _) in flow] 
-    tspan = (0.0, time)  # Add a small buffer to ensure we capture the trigger time
-    prob = ODEProblem(flowODE!, u0, tspan)
-    sol = solve(prob, Tsit5(), abstol=1e-6, reltol=1e-6)
-    
-    final_valuation = round5(valuation_from_flow_vector(flow, valuation, sol[end]))
-    return final_valuation, round5(sol.t[end])
+    return nothing
 end
 
 # TODO: add function documentation
@@ -51,5 +42,5 @@ function discrete_evolution(valuation::Valuation,
     for (var, expr) in jump
         new_valuation[var] = evaluate(expr, new_valuation)
     end
-    return round5(new_valuation)
+    return new_valuation
 end
