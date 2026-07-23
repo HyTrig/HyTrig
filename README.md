@@ -138,4 +138,4 @@ If you use HyTrig in your research, please cite it. Citation metadata is provide
 in [`CITATION.cff`](CITATION.cff):
 
 > Hamarneh, Q., Maas, M., & Schwammberger, M. *HyTrig*.
-> DOI: [10.5281/zenodo.21517140](https://doi.org/10.5281/zenodo.21517140)
+> DOI: [10.5281/zenodo.21519099](https://doi.org/10.5281/zenodo.21519099)

@@ -10,9 +10,9 @@ authors:
     given-names: Maike
     orcid: https://orcid.org/0000-0002-3344-6282
 title: "HyTrig"
-version: v1.0.0
+version: v1.0.1
 identifiers:
   - type: doi
-    value: 10.5281/zenodo.21517140
+    value: 10.5281/zenodo.21519099
 date-released: 2026-07-23
 url: "https://github.com/HyTrig/HyTrig"
