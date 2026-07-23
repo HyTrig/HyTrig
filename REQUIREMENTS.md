@@ -49,8 +49,7 @@ this is standard on any desktop operating system.
 - **Operating system:** any platform supported by Julia 1.10 — Linux, macOS,
   or Windows. No platform-specific features are required.
 
-All Julia package dependencies are pinned in [`Project.toml`](Project.toml) and
-[`Manifest.toml`](Manifest.toml), which together play the role that a
+All Julia package dependencies are pinned in [`Project.toml`](Project.toml), which together play the role that a
 `requirements.txt` plays in a Python-only project: they provide explicit,
 reproducible versioning. Install them from the project root with:
 
@@ -58,15 +57,14 @@ reproducible versioning. Install them from the project root with:
 julia --project=. -e 'using Pkg; Pkg.instantiate(); Pkg.precompile()'
 ```
 
-Key dependencies (fully versioned in `Manifest.toml`) include:
+Key dependencies include:
 
 - `DifferentialEquations` — numerical integration of the continuous dynamics
 - `QML` and `CxxWrap` (0.16) — the Qt6-based graphical user interface
 - `JSON3` / `StructTypes` — model serialisation
 - `DataStructures`, `ResumableFunctions`, `Match`, and others — core algorithms
 
-Running `Pkg.instantiate()` against the committed `Manifest.toml` reproduces the
-exact dependency versions used for this artifact.
+Running `Pkg.instantiate()` reproduces the exact dependency versions used for this artifact.
 
 ### Containerised installation (Docker)
 

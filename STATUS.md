@@ -29,7 +29,7 @@ results.
 Beyond being complete, the artifact **runs to produce the outputs described**:
 
 - It builds and runs from scratch on all major platforms via the pinned Julia
-  1.10 environment ([`Project.toml`](Project.toml), [`Manifest.toml`](Manifest.toml))
+  1.10 environment ([`Project.toml`](Project.toml))
   or, with no local setup, via the provided Docker image.
 - [`INSTALL.md`](INSTALL.md) gives a concrete, self-checking usage example: a
   reviewer can run the bundled `3_players_1_ball` model and compare the tool's
@@ -55,7 +55,7 @@ published computational results:
   **Tables I, II, and III** of the accompanying paper. Because outcomes are
   deterministic, the reported truth values and tree sizes regenerate exactly;
   only wall-clock evaluation times differ across hardware, as expected.
-- The pinned dependency manifest and the Docker image fix the software
+- The pinned dependency [`Project.toml`](Project.toml) and the Docker image fix the software
   environment, removing environment drift as a source of divergence.
 
 Because the artifact has also been prepared to meet the Available and Reviewed

@@ -57,7 +57,7 @@ RUN ln -s /usr/bin/python3 /usr/local/bin/python
 WORKDIR /app
 
 # Install Julia dependencies first so this layer is cached across source edits.
-COPY Project.toml Manifest.toml ./
+COPY Project.toml ./
 RUN julia --project=/app -e 'using Pkg; Pkg.instantiate(); Pkg.precompile()'
 
 # Copy the rest of the project.

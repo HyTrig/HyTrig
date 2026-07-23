@@ -18,8 +18,8 @@ docker build -t hytrig .
 docker run -it --rm hytrig
 ```
 
-The `run` command launches the interactive command-line interface (CLI). That's
-it — no Julia installation or dependency management needed.
+The `run` command launches the interactive command-line interface (CLI). That's it! 
+No Julia installation or dependency management needed.
 
 ## Option B — Native installation
 
@@ -31,8 +31,7 @@ it — no Julia installation or dependency management needed.
    juliaup default 1.10
    ```
 
-2. **Install the dependencies** from the project root (exact versions are pinned
-   in [`Project.toml`](Project.toml) and [`Manifest.toml`](Manifest.toml)):
+2. **Install the dependencies** from the project root (exact versions are pinned in [`Project.toml`](Project.toml)):
 
    ```bash
    julia --project=. -e 'using Pkg; Pkg.instantiate(); Pkg.precompile()'
