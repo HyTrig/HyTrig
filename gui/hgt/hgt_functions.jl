@@ -160,11 +160,17 @@ function hgt_load(path::QString)::String
         load_elements("actions", QHGTAction, hgt_action_list)
         load_elements("variables", QHGTVariable, hgt_variable_list)
         load_elements("triggers", QHGTTrigger, hgt_trigger_list)
+        # Flows and jumps only contain the variables listed in them, in the listed order
+        variable_names::Set{String} = Set([x.name for x in hgt_variable_list])
         empty!(hgt_location_list)
         for loc in data["locations"]
             flow_list::Vector{QHGTFlow} = QHGTFlow[]
             for flow in loc["flow"]
-                push!(flow_list, StructTypes.constructfrom(QHGTFlow, flow))
+                if flow["variable"] in variable_names
+                    push!(flow_list, StructTypes.constructfrom(QHGTFlow, flow))
+                else
+                    @warn "Ignoring flow of undefined variable $(flow["variable"]) in location $(loc["name"])"
+                end
             end
             push!(hgt_location_list, QHGTLocation(loc["name"], loc["initial"], loc["invariant"], JuliaItemModel(flow_list)))
         end
@@ -172,7 +178,11 @@ function hgt_load(path::QString)::String
         for edge in data["edges"]
             jump_list::Vector{QHGTJump} = QHGTJump[]
             for jump in edge["jump"]
-                push!(jump_list, StructTypes.constructfrom(QHGTJump, jump))
+                if jump["variable"] in variable_names
+                    push!(jump_list, StructTypes.constructfrom(QHGTJump, jump))
+                else
+                    @warn "Ignoring jump of undefined variable $(jump["variable"]) in edge from $(edge["source"]) to $(edge["target"])"
+                end
             end
             push!(hgt_edge_list, QHGTEdge(edge["source"], edge["target"], edge["guard"], edge["agent"], edge["action"], JuliaItemModel(jump_list)))
         end
@@ -207,6 +217,18 @@ function hgt_verify()::String
         [x.name for x in hgt_variable_list]
     )
     results::Vector{Bool} = Bool[]
+    for loc in hgt_location_list
+        duplicate = _duplicate_variable(loc.flow)
+        if !isnothing(duplicate)
+            return "variable $duplicate is assigned more than once in the flow of location $(loc.name)"
+        end
+    end
+    for edge in hgt_edge_list
+        duplicate = _duplicate_variable(edge.jump)
+        if !isnothing(duplicate)
+            return "variable $duplicate is assigned more than once in the jump of edge from $(edge.source) to $(edge.target)"
+        end
+    end
     try
         locations = Vector{HGT_Location}([
             HGT_Location(
@@ -390,6 +412,23 @@ function hgt_save_trees(path::QString)::Bool
         write(f, print_trees([s for s in hgt_tree_string]))
     end
     return true
+end
+
+"""
+    _duplicate_variable(assignments::JuliaItemModel)::Union{String, Nothing}
+
+Return the first variable that is assigned more than once in a flow or jump, or `nothing` if there is none.
+"""
+function _duplicate_variable(assignments::JuliaItemModel)::Union{String, Nothing}
+    seen::Set{String} = Set{String}()
+    for i in 1:length(assignments)
+        variable = assignments[i].variable
+        if variable in seen
+            return variable
+        end
+        push!(seen, variable)
+    end
+    return nothing
 end
 
 function _get_path(path::QString)::String

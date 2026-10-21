@@ -111,18 +111,12 @@ GameType {
             element_name: "Location"
 
             add: function() {
-                var flow = []
-                for (var i = 0; i < hgt_models.variables.rowCount(); i++) {
-                    flow.push({
-                        variable: hgt_models.variables.data(hgt_models.variables.index(i, 0), roles.name),
-                        expression: hgt_models.variables.data(hgt_models.variables.index(i, 0), roles.name)
-                    })
-                }
+                // Variables are added to the flow one by one in the location
                 hgt_models.locations.appendRow({
                     name: generate_name("l"),
                     initial: hgt_models.locations.rowCount() == 0,
                     invariant: "",
-                    flow: flow
+                    flow: []
                 });
             }
 
@@ -146,20 +140,14 @@ GameType {
             element_name: "Edge"
 
             add: function() {
-                var jump = []
-                for (var i = 0; i < hgt_models.variables.rowCount(); i++) {
-                    jump.push({
-                        variable: hgt_models.variables.data(hgt_models.variables.index(i, 0), roles.name),
-                        expression: hgt_models.variables.data(hgt_models.variables.index(i, 0), roles.name)
-                    })
-                }
+                // Variables are added to the jump one by one in the edge
                 hgt_models.edges.appendRow({
                     source: "",
                     target: "",
                     guard: "",
                     agent: "",
                     action: "",
-                    jump: jump
+                    jump: []
                 });
             }
 
@@ -288,7 +276,7 @@ GameType {
     signal locationRemoved(string name)
     signal locationRenamed(int index, string name)
     signal variableAdded()
-    signal variableRemoved(int index)
-    signal variableRenamed(int index, string name)
+    signal variableRemoved(int index, string name)
+    signal variableRenamed(int index, string name, string old_name)
 
 }

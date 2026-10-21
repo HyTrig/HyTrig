@@ -127,108 +127,18 @@ Element {
 
         },
 
-        Row {
+        AssignmentList {
 
             parent: location_frame.column
             width: parent.width
-            height: location_invariant_field.height
 
-            Title {
-                
-                id: flow_title
-                width: parent.width
-                height: parent.height
-                text: qsTr("Flow")
-                font.pointSize: 20
-
-            }
-
-        },
-
-        Row {
-
-            parent: location_frame.column
-            width: parent.width
-            height: location_flow_list.height
-
-            ListView {
-
-                id: location_flow_list
-                width: parent.width
-                height: contentHeight
-                clip: true
-                interactive: false
-
-                model: flow
-                delegate: Row {
-
-                    width: location_flow_list.width
-                    height: variable_field.height + variable_field.topInset
-                    spacing: 10
-
-                    Label {
-                        id: variable_label
-                        width: location_invariant_label.width
-                        height: parent.height
-                        verticalAlignment: Text.AlignVCenter
-                        text: qsTr(model.variable)
-                        elide: Text.ElideRight
-                    }
-
-                    RegexField {
-                        id: variable_field
-                        width: parent.width - variable_label.width - parent.spacing
-                        topInset: 10
-
-                        text: qsTr(model.expression)
-                        default_text: qsTr("Enter flow expression")
-                        error_text: qsTr("Invalid flow expression")
-                        condition_error_text: qsTr("Invalid flow expression")
-
-                        regex: /^.*$/
-
-                        action: function(x) {
-                            model.expression = x;
-                        }
-                        condition: function(x) {
-                            return Julia.hgt_is_formula(x, "expression");
-                        }
-                        error_value: text
-
-                        Connections {
-                            target: hgt_game
-                            function onVariableRenamed(index, name) {
-                                variable_field.textChanged();
-                                variable_field.editingFinished();
-                            }
-                            function onVariableRemoved(index) {
-                                variable_field.textChanged();
-                                variable_field.editingFinished();
-                            }
-                        }
-                    }
-
-                }
-
-            }
+            assignments: flow
+            title: "Flow"
+            kind: "flow"
+            empty_text: "No flow, all variables are constant in this location."
 
         }
 
     ]
-
-    Connections {
-        target: hgt_game
-        function onVariableAdded() {
-            model.flow.appendRow({variable: "", expression: "0"});
-        }
-        function onVariableRemoved(index) {
-            model.flow.removeRow(index);
-        }
-        function onVariableRenamed(index, name) {
-            if (model.flow) {
-                model.flow.setData(model.flow.index(index, 0), name, roles.name);
-            }
-        }
-    }
 
 }

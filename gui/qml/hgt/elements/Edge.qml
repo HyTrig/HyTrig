@@ -181,90 +181,15 @@ Element {
 
         },
 
-        Row {
+        AssignmentList {
 
             parent: edge_frame.column
             width: parent.width
-            height: edge_guard_field.height
 
-            Title {
-                
-                id: flow_title
-                width: parent.width
-                height: parent.height
-                text: qsTr("Jump")
-                font.pointSize: 20
-
-            }
-
-        },
-
-        Row {
-
-            parent: edge_frame.column
-            width: parent.width
-            height: edge_jump_list.height
-
-            ListView {
-
-                id: edge_jump_list
-                width: parent.width
-                height: contentHeight
-                clip: true
-                interactive: false
-
-                model: jump
-                delegate: Row {
-
-                    width: edge_jump_list.width
-                    height: variable_field.height + variable_field.topInset
-                    spacing: 10
-
-                    Label {
-                        id: variable_label
-                        width: edge_guard_label.width
-                        height: parent.height
-                        verticalAlignment: Text.AlignVCenter
-                        text: qsTr(model.variable)
-                        elide: Text.ElideRight
-                    }
-
-                    RegexField {
-                        id: variable_field
-                        width: parent.width - variable_label.width - parent.spacing
-                        topInset: 10
-
-                        text: qsTr(model.expression)
-                        default_text: qsTr("Enter jump expression")
-                        error_text: qsTr("Invalid jump expression")
-                        condition_error_text: qsTr("Invalid jump expression")
-
-                        regex: /^.*$/
-
-                        action: function(x) {
-                            model.expression = x;
-                        }
-                        condition: function(x) {
-                            return Julia.hgt_is_formula(x, "expression");
-                        }
-                        error_value: text
-
-                        Connections {
-                            target: hgt_game
-                            function onVariableRenamed(index, name) {
-                                variable_field.textChanged();
-                                variable_field.editingFinished();
-                            }
-                            function onVariableRemoved(index) {
-                                variable_field.textChanged();
-                                variable_field.editingFinished();
-                            }
-                        }
-                    }
-
-                }
-
-            }
+            assignments: jump
+            title: "Jump"
+            kind: "jump"
+            empty_text: "No jump, all variables keep their values."
 
         }
 
@@ -288,20 +213,6 @@ Element {
             }
             if (model.target == name) {
                 model.target = "";
-            }
-        }
-        function onVariableAdded() {
-            model.jump.appendRow({variable: "", expression: ""});
-        }
-        function onVariableRemoved(index) {
-            model.jump.removeRow(index);
-        }
-        function onVariableRenamed(index, name) {
-            if (model.jump) {
-                if (model.jump.data(model.jump.index(index, 0), roles.name) == model.jump.data(model.jump.index(index, 0), roles.expression)) {
-                    model.jump.setData(model.jump.index(index, 0), name, roles.expression);
-                }
-                model.jump.setData(model.jump.index(index, 0), name, roles.name);
             }
         }
     }

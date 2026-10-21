@@ -18,8 +18,9 @@ Element {
 
     remove: function() {
         var i = index;
+        var name = model.name;
         hgt_models.variables.removeRow(index);
-        variableRemoved(i);
+        variableRemoved(i, name);
     }
 
     elementContent: [
@@ -50,8 +51,9 @@ Element {
                 regex: /^[A-Za-z]\w*$/
 
                 action: function(x) {
+                    var old_name = model.name;
                     model.name = x;
-                    variableRenamed(index, x);
+                    variableRenamed(index, x, old_name);
                 }
                 condition: function(x) {
                     return x == model.name || Julia.hgt_name_available(x);

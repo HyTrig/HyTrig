@@ -115,16 +115,16 @@ function QHGTLocation()::QHGTLocation
 end
 
 """
-    QHGTLocation(name::String, invariant::String, initial::Bool, flow::AbstractArray)
+    QHGTLocation(name::AbstractString, initial::Bool, invariant::AbstractString, flow::AbstractArray)
 
-Create a new location with the given name, invariant, initial flag, and flow.
+Create a new location with the given name, initial flag, invariant, and flow.
 """
-function QHGTLocation(name::String, invariant::String, initial::Bool, flow::AbstractArray)::QHGTLocation
-    return QHGTLocation(name, invariant, initial, JuliaItemModel([QHGTFlow(QML.value(f)["variable"], QML.value(f)["expression"]) for f in flow]))
+function QHGTLocation(name::AbstractString, initial::Bool, invariant::AbstractString, flow::AbstractArray)::QHGTLocation
+    return QHGTLocation(String(name), initial, String(invariant), JuliaItemModel(QHGTFlow[QHGTFlow(QML.value(f)["variable"], QML.value(f)["expression"]) for f in flow]))
 end
 
 function setflow!(model::Vector{QHGTLocation}, flow::AbstractArray, row::Int32, col::Int64)
-    model[row].flow = JuliaItemModel([QHGTFlow(QML.value(f)["variable"], QML.value(f)["expression"]) for f in flow])
+    model[row].flow = JuliaItemModel(QHGTFlow[QHGTFlow(QML.value(f)["variable"], QML.value(f)["expression"]) for f in flow])
 end
 
 """
@@ -165,16 +165,16 @@ function QHGTEdge()::QHGTEdge
 end
 
 """
-    QHGTEdge(source::String, target::String, guard::String, agent::String, action::String, jump::AbstractArray)
+    QHGTEdge(source::AbstractString, target::AbstractString, guard::AbstractString, agent::AbstractString, action::AbstractString, jump::AbstractArray)
 
 Create a new edge with the given source, target, guard, agent, action, and jump.
 """
-function QHGTEdge(source::String, target::String, guard::String, agent::String, action::String, jump::AbstractArray)::QHGTEdge
-    return QHGTEdge(source, target, guard, agent, action, JuliaItemModel([QHGTJump(QML.value(j)["variable"], QML.value(j)["expression"]) for j in jump]))
+function QHGTEdge(source::AbstractString, target::AbstractString, guard::AbstractString, agent::AbstractString, action::AbstractString, jump::AbstractArray)::QHGTEdge
+    return QHGTEdge(String(source), String(target), String(guard), String(agent), String(action), JuliaItemModel(QHGTJump[QHGTJump(QML.value(j)["variable"], QML.value(j)["expression"]) for j in jump]))
 end
 
 function setjump!(model::Vector{QHGTEdge}, jump::AbstractArray, row::Int32, col::Int64)
-    model[row].jump = JuliaItemModel([QHGTJump(QML.value(j)["variable"], QML.value(j)["expression"]) for j in jump])
+    model[row].jump = JuliaItemModel(QHGTJump[QHGTJump(QML.value(j)["variable"], QML.value(j)["expression"]) for j in jump])
 end
 
 """
@@ -387,6 +387,9 @@ A list of locations in the current Hybrid Game with Triggers.
 hgt_location_list::Vector{QHGTLocation} = [QHGTLocation("location", true, "true", JuliaItemModel([QHGTFlow("variable", "variable + 1")]))]
 hgt_models["locations"] = JuliaItemModel(hgt_location_list)
 setsetter!(hgt_models["locations"], setflow!, roleindex(hgt_models["locations"], "flow"))
+# Flows and jumps share the roles variable and expression
+roles["variable"] = roleindex(hgt_location_list[1].flow, "variable")
+roles["expression"] = roleindex(hgt_location_list[1].flow, "expression")
 
 """
     hgt_edge_list::Vector{QHGTEdge}
