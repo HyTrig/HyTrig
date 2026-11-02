@@ -1,0 +1,927 @@
+<<cop_0 >> F ((cop_0_x == robber_x)) && ((cop_0_y == robber_y)): True
+Nodes = 407 - Tree Depth = 30 - Max Game Time = 13.1998
+Evaluation Time = 7.8403
+<<robber >> G !(((cop_0_x == robber_x)) && ((cop_0_y == robber_y))): False
+Evaluation Time = 4.4961
+
+<<cop_0 >> F ((cop_0_x == robber_x)) && ((cop_0_y == robber_y)): True
+Nodes = 298 - Tree Depth = 30 - Max Game Time = 14.4
+Evaluation Time = 6.0452
+<<robber >> G !(((cop_0_x == robber_x)) && ((cop_0_y == robber_y))): False
+Evaluation Time = 2.9105
+
+<<cop_0>> F ((cop_0_x == robber_x && cop_0_y == robber_y)): true
+0- RootNode  running - # Children: 2
+Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+0- TriggerNode running - Time: 0.0 - Agent: robber - Trigger: ((((target_robber_x == v5_x)) && ((target_robber_y == v5_y))) && ((robber_x == v5_x))) && ((robber_y == v5_y)) - # Children: 1
+Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+	1- DecisionNode running - Time: 0.0 - Agent: robber - Action: v4 - # Children: 1
+	Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+		2- TriggerNode running - Time: 0.0 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v1_x)) && ((target_cop_0_y == v1_y))) && ((cop_0_x == v1_x))) && ((cop_0_y == v1_y)) - # Children: 1
+		Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+			3- DecisionNode running - Time: 0.0 - Agent: cop_0 - Action: v0 - # Children: 1
+			Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+				4- TriggerNode running - Time: 1.2 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+				Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+					5- DecisionNode running - Time: 1.2 - Agent: cop_0 - Action: v2 - # Children: 1
+					Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+						6- TriggerNode running - Time: 2.4 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v2_x)) && ((target_cop_0_y == v2_y))) && ((cop_0_x == v2_x))) && ((cop_0_y == v2_y)) - # Children: 1
+						Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+							7- DecisionNode running - Time: 2.4 - Agent: cop_0 - Action: v4 - # Children: 1
+							Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+								8- TriggerNode running - Time: 3.0 - Agent: robber - Trigger: ((((target_robber_x == v4_x)) && ((target_robber_y == v4_y))) && ((robber_x == v4_x))) && ((robber_y == v4_y)) - # Children: 2
+								Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 1.5   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = -0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+									9- DecisionNode running - Time: 3.0 - Agent: robber - Action: v2 - # Children: 1
+									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 1.5   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = -0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = 0.0   }
+
+										10- PropertyNode - running - Time: 3.4286
+										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 2.57143   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 2.57143   robber_y = -0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = 0.0   }
+
+									9- DecisionNode running - Time: 3.0 - Agent: robber - Action: v5 - # Children: 1
+									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 1.5   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = -0.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+										10- TriggerNode running - Time: 3.6 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v4_x)) && ((target_cop_0_y == v4_y))) && ((cop_0_x == v4_x))) && ((cop_0_y == v4_y)) - # Children: 1
+										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+											11- DecisionNode running - Time: 3.6 - Agent: cop_0 - Action: v5 - # Children: 1
+											Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+												12- PropertyNode - running - Time: 4.0
+												Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 1.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 1.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+0- TriggerNode running - Time: 0.0 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v1_x)) && ((target_cop_0_y == v1_y))) && ((cop_0_x == v1_x))) && ((cop_0_y == v1_y)) - # Children: 1
+Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+	1- DecisionNode running - Time: 0.0 - Agent: cop_0 - Action: v0 - # Children: 2
+	Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+		2- TriggerNode running - Time: 0.0 - Agent: robber - Trigger: ((((target_robber_x == v5_x)) && ((target_robber_y == v5_y))) && ((robber_x == v5_x))) && ((robber_y == v5_y)) - # Children: 1
+		Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+			3- DecisionNode running - Time: 0.0 - Agent: robber - Action: v4 - # Children: 1
+			Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+				4- TriggerNode running - Time: 1.2 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+				Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+					5- DecisionNode running - Time: 1.2 - Agent: cop_0 - Action: v2 - # Children: 1
+					Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+						6- TriggerNode running - Time: 2.4 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v2_x)) && ((target_cop_0_y == v2_y))) && ((cop_0_x == v2_x))) && ((cop_0_y == v2_y)) - # Children: 1
+						Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+							7- DecisionNode running - Time: 2.4 - Agent: cop_0 - Action: v4 - # Children: 1
+							Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+								8- TriggerNode running - Time: 3.0 - Agent: robber - Trigger: ((((target_robber_x == v4_x)) && ((target_robber_y == v4_y))) && ((robber_x == v4_x))) && ((robber_y == v4_y)) - # Children: 2
+								Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 1.5   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = -0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+									9- DecisionNode running - Time: 3.0 - Agent: robber - Action: v2 - # Children: 1
+									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 1.5   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = -0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = 0.0   }
+
+										10- PropertyNode - running - Time: 3.4286
+										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 2.57143   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 2.57143   robber_y = -0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = 0.0   }
+
+									9- DecisionNode running - Time: 3.0 - Agent: robber - Action: v5 - # Children: 1
+									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 1.5   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = -0.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+										10- TriggerNode running - Time: 3.6 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v4_x)) && ((target_cop_0_y == v4_y))) && ((cop_0_x == v4_x))) && ((cop_0_y == v4_y)) - # Children: 1
+										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+											11- DecisionNode running - Time: 3.6 - Agent: cop_0 - Action: v5 - # Children: 1
+											Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+												12- PropertyNode - running - Time: 4.0
+												Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 1.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 1.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+		2- TriggerNode running - Time: 1.2 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+		Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+			3- DecisionNode running - Time: 1.2 - Agent: cop_0 - Action: v1 - # Children: 2
+			Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+				4- TriggerNode running - Time: 1.2 - Agent: robber - Trigger: ((((target_robber_x == v5_x)) && ((target_robber_y == v5_y))) && ((robber_x == v5_x))) && ((robber_y == v5_y)) - # Children: 1
+				Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+					5- DecisionNode running - Time: 1.2 - Agent: robber - Action: v4 - # Children: 1
+					Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+						6- TriggerNode running - Time: 2.4 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v1_x)) && ((target_cop_0_y == v1_y))) && ((cop_0_x == v1_x))) && ((cop_0_y == v1_y)) - # Children: 1
+						Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+							7- DecisionNode running - Time: 2.4 - Agent: cop_0 - Action: v0 - # Children: 1
+							Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+								8- TriggerNode running - Time: 3.6 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+								Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+									9- DecisionNode running - Time: 3.6 - Agent: cop_0 - Action: v2 - # Children: 1
+									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+										10- TriggerNode running - Time: 4.2 - Agent: robber - Trigger: ((((target_robber_x == v4_x)) && ((target_robber_y == v4_y))) && ((robber_x == v4_x))) && ((robber_y == v4_y)) - # Children: 2
+										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -1.5   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+											11- DecisionNode running - Time: 4.2 - Agent: robber - Action: v2 - # Children: 1
+											Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -1.5   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+												12- TriggerNode running - Time: 4.8 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v2_x)) && ((target_cop_0_y == v2_y))) && ((cop_0_x == v2_x))) && ((cop_0_y == v2_y)) - # Children: 1
+												Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -0.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 2.4   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+													13- DecisionNode running - Time: 4.8 - Agent: cop_0 - Action: v0 - # Children: 1
+													Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -0.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -1.0   cop_0_dir_y = 0.0   robber_x = 2.4   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+														14- TriggerNode running - Time: 6.0 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+														Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -1.0   cop_0_dir_y = 0.0   robber_x = 1.2   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+															15- DecisionNode running - Time: 6.0 - Agent: cop_0 - Action: v1 - # Children: 2
+															Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 0.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 1.2   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																16- TriggerNode running - Time: 7.2 - Agent: robber - Trigger: ((((target_robber_x == v2_x)) && ((target_robber_y == v2_y))) && ((robber_x == v2_x))) && ((robber_y == v2_y)) - # Children: 3
+																Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 2.9999   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 4.0e-5   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																	17- DecisionNode running - Time: 7.2 - Agent: robber - Action: v0 - # Children: 1
+																	Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 2.9999   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 4.0e-5   robber_y = 0.0   target_robber_x = -3.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																		18- TriggerNode running - Time: 7.2 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v1_x)) && ((target_cop_0_y == v1_y))) && ((cop_0_x == v1_x))) && ((cop_0_y == v1_y)) - # Children: 1
+																		Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 0.0   robber_y = 0.0   target_robber_x = -3.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																			19- DecisionNode running - Time: 7.2 - Agent: cop_0 - Action: v0 - # Children: 1
+																			Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -0.0   cop_0_dir_y = -1.0   robber_x = 0.0   robber_y = 0.0   target_robber_x = -3.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																				20- TriggerNode running - Time: 8.4 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+																				Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -0.0   cop_0_dir_y = -1.0   robber_x = -1.2   robber_y = 0.0   target_robber_x = -3.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																					21- DecisionNode running - Time: 8.4 - Agent: cop_0 - Action: v1 - # Children: 1
+																					Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 0.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = -1.2   robber_y = 0.0   target_robber_x = -3.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																						22- TriggerNode running - Time: 9.6 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v1_x)) && ((target_cop_0_y == v1_y))) && ((cop_0_x == v1_x))) && ((cop_0_y == v1_y)) - # Children: 1
+																						Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = -2.4   robber_y = 0.0   target_robber_x = -3.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																							23- DecisionNode running - Time: 9.6 - Agent: cop_0 - Action: v0 - # Children: 1
+																							Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = -2.4   robber_y = 0.0   target_robber_x = -3.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																								24- TriggerNode running - Time: 10.2 - Agent: robber - Trigger: ((((target_robber_x == v0_x)) && ((target_robber_y == v0_y))) && ((robber_x == v0_x))) && ((robber_y == v0_y)) - # Children: 2
+																								Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 1.5   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = -3.0   robber_y = 0.0   target_robber_x = -3.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																									25- DecisionNode running - Time: 10.2 - Agent: robber - Action: v1 - # Children: 1
+																									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 1.5   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = -3.0   robber_y = 0.0   target_robber_x = -3.0   target_robber_y = 3.0   robber_dir_x = -0.0   robber_dir_y = 1.0   }
+
+																										26- PropertyNode - running - Time: 10.6286
+																										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 0.42857   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = -3.0   robber_y = 0.42857   target_robber_x = -3.0   target_robber_y = 3.0   robber_dir_x = -0.0   robber_dir_y = 1.0   }
+
+																									25- DecisionNode running - Time: 10.2 - Agent: robber - Action: v2 - # Children: 1
+																									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 1.5   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = -3.0   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																										26- TriggerNode running - Time: 10.8 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+																										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = -2.4   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																											27- DecisionNode running - Time: 10.8 - Agent: cop_0 - Action: v2 - # Children: 1
+																											Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = -2.4   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																												28- PropertyNode - running - Time: 11.2
+																												Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -1.99999   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = -1.99999   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																	17- DecisionNode running - Time: 7.2 - Agent: robber - Action: v3 - # Children: 1
+																	Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 2.9999   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 4.0e-5   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 3.0   robber_dir_x = -1.0e-5   robber_dir_y = 1.0   }
+
+																		18- TriggerNode running - Time: 7.2 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v1_x)) && ((target_cop_0_y == v1_y))) && ((cop_0_x == v1_x))) && ((cop_0_y == v1_y)) - # Children: 1
+																		Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 4.0e-5   robber_y = 4.0e-5   target_robber_x = 0.0   target_robber_y = 3.0   robber_dir_x = -1.0e-5   robber_dir_y = 1.0   }
+
+																			19- DecisionNode running - Time: 7.2 - Agent: cop_0 - Action: v0 - # Children: 1
+																			Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -0.0   cop_0_dir_y = -1.0   robber_x = 4.0e-5   robber_y = 4.0e-5   target_robber_x = 0.0   target_robber_y = 3.0   robber_dir_x = -1.0e-5   robber_dir_y = 1.0   }
+
+																				20- TriggerNode running - Time: 8.4 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+																				Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -0.0   cop_0_dir_y = -1.0   robber_x = 2.0e-5   robber_y = 1.20004   target_robber_x = 0.0   target_robber_y = 3.0   robber_dir_x = -1.0e-5   robber_dir_y = 1.0   }
+
+																					21- DecisionNode running - Time: 8.4 - Agent: cop_0 - Action: v2 - # Children: 1
+																					Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 2.0e-5   robber_y = 1.20004   target_robber_x = 0.0   target_robber_y = 3.0   robber_dir_x = -1.0e-5   robber_dir_y = 1.0   }
+
+																						22- TriggerNode running - Time: 9.6 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v2_x)) && ((target_cop_0_y == v2_y))) && ((cop_0_x == v2_x))) && ((cop_0_y == v2_y)) - # Children: 1
+																						Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 1.0e-5   robber_y = 2.40004   target_robber_x = 0.0   target_robber_y = 3.0   robber_dir_x = -1.0e-5   robber_dir_y = 1.0   }
+
+																							23- DecisionNode running - Time: 9.6 - Agent: cop_0 - Action: v3 - # Children: 1
+																							Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = 1.0e-5   robber_y = 2.40004   target_robber_x = 0.0   target_robber_y = 3.0   robber_dir_x = -1.0e-5   robber_dir_y = 1.0   }
+
+																								24- TriggerNode running - Time: 10.2 - Agent: robber - Trigger: ((((target_robber_x == v3_x)) && ((target_robber_y == v3_y))) && ((robber_x == v3_x))) && ((robber_y == v3_y)) - # Children: 1
+																								Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 1.49991   target_cop_0_x = 0.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = -0.0   robber_y = 3.0   target_robber_x = 0.0   target_robber_y = 3.0   robber_dir_x = -1.0e-5   robber_dir_y = 1.0   }
+
+																									25- DecisionNode running - Time: 10.2 - Agent: robber - Action: v2 - # Children: 1
+																									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 1.49991   target_cop_0_x = 0.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = -0.0   robber_y = 3.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																										26- PropertyNode - running - Time: 10.6286
+																										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 2.5714   target_cop_0_x = 0.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = -0.0   robber_y = 2.57141   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																	17- DecisionNode running - Time: 7.2 - Agent: robber - Action: v4 - # Children: 1
+																	Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 2.9999   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 4.0e-5   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																		18- TriggerNode running - Time: 7.2 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v1_x)) && ((target_cop_0_y == v1_y))) && ((cop_0_x == v1_x))) && ((cop_0_y == v1_y)) - # Children: 1
+																		Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 8.0e-5   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																			19- DecisionNode running - Time: 7.2 - Agent: cop_0 - Action: v0 - # Children: 1
+																			Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -0.0   cop_0_dir_y = -1.0   robber_x = 8.0e-5   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																				20- TriggerNode running - Time: 8.4 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+																				Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -0.0   cop_0_dir_y = -1.0   robber_x = 1.20008   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																					21- DecisionNode running - Time: 8.4 - Agent: cop_0 - Action: v2 - # Children: 1
+																					Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 1.20008   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																						22- TriggerNode running - Time: 9.6 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v2_x)) && ((target_cop_0_y == v2_y))) && ((cop_0_x == v2_x))) && ((cop_0_y == v2_y)) - # Children: 1
+																						Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 2.40008   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																							23- DecisionNode running - Time: 9.6 - Agent: cop_0 - Action: v4 - # Children: 1
+																							Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 2.40008   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																								24- TriggerNode running - Time: 10.1999 - Agent: robber - Trigger: ((((target_robber_x == v4_x)) && ((target_robber_y == v4_y))) && ((robber_x == v4_x))) && ((robber_y == v4_y)) - # Children: 2
+																								Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 1.49978   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																									25- DecisionNode running - Time: 10.1999 - Agent: robber - Action: v2 - # Children: 1
+																									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 1.49978   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																										26- PropertyNode - running - Time: 10.6285
+																										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 2.57137   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 2.57136   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																									25- DecisionNode running - Time: 10.1999 - Agent: robber - Action: v5 - # Children: 1
+																									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 1.49978   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																										26- TriggerNode running - Time: 10.8 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v4_x)) && ((target_cop_0_y == v4_y))) && ((cop_0_x == v4_x))) && ((cop_0_y == v4_y)) - # Children: 1
+																										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 2.99999   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.60008   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																											27- DecisionNode running - Time: 10.8 - Agent: cop_0 - Action: v5 - # Children: 1
+																											Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 2.99999   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 0.60008   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																												28- PropertyNode - running - Time: 11.2
+																												Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 1.00014   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 1.00014   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																16- TriggerNode running - Time: 7.2 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v1_x)) && ((target_cop_0_y == v1_y))) && ((cop_0_x == v1_x))) && ((cop_0_y == v1_y)) - # Children: 1
+																Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 0.0   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																	17- DecisionNode running - Time: 7.2 - Agent: cop_0 - Action: v0 - # Children: 2
+																	Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -0.0   cop_0_dir_y = -1.0   robber_x = 0.0   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																		18- TriggerNode running - Time: 7.2 - Agent: robber - Trigger: ((((target_robber_x == v2_x)) && ((target_robber_y == v2_y))) && ((robber_x == v2_x))) && ((robber_y == v2_y)) - # Children: 3
+																		Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -0.0   cop_0_dir_y = -1.0   robber_x = 0.0   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																			19- DecisionNode running - Time: 7.2 - Agent: robber - Action: v0 - # Children: 1
+																			Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -0.0   cop_0_dir_y = -1.0   robber_x = 0.0   robber_y = 0.0   target_robber_x = -3.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																				20- TriggerNode running - Time: 8.4 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+																				Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -0.0   cop_0_dir_y = -1.0   robber_x = -1.2   robber_y = 0.0   target_robber_x = -3.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																					21- DecisionNode running - Time: 8.4 - Agent: cop_0 - Action: v1 - # Children: 1
+																					Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 0.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = -1.2   robber_y = 0.0   target_robber_x = -3.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																						22- TriggerNode running - Time: 9.6 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v1_x)) && ((target_cop_0_y == v1_y))) && ((cop_0_x == v1_x))) && ((cop_0_y == v1_y)) - # Children: 1
+																						Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = -2.4   robber_y = 0.0   target_robber_x = -3.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																							23- DecisionNode running - Time: 9.6 - Agent: cop_0 - Action: v0 - # Children: 1
+																							Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = -2.4   robber_y = 0.0   target_robber_x = -3.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																								24- TriggerNode running - Time: 10.2 - Agent: robber - Trigger: ((((target_robber_x == v0_x)) && ((target_robber_y == v0_y))) && ((robber_x == v0_x))) && ((robber_y == v0_y)) - # Children: 2
+																								Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 1.5   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = -3.0   robber_y = 0.0   target_robber_x = -3.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																									25- DecisionNode running - Time: 10.2 - Agent: robber - Action: v1 - # Children: 1
+																									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 1.5   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = -3.0   robber_y = 0.0   target_robber_x = -3.0   target_robber_y = 3.0   robber_dir_x = -0.0   robber_dir_y = 1.0   }
+
+																										26- PropertyNode - running - Time: 10.6286
+																										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 0.42857   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = -3.0   robber_y = 0.42857   target_robber_x = -3.0   target_robber_y = 3.0   robber_dir_x = -0.0   robber_dir_y = 1.0   }
+
+																									25- DecisionNode running - Time: 10.2 - Agent: robber - Action: v2 - # Children: 1
+																									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 1.5   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = -3.0   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																										26- TriggerNode running - Time: 10.8 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+																										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = -2.4   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																											27- DecisionNode running - Time: 10.8 - Agent: cop_0 - Action: v2 - # Children: 1
+																											Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = -2.4   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																												28- PropertyNode - running - Time: 11.2
+																												Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -1.99999   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = -1.99999   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																			19- DecisionNode running - Time: 7.2 - Agent: robber - Action: v3 - # Children: 1
+																			Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -0.0   cop_0_dir_y = -1.0   robber_x = 0.0   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 3.0   robber_dir_x = -0.0   robber_dir_y = 1.0   }
+
+																				20- TriggerNode running - Time: 8.4 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+																				Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -0.0   cop_0_dir_y = -1.0   robber_x = 0.0   robber_y = 1.2   target_robber_x = 0.0   target_robber_y = 3.0   robber_dir_x = -0.0   robber_dir_y = 1.0   }
+
+																					21- DecisionNode running - Time: 8.4 - Agent: cop_0 - Action: v2 - # Children: 1
+																					Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 0.0   robber_y = 1.2   target_robber_x = 0.0   target_robber_y = 3.0   robber_dir_x = -0.0   robber_dir_y = 1.0   }
+
+																						22- TriggerNode running - Time: 9.6 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v2_x)) && ((target_cop_0_y == v2_y))) && ((cop_0_x == v2_x))) && ((cop_0_y == v2_y)) - # Children: 1
+																						Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 0.0   robber_y = 2.4   target_robber_x = 0.0   target_robber_y = 3.0   robber_dir_x = -0.0   robber_dir_y = 1.0   }
+
+																							23- DecisionNode running - Time: 9.6 - Agent: cop_0 - Action: v3 - # Children: 1
+																							Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = 0.0   robber_y = 2.4   target_robber_x = 0.0   target_robber_y = 3.0   robber_dir_x = -0.0   robber_dir_y = 1.0   }
+
+																								24- TriggerNode running - Time: 10.2 - Agent: robber - Trigger: ((((target_robber_x == v3_x)) && ((target_robber_y == v3_y))) && ((robber_x == v3_x))) && ((robber_y == v3_y)) - # Children: 1
+																								Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 1.49999   target_cop_0_x = 0.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = 0.0   robber_y = 3.0   target_robber_x = 0.0   target_robber_y = 3.0   robber_dir_x = -0.0   robber_dir_y = 1.0   }
+
+																									25- DecisionNode running - Time: 10.2 - Agent: robber - Action: v2 - # Children: 1
+																									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 1.49999   target_cop_0_x = 0.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = 0.0   robber_y = 3.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -0.0   robber_dir_y = -1.0   }
+
+																										26- PropertyNode - running - Time: 10.6286
+																										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 2.57142   target_cop_0_x = 0.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = 0.0   robber_y = 2.57142   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -0.0   robber_dir_y = -1.0   }
+
+																			19- DecisionNode running - Time: 7.2 - Agent: robber - Action: v4 - # Children: 1
+																			Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -0.0   cop_0_dir_y = -1.0   robber_x = 0.0   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																				20- TriggerNode running - Time: 8.4 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+																				Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -0.0   cop_0_dir_y = -1.0   robber_x = 1.2   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																					21- DecisionNode running - Time: 8.4 - Agent: cop_0 - Action: v2 - # Children: 1
+																					Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 1.2   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																						22- TriggerNode running - Time: 9.6 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v2_x)) && ((target_cop_0_y == v2_y))) && ((cop_0_x == v2_x))) && ((cop_0_y == v2_y)) - # Children: 1
+																						Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 2.4   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																							23- DecisionNode running - Time: 9.6 - Agent: cop_0 - Action: v4 - # Children: 1
+																							Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 2.4   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																								24- TriggerNode running - Time: 10.2 - Agent: robber - Trigger: ((((target_robber_x == v4_x)) && ((target_robber_y == v4_y))) && ((robber_x == v4_x))) && ((robber_y == v4_y)) - # Children: 2
+																								Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 1.49999   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																									25- DecisionNode running - Time: 10.2 - Agent: robber - Action: v2 - # Children: 1
+																									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 1.49999   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																										26- PropertyNode - running - Time: 10.6286
+																										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 2.57143   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 2.57142   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																									25- DecisionNode running - Time: 10.2 - Agent: robber - Action: v5 - # Children: 1
+																									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 1.49999   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																										26- TriggerNode running - Time: 10.8 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v4_x)) && ((target_cop_0_y == v4_y))) && ((cop_0_x == v4_x))) && ((cop_0_y == v4_y)) - # Children: 1
+																										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																											27- DecisionNode running - Time: 10.8 - Agent: cop_0 - Action: v5 - # Children: 1
+																											Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																												28- PropertyNode - running - Time: 11.2
+																												Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 1.00001   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 1.00001   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																		18- TriggerNode running - Time: 8.4 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+																		Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -0.0   cop_0_dir_y = -1.0   robber_x = -1.2   robber_y = -0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																			19- DecisionNode running - Time: 8.4 - Agent: cop_0 - Action: v2 - # Children: 1
+																			Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = -1.2   robber_y = -0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																				20- PropertyNode - running - Time: 8.9143
+																				Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -1.71428   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = -1.71429   robber_y = -0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+											11- DecisionNode running - Time: 4.2 - Agent: robber - Action: v5 - # Children: 1
+											Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -1.5   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+												12- TriggerNode running - Time: 4.8 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v2_x)) && ((target_cop_0_y == v2_y))) && ((cop_0_x == v2_x))) && ((cop_0_y == v2_y)) - # Children: 1
+												Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+													13- DecisionNode running - Time: 4.8 - Agent: cop_0 - Action: v4 - # Children: 1
+													Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+														14- TriggerNode running - Time: 6.0 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v4_x)) && ((target_cop_0_y == v4_y))) && ((cop_0_x == v4_x))) && ((cop_0_y == v4_y)) - # Children: 1
+														Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+															15- DecisionNode running - Time: 6.0 - Agent: cop_0 - Action: v5 - # Children: 2
+															Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																16- TriggerNode running - Time: 7.2 - Agent: robber - Trigger: ((((target_robber_x == v5_x)) && ((target_robber_y == v5_y))) && ((robber_x == v5_x))) && ((robber_y == v5_y)) - # Children: 1
+																Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 2.9999   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 2.99996   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																	17- DecisionNode running - Time: 7.2 - Agent: robber - Action: v4 - # Children: 1
+																	Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 2.9999   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 2.99996   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																		18- PropertyNode - running - Time: 7.2
+																		Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 2.99994   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 2.99994   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																16- PropertyNode - running - Time: 7.2
+																Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 3.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+				4- TriggerNode running - Time: 2.4 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v1_x)) && ((target_cop_0_y == v1_y))) && ((cop_0_x == v1_x))) && ((cop_0_y == v1_y)) - # Children: 1
+				Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+					5- DecisionNode running - Time: 2.4 - Agent: cop_0 - Action: v0 - # Children: 2
+					Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+						6- TriggerNode running - Time: 2.4 - Agent: robber - Trigger: ((((target_robber_x == v5_x)) && ((target_robber_y == v5_y))) && ((robber_x == v5_x))) && ((robber_y == v5_y)) - # Children: 1
+						Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+							7- DecisionNode running - Time: 2.4 - Agent: robber - Action: v4 - # Children: 1
+							Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+								8- TriggerNode running - Time: 3.6 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+								Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+									9- DecisionNode running - Time: 3.6 - Agent: cop_0 - Action: v2 - # Children: 1
+									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+										10- TriggerNode running - Time: 4.8 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v2_x)) && ((target_cop_0_y == v2_y))) && ((cop_0_x == v2_x))) && ((cop_0_y == v2_y)) - # Children: 1
+										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+											11- DecisionNode running - Time: 4.8 - Agent: cop_0 - Action: v4 - # Children: 1
+											Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+												12- TriggerNode running - Time: 5.4 - Agent: robber - Trigger: ((((target_robber_x == v4_x)) && ((target_robber_y == v4_y))) && ((robber_x == v4_x))) && ((robber_y == v4_y)) - # Children: 2
+												Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 1.5   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = -0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+													13- DecisionNode running - Time: 5.4 - Agent: robber - Action: v2 - # Children: 1
+													Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 1.5   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = -0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = 0.0   }
+
+														14- PropertyNode - running - Time: 5.8286
+														Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 2.57143   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 2.57143   robber_y = -0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = 0.0   }
+
+													13- DecisionNode running - Time: 5.4 - Agent: robber - Action: v5 - # Children: 1
+													Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 1.5   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = -0.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+														14- TriggerNode running - Time: 6.0 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v4_x)) && ((target_cop_0_y == v4_y))) && ((cop_0_x == v4_x))) && ((cop_0_y == v4_y)) - # Children: 1
+														Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+															15- DecisionNode running - Time: 6.0 - Agent: cop_0 - Action: v5 - # Children: 1
+															Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																16- PropertyNode - running - Time: 6.4
+																Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 1.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 1.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+						6- TriggerNode running - Time: 3.6 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+						Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+							7- DecisionNode running - Time: 3.6 - Agent: cop_0 - Action: v1 - # Children: 2
+							Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+								8- TriggerNode running - Time: 3.6 - Agent: robber - Trigger: ((((target_robber_x == v5_x)) && ((target_robber_y == v5_y))) && ((robber_x == v5_x))) && ((robber_y == v5_y)) - # Children: 1
+								Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+									9- DecisionNode running - Time: 3.6 - Agent: robber - Action: v4 - # Children: 1
+									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+										10- TriggerNode running - Time: 4.8 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v1_x)) && ((target_cop_0_y == v1_y))) && ((cop_0_x == v1_x))) && ((cop_0_y == v1_y)) - # Children: 1
+										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+											11- DecisionNode running - Time: 4.8 - Agent: cop_0 - Action: v0 - # Children: 1
+											Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+												12- TriggerNode running - Time: 6.0 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+												Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+													13- DecisionNode running - Time: 6.0 - Agent: cop_0 - Action: v2 - # Children: 1
+													Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+														14- TriggerNode running - Time: 6.6 - Agent: robber - Trigger: ((((target_robber_x == v4_x)) && ((target_robber_y == v4_y))) && ((robber_x == v4_x))) && ((robber_y == v4_y)) - # Children: 2
+														Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -1.5   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+															15- DecisionNode running - Time: 6.6 - Agent: robber - Action: v2 - # Children: 1
+															Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -1.5   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																16- TriggerNode running - Time: 7.2 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v2_x)) && ((target_cop_0_y == v2_y))) && ((cop_0_x == v2_x))) && ((cop_0_y == v2_y)) - # Children: 1
+																Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -0.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 2.4   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																	17- DecisionNode running - Time: 7.2 - Agent: cop_0 - Action: v0 - # Children: 1
+																	Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -0.0   cop_0_y = 0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -1.0   cop_0_dir_y = -0.0   robber_x = 2.4   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																		18- TriggerNode running - Time: 8.4 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+																		Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -1.0   cop_0_dir_y = -0.0   robber_x = 1.2   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																			19- DecisionNode running - Time: 8.4 - Agent: cop_0 - Action: v2 - # Children: 2
+																			Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 1.2   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																				20- TriggerNode running - Time: 9.6 - Agent: robber - Trigger: ((((target_robber_x == v2_x)) && ((target_robber_y == v2_y))) && ((robber_x == v2_x))) && ((robber_y == v2_y)) - # Children: 3
+																				Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -0.0001   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 4.0e-5   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																					21- DecisionNode running - Time: 9.6 - Agent: robber - Action: v0 - # Children: 1
+																					Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -0.0001   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 4.0e-5   robber_y = 0.0   target_robber_x = -3.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																						22- PropertyNode - running - Time: 9.6
+																						Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -0.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 0.0   robber_y = 0.0   target_robber_x = -3.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																					21- DecisionNode running - Time: 9.6 - Agent: robber - Action: v3 - # Children: 1
+																					Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -0.0001   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 4.0e-5   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 3.0   robber_dir_x = -1.0e-5   robber_dir_y = 1.0   }
+
+																						22- PropertyNode - running - Time: 9.6
+																						Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 4.0e-5   robber_y = 4.0e-5   target_robber_x = 0.0   target_robber_y = 3.0   robber_dir_x = -1.0e-5   robber_dir_y = 1.0   }
+
+																					21- DecisionNode running - Time: 9.6 - Agent: robber - Action: v4 - # Children: 1
+																					Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -0.0001   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 4.0e-5   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																						22- TriggerNode running - Time: 9.6 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v2_x)) && ((target_cop_0_y == v2_y))) && ((cop_0_x == v2_x))) && ((cop_0_y == v2_y)) - # Children: 1
+																						Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0e-5   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 7.0e-5   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																							23- DecisionNode running - Time: 9.6 - Agent: cop_0 - Action: v4 - # Children: 1
+																							Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0e-5   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 7.0e-5   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																								24- PropertyNode - running - Time: 9.6
+																								Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0001   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 0.00012   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																				20- PropertyNode - running - Time: 9.6
+																				Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 0.0   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+															15- DecisionNode running - Time: 6.6 - Agent: robber - Action: v5 - # Children: 1
+															Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -1.5   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																16- TriggerNode running - Time: 7.2 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v2_x)) && ((target_cop_0_y == v2_y))) && ((cop_0_x == v2_x))) && ((cop_0_y == v2_y)) - # Children: 1
+																Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																	17- DecisionNode running - Time: 7.2 - Agent: cop_0 - Action: v4 - # Children: 1
+																	Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																		18- TriggerNode running - Time: 8.4 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v4_x)) && ((target_cop_0_y == v4_y))) && ((cop_0_x == v4_x))) && ((cop_0_y == v4_y)) - # Children: 1
+																		Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																			19- DecisionNode running - Time: 8.4 - Agent: cop_0 - Action: v5 - # Children: 2
+																			Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																				20- TriggerNode running - Time: 9.6 - Agent: robber - Trigger: ((((target_robber_x == v5_x)) && ((target_robber_y == v5_y))) && ((robber_x == v5_x))) && ((robber_y == v5_y)) - # Children: 1
+																				Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 2.9999   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 2.99996   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																					21- DecisionNode running - Time: 9.6 - Agent: robber - Action: v4 - # Children: 1
+																					Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 2.9999   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 2.99996   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																						22- PropertyNode - running - Time: 9.6
+																						Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 2.99995   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 2.99994   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																				20- PropertyNode - running - Time: 9.6
+																				Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 3.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+								8- TriggerNode running - Time: 4.8 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v1_x)) && ((target_cop_0_y == v1_y))) && ((cop_0_x == v1_x))) && ((cop_0_y == v1_y)) - # Children: 1
+								Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+									9- DecisionNode running - Time: 4.8 - Agent: cop_0 - Action: v0 - # Children: 2
+									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+										10- TriggerNode running - Time: 4.8 - Agent: robber - Trigger: ((((target_robber_x == v5_x)) && ((target_robber_y == v5_y))) && ((robber_x == v5_x))) && ((robber_y == v5_y)) - # Children: 1
+										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+											11- DecisionNode running - Time: 4.8 - Agent: robber - Action: v4 - # Children: 1
+											Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+												12- TriggerNode running - Time: 6.0 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+												Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+													13- DecisionNode running - Time: 6.0 - Agent: cop_0 - Action: v2 - # Children: 1
+													Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+														14- TriggerNode running - Time: 7.2 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v2_x)) && ((target_cop_0_y == v2_y))) && ((cop_0_x == v2_x))) && ((cop_0_y == v2_y)) - # Children: 1
+														Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+															15- DecisionNode running - Time: 7.2 - Agent: cop_0 - Action: v4 - # Children: 1
+															Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																16- TriggerNode running - Time: 7.8 - Agent: robber - Trigger: ((((target_robber_x == v4_x)) && ((target_robber_y == v4_y))) && ((robber_x == v4_x))) && ((robber_y == v4_y)) - # Children: 2
+																Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 1.5   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = -0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																	17- DecisionNode running - Time: 7.8 - Agent: robber - Action: v2 - # Children: 1
+																	Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 1.5   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = -0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = 0.0   }
+
+																		18- PropertyNode - running - Time: 8.2286
+																		Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 2.57143   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 2.57143   robber_y = -0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = 0.0   }
+
+																	17- DecisionNode running - Time: 7.8 - Agent: robber - Action: v5 - # Children: 1
+																	Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 1.5   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = -0.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																		18- TriggerNode running - Time: 8.4 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v4_x)) && ((target_cop_0_y == v4_y))) && ((cop_0_x == v4_x))) && ((cop_0_y == v4_y)) - # Children: 1
+																		Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																			19- DecisionNode running - Time: 8.4 - Agent: cop_0 - Action: v5 - # Children: 1
+																			Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																				20- PropertyNode - running - Time: 8.8
+																				Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 1.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 1.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+										10- TriggerNode running - Time: 6.0 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+											11- DecisionNode running - Time: 6.0 - Agent: cop_0 - Action: v1 - # Children: 2
+											Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+												12- TriggerNode running - Time: 6.0 - Agent: robber - Trigger: ((((target_robber_x == v5_x)) && ((target_robber_y == v5_y))) && ((robber_x == v5_x))) && ((robber_y == v5_y)) - # Children: 1
+												Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+													13- DecisionNode running - Time: 6.0 - Agent: robber - Action: v4 - # Children: 1
+													Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+														14- TriggerNode running - Time: 7.2 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v1_x)) && ((target_cop_0_y == v1_y))) && ((cop_0_x == v1_x))) && ((cop_0_y == v1_y)) - # Children: 1
+														Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+															15- DecisionNode running - Time: 7.2 - Agent: cop_0 - Action: v0 - # Children: 1
+															Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																16- TriggerNode running - Time: 8.4 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+																Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																	17- DecisionNode running - Time: 8.4 - Agent: cop_0 - Action: v2 - # Children: 1
+																	Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																		18- TriggerNode running - Time: 9.0 - Agent: robber - Trigger: ((((target_robber_x == v4_x)) && ((target_robber_y == v4_y))) && ((robber_x == v4_x))) && ((robber_y == v4_y)) - # Children: 2
+																		Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -1.5   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																			19- DecisionNode running - Time: 9.0 - Agent: robber - Action: v2 - # Children: 1
+																			Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -1.5   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																				20- TriggerNode running - Time: 9.6 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v2_x)) && ((target_cop_0_y == v2_y))) && ((cop_0_x == v2_x))) && ((cop_0_y == v2_y)) - # Children: 1
+																				Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -0.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 2.4   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																					21- DecisionNode running - Time: 9.6 - Agent: cop_0 - Action: v0 - # Children: 1
+																					Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -0.0   cop_0_y = 0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -1.0   cop_0_dir_y = -0.0   robber_x = 2.4   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																						22- TriggerNode running - Time: 10.8 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+																						Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -1.0   cop_0_dir_y = -0.0   robber_x = 1.2   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																							23- DecisionNode running - Time: 10.8 - Agent: cop_0 - Action: v2 - # Children: 2
+																							Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 1.2   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																								24- TriggerNode running - Time: 12.0 - Agent: robber - Trigger: ((((target_robber_x == v2_x)) && ((target_robber_y == v2_y))) && ((robber_x == v2_x))) && ((robber_y == v2_y)) - # Children: 3
+																								Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -0.0001   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 4.0e-5   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																									25- DecisionNode running - Time: 12.0 - Agent: robber - Action: v0 - # Children: 1
+																									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -0.0001   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 4.0e-5   robber_y = 0.0   target_robber_x = -3.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																										26- PropertyNode - running - Time: 12.0
+																										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -0.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 0.0   robber_y = 0.0   target_robber_x = -3.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																									25- DecisionNode running - Time: 12.0 - Agent: robber - Action: v3 - # Children: 1
+																									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -0.0001   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 4.0e-5   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 3.0   robber_dir_x = -1.0e-5   robber_dir_y = 1.0   }
+
+																										26- PropertyNode - running - Time: 12.0
+																										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 4.0e-5   robber_y = 4.0e-5   target_robber_x = 0.0   target_robber_y = 3.0   robber_dir_x = -1.0e-5   robber_dir_y = 1.0   }
+
+																									25- DecisionNode running - Time: 12.0 - Agent: robber - Action: v4 - # Children: 1
+																									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -0.0001   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 4.0e-5   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																										26- TriggerNode running - Time: 12.0 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v2_x)) && ((target_cop_0_y == v2_y))) && ((cop_0_x == v2_x))) && ((cop_0_y == v2_y)) - # Children: 1
+																										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0e-5   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 7.0e-5   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																											27- DecisionNode running - Time: 12.0 - Agent: cop_0 - Action: v4 - # Children: 1
+																											Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0e-5   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 7.0e-5   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																												28- PropertyNode - running - Time: 12.0
+																												Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0001   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 0.00012   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 1.0   robber_dir_y = -0.0   }
+
+																								24- PropertyNode - running - Time: 12.0
+																								Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 0.0   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																			19- DecisionNode running - Time: 9.0 - Agent: robber - Action: v5 - # Children: 1
+																			Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -1.5   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																				20- TriggerNode running - Time: 9.6 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v2_x)) && ((target_cop_0_y == v2_y))) && ((cop_0_x == v2_x))) && ((cop_0_y == v2_y)) - # Children: 1
+																				Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																					21- DecisionNode running - Time: 9.6 - Agent: cop_0 - Action: v4 - # Children: 1
+																					Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																						22- TriggerNode running - Time: 10.8 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v4_x)) && ((target_cop_0_y == v4_y))) && ((cop_0_x == v4_x))) && ((cop_0_y == v4_y)) - # Children: 1
+																						Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																							23- DecisionNode running - Time: 10.8 - Agent: cop_0 - Action: v5 - # Children: 2
+																							Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																								24- TriggerNode running - Time: 12.0 - Agent: robber - Trigger: ((((target_robber_x == v5_x)) && ((target_robber_y == v5_y))) && ((robber_x == v5_x))) && ((robber_y == v5_y)) - # Children: 1
+																								Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 2.9999   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 2.99996   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																									25- DecisionNode running - Time: 12.0 - Agent: robber - Action: v4 - # Children: 1
+																									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 2.9999   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 2.99996   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																										26- PropertyNode - running - Time: 12.0
+																										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 2.99994   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 2.99994   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																								24- PropertyNode - running - Time: 12.0
+																								Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 3.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+												12- TriggerNode running - Time: 7.2 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v1_x)) && ((target_cop_0_y == v1_y))) && ((cop_0_x == v1_x))) && ((cop_0_y == v1_y)) - # Children: 1
+												Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+													13- DecisionNode running - Time: 7.2 - Agent: cop_0 - Action: v0 - # Children: 2
+													Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+														14- TriggerNode running - Time: 7.2 - Agent: robber - Trigger: ((((target_robber_x == v5_x)) && ((target_robber_y == v5_y))) && ((robber_x == v5_x))) && ((robber_y == v5_y)) - # Children: 1
+														Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+															15- DecisionNode running - Time: 7.2 - Agent: robber - Action: v4 - # Children: 1
+															Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																16- TriggerNode running - Time: 8.4 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+																Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																	17- DecisionNode running - Time: 8.4 - Agent: cop_0 - Action: v2 - # Children: 1
+																	Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																		18- TriggerNode running - Time: 9.6 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v2_x)) && ((target_cop_0_y == v2_y))) && ((cop_0_x == v2_x))) && ((cop_0_y == v2_y)) - # Children: 1
+																		Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																			19- DecisionNode running - Time: 9.6 - Agent: cop_0 - Action: v4 - # Children: 1
+																			Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																				20- TriggerNode running - Time: 10.2 - Agent: robber - Trigger: ((((target_robber_x == v4_x)) && ((target_robber_y == v4_y))) && ((robber_x == v4_x))) && ((robber_y == v4_y)) - # Children: 2
+																				Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 1.5   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = -0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																					21- DecisionNode running - Time: 10.2 - Agent: robber - Action: v2 - # Children: 1
+																					Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 1.5   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = -0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = 0.0   }
+
+																						22- PropertyNode - running - Time: 10.6286
+																						Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 2.57143   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 2.57143   robber_y = -0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = 0.0   }
+
+																					21- DecisionNode running - Time: 10.2 - Agent: robber - Action: v5 - # Children: 1
+																					Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 1.5   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = -0.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																						22- TriggerNode running - Time: 10.8 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v4_x)) && ((target_cop_0_y == v4_y))) && ((cop_0_x == v4_x))) && ((cop_0_y == v4_y)) - # Children: 1
+																						Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																							23- DecisionNode running - Time: 10.8 - Agent: cop_0 - Action: v5 - # Children: 1
+																							Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																								24- PropertyNode - running - Time: 11.2
+																								Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 1.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 1.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+														14- TriggerNode running - Time: 8.4 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+														Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = 0.0   cop_0_dir_y = -1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+															15- DecisionNode running - Time: 8.4 - Agent: cop_0 - Action: v2 - # Children: 2
+															Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+																16- TriggerNode running - Time: 8.4 - Agent: robber - Trigger: ((((target_robber_x == v5_x)) && ((target_robber_y == v5_y))) && ((robber_x == v5_x))) && ((robber_y == v5_y)) - # Children: 1
+																Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+																	17- DecisionNode running - Time: 8.4 - Agent: robber - Action: v4 - # Children: 1
+																	Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																		18- TriggerNode running - Time: 9.6 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v2_x)) && ((target_cop_0_y == v2_y))) && ((cop_0_x == v2_x))) && ((cop_0_y == v2_y)) - # Children: 1
+																		Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -0.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																			19- DecisionNode running - Time: 9.6 - Agent: cop_0 - Action: v0 - # Children: 1
+																			Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -0.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																				20- TriggerNode running - Time: 10.8 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+																				Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																					21- DecisionNode running - Time: 10.8 - Agent: cop_0 - Action: v2 - # Children: 1
+																					Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																						22- TriggerNode running - Time: 11.4 - Agent: robber - Trigger: ((((target_robber_x == v4_x)) && ((target_robber_y == v4_y))) && ((robber_x == v4_x))) && ((robber_y == v4_y)) - # Children: 2
+																						Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -1.49998   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = -0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																							23- DecisionNode running - Time: 11.4 - Agent: robber - Action: v2 - # Children: 1
+																							Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -1.49998   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = -0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = 0.0   }
+
+																								24- TriggerNode running - Time: 12.0 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v2_x)) && ((target_cop_0_y == v2_y))) && ((cop_0_x == v2_x))) && ((cop_0_y == v2_y)) - # Children: 1
+																								Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 2.40001   robber_y = -0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = 0.0   }
+
+																									25- DecisionNode running - Time: 12.0 - Agent: cop_0 - Action: v4 - # Children: 1
+																									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 2.40001   robber_y = -0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = 0.0   }
+
+																										26- PropertyNode - running - Time: 12.6857
+																										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 1.71429   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 1.71429   robber_y = -0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = 0.0   }
+
+																							23- DecisionNode running - Time: 11.4 - Agent: robber - Action: v5 - # Children: 1
+																							Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -1.49998   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = -0.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																								24- TriggerNode running - Time: 12.0 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v2_x)) && ((target_cop_0_y == v2_y))) && ((cop_0_x == v2_x))) && ((cop_0_y == v2_y)) - # Children: 1
+																								Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 0.59999   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																									25- DecisionNode running - Time: 12.0 - Agent: cop_0 - Action: v4 - # Children: 1
+																									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.59999   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																										26- TriggerNode running - Time: 13.2 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v4_x)) && ((target_cop_0_y == v4_y))) && ((cop_0_x == v4_x))) && ((cop_0_y == v4_y)) - # Children: 1
+																										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 1.79999   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																											27- DecisionNode running - Time: 13.2 - Agent: cop_0 - Action: v5 - # Children: 1
+																											Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 1.79999   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																												28- PropertyNode - running - Time: 14.4
+																												Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 2.9999   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 2.99995   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																16- TriggerNode running - Time: 9.6 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v2_x)) && ((target_cop_0_y == v2_y))) && ((cop_0_x == v2_x))) && ((cop_0_y == v2_y)) - # Children: 1
+																Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+																	17- DecisionNode running - Time: 9.6 - Agent: cop_0 - Action: v0 - # Children: 2
+																	Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+																		18- TriggerNode running - Time: 9.6 - Agent: robber - Trigger: ((((target_robber_x == v5_x)) && ((target_robber_y == v5_y))) && ((robber_x == v5_x))) && ((robber_y == v5_y)) - # Children: 1
+																		Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+																			19- DecisionNode running - Time: 9.6 - Agent: robber - Action: v4 - # Children: 1
+																			Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																				20- TriggerNode running - Time: 10.8 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+																				Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																					21- DecisionNode running - Time: 10.8 - Agent: cop_0 - Action: v2 - # Children: 1
+																					Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																						22- TriggerNode running - Time: 12.0 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v2_x)) && ((target_cop_0_y == v2_y))) && ((cop_0_x == v2_x))) && ((cop_0_y == v2_y)) - # Children: 1
+																						Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																							23- DecisionNode running - Time: 12.0 - Agent: cop_0 - Action: v4 - # Children: 1
+																							Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																								24- TriggerNode running - Time: 12.6 - Agent: robber - Trigger: ((((target_robber_x == v4_x)) && ((target_robber_y == v4_y))) && ((robber_x == v4_x))) && ((robber_y == v4_y)) - # Children: 2
+																								Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 1.49999   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																									25- DecisionNode running - Time: 12.6 - Agent: robber - Action: v2 - # Children: 1
+																									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 1.49999   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																										26- PropertyNode - running - Time: 13.0286
+																										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 2.57142   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 2.57143   robber_y = 0.0   target_robber_x = 0.0   target_robber_y = 0.0   robber_dir_x = -1.0   robber_dir_y = -0.0   }
+
+																									25- DecisionNode running - Time: 12.6 - Agent: robber - Action: v5 - # Children: 1
+																									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 1.49999   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																										26- TriggerNode running - Time: 13.2 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v4_x)) && ((target_cop_0_y == v4_y))) && ((cop_0_x == v4_x))) && ((cop_0_y == v4_y)) - # Children: 1
+																										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																											27- DecisionNode running - Time: 13.2 - Agent: cop_0 - Action: v5 - # Children: 1
+																											Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																												28- PropertyNode - running - Time: 13.6
+																												Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 1.00001   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 1.00001   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 1.0   }
+
+																		18- TriggerNode running - Time: 10.8 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v0_x)) && ((target_cop_0_y == v0_y))) && ((cop_0_x == v0_x))) && ((cop_0_y == v0_y)) - # Children: 1
+																		Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 0.0   target_cop_0_x = -3.0   target_cop_0_y = 0.0   cop_0_dir_x = -1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+																			19- DecisionNode running - Time: 10.8 - Agent: cop_0 - Action: v2 - # Children: 2
+																			Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+																				20- TriggerNode running - Time: 10.8 - Agent: robber - Trigger: ((((target_robber_x == v5_x)) && ((target_robber_y == v5_y))) && ((robber_x == v5_x))) && ((robber_y == v5_y)) - # Children: 1
+																				Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+																					21- DecisionNode running - Time: 10.8 - Agent: robber - Action: v4 - # Children: 1
+																					Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																						22- TriggerNode running - Time: 12.0 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v2_x)) && ((target_cop_0_y == v2_y))) && ((cop_0_x == v2_x))) && ((cop_0_y == v2_y)) - # Children: 1
+																						Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -0.0   cop_0_y = 0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																							23- DecisionNode running - Time: 12.0 - Agent: cop_0 - Action: v4 - # Children: 1
+																							Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -0.0   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																								24- TriggerNode running - Time: 13.2 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v4_x)) && ((target_cop_0_y == v4_y))) && ((cop_0_x == v4_x))) && ((cop_0_y == v4_y)) - # Children: 1
+																								Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																									25- DecisionNode running - Time: 13.2 - Agent: cop_0 - Action: v5 - # Children: 1
+																									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 0.6   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																										26- PropertyNode - running - Time: 13.3714
+																										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 0.42857   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 0.42857   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																				20- TriggerNode running - Time: 12.0 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v2_x)) && ((target_cop_0_y == v2_y))) && ((cop_0_x == v2_x))) && ((cop_0_y == v2_y)) - # Children: 1
+																				Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = -0.0   target_cop_0_x = 0.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = -0.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+																					21- DecisionNode running - Time: 12.0 - Agent: cop_0 - Action: v4 - # Children: 2
+																					Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+																						22- TriggerNode running - Time: 12.0 - Agent: robber - Trigger: ((((target_robber_x == v5_x)) && ((target_robber_y == v5_y))) && ((robber_x == v5_x))) && ((robber_y == v5_y)) - # Children: 1
+																						Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+																							23- DecisionNode running - Time: 12.0 - Agent: robber - Action: v4 - # Children: 1
+																							Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 0.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																								24- TriggerNode running - Time: 13.2 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v4_x)) && ((target_cop_0_y == v4_y))) && ((cop_0_x == v4_x))) && ((cop_0_y == v4_y)) - # Children: 1
+																								Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																									25- DecisionNode running - Time: 13.2 - Agent: cop_0 - Action: v5 - # Children: 1
+																									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 0.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 1.8   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																										26- PropertyNode - running - Time: 13.7143
+																										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 1.28572   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = -0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 1.28571   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																						22- TriggerNode running - Time: 13.2 - Agent: cop_0 - Trigger: ((((target_cop_0_x == v4_x)) && ((target_cop_0_y == v4_y))) && ((cop_0_x == v4_x))) && ((cop_0_y == v4_y)) - # Children: 1
+																						Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 0.0   cop_0_dir_x = 1.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+																							23- DecisionNode running - Time: 13.2 - Agent: cop_0 - Action: v5 - # Children: 2
+																							Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+																								24- TriggerNode running - Time: 13.2 - Agent: robber - Trigger: ((((target_robber_x == v5_x)) && ((target_robber_y == v5_y))) && ((robber_x == v5_x))) && ((robber_y == v5_y)) - # Children: 1
+																								Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+																									25- DecisionNode running - Time: 13.2 - Agent: robber - Action: v4 - # Children: 1
+																									Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = -0.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																										26- PropertyNode - running - Time: 14.0571
+																										Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 2.14285   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 2.14286   target_robber_x = 3.0   target_robber_y = 0.0   robber_dir_x = 0.0   robber_dir_y = -1.0   }
+
+																								24- PropertyNode - running - Time: 14.4
+																								Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = 3.0   cop_0_y = 3.0   target_cop_0_x = 3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 1.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+
+
+
+***************************
+***************************
+***************************
+
+
+<<robber>> G ! ((cop_0_x == robber_x && cop_0_y == robber_y)): false
+0- RootNode  running - # Children: 0
+Valuation: {v0_x = -3.0   v0_y = 0.0   v1_x = -3.0   v1_y = 3.0   v2_x = 0.0   v2_y = 0.0   v3_x = 0.0   v3_y = 3.0   v4_x = 3.0   v4_y = 0.0   v5_x = 3.0   v5_y = 3.0   cop_speed = 2.5   robber_speed = 1.0   cop_0_x = -3.0   cop_0_y = 3.0   target_cop_0_x = -3.0   target_cop_0_y = 3.0   cop_0_dir_x = 0.0   cop_0_dir_y = 0.0   robber_x = 3.0   robber_y = 3.0   target_robber_x = 3.0   target_robber_y = 3.0   robber_dir_x = 0.0   robber_dir_y = 0.0   }
+
+
+
+
+***************************
+***************************
+***************************
+
+

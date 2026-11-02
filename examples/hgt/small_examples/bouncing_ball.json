@@ -1,0 +1,106 @@
+{
+    "game_type": "HGT",
+    "description": "A single agent (A) controls a ball dropped from height 1000 under gravity. The ball bounces off the floor with a dissipation factor of 0.9 and eventually comes to rest.",
+    "agents": [
+        {
+            "name": "A"
+        }
+    ],
+    "actions": [
+        {
+            "name": "up"
+        }
+    ],
+    "variables": [
+        {
+            "name": "pos",
+            "expression": "1000"
+        },
+        {
+            "name": "spd",
+            "expression": "0"
+        },
+        {
+            "name": "acc",
+            "expression": "-10"
+        },
+        {
+            "name": "dissipation",
+            "expression": "0.9"
+        }
+    ],
+    "triggers": [
+        {
+            "agent": "A",
+            "trigger": "pos == 0 && spd < 0"
+        }
+    ],
+    "locations": [
+        {
+            "name": "falling",
+            "initial": true,
+            "flow": [
+                {
+                    "expression": "spd",
+                    "variable": "pos"
+                },
+                {
+                    "expression": "acc",
+                    "variable": "spd"
+                },
+                {
+                    "expression": "0",
+                    "variable": "acc"
+                },
+                {
+                    "expression": "0",
+                    "variable": "dissipation"
+                }
+            ],
+            "invariant": "0 <= pos && pos <= 1000 && acc == -10"
+        }
+    ],
+    "edges": [
+        {
+            "guard": "spd < 0",
+            "source": "falling",
+            "action": "up",
+            "target": "falling",
+            "agent": "A",
+            "jump": [
+                {
+                    "expression": "pos",
+                    "variable": "pos"
+                },
+                {
+                    "expression": "- dissipation * spd",
+                    "variable": "spd"
+                },
+                {
+                    "expression": "acc",
+                    "variable": "acc"
+                },
+                {
+                    "expression": "dissipation",
+                    "variable": "dissipation"
+                }
+            ]
+        }
+    ],
+    "queries": [
+        {
+            "formula": "<<A>> F (pos < 0 || pos > 1000)"
+        },
+        {
+            "formula": "<<A>> G pos >= 0"
+        },
+        {
+            "formula": "<<A>> F (pos == 700 && spd > 0)"
+        }
+    ],
+    "termination_conditions": {
+        "max_steps": "20",
+        "time_bound": "100",
+        "state_formula": "pos == 0 && spd^2 < 0.01"
+    }
+}
