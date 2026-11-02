@@ -24,14 +24,25 @@ File description.
 
 export parse_interval, parse_mhg_game
 
-# TODO: add function documentation
+"""
+    parse_interval(interval_text::String)::Interval
+
+Parse an interval such as `"[0, 1)"` or `"(-Inf, 2.5]"`. Parentheses mark open
+and brackets closed bounds; infinite bounds are always open.
+"""
 function parse_interval(interval_text::String)::Interval
-    left_open = interval_text[1] == "("
-    right_open = interval_text[end] == ")"
-    content = interval_text[2:end-1]
-    numbers = [tryparse(Float64, number) for number in split(content, ',')]
-    left = numbers[1]
-    right = numbers[2]
+    text = strip(interval_text)
+    if length(text) < 2 || !(first(text) in "([") || !(last(text) in ")]")
+        throw(ArgumentError("invalid interval: \"$interval_text\""))
+    end
+    left_open = first(text) == '('
+    right_open = last(text) == ')'
+    parts = split(chop(text, head=1, tail=1), ',')
+    bounds = length(parts) == 2 ? tryparse.(Float64, parts) : nothing
+    if bounds === nothing || nothing in bounds
+        throw(ArgumentError("invalid interval: \"$interval_text\""))
+    end
+    left, right = bounds
     Interval(left, left_open, right, right_open)
 end
 

@@ -120,7 +120,8 @@ docker run -it --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix hytrig 
 ## 🧪 Tests
 
 The [`test/`](test/) directory contains tests covering the tokenizer, the
-formula and game parsers, and the continuous-evolution engine. Individual test
+formula and game parsers, the continuous-evolution engine, and the intervals and
+zones of multi-hybrid games. Individual test
 files can be run directly, for example:
 
 ```bash
